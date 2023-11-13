@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -35,6 +36,7 @@
     "eslint-config-next": "^14.0.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "husky": "^8.0.0"
   }
 }
