@@ -1,6 +1,5 @@
 /node_modules
 /next-env.d.ts
-/pnpm-lock.yaml
 /.next
 /.idea
 /image-converter.iml
