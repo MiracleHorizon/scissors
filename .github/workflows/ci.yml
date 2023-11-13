@@ -32,3 +32,6 @@ jobs:
 
       - name: Build project
         run: pnpm build
+
+      - name: Lint project
+        run: pnpm lint
