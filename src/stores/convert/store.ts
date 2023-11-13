@@ -4,13 +4,21 @@ import { devtools } from 'zustand/middleware'
 import type { Store } from './types'
 
 export const useConvertStore = create(
-  devtools<Store>(set => ({
+  devtools<Store>((set, get) => ({
     // State
     file: null,
     downloadPayload: null,
 
     flip: false,
     flop: false,
+
+    // Computed
+    getConvertSettings: () => {
+      return {
+        flip: get().flip,
+        flop: get().flop
+      }
+    },
 
     // Actions
     setFile: file => set({ file }),

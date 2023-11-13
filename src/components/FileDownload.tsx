@@ -1,10 +1,10 @@
-import Image from 'next/image'
 import { AspectRatio, Flex, Link } from '@radix-ui/themes'
 
 import { useConvertStore } from '@stores/convert'
 import { themeColor } from '@shared/theme'
+import type { ClassNameProps } from '@app-types/ClassNameProps'
 
-export function FileDownload() {
+export function FileDownload({ className }: ClassNameProps) {
   const downloadPayload = useConvertStore(state => state.downloadPayload)
   const removeDownloadPayload = useConvertStore(state => state.removeDownloadPayload)
 
@@ -17,9 +17,10 @@ export function FileDownload() {
   const handleRemoveDownloadPayload = () => removeDownloadPayload()
 
   return (
-    <Flex align='center' direction='column'>
+    <Flex align='center' direction='column' className={className}>
       <AspectRatio ratio={16 / 9}>
-        <Image fill sizes='100%' src={link} alt={fileName} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img width='100%' height='100%' src={link} alt={fileName} />
       </AspectRatio>
       <Flex mt='2' align='center' justify='center' width='100%'>
         <Link

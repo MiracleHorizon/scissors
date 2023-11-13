@@ -1,6 +1,7 @@
+import type { ConvertSettings } from '@libs/Sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 
-export type Store = State & Actions
+export type Store = State & Computed & Actions
 
 interface State {
   file: File | null
@@ -8,6 +9,10 @@ interface State {
   // Settings
   flip: boolean
   flop: boolean
+}
+
+interface Computed {
+  getConvertSettings: () => ConvertSettings
 }
 
 /* eslint no-unused-vars: 0 */
