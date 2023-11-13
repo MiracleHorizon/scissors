@@ -1,0 +1,40 @@
+{
+  "name": "image-converter",
+  "version": "0.0.1",
+  "private": true,
+  "author": "MiracleHorizon",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/themes": "^2.0.0",
+    "axios": "^1.6.1",
+    "lodash.capitalize": "^4.2.1",
+    "lodash.isempty": "^4.4.0",
+    "next": "14.0.2",
+    "react": "^18",
+    "react-colorful": "^5.6.1",
+    "react-dom": "^18",
+    "react-hook-form": "^7.48.2",
+    "sharp": "^0.32.6",
+    "zustand": "^4.4.6"
+  },
+  "devDependencies": {
+    "@types/lodash.capitalize": "^4.2.9",
+    "@types/lodash.isempty": "^4.4.9",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^14.0.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  }
+}

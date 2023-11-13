@@ -1,0 +1,9 @@
+/node_modules
+/dist
+/coverage
+/.idea
+/.git
+/.github
+
+.eslintignore
+*.json
