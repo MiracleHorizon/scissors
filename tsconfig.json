@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -43,6 +43,9 @@
     "paths": {
       "@app/*": [
         "./src/app/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
       ],
       "@components/*": [
         "./src/components/*"
