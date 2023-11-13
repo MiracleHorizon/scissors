@@ -13,12 +13,10 @@ export const useConvertStore = create(
     flop: false,
 
     // Computed
-    getConvertSettings: () => {
-      return {
-        flip: get().flip,
-        flop: get().flop
-      }
-    },
+    getConvertSettings: () => ({
+      flip: get().flip,
+      flop: get().flop
+    }),
 
     // Actions
     setFile: file => set({ file }),
