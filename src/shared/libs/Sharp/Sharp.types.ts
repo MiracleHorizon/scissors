@@ -1,6 +1,12 @@
 export interface ConvertSettings {
-  flip: boolean | null
-  flop: boolean | null
+  flip: boolean
+  flop: boolean
+  negate: NegateOptions | null
+}
+
+export interface NegateOptions {
+  value: boolean
+  alpha: boolean
 }
 
 /* eslint no-unused-vars: 0 */

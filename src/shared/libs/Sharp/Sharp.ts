@@ -1,6 +1,6 @@
 import sharp from 'sharp'
 
-import type { ConvertSettings } from '@libs/Sharp'
+import type { ConvertSettings, NegateOptions } from '@libs/Sharp'
 
 export class Sharp {
   private readonly imageSharp: sharp.Sharp
@@ -9,7 +9,7 @@ export class Sharp {
     this.imageSharp = sharp(imageBuffer)
   }
 
-  public convert({ flip, flop }: ConvertSettings): Promise<Buffer> {
+  public convert({ flip, flop, negate }: ConvertSettings): Promise<Buffer> {
     if (flip) {
       this.flip()
     }
@@ -18,15 +18,25 @@ export class Sharp {
       this.flop()
     }
 
+    if (negate) {
+      this.negate(negate)
+    }
+
     return this.toBuffer()
   }
 
-  public flip(): void {
+  private flip(): void {
     this.imageSharp.flip()
   }
 
-  public flop(): void {
+  private flop(): void {
     this.imageSharp.flop()
+  }
+
+  private negate({ value, alpha }: NegateOptions): void {
+    if (!value) return
+
+    this.imageSharp.negate({ alpha })
   }
 
   private async toBuffer(): Promise<Buffer> {

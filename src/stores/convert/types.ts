@@ -3,12 +3,9 @@ import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 export type Store = State & Computed & Actions
 
-interface State {
+interface State extends ConvertSettings {
   file: File | null
   downloadPayload: DownloadPayload | null
-  // Settings
-  flip: boolean
-  flop: boolean
 }
 
 interface Computed {
@@ -19,8 +16,13 @@ interface Computed {
 interface Actions {
   setFile: (file: File | null) => void
   removeFile: VoidFunction
+
   setDownloadPayload: (downloadPayload: DownloadPayload) => void
   removeDownloadPayload: VoidFunction
+
   toggleFlip: VoidFunction
   toggleFlop: VoidFunction
+
+  toggleNegate: VoidFunction
+  toggleNegateAlpha: VoidFunction
 }
