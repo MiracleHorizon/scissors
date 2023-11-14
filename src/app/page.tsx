@@ -1,12 +1,13 @@
 'use client'
 
-import { Box, Button, Flex } from '@radix-ui/themes'
+import { Box, Button, Flex, Separator } from '@radix-ui/themes'
 import type { ChangeEvent } from 'react'
 
 import { FileUploader } from '@ui/FileUploader'
 import { FileDownload } from '@components/FileDownload'
 import { SwitchFlip } from '@components/SwitchFlip'
 import { SwitchFlop } from '@components/SwitchFlop'
+import { NegateOptions } from '@components/NegateOptions'
 import { convertImage } from '@api/convertImage'
 import { useConvertStore } from '@stores/convert'
 import { cropFileNameExtension } from '@helpers/cropFileNameExtension'
@@ -78,6 +79,8 @@ export default function HomePage() {
                   <SwitchFlip />
                   <SwitchFlop />
                 </Flex>
+                <Separator my='1' size='4' />
+                <NegateOptions />
               </section>
             </Flex>
 
