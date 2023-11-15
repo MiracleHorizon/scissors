@@ -3,11 +3,13 @@ import { Flex } from '@radix-ui/themes'
 import { SwitchNegate } from './SwitchNegate'
 import { SwitchNegateAlpha } from './SwitchNegateAlpha'
 
-export function NegateOptions() {
+export function Negate() {
   return (
-    <Flex gap='2'>
-      <SwitchNegate />
-      <SwitchNegateAlpha />
+    <Flex asChild gap='2'>
+      <section>
+        <SwitchNegate />
+        <SwitchNegateAlpha />
+      </section>
     </Flex>
   )
 }
