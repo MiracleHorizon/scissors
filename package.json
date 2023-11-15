@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "sharp": "^0.32.6",
+    "usehooks-ts": "^2.9.1",
     "zustand": "^4.4.6"
   },
   "devDependencies": {
