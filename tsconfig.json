@@ -65,9 +65,6 @@
       "@libs/*": [
         "./src/shared/libs/*"
       ],
-      "@theme/*": [
-        "./src/shared/theme/*"
-      ],
       "@utils/*": [
         "./src/utils/*"
       ],
