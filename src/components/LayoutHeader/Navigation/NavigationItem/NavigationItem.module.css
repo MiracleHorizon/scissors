@@ -1,0 +1,33 @@
+.root {
+  border-radius: var(--radius-2);
+}
+
+.selected {
+  background-color: var(--accent-9);
+}
+
+.selected .link {
+  color: white;
+}
+
+.unselected {
+  background-color: transparent;
+}
+
+.unselected:hover {
+  background-color: var(--gray-4);
+}
+
+.unselected:hover .link {
+  color: var(--gray-a12);
+}
+
+.unselected .link {
+  color: var(--gray-a11);
+}
+
+.link {
+  display: block;
+  padding: var(--space-1) var(--space-2);
+  text-decoration: none;
+}
