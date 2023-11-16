@@ -1,0 +1,1 @@
+export { DocsTable } from './DocsTable'

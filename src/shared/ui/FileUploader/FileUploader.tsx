@@ -29,7 +29,7 @@ export function FileUploader(inputAttributes: Props) {
       <Text as='span' weight='medium' size='4' color={themeColor}>
         Upload file
       </Text>
-      <input type='file' ref={inputRef} {...inputAttributes} className={styles.input} />
+      <input ref={inputRef} type='file' className={styles.input} {...inputAttributes} />
     </Flex>
   )
 }
