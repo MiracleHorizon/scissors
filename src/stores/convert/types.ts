@@ -25,4 +25,7 @@ interface Actions {
 
   toggleNegate: VoidFunction
   toggleNegateAlpha: VoidFunction
+
+  setLowerNormalise: (lower: number) => void
+  setUpperNormalise: (lower: number) => void
 }

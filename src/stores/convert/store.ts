@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
+import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
 import type { Store } from './types'
 
 export const useConvertStore = create(
@@ -12,12 +13,14 @@ export const useConvertStore = create(
     flip: false,
     flop: false,
     negate: null,
+    normalise: null,
 
     // Computed
     getConvertSettings: () => ({
       flip: get().flip,
       flop: get().flop,
-      negate: get().negate
+      negate: get().negate,
+      normalise: get().normalise
     }),
 
     // Actions
@@ -29,6 +32,7 @@ export const useConvertStore = create(
 
     toggleFlip: () => set(state => ({ flip: !state.flip })),
     toggleFlop: () => set(state => ({ flop: !state.flop })),
+
     toggleNegate: () =>
       set(state => {
         if (!state.negate) {
@@ -76,6 +80,21 @@ export const useConvertStore = create(
             alpha: !state.negate.alpha
           }
         }
-      })
+      }),
+
+    setLowerNormalise: lower =>
+      set(state => ({
+        normalise: {
+          lower,
+          upper: state.normalise?.upper ?? MAX_NORMALISE
+        }
+      })),
+    setUpperNormalise: upper =>
+      set(state => ({
+        normalise: {
+          upper,
+          lower: state.normalise?.lower ?? MIN_NORMALISE
+        }
+      }))
   }))
 )

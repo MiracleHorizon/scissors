@@ -2,6 +2,7 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { BasicOptions } from './Basic'
 import { Negate } from './Negate'
+import { Normalise } from './Normalise'
 
 const SectionSeparator = () => <Separator my='1' size='4' />
 
@@ -11,6 +12,8 @@ export function Options() {
       <BasicOptions />
       <SectionSeparator />
       <Negate />
+      <SectionSeparator />
+      <Normalise />
     </Flex>
   )
 }
