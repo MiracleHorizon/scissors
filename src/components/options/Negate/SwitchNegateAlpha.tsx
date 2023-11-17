@@ -1,3 +1,7 @@
+'use client'
+
+import { useCallback } from 'react'
+
 import { OptionSwitch } from '@components/OptionSwitch'
 import { useConvertStore } from '@stores/convert'
 
@@ -6,7 +10,7 @@ export function SwitchNegateAlpha() {
   const negateAlpha = useConvertStore(state => state.negate?.alpha)
   const toggleNegateAlpha = useConvertStore(state => state.toggleNegateAlpha)
 
-  const handleToggleNegateAlpha = () => toggleNegateAlpha()
+  const handleToggleNegateAlpha = useCallback(() => toggleNegateAlpha(), [toggleNegateAlpha])
 
   return (
     <OptionSwitch
