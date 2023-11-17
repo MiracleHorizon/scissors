@@ -3,6 +3,12 @@ export interface ConvertSettings {
   flop: boolean
   negate: NegateOptions | null
   normalise: NormaliseOptions | null
+  blur: BlurOptions | null
+}
+
+export interface BlurOptions {
+  value: boolean
+  sigma: number | null
 }
 
 export interface NegateOptions {

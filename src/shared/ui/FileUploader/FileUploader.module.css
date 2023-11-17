@@ -1,11 +1,13 @@
 .root {
   cursor: pointer;
-  border: 1px dashed var(--accent-7);
+  border: 1px dashed var(--gray-a9);
   border-radius: var(--radius-3);
+  background-color: var(--gray-a2);
+  transition: background-color 50ms ease-in;
 }
 
 .root:hover {
-  background-color: var(--accent-2);
+  background-color: var(--gray-a3);
 }
 
 .input {
