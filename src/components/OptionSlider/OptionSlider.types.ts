@@ -3,6 +3,8 @@ import type { ReactNode } from 'react'
 export interface Props extends SliderProps {
   title: string
   titleIcon?: ReactNode
+  disabled?: boolean
+  infoContent?: ReactNode
 }
 
 /* eslint no-unused-vars: 0 */

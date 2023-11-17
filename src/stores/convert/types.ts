@@ -28,4 +28,9 @@ interface Actions {
 
   setLowerNormalise: (lower: number) => void
   setUpperNormalise: (lower: number) => void
+
+  toggleBlur: VoidFunction
+  addBlurSigma: VoidFunction
+  removeBlurSigma: VoidFunction
+  setBlurSigma: (blurSigma: number) => void
 }

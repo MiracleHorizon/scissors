@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
+import { MAX_NORMALISE, MIN_BLUR_SIGMA, MIN_NORMALISE } from '@libs/Sharp'
 import type { Store } from './types'
 
 export const useConvertStore = create(
@@ -14,13 +14,15 @@ export const useConvertStore = create(
     flop: false,
     negate: null,
     normalise: null,
+    blur: null,
 
     // Computed
     getConvertSettings: () => ({
       flip: get().flip,
       flop: get().flop,
       negate: get().negate,
-      normalise: get().normalise
+      normalise: get().normalise,
+      blur: get().blur
     }),
 
     // Actions
@@ -95,6 +97,73 @@ export const useConvertStore = create(
           upper,
           lower: state.normalise?.lower ?? MIN_NORMALISE
         }
-      }))
+      })),
+
+    toggleBlur: () =>
+      set(state => {
+        const blur = state.blur
+
+        if (!blur) {
+          return {
+            blur: {
+              value: true,
+              sigma: null
+            }
+          }
+        }
+
+        return {
+          blur: {
+            ...blur,
+            value: !blur.value
+          }
+        }
+      }),
+    addBlurSigma: () =>
+      set(state => {
+        const blur = state.blur
+
+        if (!blur || !blur.value) {
+          return state
+        }
+
+        return {
+          blur: {
+            value: true,
+            sigma: MIN_BLUR_SIGMA
+          }
+        }
+      }),
+    removeBlurSigma: () => {
+      set(state => {
+        const blur = state.blur
+
+        if (!blur) {
+          return state
+        }
+
+        return {
+          blur: {
+            ...blur,
+            sigma: null
+          }
+        }
+      })
+    },
+    setBlurSigma: blurSigma =>
+      set(state => {
+        const blur = state.blur
+
+        if (!blur || !blur.value) {
+          return state
+        }
+
+        return {
+          blur: {
+            ...blur,
+            sigma: blurSigma
+          }
+        }
+      })
   }))
 )

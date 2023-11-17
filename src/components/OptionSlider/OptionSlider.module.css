@@ -1,3 +1,7 @@
 .sliderRoot {
   flex: 1;
 }
+
+.disabled {
+  opacity: 60%;
+}
