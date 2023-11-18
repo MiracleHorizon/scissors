@@ -5,7 +5,8 @@ import {
   type ConvertSettings,
   MAX_BLUR_SIGMA,
   type NegateOptions,
-  type NormaliseOptions
+  type NormaliseOptions,
+  RotateOptions
 } from '@libs/Sharp'
 
 export class Sharp {
@@ -15,7 +16,14 @@ export class Sharp {
     this.imageSharp = sharp(imageBuffer)
   }
 
-  public convert({ flip, flop, negate, normalise, blur }: ConvertSettings): Promise<Buffer> {
+  public async convert({
+    flip,
+    flop,
+    negate,
+    normalise,
+    blur,
+    rotate
+  }: ConvertSettings): Promise<Buffer> {
     if (flip) {
       this.flip()
     }
@@ -33,7 +41,11 @@ export class Sharp {
     }
 
     if (blur?.value) {
-      this.blur(blur)
+      await this.blur(blur)
+    }
+
+    if (rotate) {
+      this.rotate(rotate)
     }
 
     return this.toBuffer()
@@ -72,6 +84,18 @@ export class Sharp {
       this.imageSharp.normalise(options)
     } catch (err) {
       throw new Error('Failed to normalise the image', {
+        cause: err
+      })
+    }
+  }
+
+  private rotate({ angle, background }: RotateOptions): void {
+    try {
+      this.imageSharp.rotate(angle, {
+        background
+      })
+    } catch (err) {
+      throw new Error('Failed to rotate the image', {
         cause: err
       })
     }

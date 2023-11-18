@@ -1,7 +1,13 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { MAX_NORMALISE, MIN_BLUR_SIGMA, MIN_NORMALISE } from '@libs/Sharp'
+import {
+  DEFAULT_ROTATE_ANGLE,
+  DEFAULT_ROTATE_BACKGROUND,
+  MAX_NORMALISE,
+  MIN_BLUR_SIGMA,
+  MIN_NORMALISE
+} from '@libs/Sharp'
 import type { Store } from './types'
 
 export const useConvertStore = create(
@@ -15,6 +21,7 @@ export const useConvertStore = create(
     negate: null,
     normalise: null,
     blur: null,
+    rotate: null,
 
     // Computed
     getConvertSettings: () => ({
@@ -22,7 +29,8 @@ export const useConvertStore = create(
       flop: get().flop,
       negate: get().negate,
       normalise: get().normalise,
-      blur: get().blur
+      blur: get().blur,
+      rotate: get().rotate
     }),
 
     // Actions
@@ -35,6 +43,7 @@ export const useConvertStore = create(
     toggleFlip: () => set(state => ({ flip: !state.flip })),
     toggleFlop: () => set(state => ({ flop: !state.flop })),
 
+    /* Negate */
     toggleNegate: () =>
       set(state => {
         if (!state.negate) {
@@ -84,6 +93,7 @@ export const useConvertStore = create(
         }
       }),
 
+    /* Normalise */
     setLowerNormalise: lower =>
       set(state => ({
         normalise: {
@@ -99,6 +109,7 @@ export const useConvertStore = create(
         }
       })),
 
+    /* Blur */
     toggleBlur: () =>
       set(state => {
         const blur = state.blur
@@ -150,7 +161,7 @@ export const useConvertStore = create(
         }
       })
     },
-    setBlurSigma: blurSigma =>
+    setBlurSigma: sigma =>
       set(state => {
         const blur = state.blur
 
@@ -161,7 +172,55 @@ export const useConvertStore = create(
         return {
           blur: {
             ...blur,
-            sigma: blurSigma
+            sigma
+          }
+        }
+      }),
+
+    /* Rotate */
+    addRotate: () =>
+      set({
+        rotate: {
+          angle: DEFAULT_ROTATE_ANGLE,
+          background: DEFAULT_ROTATE_BACKGROUND
+        }
+      }),
+    removeRotate: () =>
+      set({
+        rotate: null
+      }),
+    setRotateAngle: angle =>
+      set(state => {
+        const rotate = state.rotate
+
+        if (!rotate) {
+          return {
+            rotate: {
+              angle,
+              background: DEFAULT_ROTATE_BACKGROUND
+            }
+          }
+        }
+
+        return {
+          rotate: {
+            angle,
+            background: rotate.background
+          }
+        }
+      }),
+    setRotateBackground: background =>
+      set(state => {
+        const rotate = state.rotate
+
+        if (!rotate) {
+          return state
+        }
+
+        return {
+          rotate: {
+            ...rotate,
+            background
           }
         }
       })
