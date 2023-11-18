@@ -22,6 +22,7 @@ export function Normalise() {
   return (
     <OptionSlider
       title='Normalise'
+      valueSign='%'
       value={[lower ?? MIN_NORMALISE, upper ?? MAX_NORMALISE]}
       defaultValue={[MIN_NORMALISE, MAX_NORMALISE]}
       min={MIN_NORMALISE}

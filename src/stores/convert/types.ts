@@ -32,5 +32,10 @@ interface Actions {
   toggleBlur: VoidFunction
   addBlurSigma: VoidFunction
   removeBlurSigma: VoidFunction
-  setBlurSigma: (blurSigma: number) => void
+  setBlurSigma: (sigma: number) => void
+
+  addRotate: VoidFunction
+  removeRotate: VoidFunction
+  setRotateAngle: (angle: number) => void
+  setRotateBackground: (background: string) => void
 }

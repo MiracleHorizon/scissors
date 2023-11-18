@@ -5,3 +5,8 @@
 .disabled {
   opacity: 60%;
 }
+
+.separator {
+  margin: 0 6px;
+  background-color: var(--gray-a11);
+}

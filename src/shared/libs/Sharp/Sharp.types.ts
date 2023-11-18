@@ -4,11 +4,17 @@ export interface ConvertSettings {
   negate: NegateOptions | null
   normalise: NormaliseOptions | null
   blur: BlurOptions | null
+  rotate: RotateOptions | null
 }
 
 export interface BlurOptions {
   value: boolean
   sigma: number | null
+}
+
+export interface RotateOptions {
+  angle: number
+  background: string
 }
 
 export interface NegateOptions {

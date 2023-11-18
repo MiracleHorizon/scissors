@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 export interface Props extends SliderProps {
   title: string
   titleIcon?: ReactNode
+  valueSign?: string
   disabled?: boolean
   infoContent?: ReactNode
 }
