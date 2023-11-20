@@ -12,7 +12,7 @@ export function Rotate() {
   const rotate = useConvertStore(state => state.rotate)
 
   return (
-    <Flex asChild align='start' gap='2' direction='column'>
+    <Flex asChild align='start' direction='column' gap='2'>
       <section>
         {rotate ? (
           <>

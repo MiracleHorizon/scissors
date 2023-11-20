@@ -6,6 +6,7 @@ import {
   DEFAULT_ROTATE_BACKGROUND,
   MAX_NORMALISE,
   MIN_BLUR_SIGMA,
+  MIN_GAMMA,
   MIN_NORMALISE
 } from '@libs/Sharp'
 import type { Store } from './types'
@@ -22,6 +23,7 @@ export const useConvertStore = create(
     normalise: null,
     blur: null,
     rotate: null,
+    gamma: null,
 
     // Computed
     getConvertSettings: () => ({
@@ -30,7 +32,8 @@ export const useConvertStore = create(
       negate: get().negate,
       normalise: get().normalise,
       blur: get().blur,
-      rotate: get().rotate
+      rotate: get().rotate,
+      gamma: get().gamma
     }),
 
     // Actions
@@ -223,6 +226,11 @@ export const useConvertStore = create(
             background
           }
         }
-      })
+      }),
+
+    /* Gamma */
+    addGamma: () => set({ gamma: { value: MIN_GAMMA } }),
+    removeGamma: () => set({ gamma: null }),
+    setGamma: gamma => set({ gamma: { value: gamma } })
   }))
 )

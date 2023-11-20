@@ -3,10 +3,13 @@ import sharp from 'sharp'
 import {
   type BlurOptions,
   type ConvertSettings,
+  type GammaOptions,
   MAX_BLUR_SIGMA,
+  MAX_GAMMA,
+  MIN_GAMMA,
   type NegateOptions,
   type NormaliseOptions,
-  RotateOptions
+  type RotateOptions
 } from '@libs/Sharp'
 
 export class Sharp {
@@ -22,7 +25,8 @@ export class Sharp {
     negate,
     normalise,
     blur,
-    rotate
+    rotate,
+    gamma
   }: ConvertSettings): Promise<Buffer> {
     if (flip) {
       this.flip()
@@ -42,6 +46,10 @@ export class Sharp {
 
     if (blur?.value) {
       await this.blur(blur)
+    }
+
+    if (gamma?.value) {
+      this.gamma({ value: 4 })
     }
 
     if (rotate) {
@@ -96,6 +104,22 @@ export class Sharp {
       })
     } catch (err) {
       throw new Error('Failed to rotate the image', {
+        cause: err
+      })
+    }
+  }
+
+  private gamma({ value }: GammaOptions): void {
+    try {
+      if (value < MIN_GAMMA) {
+        this.imageSharp.gamma(MIN_GAMMA)
+      } else if (value > MAX_GAMMA) {
+        this.imageSharp.gamma(MAX_GAMMA)
+      } else {
+        this.imageSharp.gamma(value)
+      }
+    } catch (err) {
+      throw new Error(`Failed to gammaize the image with gamma value: ${value}`, {
         cause: err
       })
     }
