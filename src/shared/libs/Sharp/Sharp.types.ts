@@ -5,6 +5,7 @@ export interface ConvertSettings {
   normalise: NormaliseOptions | null
   blur: BlurOptions | null
   rotate: RotateOptions | null
+  gamma: GammaOptions | null
 }
 
 export interface BlurOptions {
@@ -20,6 +21,10 @@ export interface RotateOptions {
 export interface NegateOptions {
   value: boolean
   alpha: boolean
+}
+
+export interface GammaOptions {
+  value: number
 }
 
 export interface NormaliseOptions {

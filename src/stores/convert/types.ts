@@ -38,4 +38,8 @@ interface Actions {
   removeRotate: VoidFunction
   setRotateAngle: (angle: number) => void
   setRotateBackground: (background: string) => void
+
+  addGamma: VoidFunction
+  removeGamma: VoidFunction
+  setGamma: (value: number) => void
 }

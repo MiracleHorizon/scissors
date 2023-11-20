@@ -22,6 +22,7 @@ export function Blur() {
   const blur = useConvertStore(state => state.blur?.value)
   const blurSigma = useConvertStore(state => state.blur?.sigma)
   const isBlurDisabled = !blur
+  const withBlurSigma = typeof blurSigma === 'number'
 
   const toggleBlur = useConvertStore(state => state.toggleBlur)
   const setBlurSigma = useConvertStore(state => state.setBlurSigma)
@@ -35,9 +36,14 @@ export function Blur() {
   return (
     <Flex asChild>
       <section>
-        <Flex gap='4' align='start' direction='column' width='100%'>
+        <Flex
+          align={withBlurSigma ? 'start' : 'center'}
+          direction={withBlurSigma ? 'column' : 'row'}
+          gap='4'
+          width='100%'
+        >
           <OptionSwitch title='Blur' checked={blur} onClick={handleToggleBlur} />
-          {typeof blurSigma === 'number' ? (
+          {withBlurSigma ? (
             <Flex gap='4' align='center' width='100%'>
               <OptionSlider
                 title='Blur sigma'
