@@ -1,7 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
 import { DocsTable } from './components/DocsTable'
-import { rows } from './static'
 import type { Padding } from '@libs/radix'
 
 const px: Padding = {
@@ -18,7 +17,7 @@ export default function DocsPage() {
     <Flex align='center' justify='start' direction='column' width='100%' py='4' px={px}>
       <Flex asChild align='center' justify='center' direction='column' width='100%'>
         <main>
-          <DocsTable rows={rows} />
+          <DocsTable />
         </main>
       </Flex>
     </Flex>
