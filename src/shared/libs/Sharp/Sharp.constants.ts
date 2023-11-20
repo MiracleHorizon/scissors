@@ -7,4 +7,4 @@ export const MAX_BLUR_SIGMA = 10
 export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
-export const DEFAULT_ROTATE_BACKGROUND = '#000'
+export const DEFAULT_ROTATE_BACKGROUND = '#000000'

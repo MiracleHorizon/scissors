@@ -1,24 +1,31 @@
 import { Table } from '@radix-ui/themes'
 
 import { DocsTableHeader } from './DocsTableHeader'
-import { DocsTableRow } from './DocsTableRow'
-import { RotateRow } from './rows'
-import type { Row } from '@app/docs/types'
+import {
+  BlurRow,
+  FlipRow,
+  FlopRow,
+  NegateAlphaRow,
+  NegateRow,
+  NormaliseRow,
+  RotateAngleRow,
+  RotateBackgroundRow
+} from './rows'
 
-export function DocsTable({ rows }: Props) {
+export function DocsTable() {
   return (
     <Table.Root size='3' variant='surface'>
       <DocsTableHeader />
       <Table.Body>
-        {rows.map(row => (
-          <DocsTableRow key={row.name} {...row} />
-        ))}
-        <RotateRow />
+        <FlipRow />
+        <FlopRow />
+        <NegateRow />
+        <NegateAlphaRow />
+        <BlurRow />
+        <RotateAngleRow />
+        <RotateBackgroundRow />
+        <NormaliseRow />
       </Table.Body>
     </Table.Root>
   )
-}
-
-interface Props {
-  rows: Row[]
 }
