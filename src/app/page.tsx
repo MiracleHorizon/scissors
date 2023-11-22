@@ -1,9 +1,8 @@
 'use client'
 
 import { Box, Button, Flex } from '@radix-ui/themes'
-import type { ChangeEvent } from 'react'
 
-import { FileUploader } from '@ui/FileUploader'
+import { FileUploader } from '@components/FileUploader'
 import { FileDownload } from '@components/FileDownload'
 import { Options } from '@components/options'
 import { convertImage } from '@api/convertImage'
@@ -41,17 +40,6 @@ export default function HomePage() {
     })
   }
 
-  function handleFileChange(ev: ChangeEvent<HTMLInputElement>) {
-    const fileList = ev.target.files
-    if (!fileList) return
-
-    const file = fileList.item(0)
-    if (!file) return
-
-    setFile(file)
-    ev.target.value = ''
-  }
-
   return (
     <Box width='100%'>
       <Flex py='6' width='100%' align='center' direction='column'>
@@ -71,7 +59,7 @@ export default function HomePage() {
               accept={Object.values(ConvertFormat)
                 .map(format => `image/${format}`)
                 .join(', ')}
-              onChange={handleFileChange}
+              setFile={setFile}
             />
             <FileDownload className={styles.fileDownload} />
 
