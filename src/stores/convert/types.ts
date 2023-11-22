@@ -3,13 +3,13 @@ import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 export type Store = State & Computed & Actions
 
-interface State extends ConvertSettings {
+interface State extends Omit<ConvertSettings, 'resize'> {
   file: File | null
   downloadPayload: DownloadPayload | null
 }
 
 interface Computed {
-  getConvertSettings: () => ConvertSettings
+  getConvertSettings: () => Omit<ConvertSettings, 'resize'>
 }
 
 /* eslint no-unused-vars: 0 */
@@ -26,6 +26,8 @@ interface Actions {
   toggleNegate: VoidFunction
   toggleNegateAlpha: VoidFunction
 
+  addNormalise: VoidFunction
+  removeNormalise: VoidFunction
   setLowerNormalise: (lower: number) => void
   setUpperNormalise: (lower: number) => void
 

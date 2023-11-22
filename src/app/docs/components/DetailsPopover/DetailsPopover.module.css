@@ -1,0 +1,18 @@
+.trigger {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.trigger:hover {
+  cursor: help;
+}
+
+.content {
+  max-width: 400px;
+  padding-bottom: 6px;
+}
+
+.moreInfo {
+  margin-top: 2px;
+  margin-left: auto;
+}

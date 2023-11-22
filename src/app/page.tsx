@@ -8,6 +8,7 @@ import { FileDownload } from '@components/FileDownload'
 import { Options } from '@components/options'
 import { convertImage } from '@api/convertImage'
 import { useConvertStore } from '@stores/convert'
+import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { cropFileNameExtension } from '@helpers/cropFileNameExtension'
 import { ConvertFormat } from '@libs/Sharp'
 import { themeColor } from '@shared/theme'
@@ -15,7 +16,7 @@ import styles from './page.module.css'
 
 export default function HomePage() {
   const file = useConvertStore(state => state.file)
-  const convertSettings = useConvertStore(state => state.getConvertSettings())
+  const convertSettings = useConvertSettings()
 
   const setFile = useConvertStore(state => state.setFile)
   const setDownloadPayload = useConvertStore(state => state.setDownloadPayload)
@@ -56,10 +57,13 @@ export default function HomePage() {
       <Flex py='6' width='100%' align='center' direction='column'>
         <Flex
           asChild
-          px='6'
-          width='100%'
+          px={{
+            initial: '5',
+            xs: '6'
+          }}
           justify='start'
           direction='column'
+          width='100%'
           className={styles.main}
         >
           <main>

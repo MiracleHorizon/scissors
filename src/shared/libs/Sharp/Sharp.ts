@@ -9,6 +9,7 @@ import {
   MIN_GAMMA,
   type NegateOptions,
   type NormaliseOptions,
+  type ResizeOptions,
   type RotateOptions
 } from '@libs/Sharp'
 
@@ -26,7 +27,8 @@ export class Sharp {
     normalise,
     blur,
     rotate,
-    gamma
+    gamma,
+    resize
   }: ConvertSettings): Promise<Buffer> {
     if (flip) {
       this.flip()
@@ -50,6 +52,10 @@ export class Sharp {
 
     if (gamma?.value) {
       this.gamma({ value: 4 })
+    }
+
+    if (resize) {
+      this.resize(resize)
     }
 
     if (rotate) {
@@ -120,6 +126,23 @@ export class Sharp {
       }
     } catch (err) {
       throw new Error(`Failed to gammaize the image with gamma value: ${value}`, {
+        cause: err
+      })
+    }
+  }
+
+  private resize({ width, height, extra }: ResizeOptions) {
+    try {
+      this.imageSharp.resize({
+        width: width ?? undefined,
+        height: height ?? undefined,
+        ...extra,
+        background: extra?.background ?? undefined,
+        position: extra?.position ?? undefined,
+        kernel: extra?.kernel ?? undefined
+      })
+    } catch (err) {
+      throw new Error('Failed to resize the image', {
         cause: err
       })
     }

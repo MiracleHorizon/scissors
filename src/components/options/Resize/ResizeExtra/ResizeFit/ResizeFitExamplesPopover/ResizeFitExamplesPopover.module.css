@@ -1,0 +1,10 @@
+.content {
+  padding: var(--space-2) var(--space-2) var(--space-1) var(--space-2);
+  overflow: hidden;
+  height: max-content;
+  line-height: initial;
+}
+
+.image {
+  border-radius: var(--radius-2);
+}

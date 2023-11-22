@@ -1,6 +1,26 @@
 import type { Responsive } from '@radix-ui/themes'
 
 export type Padding = Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '7' | '9'>
+export interface PaddingProps {
+  p?: Padding
+  pt?: Padding
+  pr?: Padding
+  pb?: Padding
+  pl?: Padding
+  px?: Padding
+  py?: Padding
+}
+export type Margin = Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '7' | '9' | 'auto'>
+export interface MarginProps {
+  m?: Margin
+  mt?: Margin
+  mr?: Margin
+  mb?: Margin
+  ml?: Margin
+  mx?: Margin
+  my?: Margin
+}
+
 export type Color =
   | 'tomato'
   | 'red'

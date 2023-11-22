@@ -97,6 +97,14 @@ export const useConvertStore = create(
       }),
 
     /* Normalise */
+    addNormalise: () =>
+      set({
+        normalise: {
+          lower: MIN_NORMALISE,
+          upper: MAX_NORMALISE
+        }
+      }),
+    removeNormalise: () => set({ normalise: null }),
     setLowerNormalise: lower =>
       set(state => ({
         normalise: {
