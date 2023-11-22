@@ -10,6 +10,10 @@
   background-color: var(--gray-a3);
 }
 
+.dragOver {
+  background-color: var(--gray-a4);
+}
+
 .input {
   display: none;
 }
