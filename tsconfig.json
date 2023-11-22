@@ -41,6 +41,9 @@
     "isolatedModules": true,
     /* Aliases */
     "paths": {
+      "@public/*": [
+        "./public/*"
+      ],
       "@app/*": [
         "./src/app/*"
       ],

@@ -1,0 +1,1 @@
+export { ResizeHeader } from './ResizeHeader'

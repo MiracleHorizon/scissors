@@ -1,6 +1,7 @@
-import { IconButton, Popover } from '@radix-ui/themes'
-import { InfoCircledIcon } from '@radix-ui/react-icons'
+import { Popover } from '@radix-ui/themes'
 import type { PropsWithChildren } from 'react'
+
+import { ButtonInfo } from '@ui/ButtonInfo'
 
 export function OptionSliderPopover({ children, isOptionDisabled }: Props) {
   const isDisabled = () => {
@@ -12,16 +13,7 @@ export function OptionSliderPopover({ children, isOptionDisabled }: Props) {
   return (
     <Popover.Root open={isDisabled()}>
       <Popover.Trigger>
-        <IconButton
-          ml='3'
-          variant='ghost'
-          size='1'
-          radius='large'
-          color='gray'
-          data-accent-color='gray'
-        >
-          <InfoCircledIcon width='18px' height='18px' color='gray' />
-        </IconButton>
+        <ButtonInfo ml='3' />
       </Popover.Trigger>
 
       <Popover.Content size='1' align='center'>

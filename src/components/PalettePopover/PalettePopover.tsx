@@ -10,6 +10,10 @@ export function PalettePopover({ color, setColor }: Props) {
   const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
 
   const onColorValueChange = useCallback((color: string) => setColor(color), [setColor])
+  const onInputValueChange = useCallback(
+    (color: string) => setColor(!color.startsWith('#') ? `#${color}` : color),
+    [setColor]
+  )
 
   return (
     <Popover.Root>
@@ -28,7 +32,7 @@ export function PalettePopover({ color, setColor }: Props) {
             className={styles.hexColorPicker}
             onChange={onColorValueChange}
           />
-          <HexColorInput size='3' color={color} onChange={onColorValueChange} />
+          <HexColorInput size='3' color={color} onChange={onInputValueChange} />
         </Flex>
       </Popover.Content>
     </Popover.Root>

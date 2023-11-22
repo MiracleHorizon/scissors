@@ -1,0 +1,1 @@
+export { ResizeFit } from './ResizeFit'
