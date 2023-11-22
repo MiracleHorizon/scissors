@@ -1,31 +1,14 @@
 import { Table } from '@radix-ui/themes'
+import type { PropsWithChildren } from 'react'
 
 import { DocsTableHeader } from './DocsTableHeader'
-import {
-  BlurRow,
-  FlipRow,
-  FlopRow,
-  NegateAlphaRow,
-  NegateRow,
-  NormaliseRow,
-  RotateAngleRow,
-  RotateBackgroundRow
-} from './rows'
+import styles from './DocsTable.module.css'
 
-export function DocsTable() {
+export function DocsTable({ children }: PropsWithChildren) {
   return (
-    <Table.Root size='3' variant='surface'>
+    <Table.Root size='3' variant='surface' className={styles.root}>
       <DocsTableHeader />
-      <Table.Body>
-        <FlipRow />
-        <FlopRow />
-        <NegateRow />
-        <NegateAlphaRow />
-        <BlurRow />
-        <RotateAngleRow />
-        <RotateBackgroundRow />
-        <NormaliseRow />
-      </Table.Body>
+      <Table.Body>{children}</Table.Body>
     </Table.Root>
   )
 }

@@ -1,9 +1,6 @@
 import { Table } from '@radix-ui/themes'
 
-const defaultValueCellStyle = {
-  width: '15%',
-  minWidth: '140px'
-}
+import styles from './DocsTableHeader.module.css'
 
 export function DocsTableHeader() {
   return (
@@ -11,7 +8,7 @@ export function DocsTableHeader() {
       <Table.Row>
         <Table.ColumnHeaderCell>Option</Table.ColumnHeaderCell>
         <Table.ColumnHeaderCell>Description</Table.ColumnHeaderCell>
-        <Table.ColumnHeaderCell style={defaultValueCellStyle}>Default</Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell className={styles.defaultValueCell}>Default</Table.ColumnHeaderCell>
       </Table.Row>
     </Table.Header>
   )

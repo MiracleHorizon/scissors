@@ -1,0 +1,1 @@
+export { DocsTableHeader } from './DocsTableHeader'

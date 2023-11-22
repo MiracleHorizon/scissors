@@ -9,8 +9,10 @@
 
 .content {
   max-width: 400px;
+  padding-bottom: 6px;
 }
 
 .moreInfo {
+  margin-top: 2px;
   margin-left: auto;
 }

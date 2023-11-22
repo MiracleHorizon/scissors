@@ -1,7 +1,12 @@
-import { Code, Table, Text } from '@radix-ui/themes'
+import dynamic from 'next/dynamic'
+import { Code, Strong, Table, Text } from '@radix-ui/themes'
 
-import { GaussianBlurPopover } from './GaussianBlurPopover'
 import { themeColor } from '@shared/theme'
+
+const GaussianBlurPopover = dynamic(() => import('./GaussianBlurPopover'), {
+  ssr: false,
+  loading: () => <Strong>Gaussian</Strong>
+})
 
 export function BlurRow() {
   return (

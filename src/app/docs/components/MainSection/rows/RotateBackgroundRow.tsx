@@ -1,7 +1,11 @@
-import { Code, Table, Text } from '@radix-ui/themes'
+import { Box, Code, Flex, Table, Text } from '@radix-ui/themes'
 
 import { DEFAULT_ROTATE_BACKGROUND } from '@libs/Sharp'
 import { themeColor } from '@shared/theme'
+
+const previewBoxStyle = {
+  backgroundColor: DEFAULT_ROTATE_BACKGROUND
+}
 
 export function RotateBackgroundRow() {
   return (
@@ -16,9 +20,14 @@ export function RotateBackgroundRow() {
           , the background color set with the background option will be visible.
         </Text>
       </Table.Cell>
-      <Table.Cell>
-        <Code color={themeColor}>{DEFAULT_ROTATE_BACKGROUND}</Code>
-      </Table.Cell>
+      <Flex asChild align='center' gap='2' height='100%'>
+        <Table.Cell>
+          <Code size='3' color={themeColor}>
+            {DEFAULT_ROTATE_BACKGROUND}
+          </Code>
+          <Box width='4' height='4' style={previewBoxStyle} />
+        </Table.Cell>
+      </Flex>
     </Table.Row>
   )
 }
