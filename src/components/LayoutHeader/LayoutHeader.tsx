@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { Box, Flex } from '@radix-ui/themes'
 
 import { Navigation } from './Navigation'
-import { SettingsPopover, type SettingsPopoverProps } from '@components/SettingsPopover'
+import { ButtonGithub } from './ButtonGithub'
+import { SettingsPopover, type SettingsPopoverProps } from './SettingsPopover'
 import { Route } from '@shared/router'
 import styles from './LayoutHeader.module.css'
 
@@ -23,7 +24,10 @@ export function LayoutHeader(settingsPopoverProps: SettingsPopoverProps) {
           <Link href={Route.HOME} />
         </Box>
         <Navigation />
-        <SettingsPopover {...settingsPopoverProps} />
+        <Flex align='center' gap='5' height='100%'>
+          <ButtonGithub />
+          <SettingsPopover {...settingsPopoverProps} />
+        </Flex>
       </header>
     </Flex>
   )
