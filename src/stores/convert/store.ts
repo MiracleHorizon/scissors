@@ -19,6 +19,7 @@ export const useConvertStore = create(
 
     flip: false,
     flop: false,
+    grayscale: false,
     negate: null,
     normalise: null,
     blur: null,
@@ -29,6 +30,7 @@ export const useConvertStore = create(
     getConvertSettings: () => ({
       flip: get().flip,
       flop: get().flop,
+      grayscale: get().grayscale,
       negate: get().negate,
       normalise: get().normalise,
       blur: get().blur,
@@ -45,6 +47,7 @@ export const useConvertStore = create(
 
     toggleFlip: () => set(state => ({ flip: !state.flip })),
     toggleFlop: () => set(state => ({ flop: !state.flop })),
+    toggleGrayscale: () => set(state => ({ grayscale: !state.grayscale })),
 
     /* Negate */
     toggleNegate: () =>

@@ -3,12 +3,14 @@
 export interface ConvertSettings {
   flip: boolean
   flop: boolean
+  grayscale: boolean
   negate: NegateOptions | null
   normalise: NormaliseOptions | null
   blur: BlurOptions | null
   rotate: RotateOptions | null
   gamma: GammaOptions | null
   resize: ResizeOptions | null
+  tint: string | null
 }
 
 export interface BlurOptions {

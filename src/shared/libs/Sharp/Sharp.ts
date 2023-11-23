@@ -23,6 +23,8 @@ export class Sharp {
   public async convert({
     flip,
     flop,
+    grayscale,
+    tint,
     negate,
     normalise,
     blur,
@@ -38,8 +40,16 @@ export class Sharp {
       this.flop()
     }
 
+    if (grayscale) {
+      this.grayscale()
+    }
+
     if (negate) {
       this.negate(negate)
+    }
+
+    if (tint) {
+      this.tint(tint)
     }
 
     if (normalise) {
@@ -71,6 +81,10 @@ export class Sharp {
 
   private flop(): void {
     this.imageSharp.flop()
+  }
+
+  private grayscale(): void {
+    this.imageSharp.grayscale()
   }
 
   private negate({ value, alpha }: NegateOptions): void {
@@ -110,6 +124,16 @@ export class Sharp {
       })
     } catch (err) {
       throw new Error('Failed to rotate the image', {
+        cause: err
+      })
+    }
+  }
+
+  private tint(color: string): void {
+    try {
+      this.imageSharp.tint(color)
+    } catch (err) {
+      throw new Error('Failed to tint the image', {
         cause: err
       })
     }

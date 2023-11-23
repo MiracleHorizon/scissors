@@ -3,11 +3,13 @@ import {
   BlurRow,
   FlipRow,
   FlopRow,
+  GrayscaleRow,
   NegateAlphaRow,
   NegateRow,
   NormaliseRow,
   RotateAngleRow,
-  RotateBackgroundRow
+  RotateBackgroundRow,
+  TintRow
 } from './rows'
 
 export function MainSection() {
@@ -17,11 +19,13 @@ export function MainSection() {
         <FlipRow />
         <FlopRow />
         <NegateRow />
+        <GrayscaleRow />
         <NegateAlphaRow />
         <BlurRow />
         <RotateAngleRow />
         <RotateBackgroundRow />
         <NormaliseRow />
+        <TintRow />
       </>
     </DocsSection>
   )

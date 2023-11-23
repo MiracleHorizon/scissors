@@ -8,6 +8,7 @@ const options = [
   { key: 'blur', Component: dynamic(() => import('./Blur').then(mod => mod.Blur)) },
   { key: 'rotate', Component: dynamic(() => import('./Rotate').then(mod => mod.Rotate)) },
   { key: 'gamma', Component: dynamic(() => import('./Gamma').then(mod => mod.Gamma)) },
+  { key: 'tint', Component: dynamic(() => import('./Tint').then(mod => mod.Tint)) },
   { key: 'normalise', Component: dynamic(() => import('./Normalise').then(mod => mod.Normalise)) },
   { key: 'resize', Component: dynamic(() => import('./Resize').then(mod => mod.Resize)) }
 ]
