@@ -3,7 +3,6 @@
 import { Flex, Link, Popover, Strong } from '@radix-ui/themes'
 import type { PropsWithChildren } from 'react'
 
-import { themeColor } from '@shared/theme'
 import styles from './DetailsPopover.module.css'
 
 export function DetailsPopover({ children, title, moreInfoLink }: Props) {
@@ -20,7 +19,6 @@ export function DetailsPopover({ children, title, moreInfoLink }: Props) {
               target='_blank'
               underline='always'
               weight='medium'
-              color={themeColor}
               href={moreInfoLink}
               className={styles.moreInfo}
             >

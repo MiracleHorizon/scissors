@@ -3,7 +3,6 @@ import { HexColorPicker } from 'react-colorful'
 import { Box, Button, Flex, Popover, Tooltip } from '@radix-ui/themes'
 
 import { HexColorInput } from '@ui/HexColorInput'
-import { themeColor } from '@shared/theme'
 import styles from './PalettePopover.module.css'
 
 export function PalettePopover({ color, setColor }: Props) {
@@ -19,13 +18,13 @@ export function PalettePopover({ color, setColor }: Props) {
     <Popover.Root>
       <Popover.Trigger>
         <Flex>
-          <Button color={themeColor}>Background</Button>
+          <Button>Background</Button>
           <Tooltip delayDuration={600} align='center' content='Select background'>
             <Box width='6' height='6' style={previewBoxStyle} className={styles.previewBox} />
           </Tooltip>
         </Flex>
       </Popover.Trigger>
-      <Popover.Content color={themeColor}>
+      <Popover.Content>
         <Flex gap='3' direction='column' className='react-colorful-reassign'>
           <HexColorPicker
             color={color}

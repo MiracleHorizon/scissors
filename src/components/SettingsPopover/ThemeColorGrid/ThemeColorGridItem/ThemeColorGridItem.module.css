@@ -1,0 +1,10 @@
+.root {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+
+.selected {
+  outline: 1px dashed var(--gray-a12);
+  outline-offset: 2px;
+}

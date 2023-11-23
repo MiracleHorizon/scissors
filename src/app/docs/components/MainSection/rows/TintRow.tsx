@@ -1,7 +1,5 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
-import { themeColor } from '@shared/theme'
-
 export function TintRow() {
   return (
     <Table.Row>
@@ -14,9 +12,7 @@ export function TintRow() {
         </Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          Not set
-        </Code>
+        <Code size='3'>Not set</Code>
       </Table.Cell>
     </Table.Row>
   )

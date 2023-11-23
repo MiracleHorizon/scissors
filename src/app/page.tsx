@@ -10,7 +10,6 @@ import { useConvertStore } from '@stores/convert'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { cropFileNameExtension } from '@helpers/cropFileNameExtension'
 import { ConvertFormat } from '@libs/Sharp'
-import { themeColor } from '@shared/theme'
 import styles from './page.module.css'
 
 export default function HomePage() {
@@ -67,7 +66,7 @@ export default function HomePage() {
 
             <Flex width='100%' asChild align='center' justify='end'>
               <footer>
-                <Button disabled={!file} size='3' color={themeColor} onClick={handleConvertImage}>
+                <Button disabled={!file} size='3' onClick={handleConvertImage}>
                   Convert
                 </Button>
               </footer>

@@ -1,7 +1,6 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
 import { DEFAULT_WITHOUT_ENLARGEMENT } from '@libs/Sharp'
-import { themeColor } from '@shared/theme'
 
 export function EnlargementRow() {
   return (
@@ -15,9 +14,7 @@ export function EnlargementRow() {
         </Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          {DEFAULT_WITHOUT_ENLARGEMENT ? 'Enabled' : 'Disabled'}
-        </Code>
+        <Code size='3'>{DEFAULT_WITHOUT_ENLARGEMENT ? 'Enabled' : 'Disabled'}</Code>
       </Table.Cell>
     </Table.Row>
   )

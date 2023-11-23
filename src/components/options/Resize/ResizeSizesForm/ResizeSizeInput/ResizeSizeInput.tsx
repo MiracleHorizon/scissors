@@ -9,7 +9,6 @@ import {
 } from 'react'
 import { TextField } from '@radix-ui/themes'
 
-import { themeColor } from '@shared/theme'
 import styles from './ResizeSizeInput.module.css'
 
 export function ResizeSizeInput({
@@ -60,7 +59,6 @@ export function ResizeSizeInput({
       <TextField.Slot>{icon}</TextField.Slot>
       <TextField.Input
         {...inputAttributes}
-        color={themeColor}
         value={value ?? ''}
         type='number'
         inputMode='numeric'

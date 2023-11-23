@@ -17,8 +17,6 @@ import {
 } from 'react'
 import { type Responsive, TextField } from '@radix-ui/themes'
 
-import type { Color } from '@libs/radix'
-
 export function useEventCallback<T>(handler?: (value: T) => void): (value: T) => void {
   const callbackRef = useRef(handler)
 
@@ -33,15 +31,7 @@ export function useEventCallback<T>(handler?: (value: T) => void): (value: T) =>
   return callback.current
 }
 
-export function ColorInput({
-  color,
-  themeColor,
-  onChange,
-  onBlur,
-  validate,
-  escape,
-  ...inputProps
-}: Props) {
+export function ColorInput({ color, onChange, onBlur, validate, escape, ...inputProps }: Props) {
   const [value, setValue] = useState(() => escape(color))
 
   const onChangeCallback = useEventCallback<string>(onChange)
@@ -76,7 +66,6 @@ export function ColorInput({
   return (
     <TextField.Input
       {...inputProps}
-      color={themeColor}
       value={value}
       spellCheck='false'
       onChange={handleChange}
@@ -96,7 +85,6 @@ interface ColorInputBaseProps extends ColorInputHTMLAttributes {
   onChange: (color: string) => void
   size?: Responsive<'1' | '2' | '3'>
   variant?: 'classic' | 'surface' | 'soft'
-  themeColor?: Color
 }
 
 interface Props extends ColorInputBaseProps {

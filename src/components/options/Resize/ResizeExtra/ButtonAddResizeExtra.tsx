@@ -4,7 +4,6 @@ import { useCallback } from 'react'
 import { Button } from '@radix-ui/themes'
 
 import { useResizeStore } from '@stores/resize'
-import { themeColor } from '@shared/theme'
 
 export function ButtonAddResizeExtra() {
   const addResizeExtra = useResizeStore(state => state.addExtra)
@@ -12,7 +11,7 @@ export function ButtonAddResizeExtra() {
   const handleAddResizeExtra = useCallback(() => addResizeExtra(), [addResizeExtra])
 
   return (
-    <Button mr='auto' size='2' color={themeColor} onClick={handleAddResizeExtra}>
+    <Button mr='auto' size='2' onClick={handleAddResizeExtra}>
       Add resize extra
     </Button>
   )

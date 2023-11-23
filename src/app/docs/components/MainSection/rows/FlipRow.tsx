@@ -1,7 +1,5 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
-import { themeColor } from '@shared/theme'
-
 export function FlipRow() {
   return (
     <Table.Row>
@@ -14,9 +12,7 @@ export function FlipRow() {
         </Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          Disabled
-        </Code>
+        <Code size='3'>Disabled</Code>
       </Table.Cell>
     </Table.Row>
   )

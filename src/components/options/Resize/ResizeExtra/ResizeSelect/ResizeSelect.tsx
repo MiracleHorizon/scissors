@@ -4,16 +4,15 @@ import { Fragment } from 'react'
 import { Select } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 
-import { themeColor } from '@shared/theme'
 import styles from './ResizeSelect.module.css'
 
 export function ResizeSelect<T extends string>({ data, ...props }: Props<T>) {
   return (
     <Select.Root size='2' {...props}>
-      <Select.Trigger color={themeColor} className={styles.trigger} />
+      <Select.Trigger className={styles.trigger} />
 
       <Select.Group>
-        <Select.Content position='popper' side='bottom' sideOffset={5} color={themeColor}>
+        <Select.Content position='popper' side='bottom' sideOffset={5}>
           {data.map(({ label, value }, index) => (
             <Fragment key={label}>
               <Select.Label>{label}</Select.Label>

@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import { Flex, Link as RadixLink } from '@radix-ui/themes'
 import cn from 'classnames'
 
-import { themeColor } from '@shared/theme'
 import styles from './NavigationItem.module.css'
 
 export function NavigationItem({ title, path }: Props) {
@@ -17,7 +16,6 @@ export function NavigationItem({ title, path }: Props) {
       asChild
       align='center'
       justify='center'
-      data-accent-color={themeColor}
       className={cn(styles.root, isSelected ? styles.selected : styles.unselected)}
     >
       <li>

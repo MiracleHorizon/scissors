@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 import { Button } from '@radix-ui/themes'
 
 import { useConvertStore } from '@stores/convert'
-import { themeColor } from '@shared/theme'
 
 export function ButtonAddBlurSigma(props: Props) {
   const addBlurSigma = useConvertStore(state => state.addBlurSigma)
@@ -10,7 +9,7 @@ export function ButtonAddBlurSigma(props: Props) {
   const handleAddBlurSigma = useCallback(() => addBlurSigma(), [addBlurSigma])
 
   return (
-    <Button size='2' color={themeColor} onClick={handleAddBlurSigma} {...props}>
+    <Button size='2' onClick={handleAddBlurSigma} {...props}>
       Add blur sigma
     </Button>
   )

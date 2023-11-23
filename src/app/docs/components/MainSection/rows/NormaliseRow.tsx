@@ -1,7 +1,6 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
 import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
-import { themeColor } from '@shared/theme'
 
 export function NormaliseRow() {
   return (
@@ -14,14 +13,9 @@ export function NormaliseRow() {
           </Text>
           <Text as='p'>
             Uses a histogram-based approach, taking a range from{' '}
-            <Code variant='ghost' color={themeColor}>
-              {MIN_NORMALISE}%
-            </Code>{' '}
-            to{' '}
-            <Code variant='ghost' color={themeColor}>
-              {MAX_NORMALISE}%
-            </Code>{' '}
-            to reduce sensitivity to noise at the extremes.
+            <Code variant='ghost'>{MIN_NORMALISE}%</Code> to{' '}
+            <Code variant='ghost'>{MAX_NORMALISE}%</Code> to reduce sensitivity to noise at the
+            extremes.
           </Text>
           <br />
           <Text as='p'>
@@ -34,9 +28,7 @@ export function NormaliseRow() {
         </Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          1 - 99%
-        </Code>
+        <Code size='3'>1 - 99%</Code>
       </Table.Cell>
     </Table.Row>
   )

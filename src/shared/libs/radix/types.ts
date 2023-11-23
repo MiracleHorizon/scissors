@@ -1,5 +1,21 @@
 import type { Responsive } from '@radix-ui/themes'
 
+export type Size = Responsive<
+  | 'auto'
+  | 'min-content'
+  | 'max-content'
+  | '100%'
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+>
 export type Padding = Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '7' | '9'>
 export interface PaddingProps {
   p?: Padding
@@ -21,7 +37,7 @@ export interface MarginProps {
   my?: Margin
 }
 
-export type Color =
+export type RadixThemeColor =
   | 'tomato'
   | 'red'
   | 'ruby'
@@ -51,7 +67,7 @@ export type Color =
 
 // Button
 export interface ButtonProps {
-  color?: Color
+  color?: RadixThemeColor
   size?: ButtonSize
   variant?: ButtonVariant
   radius?: ButtonRadius
@@ -62,7 +78,7 @@ export type ButtonRadius = 'small' | 'large' | 'none' | 'medium' | 'full'
 
 // TextField.Input
 export interface TextFieldInputProps {
-  color?: Color
+  color?: RadixThemeColor
   size?: TextFieldInputSize
   variant?: TextFieldInputVariant
 }
