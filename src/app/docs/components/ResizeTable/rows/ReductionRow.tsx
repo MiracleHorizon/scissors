@@ -1,7 +1,6 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
 import { DEFAULT_WITHOUT_REDUCTION } from '@libs/Sharp'
-import { themeColor } from '@shared/theme'
 
 export function ReductionRow() {
   return (
@@ -15,9 +14,7 @@ export function ReductionRow() {
         </Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          {DEFAULT_WITHOUT_REDUCTION ? 'Enabled' : 'Disabled'}
-        </Code>
+        <Code size='3'>{DEFAULT_WITHOUT_REDUCTION ? 'Enabled' : 'Disabled'}</Code>
       </Table.Cell>
     </Table.Row>
   )

@@ -2,12 +2,11 @@ import Link from 'next/link'
 import { Box, Flex } from '@radix-ui/themes'
 
 import { Navigation } from './Navigation'
-import { ToggleTheme } from '@components/ToggleTheme'
-import { type Theme, themeColor } from '@shared/theme'
+import { SettingsPopover, type SettingsPopoverProps } from '@components/SettingsPopover'
 import { Route } from '@shared/router'
 import styles from './LayoutHeader.module.css'
 
-export function LayoutHeader({ theme }: Props) {
+export function LayoutHeader(settingsPopoverProps: SettingsPopoverProps) {
   return (
     <Flex
       asChild
@@ -20,16 +19,12 @@ export function LayoutHeader({ theme }: Props) {
       className={styles.root}
     >
       <header>
-        <Box asChild width='6' height='6' data-accent-color={themeColor} className={styles.logo}>
+        <Box asChild width='6' height='6' className={styles.logo}>
           <Link href={Route.HOME} />
         </Box>
         <Navigation />
-        <ToggleTheme theme={theme} />
+        <SettingsPopover {...settingsPopoverProps} />
       </header>
     </Flex>
   )
-}
-
-interface Props {
-  theme: Theme
 }

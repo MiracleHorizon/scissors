@@ -4,7 +4,6 @@ import { Flex, Heading, Separator, Slider, Text } from '@radix-ui/themes'
 import cn from 'classnames'
 
 import { OptionSliderPopover } from './OptionSliderPopover'
-import { themeColor } from '@shared/theme'
 import type { Props } from './OptionSlider.types'
 import styles from './OptionSlider.module.css'
 
@@ -44,7 +43,7 @@ export function OptionSlider({
 
       <Flex width='100%' direction='row'>
         <Flex direction='column' className={styles.sliderRoot}>
-          <Slider disabled={disabled} size='3' radius='none' color={themeColor} {...sliderProps} />
+          <Slider disabled={disabled} size='3' radius='none' {...sliderProps} />
           <Flex mt='2' justify='between'>
             <Text size='3' weight='medium'>
               {min}

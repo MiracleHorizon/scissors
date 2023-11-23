@@ -1,7 +1,5 @@
 import { Code, Table, Text } from '@radix-ui/themes'
 
-import { themeColor } from '@shared/theme'
-
 export function NegateRow() {
   return (
     <Table.Row>
@@ -10,9 +8,7 @@ export function NegateRow() {
         <Text as='p'>Produce the negative of the image.</Text>
       </Table.Cell>
       <Table.Cell>
-        <Code size='3' color={themeColor}>
-          Disabled
-        </Code>
+        <Code size='3'>Disabled</Code>
       </Table.Cell>
     </Table.Row>
   )
