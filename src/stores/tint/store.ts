@@ -9,6 +9,6 @@ export const useTintStore = create<Store>(set => ({
 
   // Actions
   add: () => set({ isAdded: true, color: '#000000' }),
-  remove: () => set({ isAdded: false }),
+  remove: () => set({ isAdded: false, color: null }),
   setColor: color => set({ color })
 }))
