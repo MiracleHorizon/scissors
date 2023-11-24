@@ -30,7 +30,7 @@ export function OptionSlider({
             </>
           )}
 
-          <Heading size='3' weight='medium'>
+          <Heading weight='medium' className={styles.title}>
             {title}:{' '}
             {value.length > 1 ? `${value[0]} - ${value[1]}${valueSign}` : value + valueSign}
           </Heading>

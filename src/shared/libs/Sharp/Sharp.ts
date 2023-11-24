@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import isEmpty from 'lodash.isempty'
 
 import {
   type BlurOptions,
@@ -7,6 +8,7 @@ import {
   MAX_BLUR_SIGMA,
   MAX_GAMMA,
   MIN_GAMMA,
+  type ModulateOptions,
   type NegateOptions,
   type NormaliseOptions,
   type ResizeOptions,
@@ -30,7 +32,8 @@ export class Sharp {
     blur,
     rotate,
     gamma,
-    resize
+    resize,
+    modulate
   }: ConvertSettings): Promise<Buffer> {
     if (flip) {
       this.flip()
@@ -70,6 +73,10 @@ export class Sharp {
 
     if (rotate) {
       this.rotate(rotate)
+    }
+
+    if (modulate) {
+      this.modulate(modulate)
     }
 
     return this.toBuffer()
@@ -170,6 +177,32 @@ export class Sharp {
         cause: err
       })
     }
+  }
+
+  private modulate(modulateOptions: ModulateOptions) {
+    if (isEmpty(modulateOptions)) return
+
+    const options: Record<string, number> = {}
+
+    for (const [key, value] of Object.entries(modulateOptions)) {
+      if (!this.isValidModulateValue(value)) continue
+
+      options[key] = value
+    }
+
+    if (isEmpty(options)) return
+
+    try {
+      this.imageSharp.modulate(options)
+    } catch (err) {
+      throw new Error('Failed to modulate the image', {
+        cause: err
+      })
+    }
+  }
+
+  private isValidModulateValue(value: ModulateOptions[keyof ModulateOptions]): boolean {
+    return typeof value === 'number' && !isNaN(value) && value > 0
   }
 
   private async toBuffer(): Promise<Buffer> {

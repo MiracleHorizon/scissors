@@ -19,8 +19,8 @@ export function MainSection() {
         <FlipRow />
         <FlopRow />
         <NegateRow />
-        <GrayscaleRow />
         <NegateAlphaRow />
+        <GrayscaleRow />
         <BlurRow />
         <RotateAngleRow />
         <RotateBackgroundRow />

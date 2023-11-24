@@ -2,6 +2,10 @@
   flex: 1;
 }
 
+.title {
+  font-size: 15px;
+}
+
 .disabled {
   opacity: 60%;
 }
