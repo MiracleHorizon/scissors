@@ -11,6 +11,14 @@ export interface ConvertSettings {
   gamma: GammaOptions | null
   resize: ResizeOptions | null
   tint: string | null
+  modulate: ModulateOptions | null
+}
+
+export interface ModulateOptions {
+  lightness: number | null
+  brightness: number | null
+  saturation: number | null
+  hue: number | null
 }
 
 export interface BlurOptions {

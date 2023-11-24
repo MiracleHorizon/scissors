@@ -11,9 +11,9 @@ import {
   type ResizeExtraOptions,
   ResizeFit
 } from '@libs/Sharp'
-import type { Store } from './types'
+import type { State, Store } from './types'
 
-const defaultState = {
+const defaultState: State = {
   isAdded: false,
   width: null,
   height: null,

@@ -30,3 +30,16 @@ export const DEFAULT_RESIZE_BACKGROUND = '#000000'
 export const DEFAULT_WITHOUT_ENLARGEMENT = false
 export const DEFAULT_WITHOUT_REDUCTION = false
 export const DEFAULT_FAST_SHRINK = true
+
+// Modulate
+export const MIN_LIGHTNESS = 0
+export const MAX_LIGHTNESS = 100
+
+export const MIN_BRIGHTNESS = 0
+export const MAX_BRIGHTNESS = 1
+
+export const MIN_SATURATION = 0
+export const MAX_SATURATION = 10
+
+export const MIN_HUE = 0
+export const MAX_HUE = 360
