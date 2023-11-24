@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonRemoveRotate() {
@@ -11,9 +10,5 @@ export function ButtonRemoveRotate() {
 
   const handleRemoveRotate = useCallback(() => removeRotate(), [removeRotate])
 
-  return (
-    <Tooltip content='Remove rotate'>
-      <ButtonDelete onClick={handleRemoveRotate} />
-    </Tooltip>
-  )
+  return <ButtonRemoveOption tooltipTitle='Remove rotate' onClick={handleRemoveRotate} />
 }

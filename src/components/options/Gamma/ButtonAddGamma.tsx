@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Button, Tooltip } from '@radix-ui/themes'
 
+import { ButtonAddOption } from '@components/ButtonAddOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonAddGamma() {
@@ -10,9 +10,5 @@ export function ButtonAddGamma() {
 
   const handleAddGamma = useCallback(() => addGamma(), [addGamma])
 
-  return (
-    <Tooltip content='Add gamma'>
-      <Button onClick={handleAddGamma}>Add gamma</Button>
-    </Tooltip>
-  )
+  return <ButtonAddOption title='Add gamma' onClick={handleAddGamma} />
 }

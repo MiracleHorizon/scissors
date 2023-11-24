@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useTintStore } from '@stores/tint'
 
 export function ButtonRemoveTint() {
@@ -11,9 +10,5 @@ export function ButtonRemoveTint() {
 
   const handleRemoveTint = useCallback(() => removeTint(), [removeTint])
 
-  return (
-    <Tooltip content='Remove tint'>
-      <ButtonDelete onClick={handleRemoveTint} />
-    </Tooltip>
-  )
+  return <ButtonRemoveOption tooltipTitle='Remove tint' onClick={handleRemoveTint} />
 }

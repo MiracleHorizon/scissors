@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonRemoveGamma() {
@@ -11,9 +10,5 @@ export function ButtonRemoveGamma() {
 
   const handleRemoveGamma = useCallback(() => removeGamma(), [removeGamma])
 
-  return (
-    <Tooltip content='Remove gamma'>
-      <ButtonDelete onClick={handleRemoveGamma} />
-    </Tooltip>
-  )
+  return <ButtonRemoveOption tooltipTitle='Remove gamma' onClick={handleRemoveGamma} />
 }

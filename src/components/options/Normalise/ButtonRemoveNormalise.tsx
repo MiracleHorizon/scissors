@@ -1,9 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonRemoveNormalise() {
@@ -11,9 +10,5 @@ export function ButtonRemoveNormalise() {
 
   const handleRemoveNormalise = useCallback(() => removeNormalise(), [removeNormalise])
 
-  return (
-    <Tooltip content='Remove normalise'>
-      <ButtonDelete onClick={handleRemoveNormalise} />
-    </Tooltip>
-  )
+  return <ButtonRemoveOption tooltipTitle='Remove normalise' onClick={handleRemoveNormalise} />
 }

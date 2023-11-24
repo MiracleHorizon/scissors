@@ -1,7 +1,8 @@
-import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
+'use client'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { useCallback } from 'react'
+
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonRemoveBlurSigma({ disabled }: Props) {
@@ -16,9 +17,12 @@ export function ButtonRemoveBlurSigma({ disabled }: Props) {
   }
 
   return (
-    <Tooltip open={isTooltipOpen()} content='Remove blur sigma'>
-      <ButtonDelete disabled={disabled} onClick={handleRemoveBlurSigma} />
-    </Tooltip>
+    <ButtonRemoveOption
+      disabled={disabled}
+      isTooltipOpen={isTooltipOpen()}
+      tooltipTitle='Remove blur sigma'
+      onClick={handleRemoveBlurSigma}
+    />
   )
 }
 

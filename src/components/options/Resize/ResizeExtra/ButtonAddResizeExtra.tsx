@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Button } from '@radix-ui/themes'
 
+import { ButtonAddOption } from '@components/ButtonAddOption'
 import { useResizeStore } from '@stores/resize'
 
 export function ButtonAddResizeExtra() {
@@ -10,9 +10,5 @@ export function ButtonAddResizeExtra() {
 
   const handleAddResizeExtra = useCallback(() => addResizeExtra(), [addResizeExtra])
 
-  return (
-    <Button mr='auto' size='2' onClick={handleAddResizeExtra}>
-      Add resize extra
-    </Button>
-  )
+  return <ButtonAddOption mr='auto' title='Add resize extra' onClick={handleAddResizeExtra} />
 }

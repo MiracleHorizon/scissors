@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Button, Tooltip } from '@radix-ui/themes'
 
+import { ButtonAddOption } from '@components/ButtonAddOption'
 import { useTintStore } from '@stores/tint'
 
 export function ButtonAddTint() {
@@ -10,9 +10,5 @@ export function ButtonAddTint() {
 
   const handleAddTint = useCallback(() => addTint(), [addTint])
 
-  return (
-    <Tooltip content='Add tint'>
-      <Button onClick={handleAddTint}>Add tint</Button>
-    </Tooltip>
-  )
+  return <ButtonAddOption title='Add tint' onClick={handleAddTint} />
 }

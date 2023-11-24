@@ -1,7 +1,6 @@
 import { useCallback } from 'react'
-import { Tooltip } from '@radix-ui/themes'
 
-import { ButtonDelete } from '@ui/ButtonDelete'
+import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
 import { useResizeStore } from '@stores/resize'
 
 export function ButtonRemoveResize() {
@@ -9,9 +8,5 @@ export function ButtonRemoveResize() {
 
   const handleRemoveResize = useCallback(() => removeResize(), [removeResize])
 
-  return (
-    <Tooltip content='Remove resize'>
-      <ButtonDelete onClick={handleRemoveResize} />
-    </Tooltip>
-  )
+  return <ButtonRemoveOption tooltipTitle='Remove resize' onClick={handleRemoveResize} />
 }

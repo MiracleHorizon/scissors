@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Button, Tooltip } from '@radix-ui/themes'
 
+import { ButtonAddOption } from '@components/ButtonAddOption'
 import { useConvertStore } from '@stores/convert'
 
 export function ButtonAddRotate() {
@@ -11,8 +11,10 @@ export function ButtonAddRotate() {
   const handleAddRotate = useCallback(() => addRotate(), [addRotate])
 
   return (
-    <Tooltip content='Add image rotation'>
-      <Button onClick={handleAddRotate}>Add rotate</Button>
-    </Tooltip>
+    <ButtonAddOption
+      title='Add rotate'
+      tooltipTitle='Add image rotation'
+      onClick={handleAddRotate}
+    />
   )
 }
