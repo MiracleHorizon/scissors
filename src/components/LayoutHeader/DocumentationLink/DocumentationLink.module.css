@@ -1,0 +1,28 @@
+.root {
+  transition:
+    color 50ms ease-in-out,
+    text-decoration-color 50ms ease-in-out;
+}
+
+.root:hover {
+  color: var(--accent-12);
+  text-decoration-color: var(--accent-8);
+}
+
+.text {
+  display: initial;
+}
+
+.icon {
+  display: none;
+}
+
+@media screen and (max-width: 520px) {
+  .text {
+    display: none;
+  }
+
+  .icon {
+    display: initial;
+  }
+}
