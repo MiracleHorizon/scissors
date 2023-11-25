@@ -1,4 +1,6 @@
-import { ResizeFit, ResizeKernel, ResizePosition } from './Sharp.types'
+import { ConvertFormat, ResizeFit, ResizeKernel, ResizePosition } from './Sharp.types'
+
+export const DEFAULT_CONVERT_FORMAT = ConvertFormat.JPEG
 
 // Normalise
 export const MIN_NORMALISE = 1

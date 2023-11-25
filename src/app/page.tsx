@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Box, Button, Flex } from '@radix-ui/themes'
 
 import { FileUploader } from '@components/FileUploader'
@@ -10,9 +11,17 @@ import { useConvertStore } from '@stores/convert'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { cropFileNameExtension } from '@helpers/cropFileNameExtension'
 import { ConvertFormat } from '@libs/Sharp'
+import type { Padding } from '@libs/radix'
 import styles from './page.module.css'
 
+const pxMain: Padding = {
+  initial: '5',
+  xs: '6'
+}
+
 export default function HomePage() {
+  const [error, setError] = useState<Error | null>(null)
+
   const file = useConvertStore(state => state.file)
   const convertSettings = useConvertSettings()
 
@@ -27,16 +36,28 @@ export default function HomePage() {
     formData.append('settings', JSON.stringify(convertSettings))
 
     const url = window.location.origin + '/api/convert'
-    const imageBlob = await convertImage({ url, formData })
 
-    const link = URL.createObjectURL(imageBlob)
-    const fileFormat = file.type.replace('image/', '')
-    const fileName = `${cropFileNameExtension(file.name)}.${fileFormat}`
+    try {
+      const imageBlob = await convertImage({ url, formData })
 
-    setDownloadPayload({
-      link,
-      fileName
-    })
+      const link = URL.createObjectURL(imageBlob)
+      const fileFormat = file.type.replace('image/', '')
+      const convertFormat = convertSettings.format
+      const fileName = `${cropFileNameExtension(file.name)}.${convertFormat ?? fileFormat}`
+
+      setDownloadPayload({
+        link,
+        fileName
+      })
+
+      if (error) {
+        setError(null)
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err)
+      }
+    }
   }
 
   return (
@@ -44,10 +65,7 @@ export default function HomePage() {
       <Flex py='6' width='100%' align='center' direction='column'>
         <Flex
           asChild
-          px={{
-            initial: '5',
-            xs: '6'
-          }}
+          px={pxMain}
           justify='start'
           direction='column'
           width='100%'
@@ -60,6 +78,11 @@ export default function HomePage() {
                 .join(', ')}
               setFile={setFile}
             />
+            {error && (
+              <pre>
+                <code>{error?.message}</code>
+              </pre>
+            )}
             <FileDownload className={styles.fileDownload} />
 
             <Options />

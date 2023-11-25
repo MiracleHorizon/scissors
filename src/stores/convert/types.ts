@@ -3,7 +3,7 @@ import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 export type Store = State & Computed & Actions
 
-type Settings = Omit<ConvertSettings, 'resize' | 'tint' | 'modulate'>
+type Settings = Omit<ConvertSettings, 'resize' | 'tint' | 'modulate' | 'format'>
 
 interface State extends Settings {
   file: File | null

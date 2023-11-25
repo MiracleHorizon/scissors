@@ -12,6 +12,7 @@ export interface ConvertSettings {
   resize: ResizeOptions | null
   tint: string | null
   modulate: ModulateOptions | null
+  format: ConvertFormat | null
 }
 
 export interface ModulateOptions {
@@ -127,5 +128,6 @@ export enum ResizePositionGravity {
 export enum ConvertFormat {
   JPEG = 'jpeg',
   JPG = 'jpg',
-  PNG = 'png'
+  PNG = 'png',
+  WEBP = 'webp'
 }
