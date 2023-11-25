@@ -43,7 +43,7 @@ export function OptionSlider({
 
       <Flex width='100%' direction='row'>
         <Flex direction='column' className={styles.sliderRoot}>
-          <Slider disabled={disabled} size='3' radius='none' {...sliderProps} />
+          <Slider disabled={disabled} size='2' radius='none' {...sliderProps} />
           <Flex mt='2' justify='between'>
             <Text size='3' weight='medium'>
               {min}

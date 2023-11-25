@@ -3,6 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 import {
   type BlurOptions,
+  ConvertFormat,
   type ConvertSettings,
   type GammaOptions,
   MAX_BLUR_SIGMA,
@@ -33,8 +34,13 @@ export class Sharp {
     rotate,
     gamma,
     resize,
-    modulate
+    modulate,
+    format
   }: ConvertSettings): Promise<Buffer> {
+    if (format) {
+      this.toFormat(format)
+    }
+
     if (flip) {
       this.flip()
     }
@@ -64,7 +70,7 @@ export class Sharp {
     }
 
     if (gamma?.value) {
-      this.gamma({ value: 4 })
+      this.gamma({ value: gamma?.value })
     }
 
     if (resize) {
@@ -80,6 +86,22 @@ export class Sharp {
     }
 
     return this.toBuffer()
+  }
+
+  private toFormat(format: ConvertFormat): void {
+    const formats = Object.values(ConvertFormat)
+
+    if (!formats.includes(format)) {
+      throw new Error('Unsupported format')
+    }
+
+    try {
+      this.imageSharp.toFormat(format)
+    } catch (err) {
+      throw new Error(`Failed to convert the image to the .${format} format`, {
+        cause: err
+      })
+    }
   }
 
   private flip(): void {

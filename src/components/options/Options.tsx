@@ -1,6 +1,12 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
+
+import { useConvertStore } from '@stores/convert'
+
+const Format = dynamic(() => import('./Format').then(mod => mod.Format))
 
 const options = [
   { key: 'basic', Component: dynamic(() => import('./Basic').then(mod => mod.BasicOptions)) },
@@ -15,6 +21,8 @@ const options = [
 ]
 
 export function Options() {
+  const file = useConvertStore(state => state.file)
+
   return (
     <Flex direction='column' gap='2' my='4' py='2'>
       {options.map(({ key, Component }, index) => (
@@ -23,6 +31,13 @@ export function Options() {
           {index < options.length - 1 && <Separator my='1' size='4' />}
         </Fragment>
       ))}
+
+      {file && (
+        <Fragment>
+          <Separator my='1' size='4' />
+          <Format />
+        </Fragment>
+      )}
     </Flex>
   )
 }
