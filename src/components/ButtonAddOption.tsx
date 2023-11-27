@@ -11,11 +11,18 @@ export function ButtonAddOption({
   onClick,
   leadIcon,
   endIcon,
+  disabled,
   ...props
 }: Props) {
+  const isTooltipOpen = () => {
+    if (!disabled) return
+
+    return false
+  }
+
   return (
-    <Tooltip content={tooltipTitle ?? title}>
-      <Button {...props} radius='large' onClick={onClick}>
+    <Tooltip open={isTooltipOpen()} content={tooltipTitle ?? title}>
+      <Button {...props} disabled={disabled} radius='large' onClick={onClick}>
         {leadIcon}
         {title}
         {endIcon}

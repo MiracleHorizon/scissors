@@ -10,16 +10,9 @@ export function ButtonRemoveBlurSigma({ disabled }: Props) {
 
   const handleRemoveBlurSigma = useCallback(() => removeBlurSigma(), [removeBlurSigma])
 
-  const isTooltipOpen = () => {
-    if (!disabled) return
-
-    return false
-  }
-
   return (
     <ButtonRemoveOption
       disabled={disabled}
-      isTooltipOpen={isTooltipOpen()}
       tooltipTitle='Remove blur sigma'
       onClick={handleRemoveBlurSigma}
     />
