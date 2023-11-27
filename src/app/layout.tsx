@@ -1,9 +1,9 @@
-import { Box, Flex, Theme as RadixTheme } from '@radix-ui/themes'
+import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 
-import { LayoutHeader } from '@components/LayoutHeader'
+import { Layout } from '@components/Layout'
 import { getThemeAppearance } from '@shared/theme'
 import './globals.css'
 
@@ -27,11 +27,11 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html lang='en' suppressHydrationWarning>
       <body className={inter.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
+          {process.env.NODE_ENV === 'development' && <ThemePanel defaultOpen={false} />}
           <Flex align='center' justify='start' direction='column'>
-            <Box width='100%' pt='8'>
-              <LayoutHeader theme={theme} themeColor={themeColor} />
+            <Layout theme={theme} themeColor={themeColor}>
               {children}
-            </Box>
+            </Layout>
           </Flex>
         </RadixTheme>
       </body>

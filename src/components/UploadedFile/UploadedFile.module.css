@@ -1,0 +1,12 @@
+.root {
+  border: 1px solid var(--gray-a9);
+  border-radius: var(--radius-3);
+  background-color: var(--gray-a2);
+}
+
+.text {
+  max-width: calc(100% - 40px - var(--space-1) - var(--space-5));
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

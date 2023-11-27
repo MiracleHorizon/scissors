@@ -5,7 +5,7 @@ import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import cn from 'classnames'
 
 import { SettingsPopoverTitle } from '../SettingsPopoverTitle'
-import { setThemeCookie, type Theme } from '@shared/theme'
+import { setThemeCookie, type Theme, type ThemeProps } from '@shared/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ToggleTheme.module.css'
 
@@ -34,6 +34,4 @@ export function ToggleTheme({ theme, className }: Props) {
   )
 }
 
-interface Props extends ClassNameProps {
-  theme: Theme
-}
+type Props = Pick<ThemeProps, 'theme'> & ClassNameProps
