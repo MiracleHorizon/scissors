@@ -5,6 +5,7 @@ import { Flex, Text } from '@radix-ui/themes'
 import { ImageIcon } from '@radix-ui/react-icons'
 import cn from 'classnames'
 
+import type { Actions as ConvertActions } from '@stores/convert'
 import styles from './FileUploader.module.css'
 
 export function FileUploader({ setFile, ...inputAttributes }: Props) {
@@ -63,7 +64,7 @@ export function FileUploader({ setFile, ...inputAttributes }: Props) {
       onDragLeave={handleDragLeave}
     >
       <Flex asChild align='center' gap='1'>
-        <Text as='span' weight='medium' size='4'>
+        <Text as='span'>
           Upload file
           <ImageIcon width='20px' height='20px' />
         </Text>
@@ -79,8 +80,6 @@ export function FileUploader({ setFile, ...inputAttributes }: Props) {
   )
 }
 
-/* eslint no-unused-vars: 0 */
-interface Props {
+interface Props extends Pick<ConvertActions, 'setFile'> {
   accept: string
-  setFile: (file: File) => void
 }

@@ -15,7 +15,7 @@ interface Computed {
 }
 
 /* eslint no-unused-vars: 0 */
-interface Actions {
+export interface Actions {
   setFile: (file: File | null) => void
   removeFile: VoidFunction
 

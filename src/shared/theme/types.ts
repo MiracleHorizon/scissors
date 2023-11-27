@@ -6,3 +6,8 @@ export interface ThemeColorItem {
   key: string
   color: RadixThemeColor
 }
+
+export interface ThemeProps {
+  theme: Theme
+  themeColor: RadixThemeColor
+}

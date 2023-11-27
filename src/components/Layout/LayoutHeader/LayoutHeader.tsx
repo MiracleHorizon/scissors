@@ -3,11 +3,12 @@ import { Box, Flex } from '@radix-ui/themes'
 
 import { ButtonGithub } from './ButtonGithub'
 import { DocumentationLink } from './DocumentationLink'
-import { SettingsPopover, type SettingsPopoverProps } from './SettingsPopover'
+import { SettingsPopover } from './SettingsPopover'
 import { Route } from '@shared/router'
+import type { ThemeProps } from '@shared/theme'
 import styles from './LayoutHeader.module.css'
 
-export function LayoutHeader(settingsPopoverProps: SettingsPopoverProps) {
+export function LayoutHeader(settingsPopoverProps: ThemeProps) {
   return (
     <Flex
       asChild
