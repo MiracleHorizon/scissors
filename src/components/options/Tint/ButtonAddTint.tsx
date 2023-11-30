@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
+import { Half2Icon } from '@radix-ui/react-icons'
 
 import { ButtonAddOption } from '@components/ButtonAddOption'
 import { useTintStore } from '@stores/tint'
@@ -10,5 +11,11 @@ export function ButtonAddTint() {
 
   const handleAddTint = useCallback(() => addTint(), [addTint])
 
-  return <ButtonAddOption title='Add tint' onClick={handleAddTint} />
+  return (
+    <ButtonAddOption
+      title='Add tint'
+      leadIcon={<Half2Icon width='18px' height='18px' />}
+      onClick={handleAddTint}
+    />
+  )
 }

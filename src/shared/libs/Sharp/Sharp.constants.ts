@@ -1,24 +1,60 @@
-import { ConvertFormat, ResizeFit, ResizeKernel, ResizePosition } from './Sharp.types'
+import {
+  type BlurOptions,
+  ConvertFormat,
+  type GammaOptions,
+  type NegateOptions,
+  type NormaliseOptions,
+  ResizeFit,
+  ResizeKernel,
+  ResizePosition,
+  type RotateOptions
+} from './Sharp.types'
 
-export const DEFAULT_CONVERT_FORMAT = ConvertFormat.JPEG
+// Basic
+export const DEFAULT_FLIP = false
+export const DEFAULT_FLOP = false
+export const DEFAULT_GRAYSCALE = false
 
 // Normalise
 export const MIN_NORMALISE = 1
 export const MAX_NORMALISE = 99
+export const DEFAULT_NORMALISE: NormaliseOptions = {
+  lower: MIN_NORMALISE,
+  upper: MAX_NORMALISE
+}
 
 // Blur
 export const MIN_BLUR_SIGMA = 0.3
 export const MAX_BLUR_SIGMA = 10
+export const DEFAULT_BLUR: BlurOptions = {
+  value: false,
+  sigma: null
+}
+
+// Negate
+export const DEFAULT_NEGATE_VALUE = false
+export const DEFAULT_NEGATE_ALPHA = false
+export const DEFAULT_NEGATE: NegateOptions = {
+  value: DEFAULT_NEGATE_VALUE,
+  alpha: DEFAULT_NEGATE_ALPHA
+}
 
 // Rotate
 export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
 export const DEFAULT_ROTATE_BACKGROUND = '#000000'
+export const DEFAULT_ROTATE: RotateOptions = {
+  angle: DEFAULT_ROTATE_ANGLE,
+  background: DEFAULT_ROTATE_BACKGROUND
+}
 
 // Gamma
 export const MIN_GAMMA = 1
 export const MAX_GAMMA = 3
+export const DEFAULT_GAMMA: GammaOptions = {
+  value: MIN_GAMMA
+}
 
 // Resize
 export const RESIZE_SIZE_STEP = 100
@@ -45,3 +81,7 @@ export const MAX_SATURATION = 10
 
 export const MIN_HUE = 0
 export const MAX_HUE = 360
+
+// Other
+export const DEFAULT_CONVERT_FORMAT = ConvertFormat.JPEG
+export const DEFAULT_TINT_COLOR = '#000000'

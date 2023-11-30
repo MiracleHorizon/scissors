@@ -2,10 +2,16 @@ import { Flex } from '@radix-ui/themes'
 
 import { SwitchNegate } from './SwitchNegate'
 import { SwitchNegateAlpha } from './SwitchNegateAlpha'
+import type { FlexDirection } from '@libs/radix'
+
+const direction: FlexDirection = {
+  initial: 'column',
+  xs: 'row'
+}
 
 export function Negate() {
   return (
-    <Flex asChild gap='2'>
+    <Flex asChild gap='2' direction={direction}>
       <section>
         <SwitchNegate />
         <SwitchNegateAlpha />

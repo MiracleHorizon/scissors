@@ -1,6 +1,6 @@
 export type Store = State & Actions
 
-interface State {
+export interface State {
   isAdded: boolean
   color: string | null
 }
@@ -10,4 +10,5 @@ interface Actions {
   add: VoidFunction
   remove: VoidFunction
   setColor: (color: string) => void
+  reset: VoidFunction
 }

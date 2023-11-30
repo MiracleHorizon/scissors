@@ -1,14 +1,15 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { Flex, Strong, Text } from '@radix-ui/themes'
 
 import { OptionSlider } from '@components/OptionSlider'
 import { OptionSwitch } from '@components/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
-import { useConvertStore } from '@stores/convert'
+import { useBlurStore } from '@stores/blur'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@libs/Sharp'
+import type { AlignItems, FlexDirection, Gap } from '@libs/radix'
 
 function BlurInfo() {
   return (
@@ -19,49 +20,61 @@ function BlurInfo() {
 }
 
 export function Blur() {
-  const blur = useConvertStore(state => state.blur?.value)
-  const blurSigma = useConvertStore(state => state.blur?.sigma)
+  const blur = useBlurStore(state => state.value)
+  const sigma = useBlurStore(state => state.sigma)
+
   const isBlurDisabled = !blur
-  const withBlurSigma = typeof blurSigma === 'number'
+  const withSigma = typeof sigma === 'number'
 
-  const toggleBlur = useConvertStore(state => state.toggleBlur)
-  const setBlurSigma = useConvertStore(state => state.setBlurSigma)
+  const flexProps = useMemo(() => {
+    const direction: FlexDirection = {
+      initial: 'column',
+      xs: withSigma ? 'column' : 'row'
+    }
+    const align: AlignItems = {
+      initial: 'start',
+      xs: withSigma ? 'start' : 'center'
+    }
+    const gap: Gap = {
+      initial: '2',
+      xs: withSigma ? '2' : '4'
+    }
 
-  const handleToggleBlur = useCallback(() => toggleBlur(), [toggleBlur])
-  const handleBlurSigmaChange = useCallback(
-    (value: number[]) => setBlurSigma(value[0]),
-    [setBlurSigma]
-  )
+    return {
+      direction,
+      align,
+      gap
+    }
+  }, [withSigma])
+
+  const toggle = useBlurStore(state => state.toggle)
+  const setSigma = useBlurStore(state => state.setSigma)
+
+  const handleToggle = useCallback(() => toggle(), [toggle])
+  const handleSigmaChange = useCallback((value: number[]) => setSigma(value[0]), [setSigma])
 
   return (
-    <Flex asChild>
+    <Flex asChild {...flexProps} width='100%'>
       <section>
-        <Flex
-          align={withBlurSigma ? 'start' : 'center'}
-          direction={withBlurSigma ? 'column' : 'row'}
-          gap='4'
-          width='100%'
-        >
-          <OptionSwitch title='Blur' checked={blur} onClick={handleToggleBlur} />
-          {withBlurSigma ? (
-            <Flex gap='4' align='center' width='100%'>
-              <OptionSlider
-                title='Blur sigma'
-                value={[blurSigma ?? MIN_BLUR_SIGMA]}
-                defaultValue={[MIN_BLUR_SIGMA]}
-                step={0.1}
-                min={MIN_BLUR_SIGMA}
-                max={MAX_BLUR_SIGMA}
-                disabled={isBlurDisabled}
-                infoContent={<BlurInfo />}
-                onValueChange={handleBlurSigmaChange}
-              />
-              <ButtonRemoveBlurSigma disabled={isBlurDisabled} />
-            </Flex>
-          ) : (
-            <ButtonAddBlurSigma disabled={isBlurDisabled} />
-          )}
-        </Flex>
+        <OptionSwitch title='Blur' checked={blur} onClick={handleToggle} />
+        {withSigma ? (
+          <Flex gap='4' align='center' width='100%'>
+            <OptionSlider
+              title='Blur sigma'
+              value={[sigma ?? MIN_BLUR_SIGMA]}
+              defaultValue={[MIN_BLUR_SIGMA]}
+              step={0.1}
+              min={MIN_BLUR_SIGMA}
+              max={MAX_BLUR_SIGMA}
+              disabled={isBlurDisabled}
+              infoContent={<BlurInfo />}
+              onValueChange={handleSigmaChange}
+            />
+            <ButtonRemoveBlurSigma disabled={isBlurDisabled} />
+          </Flex>
+        ) : (
+          <ButtonAddBlurSigma disabled={isBlurDisabled} />
+        )}
       </section>
     </Flex>
   )

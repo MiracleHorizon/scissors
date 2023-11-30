@@ -19,4 +19,6 @@ interface Actions {
   setBrightness: (value: number) => void
   setSaturation: (value: number) => void
   setHue: (value: number) => void
+
+  reset: VoidFunction
 }

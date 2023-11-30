@@ -6,6 +6,7 @@ import { Box, Button, Flex } from '@radix-ui/themes'
 import { UploadedFile } from '@components/UploadedFile'
 import { FileUploader } from '@components/FileUploader'
 import { FileDownload } from '@components/FileDownload'
+import { Toolbar } from '@components/Toolbar'
 import { Options } from '@components/options'
 import { useConvertStore } from '@stores/convert'
 import { useConvertMutation } from '@hooks/useConvertMutation'
@@ -61,6 +62,7 @@ export default function HomePage() {
               </pre>
             )}
             <FileDownload className={styles.fileDownload} />
+            <Toolbar />
             <Options />
             <Flex width='100%' asChild align='center' justify='end'>
               <footer>

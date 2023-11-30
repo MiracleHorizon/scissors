@@ -3,7 +3,7 @@ import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 export type Store = State & Computed & Actions
 
-type Settings = Omit<ConvertSettings, 'resize' | 'tint' | 'modulate' | 'format'>
+export type Settings = Pick<ConvertSettings, 'flip' | 'flop' | 'grayscale'>
 
 interface State extends Settings {
   file: File | null
@@ -16,6 +16,8 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 export interface Actions {
+  resetSettings: VoidFunction
+
   setFile: (file: File | null) => void
   removeFile: VoidFunction
 
@@ -25,26 +27,4 @@ export interface Actions {
   toggleFlip: VoidFunction
   toggleFlop: VoidFunction
   toggleGrayscale: VoidFunction
-
-  toggleNegate: VoidFunction
-  toggleNegateAlpha: VoidFunction
-
-  addNormalise: VoidFunction
-  removeNormalise: VoidFunction
-  setLowerNormalise: (lower: number) => void
-  setUpperNormalise: (lower: number) => void
-
-  toggleBlur: VoidFunction
-  addBlurSigma: VoidFunction
-  removeBlurSigma: VoidFunction
-  setBlurSigma: (sigma: number) => void
-
-  addRotate: VoidFunction
-  removeRotate: VoidFunction
-  setRotateAngle: (angle: number) => void
-  setRotateBackground: (background: string) => void
-
-  addGamma: VoidFunction
-  removeGamma: VoidFunction
-  setGamma: (value: number) => void
 }

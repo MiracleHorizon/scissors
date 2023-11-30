@@ -2,21 +2,21 @@
 
 import { Flex } from '@radix-ui/themes'
 
-import { ButtonAddGamma } from './ButtonAddGamma'
-import { ButtonRemoveGamma } from './ButtonRemoveGamma'
+import { GammaHeader } from './GammaHeader'
 import { SliderGamma } from './SliderGamma'
-import { useConvertStore } from '@stores/convert'
+import { ButtonAddGamma } from './ButtonAddGamma'
+import { useGammaStore } from '@stores/gamma'
 
 export function Gamma() {
-  const gamma = useConvertStore(state => state.gamma)
+  const gamma = useGammaStore(state => state.gamma)
 
   return (
     <Flex asChild align='start' direction='column' gap='2'>
       <section>
         {gamma ? (
-          <Flex gap='4' align='center' width='100%'>
+          <Flex direction='column' gap='2' width='100%'>
+            <GammaHeader gamma={gamma} />
             <SliderGamma />
-            <ButtonRemoveGamma />
           </Flex>
         ) : (
           <ButtonAddGamma />

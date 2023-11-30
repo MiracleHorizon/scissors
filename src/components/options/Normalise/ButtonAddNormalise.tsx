@@ -3,10 +3,10 @@
 import { useCallback } from 'react'
 
 import { ButtonAddOption } from '@components/ButtonAddOption'
-import { useConvertStore } from '@stores/convert'
+import { useNormaliseStore } from '@stores/normalise'
 
 export function ButtonAddNormalise() {
-  const addNormalise = useConvertStore(state => state.addNormalise)
+  const addNormalise = useNormaliseStore(state => state.add)
 
   const handleAddNormalise = useCallback(() => addNormalise(), [addNormalise])
 

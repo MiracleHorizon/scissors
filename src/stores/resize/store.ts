@@ -147,5 +147,25 @@ export const useResizeStore = create<Store>((set, get) => ({
           fastShrinkOnLoad: !state.extra.fastShrinkOnLoad
         }
       }
+    }),
+
+  reset: () =>
+    set(state => {
+      if (!state.isAdded) {
+        return state
+      }
+
+      if (state.extra !== null) {
+        return {
+          ...defaultState,
+          extra: defaultExtra,
+          isAdded: true
+        }
+      }
+
+      return {
+        ...defaultState,
+        isAdded: true
+      }
     })
 }))

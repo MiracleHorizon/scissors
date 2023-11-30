@@ -1,20 +1,22 @@
+'use client'
+
 import { Flex } from '@radix-ui/themes'
 
+import { NormaliseHeader } from './NormaliseHeader'
 import { SliderNormalise } from './SliderNormalise'
 import { ButtonAddNormalise } from './ButtonAddNormalise'
-import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'
-import { useConvertStore } from '@stores/convert'
+import { useNormaliseStore } from '@stores/normalise'
 
 export function Normalise() {
-  const normalise = useConvertStore(state => state.normalise)
+  const isAdded = useNormaliseStore(state => state.isAdded)
 
   return (
     <Flex asChild align='start' direction='column' gap='2'>
       <section>
-        {normalise ? (
-          <Flex gap='4' align='center' width='100%'>
+        {isAdded ? (
+          <Flex direction='column' align='center' gap='4' width='100%'>
+            <NormaliseHeader />
             <SliderNormalise />
-            <ButtonRemoveNormalise />
           </Flex>
         ) : (
           <ButtonAddNormalise />

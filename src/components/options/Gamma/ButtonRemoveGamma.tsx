@@ -3,10 +3,10 @@
 import { useCallback } from 'react'
 
 import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
-import { useConvertStore } from '@stores/convert'
+import { useGammaStore } from '@stores/gamma'
 
 export function ButtonRemoveGamma() {
-  const removeGamma = useConvertStore(state => state.removeGamma)
+  const removeGamma = useGammaStore(state => state.remove)
 
   const handleRemoveGamma = useCallback(() => removeGamma(), [removeGamma])
 

@@ -12,5 +12,6 @@ export interface Computed {
 
 /* eslint no-unused-vars: 0 */
 export interface Actions {
+  reset: VoidFunction
   setFormat: (format: ConvertFormat | null) => void
 }

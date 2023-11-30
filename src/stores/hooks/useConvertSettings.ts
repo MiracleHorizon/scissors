@@ -1,22 +1,37 @@
 import { useConvertStore } from '@stores/convert'
 import { useResizeStore } from '@stores/resize'
-import { useTintStore } from '@stores/tint'
+import { useRotateStore } from '@stores/rotate'
 import { useModulateStore } from '@stores/modulate'
+import { useBlurStore } from '@stores/blur'
+import { useNegateStore } from '@stores/negate'
+import { useGammaStore } from '@stores/gamma'
+import { useNormaliseStore } from '@stores/normalise'
+import { useTintStore } from '@stores/tint'
 import { useFormatStore } from '@stores/format'
 import type { ConvertSettings } from '@libs/Sharp'
 
 export function useConvertSettings(): ConvertSettings {
   const convertSettings = useConvertStore(state => state.getConvertSettings())
   const resize = useResizeStore(state => state.getResizeOptions())
-  const tint = useTintStore(state => state.color)
+  const rotate = useRotateStore(state => state.getRotateOptions())
   const modulate = useModulateStore(state => state.getModulateOptions())
+  const blur = useBlurStore(state => state.getBlurOptions())
+  const negate = useNegateStore(state => state.getNegateOptions())
+  const gamma = useGammaStore(state => state.gamma)
+  const normalise = useNormaliseStore(state => state.getNormaliseOptions())
+  const tint = useTintStore(state => state.color)
   const format = useFormatStore(state => state.getFormatOptions())
 
   return {
     ...convertSettings,
     resize,
-    tint,
+    rotate,
     modulate,
+    blur,
+    negate,
+    gamma,
+    normalise,
+    tint,
     format
   }
 }

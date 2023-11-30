@@ -1,23 +1,20 @@
 'use client'
 
 import { useCallback } from 'react'
-import { ShadowIcon } from '@radix-ui/react-icons'
 
 import { OptionSlider } from '@components/OptionSlider'
-import { useConvertStore } from '@stores/convert'
+import { useGammaStore } from '@stores/gamma'
 import { MAX_GAMMA, MIN_GAMMA } from '@libs/Sharp'
 
 export function SliderGamma() {
-  const gammaValue = useConvertStore(state => state.gamma?.value)
+  const gammaValue = useGammaStore(state => state.gamma?.value)
 
-  const setGamma = useConvertStore(state => state.setGamma)
+  const setGamma = useGammaStore(state => state.setValue)
 
   const handleGammaChange = useCallback((value: number[]) => setGamma(value[0]), [setGamma])
 
   return (
     <OptionSlider
-      title='Gamma'
-      titleIcon={<ShadowIcon width='18px' height='18px' />}
       value={[gammaValue ?? MIN_GAMMA]}
       defaultValue={[MIN_GAMMA]}
       step={0.1}

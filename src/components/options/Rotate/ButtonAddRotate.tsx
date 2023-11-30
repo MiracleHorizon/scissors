@@ -1,12 +1,13 @@
 'use client'
 
 import { useCallback } from 'react'
+import { RotateCounterClockwiseIcon } from '@radix-ui/react-icons'
 
 import { ButtonAddOption } from '@components/ButtonAddOption'
-import { useConvertStore } from '@stores/convert'
+import { useRotateStore } from '@stores/rotate'
 
 export function ButtonAddRotate() {
-  const addRotate = useConvertStore(state => state.addRotate)
+  const addRotate = useRotateStore(state => state.add)
 
   const handleAddRotate = useCallback(() => addRotate(), [addRotate])
 
@@ -14,6 +15,7 @@ export function ButtonAddRotate() {
     <ButtonAddOption
       title='Add rotate'
       tooltipTitle='Add image rotation'
+      leadIcon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
       onClick={handleAddRotate}
     />
   )

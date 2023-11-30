@@ -3,10 +3,10 @@
 import { useCallback } from 'react'
 
 import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
-import { useConvertStore } from '@stores/convert'
+import { useNormaliseStore } from '@stores/normalise'
 
 export function ButtonRemoveNormalise() {
-  const removeNormalise = useConvertStore(state => state.removeNormalise)
+  const removeNormalise = useNormaliseStore(state => state.remove)
 
   const handleRemoveNormalise = useCallback(() => removeNormalise(), [removeNormalise])
 

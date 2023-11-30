@@ -3,21 +3,21 @@
 import { useCallback } from 'react'
 
 import { OptionSwitch } from '@components/OptionSwitch'
-import { useConvertStore } from '@stores/convert'
+import { useNegateStore } from '@stores/negate'
 
 export function SwitchNegateAlpha() {
-  const negate = useConvertStore(state => state.negate?.value)
-  const negateAlpha = useConvertStore(state => state.negate?.alpha)
-  const toggleNegateAlpha = useConvertStore(state => state.toggleNegateAlpha)
+  const negate = useNegateStore(state => state.value)
+  const alpha = useNegateStore(state => state.alpha)
+  const toggleAlpha = useNegateStore(state => state.toggleAlpha)
 
-  const handleToggleNegateAlpha = useCallback(() => toggleNegateAlpha(), [toggleNegateAlpha])
+  const handleToggleAlpha = useCallback(() => toggleAlpha(), [toggleAlpha])
 
   return (
     <OptionSwitch
-      title='Alpha'
+      title='Negate alpha'
       disabled={!negate}
-      checked={negateAlpha}
-      onClick={handleToggleNegateAlpha}
+      checked={alpha}
+      onClick={handleToggleAlpha}
     />
   )
 }

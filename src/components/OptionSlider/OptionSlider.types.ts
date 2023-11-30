@@ -1,11 +1,21 @@
 import type { ReactNode } from 'react'
 
-export interface Props extends SliderProps {
+export type Props = SliderProps & {
+  disabled?: boolean
+} & (WithHeader | WithoutHeader)
+
+interface WithHeader {
   title: string
   titleIcon?: ReactNode
-  valueSign?: string
-  disabled?: boolean
   infoContent?: ReactNode
+  valueSign?: string
+}
+
+interface WithoutHeader {
+  title?: never
+  titleIcon?: never
+  infoContent?: never
+  valueSign?: never
 }
 
 /* eslint no-unused-vars: 0 */

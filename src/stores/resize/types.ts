@@ -33,4 +33,6 @@ interface Actions {
   toggleEnlargement: VoidFunction
   toggleReduction: VoidFunction
   toggleFastShrink: VoidFunction
+
+  reset: VoidFunction
 }
