@@ -3,6 +3,7 @@
 import { useCallback, useMemo } from 'react'
 import { Flex, Strong, Text } from '@radix-ui/themes'
 
+import { BlurIcon } from '@ui/icons'
 import { OptionSlider } from '@components/OptionSlider'
 import { OptionSwitch } from '@components/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'
@@ -61,6 +62,7 @@ export function Blur() {
           <Flex gap='4' align='center' width='100%'>
             <OptionSlider
               title='Blur sigma'
+              titleIcon={<BlurIcon width={18} height={18} />}
               value={[sigma ?? MIN_BLUR_SIGMA]}
               defaultValue={[MIN_BLUR_SIGMA]}
               step={0.1}
