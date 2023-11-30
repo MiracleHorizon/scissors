@@ -24,7 +24,9 @@ export function OptionSectionHeader({ children, title, icon, ...props }: Props) 
           </article>
         </Flex>
 
-        {children}
+        <Flex align='center' gap='1'>
+          {children}
+        </Flex>
       </header>
     </Flex>
   )

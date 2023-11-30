@@ -3,10 +3,10 @@
 import { useCallback } from 'react'
 
 import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
-import { useConvertStore } from '@stores/convert'
+import { useRotateStore } from '@stores/rotate'
 
 export function ButtonRemoveRotate() {
-  const removeRotate = useConvertStore(state => state.removeRotate)
+  const removeRotate = useRotateStore(state => state.remove)
 
   const handleRemoveRotate = useCallback(() => removeRotate(), [removeRotate])
 

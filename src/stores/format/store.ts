@@ -14,5 +14,6 @@ export const useFormatStore = create<Store>((set, get) => ({
   getFormatOptions: () => get().format,
 
   // Actions
-  setFormat: format => set({ format })
+  setFormat: format => set({ format }),
+  reset: () => set({ ...defaultState })
 }))

@@ -3,18 +3,18 @@
 import { useCallback } from 'react'
 
 import { ButtonRemoveOption } from '@components/ButtonRemoveOption'
-import { useConvertStore } from '@stores/convert'
+import { useBlurStore } from '@stores/blur'
 
 export function ButtonRemoveBlurSigma({ disabled }: Props) {
-  const removeBlurSigma = useConvertStore(state => state.removeBlurSigma)
+  const removeSigma = useBlurStore(state => state.removeSigma)
 
-  const handleRemoveBlurSigma = useCallback(() => removeBlurSigma(), [removeBlurSigma])
+  const handleRemoveSigma = useCallback(() => removeSigma(), [removeSigma])
 
   return (
     <ButtonRemoveOption
       disabled={disabled}
       tooltipTitle='Remove blur sigma'
-      onClick={handleRemoveBlurSigma}
+      onClick={handleRemoveSigma}
     />
   )
 }

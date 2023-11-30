@@ -1,16 +1,15 @@
 'use client'
 
 import { useCallback } from 'react'
-import { RotateCounterClockwiseIcon } from '@radix-ui/react-icons'
 
 import { OptionSlider } from '@components/OptionSlider'
-import { useConvertStore } from '@stores/convert'
+import { useRotateStore } from '@stores/rotate'
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@libs/Sharp'
 
 export function SliderRotateAngle() {
-  const rotateAngle = useConvertStore(state => state.rotate?.angle)
+  const rotateAngle = useRotateStore(state => state.angle)
 
-  const setRotateAngle = useConvertStore(state => state.setRotateAngle)
+  const setRotateAngle = useRotateStore(state => state.setAngle)
 
   const handleRotateAngleChange = useCallback(
     (value: number[]) => setRotateAngle(value[0]),
@@ -19,9 +18,6 @@ export function SliderRotateAngle() {
 
   return (
     <OptionSlider
-      title='Rotate angle'
-      titleIcon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
-      valueSign='°'
       value={[rotateAngle ?? DEFAULT_ROTATE_ANGLE]}
       defaultValue={[DEFAULT_ROTATE_ANGLE]}
       min={MIN_ROTATE_ANGLE}

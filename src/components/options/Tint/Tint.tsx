@@ -2,9 +2,9 @@
 
 import { Flex } from '@radix-ui/themes'
 
-import { PalettePopover } from '@components/PalettePopover'
+import { TintHeader } from './TintHeader'
 import { ButtonAddTint } from './ButtonAddTint'
-import { ButtonRemoveTint } from './ButtonRemoveTint'
+import { PalettePopover } from '@components/PalettePopover'
 import { useTintStore } from '@stores/tint'
 
 export function Tint() {
@@ -17,9 +17,9 @@ export function Tint() {
     <Flex asChild align='start' direction='column' gap='2'>
       <section>
         {isAdded && color ? (
-          <Flex gap='4' align='center' width='100%'>
+          <Flex direction='column' gap='2' width='100%'>
+            <TintHeader />
             <PalettePopover color={color} setColor={setColor} />
-            <ButtonRemoveTint />
           </Flex>
         ) : (
           <ButtonAddTint />

@@ -6,7 +6,4 @@
 
 .text {
   max-width: calc(100% - 40px - var(--space-1) - var(--space-5));
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }

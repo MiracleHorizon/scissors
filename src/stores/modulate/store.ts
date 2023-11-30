@@ -29,5 +29,17 @@ export const useModulateStore = create<Store>((set, get) => ({
   setLightness: value => set({ lightness: value }),
   setBrightness: value => set({ brightness: value }),
   setSaturation: value => set({ saturation: value }),
-  setHue: value => set({ hue: value })
+  setHue: value => set({ hue: value }),
+
+  reset: () =>
+    set(state => {
+      if (!state.isAdded) {
+        return state
+      }
+
+      return {
+        ...defaultState,
+        isAdded: true
+      }
+    })
 }))

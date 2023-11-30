@@ -4,17 +4,17 @@ import { useCallback } from 'react'
 import { LockClosedIcon } from '@radix-ui/react-icons'
 
 import { ButtonAddOption } from '@components/ButtonAddOption'
-import { useConvertStore } from '@stores/convert'
+import { useBlurStore } from '@stores/blur'
 
 export function ButtonAddBlurSigma(props: Props) {
-  const addBlurSigma = useConvertStore(state => state.addBlurSigma)
+  const addSigma = useBlurStore(state => state.addSigma)
 
-  const handleAddBlurSigma = useCallback(() => addBlurSigma(), [addBlurSigma])
+  const handleAddSigma = useCallback(() => addSigma(), [addSigma])
 
   return (
     <ButtonAddOption
       title='Add blur sigma'
-      onClick={handleAddBlurSigma}
+      onClick={handleAddSigma}
       endIcon={props.disabled && <LockClosedIcon />}
       {...props}
     />

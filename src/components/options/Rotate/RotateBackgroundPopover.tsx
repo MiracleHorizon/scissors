@@ -1,12 +1,12 @@
 'use client'
 
 import { PalettePopover } from '@components/PalettePopover'
-import { useConvertStore } from '@stores/convert'
+import { useRotateStore } from '@stores/rotate'
 
 export function RotateBackgroundPopover() {
-  const rotateBackground = useConvertStore(state => state.rotate?.background)
+  const rotateBackground = useRotateStore(state => state.background)
 
-  const setRotateBackground = useConvertStore(state => state.setRotateBackground)
+  const setRotateBackground = useRotateStore(state => state.setBackground)
 
   if (!rotateBackground) {
     return null

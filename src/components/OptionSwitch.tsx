@@ -3,13 +3,20 @@
 import { memo } from 'react'
 import { Flex, Switch, Text } from '@radix-ui/themes'
 
+import type { Size } from '@libs/radix'
+
+const width: Size = {
+  initial: '100%',
+  xs: 'auto'
+}
+
 export const OptionSwitch = memo(({ title, ...switchProps }: Props) => (
-  <Text as='label' size='3'>
-    <Flex gap='2'>
-      <Switch radius='none' size='3' {...switchProps} />
+  <Flex asChild justify='between' gap='2' width={width}>
+    <Text as='label' size='3'>
       <Text as='span'>{title}</Text>
-    </Flex>
-  </Text>
+      <Switch radius='none' size='3' {...switchProps} />
+    </Text>
+  </Flex>
 ))
 
 OptionSwitch.displayName = 'OptionSwitch'

@@ -1,5 +1,1 @@
-export const copyToClipboard = (value: string): void => {
-  if (!navigator?.clipboard) return
-
-  void navigator.clipboard.writeText(value)
-}
+export const copyToClipboard = (value: string): void => void navigator.clipboard.writeText(value)

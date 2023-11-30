@@ -13,18 +13,18 @@ const options = [
   { key: 'negate', Component: dynamic(() => import('./Negate').then(mod => mod.Negate)) },
   { key: 'blur', Component: dynamic(() => import('./Blur').then(mod => mod.Blur)) },
   { key: 'rotate', Component: dynamic(() => import('./Rotate').then(mod => mod.Rotate)) },
+  { key: 'resize', Component: dynamic(() => import('./Resize').then(mod => mod.Resize)) },
+  { key: 'modulate', Component: dynamic(() => import('./Modulate').then(mod => mod.Modulate)) },
   { key: 'gamma', Component: dynamic(() => import('./Gamma').then(mod => mod.Gamma)) },
   { key: 'tint', Component: dynamic(() => import('./Tint').then(mod => mod.Tint)) },
-  { key: 'normalise', Component: dynamic(() => import('./Normalise').then(mod => mod.Normalise)) },
-  { key: 'resize', Component: dynamic(() => import('./Resize').then(mod => mod.Resize)) },
-  { key: 'modulate', Component: dynamic(() => import('./Modulate').then(mod => mod.Modulate)) }
+  { key: 'normalise', Component: dynamic(() => import('./Normalise').then(mod => mod.Normalise)) }
 ]
 
 export function Options() {
   const file = useConvertStore(state => state.file)
 
   return (
-    <Flex direction='column' gap='2' my='4' py='2'>
+    <Flex direction='column' gap='2' mt='2' mb='4' py='2'>
       {options.map(({ key, Component }, index) => (
         <Fragment key={key}>
           <Component />
