@@ -18,7 +18,7 @@ export function DocumentationLink() {
   return (
     <Tooltip content='Watch the documentation'>
       <Flex asChild align='center' className={styles.root}>
-        <RadixLink asChild color='gray' underline='always' size='2' mr='4'>
+        <RadixLink asChild color='gray' underline='hover' size='2' mr='4'>
           <Link href={Route.DOCS}>
             <Text className={styles.text}>Documentation</Text>
             <IconButton color='gray' variant='ghost' size='2' radius='large'>

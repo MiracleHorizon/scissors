@@ -30,15 +30,18 @@ export function Blur() {
   const flexProps = useMemo(() => {
     const direction: FlexDirection = {
       initial: 'column',
-      xs: withSigma ? 'column' : 'row'
+      xs: withSigma ? 'column' : 'row',
+      md: 'column'
     }
     const align: AlignItems = {
       initial: 'start',
-      xs: withSigma ? 'start' : 'center'
+      xs: withSigma ? 'start' : 'center',
+      md: 'start'
     }
     const gap: Gap = {
       initial: '2',
-      xs: withSigma ? '2' : '4'
+      xs: withSigma ? '2' : '4',
+      md: '2'
     }
 
     return {

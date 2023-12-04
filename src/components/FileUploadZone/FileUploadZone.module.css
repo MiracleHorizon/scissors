@@ -1,5 +1,7 @@
 .root {
   cursor: pointer;
+  max-width: 500px;
+  height: calc(var(--space-9) * 2);
   border: 1px dashed var(--gray-a9);
   border-radius: var(--radius-3);
   background-color: var(--gray-a2);
@@ -12,8 +14,4 @@
 
 .dragOver {
   background-color: var(--gray-a4);
-}
-
-.input {
-  display: none;
 }

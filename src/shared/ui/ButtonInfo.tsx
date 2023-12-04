@@ -1,10 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
+import { IconButton, type MarginProps } from '@radix-ui/themes'
 import { InfoCircledIcon } from '@radix-ui/react-icons'
-import { IconButton } from '@radix-ui/themes'
-
-import type { MarginProps } from '@libs/radix'
 
 export const ButtonInfo = forwardRef<HTMLButtonElement, MarginProps>((props, ref) => (
   <IconButton

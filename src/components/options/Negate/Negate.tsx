@@ -6,7 +6,8 @@ import type { FlexDirection } from '@libs/radix'
 
 const direction: FlexDirection = {
   initial: 'column',
-  xs: 'row'
+  xs: 'row',
+  md: 'column'
 }
 
 export function Negate() {

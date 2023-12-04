@@ -1,9 +1,15 @@
-.root {
-  border: 1px solid var(--gray-a9);
-  border-radius: var(--radius-3);
-  background-color: var(--gray-a2);
+.aspectRadioBox {
+  width: 100%;
 }
 
-.text {
-  max-width: calc(100% - 40px - var(--space-1) - var(--space-5));
+@media screen and (max-width: 1023px) {
+  .aspectRadioBox {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .aspectRadioBox {
+    width: 100%;
+  }
 }

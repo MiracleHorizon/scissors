@@ -27,8 +27,8 @@ export const useConvertStore = create(
     // Actions
     resetSettings: () => set(defaultSettingsState),
 
-    setFile: file => set({ file }),
-    removeFile: () => set({ file: null }),
+    setFile: file => set({ file, downloadPayload: null }),
+    removeFile: () => set({ file: null, downloadPayload: null }),
 
     setDownloadPayload: downloadPayload => set({ downloadPayload }),
     removeDownloadPayload: () => set({ downloadPayload: null }),

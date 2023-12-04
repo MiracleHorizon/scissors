@@ -1,9 +1,9 @@
 'use client'
 
-import { Button, Tooltip } from '@radix-ui/themes'
+import { Button, type MarginProps, Tooltip } from '@radix-ui/themes'
 import type { ReactNode } from 'react'
 
-import type { MarginProps } from '@libs/radix'
+import { isTooltipOpen } from '@helpers/isTooltipOpen'
 
 export function ButtonAddOption({
   title,
@@ -14,14 +14,14 @@ export function ButtonAddOption({
   disabled,
   ...props
 }: Props) {
-  const isTooltipOpen = () => {
-    if (!disabled) return
-
-    return false
-  }
-
   return (
-    <Tooltip open={isTooltipOpen()} content={tooltipTitle ?? title}>
+    <Tooltip
+      open={isTooltipOpen({
+        content: tooltipTitle,
+        isParentDisabled: disabled
+      })}
+      content={tooltipTitle ?? title}
+    >
       <Button {...props} disabled={disabled} radius='large' onClick={onClick}>
         {leadIcon}
         {title}

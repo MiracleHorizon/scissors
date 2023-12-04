@@ -1,6 +1,4 @@
-import { Heading } from '@radix-ui/themes'
-
-import type { MarginProps } from '@libs/radix'
+import { Heading, type MarginProps } from '@radix-ui/themes'
 
 export function SettingsPopoverTitle({ title, ...props }: Props) {
   return (

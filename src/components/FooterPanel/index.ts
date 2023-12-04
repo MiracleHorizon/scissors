@@ -1,0 +1,1 @@
+export { FooterPanel } from './FooterPanel'

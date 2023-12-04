@@ -3,17 +3,20 @@
 import { Button, IconButton, Tooltip } from '@radix-ui/themes'
 import { ResetIcon } from '@radix-ui/react-icons'
 
+import { isTooltipOpen } from '@helpers/isTooltipOpen'
+
 export function ButtonReset({ title, tooltipTitle, disabled, onClick }: Props) {
-  const isTooltipOpen = () => {
-    if (!disabled) return
-
-    return false
-  }
-
   return (
-    <Tooltip delayDuration={900} open={isTooltipOpen()} content={tooltipTitle}>
+    <Tooltip
+      delayDuration={900}
+      open={isTooltipOpen({
+        content: tooltipTitle,
+        isParentDisabled: disabled
+      })}
+      content={tooltipTitle}
+    >
       {title ? (
-        <Button variant='outline' disabled={disabled} size='2' onClick={onClick}>
+        <Button size='2' variant='outline' disabled={disabled} onClick={onClick}>
           {title}
           <ResetIcon width='16px' height='16px' />
         </Button>

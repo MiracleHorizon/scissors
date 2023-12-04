@@ -1,0 +1,8 @@
+.root {
+  box-shadow: 0 -1px var(--gray-a4);
+}
+
+.convertButton {
+  width: 100%;
+  max-width: 120px;
+}

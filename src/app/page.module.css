@@ -1,7 +1,19 @@
 .main {
-  max-width: 900px;
+  height: calc(100vh - var(--space-8) - var(--space-9));
 }
 
-.fileDownload {
-  margin-top: 24px;
+.content {
+  width: calc(100% - var(--setings-panel-width) - var(--space-4));
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    width: calc(100% - var(--setings-panel-width-1200) - var(--space-4));
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .content {
+    width: 100%;
+  }
 }
