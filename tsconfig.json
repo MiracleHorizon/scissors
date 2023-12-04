@@ -53,6 +53,9 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@hoc/*": [
+        "./src/hoc/*"
+      ],
       "@stores/*": [
         "./src/stores/*"
       ],

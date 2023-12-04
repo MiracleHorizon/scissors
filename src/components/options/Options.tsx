@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
-import { Flex, Separator } from '@radix-ui/themes'
+import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 
 import { useConvertStore } from '@stores/convert'
 
@@ -20,11 +20,20 @@ const options = [
   { key: 'normalise', Component: dynamic(() => import('./Normalise').then(mod => mod.Normalise)) }
 ]
 
+const padding: PaddingProps = {
+  px: {
+    initial: '4',
+    md: '5'
+  },
+  pb: '2',
+  pt: '4'
+}
+
 export function Options() {
   const file = useConvertStore(state => state.file)
 
   return (
-    <Flex direction='column' gap='2' mt='2' mb='4' py='2'>
+    <Flex direction='column' gap='2' {...padding}>
       {options.map(({ key, Component }, index) => (
         <Fragment key={key}>
           <Component />
@@ -34,7 +43,7 @@ export function Options() {
 
       {file && (
         <Fragment>
-          <Separator my='1' size='4' />
+          <Separator mt='1' size='4' />
           <Format />
         </Fragment>
       )}

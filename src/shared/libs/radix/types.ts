@@ -16,22 +16,11 @@ export type Size = Responsive<
   | '8'
   | '9'
 >
+export type TextSize = Responsive<'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'>
 
 export type FlexDirection = Responsive<'row' | 'row-reverse' | 'column' | 'column-reverse'>
 export type AlignItems = Responsive<'center' | 'baseline' | 'stretch' | 'start' | 'end'>
 export type Gap = Responsive<'2' | '4' | '0' | '1' | '3' | '5' | '6' | '7' | '8' | '9'>
-
-export type Padding = Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '7' | '9'>
-export type Margin = Responsive<'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '7' | '9' | 'auto'>
-export interface MarginProps {
-  m?: Margin
-  mt?: Margin
-  mr?: Margin
-  mb?: Margin
-  ml?: Margin
-  mx?: Margin
-  my?: Margin
-}
 
 export type RadixThemeColor =
   | 'tomato'

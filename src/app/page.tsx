@@ -1,23 +1,35 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Box, Button, Flex } from '@radix-ui/themes'
+import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 
+import { FooterPanel } from '@components/FooterPanel'
+import { SettingsPanel } from '@components/SettingsPanel'
 import { UploadedFile } from '@components/UploadedFile'
-import { FileUploader } from '@components/FileUploader'
-import { FileDownload } from '@components/FileDownload'
-import { Toolbar } from '@components/Toolbar'
-import { Options } from '@components/options'
+import { FileUploadZone } from '@components/FileUploadZone'
 import { useConvertStore } from '@stores/convert'
 import { useConvertMutation } from '@hooks/useConvertMutation'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
-import { ConvertFormat } from '@libs/Sharp'
-import type { Padding } from '@libs/radix'
+import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
+import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
 
-const pxMain: Padding = {
-  initial: '5',
-  xs: '6'
+const mainDirection: FlexDirection = {
+  initial: 'column',
+  md: 'row'
+}
+const mainPadding: PaddingProps = {
+  pl: {
+    initial: '0',
+    md: '4'
+  }
+}
+const contentPadding: PaddingProps = {
+  pt: '5',
+  px: {
+    initial: '4',
+    md: '0'
+  }
 }
 
 export default function HomePage() {
@@ -31,48 +43,41 @@ export default function HomePage() {
   const handleConvertImage = useCallback(() => {
     if (!file) return
 
-    mutate({ file, settings: convertSettings })
+    mutate({
+      file,
+      settings: convertSettings
+    })
   }, [mutate, file, convertSettings])
 
   return (
     <Box width='100%'>
-      <Flex py='6' width='100%' align='center' direction='column'>
+      <Flex width='100%' align='center' direction='column'>
         <Flex
           asChild
-          px={pxMain}
-          justify='start'
-          direction='column'
+          justify='end'
+          direction={mainDirection}
           width='100%'
+          {...mainPadding}
           className={styles.main}
         >
           <main>
-            {file ? (
-              <UploadedFile file={file} isLoading={isLoading} />
-            ) : (
-              <FileUploader
-                accept={Object.values(ConvertFormat)
-                  .map(format => `image/${format}`)
-                  .join(', ')}
-                setFile={setFile}
-              />
-            )}
-            {error && (
-              <pre>
-                <code>{error.message}</code>
-              </pre>
-            )}
-            <FileDownload className={styles.fileDownload} />
-            <Toolbar />
-            <Options />
-            <Flex width='100%' asChild align='center' justify='end'>
-              <footer>
-                <Button disabled={!file || isLoading} size='3' onClick={handleConvertImage}>
-                  Convert
-                </Button>
-              </footer>
+            <Flex direction='column' {...contentPadding} className={styles.content}>
+              {/*TODO: Error*/}
+              {error && (
+                <pre>
+                  <code>{error.message}</code>
+                </pre>
+              )}
+              {file ? (
+                <UploadedFile file={file} isLoading={isLoading} />
+              ) : (
+                <FileUploadZone accept={ALLOWED_IMAGE_FORMATS} setFile={setFile} />
+              )}
             </Flex>
+            <SettingsPanel />
           </main>
         </Flex>
+        <FooterPanel isLoading={isLoading} handleConvertImage={handleConvertImage} />
       </Flex>
     </Box>
   )

@@ -7,7 +7,8 @@ import type { Size } from '@libs/radix'
 
 const width: Size = {
   initial: '100%',
-  xs: 'auto'
+  xs: 'auto',
+  md: '100%'
 }
 
 export const OptionSwitch = memo(({ title, ...switchProps }: Props) => (

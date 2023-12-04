@@ -1,7 +1,6 @@
-import { Flex, Heading, Separator } from '@radix-ui/themes'
+import { Flex, Heading, type MarginProps, Separator } from '@radix-ui/themes'
 import type { PropsWithChildren, ReactNode } from 'react'
 
-import type { MarginProps } from '@libs/radix'
 import styles from './OptionSectionHeader.module.css'
 
 export function OptionSectionHeader({ children, title, icon, ...props }: Props) {

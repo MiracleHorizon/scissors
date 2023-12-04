@@ -1,5 +1,11 @@
 @import '@radix-ui/themes/styles.css';
 
+:root {
+  --setings-panel-width: 520px;
+  --setings-panel-width-1200: 440px;
+  --setings-panel-width-md: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -43,4 +49,8 @@ input[type='number'] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hidden {
+  display: none;
 }

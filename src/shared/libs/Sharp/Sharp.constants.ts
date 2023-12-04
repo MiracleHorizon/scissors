@@ -10,6 +10,10 @@ import {
   type RotateOptions
 } from './Sharp.types'
 
+export const ALLOWED_IMAGE_FORMATS = Object.values(ConvertFormat)
+  .map(format => `image/${format}`)
+  .join(', ')
+
 // Basic
 export const DEFAULT_FLIP = false
 export const DEFAULT_FLOP = false
