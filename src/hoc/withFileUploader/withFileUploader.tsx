@@ -1,7 +1,6 @@
 import { type ChangeEvent, type ComponentType, type DragEvent, useRef, useState } from 'react'
 
 import type { ComponentProps, Props } from './withFileUploader.types'
-import styles from './withFileUploader.module.css'
 
 export function withFileUploader(Component: ComponentType<ComponentProps>) {
   return function FileUploaderHOC<T extends Props>({ setFile, ...inputAttributes }: T) {
@@ -57,7 +56,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
           {...inputAttributes}
           ref={inputRef}
           type='file'
-          className={styles.input}
+          className='hidden'
           onChange={handleChange}
         />
       </Component>
