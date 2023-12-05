@@ -2,6 +2,7 @@ import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
+import 'yet-another-react-lightbox/styles.css'
 
 import { Layout } from '@components/Layout'
 import { getThemeAppearance } from '@shared/theme'

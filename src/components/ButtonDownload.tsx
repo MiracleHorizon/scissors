@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 import { Button, Link } from '@radix-ui/themes'
 import { DownloadIcon } from '@radix-ui/react-icons'
 
@@ -8,14 +8,12 @@ export function ButtonDownload() {
   const linkRef = useRef<HTMLAnchorElement>(null)
 
   const downloadPayload = useConvertStore(state => state.downloadPayload)
-  const removeDownloadPayload = useConvertStore(state => state.removeDownloadPayload)
 
-  const handleButtonClick = useCallback(() => {
+  const handleButtonClick = () => {
     if (!linkRef.current) return
 
     linkRef.current.click()
-    removeDownloadPayload()
-  }, [removeDownloadPayload])
+  }
 
   return (
     <>
