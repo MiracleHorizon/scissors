@@ -1,11 +1,13 @@
 import { useCallback, useMemo } from 'react'
 import { HexColorPicker } from 'react-colorful'
 import { Box, Button, Flex, Popover, Tooltip } from '@radix-ui/themes'
+import cn from 'classnames'
 
 import { HexColorInput } from '@ui/HexColorInput'
+import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import styles from './PalettePopover.module.css'
 
-export function PalettePopover({ color, setColor }: Props) {
+export function PalettePopover({ color, setColor, disabled }: Props) {
   const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
 
   const onColorValueChange = useCallback((color: string) => setColor(color), [setColor])
@@ -16,11 +18,26 @@ export function PalettePopover({ color, setColor }: Props) {
 
   return (
     <Popover.Root>
-      <Popover.Trigger>
+      <Popover.Trigger className={cn({ [styles.disabled]: disabled })}>
         <Flex>
-          <Button>Background</Button>
-          <Tooltip delayDuration={600} align='center' content='Select background'>
-            <Box width='6' height='6' style={previewBoxStyle} className={styles.previewBox} />
+          <Button disabled={disabled}>Background</Button>
+          <Tooltip
+            open={isTooltipOpen({
+              content: 'Select background',
+              isParentDisabled: disabled
+            })}
+            delayDuration={600}
+            align='center'
+            content='Select background'
+          >
+            <Box
+              width='6'
+              height='6'
+              style={previewBoxStyle}
+              className={cn(styles.previewBox, {
+                [styles.disabledPreviewBox]: disabled
+              })}
+            />
           </Tooltip>
         </Flex>
       </Popover.Trigger>
@@ -42,4 +59,5 @@ export function PalettePopover({ color, setColor }: Props) {
 interface Props {
   color: string
   setColor: (color: string) => void
+  disabled?: boolean
 }

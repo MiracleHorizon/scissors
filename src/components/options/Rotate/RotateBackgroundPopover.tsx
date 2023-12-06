@@ -5,6 +5,7 @@ import { useRotateStore } from '@stores/rotate'
 
 export function RotateBackgroundPopover() {
   const rotateBackground = useRotateStore(state => state.background)
+  const withDominantBackground = useRotateStore(state => state.withDominantBackground)
 
   const setRotateBackground = useRotateStore(state => state.setBackground)
 
@@ -12,5 +13,11 @@ export function RotateBackgroundPopover() {
     return null
   }
 
-  return <PalettePopover color={rotateBackground} setColor={setRotateBackground} />
+  return (
+    <PalettePopover
+      color={rotateBackground}
+      setColor={setRotateBackground}
+      disabled={withDominantBackground}
+    />
+  )
 }
