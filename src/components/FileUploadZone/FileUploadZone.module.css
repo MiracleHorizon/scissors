@@ -1,6 +1,6 @@
 .root {
   cursor: pointer;
-  max-width: 500px;
+  max-width: 450px;
   height: calc(var(--space-9) * 2);
   border: 1px dashed var(--gray-a9);
   border-radius: var(--radius-3);

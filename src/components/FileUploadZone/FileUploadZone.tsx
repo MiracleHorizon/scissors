@@ -5,13 +5,13 @@ import { ImageIcon } from '@radix-ui/react-icons'
 import cn from 'classnames'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
+import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
 import { ConvertFormat } from '@libs/Sharp'
 import type { TextSize } from '@libs/radix'
 import styles from './FileUploadZone.module.css'
 
 const uploadTextSize: TextSize = {
-  initial: '3',
-  sm: '4',
+  xs: '4',
   md: '5'
 }
 const descriptionTextSize: TextSize = {
@@ -41,6 +41,9 @@ function FileUploadZone({ children, isDragOver, ...actions }: ComponentProps) {
       </Flex>
       <Text as='p' align='center' size={descriptionTextSize}>
         Available file extensions: {Object.values(ConvertFormat).slice(0, 4).join(', ')}...
+      </Text>
+      <Text as='p' align='center' size={descriptionTextSize}>
+        Maximum file size: {MAX_FILE_SIZE_MB} MB
       </Text>
       {children}
     </Flex>
