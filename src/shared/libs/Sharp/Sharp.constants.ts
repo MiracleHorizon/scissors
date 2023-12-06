@@ -48,9 +48,11 @@ export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
 export const DEFAULT_ROTATE_BACKGROUND = '#000000'
+export const DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND = false
 export const DEFAULT_ROTATE: RotateOptions = {
   angle: DEFAULT_ROTATE_ANGLE,
-  background: DEFAULT_ROTATE_BACKGROUND
+  background: DEFAULT_ROTATE_BACKGROUND,
+  withDominantBackground: DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND
 }
 
 // Gamma

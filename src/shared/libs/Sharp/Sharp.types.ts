@@ -30,6 +30,7 @@ export interface BlurOptions {
 export interface RotateOptions {
   angle: number
   background: string
+  withDominantBackground: boolean
 }
 
 export interface NegateOptions {

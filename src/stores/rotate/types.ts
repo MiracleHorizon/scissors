@@ -6,6 +6,7 @@ export interface State {
   isAdded: boolean
   angle: number | null
   background: string | null
+  withDominantBackground: boolean
 }
 
 interface Computed {
@@ -19,4 +20,5 @@ interface Actions {
   reset: VoidFunction
   setAngle: (angle: number) => void
   setBackground: (background: string) => void
+  toggleWithDominantBackground: VoidFunction
 }

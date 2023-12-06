@@ -78,7 +78,7 @@ export class Sharp {
     }
 
     if (rotate) {
-      this.rotate(rotate)
+      await this.rotate(rotate)
     }
 
     if (modulate) {
@@ -146,8 +146,15 @@ export class Sharp {
     }
   }
 
-  private rotate({ angle, background }: RotateOptions): void {
+  private async rotate({
+    angle,
+    background: bg,
+    withDominantBackground
+  }: RotateOptions): Promise<void> {
     try {
+      const stats = await this.imageSharp.stats()
+      const background = withDominantBackground ? stats.dominant : bg
+
       this.imageSharp.rotate(angle, {
         background
       })

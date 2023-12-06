@@ -5,8 +5,7 @@ import type { State, Store } from './types'
 
 const defaultState: State = {
   isAdded: false,
-  angle: null,
-  background: null
+  ...DEFAULT_ROTATE
 }
 
 export const useRotateStore = create<Store>((set, get) => ({
@@ -21,7 +20,8 @@ export const useRotateStore = create<Store>((set, get) => ({
 
     return {
       angle: get().angle ?? DEFAULT_ROTATE_ANGLE,
-      background: get().background ?? DEFAULT_ROTATE_BACKGROUND
+      background: get().background ?? DEFAULT_ROTATE_BACKGROUND,
+      withDominantBackground: get().withDominantBackground
     }
   },
 
@@ -62,6 +62,16 @@ export const useRotateStore = create<Store>((set, get) => ({
 
       return {
         background
+      }
+    }),
+  toggleWithDominantBackground: () =>
+    set(state => {
+      if (!state.isAdded) {
+        return state
+      }
+
+      return {
+        withDominantBackground: !state.withDominantBackground
       }
     })
 }))
