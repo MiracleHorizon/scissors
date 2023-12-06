@@ -1,11 +1,17 @@
 import { type ChangeEvent, type ComponentType, type DragEvent, useRef, useState } from 'react'
 
+import { FileSizeAlert } from '@components/FileSizeAlert'
+import { isValidFileSize } from '@helpers/isValidFileSize'
 import type { ComponentProps, Props } from './withFileUploader.types'
 
 export function withFileUploader(Component: ComponentType<ComponentProps>) {
   return function FileUploaderHOC<T extends Props>({ setFile, ...inputAttributes }: T) {
     const [isDragOver, setIsDragOver] = useState(false)
+    const [isAlertOpen, setIsAlertOpen] = useState(false)
     const inputRef = useRef<HTMLInputElement | null>(null)
+
+    const handleOpenAlert = () => setIsAlertOpen(true)
+    const handleCloseAlert = () => setIsAlertOpen(false)
 
     function triggerInputClick() {
       if (!inputRef.current) return
@@ -20,6 +26,11 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       const file = fileList.item(0)
       if (!file) return
 
+      if (!isValidFileSize(file)) {
+        ev.target.value = ''
+        return handleOpenAlert()
+      }
+
       setFile(file)
       ev.target.value = ''
     }
@@ -31,6 +42,11 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       const firstFile = fileList.item(0)
 
       if (!firstFile) return
+
+      if (!isValidFileSize(firstFile)) {
+        setIsDragOver(false)
+        return handleOpenAlert()
+      }
 
       setFile(firstFile)
       setIsDragOver(false)
@@ -45,21 +61,25 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
     const handleDragLeave = () => setIsDragOver(false)
 
     return (
-      <Component
-        isDragOver={isDragOver}
-        onClick={triggerInputClick}
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-      >
-        <input
-          {...inputAttributes}
-          ref={inputRef}
-          type='file'
-          className='hidden'
-          onChange={handleChange}
-        />
-      </Component>
+      <>
+        <Component
+          isDragOver={isDragOver}
+          onClick={triggerInputClick}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+        >
+          <input
+            {...inputAttributes}
+            ref={inputRef}
+            type='file'
+            className='hidden'
+            onChange={handleChange}
+          />
+        </Component>
+
+        <FileSizeAlert isOpen={isAlertOpen} onClose={handleCloseAlert} />
+      </>
     )
   }
 }

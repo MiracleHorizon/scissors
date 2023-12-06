@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
 import { Sharp } from '@libs/Sharp/Sharp'
+import { isValidFileSize } from '@helpers/isValidFileSize'
 import type { ConvertSettings } from '@libs/Sharp'
 
 export async function POST(req: NextRequest) {
@@ -11,6 +12,10 @@ export async function POST(req: NextRequest) {
 
   if (!file) {
     throw new Error('Image file is missing')
+  }
+
+  if (!isValidFileSize(file)) {
+    throw new Error('Invalid file size')
   }
 
   if (!settingsJSON) {
