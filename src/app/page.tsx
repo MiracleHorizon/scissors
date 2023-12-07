@@ -1,6 +1,5 @@
 'use client'
 
-import { useCallback } from 'react'
 import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 
 import { FooterPanel } from '@components/FooterPanel'
@@ -8,8 +7,7 @@ import { SettingsPanel } from '@components/SettingsPanel'
 import { UploadedFile } from '@components/UploadedFile'
 import { FileUploadZone } from '@components/FileUploadZone'
 import { useConvertStore } from '@stores/convert'
-import { useConvertMutation } from '@hooks/useConvertMutation'
-import { useConvertSettings } from '@stores/hooks/useConvertSettings'
+import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
@@ -33,21 +31,10 @@ const contentPadding: PaddingProps = {
 }
 
 export default function HomePage() {
-  const convertSettings = useConvertSettings()
-
   const file = useConvertStore(state => state.file)
   const setFile = useConvertStore(state => state.setFile)
 
-  const { mutate, isPending: isLoading, error } = useConvertMutation()
-
-  const handleConvertImage = useCallback(() => {
-    if (!file) return
-
-    mutate({
-      file,
-      settings: convertSettings
-    })
-  }, [mutate, file, convertSettings])
+  const { handleConvertImage, isPending } = useConvertImage()
 
   return (
     <Box width='100%'>
@@ -62,14 +49,8 @@ export default function HomePage() {
         >
           <main>
             <Flex direction='column' {...contentPadding} className={styles.content}>
-              {/*TODO: Error*/}
-              {error && (
-                <pre>
-                  <code>{error.message}</code>
-                </pre>
-              )}
               {file ? (
-                <UploadedFile file={file} isLoading={isLoading} />
+                <UploadedFile file={file} isLoading={isPending} />
               ) : (
                 <FileUploadZone accept={ALLOWED_IMAGE_FORMATS} setFile={setFile} />
               )}
@@ -77,7 +58,7 @@ export default function HomePage() {
             <SettingsPanel />
           </main>
         </Flex>
-        <FooterPanel isLoading={isLoading} handleConvertImage={handleConvertImage} />
+        <FooterPanel isLoading={isPending} handleConvertImage={handleConvertImage} />
       </Flex>
     </Box>
   )
