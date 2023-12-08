@@ -11,22 +11,22 @@ export async function POST(req: NextRequest) {
   const settingsJSON = formData.get('settings') as string | null
 
   if (!file) {
-    throw new Error('Image file is missing')
+    return createResponseError('Image file is missing', 400)
   }
 
   if (!isValidFileSize(file)) {
-    throw new Error('Invalid file size')
+    return createResponseError('Invalid file size', 413)
   }
 
   if (!settingsJSON) {
-    throw new Error('Convert settings are missing')
+    return createResponseError('Convert settings are missing', 400)
   }
 
   try {
-    const settings = JSON.parse(settingsJSON) as ConvertSettings
+    const settings = JSON.parse('') as ConvertSettings
 
-    if (typeof settings !== 'object') {
-      return Promise.reject('Invalid convert settings')
+    if (typeof settings !== 'object' || Array.isArray(settings)) {
+      return createResponseError('Invalid convert settings', 400)
     }
 
     const imageBuffer = await file.arrayBuffer()
@@ -40,8 +40,26 @@ export async function POST(req: NextRequest) {
 
     return new NextResponse(convertedImageBuffer)
   } catch (err) {
-    throw new Error('An error occurred while parsing conversion settings', {
-      cause: err
-    })
+    if (err instanceof SyntaxError) {
+      return createResponseError('Invalid convert settings', 400)
+    }
+
+    if (err instanceof Error) {
+      return createResponseError(err.message, 500)
+    }
+
+    return createResponseError('An error occurred while parsing conversion settings', 500)
   }
+}
+
+function createResponseError(message: string, status: number) {
+  return NextResponse.json(
+    {
+      error: message
+    },
+    {
+      status,
+      statusText: message
+    }
+  )
 }

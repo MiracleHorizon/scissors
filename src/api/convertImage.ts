@@ -5,7 +5,6 @@ interface Payload {
   formData: FormData
 }
 
-// TODO: Add error handling
 export async function convertImage({ url, formData }: Payload): Promise<Blob> {
   const { data } = await axios.post<Blob>(url, formData, {
     responseType: 'blob'

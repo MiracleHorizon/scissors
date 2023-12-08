@@ -1,5 +1,7 @@
 'use client'
 
+import { AxiosError } from 'axios'
+import dynamic from 'next/dynamic'
 import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 
 import { FooterPanel } from '@components/FooterPanel'
@@ -11,6 +13,12 @@ import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
+import { useCallback } from 'react'
+
+const RequestErrorAlert = dynamic(
+  () => import('@components/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
+  { ssr: false }
+)
 
 const mainDirection: FlexDirection = {
   initial: 'column',
@@ -34,7 +42,12 @@ export default function HomePage() {
   const file = useConvertStore(state => state.file)
   const setFile = useConvertStore(state => state.setFile)
 
-  const { handleConvertImage, isPending } = useConvertImage()
+  const { handleConvertImage, isPending, error, reset } = useConvertImage()
+
+  const handleRetry = useCallback(() => {
+    if (isPending) return
+    handleConvertImage()
+  }, [isPending, handleConvertImage])
 
   return (
     <Box width='100%'>
@@ -49,6 +62,9 @@ export default function HomePage() {
         >
           <main>
             <Flex direction='column' {...contentPadding} className={styles.content}>
+              {error && error instanceof AxiosError && (
+                <RequestErrorAlert open={!!error} error={error} reset={reset} retry={handleRetry} />
+              )}
               {file ? (
                 <UploadedFile file={file} isLoading={isPending} />
               ) : (

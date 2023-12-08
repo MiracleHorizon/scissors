@@ -1,4 +1,4 @@
-import sharp from 'sharp'
+import sharp, { type RGBA, type Stats } from 'sharp'
 import isEmpty from 'lodash.isempty'
 
 import {
@@ -18,6 +18,7 @@ import {
 
 export class Sharp {
   private readonly imageSharp: sharp.Sharp
+  private stats: Stats | null = null
 
   constructor(imageBuffer: ArrayBuffer) {
     this.imageSharp = sharp(imageBuffer)
@@ -37,6 +38,10 @@ export class Sharp {
     modulate,
     format
   }: ConvertSettings): Promise<Buffer> {
+    const stats = await this.getStatsOrNull()
+
+    if (stats) this.stats = stats
+
     if (format) {
       this.toFormat(format)
     }
@@ -104,6 +109,14 @@ export class Sharp {
     }
   }
 
+  private async getStatsOrNull(): Promise<Stats | null> {
+    try {
+      return await this.imageSharp.stats()
+    } catch {
+      return null
+    }
+  }
+
   private flip(): void {
     this.imageSharp.flip()
   }
@@ -146,30 +159,44 @@ export class Sharp {
     }
   }
 
-  private async rotate({
-    angle,
-    background: bg,
-    withDominantBackground
-  }: RotateOptions): Promise<void> {
-    try {
-      const stats = await this.imageSharp.stats()
-      const background = withDominantBackground ? stats.dominant : bg
+  private async rotate({ angle, ...options }: RotateOptions): Promise<void> {
+    const background = this.getRotateBackground(options)
 
-      this.imageSharp.rotate(angle, {
-        background
-      })
+    try {
+      this.imageSharp.rotate(angle, { background })
     } catch (err) {
+      if (err instanceof Error && err.message.startsWith('Unable to parse color from string')) {
+        throw new Error(`Failed to rotate the image with the background color: ${background}`, {
+          cause: err
+        })
+      }
+
       throw new Error('Failed to rotate the image', {
         cause: err
       })
     }
   }
 
+  private getRotateBackground({
+    background,
+    withDominantBackground
+  }: Pick<RotateOptions, 'background' | 'withDominantBackground'>): string | RGBA {
+    if (!this.stats && withDominantBackground) {
+      throw new Error('Failed to rotate the image with the dominant background color')
+    }
+
+    if (!this.stats || !withDominantBackground) {
+      return background
+    }
+
+    return this.stats.dominant
+  }
+
   private tint(color: string): void {
     try {
       this.imageSharp.tint(color)
     } catch (err) {
-      throw new Error('Failed to tint the image', {
+      throw new Error('Failed to tint the image. Sure that the color is valid', {
         cause: err
       })
     }
