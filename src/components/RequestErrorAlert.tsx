@@ -10,7 +10,9 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
     <AlertDialog.Root open={open}>
       <AlertDialog.Content size='2' className='alertContent'>
         <AlertDialog.Title>Error</AlertDialog.Title>
-        <AlertDialog.Description size='3'>{message}</AlertDialog.Description>
+        {message.length > 0 && (
+          <AlertDialog.Description size='3'>{message}</AlertDialog.Description>
+        )}
 
         <Flex gap='3' mt='4' justify='end'>
           <AlertDialog.Action>
