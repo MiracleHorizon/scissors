@@ -1,23 +1,30 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
 import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 
+import { BasicOptions } from './Basic'
+import { Negate } from './Negate'
+import { Blur } from './Blur'
+import { Resize } from './Resize'
+import { Rotate } from './Rotate'
+import { Modulate } from './Modulate'
+import { Gamma } from './Gamma'
+import { Tint } from './Tint'
+import { Normalise } from './Normalise'
+import { Format } from './Format'
 import { useConvertStore } from '@stores/convert'
 
-const Format = dynamic(() => import('./Format').then(mod => mod.Format))
-
 const options = [
-  { key: 'basic', Component: dynamic(() => import('./Basic').then(mod => mod.BasicOptions)) },
-  { key: 'negate', Component: dynamic(() => import('./Negate').then(mod => mod.Negate)) },
-  { key: 'blur', Component: dynamic(() => import('./Blur').then(mod => mod.Blur)) },
-  { key: 'resize', Component: dynamic(() => import('./Resize').then(mod => mod.Resize)) },
-  { key: 'rotate', Component: dynamic(() => import('./Rotate').then(mod => mod.Rotate)) },
-  { key: 'modulate', Component: dynamic(() => import('./Modulate').then(mod => mod.Modulate)) },
-  { key: 'gamma', Component: dynamic(() => import('./Gamma').then(mod => mod.Gamma)) },
-  { key: 'tint', Component: dynamic(() => import('./Tint').then(mod => mod.Tint)) },
-  { key: 'normalise', Component: dynamic(() => import('./Normalise').then(mod => mod.Normalise)) }
+  { key: 'basic', Component: BasicOptions },
+  { key: 'negate', Component: Negate },
+  { key: 'blur', Component: Blur },
+  { key: 'resize', Component: Resize },
+  { key: 'rotate', Component: Rotate },
+  { key: 'modulate', Component: Modulate },
+  { key: 'gamma', Component: Gamma },
+  { key: 'tint', Component: Tint },
+  { key: 'normalise', Component: Normalise }
 ]
 
 const padding: PaddingProps = {

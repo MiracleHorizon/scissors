@@ -5,7 +5,7 @@ import { ButtonRemoveSettings } from '@components/ButtonRemoveSettings'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
 import styles from './Toolbar.module.css'
 
-const padding: PaddingProps = {
+export const padding: PaddingProps = {
   px: {
     initial: '4',
     md: '3'

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.widthFull {
+  width: 100%;
+}
+
+.switch {
+  margin-left: var(--space-2);
+}

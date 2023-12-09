@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@components/Layout'
 import { getThemeAppearance } from '@shared/theme'
