@@ -13,7 +13,7 @@ const direction: FlexDirection = {
 
 export function BasicOptions() {
   return (
-    <Flex asChild gap='3' direction={direction}>
+    <Flex asChild gap='2' direction={direction}>
       <section>
         <SwitchFlip />
         <SwitchFlop />

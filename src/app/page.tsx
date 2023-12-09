@@ -3,21 +3,28 @@
 import { AxiosError } from 'axios'
 import dynamic from 'next/dynamic'
 import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
+import { useCallback } from 'react'
 
 import { FooterPanel } from '@components/FooterPanel'
 import { SettingsPanel } from '@components/SettingsPanel'
-import { UploadedFile } from '@components/UploadedFile'
+import { UploadedFileSkeleton } from '@components/UploadedFile/UploadedFileSkeleton'
 import { FileUploadZone } from '@components/FileUploadZone'
 import { useConvertStore } from '@stores/convert'
 import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
-import { useCallback } from 'react'
 
 const RequestErrorAlert = dynamic(
   () => import('@components/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
   { ssr: false }
+)
+const UploadedFile = dynamic(
+  () => import('@components/UploadedFile').then(mod => mod.UploadedFile),
+  {
+    ssr: false,
+    loading: () => <UploadedFileSkeleton />
+  }
 )
 
 const mainDirection: FlexDirection = {
@@ -74,7 +81,7 @@ export default function HomePage() {
             <SettingsPanel />
           </main>
         </Flex>
-        <FooterPanel isLoading={isPending} handleConvertImage={handleConvertImage} />
+        <FooterPanel />
       </Flex>
     </Box>
   )

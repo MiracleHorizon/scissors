@@ -1,1 +1,1 @@
-export { Toolbar } from './Toolbar'
+export { Toolbar, padding as toolbarPadding } from './Toolbar'
