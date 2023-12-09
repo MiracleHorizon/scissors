@@ -3,6 +3,7 @@
 import { AxiosError } from 'axios'
 import dynamic from 'next/dynamic'
 import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
+import { useCallback } from 'react'
 
 import { FooterPanel } from '@components/FooterPanel'
 import { SettingsPanel } from '@components/SettingsPanel'
@@ -13,7 +14,6 @@ import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
-import { useCallback } from 'react'
 
 const RequestErrorAlert = dynamic(
   () => import('@components/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
@@ -74,7 +74,7 @@ export default function HomePage() {
             <SettingsPanel />
           </main>
         </Flex>
-        <FooterPanel isLoading={isPending} handleConvertImage={handleConvertImage} />
+        <FooterPanel />
       </Flex>
     </Box>
   )
