@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:styles": "npx stylelint \"**/*module.css\"",
+    "format:styles": "npx stylelint --fix \"**/*.css\"",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "prepare": "husky install"
@@ -48,6 +50,8 @@
     "husky": "^8.0.0",
     "jsdom": "^23.0.1",
     "prettier": "^3.0.3",
+    "stylelint": "^16.0.1",
+    "stylelint-config-recommended": "^14.0.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   }
