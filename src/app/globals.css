@@ -65,3 +65,8 @@ span[aria-live='polite'] {
   display: flex;
   align-items: center;
 }
+
+.dark .react-loading-skeleton {
+  --base-color: #333333;
+  --highlight-color: #444444;
+}
