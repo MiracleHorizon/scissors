@@ -1,12 +1,21 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Box, Flex } from '@radix-ui/themes'
 
 import { ButtonGithub } from './ButtonGithub'
 import { DocumentationLink } from './DocumentationLink'
-import { SettingsPopover } from './SettingsPopover'
+import { SettingsPopoverSkeleton } from './SettingsPopover'
 import { Route } from '@shared/router'
 import type { ThemeProps } from '@shared/theme'
 import styles from './LayoutHeader.module.css'
+
+const SettingsPopover = dynamic(
+  () => import('./SettingsPopover').then(mod => mod.SettingsPopover),
+  {
+    ssr: false,
+    loading: () => <SettingsPopoverSkeleton />
+  }
+)
 
 export function LayoutHeader(settingsPopoverProps: ThemeProps) {
   return (
