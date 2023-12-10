@@ -1,1 +1,1 @@
-export { Options } from './Options'
+export { Options, padding as optionsPadding } from './Options'

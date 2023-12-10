@@ -1,6 +1,7 @@
 import { Flex, Separator } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
 
+import { optionsPadding } from '@components/options'
 import styles from './OptionsSkeleton.module.css'
 
 function SwitchSkeleton() {
@@ -12,9 +13,13 @@ function SwitchSkeleton() {
   )
 }
 
+function ButtonSkeleton() {
+  return <Skeleton inline count={1} height={32} width='145px' />
+}
+
 export function OptionsSkeleton() {
   return (
-    <Flex direction='column' width='100%' pt='4' px='5' gap='2'>
+    <Flex direction='column' width='100%' {...optionsPadding} gap='2'>
       <Flex direction='column' gap='2'>
         <SwitchSkeleton />
         <SwitchSkeleton />
@@ -27,19 +32,19 @@ export function OptionsSkeleton() {
       </Flex>
       <Separator my='1' size='4' />
       <SwitchSkeleton />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
       <Separator my='1' size='4' />
-      <Skeleton inline count={1} height={32} width='145px' />
+      <ButtonSkeleton />
     </Flex>
   )
 }
