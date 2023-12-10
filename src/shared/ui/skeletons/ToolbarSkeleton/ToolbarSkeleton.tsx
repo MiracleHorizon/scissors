@@ -14,8 +14,8 @@ export function ToolbarSkeleton() {
       {...toolbarPadding}
       className={styles.root}
     >
-      <Skeleton count={1} height={32} width={85} />
-      <Skeleton count={1} height={32} width={105} />
+      <Skeleton count={1} height={32} width={32} />
+      <Skeleton count={1} height={32} width={32} />
     </Flex>
   )
 }
