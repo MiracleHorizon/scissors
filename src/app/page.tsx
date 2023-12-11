@@ -81,7 +81,7 @@ export default function HomePage() {
             <SettingsPanel />
           </main>
         </Flex>
-        <FooterPanel />
+        <FooterPanel isPending={isPending} handleConvertImage={handleConvertImage} />
       </Flex>
     </Box>
   )
