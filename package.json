@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "docker:build": "docker build -t morph .",
+    "docker:start": "docker run -p 3000:3000 morph",
     "start": "next start",
     "lint": "next lint",
     "lint:styles": "npx stylelint \"**/*.css\"",
