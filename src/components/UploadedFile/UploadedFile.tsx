@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { AspectRatio, Box, Flex } from '@radix-ui/themes'
+import { EnterFullScreenIcon } from '@radix-ui/react-icons'
 
 import { UploadedFileCard } from './UploadedFileCard'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
@@ -27,6 +28,12 @@ export function UploadedFile(props: Props) {
       />
       <Box className={styles.aspectRadioBox} onClick={handleOpenLightbox}>
         <AspectRatio ratio={16 / 9}>
+          <EnterFullScreenIcon
+            color='white'
+            width='40px'
+            height='40px'
+            className={styles.fullscreenIcon}
+          />
           {/*eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={downloadPayload?.link ?? URL.createObjectURL(props.file)}

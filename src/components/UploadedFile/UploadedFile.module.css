@@ -1,6 +1,32 @@
 .aspectRadioBox {
+  position: relative;
   cursor: pointer;
   width: 100%;
+}
+
+.aspectRadioBox img:hover {
+  filter: brightness(70%);
+  transition: filter 0.1s ease-in-out;
+}
+
+.aspectRadioBox:hover .fullscreenIcon {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fullscreenIcon {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition:
+    opacity 0.1s ease-in-out,
+    visibility 0.1s ease-in-out;
+  z-index: 100;
 }
 
 @media screen and (max-width: 1023px) {
