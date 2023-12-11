@@ -4,10 +4,31 @@ import type { AxiosError } from 'axios'
 import {
   defaultErrorMessage,
   handleConvertError,
-  internalServerErrorMessage
+  internalServerErrorMessage,
+  timeoutErrorMessage
 } from './handleConvertError'
 
 describe('handleConvertError', () => {
+  it('should return default error message because error is canceled', () => {
+    expect(
+      handleConvertError({
+        config: {
+          signal: {
+            aborted: true
+          }
+        }
+      } as AxiosError)
+    ).toBe(timeoutErrorMessage)
+  })
+
+  it('should return default error message because error message is "canceled"', () => {
+    expect(
+      handleConvertError({
+        message: 'canceled'
+      } as AxiosError)
+    ).toBe(timeoutErrorMessage)
+  })
+
   it('should return default error message because error response is not defined', () => {
     expect(handleConvertError({} as AxiosError)).toBe(defaultErrorMessage)
   })
