@@ -14,7 +14,6 @@ export function ButtonAddRotate() {
   return (
     <ButtonAddOption
       title='Add rotate'
-      tooltipTitle='Add image rotation'
       leadIcon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
       onClick={handleAddRotate}
     />
