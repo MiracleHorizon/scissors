@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { Box, Flex } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
 
+import { LogoIcon } from '@ui/icons'
 import { ButtonGithub } from './ButtonGithub'
 import { DocumentationLink } from './DocumentationLink'
 import { SettingsPopoverSkeleton } from './SettingsPopover'
@@ -30,9 +31,11 @@ export function LayoutHeader(settingsPopoverProps: ThemeProps) {
       className={styles.root}
     >
       <header>
-        <Box asChild width='6' height='6' className={styles.logo}>
-          <Link href={Route.HOME} />
-        </Box>
+        <Flex asChild align='center' justify='center' className={styles.logo}>
+          <Link href={Route.HOME}>
+            <LogoIcon width='26px' height='26px' />
+          </Link>
+        </Flex>
         <Flex align='center' height='100%'>
           <DocumentationLink />
           <Flex align='center' gap='4'>
