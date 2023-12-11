@@ -27,7 +27,7 @@ const options = [
   { key: 'normalise', Component: Normalise }
 ]
 
-export const padding: PaddingProps = {
+const padding: PaddingProps = {
   px: {
     initial: '4',
     md: '5'

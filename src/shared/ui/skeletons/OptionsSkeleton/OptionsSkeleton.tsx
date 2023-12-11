@@ -1,7 +1,6 @@
-import { Flex, Separator } from '@radix-ui/themes'
+import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
 
-import { optionsPadding } from '@components/options'
 import styles from './OptionsSkeleton.module.css'
 
 function SwitchSkeleton() {
@@ -17,9 +16,18 @@ function ButtonSkeleton() {
   return <Skeleton inline count={1} height={32} width='145px' />
 }
 
+export const padding: PaddingProps = {
+  px: {
+    initial: '4',
+    md: '5'
+  },
+  pb: '2',
+  pt: '4'
+}
+
 export function OptionsSkeleton() {
   return (
-    <Flex direction='column' width='100%' {...optionsPadding} gap='2'>
+    <Flex direction='column' width='100%' {...padding} gap='2'>
       <Flex direction='column' gap='2'>
         <SwitchSkeleton />
         <SwitchSkeleton />
