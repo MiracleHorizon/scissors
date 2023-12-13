@@ -1,1 +1,1 @@
-export { PalettePopover } from './PalettePopover.tsx'
+export { PalettePopover } from './PalettePopover'

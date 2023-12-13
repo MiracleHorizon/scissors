@@ -41,7 +41,7 @@ export function PalettePopover({ color, setColor, disabled }: Props) {
           </Tooltip>
         </Flex>
       </Popover.Trigger>
-      <Popover.Content>
+      <Popover.Content className={styles.content}>
         <Flex gap='3' direction='column' className='react-colorful-reassign'>
           <HexColorPicker
             color={color}

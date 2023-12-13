@@ -1,3 +1,8 @@
+.content {
+  width: 240px;
+  min-width: 240px;
+}
+
 .previewBox {
   margin-left: 6px;
   border-radius: var(--radius-2);
