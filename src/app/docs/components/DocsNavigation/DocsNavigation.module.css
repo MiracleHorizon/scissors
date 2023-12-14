@@ -1,0 +1,11 @@
+.root {
+  position: sticky;
+  top: calc(var(--space-8) + var(--space-5));
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .root {
+    width: 120px;
+  }
+}

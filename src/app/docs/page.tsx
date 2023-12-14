@@ -1,8 +1,8 @@
 import { Flex, type PaddingProps } from '@radix-ui/themes'
 
-import { MainSection } from './components/MainSection'
-import { ResizeSection } from './components/ResizeSection'
-import { ModulateSection } from './components/ModulateSection'
+import { ButtonBackTop } from '@components/ButtonBackTop'
+import { DocsContent } from './components/DocsContent'
+import { DocsNavigation } from './components/DocsNavigation'
 
 const padding: PaddingProps = {
   px: {
@@ -10,10 +10,6 @@ const padding: PaddingProps = {
     sm: '5',
     md: '6',
     lg: '8'
-  },
-  pt: {
-    initial: '4',
-    sm: '5'
   },
   pb: {
     initial: '6',
@@ -23,14 +19,20 @@ const padding: PaddingProps = {
 
 export default function DocsPage() {
   return (
-    <Flex align='center' justify='start' direction='column' width='100%' {...padding}>
-      <Flex asChild align='center' justify='center' direction='column' gap='6' width='100%'>
-        <main>
-          <MainSection />
-          <ResizeSection />
-          <ModulateSection />
-        </main>
+    <>
+      <ButtonBackTop visibilityOffset={400} />
+
+      <Flex
+        {...padding}
+        align='start'
+        justify='center'
+        direction='row-reverse'
+        width='100%'
+        height='100%'
+      >
+        <DocsNavigation />
+        <DocsContent />
       </Flex>
-    </Flex>
+    </>
   )
 }

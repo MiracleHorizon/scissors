@@ -2,7 +2,7 @@
 
 import { Text } from '@radix-ui/themes'
 
-import { DetailsPopover } from '@app/docs/components/DetailsPopover'
+import { DetailsPopover } from '@app/docs/components/DocsContent/DetailsPopover'
 
 export default function MoirePatternPopover() {
   return (
