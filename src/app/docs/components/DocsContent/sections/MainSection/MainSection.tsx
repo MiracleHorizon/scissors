@@ -1,4 +1,4 @@
-import { DocsSection } from '../DocsSection'
+import { DocsSection } from '../../DocsSection'
 import {
   BlurRow,
   FlipRow,
@@ -14,7 +14,7 @@ import {
 
 export function MainSection() {
   return (
-    <DocsSection title='Main'>
+    <DocsSection title='Main' hash='#main'>
       <>
         <FlipRow />
         <FlopRow />

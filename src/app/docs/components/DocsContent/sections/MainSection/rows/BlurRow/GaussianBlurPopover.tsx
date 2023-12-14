@@ -2,7 +2,7 @@
 
 import { Code, Text } from '@radix-ui/themes'
 
-import { DetailsPopover } from '@app/docs/components/DetailsPopover'
+import { DetailsPopover } from '@app/docs/components/DocsContent/DetailsPopover'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@libs/Sharp'
 
 export default function GaussianBlurPopover() {

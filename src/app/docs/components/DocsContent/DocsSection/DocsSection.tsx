@@ -2,12 +2,12 @@ import { Flex } from '@radix-ui/themes'
 import type { PropsWithChildren } from 'react'
 
 import { DocsSectionHeader } from './DocsSectionHeader'
-import { DocsTable } from '../DocsTable'
+import { DocsTable } from './DocsTable'
 
-export function DocsSection({ children, title }: Props) {
+export function DocsSection({ children, ...headerProps }: Props) {
   return (
     <Flex direction='column' gap='4' width='100%'>
-      <DocsSectionHeader title={title} />
+      <DocsSectionHeader {...headerProps} />
       <DocsTable>{children}</DocsTable>
     </Flex>
   )
@@ -15,4 +15,5 @@ export function DocsSection({ children, title }: Props) {
 
 type Props = PropsWithChildren<{
   title: string
+  hash: string
 }>

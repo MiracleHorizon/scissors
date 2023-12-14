@@ -1,4 +1,4 @@
-import { DocsSection } from '../DocsSection'
+import { DocsSection } from '../../DocsSection'
 import {
   BackgroundRow,
   EnlargementRow,
@@ -13,7 +13,7 @@ import {
 
 export function ResizeSection() {
   return (
-    <DocsSection title='Resize'>
+    <DocsSection title='Resize' hash='#resize'>
       <>
         <WidthRow />
         <HeightRow />

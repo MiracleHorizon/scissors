@@ -1,0 +1,1 @@
+export { DocsContent } from './DocsContent'
