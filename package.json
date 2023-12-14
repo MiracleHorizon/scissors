@@ -29,10 +29,8 @@
     "react": "^18",
     "react-colorful": "^5.6.1",
     "react-dom": "^18",
-    "react-hook-form": "^7.48.2",
     "react-loading-skeleton": "^3.3.1",
     "sharp": "^0.32.6",
-    "usehooks-ts": "^2.9.1",
     "yet-another-react-lightbox": "^3.15.6",
     "zustand": "^4.4.6"
   },
