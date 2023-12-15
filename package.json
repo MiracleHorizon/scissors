@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "start": "next start",
     "docker:build": "docker build -t morph .",
     "docker:start": "docker run -p 3000:3000 morph",
-    "start": "next start",
     "lint": "next lint",
     "lint:styles": "npx stylelint \"**/*.css\"",
+    "format": "prettier --write .",
     "format:styles": "npx stylelint --fix \"**/*.css\"",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
