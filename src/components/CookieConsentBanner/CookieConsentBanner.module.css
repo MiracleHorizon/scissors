@@ -1,0 +1,29 @@
+.root {
+  width: 100%;
+  max-width: 440px;
+  position: fixed;
+  bottom: calc(var(--space-9) + 20px);
+  left: 20px;
+  z-index: 10000;
+  background-color: var(--gray-2);
+  box-shadow: 0 14px 42px 0 rgba(8 15 52 / 0.15);
+}
+
+.icon {
+  min-width: 40px;
+}
+
+@media screen and (max-width: 520px) {
+  .root {
+    max-width: 300px;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+  }
+
+  .icon {
+    min-width: 50px;
+    width: 50px;
+    height: 48px;
+  }
+}
