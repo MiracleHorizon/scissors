@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
@@ -8,6 +9,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Layout } from '@components/Layout'
 import { getThemeAppearance } from '@shared/theme'
 import './globals.css'
+
+const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), { ssr: false })
 
 export const metadata: Metadata = {
   title: 'Image Converter',
@@ -91,6 +94,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       <body className={inter.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
           {process.env.NODE_ENV === 'development' && <ThemePanel defaultOpen={false} />}
+
+          <CookieConsentBanner />
+
           <Flex align='center' justify='start' direction='column'>
             <Layout theme={theme} themeColor={themeColor}>
               {children}
