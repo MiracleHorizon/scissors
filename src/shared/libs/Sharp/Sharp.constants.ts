@@ -89,5 +89,5 @@ export const MIN_HUE = 0
 export const MAX_HUE = 360
 
 // Other
-export const DEFAULT_CONVERT_FORMAT = ConvertFormat.JPEG
+export const DEFAULT_CONVERT_FORMAT = ConvertFormat.PNG
 export const DEFAULT_TINT_COLOR = '#000000'

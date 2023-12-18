@@ -1,9 +1,10 @@
 import { create } from 'zustand'
 
 import type { State, Store } from './types'
+import { ConvertFormat } from '@libs/Sharp'
 
 const defaultState: State = {
-  format: null
+  format: ConvertFormat.PNG
 }
 
 export const useFormatStore = create<Store>((set, get) => ({

@@ -12,8 +12,6 @@ import { Modulate } from './Modulate'
 import { Gamma } from './Gamma'
 import { Tint } from './Tint'
 import { Normalise } from './Normalise'
-import { Format } from './Format'
-import { useConvertStore } from '@stores/convert'
 
 const options = [
   { key: 'basic', Component: BasicOptions },
@@ -37,8 +35,6 @@ const padding: PaddingProps = {
 }
 
 export function Options() {
-  const file = useConvertStore(state => state.file)
-
   return (
     <Flex direction='column' gap='2' {...padding}>
       {options.map(({ key, Component }, index) => (
@@ -47,13 +43,6 @@ export function Options() {
           {index < options.length - 1 && <Separator my='1' size='4' />}
         </Fragment>
       ))}
-
-      {file && (
-        <Fragment>
-          <Separator mt='1' size='4' />
-          <Format />
-        </Fragment>
-      )}
     </Flex>
   )
 }

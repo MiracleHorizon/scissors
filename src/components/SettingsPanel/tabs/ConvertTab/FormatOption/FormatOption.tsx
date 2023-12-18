@@ -1,15 +1,14 @@
-'use client'
-
 import { Flex } from '@radix-ui/themes'
 
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { SelectFormat } from './SelectFormat'
+import styles from './FormatOption.module.css'
 
-export function Format() {
+export function FormatOption() {
   return (
-    <Flex asChild align='start' direction='column' gap='2'>
+    <Flex asChild align='center' gap='2' className={styles.root}>
       <section>
-        <OptionSectionHeader title='Convert format' />
+        <OptionSectionHeader title='Format' />
         <SelectFormat />
       </section>
     </Flex>
