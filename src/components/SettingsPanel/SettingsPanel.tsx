@@ -19,7 +19,7 @@ const Toolbar = dynamic(() => import('./Toolbar').then(mod => mod.Toolbar), {
   ssr: false,
   loading: () => <ToolbarSkeleton />
 })
-const Options = dynamic(() => import('@components/options').then(mod => mod.Options), {
+const Options = dynamic(() => import('./options').then(mod => mod.Options), {
   ssr: false,
   loading: () => <OptionsSkeleton />
 })
