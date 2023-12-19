@@ -4,8 +4,9 @@ import { IconButton, Tooltip } from '@radix-ui/themes'
 import { ResetIcon } from '@radix-ui/react-icons'
 
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
+import type { ButtonVariant } from '@libs/radix'
 
-export function ButtonReset({ tooltipTitle, disabled, onClick }: Props) {
+export function ButtonReset({ tooltipTitle, disabled, variant, onClick }: Props) {
   return (
     <Tooltip
       delayDuration={900}
@@ -15,7 +16,7 @@ export function ButtonReset({ tooltipTitle, disabled, onClick }: Props) {
       })}
       content={tooltipTitle}
     >
-      <IconButton variant='solid' disabled={disabled} size='2' onClick={onClick}>
+      <IconButton variant={variant} disabled={disabled} onClick={onClick}>
         <ResetIcon width='18px' height='18px' />
       </IconButton>
     </Tooltip>
@@ -26,4 +27,5 @@ interface Props {
   tooltipTitle: string
   onClick: VoidFunction
   disabled?: boolean
+  variant?: ButtonVariant
 }

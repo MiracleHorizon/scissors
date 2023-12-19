@@ -43,9 +43,9 @@ export function OptionSlider({
         </Flex>
       )}
 
-      <Flex width='100%' direction='row'>
+      <Flex align='start' gap='3' width='100%'>
         <Flex direction='column' className={styles.sliderRoot}>
-          <Slider disabled={disabled} size='2' radius='none' {...sliderProps} />
+          <Slider {...sliderProps} disabled={disabled} size='2' />
           <Flex mt='2' justify='between'>
             <Text size='3' weight='medium'>
               {min}

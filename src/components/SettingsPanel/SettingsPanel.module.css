@@ -1,17 +1,22 @@
 .root {
-  width: var(--setings-panel-width);
-  overflow-y: auto;
+  width: var(--settings-panel-width);
   box-shadow: -1px 0 var(--gray-a4);
+}
+
+.root :global(.rt-ScrollAreaScrollbar) {
+  margin-top: calc(var(--settings-panel-toobar-height) + 6px);
+  margin-bottom: 6px;
 }
 
 @media screen and (max-width: 1200px) {
   .root {
-    width: var(--setings-panel-width-1200);
+    width: var(--settings-panel-width-1200);
   }
 }
 
 @media screen and (max-width: 1023px) {
   .root {
-    width: var(--setings-panel-width-md);
+    width: var(--settings-panel-width-md);
+    box-shadow: none;
   }
 }

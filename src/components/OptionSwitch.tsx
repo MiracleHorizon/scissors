@@ -15,7 +15,7 @@ export const OptionSwitch = memo(({ title, ...switchProps }: Props) => (
   <Flex asChild justify='between' gap='2' width={width}>
     <Text as='label' size='3'>
       <Text as='span'>{title}</Text>
-      <Switch radius='none' size='3' {...switchProps} />
+      <Switch size='3' {...switchProps} />
     </Text>
   </Flex>
 ))

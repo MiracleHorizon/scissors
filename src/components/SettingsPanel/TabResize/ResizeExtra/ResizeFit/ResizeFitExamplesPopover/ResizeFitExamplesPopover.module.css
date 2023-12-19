@@ -1,0 +1,52 @@
+.content {
+  height: 100%;
+  padding: var(--space-2);
+}
+
+.content :global(.rt-ScrollAreaScrollbar) {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.content :global(:is(html.dark .rt-ScrollAreaScrollbar)) {
+  background-color: var(--gray-12);
+}
+
+.content :global(:is(html.dark .rt-ScrollAreaThumb)) {
+  background-color: var(--gray-11);
+}
+
+.exampleList,
+.content :global(.rt-ScrollAreaViewport) {
+  border-radius: var(--radius-2);
+  background-color: white;
+}
+
+.exampleLabel {
+  color: black;
+}
+
+@media screen and (max-width: 520px) {
+  .content {
+    max-height: 300px;
+    padding: var(--space-1);
+  }
+
+  .content :global(.rt-ScrollAreaViewport) {
+    border-radius: var(--radius-2);
+    background-color: white;
+  }
+
+  .exampleList {
+    max-height: 320px;
+    height: 100%;
+  }
+
+  .exampleItem:first-of-type {
+    padding-top: 4px;
+  }
+
+  .exampleItem:last-of-type {
+    padding-bottom: 6px;
+  }
+}

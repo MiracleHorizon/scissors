@@ -3,12 +3,12 @@
 }
 
 .content {
-  width: calc(100% - var(--setings-panel-width) - var(--space-4));
+  width: calc(100% - var(--settings-panel-width) - var(--space-4));
 }
 
 @media screen and (max-width: 1200px) {
   .content {
-    width: calc(100% - var(--setings-panel-width-1200) - var(--space-4));
+    width: calc(100% - var(--settings-panel-width-1200) - var(--space-4));
   }
 }
 

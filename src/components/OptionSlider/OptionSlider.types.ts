@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 
 export type Props = SliderProps & {
+  valueSign?: string
   disabled?: boolean
 } & (WithHeader | WithoutHeader)
 
@@ -8,14 +9,12 @@ interface WithHeader {
   title: string
   titleIcon?: ReactNode
   infoContent?: ReactNode
-  valueSign?: string
 }
 
 interface WithoutHeader {
   title?: never
   titleIcon?: never
   infoContent?: never
-  valueSign?: never
 }
 
 /* eslint no-unused-vars: 0 */
