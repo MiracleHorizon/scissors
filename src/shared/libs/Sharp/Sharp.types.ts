@@ -47,9 +47,7 @@ export interface NormaliseOptions {
   upper: number
 }
 
-export type ResizeOptions = ResizeSizes & {
-  extra: ResizeExtraOptions | null
-}
+export type ResizeOptions = ResizeSizes & ResizeExtraOptions
 
 type ResizeSizes =
   | ResizeWithWidth

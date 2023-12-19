@@ -1,0 +1,1 @@
+export { TabDefault } from './TabDefault'

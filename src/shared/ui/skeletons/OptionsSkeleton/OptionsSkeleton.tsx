@@ -16,11 +16,8 @@ function ButtonSkeleton() {
   return <Skeleton inline count={1} height={32} width='145px' />
 }
 
-export const padding: PaddingProps = {
-  px: {
-    initial: '4',
-    md: '5'
-  },
+const padding: PaddingProps = {
+  px: '3',
   pb: '2',
   pt: '4'
 }
@@ -40,8 +37,6 @@ export function OptionsSkeleton() {
       </Flex>
       <Separator my='1' size='4' />
       <SwitchSkeleton />
-      <ButtonSkeleton />
-      <Separator my='1' size='4' />
       <ButtonSkeleton />
       <Separator my='1' size='4' />
       <ButtonSkeleton />

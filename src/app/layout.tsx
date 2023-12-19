@@ -8,6 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@components/Layout'
 import { getThemeAppearance } from '@shared/theme'
+import { isDevelopment } from '@helpers/isDevelopment'
 import './globals.css'
 
 const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), { ssr: false })
@@ -93,7 +94,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html lang='en' suppressHydrationWarning>
       <body className={inter.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
-          {process.env.NODE_ENV === 'development' && <ThemePanel defaultOpen={false} />}
+          {isDevelopment() && <ThemePanel defaultOpen={false} />}
 
           <CookieConsentBanner />
 

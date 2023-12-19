@@ -8,18 +8,14 @@ import {
   DEFAULT_RESIZE_POSITION,
   DEFAULT_WITHOUT_ENLARGEMENT,
   DEFAULT_WITHOUT_REDUCTION,
-  type ResizeExtraOptions,
   ResizeFit
 } from '@libs/Sharp'
-import type { State, Store } from './types'
+import type { Store } from './types'
 
-const defaultState: State = {
-  isAdded: false,
+export const defaultState = {
   width: null,
   height: null,
-  extra: null
-}
-const defaultExtra: ResizeExtraOptions = {
+
   position: DEFAULT_RESIZE_POSITION,
   fit: DEFAULT_RESIZE_FIT,
   kernel: DEFAULT_RESIZE_KERNEL,
@@ -37,12 +33,17 @@ export const useResizeStore = create<Store>((set, get) => ({
   getResizeOptions: () => ({
     width: get().width,
     height: get().height,
-    extra: get().extra
+    background: get()?.background,
+    fit: get()?.fit,
+    position: get()?.position,
+    kernel: get()?.kernel,
+    fastShrinkOnLoad: get()?.fastShrinkOnLoad,
+    withoutEnlargement: get()?.withoutEnlargement,
+    withoutReduction: get()?.withoutReduction
   }),
 
   // Actions
-  add: () => set({ isAdded: true }),
-  remove: () => set({ ...defaultState }),
+  reset: () => set(defaultState),
 
   setWidth: width => set({ width }),
   setHeight: height => set({ height }),
@@ -50,122 +51,24 @@ export const useResizeStore = create<Store>((set, get) => ({
   resetWidth: () => set({ width: null }),
   resetHeight: () => set({ height: null }),
 
-  addExtra: () => set({ extra: defaultExtra }),
-  removeExtra: () => set({ extra: null }),
+  setFit: fit => {
+    const isCover = fit === ResizeFit.COVER
+    const isContain = fit === ResizeFit.CONTAIN
 
-  setFit: fit =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
+    const background = isContain ? DEFAULT_RESIZE_BACKGROUND : null
+    const position = isCover || isContain ? DEFAULT_RESIZE_POSITION : null
 
-      return {
-        extra: {
-          ...state.extra,
-          fit,
-          background: fit === ResizeFit.CONTAIN ? DEFAULT_RESIZE_BACKGROUND : null,
-          position:
-            fit === ResizeFit.COVER || fit === ResizeFit.CONTAIN ? DEFAULT_RESIZE_POSITION : null
-        }
-      }
-    }),
-  setBackground: background =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          background
-        }
-      }
-    }),
-  setPosition: position =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          position
-        }
-      }
-    }),
-  setKernel: kernel =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          kernel
-        }
-      }
-    }),
-
-  toggleEnlargement: () =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          withoutEnlargement: !state.extra.withoutEnlargement
-        }
-      }
-    }),
-  toggleReduction: () =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          withoutReduction: !state.extra.withoutReduction
-        }
-      }
-    }),
-  toggleFastShrink: () =>
-    set(state => {
-      if (!state.extra) {
-        return state
-      }
-
-      return {
-        extra: {
-          ...state.extra,
-          fastShrinkOnLoad: !state.extra.fastShrinkOnLoad
-        }
-      }
-    }),
-
-  reset: () =>
-    set(state => {
-      if (!state.isAdded) {
-        return state
-      }
-
-      if (state.extra !== null) {
-        return {
-          ...defaultState,
-          extra: defaultExtra,
-          isAdded: true
-        }
-      }
-
-      return {
-        ...defaultState,
-        isAdded: true
-      }
+    set({
+      fit,
+      background,
+      position
     })
+  },
+  setBackground: background => set({ background }),
+  setPosition: position => set({ position }),
+  setKernel: kernel => set({ kernel }),
+
+  toggleEnlargement: () => set({ withoutEnlargement: !get().withoutEnlargement }),
+  toggleReduction: () => set({ withoutReduction: !get().withoutReduction }),
+  toggleFastShrink: () => set({ fastShrinkOnLoad: !get().fastShrinkOnLoad })
 }))

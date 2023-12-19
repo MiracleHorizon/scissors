@@ -1,0 +1,1 @@
+export { ButtonInfoSkeleton } from './ButtonInfoSkeleton'

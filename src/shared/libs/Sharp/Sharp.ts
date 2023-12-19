@@ -93,6 +93,14 @@ export class Sharp {
     return this.toBuffer()
   }
 
+  private async getStatsOrNull(): Promise<Stats | null> {
+    try {
+      return await this.imageSharp.stats()
+    } catch {
+      return null
+    }
+  }
+
   private toFormat(format: ConvertFormat): void {
     const formats = Object.values(ConvertFormat)
 
@@ -106,14 +114,6 @@ export class Sharp {
       throw new Error(`Failed to convert the image to the .${format} format`, {
         cause: err
       })
-    }
-  }
-
-  private async getStatsOrNull(): Promise<Stats | null> {
-    try {
-      return await this.imageSharp.stats()
-    } catch {
-      return null
     }
   }
 
@@ -218,15 +218,17 @@ export class Sharp {
     }
   }
 
-  private resize({ width, height, extra }: ResizeOptions) {
+  private resize({ width, height, ...options }: ResizeOptions) {
+    if (!width && !height) return
+
     try {
       this.imageSharp.resize({
         width: width ?? undefined,
         height: height ?? undefined,
-        ...extra,
-        background: extra?.background ?? undefined,
-        position: extra?.position ?? undefined,
-        kernel: extra?.kernel ?? undefined
+        ...options,
+        background: options?.background ?? undefined,
+        position: options?.position ?? undefined,
+        kernel: options?.kernel ?? undefined
       })
     } catch (err) {
       throw new Error('Failed to resize the image', {

@@ -1,10 +1,6 @@
 import type { ResizeFit, ResizeKernel, ResizeOptions, ResizePosition } from '@libs/Sharp'
 
-export type Store = State & Computed & Actions
-
-export type State = ResizeOptions & {
-  isAdded: boolean
-}
+export type Store = ResizeOptions & Computed & Actions
 
 interface Computed {
   getResizeOptions: () => ResizeOptions
@@ -12,8 +8,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
-  add: VoidFunction
-  remove: VoidFunction
+  reset: VoidFunction
 
   setWidth: (width: number) => void
   setHeight: (height: number) => void
@@ -22,9 +17,6 @@ interface Actions {
   resetHeight: VoidFunction
 
   // Extra
-  addExtra: VoidFunction
-  removeExtra: VoidFunction
-
   setFit: (fit: ResizeFit) => void
   setBackground: (background: string) => void
   setPosition: (position: ResizePosition) => void
@@ -33,6 +25,4 @@ interface Actions {
   toggleEnlargement: VoidFunction
   toggleReduction: VoidFunction
   toggleFastShrink: VoidFunction
-
-  reset: VoidFunction
 }

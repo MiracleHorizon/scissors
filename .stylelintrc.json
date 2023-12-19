@@ -9,6 +9,14 @@
     "at-rule-empty-line-before": null,
     "property-no-unknown": true,
     "color-function-notation": "modern",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global"
+        ]
+      }
+    ],
     "selector-pseudo-element-no-unknown": [
       true,
       {
@@ -25,7 +33,7 @@
     "selector-max-compound-selectors": 3,
     "selector-max-id": 0,
     "selector-max-type": [
-      1,
+      2,
       {
         "ignore": [
           "child"

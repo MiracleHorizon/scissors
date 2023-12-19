@@ -1,1 +1,1 @@
-export { default } from './CookieConsentBanner.tsx'
+export { default } from './CookieConsentBanner'
