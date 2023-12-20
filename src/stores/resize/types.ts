@@ -3,7 +3,7 @@ import type { ResizeFit, ResizeKernel, ResizeOptions, ResizePosition } from '@li
 export type Store = ResizeOptions & Computed & Actions
 
 interface Computed {
-  getResizeOptions: () => ResizeOptions
+  getResizeOptions: () => ResizeOptions | null
 }
 
 /* eslint no-unused-vars: 0 */

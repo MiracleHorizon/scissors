@@ -7,7 +7,7 @@ export interface State extends ModulateOptions {
 }
 
 interface Computed {
-  getModulateOptions: () => ModulateOptions
+  getModulateOptions: () => ModulateOptions | null
 }
 
 /* eslint no-unused-vars: 0 */

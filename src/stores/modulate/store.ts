@@ -15,12 +15,24 @@ export const useModulateStore = create<Store>((set, get) => ({
   ...defaultState,
 
   // Computed
-  getModulateOptions: () => ({
-    lightness: get().lightness,
-    brightness: get().brightness,
-    saturation: get().saturation,
-    hue: get().hue
-  }),
+  getModulateOptions: () => {
+    if (!get().isAdded) {
+      return null
+    }
+
+    const options = {
+      lightness: get().lightness,
+      brightness: get().brightness,
+      saturation: get().saturation,
+      hue: get().hue
+    }
+
+    if (Object.values(options).every(value => value === null)) {
+      return null
+    }
+
+    return options
+  },
 
   // Actions
   add: () => set({ isAdded: true }),

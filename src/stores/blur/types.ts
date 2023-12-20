@@ -3,7 +3,7 @@ import type { BlurOptions } from '@libs/Sharp'
 export type Store = BlurOptions & Computed & Actions
 
 interface Computed {
-  getBlurOptions: () => BlurOptions
+  getBlurOptions: () => BlurOptions | null
 }
 
 /* eslint no-unused-vars: 0 */

@@ -30,17 +30,25 @@ export const useResizeStore = create<Store>((set, get) => ({
   ...defaultState,
 
   // Computed
-  getResizeOptions: () => ({
-    width: get().width,
-    height: get().height,
-    background: get()?.background,
-    fit: get()?.fit,
-    position: get()?.position,
-    kernel: get()?.kernel,
-    fastShrinkOnLoad: get()?.fastShrinkOnLoad,
-    withoutEnlargement: get()?.withoutEnlargement,
-    withoutReduction: get()?.withoutReduction
-  }),
+  getResizeOptions: () => {
+    const { width, height } = get()
+
+    if (width === null && height === null) {
+      return null
+    }
+
+    return {
+      width: get().width,
+      height: get().height,
+      background: get()?.background,
+      fit: get()?.fit,
+      position: get()?.position,
+      kernel: get()?.kernel,
+      fastShrinkOnLoad: get()?.fastShrinkOnLoad,
+      withoutEnlargement: get()?.withoutEnlargement,
+      withoutReduction: get()?.withoutReduction
+    }
+  },
 
   // Actions
   reset: () => set(defaultState),

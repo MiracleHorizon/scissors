@@ -8,10 +8,16 @@ export const useNegateStore = create<Store>((set, get) => ({
   ...DEFAULT_NEGATE,
 
   // Computed
-  getNegateOptions: () => ({
-    value: get().value,
-    alpha: get().alpha
-  }),
+  getNegateOptions: () => {
+    if (!get().value) {
+      return null
+    }
+
+    return {
+      value: get().value,
+      alpha: get().alpha
+    }
+  },
 
   // Actions
   reset: () => set(DEFAULT_NEGATE),

@@ -10,10 +10,7 @@ export const useBlurStore = create<Store>((set, get) => ({
   // Computed
   getBlurOptions: () => {
     if (!get().value) {
-      return {
-        value: get().value,
-        sigma: null
-      }
+      return null
     }
 
     return {
