@@ -12,7 +12,8 @@ import { Gamma } from './Gamma'
 import { Tint } from './Tint'
 import { Normalise } from './Normalise'
 import { Format } from './Format'
-import { useConvertStore } from '@stores/convert'
+import { InputOutputFileName } from '../InputOutputFileName'
+import { useOutputStore } from '@stores/output'
 
 const options = [
   { key: 'basic', Component: BasicOptions },
@@ -32,10 +33,12 @@ const padding: PaddingProps = {
 }
 
 export function Options() {
-  const file = useConvertStore(state => state.file)
+  const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
   return (
     <Flex direction='column' gap='2' {...padding}>
+      <InputOutputFileName />
+
       {options.map(({ key, Component }, index) => (
         <Fragment key={key}>
           <Component />
@@ -43,7 +46,7 @@ export function Options() {
         </Fragment>
       ))}
 
-      {file && (
+      {isFileUploaded && (
         <Fragment>
           <Separator mt='1' size='4' />
           <Format />

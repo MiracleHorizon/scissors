@@ -6,13 +6,13 @@ import { EnterFullScreenIcon } from '@radix-ui/react-icons'
 
 import { UploadedFileCard } from './UploadedFileCard'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
-import { useConvertStore } from '@stores/convert'
+import { useOutputStore } from '@stores/output'
 import styles from './UploadedFile.module.css'
 
 export function UploadedFile(props: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  const downloadPayload = useConvertStore(state => state.downloadPayload)
+  const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   const handleOpenLightbox = () => setLightboxOpen(true)
   const handleCloseLightbox = () => setLightboxOpen(false)
