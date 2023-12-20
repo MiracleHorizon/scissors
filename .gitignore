@@ -3,4 +3,4 @@
 /.next
 /.idea
 /image-converter.iml
-/src/__setup__/__tests__/unit/coverage
+**/coverage/
