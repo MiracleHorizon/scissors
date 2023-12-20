@@ -9,7 +9,7 @@ import { FooterPanel } from '@components/FooterPanel'
 import { SettingsPanel } from '@components/SettingsPanel'
 import { UploadedFileSkeleton } from '@components/UploadedFile/UploadedFileSkeleton'
 import { FileUploadZone } from '@components/FileUploadZone'
-import { useConvertStore } from '@stores/convert'
+import { useOutputStore } from '@stores/output'
 import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import type { FlexDirection } from '@libs/radix'
@@ -46,8 +46,8 @@ const contentPadding: PaddingProps = {
 }
 
 export default function HomePage() {
-  const file = useConvertStore(state => state.file)
-  const setFile = useConvertStore(state => state.setFile)
+  const file = useOutputStore(state => state.file)
+  const setFile = useOutputStore(state => state.setFile)
 
   const { handleConvertImage, isPending, error, reset } = useConvertImage()
 

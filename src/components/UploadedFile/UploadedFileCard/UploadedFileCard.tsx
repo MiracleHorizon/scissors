@@ -6,13 +6,13 @@ import cn from 'classnames'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonFileUpload } from '@components/ButtonFileUpload'
-import { useConvertStore } from '@stores/convert'
+import { useOutputStore } from '@stores/output'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import styles from './UploadedFileCard.module.css'
 
 export function UploadedFileCard({ file, isLoading }: Props) {
-  const setFile = useConvertStore(state => state.setFile)
-  const removeFile = useConvertStore(state => state.removeFile)
+  const setFile = useOutputStore(state => state.setFile)
+  const removeFile = useOutputStore(state => state.removeFile)
 
   const handleRemoveFile = useCallback(() => removeFile(), [removeFile])
 

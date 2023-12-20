@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 
 import { useConvertStore } from '@stores/convert'
+import { useOutputStore } from '@stores/output'
 import { useResizeStore } from '@stores/resize'
 import { useRotateStore } from '@stores/rotate'
 import { useModulateStore } from '@stores/modulate'
@@ -12,7 +13,8 @@ import { useTintStore } from '@stores/tint'
 import { useFormatStore } from '@stores/format'
 
 export function useResetSettings() {
-  const resetBasic = useConvertStore(state => state.resetSettings)
+  const resetBasic = useConvertStore(state => state.reset)
+  const resetOutputFileName = useOutputStore(state => state.resetOutputFileName)
   const resetResize = useResizeStore(state => state.reset)
   const resetRotate = useRotateStore(state => state.reset)
   const resetModulate = useModulateStore(state => state.reset)
@@ -25,6 +27,7 @@ export function useResetSettings() {
 
   const handleReset = useCallback(() => {
     resetBasic()
+    resetOutputFileName()
     resetResize()
     resetRotate()
     resetModulate()
@@ -36,6 +39,7 @@ export function useResetSettings() {
     resetFormat()
   }, [
     resetBasic,
+    resetOutputFileName,
     resetResize,
     resetRotate,
     resetModulate,

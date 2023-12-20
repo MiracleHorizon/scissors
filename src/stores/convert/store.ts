@@ -4,7 +4,7 @@ import { devtools } from 'zustand/middleware'
 import { DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@libs/Sharp'
 import type { Settings, Store } from './types'
 
-const defaultSettingsState: Settings = {
+const defaultState: Settings = {
   flip: DEFAULT_FLIP,
   flop: DEFAULT_FLOP,
   grayscale: DEFAULT_GRAYSCALE
@@ -13,9 +13,7 @@ const defaultSettingsState: Settings = {
 export const useConvertStore = create(
   devtools<Store>((set, get) => ({
     // State
-    file: null,
-    downloadPayload: null,
-    ...defaultSettingsState,
+    ...defaultState,
 
     // Computed
     getConvertSettings: () => ({
@@ -25,13 +23,7 @@ export const useConvertStore = create(
     }),
 
     // Actions
-    resetSettings: () => set(defaultSettingsState),
-
-    setFile: file => set({ file, downloadPayload: null }),
-    removeFile: () => set({ file: null, downloadPayload: null }),
-
-    setDownloadPayload: downloadPayload => set({ downloadPayload }),
-    removeDownloadPayload: () => set({ downloadPayload: null }),
+    reset: () => set(defaultState),
 
     toggleFlip: () => set(state => ({ flip: !state.flip })),
     toggleFlop: () => set(state => ({ flop: !state.flop })),

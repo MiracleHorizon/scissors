@@ -1,11 +1,13 @@
 import { useCallback } from 'react'
 
-import { useConvertStore } from '@stores/convert'
 import { useConvertMutation } from './useConvertMutation'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
+import { useOutputStore } from '@stores/output'
 
 export function useConvertImage() {
-  const file = useConvertStore(state => state.file)
+  const file = useOutputStore(state => state.file)
+  const outputFileName = useOutputStore(state => state.outputFileName)
+  const isValidOutputFileName = useOutputStore(state => state.isValidOutputFileName())
   const convertSettings = useConvertSettings()
 
   const { mutate, ...rest } = useConvertMutation()
@@ -15,9 +17,10 @@ export function useConvertImage() {
 
     mutate({
       file,
-      settings: convertSettings
+      settings: convertSettings,
+      outputFileName: isValidOutputFileName ? outputFileName : null
     })
-  }, [mutate, file, convertSettings])
+  }, [file, mutate, convertSettings, isValidOutputFileName, outputFileName])
 
   return {
     handleConvertImage,

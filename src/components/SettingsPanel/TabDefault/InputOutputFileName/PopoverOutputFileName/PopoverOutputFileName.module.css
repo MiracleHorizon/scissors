@@ -1,0 +1,37 @@
+.content {
+  max-width: 370px;
+  padding: var(--space-2);
+}
+
+.content li {
+  list-style: disc outside;
+  padding-left: 4px;
+}
+
+.content li span {
+  margin-left: -8px;
+}
+
+.spanOptional {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contentText {
+  line-height: 21px;
+}
+
+@media screen and (max-width: 520px) {
+  .content {
+    max-width: 80dvw;
+  }
+
+  .content li {
+    list-style: none;
+    padding: 0;
+  }
+
+  .content li span {
+    margin-left: 0;
+  }
+}
