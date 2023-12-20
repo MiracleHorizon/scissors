@@ -3,20 +3,22 @@
   min-width: 240px;
 }
 
-.previewBox {
-  margin-left: 6px;
-  border-radius: var(--radius-2);
-  box-shadow:
-    inset var(--gray-a4) 0 1px 3px 0,
-    var(--gray-a5) 0 0 0 1px;
+.button {
+  width: max-content;
+  font-weight: 500;
+  color: var(--gray-12);
 }
 
-.disabledPreviewBox {
-  opacity: 0.5;
+.previewBox {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(170 170 170 / 0.2);
 }
 
 .disabled {
   pointer-events: none;
+  opacity: 0.6;
 }
 
 .hexColorPicker {

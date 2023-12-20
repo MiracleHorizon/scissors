@@ -1,11 +1,16 @@
 import { useCallback, useMemo } from 'react'
 import { HexColorPicker } from 'react-colorful'
-import { Box, Button, Flex, Popover, Tooltip } from '@radix-ui/themes'
+import { Button, Flex, Popover } from '@radix-ui/themes'
+import { DM_Mono as DMMono } from 'next/font/google'
 import cn from 'classnames'
 
 import { HexColorInput } from '@ui/HexColorInput'
-import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import styles from './PalettePopover.module.css'
+
+const dmMono = DMMono({
+  subsets: ['latin'],
+  weight: '500'
+})
 
 export function PalettePopover({ color, setColor, disabled }: Props) {
   const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
@@ -18,29 +23,23 @@ export function PalettePopover({ color, setColor, disabled }: Props) {
 
   return (
     <Popover.Root>
-      <Popover.Trigger className={cn({ [styles.disabled]: disabled })}>
-        <Flex>
-          <Button disabled={disabled}>Background</Button>
-          <Tooltip
-            open={isTooltipOpen({
-              content: 'Select background',
-              isParentDisabled: disabled
-            })}
-            delayDuration={600}
-            align='center'
-            content='Select background'
-          >
-            <Box
-              width='6'
-              height='6'
-              style={previewBoxStyle}
-              className={cn(styles.previewBox, {
-                [styles.disabledPreviewBox]: disabled
-              })}
-            />
-          </Tooltip>
-        </Flex>
+      <Popover.Trigger
+        className={cn({
+          [styles.disabled]: disabled
+        })}
+      >
+        <Button
+          color='gray'
+          radius='large'
+          variant='outline'
+          disabled={disabled}
+          className={cn(styles.button, dmMono.className)}
+        >
+          <div style={previewBoxStyle} className={cn(styles.previewBox)} />
+          {color}
+        </Button>
       </Popover.Trigger>
+
       <Popover.Content className={styles.content}>
         <Flex gap='3' direction='column' className='react-colorful-reassign'>
           <HexColorPicker
