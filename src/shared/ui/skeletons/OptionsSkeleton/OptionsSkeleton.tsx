@@ -1,5 +1,6 @@
 import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
+import { clsx } from 'clsx'
 
 import styles from './OptionsSkeleton.module.css'
 
@@ -25,6 +26,12 @@ const padding: PaddingProps = {
 export function OptionsSkeleton() {
   return (
     <Flex direction='column' width='100%' {...padding} gap='2'>
+      <Skeleton
+        inline
+        count={1}
+        height={30}
+        containerClassName={clsx(styles.input, styles.widthFull)}
+      />
       <Flex direction='column' gap='2'>
         <SwitchSkeleton />
         <SwitchSkeleton />

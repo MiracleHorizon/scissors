@@ -8,5 +8,10 @@
 }
 
 .switch {
+  border-radius: 12px;
   margin-left: var(--space-2);
+}
+
+.input {
+  margin-bottom: 10px;
 }
