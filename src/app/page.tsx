@@ -7,7 +7,7 @@ import { useCallback } from 'react'
 
 import { FooterPanel } from '@components/FooterPanel'
 import { SettingsPanel } from '@widgets/SettingsPanel'
-import { UploadedFileSkeleton } from '@components/UploadedFile/UploadedFileSkeleton'
+import { UploadedFileLoading } from '@components/UploadedFile/UploadedFileLoading'
 import { FileUploadZone } from '@components/uploading/FileUploadZone'
 import { useOutputStore } from '@stores/output'
 import { useConvertImage } from '@hooks/useConvertImage'
@@ -23,7 +23,7 @@ const UploadedFile = dynamic(
   () => import('@components/UploadedFile').then(mod => mod.UploadedFile),
   {
     ssr: false,
-    loading: () => <UploadedFileSkeleton />
+    loading: () => <UploadedFileLoading />
   }
 )
 
