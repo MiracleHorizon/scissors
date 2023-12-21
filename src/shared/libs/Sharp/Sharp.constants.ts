@@ -59,7 +59,7 @@ export const DEFAULT_ROTATE: RotateOptions = {
 export const MIN_GAMMA = 1
 export const MAX_GAMMA = 3
 export const DEFAULT_GAMMA: GammaOptions = {
-  value: MIN_GAMMA
+  value: 2.2
 }
 
 // Resize
