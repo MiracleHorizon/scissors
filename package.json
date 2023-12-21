@@ -14,8 +14,7 @@
     "format": "prettier --write .",
     "format:styles": "npx stylelint --fix \"**/*.css\"",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "prepare": "husky install"
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
@@ -47,8 +46,8 @@
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.0",
     "jsdom": "^23.0.1",
+    "lefthook": "^1.5.5",
     "prettier": "^3.0.3",
     "stylelint": "^16.0.1",
     "stylelint-config-recommended": "^14.0.0",
