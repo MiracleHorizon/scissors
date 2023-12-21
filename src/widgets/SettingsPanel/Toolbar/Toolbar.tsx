@@ -10,7 +10,7 @@ export function Toolbar({ activeTab }: Props) {
   const { handleReset } = useResetSettings()
 
   return (
-    <Flex align='center' justify='between' className={styles.root}>
+    <Flex align='center' justify='between' pl='3' className={styles.root}>
       <ToolbarTabList />
 
       {activeTab === 'default' && (
