@@ -3,6 +3,7 @@ import {
   BlurRow,
   FlipRow,
   FlopRow,
+  GammaRow,
   GrayscaleRow,
   NegateAlphaRow,
   NegateRow,
@@ -26,6 +27,7 @@ export function MainSection() {
         <RotateBackgroundRow />
         <NormaliseRow />
         <TintRow />
+        <GammaRow />
       </>
     </DocsSection>
   )

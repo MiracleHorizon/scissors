@@ -1,12 +1,13 @@
-import { Code, Table, Text } from '@radix-ui/themes'
+import { Code, Text } from '@radix-ui/themes'
 
+import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
 import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
 
 export function NormaliseRow() {
   return (
-    <Table.Row>
-      <Table.RowHeaderCell>Normalise</Table.RowHeaderCell>
-      <Table.Cell>
+    <DocsTableRow
+      label='Normalise'
+      description={
         <Text as='div'>
           <Text as='p'>
             Enhance the image contrast by stretching its luminance to cover a full dynamic range.
@@ -26,10 +27,8 @@ export function NormaliseRow() {
             pixel value.
           </Text>
         </Text>
-      </Table.Cell>
-      <Table.Cell>
-        <Code size='3'>1 - 99%</Code>
-      </Table.Cell>
-    </Table.Row>
+      }
+      defaultValue='1 - 99%'
+    />
   )
 }

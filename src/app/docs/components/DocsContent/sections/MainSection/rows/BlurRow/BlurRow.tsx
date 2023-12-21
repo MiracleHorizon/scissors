@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic'
-import { Code, Strong, Table, Text } from '@radix-ui/themes'
+import { Strong, Text } from '@radix-ui/themes'
+
+import { DocsTableRow } from '../../../../DocsSection/DocsTable/DocsTableRow'
 
 const GaussianBlurPopover = dynamic(() => import('./GaussianBlurPopover'), {
   ssr: false,
@@ -8,19 +10,17 @@ const GaussianBlurPopover = dynamic(() => import('./GaussianBlurPopover'), {
 
 export function BlurRow() {
   return (
-    <Table.Row>
-      <Table.RowHeaderCell>Blur</Table.RowHeaderCell>
-      <Table.Cell>
+    <DocsTableRow
+      label='Blur'
+      description={
         <Text as='div'>
           <Text as='p'>When used without sigma, performs a fast 3x3 box blur.</Text>
           <Text as='div'>
             When a sigma is provided, performs a slower, more accurate <GaussianBlurPopover /> blur.
           </Text>
         </Text>
-      </Table.Cell>
-      <Table.Cell>
-        <Code size='3'>Disabled</Code>
-      </Table.Cell>
-    </Table.Row>
+      }
+      defaultValue='Disabled'
+    />
   )
 }

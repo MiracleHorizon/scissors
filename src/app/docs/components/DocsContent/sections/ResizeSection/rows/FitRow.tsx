@@ -1,14 +1,15 @@
 import { Fragment } from 'react'
-import { Code, Table, Text } from '@radix-ui/themes'
+import { Code, Text } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 
+import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
 import { DEFAULT_RESIZE_FIT, ResizeFit } from '@libs/Sharp'
 
 export function FitRow() {
   return (
-    <Table.Row>
-      <Table.RowHeaderCell>Fit</Table.RowHeaderCell>
-      <Table.Cell>
+    <DocsTableRow
+      label='Fit'
+      description={
         <Text as='p'>
           How the image should be resized / cropped to fit the target dimension, one of{' '}
           {Object.values(ResizeFit).map((value, index) => (
@@ -19,10 +20,8 @@ export function FitRow() {
           ))}
           .
         </Text>
-      </Table.Cell>
-      <Table.Cell>
-        <Code size='3'>{capitalize(DEFAULT_RESIZE_FIT)}</Code>
-      </Table.Cell>
-    </Table.Row>
+      }
+      defaultValue={capitalize(DEFAULT_RESIZE_FIT)}
+    />
   )
 }
