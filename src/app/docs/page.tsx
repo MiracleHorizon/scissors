@@ -1,6 +1,6 @@
 import { Flex, type PaddingProps } from '@radix-ui/themes'
 
-import { ButtonBackTop } from '@components/ButtonBackTop'
+import { ButtonBackTop } from '@ui/ButtonBackTop'
 import { DocsContent } from './components/DocsContent'
 import { DocsNavigation } from './components/DocsNavigation'
 

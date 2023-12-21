@@ -5,7 +5,7 @@ import { clsx } from 'clsx'
 
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
-import { ButtonFileUpload } from '@components/ButtonFileUpload'
+import { ButtonFileUpload } from '@components/uploading/ButtonFileUpload'
 import { useOutputStore } from '@stores/output'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
 import styles from './UploadedFileCard.module.css'

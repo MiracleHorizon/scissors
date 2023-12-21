@@ -50,6 +50,12 @@
       "@api/*": [
         "./src/api/*"
       ],
+      "@layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@widgets/*": [
+        "./src/widgets/*"
+      ],
       "@components/*": [
         "./src/components/*"
       ],
