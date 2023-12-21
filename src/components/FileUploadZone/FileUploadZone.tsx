@@ -2,7 +2,7 @@
 
 import { Flex, Text } from '@radix-ui/themes'
 import { ImageIcon } from '@radix-ui/react-icons'
-import cn from 'classnames'
+import { clsx } from 'clsx'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
@@ -28,7 +28,7 @@ function FileUploadZone({ children, isDragOver, ...actions }: ComponentProps) {
       width='100%'
       p='2'
       m='auto'
-      className={cn(styles.root, {
+      className={clsx(styles.root, {
         [styles.dragOver]: isDragOver
       })}
       {...actions}

@@ -2,7 +2,7 @@
 
 import { Flex, IconButton } from '@radix-ui/themes'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import cn from 'classnames'
+import { clsx } from 'clsx'
 
 import { SettingsPopoverTitle } from '../SettingsPopoverTitle'
 import { setThemeCookie, type Theme, type ThemeProps } from '@shared/theme'
@@ -25,7 +25,7 @@ export function ToggleTheme({ theme, className }: Props) {
         size='2'
         color='gray'
         variant='ghost'
-        className={cn(styles.root, className)}
+        className={clsx(styles.root, className)}
         onClick={toggleTheme}
       >
         {getThemeIcon(theme)}

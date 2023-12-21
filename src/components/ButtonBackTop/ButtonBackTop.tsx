@@ -2,8 +2,8 @@
 
 import { IconButton } from '@radix-ui/themes'
 import { ChevronUpIcon } from '@radix-ui/react-icons'
-import { MutableRefObject, useEffect, useState } from 'react'
-import cn from 'classnames'
+import { type MutableRefObject, useEffect, useState } from 'react'
+import { clsx } from 'clsx'
 
 import type { ButtonSize } from '@libs/radix'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
@@ -71,7 +71,7 @@ export function ButtonBackTop<T extends HTMLElement>({
     <IconButton
       radius='large'
       size={size ?? '2'}
-      className={cn(styles.root, className)}
+      className={clsx(styles.root, className)}
       onClick={handleScrollToTop}
     >
       <ChevronUpIcon width='22px' height='22px' />

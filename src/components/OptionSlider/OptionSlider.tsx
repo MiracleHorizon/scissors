@@ -1,7 +1,7 @@
 'use client'
 
 import { Flex, Heading, Separator, Slider, Text } from '@radix-ui/themes'
-import cn from 'classnames'
+import { clsx } from 'clsx'
 
 import { OptionSliderPopover } from './OptionSliderPopover'
 import type { Props } from './OptionSlider.types'
@@ -18,7 +18,13 @@ export function OptionSlider({
   const { value, min, max } = sliderProps
 
   return (
-    <Flex width='100%' direction='column' className={cn({ [styles.disabled]: disabled })}>
+    <Flex
+      width='100%'
+      direction='column'
+      className={clsx({
+        [styles.disabled]: disabled
+      })}
+    >
       {title && (
         <Flex asChild mb='3' px='0' align='center'>
           <article>

@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react'
 import { HexColorPicker } from 'react-colorful'
 import { Button, Flex, Popover } from '@radix-ui/themes'
 import { DM_Mono as DMMono } from 'next/font/google'
-import cn from 'classnames'
+import { clsx } from 'clsx'
 
 import { HexColorInput } from '@ui/HexColorInput'
 import styles from './PalettePopover.module.css'
@@ -24,7 +24,7 @@ export function PalettePopover({ color, setColor, disabled }: Props) {
   return (
     <Popover.Root>
       <Popover.Trigger
-        className={cn({
+        className={clsx({
           [styles.disabled]: disabled
         })}
       >
@@ -33,9 +33,9 @@ export function PalettePopover({ color, setColor, disabled }: Props) {
           radius='large'
           variant='outline'
           disabled={disabled}
-          className={cn(styles.button, dmMono.className)}
+          className={clsx(styles.button, dmMono.className)}
         >
-          <div style={previewBoxStyle} className={cn(styles.previewBox)} />
+          <div style={previewBoxStyle} className={styles.previewBox} />
           {color}
         </Button>
       </Popover.Trigger>

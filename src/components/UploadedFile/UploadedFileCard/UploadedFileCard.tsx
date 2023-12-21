@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { Box, Card, Flex, Text } from '@radix-ui/themes'
 import { FileIcon } from '@radix-ui/react-icons'
-import cn from 'classnames'
+import { clsx } from 'clsx'
 
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
@@ -21,7 +21,7 @@ export function UploadedFileCard({ file, isLoading }: Props) {
       <Card size='2'>
         <Flex align='center' justify='start'>
           <FileIcon width='20px' height='20px' />
-          <Text as='span' ml='1' title={file.name} className={cn(styles.fileName, 'truncate')}>
+          <Text as='span' ml='1' title={file.name} className={clsx(styles.fileName, 'truncate')}>
             {file.name}
           </Text>
           {isLoading ? (
