@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+
+  commands:
+    lint:
+      run: npm run lint
+    lint-styles:
+      run: npm run lint:styles
+    test-unit:
+      run: npm run test:coverage
