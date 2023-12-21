@@ -1,0 +1,1 @@
+export { PalettePopoverContent } from './PalettePopoverContent'

@@ -5,7 +5,7 @@ import { isValidFileSize } from '@helpers/isValidFileSize'
 import type { ComponentProps, Props } from './withFileUploader.types'
 
 const FileSizeAlert = dynamic(
-  () => import('@components/FileSizeAlert').then(mod => mod.FileSizeAlert),
+  () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
   { ssr: false }
 )
 

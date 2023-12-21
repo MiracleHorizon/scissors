@@ -1,11 +1,15 @@
-import { useCallback, useMemo } from 'react'
-import { HexColorPicker } from 'react-colorful'
-import { Button, Flex, Popover } from '@radix-ui/themes'
+import dynamic from 'next/dynamic'
+import { useMemo } from 'react'
+import { Button, Popover } from '@radix-ui/themes'
 import { DM_Mono as DMMono } from 'next/font/google'
 import { clsx } from 'clsx'
 
-import { HexColorInput } from '@ui/HexColorInput'
 import styles from './PalettePopover.module.css'
+
+const PalettePopoverContent = dynamic(
+  () => import('./PalettePopoverContent').then(mod => mod.PalettePopoverContent),
+  { ssr: false }
+)
 
 const dmMono = DMMono({
   subsets: ['latin'],
@@ -14,12 +18,6 @@ const dmMono = DMMono({
 
 export function PalettePopover({ color, setColor, disabled }: Props) {
   const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
-
-  const onColorValueChange = useCallback((color: string) => setColor(color), [setColor])
-  const onInputValueChange = useCallback(
-    (color: string) => setColor(!color.startsWith('#') ? `#${color}` : color),
-    [setColor]
-  )
 
   return (
     <Popover.Root>
@@ -40,16 +38,7 @@ export function PalettePopover({ color, setColor, disabled }: Props) {
         </Button>
       </Popover.Trigger>
 
-      <Popover.Content className={styles.content}>
-        <Flex gap='3' direction='column' className='react-colorful-reassign'>
-          <HexColorPicker
-            color={color}
-            className={styles.hexColorPicker}
-            onChange={onColorValueChange}
-          />
-          <HexColorInput size='3' color={color} onChange={onInputValueChange} />
-        </Flex>
-      </Popover.Content>
+      <PalettePopoverContent color={color} setColor={setColor} />
     </Popover.Root>
   )
 }

@@ -6,9 +6,9 @@ import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 import { useCallback } from 'react'
 
 import { FooterPanel } from '@components/FooterPanel'
-import { SettingsPanel } from '@components/SettingsPanel'
+import { SettingsPanel } from '@widgets/SettingsPanel'
 import { UploadedFileSkeleton } from '@components/UploadedFile/UploadedFileSkeleton'
-import { FileUploadZone } from '@components/FileUploadZone'
+import { FileUploadZone } from '@components/uploading/FileUploadZone'
 import { useOutputStore } from '@stores/output'
 import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
@@ -16,7 +16,7 @@ import type { FlexDirection } from '@libs/radix'
 import styles from './page.module.css'
 
 const RequestErrorAlert = dynamic(
-  () => import('@components/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
+  () => import('@components/alerts/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
   { ssr: false }
 )
 const UploadedFile = dynamic(
