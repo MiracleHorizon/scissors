@@ -17,7 +17,7 @@
   display: none;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 519px) {
   .text {
     display: none;
   }

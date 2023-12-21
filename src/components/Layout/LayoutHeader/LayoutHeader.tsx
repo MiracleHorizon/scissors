@@ -26,7 +26,11 @@ export function LayoutHeader(settingsPopoverProps: ThemeProps) {
       justify='between'
       width='100%'
       height='8'
-      px='4'
+      pl={{
+        initial: '3',
+        xs: '4'
+      }}
+      pr='4'
       py='2'
       className={styles.root}
     >

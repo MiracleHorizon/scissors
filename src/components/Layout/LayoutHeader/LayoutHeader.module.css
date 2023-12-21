@@ -18,3 +18,15 @@
 .logo svg {
   fill: var(--accent-9-contrast);
 }
+
+@media screen and (max-width: 519px) {
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo svg {
+    width: 22px;
+    height: 22px;
+  }
+}

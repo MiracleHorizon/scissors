@@ -6,7 +6,7 @@
   width: 123px;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 519px) {
   .buttonDownload,
   .buttonConvert {
     width: 52px;

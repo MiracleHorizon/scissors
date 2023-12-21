@@ -26,7 +26,7 @@
   color: black;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 519px) {
   .content {
     max-height: 300px;
     padding: var(--space-1);
