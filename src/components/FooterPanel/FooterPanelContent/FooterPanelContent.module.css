@@ -1,0 +1,5 @@
+@media screen and (max-width: 520px) {
+  .root button span {
+    display: none;
+  }
+}

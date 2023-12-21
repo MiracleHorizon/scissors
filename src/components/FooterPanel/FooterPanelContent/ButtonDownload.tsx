@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, Link } from '@radix-ui/themes'
+import { Button, Link, Text } from '@radix-ui/themes'
 import { DownloadIcon } from '@radix-ui/react-icons'
 
 import { useOutputStore } from '@stores/output'
@@ -19,8 +19,9 @@ export function ButtonDownload() {
     <>
       <Button size='3' variant='surface' disabled={!downloadPayload} onClick={handleButtonClick}>
         <DownloadIcon width='20px' height='20px' />
-        Download
+        <Text as='span'>Download</Text>
       </Button>
+
       <Link
         ref={linkRef}
         href={downloadPayload?.link}
