@@ -6,8 +6,7 @@ import { useOutputStore } from '@stores/output'
 
 export function useConvertImage() {
   const file = useOutputStore(state => state.file)
-  const outputFileName = useOutputStore(state => state.outputFileName)
-  const isValidOutputFileName = useOutputStore(state => state.isValidOutputFileName())
+  const fileName = useOutputStore(state => state.getFullFileName())
   const convertSettings = useConvertSettings()
 
   const { mutate, ...rest } = useConvertMutation()
@@ -17,10 +16,10 @@ export function useConvertImage() {
 
     mutate({
       file,
-      settings: convertSettings,
-      outputFileName: isValidOutputFileName ? outputFileName : null
+      fileName,
+      settings: convertSettings
     })
-  }, [file, mutate, convertSettings, isValidOutputFileName, outputFileName])
+  }, [file, fileName, convertSettings, mutate])
 
   return {
     handleConvertImage,

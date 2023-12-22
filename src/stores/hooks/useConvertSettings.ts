@@ -7,7 +7,7 @@ import { useNegateStore } from '@stores/negate'
 import { useGammaStore } from '@stores/gamma'
 import { useNormaliseStore } from '@stores/normalise'
 import { useTintStore } from '@stores/tint'
-import { useFormatStore } from '@stores/format'
+import { useOutputStore } from '@stores/output'
 import type { ConvertSettings } from '@libs/Sharp'
 
 export function useConvertSettings(): ConvertSettings {
@@ -20,7 +20,7 @@ export function useConvertSettings(): ConvertSettings {
   const gamma = useGammaStore(state => state.gamma)
   const normalise = useNormaliseStore(state => state.getNormaliseOptions())
   const tint = useTintStore(state => state.color)
-  const format = useFormatStore(state => state.getFormatOptions())
+  const outputFormat = useOutputStore(state => state.outputFormat)
 
   return {
     ...convertSettings,
@@ -32,6 +32,6 @@ export function useConvertSettings(): ConvertSettings {
     gamma,
     normalise,
     tint,
-    format
+    outputFormat
   }
 }

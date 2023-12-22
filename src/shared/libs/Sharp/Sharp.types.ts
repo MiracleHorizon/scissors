@@ -12,7 +12,7 @@ export interface ConvertSettings {
   resize: ResizeOptions | null
   tint: string | null
   modulate: ModulateOptions | null
-  format: ConvertFormat | null
+  outputFormat: ConvertFormat | null
 }
 
 export interface ModulateOptions {

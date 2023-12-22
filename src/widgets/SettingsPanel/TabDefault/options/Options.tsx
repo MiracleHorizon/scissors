@@ -11,7 +11,7 @@ import { Modulate } from './Modulate'
 import { Gamma } from './Gamma'
 import { Tint } from './Tint'
 import { Normalise } from './Normalise'
-import { Format } from './Format'
+import { OutputFormat } from './OutputFormat'
 import { InputOutputFileName } from '../InputOutputFileName'
 import { useOutputStore } from '@stores/output'
 
@@ -49,7 +49,7 @@ export function Options() {
       {isFileUploaded && (
         <Fragment>
           <Separator mt='1' size='4' />
-          <Format />
+          <OutputFormat />
         </Fragment>
       )}
     </Flex>
