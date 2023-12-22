@@ -41,7 +41,10 @@ export default defineConfig({
       lines: 100,
       functions: 100,
       reporter: ['html'],
-      reportsDirectory: './src/__setup__/__tests__/unit/coverage'
+      reportsDirectory: './src/__setup__/__tests__/unit/coverage',
+      reportOnFailure: true,
+      clean: true,
+      100: true
     },
     alias: aliases.map(alias => createAlias(alias))
   }
