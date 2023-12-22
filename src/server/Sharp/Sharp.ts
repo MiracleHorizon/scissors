@@ -105,7 +105,7 @@ export class Sharp {
     const formats = Object.values(ConvertFormat)
 
     if (!formats.includes(format)) {
-      throw new Error('Unsupported format')
+      throw new Error('Unsupported image format')
     }
 
     try {
@@ -138,7 +138,7 @@ export class Sharp {
   private async blur({ sigma }: Pick<BlurOptions, 'sigma'>): Promise<void> {
     try {
       if (sigma && sigma > MAX_BLUR_SIGMA) {
-        void Promise.reject('Invalid blur sigma value')
+        return Promise.reject(new Error('Invalid blur sigma'))
       }
 
       void this.imageSharp.blur(sigma ?? false)

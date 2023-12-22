@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-import type { AxiosError } from 'axios'
 
 import {
   defaultErrorMessage,
@@ -7,72 +6,56 @@ import {
   internalServerErrorMessage,
   timeoutErrorMessage
 } from './handleConvertError'
+import { ConvertError } from '@api/errors/ConvertError'
+import { FetchException } from '@api/exceptions/FetchException'
 
 describe('handleConvertError', () => {
-  it('should return default error message because error is canceled', () => {
-    expect(
-      handleConvertError({
-        config: {
-          signal: {
-            aborted: true
-          }
-        }
-      } as AxiosError)
-    ).toBe(timeoutErrorMessage)
+  it('should return default error message because request is aborted', () => {
+    const error = new FetchException({
+      cause: new DOMException('Aborted', 'AbortError')
+    })
+
+    expect(handleConvertError(error)).toBe(timeoutErrorMessage)
   })
 
-  it('should return default error message because error message is "canceled"', () => {
-    expect(
-      handleConvertError({
-        message: 'canceled'
-      } as AxiosError)
-    ).toBe(timeoutErrorMessage)
+  it('should return default error message because error is instance of {FetchException}', () => {
+    const error = new FetchException()
+
+    expect(handleConvertError(error)).toBe(defaultErrorMessage)
   })
 
-  it('should return default error message because error response is not defined', () => {
-    expect(handleConvertError({} as AxiosError)).toBe(defaultErrorMessage)
+  it('should return default error message because error instance of {ConvertError} and status less than 400', () => {
+    const error = new ConvertError({
+      status: 308,
+      statusText: 'foo'
+    })
+
+    expect(handleConvertError(error)).toBe(defaultErrorMessage)
   })
 
-  it('should return default error message because error status less than 400', () => {
-    expect(
-      handleConvertError({
-        response: {
-          status: 308
-        }
-      } as AxiosError)
-    ).toBe(defaultErrorMessage)
-  })
+  it(`should return default error message because error instance of {ConvertError} and status text is "${internalServerErrorMessage}"`, () => {
+    const error = new ConvertError({
+      status: 500,
+      statusText: internalServerErrorMessage
+    })
 
-  it(`should return default error message because error status text is "${internalServerErrorMessage}"`, () => {
-    expect(
-      handleConvertError({
-        response: {
-          status: 500,
-          statusText: internalServerErrorMessage
-        }
-      } as AxiosError)
-    ).toBe(defaultErrorMessage)
+    expect(handleConvertError(error)).toBe(defaultErrorMessage)
   })
 
   it('should return correct error status text', () => {
     const statusText1 = 'File is not found'
     const statusText2 = 'Invalid convert settings'
 
-    expect(
-      handleConvertError({
-        response: {
-          status: 404,
-          statusText: statusText1
-        }
-      } as AxiosError)
-    ).toBe(statusText1)
-    expect(
-      handleConvertError({
-        response: {
-          status: 400,
-          statusText: statusText2
-        }
-      } as AxiosError)
-    ).toBe(statusText2)
+    const error1 = new ConvertError({
+      status: 404,
+      statusText: statusText1
+    })
+    const error2 = new ConvertError({
+      status: 400,
+      statusText: statusText2
+    })
+
+    expect(handleConvertError(error1)).toBe(statusText1)
+    expect(handleConvertError(error2)).toBe(statusText2)
   })
 })

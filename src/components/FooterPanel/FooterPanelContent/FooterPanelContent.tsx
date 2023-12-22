@@ -2,7 +2,7 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { ButtonConvert } from './ButtonConvert'
 import { ButtonDownload } from './ButtonDownload'
-import { useConvertImage } from '@hooks/useConvertImage'
+import { useConvertImage } from '@stores/hooks/useConvertImage'
 import styles from './FooterPanelContent.module.css'
 
 export function FooterPanelContent(props: Props) {

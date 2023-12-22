@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { useConvertMutation } from './useConvertMutation'
+import { useConvertMutation } from '@api/convertImage'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { useOutputStore } from '@stores/output'
 

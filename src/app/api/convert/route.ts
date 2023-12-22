@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   try {
     const settings = JSON.parse(settingsJSON) as ConvertSettings
 
-    if (typeof settings !== 'object' || Array.isArray(settings)) {
+    if (settings === null || typeof settings !== 'object' || Array.isArray(settings)) {
       return createResponseError('Invalid convert settings', 400)
     }
 

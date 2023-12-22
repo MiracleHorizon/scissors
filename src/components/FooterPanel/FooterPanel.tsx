@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Box } from '@radix-ui/themes'
 
 import { FooterPanelContentSkeleton } from './FooterPanelContentSkeleton'
-import { useConvertImage } from '@hooks/useConvertImage'
+import { useConvertImage } from '@stores/hooks/useConvertImage'
 import styles from './FooterPanel.module.css'
 
 const FooterPanelContent = dynamic(

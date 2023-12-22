@@ -1,20 +1,21 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { AxiosError } from 'axios'
 
 import { handleConvertError } from '@helpers/handleConvertError'
 
 export function RequestErrorAlert({ open, error, reset, retry }: Props) {
   const message = handleConvertError(error)
+  const isMessageEmpty = message.length === 0
 
   return (
     <AlertDialog.Root open={open}>
       <AlertDialog.Content size='2' className='alertContent'>
-        <AlertDialog.Title>Error</AlertDialog.Title>
-        {message.length > 0 && (
-          <AlertDialog.Description size='3'>{message}</AlertDialog.Description>
-        )}
+        <AlertDialog.Title align={isMessageEmpty ? 'center' : 'left'}>
+          {isMessageEmpty ? 'Something went wrong' : 'Error'}
+        </AlertDialog.Title>
 
-        <Flex gap='3' mt='4' justify='end'>
+        {!isMessageEmpty && <AlertDialog.Description size='3'>{message}</AlertDialog.Description>}
+
+        <Flex gap='3' mt='4' justify={isMessageEmpty ? 'center' : 'end'}>
           <AlertDialog.Action>
             <Button onClick={retry}>Retry</Button>
           </AlertDialog.Action>
@@ -31,7 +32,7 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
 
 interface Props {
   open: boolean
-  error: AxiosError
+  error: Error
   reset: VoidFunction
   retry: VoidFunction
 }
