@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton'
 
-import styles from './SettingsPopoverSkeleton.module.css'
+import styles from './AppearancePopoverSkeleton.module.css'
 
-export function SettingsPopoverSkeleton() {
+export function AppearancePopoverSkeleton() {
   return <Skeleton inline count={1} width={32} height={32} className={styles.root} />
 }

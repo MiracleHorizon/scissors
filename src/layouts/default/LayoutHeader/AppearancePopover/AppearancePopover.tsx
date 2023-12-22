@@ -7,7 +7,7 @@ import { ToggleTheme } from './ToggleTheme'
 import { ThemeColorGrid } from './ThemeColorGrid'
 import type { ThemeProps } from '@lib/theme'
 
-export function SettingsPopover({ theme, themeColor }: ThemeProps) {
+export function AppearancePopover({ theme, themeColor }: ThemeProps) {
   return (
     <Popover.Root>
       <Popover.Trigger>

@@ -5,20 +5,20 @@ import { Flex } from '@radix-ui/themes'
 import { LogoIcon } from '@ui/icons'
 import { ButtonGithub } from './ButtonGithub'
 import { DocumentationLink } from './DocumentationLink'
-import { SettingsPopoverSkeleton } from './SettingsPopover'
+import { AppearancePopoverSkeleton } from './AppearancePopover'
 import { Route } from '@lib/router'
 import type { ThemeProps } from '@lib/theme'
 import styles from './LayoutHeader.module.css'
 
-const SettingsPopover = dynamic(
-  () => import('./SettingsPopover').then(mod => mod.SettingsPopover),
+const AppearancePopover = dynamic(
+  () => import('./AppearancePopover').then(mod => mod.AppearancePopover),
   {
     ssr: false,
-    loading: () => <SettingsPopoverSkeleton />
+    loading: () => <AppearancePopoverSkeleton />
   }
 )
 
-export function LayoutHeader(settingsPopoverProps: ThemeProps) {
+export function LayoutHeader(themeProps: ThemeProps) {
   return (
     <Flex
       asChild
@@ -44,7 +44,7 @@ export function LayoutHeader(settingsPopoverProps: ThemeProps) {
           <DocumentationLink />
           <Flex align='center' gap='4'>
             <ButtonGithub />
-            <SettingsPopover {...settingsPopoverProps} />
+            <AppearancePopover {...themeProps} />
           </Flex>
         </Flex>
       </header>
