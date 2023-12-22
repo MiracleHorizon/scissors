@@ -1,4 +1,4 @@
-import type { RadixThemeColor } from './radix'
+import type { RadixThemeColor } from './radix/types'
 
 export type Theme = 'light' | 'dark'
 

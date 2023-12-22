@@ -12,7 +12,7 @@ import { FileUploadZone } from '@components/uploading/FileUploadZone'
 import { useOutputStore } from '@stores/output'
 import { useConvertImage } from '@hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
-import type { FlexDirection } from '@lib/theme/radix'
+import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 
 const RequestErrorAlert = dynamic(
