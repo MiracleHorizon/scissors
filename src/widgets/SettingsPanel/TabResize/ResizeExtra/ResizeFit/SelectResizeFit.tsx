@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { ResizeSelect } from '../ResizeSelect'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_FIT, ResizeFit } from '@libs/Sharp'
+import { DEFAULT_RESIZE_FIT, ResizeFit } from '@server/Sharp'
 
 const data = [
   {

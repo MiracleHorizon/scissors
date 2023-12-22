@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_GAMMA } from '@libs/Sharp'
+import { DEFAULT_GAMMA } from '@server/Sharp'
 
 export function GammaRow() {
   return (

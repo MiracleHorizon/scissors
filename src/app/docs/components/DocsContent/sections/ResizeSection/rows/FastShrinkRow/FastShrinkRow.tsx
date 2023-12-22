@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Code, Strong, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_FAST_SHRINK } from '@libs/Sharp'
+import { DEFAULT_FAST_SHRINK } from '@server/Sharp'
 
 const MoirePatternPopover = dynamic(() => import('./MoirePatternPopover'), {
   ssr: false,

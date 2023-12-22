@@ -5,7 +5,7 @@ import { ChevronUpIcon } from '@radix-ui/react-icons'
 import { type MutableRefObject, useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 
-import type { ButtonSize } from '@libs/radix'
+import type { ButtonSize } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ButtonBackTop.module.css'
 

@@ -6,8 +6,8 @@ import { clsx } from 'clsx'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
-import { ConvertFormat } from '@libs/Sharp'
-import type { TextSize } from '@libs/radix'
+import { ConvertFormat } from '@server/Sharp'
+import type { TextSize } from '@lib/theme'
 import styles from './FileUploadZone.module.css'
 
 const uploadTextSize: TextSize = {

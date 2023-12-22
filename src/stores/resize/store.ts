@@ -9,7 +9,7 @@ import {
   DEFAULT_WITHOUT_ENLARGEMENT,
   DEFAULT_WITHOUT_REDUCTION,
   ResizeFit
-} from '@libs/Sharp'
+} from '@server/Sharp'
 import type { Store } from './types'
 
 export const defaultState = {

@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
 import { useRotateStore } from '@stores/rotate'
-import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@libs/Sharp'
+import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/Sharp'
 
 export function SliderRotateAngle() {
   const rotateAngle = useRotateStore(state => state.angle)

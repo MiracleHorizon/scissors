@@ -1,4 +1,4 @@
-import type { ResizeFit, ResizeKernel, ResizeOptions, ResizePosition } from '@libs/Sharp'
+import type { ResizeFit, ResizeKernel, ResizeOptions, ResizePosition } from '@server/Sharp'
 
 export type Store = ResizeOptions & Computed & Actions
 

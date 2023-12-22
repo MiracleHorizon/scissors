@@ -1,4 +1,6 @@
-export function BlurIcon({ width = 24, height = 24 }: Props) {
+import type { SVGProps } from 'react'
+
+export function BlurIcon({ width = 24, height = 24, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={width}
@@ -6,6 +8,7 @@ export function BlurIcon({ width = 24, height = 24 }: Props) {
       viewBox='0 0 24 24'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      {...props}
     >
       <path
         d='M4.17768 3.18817C3.21205 3.37567 2.83705 4.58036 3.52612 5.29286C4.12612 5.90692 5.16674 5.73817 5.5558 4.96473C5.60268 4.87567 5.64955 4.66005 5.66362 4.4913C5.68237 4.2288 5.6683 4.13973 5.56987 3.9288C5.31205 3.3663 4.76362 3.07567 4.17768 3.18817Z'
@@ -73,9 +76,4 @@ export function BlurIcon({ width = 24, height = 24 }: Props) {
       />
     </svg>
   )
-}
-
-interface Props {
-  width?: number
-  height?: number
 }

@@ -11,7 +11,7 @@ import {
   MAX_FILE_NAME_LENGTH,
   MIN_FILE_NAME_LENGTH
 } from '@helpers/isValidFileName'
-import type { TextFieldInputProps } from '@libs/radix'
+import type { TextFieldInputProps } from '@lib/theme'
 import styles from './InputOutputFileName.module.css'
 
 const PopoverOutputFileName = dynamic(

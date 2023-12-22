@@ -1,4 +1,4 @@
-import type { NormaliseOptions } from '@libs/Sharp'
+import type { NormaliseOptions } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
 

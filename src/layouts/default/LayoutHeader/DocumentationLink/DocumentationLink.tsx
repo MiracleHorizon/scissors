@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Flex, IconButton, Link as RadixLink, Text, Tooltip } from '@radix-ui/themes'
 import { ReaderIcon } from '@radix-ui/react-icons'
 
-import { Route } from '@shared/router'
+import { Route } from '@lib/router'
 import styles from './DocumentationLink.module.css'
 
 export function DocumentationLink() {

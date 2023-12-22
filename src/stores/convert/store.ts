@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@libs/Sharp'
+import { DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@server/Sharp'
 import type { Settings, Store } from './types'
 
 const defaultState: Settings = {

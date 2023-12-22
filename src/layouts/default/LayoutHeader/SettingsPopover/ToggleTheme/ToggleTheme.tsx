@@ -5,7 +5,7 @@ import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
 import { SettingsPopoverTitle } from '../SettingsPopoverTitle'
-import { setThemeCookie, type Theme, type ThemeProps } from '@shared/theme'
+import { setThemeCookie, type Theme, type ThemeProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ToggleTheme.module.css'
 

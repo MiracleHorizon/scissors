@@ -1,9 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { Sharp } from '@libs/Sharp/Sharp'
+import { Sharp } from '@server/Sharp/Sharp'
 import { isValidFileSize } from '@helpers/isValidFileSize'
-import type { ConvertSettings } from '@libs/Sharp'
+import type { ConvertSettings } from '@server/Sharp'
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData()

@@ -1,4 +1,4 @@
-import type { NegateOptions } from '@libs/Sharp'
+import type { NegateOptions } from '@server/Sharp'
 
 export type Store = NegateOptions & Computed & Actions
 

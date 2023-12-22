@@ -14,7 +14,7 @@ import {
   type NormaliseOptions,
   type ResizeOptions,
   type RotateOptions
-} from '@libs/Sharp'
+} from '@server/Sharp'
 
 export class Sharp {
   private readonly imageSharp: sharp.Sharp

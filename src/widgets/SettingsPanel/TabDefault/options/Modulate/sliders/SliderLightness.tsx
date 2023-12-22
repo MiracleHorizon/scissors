@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
-import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@libs/Sharp'
+import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@server/Sharp'
 
 export function SliderLightness() {
   const lightness = useModulateStore(state => state.lightness)

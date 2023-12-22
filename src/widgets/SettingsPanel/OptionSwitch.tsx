@@ -3,7 +3,7 @@
 import { memo } from 'react'
 import { Flex, Switch, Text } from '@radix-ui/themes'
 
-import type { Size } from '@libs/radix'
+import type { Size } from '@lib/theme'
 
 const width: Size = {
   initial: '100%',

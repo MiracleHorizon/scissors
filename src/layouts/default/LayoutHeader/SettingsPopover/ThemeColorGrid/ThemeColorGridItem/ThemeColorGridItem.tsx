@@ -5,7 +5,7 @@ import { Box, Tooltip } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 import { clsx } from 'clsx'
 
-import { setThemeColorCookie, type ThemeColorItem } from '@shared/theme'
+import { setThemeColorCookie, type ThemeColorItem } from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
 export function ThemeColorGridItem({ color, isSelected }: Props) {

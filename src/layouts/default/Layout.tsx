@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { PropsWithChildren } from 'react'
 
 import { LayoutHeader } from './LayoutHeader'
-import type { ThemeProps } from '@shared/theme'
+import type { ThemeProps } from '@lib/theme'
 
 const queryClient = new QueryClient({
   defaultOptions: {

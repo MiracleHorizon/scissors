@@ -6,8 +6,8 @@ import { LogoIcon } from '@ui/icons'
 import { ButtonGithub } from './ButtonGithub'
 import { DocumentationLink } from './DocumentationLink'
 import { SettingsPopoverSkeleton } from './SettingsPopover'
-import { Route } from '@shared/router'
-import type { ThemeProps } from '@shared/theme'
+import { Route } from '@lib/router'
+import type { ThemeProps } from '@lib/theme'
 import styles from './LayoutHeader.module.css'
 
 const SettingsPopover = dynamic(

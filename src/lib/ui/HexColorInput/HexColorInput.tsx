@@ -2,7 +2,7 @@ import { TextField } from '@radix-ui/themes'
 
 import { ButtonClipboardCopy } from '@ui/ButtonClipboardCopy'
 import { ColorInput } from './ColorInput'
-import type { TextFieldInputProps } from '@libs/radix'
+import type { TextFieldInputProps } from '@lib/theme'
 
 export const validHex = (value: string, alpha?: boolean): boolean => {
   const matcher = /^#?([0-9A-F]{3,8})$/i

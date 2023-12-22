@@ -7,7 +7,7 @@ import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonFileUpload } from '@components/uploading/ButtonFileUpload'
 import { useOutputStore } from '@stores/output'
-import { ALLOWED_IMAGE_FORMATS } from '@libs/Sharp'
+import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
 import styles from './UploadedFileCard.module.css'
 
 export function UploadedFileCard({ file, isLoading }: Props) {

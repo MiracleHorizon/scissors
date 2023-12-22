@@ -2,7 +2,7 @@ import { Code, Text } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_POSITION, ResizeFit } from '@libs/Sharp'
+import { DEFAULT_RESIZE_POSITION, ResizeFit } from '@server/Sharp'
 
 export function PositionRow() {
   return (

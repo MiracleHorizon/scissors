@@ -9,8 +9,8 @@ import { OptionSwitch } from '@widgets/SettingsPanel/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 import { useBlurStore } from '@stores/blur'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@libs/Sharp'
-import type { AlignItems, FlexDirection, Gap } from '@libs/radix'
+import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/Sharp'
+import type { AlignItems, FlexDirection, Gap } from '@lib/theme'
 
 function BlurInfo() {
   return (

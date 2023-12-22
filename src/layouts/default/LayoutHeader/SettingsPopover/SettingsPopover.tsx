@@ -5,7 +5,7 @@ import { MixerHorizontalIcon } from '@radix-ui/react-icons'
 
 import { ToggleTheme } from './ToggleTheme'
 import { ThemeColorGrid } from './ThemeColorGrid'
-import type { ThemeProps } from '@shared/theme'
+import type { ThemeProps } from '@lib/theme'
 
 export function SettingsPopover({ theme, themeColor }: ThemeProps) {
   return (

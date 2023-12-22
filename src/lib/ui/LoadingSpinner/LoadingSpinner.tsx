@@ -1,6 +1,6 @@
 import { Box, type MarginProps } from '@radix-ui/themes'
 
-import type { Size } from '@libs/radix'
+import type { Size } from '@lib/theme'
 import styles from './LoadingSpinner.module.css'
 
 export function LoadingSpinner({ width, height, ...marginProps }: Props) {
