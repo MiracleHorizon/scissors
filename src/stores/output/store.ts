@@ -50,9 +50,10 @@ export const useOutputStore = create<Store>((set, get) => ({
       outputFormat = null
     } else {
       const fileType = cropImageFileType(file.type)
-      if (fileType === outputFormat) return
 
-      outputFormat = fileType as ConvertFormat
+      if (fileType !== outputFormat) {
+        outputFormat = fileType as ConvertFormat
+      }
     }
 
     set({
