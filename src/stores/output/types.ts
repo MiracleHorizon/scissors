@@ -1,5 +1,5 @@
 import type { DownloadPayload } from '@app-types/DownloadPayload'
-import type { ConvertFormat } from '@libs/Sharp'
+import type { ConvertFormat } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
 

@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { cropImageFileType } from '@helpers/cropImageFileType'
 import { cropFileName } from '@helpers/cropFileName'
 import { isValidFileName } from '@helpers/isValidFileName'
-import type { ConvertFormat } from '@libs/Sharp'
+import type { ConvertFormat } from '@server/Sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {

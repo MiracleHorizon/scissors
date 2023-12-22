@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
-import { MAX_SATURATION, MIN_SATURATION } from '@libs/Sharp'
+import { MAX_SATURATION, MIN_SATURATION } from '@server/Sharp'
 
 export function SliderSaturation() {
   const saturation = useModulateStore(state => state.saturation)

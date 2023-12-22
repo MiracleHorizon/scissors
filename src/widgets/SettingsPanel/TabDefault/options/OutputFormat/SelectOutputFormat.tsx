@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { Select } from '@radix-ui/themes'
 
 import { useOutputStore } from '@stores/output'
-import { ConvertFormat } from '@libs/Sharp'
+import { ConvertFormat } from '@server/Sharp'
 
 export function SelectOutputFormat() {
   const outputFormat = useOutputStore(state => state.outputFormat)

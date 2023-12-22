@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
+import { MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
 
 export function NormaliseRow() {
   return (

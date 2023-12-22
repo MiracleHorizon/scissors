@@ -7,7 +7,7 @@ import 'yet-another-react-lightbox/styles.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@layouts/default'
-import { getThemeAppearance } from '@shared/theme'
+import { getThemeAppearance } from '@lib/theme'
 import { isDevelopment } from '@helpers/isDevelopment'
 import './globals.css'
 

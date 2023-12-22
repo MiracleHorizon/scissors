@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
 import { useGammaStore } from '@stores/gamma'
-import { MAX_GAMMA, MIN_GAMMA } from '@libs/Sharp'
+import { MAX_GAMMA, MIN_GAMMA } from '@server/Sharp'
 
 export function SliderGamma() {
   const gammaValue = useGammaStore(state => state.gamma?.value)

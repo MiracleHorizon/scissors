@@ -4,7 +4,7 @@ import { Flex, Grid } from '@radix-ui/themes'
 
 import { ThemeColorGridItem } from './ThemeColorGridItem'
 import { SettingsPopoverTitle } from '../SettingsPopoverTitle'
-import { themeColorItems, type ThemeProps } from '@shared/theme'
+import { themeColorItems, type ThemeProps } from '@lib/theme'
 
 export function ThemeColorGrid({ themeColor }: Pick<ThemeProps, 'themeColor'>) {
   return (

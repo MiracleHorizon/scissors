@@ -13,12 +13,12 @@ const createAlias = ({ find, replacementPath }: Alias) => ({
 
 const aliases: Alias[] = [
   {
-    find: '@helpers',
-    replacementPath: './src/shared/helpers'
+    find: '@lib',
+    replacementPath: './src/lib/ui'
   },
   {
-    find: '@libs',
-    replacementPath: './src/shared/libs'
+    find: '@helpers',
+    replacementPath: './src/lib/helpers'
   },
   {
     find: '@stores',

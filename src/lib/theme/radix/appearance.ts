@@ -1,4 +1,4 @@
-import type { ThemeColorItem } from './types'
+import type { ThemeColorItem } from '@lib/theme/types'
 
 export const themeColorItems: ThemeColorItem[] = [
   { key: 'tomato', color: 'tomato' },

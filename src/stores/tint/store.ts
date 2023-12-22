@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_TINT_COLOR } from '@libs/Sharp'
+import { DEFAULT_TINT_COLOR } from '@server/Sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {

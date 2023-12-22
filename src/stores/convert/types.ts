@@ -1,4 +1,4 @@
-import type { ConvertSettings } from '@libs/Sharp'
+import type { ConvertSettings } from '@server/Sharp'
 
 export type Store = Settings & Computed & Actions
 

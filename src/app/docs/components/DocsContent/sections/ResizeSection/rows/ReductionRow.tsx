@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_WITHOUT_REDUCTION } from '@libs/Sharp'
+import { DEFAULT_WITHOUT_REDUCTION } from '@server/Sharp'
 
 export function ReductionRow() {
   return (

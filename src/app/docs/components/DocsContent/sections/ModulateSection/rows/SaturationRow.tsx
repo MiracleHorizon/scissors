@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_SATURATION, MIN_SATURATION } from '@libs/Sharp'
+import { MAX_SATURATION, MIN_SATURATION } from '@server/Sharp'
 
 export function SaturationRow() {
   return (

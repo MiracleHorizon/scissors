@@ -6,7 +6,7 @@ import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'
 import { useRotateStore } from '@stores/rotate'
-import { DEFAULT_ROTATE_ANGLE } from '@libs/Sharp'
+import { DEFAULT_ROTATE_ANGLE } from '@server/Sharp'
 
 export function RotateHeader() {
   const rotateAngle = useRotateStore(state => state.angle)

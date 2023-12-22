@@ -4,7 +4,7 @@ import { IconButton, Tooltip } from '@radix-ui/themes'
 import { ResetIcon } from '@radix-ui/react-icons'
 
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
-import type { ButtonVariant } from '@libs/radix'
+import type { ButtonVariant } from '@lib/theme'
 
 export function ButtonReset({ tooltipTitle, disabled, variant, onClick }: Props) {
   return (

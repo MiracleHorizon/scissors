@@ -2,7 +2,7 @@ import { Text } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_KERNEL } from '@libs/Sharp'
+import { DEFAULT_RESIZE_KERNEL } from '@server/Sharp'
 
 export function KernelRow() {
   return (

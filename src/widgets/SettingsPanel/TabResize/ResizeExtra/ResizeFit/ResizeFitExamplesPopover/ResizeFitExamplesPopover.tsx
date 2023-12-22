@@ -8,7 +8,7 @@ import fillExample from '@public/resize-fit-examples/fill.png'
 import insideExample from '@public/resize-fit-examples/inside.png'
 import outsideExample from '@public/resize-fit-examples/outside.png'
 import styles from './ResizeFitExamplesPopover.module.css'
-import type { FlexDirection, Gap } from '@libs/radix'
+import type { FlexDirection, Gap } from '@lib/theme'
 
 const examples = [
   {

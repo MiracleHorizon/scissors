@@ -1,7 +1,7 @@
 import { Box, Code, Flex, Table, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_BACKGROUND, ResizeFit } from '@libs/Sharp'
+import { DEFAULT_RESIZE_BACKGROUND, ResizeFit } from '@server/Sharp'
 
 const previewBoxStyle = {
   backgroundColor: DEFAULT_RESIZE_BACKGROUND

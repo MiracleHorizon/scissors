@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
 import { useNormaliseStore } from '@stores/normalise'
-import { MAX_NORMALISE, MIN_NORMALISE } from '@libs/Sharp'
+import { MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
 
 export function SliderNormalise() {
   const lower = useNormaliseStore(state => state.lower)

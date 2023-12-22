@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 import { ResizeSelect } from '../ResizeSelect'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_POSITION, ResizePosition, ResizePositionGravity } from '@libs/Sharp'
+import { DEFAULT_RESIZE_POSITION, ResizePosition, ResizePositionGravity } from '@server/Sharp'
 
 const data = [
   {

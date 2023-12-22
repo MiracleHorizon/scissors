@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_HUE, MIN_HUE } from '@libs/Sharp'
+import { MAX_HUE, MIN_HUE } from '@server/Sharp'
 
 export function HueRow() {
   return (

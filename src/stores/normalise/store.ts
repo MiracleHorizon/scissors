@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NORMALISE } from '@libs/Sharp'
+import { DEFAULT_NORMALISE } from '@server/Sharp'
 import type { Store } from './types'
 
 export const useNormaliseStore = create<Store>((set, get) => ({

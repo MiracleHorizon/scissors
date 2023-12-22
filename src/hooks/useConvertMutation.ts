@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 
 import { convertImage } from '@api/convertImage'
 import { useOutputStore } from '@stores/output'
-import type { ConvertSettings } from '@libs/Sharp'
+import type { ConvertSettings } from '@server/Sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 interface ConvertPayload {

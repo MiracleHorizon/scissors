@@ -5,7 +5,12 @@ import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 
 import { ResizeSizeInput } from './ResizeSizeInput'
 import { useResizeStore } from '@stores/resize'
-import { MAX_RESIZE_HEIGHT, MAX_RESIZE_WIDTH, MIN_RESIZE_SIZE, RESIZE_SIZE_STEP } from '@libs/Sharp'
+import {
+  MAX_RESIZE_HEIGHT,
+  MAX_RESIZE_WIDTH,
+  MIN_RESIZE_SIZE,
+  RESIZE_SIZE_STEP
+} from '@server/Sharp'
 
 export function ResizeSizesForm() {
   const width = useResizeStore(state => state.width)

@@ -41,6 +41,9 @@
     "isolatedModules": true,
     /* Aliases */
     "paths": {
+      "@server/*": [
+        "./src/server/*"
+      ],
       "@public/*": [
         "./public/*"
       ],
@@ -68,17 +71,14 @@
       "@hooks/*": [
         "./src/hooks/*"
       ],
-      "@shared/*": [
-        "./src/shared/*"
+      "@lib/*": [
+        "./src/lib/*"
       ],
       "@ui/*": [
-        "./src/shared/ui/*"
+        "./src/lib/ui/*"
       ],
       "@helpers/*": [
-        "./src/shared/helpers/*"
-      ],
-      "@libs/*": [
-        "./src/shared/libs/*"
+        "./src/lib/helpers/*"
       ],
       "@utils/*": [
         "./src/utils/*"

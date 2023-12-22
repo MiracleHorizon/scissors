@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 
 import { THEME_COLOR_COOKIE_NAME, THEME_COOKIE_NAME } from './constants'
 import type { Theme } from './types'
-import type { RadixThemeColor } from '@libs/radix'
+import type { RadixThemeColor } from '@lib/theme/radix'
 
 export async function setThemeCookie(value: Theme): Promise<void> {
   const cookieStore = cookies()

@@ -2,7 +2,7 @@ import { Flex } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
 
 import { LoadingSpinner } from '@ui/LoadingSpinner'
-import type { Size } from '@libs/radix'
+import type { Size } from '@lib/theme'
 
 const spinnerSize: Size = {
   initial: '7',
