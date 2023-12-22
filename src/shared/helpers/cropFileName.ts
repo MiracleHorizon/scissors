@@ -1,4 +1,4 @@
-export function cropFileNameExtension(fileName: string): string {
+export function cropFileName(fileName: string): string {
   const splitString = fileName.split('.').filter(value => value !== '')
 
   if (splitString.length <= 1) {

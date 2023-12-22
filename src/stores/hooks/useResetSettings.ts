@@ -10,7 +10,6 @@ import { useNegateStore } from '@stores/negate'
 import { useGammaStore } from '@stores/gamma'
 import { useNormaliseStore } from '@stores/normalise'
 import { useTintStore } from '@stores/tint'
-import { useFormatStore } from '@stores/format'
 
 export function useResetSettings() {
   const resetBasic = useConvertStore(state => state.reset)
@@ -23,7 +22,6 @@ export function useResetSettings() {
   const resetGamma = useGammaStore(state => state.reset)
   const resetNormalise = useNormaliseStore(state => state.reset)
   const resetTint = useTintStore(state => state.reset)
-  const resetFormat = useFormatStore(state => state.reset)
 
   const handleReset = useCallback(() => {
     resetBasic()
@@ -36,7 +34,6 @@ export function useResetSettings() {
     resetGamma()
     resetNormalise()
     resetTint()
-    resetFormat()
   }, [
     resetBasic,
     resetOutputFileName,
@@ -47,8 +44,7 @@ export function useResetSettings() {
     resetGamma,
     resetNegate,
     resetNormalise,
-    resetTint,
-    resetFormat
+    resetTint
   ])
 
   return { handleReset }

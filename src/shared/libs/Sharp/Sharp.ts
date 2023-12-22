@@ -36,14 +36,14 @@ export class Sharp {
     gamma,
     resize,
     modulate,
-    format
+    outputFormat
   }: ConvertSettings): Promise<Buffer> {
     const stats = await this.getStatsOrNull()
 
     if (stats) this.stats = stats
 
-    if (format) {
-      this.toFormat(format)
+    if (outputFormat) {
+      this.toFormat(outputFormat)
     }
 
     if (flip) {
