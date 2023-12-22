@@ -1,6 +1,5 @@
 'use client'
 
-import { AxiosError } from 'axios'
 import dynamic from 'next/dynamic'
 import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 import { useCallback } from 'react'
@@ -10,7 +9,7 @@ import { SettingsPanel } from '@widgets/SettingsPanel'
 import { UploadedFileLoading } from '@components/UploadedFile/UploadedFileLoading'
 import { FileUploadZone } from '@components/uploading/FileUploadZone'
 import { useOutputStore } from '@stores/output'
-import { useConvertImage } from '@hooks/useConvertImage'
+import { useConvertImage } from '@stores/hooks/useConvertImage'
 import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
@@ -69,7 +68,7 @@ export default function HomePage() {
         >
           <main>
             <Flex {...contentPadding} direction='column' className={styles.content}>
-              {error && error instanceof AxiosError && (
+              {error && (
                 <RequestErrorAlert open={!!error} error={error} reset={reset} retry={handleRetry} />
               )}
 

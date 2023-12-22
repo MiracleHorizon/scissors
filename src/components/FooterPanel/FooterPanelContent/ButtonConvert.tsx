@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Button, Text } from '@radix-ui/themes'
 import { LockClosedIcon, SymbolIcon } from '@radix-ui/react-icons'
 
-import { useConvertImage } from '@hooks/useConvertImage'
+import { useConvertImage } from '@stores/hooks/useConvertImage'
 import { useOutputStore } from '@stores/output'
 
 function ButtonConvert({ isPending, handleConvertImage }: Props) {
