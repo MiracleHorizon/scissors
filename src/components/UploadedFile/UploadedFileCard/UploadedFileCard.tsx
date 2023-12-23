@@ -20,8 +20,8 @@ export function UploadedFileCard({ file, isLoading }: Props) {
     <Box asChild width='100%'>
       <Card size='2'>
         <Flex align='center' justify='start'>
-          <FileIcon width='20px' height='20px' />
-          <Text as='span' ml='1' title={file.name} className={clsx(styles.fileName, 'truncate')}>
+          <FileIcon width='22px' height='22px' />
+          <Text as='span' ml='2' title={file.name} className={clsx(styles.fileName, 'truncate')}>
             {file.name}
           </Text>
           {isLoading ? (
