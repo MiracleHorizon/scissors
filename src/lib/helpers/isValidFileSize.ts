@@ -3,6 +3,10 @@ export const BYTES_IN_MB = BYTES_IN_KB * 1024
 export const MAX_FILE_SIZE_MB = 4.5
 export const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * BYTES_IN_MB
 
+/**
+ * @param file - default file object
+ * @returns boolean indicating whether the file size is valid
+ */
 export function isValidFileSize(file: File): boolean {
   if (file.size < 0) {
     return false

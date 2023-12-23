@@ -6,6 +6,10 @@ export const internalServerErrorMessage = 'Internal Server Error'
 export const timeoutErrorMessage =
   'Server response waiting time has been exceeded. Please try again later.'
 
+/**
+ * @param payload - error from the convert request
+ * @returns error message for display to the user
+ */
 export function handleConvertError(payload: ConvertError | FetchException): string {
   if (payload instanceof FetchException) {
     if (payload.cause instanceof DOMException && payload.cause.name === 'AbortError') {
