@@ -20,7 +20,7 @@ export function useConvertSettings(): ConvertSettings {
   const gamma = useGammaStore(state => state.gamma)
   const normalise = useNormaliseStore(state => state.getNormaliseOptions())
   const tint = useTintStore(state => state.color)
-  const outputFormat = useOutputStore(state => state.outputFormat)
+  const outputFormat = useOutputStore(state => state.getOutputFormat())
 
   return {
     ...convertSettings,

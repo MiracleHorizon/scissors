@@ -30,7 +30,24 @@ export const useOutputStore = create<Store>((set, get) => ({
 
     return `${name}.${type}`
   },
-  getOutputFormat: () => get().outputFormat,
+  getOutputFormat: () => {
+    const file = get().file
+    if (!file) {
+      return null
+    }
+
+    const outputFormat = get().outputFormat
+    if (!outputFormat) {
+      return null
+    }
+
+    const fileType = cropImageFileType(file.type)
+    if (outputFormat === fileType) {
+      return null
+    }
+
+    return outputFormat
+  },
   isFileUploaded: () => get().file !== null,
   isValidOutputFileName: () => {
     const outputFileName = get().outputFileName
