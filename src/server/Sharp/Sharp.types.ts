@@ -12,7 +12,7 @@ export interface ConvertSettings {
   resize: ResizeOptions | null
   tint: string | null
   modulate: ModulateOptions | null
-  outputFormat: ConvertFormat | null
+  outputFormat: ImageFileFormat | null
 }
 
 export interface ModulateOptions {
@@ -124,7 +124,7 @@ export enum ResizePositionGravity {
   NORTH_WEST = 'northwest'
 }
 
-export enum ConvertFormat {
+export enum ImageFileFormat {
   JPEG = 'jpeg',
   JPG = 'jpg',
   PNG = 'png',

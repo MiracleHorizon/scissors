@@ -1,7 +1,7 @@
 import {
   type BlurOptions,
-  ConvertFormat,
   type GammaOptions,
+  ImageFileFormat,
   type NegateOptions,
   type NormaliseOptions,
   ResizeFit,
@@ -10,7 +10,7 @@ import {
   type RotateOptions
 } from './Sharp.types'
 
-export const ALLOWED_IMAGE_FORMATS = Object.values(ConvertFormat)
+export const ALLOWED_IMAGE_FORMATS = Object.values(ImageFileFormat)
   .map(format => `image/${format}`)
   .join(', ')
 

@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { cropImageFileType } from '@helpers/cropImageFileType'
 import { cropFileName } from '@helpers/cropFileName'
 import { isValidFileName } from '@helpers/isValidFileName'
-import type { ConvertFormat } from '@server/Sharp'
+import type { ImageFileFormat } from '@server/Sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {
@@ -69,7 +69,7 @@ export const useOutputStore = create<Store>((set, get) => ({
       const fileType = cropImageFileType(file.type)
 
       if (fileType !== outputFormat) {
-        outputFormat = fileType as ConvertFormat
+        outputFormat = fileType as ImageFileFormat
       }
     }
 

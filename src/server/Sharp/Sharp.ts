@@ -3,9 +3,9 @@ import isEmpty from 'lodash.isempty'
 
 import {
   type BlurOptions,
-  ConvertFormat,
   type ConvertSettings,
   type GammaOptions,
+  ImageFileFormat,
   MAX_BLUR_SIGMA,
   MAX_GAMMA,
   MIN_GAMMA,
@@ -101,8 +101,8 @@ export class Sharp {
     }
   }
 
-  private toFormat(format: ConvertFormat): void {
-    const formats = Object.values(ConvertFormat)
+  private toFormat(format: ImageFileFormat): void {
+    const formats = Object.values(ImageFileFormat)
 
     if (!formats.includes(format)) {
       throw new Error('Unsupported image format')

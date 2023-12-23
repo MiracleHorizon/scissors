@@ -4,14 +4,14 @@ import { useCallback } from 'react'
 import { Select } from '@radix-ui/themes'
 
 import { useOutputStore } from '@stores/output'
-import { ConvertFormat } from '@server/Sharp'
+import { ImageFileFormat } from '@server/Sharp'
 
 export function SelectOutputFormat() {
   const outputFormat = useOutputStore(state => state.outputFormat)
   const setOutputFormat = useOutputStore(state => state.setOutputFormat)
 
   const handleChangeOutputFormat = useCallback(
-    (value: ConvertFormat) => setOutputFormat(value),
+    (value: ImageFileFormat) => setOutputFormat(value),
     [setOutputFormat]
   )
 
@@ -26,7 +26,7 @@ export function SelectOutputFormat() {
       <Select.Content sideOffset={5} align='center' position='popper'>
         <Select.Group>
           <Select.Label>Output format</Select.Label>
-          {Object.values(ConvertFormat).map(format => (
+          {Object.values(ImageFileFormat).map(format => (
             <Select.Item key={format} value={format}>
               {format}
             </Select.Item>

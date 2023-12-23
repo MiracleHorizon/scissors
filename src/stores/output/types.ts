@@ -1,17 +1,17 @@
 import type { DownloadPayload } from '@app-types/DownloadPayload'
-import type { ConvertFormat } from '@server/Sharp'
+import type { ImageFileFormat } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
 
 export interface State {
   file: File | null
   outputFileName: string
-  outputFormat: ConvertFormat | null
+  outputFormat: ImageFileFormat | null
   downloadPayload: DownloadPayload | null
 }
 
 interface Computed {
-  getOutputFormat: () => ConvertFormat | null
+  getOutputFormat: () => ImageFileFormat | null
   getFullFileName: () => string
   isFileUploaded: () => boolean
   isValidOutputFileName: () => boolean
@@ -25,7 +25,7 @@ interface Actions {
   setOutputFileName: (outputFileName: string) => void
   resetOutputFileName: VoidFunction
 
-  setOutputFormat: (outputFormat: ConvertFormat | null) => void
+  setOutputFormat: (outputFormat: ImageFileFormat | null) => void
 
   setDownloadPayload: (downloadPayload: DownloadPayload) => void
 }

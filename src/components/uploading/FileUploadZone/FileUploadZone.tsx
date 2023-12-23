@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
-import { ConvertFormat } from '@server/Sharp'
+import { ImageFileFormat } from '@server/Sharp'
 import type { TextSize } from '@lib/theme'
 import styles from './FileUploadZone.module.css'
 
@@ -40,7 +40,7 @@ function FileUploadZone({ children, isDragOver, ...actions }: ComponentProps) {
         </Text>
       </Flex>
       <Text as='p' align='center' size={descriptionTextSize}>
-        Available file extensions: {Object.values(ConvertFormat).slice(0, 4).join(', ')}...
+        Available file extensions: {Object.values(ImageFileFormat).slice(0, 4).join(', ')}...
       </Text>
       <Text as='p' align='center' size={descriptionTextSize}>
         Maximum file size: {MAX_FILE_SIZE_MB} MB
