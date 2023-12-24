@@ -11,7 +11,7 @@ const contentSize: Responsive<'1' | '2' | '3' | '4'> = {
 export function FileSizeAlert({ isOpen, onClose }: Props) {
   return (
     <AlertDialog.Root open={isOpen} defaultOpen={false}>
-      <AlertDialog.Content size={contentSize} className='alertContent' onEscapeKeyDown={onClose}>
+      <AlertDialog.Content size={contentSize} className='alert-content' onEscapeKeyDown={onClose}>
         <Flex align='center' mb='3'>
           <ExclamationTriangleIcon color='tomato' width='18px' height='18px' />
           <AlertDialog.Title ml='2' mb='0' trim='start'>

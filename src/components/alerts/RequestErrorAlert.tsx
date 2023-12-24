@@ -8,7 +8,7 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
 
   return (
     <AlertDialog.Root open={open}>
-      <AlertDialog.Content size='2' className='alertContent'>
+      <AlertDialog.Content size='2' className='alert-content'>
         <AlertDialog.Title align={isMessageEmpty ? 'center' : 'left'}>
           {isMessageEmpty ? 'Something went wrong' : 'Error'}
         </AlertDialog.Title>
