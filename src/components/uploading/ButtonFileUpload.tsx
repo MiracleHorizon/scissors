@@ -8,7 +8,7 @@ import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 function ButtonFileUpload({ children, onClick }: Pick<ComponentProps, 'children' | 'onClick'>) {
   return (
     <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
-      <UploadIcon width='22px' height='22px' />
+      <UploadIcon width='20px' height='20px' />
       {children}
     </IconButton>
   )
