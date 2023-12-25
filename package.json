@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node ./.next/standalone/server.js",
     "docker:build": "docker build -t morph .",
     "docker:start": "docker run -p 3000:3000 morph",
     "lint": "next lint",
