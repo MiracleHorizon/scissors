@@ -17,7 +17,7 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
 ButtonDelete.displayName = 'ButtonDelete'
 
 interface Props extends MarginProps {
-  onClick: VoidFunction
+  onClick?: VoidFunction
   variant?: ButtonVariant
   disabled?: boolean
 }

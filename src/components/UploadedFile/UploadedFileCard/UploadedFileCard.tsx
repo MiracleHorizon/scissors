@@ -3,6 +3,7 @@ import { Box, Card, Flex, Text } from '@radix-ui/themes'
 import { FileIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
+import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonFileUpload } from '@components/uploading/ButtonFileUpload'
@@ -29,7 +30,13 @@ export function UploadedFileCard({ file, isLoading }: Props) {
           ) : (
             <Flex ml='auto' align='center' gap='1'>
               <ButtonFileUpload accept={ALLOWED_IMAGE_FORMATS} setFile={setFile} />
-              <ButtonDelete onClick={handleRemoveFile} />
+              <ConfirmAlert
+                title='Confirm deletion'
+                description='Are you sure you want to continue?'
+                onConfirm={handleRemoveFile}
+              >
+                <ButtonDelete />
+              </ConfirmAlert>
             </Flex>
           )}
         </Flex>
