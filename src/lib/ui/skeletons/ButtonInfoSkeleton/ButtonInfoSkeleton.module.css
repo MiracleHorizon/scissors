@@ -1,3 +1,20 @@
-.root {
+.withIntendMargin {
   margin: 0 -4px;
+}
+
+.withoutMargin {
+  margin: 0;
+}
+
+.containerMinimal {
+  width: 18px;
+  height: 18px !important;
+}
+
+.largeRadius {
+  border-radius: 4px;
+}
+
+.fullRadius {
+  border-radius: 50%;
 }

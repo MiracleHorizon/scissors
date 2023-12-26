@@ -26,6 +26,11 @@
   color: black;
 }
 
+.buttonInfo {
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (max-width: 519px) {
   .content {
     max-height: 300px;

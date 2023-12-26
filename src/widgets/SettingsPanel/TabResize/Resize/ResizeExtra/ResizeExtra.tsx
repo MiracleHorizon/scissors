@@ -3,35 +3,34 @@
 import { Flex } from '@radix-ui/themes'
 
 import { ResizeBackgroundPopover } from './ResizeBackgroundPopover'
-import { ResizeFit } from './ResizeFit'
-import { ResizePosition } from './ResizePosition'
-import { ResizeKernel } from './ResizeKernel'
+import { SelectResizeFit } from './SelectResizeFit'
+import { SelectResizePosition } from './SelectResizePosition'
+import { SelectResizeKernel } from './SelectResizeKernel'
 import { ResizeSwitchers } from './ResizeSwitchers'
 import { useResizeStore } from '@stores/resize'
 
 export function ResizeExtra() {
-  const background = useResizeStore(state => state?.background)
-  const position = useResizeStore(state => state?.position)
-  const kernel = useResizeStore(state => state?.kernel)
+  const fit = useResizeStore(state => state.fit)
+  const kernel = useResizeStore(state => state.kernel)
+  const position = useResizeStore(state => state.position)
+  const background = useResizeStore(state => state.background)
 
   return (
-    <Flex
-      direction={{
-        initial: 'column',
-        xs: 'row'
-      }}
-      width='100%'
-      gap={{
-        initial: '4',
-        xs: '6'
-      }}
-    >
-      <Flex direction='column' gap='2'>
-        <ResizeFit />
-        {background && <ResizeBackgroundPopover background={background} />}
-        {position && <ResizePosition />}
-        {kernel && <ResizeKernel />}
+    <Flex direction='column' gap='2' width='100%'>
+      <Flex
+        direction={{
+          initial: 'column',
+          xs: 'row'
+        }}
+        gap='2'
+      >
+        {fit && <SelectResizeFit />}
+        {kernel && <SelectResizeKernel />}
+        {position && <SelectResizePosition />}
       </Flex>
+
+      {background && <ResizeBackgroundPopover background={background} />}
+
       <ResizeSwitchers />
     </Flex>
   )

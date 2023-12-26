@@ -1,1 +1,0 @@
-export { ResizeSizeInput } from './ResizeSizeInput'
