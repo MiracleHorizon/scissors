@@ -1,11 +1,12 @@
 'use client'
 
-import NextLink from 'next/link'
-import { Box, Link } from '@radix-ui/themes'
+import Link from 'next/link'
+import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
 import { useParams } from 'next/navigation'
 import { useLayoutEffect, useRef } from 'react'
 
 import styles from './DocsSectionHeader.module.css'
+import { Link2Icon } from '@radix-ui/react-icons'
 
 export function DocsSectionHeader({ title, hash }: Props) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -26,11 +27,14 @@ export function DocsSectionHeader({ title, hash }: Props) {
   return (
     <Box asChild pt='3' pl='1' ref={rootRef} className={styles.root}>
       <header>
-        <Link asChild size='5' weight='bold'>
-          <NextLink href={hash} scroll={false}>
-            {title}
-          </NextLink>
-        </Link>
+        <Flex asChild align='center' gap='1'>
+          <RadixLink asChild size='5' weight='bold'>
+            <Link href={hash} scroll={false}>
+              <Link2Icon width='18px' height='18px' />
+              {title}
+            </Link>
+          </RadixLink>
+        </Flex>
       </header>
     </Box>
   )
