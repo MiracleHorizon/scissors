@@ -1,12 +1,10 @@
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
-import { LogoIcon } from '@ui/icons'
+import { AppLogo } from '@ui/AppLogo'
 import { ButtonGithub } from './ButtonGithub'
 import { Navigation } from './Navigation'
 import { AppearancePopoverSkeleton } from './AppearancePopover'
-import { Route } from '@lib/router'
 import type { ThemeProps } from '@lib/theme'
 import styles from './LayoutHeader.module.css'
 
@@ -35,11 +33,8 @@ export function LayoutHeader(themeProps: ThemeProps) {
       className={styles.root}
     >
       <header>
-        <Flex asChild align='center' justify='center' className={styles.logo}>
-          <Link href={Route.HOME}>
-            <LogoIcon width='26px' height='26px' />
-          </Link>
-        </Flex>
+        <AppLogo />
+
         <Flex align='center' height='100%'>
           <Navigation />
           <Flex align='center' gap='4'>
