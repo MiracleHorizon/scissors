@@ -7,7 +7,7 @@ import styles from './OptionsSkeleton.module.css'
 function SwitchSkeleton() {
   return (
     <Flex align='center' width='100%'>
-      <Skeleton inline count={1} height={24} containerClassName={styles.widthFull} />
+      <Skeleton inline count={1} height={24} containerClassName='w-full' />
       <Skeleton inline count={1} height={24} width={42} className={styles.switch} />
     </Flex>
   )
@@ -26,12 +26,7 @@ const padding: PaddingProps = {
 export function OptionsSkeleton() {
   return (
     <Flex direction='column' width='100%' {...padding} gap='2'>
-      <Skeleton
-        inline
-        count={1}
-        height={30}
-        containerClassName={clsx(styles.input, styles.widthFull)}
-      />
+      <Skeleton inline count={1} height={30} containerClassName={clsx(styles.input, 'w-full')} />
       <Flex direction='column' gap='2'>
         <SwitchSkeleton />
         <SwitchSkeleton />
