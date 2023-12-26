@@ -1,42 +1,56 @@
-.aspectRadioBox {
+.root {
   position: relative;
   cursor: pointer;
   width: 100%;
 }
 
-.aspectRadioBox img:hover {
+.root img:hover {
   filter: brightness(70%);
   transition: filter 0.1s ease-in-out;
 }
 
-.aspectRadioBox:hover .fullscreenIcon {
+.root:hover .icon {
   opacity: 1;
   visibility: visible;
 }
 
-.fullscreenIcon {
+.icon {
   opacity: 0;
+  pointer-events: none;
   visibility: hidden;
   position: absolute;
+  color: white;
+  transition:
+    opacity 0.1s ease-in-out,
+    visibility 0.1s ease-in-out;
+  z-index: 1;
+}
+
+.fullscreenIcon {
+  width: 40px;
+  height: 40px;
   left: 50%;
   right: 50%;
   top: 50%;
   bottom: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  transition:
-    opacity 0.1s ease-in-out,
-    visibility 0.1s ease-in-out;
-  z-index: 100;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 @media screen and (max-width: 1023px) {
-  .aspectRadioBox {
+  .root {
     width: 60%;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .aspectRadioBox {
+  .root {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .fullscreenIcon {
+    width: 34px;
+    height: 34px;
   }
 }

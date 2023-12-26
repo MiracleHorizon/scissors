@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { Cross1Icon } from '@radix-ui/react-icons'
-import Lightbox from 'yet-another-react-lightbox'
+import Lightbox, { type Slide } from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import Download from 'yet-another-react-lightbox/plugins/download'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
@@ -11,7 +11,7 @@ import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 function getLightboxProps({ downloadPayload, file }: Pick<Props, 'downloadPayload' | 'file'>) {
   const plugins = [Zoom, Fullscreen]
-  const slides = []
+  const slides: Slide[] = []
 
   if (downloadPayload) {
     plugins.push(Download)

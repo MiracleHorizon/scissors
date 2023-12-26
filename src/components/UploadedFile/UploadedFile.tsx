@@ -1,17 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { AspectRatio, Box, Flex } from '@radix-ui/themes'
-import { EnterFullScreenIcon } from '@radix-ui/react-icons'
+import { Flex } from '@radix-ui/themes'
 
 import { UploadedFileCard } from './UploadedFileCard'
+import { UploadedFilePreview } from './UploadedFilePreview'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
 import { useOutputStore } from '@stores/output'
-import styles from './UploadedFile.module.css'
 
 export function UploadedFile(props: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
-
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   const handleOpenLightbox = () => setLightboxOpen(true)
@@ -26,23 +24,11 @@ export function UploadedFile(props: Props) {
         isOpen={lightboxOpen}
         onClose={handleCloseLightbox}
       />
-      <Box className={styles.aspectRadioBox} onClick={handleOpenLightbox}>
-        <AspectRatio ratio={16 / 9}>
-          <EnterFullScreenIcon
-            color='white'
-            width='40px'
-            height='40px'
-            className={styles.fullscreenIcon}
-          />
-          {/*eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={downloadPayload?.link ?? URL.createObjectURL(props.file)}
-            alt={props.file.name}
-            width='100%'
-            height='100%'
-          />
-        </AspectRatio>
-      </Box>
+      <UploadedFilePreview
+        file={props.file}
+        downloadPayload={downloadPayload}
+        handleOpenLightbox={handleOpenLightbox}
+      />
     </Flex>
   )
 }
