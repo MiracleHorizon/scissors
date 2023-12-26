@@ -1,8 +1,8 @@
 'use client'
 
+import { type ReactNode, useId } from 'react'
 import { Flex, Select, Text } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
-import type { ReactNode } from 'react'
 
 export function OptionSelect<T extends string>({
   label,
@@ -10,16 +10,18 @@ export function OptionSelect<T extends string>({
   DetailsComponent,
   ...props
 }: Props<T>) {
+  const triggerId = useId()
+
   return (
     <Select.Root size='2' {...props}>
       <Flex direction='column' align='start' width='100%'>
         <Flex align='center' gap='1' width='100%' mb='1'>
           {DetailsComponent}
-          <Text as='label' size='2' mr='2'>
+          <Text as='label' size='2' mr='2' htmlFor={triggerId}>
             {label}
           </Text>
         </Flex>
-        <Select.Trigger className='w-full' />
+        <Select.Trigger id={triggerId} className='w-full' />
       </Flex>
 
       <Select.Content position='popper' side='bottom' sideOffset={5}>
