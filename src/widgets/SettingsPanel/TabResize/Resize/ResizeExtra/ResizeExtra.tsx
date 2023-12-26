@@ -6,7 +6,7 @@ import { ResizeBackgroundPopover } from './ResizeBackgroundPopover'
 import { SelectResizeFit } from './SelectResizeFit'
 import { SelectResizePosition } from './SelectResizePosition'
 import { SelectResizeKernel } from './SelectResizeKernel'
-import { ResizeSwitchers } from './ResizeSwitchers'
+import { ResizeCheckboxes } from './ResizeCheckboxes'
 import { useResizeStore } from '@stores/resize'
 
 export function ResizeExtra() {
@@ -31,7 +31,7 @@ export function ResizeExtra() {
 
       {background && <ResizeBackgroundPopover background={background} />}
 
-      <ResizeSwitchers />
+      <ResizeCheckboxes mt='3' />
     </Flex>
   )
 }

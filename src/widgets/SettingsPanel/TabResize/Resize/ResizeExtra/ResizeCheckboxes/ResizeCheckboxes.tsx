@@ -1,17 +1,27 @@
-import { Checkbox, Flex } from '@radix-ui/themes'
+import { Grid, type MarginProps, type Responsive } from '@radix-ui/themes'
 
-export function ResizeCheckboxes() {
+import { CheckboxEnlargement } from './CheckboxEnlargement'
+import { CheckboxReduction } from './CheckboxReduction'
+import { CheckboxFastShrink } from './CheckboxFastShrink'
+import type { Gap } from '@lib/theme'
+
+const columns: Responsive<string> = {
+  initial: '1',
+  xs: '3',
+  md: '1'
+}
+const gapX: Gap = {
+  initial: '2',
+  xs: '3',
+  md: '2'
+}
+
+export function ResizeCheckboxes(props: MarginProps) {
   return (
-    <Flex mt='2' direction='column' gap='2' style={{ fontSize: '15px' }}>
-      <Flex align='center' gap='2' style={{ fontSize: '15px' }}>
-        <Checkbox size='3' defaultChecked /> Without Enlarging
-      </Flex>
-      <Flex align='center' gap='2' style={{ fontSize: '15px' }}>
-        <Checkbox size='3' defaultChecked /> Without Reduction
-      </Flex>
-      <Flex align='center' gap='2' style={{ fontSize: '15px' }}>
-        <Checkbox size='3' defaultChecked /> Flex Shrink
-      </Flex>
-    </Flex>
+    <Grid {...props} columns={columns} gapX={gapX} gapY='3' width='100%'>
+      <CheckboxEnlargement />
+      <CheckboxReduction />
+      <CheckboxFastShrink />
+    </Grid>
   )
 }
