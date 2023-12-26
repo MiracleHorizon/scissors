@@ -2,3 +2,8 @@
   margin: 0 6px;
   background-color: var(--gray-a11);
 }
+
+.link {
+  color: initial;
+  text-decoration-color: initial;
+}

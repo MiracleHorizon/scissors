@@ -1,9 +1,10 @@
-import { Flex, Heading, type MarginProps, Separator } from '@radix-ui/themes'
-import type { PropsWithChildren, ReactNode } from 'react'
+import Link from 'next/link'
+import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
 
+import type { Props } from './OptionSectionHeader.types'
 import styles from './OptionSectionHeader.module.css'
 
-export function OptionSectionHeader({ children, title, icon, ...props }: Props) {
+export function OptionSectionHeader({ children, title, href, icon, ...props }: Props) {
   return (
     <Flex asChild align='center' justify='between' width='100%' {...props}>
       <header>
@@ -17,9 +18,16 @@ export function OptionSectionHeader({ children, title, icon, ...props }: Props) 
                 <Separator orientation='vertical' className={styles.separator} />
               </>
             )}
-            <Heading size='3' weight='medium'>
-              {title}
-            </Heading>
+
+            {href ? (
+              <RadixLink asChild weight='medium' className={styles.link}>
+                <Link href={href}>{title}</Link>
+              </RadixLink>
+            ) : (
+              <Heading size='3' weight='medium'>
+                {title}
+              </Heading>
+            )}
           </article>
         </Flex>
 
@@ -30,10 +38,3 @@ export function OptionSectionHeader({ children, title, icon, ...props }: Props) 
     </Flex>
   )
 }
-
-type Props = PropsWithChildren<
-  MarginProps & {
-    title: string
-    icon?: ReactNode
-  }
->
