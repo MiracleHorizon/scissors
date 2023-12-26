@@ -8,11 +8,13 @@ import { TabResizeSection } from '../TabResizeSection'
 export function Resize() {
   return (
     <TabResizeSection>
-      <Flex direction='column' gap='2' width='100%'>
+      <>
         <ResizeHeader />
-        <ResizeSizesForm />
-        <ResizeExtra />
-      </Flex>
+        <Flex direction='column' gap='3' width='100%'>
+          <ResizeSizesForm />
+          <ResizeExtra />
+        </Flex>
+      </>
     </TabResizeSection>
   )
 }
