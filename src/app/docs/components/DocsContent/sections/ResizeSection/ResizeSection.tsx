@@ -10,10 +10,11 @@ import {
   ReductionRow,
   WidthRow
 } from './rows'
+import { DocsHash } from '@lib/router'
 
 export function ResizeSection() {
   return (
-    <DocsSection title='Resize' hash='#resize'>
+    <DocsSection title='Resize' hash={DocsHash.RESIZE}>
       <>
         <WidthRow />
         <HeightRow />

@@ -2,20 +2,21 @@ import { Flex, Separator } from '@radix-ui/themes'
 import { Fragment } from 'react'
 
 import { DocsNavigationItem } from './DocsNavigationItem'
+import { DocsHash } from '@lib/router'
 import styles from './DocsNavigation.module.css'
 
 const items = [
   {
     title: 'Main',
-    hash: '#main'
+    hash: DocsHash.MAIN
   },
   {
     title: 'Resize',
-    hash: '#resize'
+    hash: DocsHash.RESIZE
   },
   {
     title: 'Modulate',
-    hash: '#modulate'
+    hash: DocsHash.MODULATE
   }
 ]
 
