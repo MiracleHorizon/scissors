@@ -225,10 +225,10 @@ export class Sharp {
       this.imageSharp.resize({
         width: width ?? undefined,
         height: height ?? undefined,
-        ...options,
-        background: options?.background ?? undefined,
-        position: options?.position ?? undefined,
-        kernel: options?.kernel ?? undefined
+        fit: options.fit ?? undefined,
+        background: options.background ?? undefined,
+        position: options.position ?? undefined,
+        kernel: options.kernel ?? undefined
       })
     } catch (err) {
       throw new Error('Failed to resize the image', {

@@ -76,7 +76,7 @@ interface ResizeWithoutWidthAndHeight {
 }
 
 export interface ResizeExtraOptions {
-  fit: ResizeFit
+  fit: ResizeFit | null
   background: string | null
   position: ResizePosition | ResizePositionGravity | null
   kernel: ResizeKernel | null

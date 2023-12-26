@@ -1,10 +1,17 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Select } from '@radix-ui/themes'
 
+import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
 import { useOutputStore } from '@stores/output'
 import { ImageFileFormat } from '@server/Sharp'
+
+const data = [
+  {
+    label: 'Output format',
+    value: Object.values(ImageFileFormat)
+  }
+]
 
 export function SelectOutputFormat() {
   const outputFormat = useOutputStore(state => state.outputFormat)
@@ -20,19 +27,11 @@ export function SelectOutputFormat() {
   }
 
   return (
-    <Select.Root value={outputFormat} onValueChange={handleChangeOutputFormat}>
-      <Select.Trigger placeholder='Output format' />
-
-      <Select.Content sideOffset={5} align='center' position='popper'>
-        <Select.Group>
-          <Select.Label>Output format</Select.Label>
-          {Object.values(ImageFileFormat).map(format => (
-            <Select.Item key={format} value={format}>
-              {format}
-            </Select.Item>
-          ))}
-        </Select.Group>
-      </Select.Content>
-    </Select.Root>
+    <OptionSelect
+      label='Output format'
+      value={outputFormat}
+      data={data}
+      onValueChange={handleChangeOutputFormat}
+    />
   )
 }

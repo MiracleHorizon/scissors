@@ -40,13 +40,13 @@ export const useResizeStore = create<Store>((set, get) => ({
     return {
       width: get().width,
       height: get().height,
-      background: get()?.background,
-      fit: get()?.fit,
-      position: get()?.position,
-      kernel: get()?.kernel,
-      fastShrinkOnLoad: get()?.fastShrinkOnLoad,
-      withoutEnlargement: get()?.withoutEnlargement,
-      withoutReduction: get()?.withoutReduction
+      background: get().background,
+      fit: get().fit,
+      position: get().position,
+      kernel: get().kernel,
+      fastShrinkOnLoad: get().fastShrinkOnLoad,
+      withoutEnlargement: get().withoutEnlargement,
+      withoutReduction: get().withoutReduction
     }
   },
 

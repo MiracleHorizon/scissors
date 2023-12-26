@@ -2,19 +2,19 @@
 
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@widgets/SettingsPanel/OptionSwitch'
+import { OptionCheckbox } from '@widgets/SettingsPanel/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 
-export function SwitchWithoutReduction() {
-  const withoutReduction = useResizeStore(state => state?.withoutReduction)
+export function CheckboxReduction() {
+  const withoutReduction = useResizeStore(state => state.withoutReduction)
   const toggleReduction = useResizeStore(state => state.toggleReduction)
 
   const handleToggleWithoutReduction = useCallback(() => toggleReduction(), [toggleReduction])
 
   return (
-    <OptionSwitch
+    <OptionCheckbox
+      title='Without Reduction'
       checked={withoutReduction}
-      title='Without reduction'
       onClick={handleToggleWithoutReduction}
     />
   )

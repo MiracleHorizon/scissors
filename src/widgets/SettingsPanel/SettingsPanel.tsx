@@ -25,11 +25,11 @@ const margin: MarginProps = {
 }
 
 export function SettingsPanel() {
-  const [tab, setTab] = useState<string>('default')
+  const [tab, setTab] = useState('default')
 
   return (
     <ScrollArea {...margin} type='scroll' scrollbars='vertical' className={styles.root}>
-      <Flex direction='column' pr='2' height='100%'>
+      <Flex direction='column' pr='2' pb='2' height='100%'>
         <Tabs.Root defaultValue='default' onValueChange={setTab}>
           <Toolbar activeTab={tab} />
           <TabDefault />

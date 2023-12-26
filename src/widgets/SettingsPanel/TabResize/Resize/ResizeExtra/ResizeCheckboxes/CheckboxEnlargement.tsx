@@ -2,19 +2,19 @@
 
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@widgets/SettingsPanel/OptionSwitch'
+import { OptionCheckbox } from '@widgets/SettingsPanel/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 
-export function SwitchWithoutEnlargement() {
-  const withoutEnlargement = useResizeStore(state => state?.withoutEnlargement)
+export function CheckboxEnlargement() {
+  const withoutEnlargement = useResizeStore(state => state.withoutEnlargement)
   const toggleEnlargement = useResizeStore(state => state.toggleEnlargement)
 
   const handleToggleWithoutEnlargement = useCallback(() => toggleEnlargement(), [toggleEnlargement])
 
   return (
-    <OptionSwitch
+    <OptionCheckbox
+      title='Without Enlarging'
       checked={withoutEnlargement}
-      title='Without enlarging'
       onClick={handleToggleWithoutEnlargement}
     />
   )

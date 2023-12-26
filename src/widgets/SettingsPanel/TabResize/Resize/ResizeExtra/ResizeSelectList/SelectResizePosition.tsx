@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ResizeSelect } from '../ResizeSelect'
+import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
 import { useResizeStore } from '@stores/resize'
 import { DEFAULT_RESIZE_POSITION, ResizePosition, ResizePositionGravity } from '@server/Sharp'
 
@@ -18,7 +18,7 @@ const data = [
 ]
 
 export function SelectResizePosition() {
-  const position = useResizeStore(state => state?.position)
+  const position = useResizeStore(state => state.position)
   const setPosition = useResizeStore(state => state.setPosition)
 
   const handleSetPosition = useCallback(
@@ -27,7 +27,8 @@ export function SelectResizePosition() {
   )
 
   return (
-    <ResizeSelect
+    <OptionSelect
+      label='Position'
       value={position ?? DEFAULT_RESIZE_POSITION}
       defaultValue={DEFAULT_RESIZE_POSITION}
       data={data}

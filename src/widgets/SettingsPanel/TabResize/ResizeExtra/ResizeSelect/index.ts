@@ -1,1 +1,0 @@
-export { ResizeSelect } from './ResizeSelect'

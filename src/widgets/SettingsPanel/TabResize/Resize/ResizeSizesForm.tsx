@@ -3,7 +3,7 @@
 import { Flex } from '@radix-ui/themes'
 import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 
-import { ResizeSizeInput } from './ResizeSizeInput'
+import { OptionNumberInput } from '@widgets/SettingsPanel/OptionNumberInput'
 import { useResizeStore } from '@stores/resize'
 import {
   MAX_RESIZE_HEIGHT,
@@ -11,6 +11,11 @@ import {
   MIN_RESIZE_SIZE,
   RESIZE_SIZE_STEP
 } from '@server/Sharp'
+
+const defaultInputProps = {
+  min: MIN_RESIZE_SIZE,
+  step: RESIZE_SIZE_STEP
+}
 
 export function ResizeSizesForm() {
   const width = useResizeStore(state => state.width)
@@ -25,23 +30,21 @@ export function ResizeSizesForm() {
   return (
     <Flex asChild align='center' gap='2' width='100%'>
       <form>
-        <ResizeSizeInput
+        <OptionNumberInput
+          {...defaultInputProps}
           value={width}
           setValue={setWidth}
           resetValue={resetWidth}
-          min={MIN_RESIZE_SIZE}
           max={MAX_RESIZE_WIDTH}
-          step={RESIZE_SIZE_STEP}
           placeholder='Width'
           icon={<WidthIcon />}
         />
-        <ResizeSizeInput
+        <OptionNumberInput
+          {...defaultInputProps}
           value={height}
           setValue={setHeight}
           resetValue={resetHeight}
-          min={MIN_RESIZE_SIZE}
           max={MAX_RESIZE_HEIGHT}
-          step={RESIZE_SIZE_STEP}
           placeholder='Height'
           icon={<HeightIcon />}
         />

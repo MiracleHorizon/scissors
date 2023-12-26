@@ -9,9 +9,7 @@ import {
 } from 'react'
 import { TextField } from '@radix-ui/themes'
 
-import styles from './ResizeSizeInput.module.css'
-
-export function ResizeSizeInput({
+export function OptionNumberInput({
   icon,
   max,
   value,
@@ -55,8 +53,8 @@ export function ResizeSizeInput({
   }
 
   return (
-    <TextField.Root className={styles.root}>
-      <TextField.Slot>{icon}</TextField.Slot>
+    <TextField.Root className='w-full'>
+      {icon && <TextField.Slot>{icon}</TextField.Slot>}
       <TextField.Input
         {...inputAttributes}
         value={value ?? ''}
@@ -93,5 +91,5 @@ interface Props extends InputAttributes {
   min: number
   max: number
   step: number
-  icon: ReactNode
+  icon?: ReactNode
 }

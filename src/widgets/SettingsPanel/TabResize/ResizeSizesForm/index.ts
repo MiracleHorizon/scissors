@@ -1,1 +1,0 @@
-export { ResizeSizesForm } from './ResizeSizesForm'

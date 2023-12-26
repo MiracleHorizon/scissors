@@ -7,8 +7,8 @@ import containExample from '@public/resize-fit-examples/contain.png'
 import fillExample from '@public/resize-fit-examples/fill.png'
 import insideExample from '@public/resize-fit-examples/inside.png'
 import outsideExample from '@public/resize-fit-examples/outside.png'
-import styles from './ResizeFitExamplesPopover.module.css'
 import type { FlexDirection, Gap } from '@lib/theme'
+import styles from './ResizeFitExamplesPopover.module.css'
 
 const examples = [
   {
@@ -72,7 +72,7 @@ export function ResizeFitExamplesPopover() {
   return (
     <Popover.Root>
       <Popover.Trigger>
-        <ButtonInfo />
+        <ButtonInfo radius='full' className={styles.buttonInfo} />
       </Popover.Trigger>
 
       <Popover.Content size='1' side='bottom' align='center' className={styles.content}>
