@@ -25,7 +25,7 @@ const margin: MarginProps = {
 }
 
 export function SettingsPanel() {
-  const [tab, setTab] = useState<string>('default')
+  const [tab, setTab] = useState('default')
 
   return (
     <ScrollArea {...margin} type='scroll' scrollbars='vertical' className={styles.root}>
