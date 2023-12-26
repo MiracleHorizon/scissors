@@ -9,11 +9,19 @@
   text-decoration-color: var(--accent-8);
 }
 
+.selected {
+  color: var(--accent-12);
+}
+
+.link {
+  text-underline-offset: 4px;
+}
+
 .text {
   display: initial;
 }
 
-.icon {
+.iconButton {
   display: none;
 }
 
@@ -22,7 +30,11 @@
     display: none;
   }
 
-  .icon {
+  .iconButton {
+    display: inline-flex;
+  }
+
+  .iconButton svg {
     display: initial;
   }
 }

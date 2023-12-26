@@ -4,7 +4,7 @@ import { Flex } from '@radix-ui/themes'
 
 import { LogoIcon } from '@ui/icons'
 import { ButtonGithub } from './ButtonGithub'
-import { DocumentationLink } from './DocumentationLink'
+import { Navigation } from './Navigation'
 import { AppearancePopoverSkeleton } from './AppearancePopover'
 import { Route } from '@lib/router'
 import type { ThemeProps } from '@lib/theme'
@@ -41,7 +41,7 @@ export function LayoutHeader(themeProps: ThemeProps) {
           </Link>
         </Flex>
         <Flex align='center' height='100%'>
-          <DocumentationLink />
+          <Navigation />
           <Flex align='center' gap='4'>
             <ButtonGithub />
             <AppearancePopover {...themeProps} />
