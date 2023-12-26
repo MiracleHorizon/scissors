@@ -3,6 +3,10 @@
   box-shadow: -1px 0 var(--gray-a4);
 }
 
+.root :global(.rt-TabsContent:focus) {
+  outline: none;
+}
+
 .root :global(.rt-ScrollAreaScrollbar) {
   margin-top: calc(var(--settings-panel-toobar-height) + 6px);
   margin-bottom: 6px;
