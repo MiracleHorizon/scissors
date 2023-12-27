@@ -1,5 +1,6 @@
 import { useConvertStore } from '@stores/convert'
 import { useResizeStore } from '@stores/resize'
+import { useExtendStore } from '@stores/extend'
 import { useRotateStore } from '@stores/rotate'
 import { useModulateStore } from '@stores/modulate'
 import { useBlurStore } from '@stores/blur'
@@ -13,6 +14,7 @@ import type { ConvertSettings } from '@server/Sharp'
 export function useConvertSettings(): ConvertSettings {
   const convertSettings = useConvertStore(state => state.getConvertSettings())
   const resize = useResizeStore(state => state.getResizeOptions())
+  const extend = useExtendStore(state => state.getExtendOptions())
   const rotate = useRotateStore(state => state.getRotateOptions())
   const modulate = useModulateStore(state => state.getModulateOptions())
   const blur = useBlurStore(state => state.getBlurOptions())
@@ -25,6 +27,7 @@ export function useConvertSettings(): ConvertSettings {
   return {
     ...convertSettings,
     resize,
+    extend,
     rotate,
     modulate,
     blur,
