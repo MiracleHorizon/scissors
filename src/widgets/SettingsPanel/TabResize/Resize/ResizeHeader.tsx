@@ -1,7 +1,7 @@
 import { DimensionsIcon } from '@radix-ui/react-icons'
 
 import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
-import { ButtonResizeReset } from './ButtonResizeReset.tsx'
+import { ButtonResizeReset } from './ButtonResizeReset'
 import { DocsHash, Route } from '@lib/router'
 
 export function ResizeHeader() {

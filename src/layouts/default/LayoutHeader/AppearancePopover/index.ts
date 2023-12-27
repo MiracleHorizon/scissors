@@ -1,2 +1,2 @@
-export { AppearancePopover } from './AppearancePopover.tsx'
+export { AppearancePopover } from './AppearancePopover'
 export { AppearancePopoverSkeleton } from './AppearancePopoverSkeleton'

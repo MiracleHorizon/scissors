@@ -4,7 +4,7 @@ import { Flex, IconButton } from '@radix-ui/themes'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
-import { AppearancePopoverTitle } from '../AppearancePopoverTitle.tsx'
+import { AppearancePopoverTitle } from '../AppearancePopoverTitle'
 import { setThemeCookie, type Theme, type ThemeProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ToggleTheme.module.css'

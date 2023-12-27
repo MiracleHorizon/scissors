@@ -3,7 +3,7 @@
 import { Flex, Grid } from '@radix-ui/themes'
 
 import { ThemeColorGridItem } from './ThemeColorGridItem'
-import { AppearancePopoverTitle } from '../AppearancePopoverTitle.tsx'
+import { AppearancePopoverTitle } from '../AppearancePopoverTitle'
 import { themeColorItems, type ThemeProps } from '@lib/theme'
 
 export function ThemeColorGrid({ themeColor }: Pick<ThemeProps, 'themeColor'>) {
