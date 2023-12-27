@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 import { IconButton, type MarginProps } from '@radix-ui/themes'
 import { InfoCircledIcon } from '@radix-ui/react-icons'
 
-import type { ButtonRadius } from '@lib/theme'
+import type { Radius } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 export const ButtonInfo = forwardRef<HTMLButtonElement, Props>(({ radius, ...props }, ref) => (
@@ -24,5 +24,5 @@ export const ButtonInfo = forwardRef<HTMLButtonElement, Props>(({ radius, ...pro
 ButtonInfo.displayName = 'ButtonInfo'
 
 interface Props extends MarginProps, ClassNameProps {
-  radius?: ButtonRadius
+  radius?: Radius
 }
