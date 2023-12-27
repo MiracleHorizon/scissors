@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useNormaliseStore } from '@stores/normalise'
 
 export function ButtonRemoveNormalise() {
@@ -10,5 +10,5 @@ export function ButtonRemoveNormalise() {
 
   const handleRemoveNormalise = useCallback(() => removeNormalise(), [removeNormalise])
 
-  return <ButtonRemoveOption tooltipContent='Remove normalise' onClick={handleRemoveNormalise} />
+  return <ButtonDelete tooltipContent='Remove Normalise' onClick={handleRemoveNormalise} />
 }

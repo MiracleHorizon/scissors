@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useGammaStore } from '@stores/gamma'
 
 export function ButtonRemoveGamma() {
@@ -10,5 +10,5 @@ export function ButtonRemoveGamma() {
 
   const handleRemoveGamma = useCallback(() => removeGamma(), [removeGamma])
 
-  return <ButtonRemoveOption tooltipContent='Remove gamma' onClick={handleRemoveGamma} />
+  return <ButtonDelete tooltipContent='Remove Gamma' onClick={handleRemoveGamma} />
 }

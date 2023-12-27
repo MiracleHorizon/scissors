@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useTintStore } from '@stores/tint'
 
 export function ButtonRemoveTint() {
@@ -10,5 +10,5 @@ export function ButtonRemoveTint() {
 
   const handleRemoveTint = useCallback(() => removeTint(), [removeTint])
 
-  return <ButtonRemoveOption tooltipContent='Remove tint' onClick={handleRemoveTint} />
+  return <ButtonDelete tooltipContent='Remove Tint' onClick={handleRemoveTint} />
 }

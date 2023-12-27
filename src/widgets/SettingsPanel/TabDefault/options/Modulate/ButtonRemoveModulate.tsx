@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useModulateStore } from '@stores/modulate'
 
 export function ButtonRemoveModulate() {
@@ -10,5 +10,5 @@ export function ButtonRemoveModulate() {
 
   const handleRemoveModulate = useCallback(() => removeModulate(), [removeModulate])
 
-  return <ButtonRemoveOption tooltipContent='Remove modulate' onClick={handleRemoveModulate} />
+  return <ButtonDelete tooltipContent='Remove Modulate' onClick={handleRemoveModulate} />
 }

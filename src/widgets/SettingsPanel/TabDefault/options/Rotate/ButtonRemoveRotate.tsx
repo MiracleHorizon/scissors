@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useRotateStore } from '@stores/rotate'
 
 export function ButtonRemoveRotate() {
@@ -10,5 +10,5 @@ export function ButtonRemoveRotate() {
 
   const handleRemoveRotate = useCallback(() => removeRotate(), [removeRotate])
 
-  return <ButtonRemoveOption tooltipContent='Remove rotate' onClick={handleRemoveRotate} />
+  return <ButtonDelete tooltipContent='Remove Rotate' onClick={handleRemoveRotate} />
 }

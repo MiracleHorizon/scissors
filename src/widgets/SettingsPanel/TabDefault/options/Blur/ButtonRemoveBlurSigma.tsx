@@ -2,21 +2,15 @@
 
 import { useCallback } from 'react'
 
-import { ButtonRemoveOption } from '@widgets/SettingsPanel/ButtonRemoveOption'
+import { ButtonDelete } from '@ui/ButtonDelete'
 import { useBlurStore } from '@stores/blur'
 
-export function ButtonRemoveBlurSigma({ disabled }: Props) {
+export function ButtonRemoveBlurSigma(props: Props) {
   const removeSigma = useBlurStore(state => state.removeSigma)
 
   const handleRemoveSigma = useCallback(() => removeSigma(), [removeSigma])
 
-  return (
-    <ButtonRemoveOption
-      disabled={disabled}
-      tooltipContent='Remove blur sigma'
-      onClick={handleRemoveSigma}
-    />
-  )
+  return <ButtonDelete {...props} tooltipContent='Remove Blur Sigma' onClick={handleRemoveSigma} />
 }
 
 interface Props {
