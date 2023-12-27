@@ -1,0 +1,1 @@
+export { useExtendStore } from './store'

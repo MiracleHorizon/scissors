@@ -1,5 +1,7 @@
 /* eslint no-unused-vars: 0 */
 
+import type { Color } from 'sharp'
+
 export interface ConvertSettings {
   flip: boolean
   flop: boolean
@@ -10,6 +12,7 @@ export interface ConvertSettings {
   rotate: RotateOptions | null
   gamma: GammaOptions | null
   resize: ResizeOptions | null
+  extend: ExtendOptions | null
   tint: string | null
   modulate: ModulateOptions | null
   outputFormat: ImageFileFormat | null
@@ -45,6 +48,22 @@ export interface GammaOptions {
 export interface NormaliseOptions {
   lower: number
   upper: number
+}
+
+export interface ExtendOptions {
+  top: number | null
+  bottom: number | null
+  right: number | null
+  left: number | null
+  extendWith: ExtendWith
+  background: Color
+}
+
+export enum ExtendWith {
+  BACKGROUND = 'background',
+  COPY = 'copy',
+  REPEAT = 'repeat',
+  MIRROR = 'mirror'
 }
 
 export type ResizeOptions = ResizeSizes & ResizeExtraOptions
