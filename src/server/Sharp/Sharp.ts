@@ -4,6 +4,7 @@ import isEmpty from 'lodash.isempty'
 import {
   type BlurOptions,
   type ConvertSettings,
+  type ExtendOptions,
   type GammaOptions,
   ImageFileFormat,
   MAX_BLUR_SIGMA,
@@ -35,6 +36,7 @@ export class Sharp {
     rotate,
     gamma,
     resize,
+    extend,
     modulate,
     outputFormat
   }: ConvertSettings): Promise<Buffer> {
@@ -80,6 +82,10 @@ export class Sharp {
 
     if (resize) {
       this.resize(resize)
+    }
+
+    if (extend) {
+      this.extend(extend)
     }
 
     if (rotate) {
@@ -232,6 +238,23 @@ export class Sharp {
       })
     } catch (err) {
       throw new Error('Failed to resize the image', {
+        cause: err
+      })
+    }
+  }
+
+  private extend(options: ExtendOptions): void {
+    try {
+      this.imageSharp.extend({
+        top: options.top ?? undefined,
+        bottom: options.bottom ?? undefined,
+        right: options.right ?? undefined,
+        left: options.left ?? undefined,
+        extendWith: options.extendWith ?? undefined,
+        background: options.background ?? undefined
+      })
+    } catch (err) {
+      throw new Error('Failed to extend the image', {
         cause: err
       })
     }

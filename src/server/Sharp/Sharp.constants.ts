@@ -1,5 +1,8 @@
+import type { Color } from 'sharp'
+
 import {
   type BlurOptions,
+  ExtendWith,
   type GammaOptions,
   ImageFileFormat,
   type NegateOptions,
@@ -74,6 +77,13 @@ export const DEFAULT_RESIZE_BACKGROUND = '#000000'
 export const DEFAULT_WITHOUT_ENLARGEMENT = false
 export const DEFAULT_WITHOUT_REDUCTION = false
 export const DEFAULT_FAST_SHRINK = true
+
+// Extend
+export const EXTEND_DIRECTION_SIZE_STEP = 50
+export const MIN_EXTEND_DIRECTION_SIZE = 1
+export const MAX_EXTEND_DIRECTION_SIZE = 800
+export const DEFAULT_EXTEND_BACKGROUND: Color = '#000000'
+export const DEFAULT_EXTEND_WITH: ExtendWith = ExtendWith.BACKGROUND
 
 // Modulate
 export const MIN_LIGHTNESS = 0
