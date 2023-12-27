@@ -18,6 +18,7 @@ export function RotateBackgroundPopover() {
       color={rotateBackground}
       setColor={setRotateBackground}
       disabled={withDominantBackground}
+      triggerLabel='Background'
     />
   )
 }
