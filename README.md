@@ -22,7 +22,7 @@
 With the help of "Image Converter" you can use a large number of provided options to quickly format and process images.
 
 Some of the features available are:
-* Resizing
+* Resizing, Extending
 * Rotation
 * Quality control
 * Grayscale, Gamma, Tint and other
