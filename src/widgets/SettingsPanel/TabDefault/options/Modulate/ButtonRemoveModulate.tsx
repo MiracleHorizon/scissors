@@ -10,5 +10,5 @@ export function ButtonRemoveModulate() {
 
   const handleRemoveModulate = useCallback(() => removeModulate(), [removeModulate])
 
-  return <ButtonRemoveOption tooltipTitle='Remove modulate' onClick={handleRemoveModulate} />
+  return <ButtonRemoveOption tooltipContent='Remove modulate' onClick={handleRemoveModulate} />
 }

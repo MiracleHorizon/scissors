@@ -13,7 +13,7 @@ export function ButtonRemoveBlurSigma({ disabled }: Props) {
   return (
     <ButtonRemoveOption
       disabled={disabled}
-      tooltipTitle='Remove blur sigma'
+      tooltipContent='Remove blur sigma'
       onClick={handleRemoveSigma}
     />
   )

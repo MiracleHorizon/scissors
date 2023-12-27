@@ -5,14 +5,14 @@ import { Tooltip } from '@radix-ui/themes'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 
-export function ButtonRemoveOption({ tooltipTitle, disabled, onClick }: Props) {
+export function ButtonRemoveOption({ tooltipContent, disabled, onClick }: Props) {
   return (
     <Tooltip
       open={isTooltipOpen({
-        content: tooltipTitle,
+        content: tooltipContent,
         isParentDisabled: disabled
       })}
-      content={tooltipTitle}
+      content={tooltipContent}
     >
       <ButtonDelete disabled={disabled} onClick={onClick} />
     </Tooltip>
@@ -20,7 +20,7 @@ export function ButtonRemoveOption({ tooltipTitle, disabled, onClick }: Props) {
 }
 
 interface Props {
-  tooltipTitle: string
+  tooltipContent: string
   onClick: VoidFunction
   disabled?: boolean
 }

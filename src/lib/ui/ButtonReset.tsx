@@ -8,14 +8,14 @@ import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
-export const ButtonReset = memo(({ tooltipTitle, disabled, ...props }: Props) => (
+export const ButtonReset = memo(({ tooltipContent, disabled, ...props }: Props) => (
   <Tooltip
     delayDuration={800}
     open={isTooltipOpen({
-      content: tooltipTitle,
+      content: tooltipContent,
       isParentDisabled: disabled
     })}
-    content={tooltipTitle}
+    content={tooltipContent}
   >
     <IconButton {...props} disabled={disabled}>
       <ResetIcon width='18px' height='18px' />
@@ -26,7 +26,7 @@ export const ButtonReset = memo(({ tooltipTitle, disabled, ...props }: Props) =>
 ButtonReset.displayName = 'ButtonReset'
 
 interface Props extends ButtonProps, ClassNameProps {
-  tooltipTitle: string
+  tooltipContent: string
   onClick: VoidFunction
   disabled?: boolean
 }

@@ -10,5 +10,5 @@ export function ButtonResetNormalise() {
 
   const handleResetNormalise = useCallback(() => resetNormalise(), [resetNormalise])
 
-  return <ButtonReset tooltipTitle='Reset normalise' onClick={handleResetNormalise} />
+  return <ButtonReset tooltipContent='Reset normalise' onClick={handleResetNormalise} />
 }

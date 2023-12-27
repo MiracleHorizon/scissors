@@ -15,7 +15,7 @@ export function Toolbar({ activeTab }: Props) {
 
       {activeTab === 'default' && (
         <Flex align='center' justify='end' gap='1' py='2' px='3'>
-          <ButtonReset tooltipTitle='Reset all settings' onClick={handleReset} />
+          <ButtonReset tooltipContent='Reset all settings' onClick={handleReset} />
           <ButtonRemoveSettings />
         </Flex>
       )}

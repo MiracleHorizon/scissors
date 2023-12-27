@@ -10,5 +10,5 @@ export function ButtonRemoveGamma() {
 
   const handleRemoveGamma = useCallback(() => removeGamma(), [removeGamma])
 
-  return <ButtonRemoveOption tooltipTitle='Remove gamma' onClick={handleRemoveGamma} />
+  return <ButtonRemoveOption tooltipContent='Remove gamma' onClick={handleRemoveGamma} />
 }

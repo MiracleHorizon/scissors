@@ -10,5 +10,5 @@ export function ButtonRemoveTint() {
 
   const handleRemoveTint = useCallback(() => removeTint(), [removeTint])
 
-  return <ButtonRemoveOption tooltipTitle='Remove tint' onClick={handleRemoveTint} />
+  return <ButtonRemoveOption tooltipContent='Remove tint' onClick={handleRemoveTint} />
 }
