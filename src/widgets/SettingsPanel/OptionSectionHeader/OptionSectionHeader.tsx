@@ -1,10 +1,26 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
 
 import type { Props } from './OptionSectionHeader.types'
 import styles from './OptionSectionHeader.module.css'
 
-export function OptionSectionHeader({ children, title, href, icon, ...props }: Props) {
+const BadgeNew = dynamic(() => import('@ui/badges/BadgeNew').then(mod => mod.BadgeNew), {
+  ssr: false
+})
+const BadgeBeta = dynamic(() => import('@ui/badges/BadgeBeta').then(mod => mod.BadgeBeta), {
+  ssr: false
+})
+
+export function OptionSectionHeader({
+  children,
+  title,
+  href,
+  icon,
+  isBeta,
+  isNew,
+  ...props
+}: Props) {
   return (
     <Flex asChild align='center' justify='between' width='100%' {...props}>
       <header>
@@ -28,6 +44,9 @@ export function OptionSectionHeader({ children, title, href, icon, ...props }: P
                 {title}
               </Heading>
             )}
+
+            {isBeta && <BadgeBeta ml='2' />}
+            {isNew && <BadgeNew ml='2' />}
           </article>
         </Flex>
 
