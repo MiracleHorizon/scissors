@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react'
 const padding: PaddingProps = {
   px: '3',
   pb: '2',
-  pt: '4'
+  pt: '3'
 }
 
 export function TabResizeSection({ children }: PropsWithChildren) {

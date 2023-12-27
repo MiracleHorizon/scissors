@@ -1,17 +1,17 @@
-import { Tabs } from '@radix-ui/themes'
+import { Separator, Tabs } from '@radix-ui/themes'
 
 import { Resize } from './Resize'
-import { isDevelopment } from '@helpers/isDevelopment'
+import { Extend } from './Extend'
+import styles from './TabResize.module.css'
 
-// TODO: Presets
+const TabSeparator = () => <Separator mt='3' ml='3' className={styles.separator} />
 
-// TODO: Extract
-// TODO: Trim
 export function TabResize() {
   return (
     <Tabs.Content value='resize'>
       <Resize />
-      {isDevelopment() && <div>Presets</div>}
+      <TabSeparator />
+      <Extend />
     </Tabs.Content>
   )
 }
