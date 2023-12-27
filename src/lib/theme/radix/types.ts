@@ -62,6 +62,16 @@ export interface ButtonProps {
 export type ButtonSize = Responsive<'1' | '2' | '3' | '4'>
 export type ButtonVariant = 'classic' | 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
 
+// Badge
+export interface BadgeProps {
+  color?: RadixThemeColor
+  size?: BadgeSize
+  variant?: BadgeVariant
+  radius?: Radius
+}
+export type BadgeSize = Responsive<'1' | '2'>
+export type BadgeVariant = 'solid' | 'soft' | 'surface' | 'outline'
+
 // TextField.Input
 export interface TextFieldInputProps {
   color?: RadixThemeColor
