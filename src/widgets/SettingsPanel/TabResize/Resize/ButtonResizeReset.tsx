@@ -10,7 +10,7 @@ export function ButtonResizeReset() {
 
   return (
     <ButtonReset
-      tooltipContent='Reset resize'
+      tooltipContent='Reset Resizing'
       variant='outline'
       radius='large'
       onClick={handleResetResize}
