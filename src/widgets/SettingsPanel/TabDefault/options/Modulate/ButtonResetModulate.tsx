@@ -10,5 +10,5 @@ export function ButtonResetModulate() {
 
   const handleResetModulate = useCallback(() => resetModulate(), [resetModulate])
 
-  return <ButtonReset tooltipContent='Reset modulate' onClick={handleResetModulate} />
+  return <ButtonReset tooltipContent='Reset Modulation' onClick={handleResetModulate} />
 }

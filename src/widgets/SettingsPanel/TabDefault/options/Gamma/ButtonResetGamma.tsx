@@ -8,5 +8,5 @@ export function ButtonResetGamma() {
 
   const handleResetGamma = useCallback(() => resetGamma(), [resetGamma])
 
-  return <ButtonReset tooltipContent='Reset gamma' onClick={handleResetGamma} />
+  return <ButtonReset tooltipContent='Reset Gamma' onClick={handleResetGamma} />
 }

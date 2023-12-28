@@ -10,5 +10,5 @@ export function ButtonAddNormalise() {
 
   const handleAddNormalise = useCallback(() => addNormalise(), [addNormalise])
 
-  return <ButtonAddOption title='Add normalise' onClick={handleAddNormalise} />
+  return <ButtonAddOption title='Add Normalisation' onClick={handleAddNormalise} />
 }

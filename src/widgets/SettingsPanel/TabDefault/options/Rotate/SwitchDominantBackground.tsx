@@ -14,7 +14,7 @@ export function SwitchDominantBackground() {
 
   return (
     <OptionSwitch
-      title='Dominant background'
+      title='Dominant Background'
       checked={withDominantBackground}
       onClick={handleToggleWithDominantBackground}
     />

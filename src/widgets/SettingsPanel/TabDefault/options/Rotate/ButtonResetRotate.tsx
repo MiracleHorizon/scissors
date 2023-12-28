@@ -8,5 +8,5 @@ export function ButtonResetRotate() {
 
   const handleResetRotate = useCallback(() => resetRotate(), [resetRotate])
 
-  return <ButtonReset tooltipContent='Reset rotate' onClick={handleResetRotate} />
+  return <ButtonReset tooltipContent='Reset Rotation' onClick={handleResetRotate} />
 }

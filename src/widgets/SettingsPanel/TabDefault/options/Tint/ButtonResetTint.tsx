@@ -8,5 +8,5 @@ export function ButtonResetTint() {
 
   const handleResetTint = useCallback(() => resetTint(), [resetTint])
 
-  return <ButtonReset tooltipContent='Reset tint' onClick={handleResetTint} />
+  return <ButtonReset tooltipContent='Reset Tint' onClick={handleResetTint} />
 }

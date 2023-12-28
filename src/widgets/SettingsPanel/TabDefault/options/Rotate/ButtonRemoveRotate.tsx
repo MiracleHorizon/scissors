@@ -10,5 +10,5 @@ export function ButtonRemoveRotate() {
 
   const handleRemoveRotate = useCallback(() => removeRotate(), [removeRotate])
 
-  return <ButtonDelete tooltipContent='Remove Rotate' onClick={handleRemoveRotate} />
+  return <ButtonDelete tooltipContent='Remove Rotation' onClick={handleRemoveRotate} />
 }

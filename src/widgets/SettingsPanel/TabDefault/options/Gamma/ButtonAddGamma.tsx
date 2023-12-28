@@ -13,7 +13,7 @@ export function ButtonAddGamma() {
 
   return (
     <ButtonAddOption
-      title='Add gamma'
+      title='Add Gamma'
       leadIcon={<ShadowIcon width='18px' height='18px' />}
       onClick={handleAddGamma}
     />

@@ -10,5 +10,5 @@ export function ButtonRemoveNormalise() {
 
   const handleRemoveNormalise = useCallback(() => removeNormalise(), [removeNormalise])
 
-  return <ButtonDelete tooltipContent='Remove Normalise' onClick={handleRemoveNormalise} />
+  return <ButtonDelete tooltipContent='Remove Normalisation' onClick={handleRemoveNormalise} />
 }
