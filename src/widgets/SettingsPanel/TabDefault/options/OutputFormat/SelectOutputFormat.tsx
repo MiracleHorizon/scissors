@@ -29,6 +29,7 @@ export function SelectOutputFormat() {
   return (
     <OptionSelect
       label='Output format'
+      triggerLabelSize='3'
       value={outputFormat}
       data={data}
       onValueChange={handleChangeOutputFormat}

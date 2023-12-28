@@ -4,7 +4,7 @@ import { SelectOutputFormat } from './SelectOutputFormat'
 
 export function OutputFormat() {
   return (
-    <Flex asChild align='start' direction='column' gap='2'>
+    <Flex asChild width='max-content' align='start' direction='column' gap='2'>
       <section>
         <SelectOutputFormat />
       </section>
