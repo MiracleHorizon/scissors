@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { useCallback } from 'react'
 
-import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
+import { OptionSelect } from '@components/OptionSelect'
 import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
 import { useResizeStore } from '@stores/resize'
 import { DEFAULT_RESIZE_FIT, ResizeFit } from '@server/Sharp'

@@ -1,6 +1,6 @@
 import { MoveIcon } from '@radix-ui/react-icons'
 
-import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
+import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ExtendToolbar } from './ExtendToolbar'
 
 export function ExtendHeader() {

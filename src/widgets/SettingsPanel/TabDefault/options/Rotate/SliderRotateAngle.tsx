@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
+import { OptionSlider } from '@components/OptionSlider'
 import { useRotateStore } from '@stores/rotate'
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/Sharp'
 

@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
+import { OptionSelect } from '@components/OptionSelect'
 import { useOutputStore } from '@stores/output'
 import { ImageFileFormat } from '@server/Sharp'
 

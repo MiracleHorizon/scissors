@@ -1,6 +1,6 @@
 import { TokensIcon } from '@radix-ui/react-icons'
 
-import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
+import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonRemoveModulate } from './ButtonRemoveModulate'
 import { ButtonResetModulate } from './ButtonResetModulate'
 import { DocsHash, Route } from '@lib/router'

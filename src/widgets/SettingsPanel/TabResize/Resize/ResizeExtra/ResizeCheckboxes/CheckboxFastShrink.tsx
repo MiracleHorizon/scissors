@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionCheckbox } from '@widgets/SettingsPanel/OptionCheckbox'
+import { OptionCheckbox } from '@components/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
 import { ImageFileFormat } from '@server/Sharp'

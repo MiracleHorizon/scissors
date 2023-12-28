@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
+import { OptionSelect } from '@components/OptionSelect'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_WITH, ExtendWith } from '@server/Sharp'
 

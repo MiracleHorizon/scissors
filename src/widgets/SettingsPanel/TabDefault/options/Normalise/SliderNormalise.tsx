@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
+import { OptionSlider } from '@components/OptionSlider'
 import { useNormaliseStore } from '@stores/normalise'
 import { MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
 

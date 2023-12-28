@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
+import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { MAX_SATURATION, MIN_SATURATION } from '@server/Sharp'
 
