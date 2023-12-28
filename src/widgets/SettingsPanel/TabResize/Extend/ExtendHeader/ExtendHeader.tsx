@@ -1,12 +1,12 @@
 import { MoveIcon } from '@radix-ui/react-icons'
 
 import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
-import { ButtonExtendReset } from './ButtonExtendReset'
+import { ExtendToolbar } from './ExtendToolbar'
 
 export function ExtendHeader() {
   return (
-    <OptionSectionHeader title='Extend' icon={<MoveIcon width='18px' height='18px' />}>
-      <ButtonExtendReset />
+    <OptionSectionHeader isBeta title='Extend' icon={<MoveIcon width='18px' height='18px' />}>
+      <ExtendToolbar />
     </OptionSectionHeader>
   )
 }
