@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@widgets/SettingsPanel/OptionSwitch'
+import { OptionSwitch } from '@components/OptionSwitch'
 import { useRotateStore } from '@stores/rotate'
 
 export function SwitchDominantBackground() {

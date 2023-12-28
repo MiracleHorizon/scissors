@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
+import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@server/Sharp'
 

@@ -1,6 +1,6 @@
 import { Half2Icon } from '@radix-ui/react-icons'
 
-import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
+import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetTint } from './ButtonResetTint'
 import { ButtonRemoveTint } from './ButtonRemoveTint'
 

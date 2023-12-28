@@ -1,6 +1,6 @@
 import { ShadowIcon } from '@radix-ui/react-icons'
 
-import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
+import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'
 import type { GammaOptions } from '@server/Sharp'

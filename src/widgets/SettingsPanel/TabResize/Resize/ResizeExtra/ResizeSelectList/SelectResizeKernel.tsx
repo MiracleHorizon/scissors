@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSelect } from '@widgets/SettingsPanel/OptionSelect'
+import { OptionSelect } from '@components/OptionSelect'
 import { useResizeStore } from '@stores/resize'
 import { DEFAULT_RESIZE_KERNEL, ResizeKernel } from '@server/Sharp'
 

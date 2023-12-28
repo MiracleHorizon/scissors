@@ -1,6 +1,6 @@
 'use client'
 
-import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
+import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetNormalise } from './ButtonResetNormalise'
 import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'
 import { useNormaliseStore } from '@stores/normalise'

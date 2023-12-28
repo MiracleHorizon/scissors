@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@widgets/SettingsPanel/OptionSwitch'
+import { OptionSwitch } from '@components/OptionSwitch'
 import { useConvertStore } from '@stores/convert'
 
 export function SwitchFlop() {

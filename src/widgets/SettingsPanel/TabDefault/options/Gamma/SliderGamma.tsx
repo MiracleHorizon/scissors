@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { OptionSlider } from '@widgets/SettingsPanel/OptionSlider'
+import { OptionSlider } from '@components/OptionSlider'
 import { useGammaStore } from '@stores/gamma'
 import { MAX_GAMMA, MIN_GAMMA } from '@server/Sharp'
 

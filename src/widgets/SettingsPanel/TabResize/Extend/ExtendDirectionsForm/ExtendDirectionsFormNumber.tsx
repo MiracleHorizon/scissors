@@ -2,7 +2,7 @@
 
 import { MoveIcon } from '@radix-ui/react-icons'
 
-import { OptionNumberInput } from '@widgets/SettingsPanel/OptionNumberInput'
+import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
 
