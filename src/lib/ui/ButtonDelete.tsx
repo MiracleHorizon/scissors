@@ -1,36 +1,38 @@
 'use client'
 
-import { memo } from 'react'
+import { forwardRef } from 'react'
 import { IconButton, type MarginProps, Tooltip } from '@radix-ui/themes'
 import { TrashIcon } from '@radix-ui/react-icons'
 
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
-export const ButtonDelete = memo(({ tooltipContent, disabled, ...props }: Props) => {
-  const Button = (
-    <IconButton {...props}>
-      <TrashIcon width='24px' height='24px' />
-    </IconButton>
-  )
+export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
+  ({ tooltipContent, disabled, ...props }, ref) => {
+    const Button = (
+      <IconButton {...props} disabled={disabled} ref={ref}>
+        <TrashIcon width='24px' height='24px' />
+      </IconButton>
+    )
 
-  if (!tooltipContent) {
-    return Button
+    if (!tooltipContent) {
+      return Button
+    }
+
+    return (
+      <Tooltip
+        delayDuration={800}
+        open={isTooltipOpen({
+          content: tooltipContent,
+          isParentDisabled: disabled
+        })}
+        content={tooltipContent}
+      >
+        {Button}
+      </Tooltip>
+    )
   }
-
-  return (
-    <Tooltip
-      delayDuration={800}
-      open={isTooltipOpen({
-        content: tooltipContent,
-        isParentDisabled: disabled
-      })}
-      content={tooltipContent}
-    >
-      {Button}
-    </Tooltip>
-  )
-})
+)
 
 ButtonDelete.displayName = 'ButtonDelete'
 
