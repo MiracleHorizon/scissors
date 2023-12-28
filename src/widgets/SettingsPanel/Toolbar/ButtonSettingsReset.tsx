@@ -13,7 +13,7 @@ export function ButtonSettingsReset() {
       description='All settings will be reset to default values'
       onConfirm={handleReset}
     >
-      <ButtonReset tooltipContent='Reset All Settings' onClick={handleReset} />
+      <ButtonReset tooltipContent='Reset All Settings' />
     </ConfirmAlert>
   )
 }

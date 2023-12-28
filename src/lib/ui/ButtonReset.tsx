@@ -27,6 +27,6 @@ ButtonReset.displayName = 'ButtonReset'
 
 interface Props extends ButtonProps, ClassNameProps {
   tooltipContent: string
-  onClick: VoidFunction
+  onClick?: VoidFunction
   disabled?: boolean
 }
