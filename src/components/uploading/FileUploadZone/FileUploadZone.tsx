@@ -22,6 +22,7 @@ const descriptionTextSize: TextSize = {
 function FileUploadZone({ children, isDragOver, ...actions }: ComponentProps) {
   return (
     <Flex
+      title='File is not uploaded'
       align='center'
       justify='center'
       direction='column'
