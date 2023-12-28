@@ -8,7 +8,7 @@ import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
 export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
-  ({ tooltipContent, disabled, ...props }, ref) => {
+  ({ tooltipDelay, tooltipContent, disabled, ...props }, ref) => {
     const Button = (
       <IconButton {...props} disabled={disabled} ref={ref}>
         <TrashIcon width='24px' height='24px' />
@@ -21,7 +21,7 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <Tooltip
-        delayDuration={800}
+        delayDuration={tooltipDelay}
         open={isTooltipOpen({
           content: tooltipContent,
           isParentDisabled: disabled
@@ -37,6 +37,7 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
 ButtonDelete.displayName = 'ButtonDelete'
 
 interface Props extends ButtonProps, MarginProps {
+  tooltipDelay?: number
   tooltipContent?: string
   disabled?: boolean
   onClick?: VoidFunction

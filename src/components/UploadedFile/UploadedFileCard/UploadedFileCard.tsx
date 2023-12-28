@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Box, Card, Flex, Text, Tooltip } from '@radix-ui/themes'
+import { Box, Card, Flex, Text } from '@radix-ui/themes'
 import { FileIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
@@ -35,9 +35,7 @@ export function UploadedFileCard({ file, isLoading }: Props) {
                 description='Are you sure you want to continue?'
                 onConfirm={handleRemoveFile}
               >
-                <Tooltip delayDuration={600} content='Delete File'>
-                  <ButtonDelete />
-                </Tooltip>
+                <ButtonDelete tooltipDelay={600} tooltipContent='Delete File' />
               </ConfirmAlert>
             </Flex>
           )}
