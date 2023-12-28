@@ -3,6 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "author": "MiracleHorizon",
+  "description": "Your awesome application for versatile image formatting and processing!",
+  "homepage": "https://github.com/MiracleHorizon/image-converter",
+  "authorGithub": "https://github.com/MiracleHorizon",
+  "keywords": [
+    "image",
+    "converter",
+    "rotation",
+    "crop",
+    "resizing",
+    "blur",
+    "gamma"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
