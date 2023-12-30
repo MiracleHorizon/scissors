@@ -1,9 +1,9 @@
 'use client'
 
 import { Flex, Text } from '@radix-ui/themes'
-import { ImageIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
+import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
 import { ImageFileFormat } from '@server/Sharp'

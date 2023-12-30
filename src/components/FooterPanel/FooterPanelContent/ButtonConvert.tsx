@@ -1,7 +1,8 @@
 import { memo } from 'react'
 import { Button, Text } from '@radix-ui/themes'
-import { LockClosedIcon, SymbolIcon } from '@radix-ui/react-icons'
 
+import { SymbolIcon } from '@ui/icons/SymbolIcon'
+import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
 import { useConvertImage } from '@stores/hooks/useConvertImage'
 import { useOutputStore } from '@stores/output'
 

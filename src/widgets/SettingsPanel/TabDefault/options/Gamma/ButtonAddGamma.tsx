@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { ShadowIcon } from '@radix-ui/react-icons'
 
+import { ShadowIcon } from '@ui/icons/ShadowIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useGammaStore } from '@stores/gamma'
 

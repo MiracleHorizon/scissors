@@ -1,5 +1,4 @@
-import { MoveIcon } from '@radix-ui/react-icons'
-
+import { MoveIcon } from '@ui/icons/MoveIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ExtendToolbar } from './ExtendToolbar'
 

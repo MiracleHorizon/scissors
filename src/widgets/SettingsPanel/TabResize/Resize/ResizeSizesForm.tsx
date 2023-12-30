@@ -1,8 +1,9 @@
 'use client'
 
 import { Flex } from '@radix-ui/themes'
-import { HeightIcon, WidthIcon } from '@radix-ui/react-icons'
 
+import { WidthIcon } from '@ui/icons/WidthIcon'
+import { HeightIcon } from '@ui/icons/HeightIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useResizeStore } from '@stores/resize'
 import {

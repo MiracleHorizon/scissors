@@ -2,8 +2,8 @@
 
 import { forwardRef } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
-import { ResetIcon } from '@radix-ui/react-icons'
 
+import { ResetIcon } from '@ui/icons/ResetIcon'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'

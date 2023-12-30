@@ -1,5 +1,4 @@
-import { ShadowIcon } from '@radix-ui/react-icons'
-
+import { ShadowIcon } from '@ui/icons/ShadowIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'

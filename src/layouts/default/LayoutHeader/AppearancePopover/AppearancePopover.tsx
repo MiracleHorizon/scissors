@@ -1,10 +1,10 @@
 'use client'
 
 import { Flex, IconButton, Popover, Separator } from '@radix-ui/themes'
-import { MixerHorizontalIcon } from '@radix-ui/react-icons'
 
 import { ToggleTheme } from './ToggleTheme'
 import { ThemeColorGrid } from './ThemeColorGrid'
+import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
 import type { ThemeProps } from '@lib/theme'
 
 export function AppearancePopover({ theme, themeColor }: ThemeProps) {
