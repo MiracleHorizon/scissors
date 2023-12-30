@@ -25,6 +25,10 @@ export const useConvertStore = create(
     // Actions
     reset: () => set(defaultState),
 
+    setFlip: flip => set({ flip }),
+    setFlop: flop => set({ flop }),
+    setGrayscale: grayscale => set({ grayscale }),
+
     toggleFlip: () => set(state => ({ flip: !state.flip })),
     toggleFlop: () => set(state => ({ flop: !state.flop })),
     toggleGrayscale: () => set(state => ({ grayscale: !state.grayscale }))

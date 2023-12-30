@@ -11,6 +11,8 @@ export function ConfirmAlert({
   open,
   onConfirm,
   onCancel,
+  confirmLabel = 'Confirm',
+  canselLabel = 'Cancel',
   contentClassName
 }: Props) {
   return (
@@ -26,13 +28,13 @@ export function ConfirmAlert({
           <Flex gap='3' justify='end' mt='5'>
             <AlertDialog.Cancel>
               <Button color='gray' variant='soft' className={styles.button} onClick={onCancel}>
-                Cancel
+                {canselLabel}
               </Button>
             </AlertDialog.Cancel>
 
             <AlertDialog.Action>
               <Button className={styles.button} onClick={onConfirm}>
-                Confirm
+                {confirmLabel}
               </Button>
             </AlertDialog.Action>
           </Flex>
@@ -46,7 +48,9 @@ type Props = PropsWithChildren<{
   title: string
   description: string
   onConfirm: VoidFunction
-  open?: boolean
   onCancel?: VoidFunction
+  open?: boolean
   contentClassName?: string
+  confirmLabel?: string
+  canselLabel?: string
 }>

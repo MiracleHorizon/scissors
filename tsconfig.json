@@ -81,7 +81,7 @@
         "./src/lib/helpers/*"
       ],
       "@utils/*": [
-        "./src/utils/*"
+        "./src/lib/utils/*"
       ],
       "@app-types/*": [
         "./src/types/*"

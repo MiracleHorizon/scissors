@@ -51,6 +51,7 @@ export const useResizeStore = create<Store>((set, get) => ({
   },
 
   // Actions
+  set: options => set({ ...defaultState, ...options }),
   reset: () => set(defaultState),
 
   setWidth: width => set({ width }),

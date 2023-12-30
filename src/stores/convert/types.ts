@@ -12,6 +12,10 @@ interface Computed {
 interface Actions {
   reset: VoidFunction
 
+  setFlip: (flip: boolean) => void
+  setFlop: (flop: boolean) => void
+  setGrayscale: (grayscale: boolean) => void
+
   toggleFlip: VoidFunction
   toggleFlop: VoidFunction
   toggleGrayscale: VoidFunction

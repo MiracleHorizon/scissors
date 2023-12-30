@@ -7,6 +7,7 @@ export interface State {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (color: string | null) => void
   add: VoidFunction
   remove: VoidFunction
   setColor: (color: string) => void

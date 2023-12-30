@@ -32,6 +32,9 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (options: ExtendOptions | null) => void
+  reset: VoidFunction
+
   setInputMode: (inputMode: InputMode) => void
 
   // Default
@@ -56,6 +59,4 @@ interface Actions {
 
   setBackground: (background: Color) => void
   setExtendWith: (extendWith: ExtendWith) => void
-
-  reset: VoidFunction
 }
