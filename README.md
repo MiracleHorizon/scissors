@@ -79,4 +79,4 @@ Currently, the following image formats are supported:
    ```
 
 [project-github]: https://github.com/MiracleHorizon/image-converter
-[preview-screenshot]: public/preview-screeenshot.png
+[preview-screenshot]: public/preview-screenshot.png
