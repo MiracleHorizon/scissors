@@ -10,13 +10,20 @@ const FileSizeAlert = dynamic(
 )
 
 export function withFileUploader(Component: ComponentType<ComponentProps>) {
-  return function FileUploaderHOC<T extends Props>({ setFile, ...inputAttributes }: T) {
+  return function FileUploaderHOC<T extends Props>({
+    setFile,
+    tooltipContent,
+    ...inputAttributes
+  }: T) {
     const [isDragOver, setIsDragOver] = useState(false)
     const [isAlertOpen, setIsAlertOpen] = useState(false)
     const inputRef = useRef<HTMLInputElement | null>(null)
 
     const handleOpenAlert = () => setIsAlertOpen(true)
     const handleCloseAlert = () => setIsAlertOpen(false)
+
+    const handleStartDrag = () => setIsDragOver(true)
+    const handleStopDrag = () => setIsDragOver(false)
 
     function triggerInputClick() {
       if (!inputRef.current) return
@@ -31,12 +38,12 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       const file = fileList.item(0)
       if (!file) return
 
-      if (!isValidFileSize(file)) {
-        ev.target.value = ''
-        return handleOpenAlert()
+      if (isValidFileSize(file)) {
+        setFile(file)
+      } else {
+        handleOpenAlert()
       }
 
-      setFile(file)
       ev.target.value = ''
     }
 
@@ -48,31 +55,30 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
 
       if (!firstFile) return
 
-      if (!isValidFileSize(firstFile)) {
-        setIsDragOver(false)
-        return handleOpenAlert()
+      if (isValidFileSize(firstFile)) {
+        setFile(firstFile)
+      } else {
+        handleOpenAlert()
       }
 
-      setFile(firstFile)
-      setIsDragOver(false)
+      handleStopDrag()
     }
 
     function handleDragOver(ev: DragEvent<HTMLDivElement>) {
       ev.preventDefault()
 
-      setIsDragOver(true)
+      handleStartDrag()
     }
-
-    const handleDragLeave = () => setIsDragOver(false)
 
     return (
       <>
         <Component
+          tooltipcontent={tooltipContent}
           isDragOver={isDragOver}
           onClick={triggerInputClick}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
+          onDragLeave={handleStopDrag}
         >
           <input
             {...inputAttributes}
@@ -83,7 +89,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
           />
         </Component>
 
-        <FileSizeAlert isOpen={isAlertOpen} onClose={handleCloseAlert} />
+        {isAlertOpen && <FileSizeAlert isOpen={isAlertOpen} onClose={handleCloseAlert} />}
       </>
     )
   }
