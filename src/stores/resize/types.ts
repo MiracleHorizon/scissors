@@ -8,6 +8,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (options: ResizeOptions | null) => void
   reset: VoidFunction
 
   setWidth: (width: number) => void

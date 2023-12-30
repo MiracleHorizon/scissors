@@ -35,6 +35,11 @@ export const useModulateStore = create<Store>((set, get) => ({
   },
 
   // Actions
+  set: options => {
+    const isAdded = options !== null
+
+    set({ ...options, isAdded })
+  },
   add: () => set({ isAdded: true }),
   remove: () => set({ ...defaultState }),
 

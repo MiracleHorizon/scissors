@@ -25,6 +25,14 @@ const aliases: Alias[] = [
     replacementPath: './src/lib/helpers'
   },
   {
+    find: '@utils',
+    replacementPath: './src/lib/utils'
+  },
+  {
+    find: '@server',
+    replacementPath: './src/server'
+  },
+  {
     find: '@app-types',
     replacementPath: './src/types'
   }

@@ -20,6 +20,7 @@ export const useNegateStore = create<Store>((set, get) => ({
   },
 
   // Actions
+  set: options => set({ ...(options ?? DEFAULT_NEGATE) }),
   reset: () => set(DEFAULT_NEGATE),
   toggleValue: () =>
     set(state => {

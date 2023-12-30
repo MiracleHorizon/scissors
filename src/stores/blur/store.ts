@@ -20,21 +20,12 @@ export const useBlurStore = create<Store>((set, get) => ({
   },
 
   // Actions
+  set: options => set({ ...(options ?? DEFAULT_BLUR) }),
   toggle: () =>
     set(state => ({
       value: !state.value
     })),
-  reset: () =>
-    set(state => {
-      if (typeof state.sigma === 'number') {
-        return {
-          value: DEFAULT_BLUR.value,
-          sigma: state.sigma
-        }
-      }
-
-      return DEFAULT_BLUR
-    }),
+  reset: () => set({ ...DEFAULT_BLUR }),
   addSigma: () =>
     set(state => {
       if (!state.value) {
@@ -45,17 +36,7 @@ export const useBlurStore = create<Store>((set, get) => ({
         sigma: MIN_BLUR_SIGMA
       }
     }),
-  removeSigma: () => {
-    set(state => {
-      if (!state.value) {
-        return state
-      }
-
-      return {
-        sigma: null
-      }
-    })
-  },
+  removeSigma: () => set({ sigma: null }),
   setSigma: sigma =>
     set(state => {
       if (!state.value) {

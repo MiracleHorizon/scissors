@@ -15,6 +15,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (options: RotateOptions | null) => void
   add: VoidFunction
   remove: VoidFunction
   reset: VoidFunction

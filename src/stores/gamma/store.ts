@@ -9,6 +9,11 @@ export const useGammaStore = create<Store>(set => ({
   gamma: null,
 
   // Actions
+  set: options => {
+    const isAdded = options !== null
+
+    set({ gamma: options, isAdded })
+  },
   add: () =>
     set({
       isAdded: true,

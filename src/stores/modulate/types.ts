@@ -12,6 +12,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (options: ModulateOptions | null) => void
   add: VoidFunction
   remove: VoidFunction
 

@@ -104,6 +104,18 @@ export const useExtendStore = create(
     },
 
     // Actions
+    set: options => {
+      if (!options) {
+        return
+      }
+
+      set({
+        ...options,
+        inputMode: InputMode.SEPARATED
+      })
+    },
+    reset: () => set(defaultState),
+
     setInputMode: inputMode =>
       set(state => {
         if (state.isEmpty()) {
@@ -313,8 +325,6 @@ export const useExtendStore = create(
     },
 
     setBackground: background => set({ background }),
-    setExtendWith: extendWith => set({ extendWith }),
-
-    reset: () => set(defaultState)
+    setExtendWith: extendWith => set({ extendWith })
   }))
 )

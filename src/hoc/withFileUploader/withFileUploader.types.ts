@@ -4,6 +4,7 @@ import type { DragEvent, PropsWithChildren } from 'react'
 export interface Props {
   accept: string
   setFile: (file: File | null) => void
+  tooltipContent?: string
 }
 
 export type ComponentProps = PropsWithChildren<{
@@ -12,4 +13,6 @@ export type ComponentProps = PropsWithChildren<{
   onDrop: (ev: DragEvent<HTMLDivElement>) => void
   onDragOver: (ev: DragEvent<HTMLDivElement>) => void
   onDragLeave: VoidFunction
+  // Prevent html tag warning
+  tooltipcontent?: string
 }>

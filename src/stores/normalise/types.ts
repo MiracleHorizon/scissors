@@ -12,6 +12,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 export interface Actions {
+  set: (options: NormaliseOptions | null) => void
   add: VoidFunction
   remove: VoidFunction
   reset: VoidFunction

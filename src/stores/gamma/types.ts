@@ -9,6 +9,7 @@ interface State {
 
 /* eslint no-unused-vars: 0 */
 interface Actions {
+  set: (options: GammaOptions | null) => void
   add: VoidFunction
   remove: VoidFunction
   reset: VoidFunction

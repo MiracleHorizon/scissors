@@ -1,18 +1,13 @@
-import { AlertDialog, Button, Flex, type Responsive } from '@radix-ui/themes'
+import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
 
-const contentSize: Responsive<'1' | '2' | '3' | '4'> = {
-  initial: '2',
-  sm: '3'
-}
-
 export function FileSizeAlert({ isOpen, onClose }: Props) {
   return (
     <AlertDialog.Root open={isOpen} defaultOpen={false}>
-      <AlertDialog.Content size={contentSize} className='alert-content' onEscapeKeyDown={onClose}>
-        <Flex align='center' mb='3'>
+      <AlertDialog.Content size='2' className='alert-content' onEscapeKeyDown={onClose}>
+        <Flex align='center' pt='1' mb='3'>
           <ExclamationTriangleIcon color='tomato' width='18px' height='18px' />
           <AlertDialog.Title ml='2' mb='0' trim='start'>
             Invalid file size

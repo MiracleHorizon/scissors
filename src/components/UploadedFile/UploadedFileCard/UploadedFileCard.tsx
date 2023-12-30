@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
-import { ButtonFileUpload } from '@components/uploading/ButtonFileUpload'
+import { ButtonImport } from '@ui/ButtonImport'
 import { useOutputStore } from '@stores/output'
 import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
 import styles from './UploadedFileCard.module.css'
@@ -29,7 +29,11 @@ export function UploadedFileCard({ file, isLoading }: Props) {
             <LoadingSpinner ml='auto' />
           ) : (
             <Flex ml='auto' align='center' gap='1'>
-              <ButtonFileUpload accept={ALLOWED_IMAGE_FORMATS} setFile={setFile} />
+              <ButtonImport
+                accept={ALLOWED_IMAGE_FORMATS}
+                setFile={setFile}
+                tooltipContent='Upload New File'
+              />
               <ConfirmAlert
                 title='Confirm deletion'
                 description='Are you sure you want to continue?'

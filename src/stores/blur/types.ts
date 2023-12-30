@@ -8,6 +8,7 @@ interface Computed {
 
 /* eslint no-unused-vars: 0 */
 export interface Actions {
+  set: (options: BlurOptions | null) => void
   toggle: VoidFunction
   reset: VoidFunction
   addSigma: VoidFunction

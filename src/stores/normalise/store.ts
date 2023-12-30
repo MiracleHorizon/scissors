@@ -21,6 +21,11 @@ export const useNormaliseStore = create<Store>((set, get) => ({
   },
 
   // Actions
+  set: options => {
+    const isAdded = options !== null
+
+    set({ ...options, isAdded })
+  },
   add: () => set({ isAdded: true }),
   remove: () => set({ isAdded: false, ...DEFAULT_NORMALISE }),
   reset: () =>

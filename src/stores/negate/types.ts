@@ -6,7 +6,9 @@ interface Computed {
   getNegateOptions: () => NegateOptions | null
 }
 
+/* eslint-disable no-unused-vars */
 export interface Actions {
+  set: (options: NegateOptions | null) => void
   reset: VoidFunction
   toggleValue: VoidFunction
   toggleAlpha: VoidFunction
