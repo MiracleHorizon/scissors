@@ -12,7 +12,7 @@ import styles from './ButtonBackTop.module.css'
 export function ButtonBackTop<T extends HTMLElement>({
   visibilityOffset,
   container,
-  size,
+  size = '2',
   className
 }: Props<T>) {
   const [isVisible, setVisible] = useState(false)
@@ -69,8 +69,8 @@ export function ButtonBackTop<T extends HTMLElement>({
 
   return (
     <IconButton
+      size={size}
       radius='large'
-      size={size ?? '2'}
       className={clsx(styles.root, className)}
       onClick={handleScrollToTop}
     >

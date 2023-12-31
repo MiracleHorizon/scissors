@@ -21,7 +21,7 @@ export function PalettePopover({
   color,
   setColor,
   triggerLabel,
-  triggerLabelSize,
+  triggerLabelSize = '3',
   disabled
 }: Props) {
   const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
@@ -34,7 +34,7 @@ export function PalettePopover({
         })}
       >
         <Flex direction='column' gap='1'>
-          {triggerLabel && <Text size={triggerLabelSize ?? '3'}>{triggerLabel}</Text>}
+          {triggerLabel && <Text size={triggerLabelSize}>{triggerLabel}</Text>}
           <Button
             color='gray'
             radius='large'

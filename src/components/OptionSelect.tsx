@@ -9,7 +9,7 @@ import type { TextSize } from '@lib/theme'
 export function OptionSelect<T extends string>({
   label,
   data,
-  triggerLabelSize,
+  triggerLabelSize = '2',
   DetailsComponent,
   ...props
 }: Props<T>) {
@@ -20,7 +20,7 @@ export function OptionSelect<T extends string>({
       <Flex direction='column' align='start' width='100%'>
         <Flex align='center' gap='1' width='100%' mb='1'>
           {DetailsComponent}
-          <Text as='label' size={triggerLabelSize ?? '2'} mr='2' htmlFor={triggerId}>
+          <Text as='label' size={triggerLabelSize} mr='2' htmlFor={triggerId}>
             {label}
           </Text>
         </Flex>
