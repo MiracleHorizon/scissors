@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Button, Link, Text } from '@radix-ui/themes'
-import { DownloadIcon } from '@radix-ui/react-icons'
 
+import { DownloadIcon } from '@ui/icons/DownloadIcon'
 import { useOutputStore } from '@stores/output'
 
 export function ButtonDownload() {

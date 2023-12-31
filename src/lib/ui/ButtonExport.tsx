@@ -2,7 +2,8 @@
 
 import { memo } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
-import { DownloadIcon } from '@radix-ui/react-icons'
+
+import { DownloadIcon } from '@ui/icons/DownloadIcon'
 
 export const ButtonExport = memo(({ tooltipContent, onClick }: Props) => {
   const Button = (

@@ -2,8 +2,8 @@
 
 import { forwardRef } from 'react'
 import { IconButton, type MarginProps, Tooltip } from '@radix-ui/themes'
-import { TrashIcon } from '@radix-ui/react-icons'
 
+import { TrashIcon } from '@ui/icons/TrashIcon'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 

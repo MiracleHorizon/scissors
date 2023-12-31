@@ -1,10 +1,10 @@
 'use client'
 
 import { IconButton } from '@radix-ui/themes'
-import { ChevronUpIcon } from '@radix-ui/react-icons'
 import { type MutableRefObject, useEffect, useState } from 'react'
 import { clsx } from 'clsx'
 
+import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import type { ButtonSize } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ButtonBackTop.module.css'

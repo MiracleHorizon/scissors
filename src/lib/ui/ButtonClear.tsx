@@ -1,5 +1,6 @@
 import { IconButton, type MarginProps } from '@radix-ui/themes'
-import { Cross2Icon } from '@radix-ui/react-icons'
+
+import { Cross2Icon } from '@ui/icons/Cross2Icon'
 
 export function ButtonClear(props: Props) {
   return (

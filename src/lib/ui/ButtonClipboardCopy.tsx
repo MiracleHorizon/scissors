@@ -1,8 +1,8 @@
 'use client'
 
 import { IconButton } from '@radix-ui/themes'
-import { ClipboardCopyIcon } from '@radix-ui/react-icons'
 
+import { ClipboardCopyIcon } from '@ui/icons/ClipboardCopyIcon'
 import { copyToClipboard } from '@helpers/copyToClipboard'
 import type { ButtonProps } from '@lib/theme'
 

@@ -1,7 +1,6 @@
 'use client'
 
-import { RotateCounterClockwiseIcon } from '@radix-ui/react-icons'
-
+import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'

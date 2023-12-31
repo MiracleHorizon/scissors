@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Half2Icon } from '@radix-ui/react-icons'
 
+import { Half2Icon } from '@ui/icons/Half2Icon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useTintStore } from '@stores/tint'
 

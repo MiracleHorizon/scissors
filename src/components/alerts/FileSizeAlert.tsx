@@ -1,6 +1,6 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 
+import { ExclamationTriangleIcon } from '@ui/icons/ExclamationTriangleIcon'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
 
 export function FileSizeAlert({ isOpen, onClose }: Props) {

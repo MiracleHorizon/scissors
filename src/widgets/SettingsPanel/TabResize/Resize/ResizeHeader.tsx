@@ -1,5 +1,4 @@
-import { DimensionsIcon } from '@radix-ui/react-icons'
-
+import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResizeReset } from './ButtonResizeReset'
 import { DocsHash, Route } from '@lib/router'

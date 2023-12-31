@@ -1,12 +1,12 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Cross1Icon } from '@radix-ui/react-icons'
 import Lightbox, { type Slide } from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import Download from 'yet-another-react-lightbox/plugins/download'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 
+import { Cross1Icon } from '@ui/icons/Cross1Icon'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 
 function getLightboxProps({ downloadPayload, file }: Pick<Props, 'downloadPayload' | 'file'>) {

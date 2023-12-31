@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
-import { ReaderIcon } from '@radix-ui/react-icons'
 
+import { ReaderIcon } from '@ui/icons/ReaderIcon'
 import { NavigationItem } from './NavigationItem'
 import { Route } from '@lib/router'
 import type { Gap } from '@lib/theme'

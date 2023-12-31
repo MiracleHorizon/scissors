@@ -1,9 +1,10 @@
 'use client'
 
 import { Flex, IconButton } from '@radix-ui/themes'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
+import { MoonIcon } from '@ui/icons/MoonIcon'
+import { SunIcon } from '@ui/icons/SunIcon'
 import { AppearancePopoverTitle } from '../AppearancePopoverTitle'
 import { setThemeCookie, type Theme, type ThemeProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'

@@ -1,8 +1,8 @@
 'use client'
 
 import { IconButton, Tooltip } from '@radix-ui/themes'
-import { UploadIcon } from '@radix-ui/react-icons'
 
+import { UploadIcon } from '@ui/icons/UploadIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 
 function ButtonImport({ children, tooltipcontent, onClick }: Props) {

@@ -1,5 +1,4 @@
-import { TokensIcon } from '@radix-ui/react-icons'
-
+import { TokensIcon } from '@ui/icons/TokensIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonRemoveModulate } from './ButtonRemoveModulate'
 import { ButtonResetModulate } from './ButtonResetModulate'

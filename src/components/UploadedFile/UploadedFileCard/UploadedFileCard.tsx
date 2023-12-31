@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 import { Box, Card, Flex, Text } from '@radix-ui/themes'
-import { FileIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
+import { FileIcon } from '@ui/icons/FileIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonImport } from '@ui/ButtonImport'

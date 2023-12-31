@@ -1,7 +1,6 @@
 'use client'
 
-import { MoveIcon } from '@radix-ui/react-icons'
-
+import { MoveIcon } from '@ui/icons/MoveIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'

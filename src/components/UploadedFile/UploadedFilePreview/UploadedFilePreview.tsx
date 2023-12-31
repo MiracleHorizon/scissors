@@ -1,9 +1,9 @@
 'use client'
 
 import { AspectRatio, Box } from '@radix-ui/themes'
-import { EnterFullScreenIcon } from '@radix-ui/react-icons'
 import { clsx } from 'clsx'
 
+import { EnterFullScreenIcon } from '@ui/icons/EnterFullScreenIcon'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import styles from './UploadedFilePreview.module.css'
 

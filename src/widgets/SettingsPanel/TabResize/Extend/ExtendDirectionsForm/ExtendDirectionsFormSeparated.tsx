@@ -1,7 +1,9 @@
 'use client'
 
-import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@radix-ui/react-icons'
-
+import { ArrowUpIcon } from '@ui/icons/ArrowUpIcon'
+import { ArrowDownIcon } from '@ui/icons/ArrowDownIcon'
+import { ArrowLeftIcon } from '@ui/icons/ArrowLeftIcon'
+import { ArrowRightIcon } from '@ui/icons/ArrowRightIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'

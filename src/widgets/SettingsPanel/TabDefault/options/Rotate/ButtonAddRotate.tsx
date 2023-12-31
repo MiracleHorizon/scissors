@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback } from 'react'
-import { RotateCounterClockwiseIcon } from '@radix-ui/react-icons'
 
+import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useRotateStore } from '@stores/rotate'
 
