@@ -23,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+.cursor-col-resize {
+  cursor: col-resize;
+}
+
 .w-full {
   width: 100%;
 }
