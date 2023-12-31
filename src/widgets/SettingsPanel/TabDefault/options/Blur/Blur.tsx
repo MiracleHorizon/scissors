@@ -3,7 +3,7 @@
 import { useCallback, useMemo } from 'react'
 import { Flex, Strong, Text } from '@radix-ui/themes'
 
-import { BlurIcon } from '@ui/icons'
+import { BlurIcon } from '@ui/icons/BlurIcon'
 import { OptionSlider } from '@components/OptionSlider'
 import { OptionSwitch } from '@components/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'

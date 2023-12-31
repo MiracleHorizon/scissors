@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 
-import { BlurIcon } from '@ui/icons'
+import { BlurIcon } from '@ui/icons/BlurIcon'
 import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useBlurStore } from '@stores/blur'

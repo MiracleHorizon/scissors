@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Flex } from '@radix-ui/themes'
 
-import { LogoIcon } from '@ui/icons'
+import { LogoIcon } from '@ui/icons/LogoIcon'
 import { Route } from '@lib/router'
 import styles from './AppLogo.module.css'
 
