@@ -41,7 +41,7 @@
     "react-colorful": "^5.6.1",
     "react-dom": "^18",
     "react-loading-skeleton": "^3.3.1",
-    "sharp": "0.33.1",
+    "sharp": "0.32.6",
     "yet-another-react-lightbox": "^3.15.6",
     "zustand": "^4.4.6"
   },
