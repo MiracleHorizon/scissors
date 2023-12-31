@@ -12,6 +12,7 @@ describe('isValidFileSize', () => {
   })
 
   it(`should return false if file size is greater than ${MAX_FILE_SIZE_MB} MB`, () => {
+    expect(isValidFileSize({ size: MAX_FILE_SIZE + 1 } as File)).toBe(false)
     expect(isValidFileSize({ size: (MAX_FILE_SIZE_MB + 2) * BYTES_IN_MB } as File)).toBe(false)
   })
 
