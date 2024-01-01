@@ -1,13 +1,13 @@
 'use client'
 
-import { PalettePopover } from '@components/PalettePopover'
+import { ColorPicker } from '@ui/ColorPicker'
 import { useResizeStore } from '@stores/resize'
 
 export function ResizeBackgroundPopover({ background }: Props) {
   const setBackground = useResizeStore(state => state.setBackground)
 
   return (
-    <PalettePopover
+    <ColorPicker
       color={background}
       setColor={setBackground}
       triggerLabel='Background'

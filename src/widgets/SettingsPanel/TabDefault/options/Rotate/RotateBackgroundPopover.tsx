@@ -1,6 +1,6 @@
 'use client'
 
-import { PalettePopover } from '@components/PalettePopover'
+import { ColorPicker } from '@ui/ColorPicker'
 import { useRotateStore } from '@stores/rotate'
 
 export function RotateBackgroundPopover() {
@@ -14,7 +14,7 @@ export function RotateBackgroundPopover() {
   }
 
   return (
-    <PalettePopover
+    <ColorPicker
       color={rotateBackground}
       setColor={setRotateBackground}
       disabled={withDominantBackground}

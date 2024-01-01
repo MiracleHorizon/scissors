@@ -1,1 +1,0 @@
-export { PalettePopover } from './PalettePopover'

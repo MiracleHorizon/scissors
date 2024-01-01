@@ -1,6 +1,6 @@
 'use client'
 
-import { PalettePopover } from '@components/PalettePopover'
+import { ColorPicker } from '@ui/ColorPicker'
 import { useExtendStore } from '@stores/extend'
 import { ExtendWith } from '@server/Sharp'
 
@@ -15,7 +15,7 @@ export function ExtendBackgroundPopover() {
   }
 
   return (
-    <PalettePopover
+    <ColorPicker
       color={extendBackground as string}
       setColor={setExtendBackground}
       triggerLabel='Background'

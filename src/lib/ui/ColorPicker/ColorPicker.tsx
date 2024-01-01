@@ -1,31 +1,31 @@
+'use client'
+
 import dynamic from 'next/dynamic'
-import { useMemo } from 'react'
 import { Button, Flex, Popover, Text } from '@radix-ui/themes'
 import { DM_Mono as DMMono } from 'next/font/google'
 import { clsx } from 'clsx'
 
+import { ColorSwatch } from '@ui/ColorSwatch'
 import type { TextSize } from '@lib/theme'
-import styles from './PalettePopover.module.css'
-
-const PalettePopoverContent = dynamic(
-  () => import('./PalettePopoverContent').then(mod => mod.PalettePopoverContent),
-  { ssr: false }
-)
+import styles from './ColorPicker.module.css'
 
 const dmMono = DMMono({
   subsets: ['latin'],
   weight: '500'
 })
 
-export function PalettePopover({
+const ColorPickerContent = dynamic(
+  () => import('./ColorPickerContent').then(mod => mod.ColorPickerContent),
+  { ssr: false }
+)
+
+export function ColorPicker({
   color,
   setColor,
   triggerLabel,
   triggerLabelSize = '3',
   disabled
 }: Props) {
-  const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
-
   return (
     <Popover.Root>
       <Popover.Trigger
@@ -35,6 +35,7 @@ export function PalettePopover({
       >
         <Flex direction='column' gap='1'>
           {triggerLabel && <Text size={triggerLabelSize}>{triggerLabel}</Text>}
+
           <Button
             color='gray'
             radius='large'
@@ -42,13 +43,13 @@ export function PalettePopover({
             disabled={disabled}
             className={clsx(styles.button, dmMono.className)}
           >
-            <div style={previewBoxStyle} className={styles.previewBox} />
+            <ColorSwatch color={color} />
             {color}
           </Button>
         </Flex>
       </Popover.Trigger>
 
-      <PalettePopoverContent color={color} setColor={setColor} />
+      <ColorPickerContent color={color} setColor={setColor} />
     </Popover.Root>
   )
 }

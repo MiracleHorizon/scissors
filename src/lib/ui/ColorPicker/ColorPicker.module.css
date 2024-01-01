@@ -4,13 +4,6 @@
   color: var(--gray-12);
 }
 
-.previewBox {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid rgba(170 170 170 / 0.2);
-}
-
 .disabled {
   pointer-events: none;
   opacity: 0.6;
