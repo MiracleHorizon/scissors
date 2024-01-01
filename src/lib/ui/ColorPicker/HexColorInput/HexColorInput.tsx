@@ -1,6 +1,5 @@
 import { TextField } from '@radix-ui/themes'
 
-import { ButtonClipboardCopy } from '@ui/ButtonClipboardCopy'
 import { ColorInput } from './ColorInput'
 import type { TextFieldInputProps } from '@lib/theme'
 
@@ -17,11 +16,8 @@ export function HexColorInput(props: Props) {
   const validate = (value: string) => validHex(value, false)
 
   return (
-    <TextField.Root>
+    <TextField.Root radius='large' style={{ flex: '1 1 auto' }}>
       <ColorInput {...props} placeholder='Input color' escape={escape} validate={validate} />
-      <TextField.Slot pr='3'>
-        <ButtonClipboardCopy copyValue={props.color} size='2' />
-      </TextField.Slot>
     </TextField.Root>
   )
 }

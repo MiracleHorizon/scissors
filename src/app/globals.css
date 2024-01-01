@@ -31,16 +31,6 @@ a {
   width: 100%;
 }
 
-.react-colorful-reassign .react-colorful__saturation-pointer {
-  width: 22px;
-  height: 22px;
-}
-
-.react-colorful-reassign .react-colorful__hue-pointer {
-  width: 24px;
-  height: 24px;
-}
-
 /* Remove arrows for input type="number" */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

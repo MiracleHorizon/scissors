@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 
 import { TintHeader } from './TintHeader'
-import { PalettePopover } from '@components/PalettePopover'
+import { ColorPicker } from '@ui/ColorPicker'
 import { useTintStore } from '@stores/tint'
 
 export function TintContent() {
@@ -16,7 +16,7 @@ export function TintContent() {
   return (
     <Flex direction='column' gap='2' width='100%'>
       <TintHeader />
-      <PalettePopover color={color} setColor={setColor} />
+      <ColorPicker color={color} setColor={setColor} />
     </Flex>
   )
 }
