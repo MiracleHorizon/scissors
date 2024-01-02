@@ -6,31 +6,60 @@ import { isValidFileSize } from '@helpers/isValidFileSize'
 import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 import type { ConvertSettings } from '@server/Sharp'
 
+export const errorMessages = {
+  missingFile: 'No image file is available',
+  missingSettings: 'No conversion settings are available',
+  invalidFileSize: 'Invalid file size',
+  invalidSettings: 'Invalid convert settings',
+  invalidDataTransferObject: 'Invalid data transfer object'
+}
+
 export async function POST(req: NextRequest) {
-  const formData = await req.formData()
-  const file = formData.get('file') as File | null
-  const settingsJSON = formData.get('settings') as string | null
-
-  if (!file) {
-    return createResponseError('Image file is missing', 400)
-  }
-
-  if (!isValidFileSize(file)) {
-    return createResponseError('Invalid file size', 413)
-  }
-
-  if (!settingsJSON) {
-    return createResponseError('Convert settings are missing', 400)
-  }
+  let formData: FormData
 
   try {
-    const settings = JSON.parse(settingsJSON) as ConvertSettings
-    const isValid = ConvertSettingsValidator.validate(settings)
+    formData = await req.formData()
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error(err)
+    return createResponseError(errorMessages.invalidDataTransferObject, 400)
+  }
 
-    if (!isValid) {
-      return createResponseError('Invalid convert settings', 400)
+  const file = formData.get('file') as File | null
+  if (!file) {
+    return createResponseError(errorMessages.missingFile, 400)
+  } else if (!isValidFileSize(file)) {
+    return createResponseError(errorMessages.invalidFileSize, 413)
+  }
+
+  const settingsJSON = formData.get('settings') as string | null
+  if (!settingsJSON) {
+    return createResponseError(errorMessages.missingSettings, 400)
+  }
+
+  // Try to parse settings JSON and validate it
+  let settings: ConvertSettings | null = null
+
+  try {
+    const parsedSettings = JSON.parse(settingsJSON) as ConvertSettings
+
+    const isValidSettings = ConvertSettingsValidator.validate(parsedSettings)
+    if (!isValidSettings) {
+      return createResponseError(errorMessages.invalidSettings, 400)
     }
 
+    settings = parsedSettings
+  } catch (err) {
+    // Handle JSON parsing error
+    if (err instanceof SyntaxError) {
+      return createResponseError(errorMessages.invalidSettings, 400)
+    }
+
+    return createResponseError('An error occurred while parsing conversion settings', 500)
+  }
+
+  // Try to convert image file with provided settings
+  try {
     const imageBuffer = await file.arrayBuffer()
 
     if (isEmpty(settings)) {
@@ -42,26 +71,13 @@ export async function POST(req: NextRequest) {
 
     return new NextResponse(convertedImageBuffer)
   } catch (err) {
-    if (err instanceof SyntaxError) {
-      return createResponseError('Invalid convert settings', 400)
-    }
-
     if (err instanceof Error) {
       return createResponseError(err.message, 500)
     }
 
-    return createResponseError('An error occurred while parsing conversion settings', 500)
+    return createResponseError('An error occurred while converting the image', 500)
   }
 }
 
-function createResponseError(message: string, status: number) {
-  return NextResponse.json(
-    {
-      error: message
-    },
-    {
-      status,
-      statusText: message
-    }
-  )
-}
+const createResponseError = (message: string, status: number) =>
+  NextResponse.json({ error: message }, { status, statusText: message })
