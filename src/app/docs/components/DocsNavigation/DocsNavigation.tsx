@@ -15,6 +15,10 @@ const items = [
     hash: DocsHash.RESIZE
   },
   {
+    title: 'Extend',
+    hash: DocsHash.EXTEND
+  },
+  {
     title: 'Modulate',
     hash: DocsHash.MODULATE
   }

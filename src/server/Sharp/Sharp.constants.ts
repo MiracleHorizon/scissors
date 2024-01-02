@@ -1,5 +1,3 @@
-import type { Color } from 'sharp'
-
 import {
   type BlurOptions,
   ExtendWith,
@@ -82,7 +80,7 @@ export const DEFAULT_FAST_SHRINK = true
 export const EXTEND_DIRECTION_SIZE_STEP = 50
 export const MIN_EXTEND_DIRECTION_SIZE = 1
 export const MAX_EXTEND_DIRECTION_SIZE = 800
-export const DEFAULT_EXTEND_BACKGROUND: Color = '#000000'
+export const DEFAULT_EXTEND_BACKGROUND = '#000000'
 export const DEFAULT_EXTEND_WITH: ExtendWith = ExtendWith.BACKGROUND
 export const DEFAULT_EXTEND_INPUT_PROPS = {
   min: MIN_EXTEND_DIRECTION_SIZE,

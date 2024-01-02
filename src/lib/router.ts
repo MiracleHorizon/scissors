@@ -7,5 +7,6 @@ export const Route = {
 export const DocsHash = {
   MAIN: '#main',
   RESIZE: '#resize',
+  EXTEND: '#extend',
   MODULATE: '#modulate'
 }
