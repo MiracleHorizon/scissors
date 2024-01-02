@@ -8,9 +8,8 @@ const KILOBYTES_IN_MB = 1024
 const BYTES_IN_KB = 1024
 */
 
-const BYTES_IN_KB = 1000
-const KILOBYTES_IN_MB = 1000
-
+export const BYTES_IN_KB = 1000
+export const KILOBYTES_IN_MB = 1000
 export const MAX_FILE_SIZE_MB = 4.5
 export const BYTES_IN_MB = KILOBYTES_IN_MB * BYTES_IN_KB
 export const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * BYTES_IN_MB

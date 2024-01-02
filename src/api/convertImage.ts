@@ -80,3 +80,11 @@ export function useConvertMutation() {
     onSuccess: downloadPayload => setDownloadPayload(downloadPayload)
   })
 }
+
+export const errorMessages = {
+  missingFile: 'No image file is available',
+  missingSettings: 'No conversion settings are available',
+  invalidFileSize: 'Invalid file size',
+  invalidSettings: 'Invalid convert settings',
+  invalidDataTransferObject: 'Invalid data transfer object'
+}
