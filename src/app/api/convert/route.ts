@@ -4,15 +4,8 @@ import isEmpty from 'lodash.isempty'
 import { Sharp } from '@server/Sharp/Sharp'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
+import { errorMessages } from '@api/convertImage'
 import type { ConvertSettings } from '@server/Sharp'
-
-export const errorMessages = {
-  missingFile: 'No image file is available',
-  missingSettings: 'No conversion settings are available',
-  invalidFileSize: 'Invalid file size',
-  invalidSettings: 'Invalid convert settings',
-  invalidDataTransferObject: 'Invalid data transfer object'
-}
 
 export async function POST(req: NextRequest) {
   let formData: FormData
