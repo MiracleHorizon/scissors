@@ -5,7 +5,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidOutputFormat = ConvertSettingsValidator.isValidOutputFormat
 
-describe('isValidOutputFormat', () => {
+describe('@utils/ConvertSettingsValidator.isValidOutputFormat', () => {
   it('should return true for null', () => {
     expect(isValidOutputFormat(null)).toBe(true)
   })

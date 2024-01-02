@@ -47,7 +47,7 @@ function testBoolean(key: 'withoutEnlargement' | 'withoutReduction' | 'fastShrin
   ).toBe(true)
 }
 
-describe('isValidResizeOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidResizeOptions', () => {
   it('should return true for null', () => {
     expect(isValidResizeOptions(null)).toBe(true)
   })

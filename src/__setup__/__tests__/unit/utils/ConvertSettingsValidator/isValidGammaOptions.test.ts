@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidGammaOptions = ConvertSettingsValidator.isValidGammaOptions
 
-describe('isValidGammaOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidGammaOptions', () => {
   it('should return true for null', () => {
     expect(isValidGammaOptions(null)).toBe(true)
   })

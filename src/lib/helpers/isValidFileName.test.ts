@@ -7,7 +7,7 @@ import {
   notAllowedChars
 } from './isValidFileName'
 
-describe('isValidFileName', () => {
+describe('@lib/helpers/isValidFileName', () => {
   it(`should return false because file name length is less than ${MIN_FILE_NAME_LENGTH}`, () => {
     expect(isValidFileName('a'.repeat(MIN_FILE_NAME_LENGTH - 1))).toBe(false)
   })

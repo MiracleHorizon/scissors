@@ -14,7 +14,7 @@ const validOptions: ExtendOptions = {
   background: '#000000'
 }
 
-describe('isValidExtendOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidExtendOptions', () => {
   it('should return true for null', () => {
     expect(isValidExtendOptions(null)).toBe(true)
   })

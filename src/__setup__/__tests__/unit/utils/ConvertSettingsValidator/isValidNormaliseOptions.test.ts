@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidNormaliseOptions = ConvertSettingsValidator.isValidNormaliseOptions
 
-describe('isValidNormaliseOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidNormaliseOptions', () => {
   it('should return true for null', () => {
     expect(isValidNormaliseOptions(null)).toBe(true)
   })

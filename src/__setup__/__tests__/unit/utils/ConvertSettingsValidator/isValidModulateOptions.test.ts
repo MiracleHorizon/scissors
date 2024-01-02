@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidModulateOptions = ConvertSettingsValidator.isValidModulateOptions
 
-describe('isValidModulateOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
   it('should return true for null', () => {
     expect(isValidModulateOptions(null)).toBe(true)
   })

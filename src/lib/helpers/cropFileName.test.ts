@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest'
 
 import { cropFileName } from './cropFileName'
 
-describe('cropFileName', () => {
-  it('should crop file name', () => {
+describe('@lib/helpers/cropFileName', () => {
+  it('should crop the file name correctly', () => {
     expect(cropFileName('hello-world.png')).toBe('hello-world')
     expect(cropFileName('foo.jpeg')).toBe('foo')
     expect(cropFileName('bar.jpg')).toBe('bar')

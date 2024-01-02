@@ -10,7 +10,7 @@ import {
   ResizePosition
 } from '@server/Sharp'
 
-describe('isValidSettings', () => {
+describe('@utils/ConvertSettingsValidator.isValidSettings', () => {
   it('should return true for valid settings object', () => {
     const validSettings: ConvertSettings = {
       flip: true,

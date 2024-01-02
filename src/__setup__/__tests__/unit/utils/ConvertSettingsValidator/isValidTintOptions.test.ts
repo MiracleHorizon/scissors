@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidTintOptions = ConvertSettingsValidator.isValidTintOptions
 
-describe('isValidTintOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidTintOptions', () => {
   it('should return true for null', () => {
     expect(isValidTintOptions(null)).toBe(true)
   })

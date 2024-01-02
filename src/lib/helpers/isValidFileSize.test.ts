@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { BYTES_IN_MB, isValidFileSize, MAX_FILE_SIZE, MAX_FILE_SIZE_MB } from './isValidFileSize'
 
-describe('isValidFileSize', () => {
+describe('@lib/helpers/isValidFileSize', () => {
   it(`should return true if file size is less than ${MAX_FILE_SIZE_MB} MB`, () => {
     expect(isValidFileSize({ size: 1.92 * BYTES_IN_MB } as File)).toBe(true)
   })

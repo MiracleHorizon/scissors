@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidRotateOptions = ConvertSettingsValidator.isValidRotateOptions
 
-describe('isValidRotateOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidRotateOptions', () => {
   it('should return true for null', () => {
     expect(isValidRotateOptions(null)).toBe(true)
   })

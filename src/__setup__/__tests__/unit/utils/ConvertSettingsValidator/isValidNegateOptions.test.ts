@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidNegateOptions = ConvertSettingsValidator.isValidNegateOptions
 
-describe('isValidNegateOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidNegateOptions', () => {
   it('should return true for null', () => {
     expect(isValidNegateOptions(null)).toBe(true)
   })

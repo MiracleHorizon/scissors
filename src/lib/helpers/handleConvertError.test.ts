@@ -9,7 +9,7 @@ import {
 import { ConvertError } from '@api/errors/ConvertError'
 import { FetchException } from '@api/exceptions/FetchException'
 
-describe('handleConvertError', () => {
+describe('@lib/helpers/handleConvertError', () => {
   it('should return default error message because request is aborted', () => {
     const error = new FetchException({
       cause: new DOMException('Aborted', 'AbortError')

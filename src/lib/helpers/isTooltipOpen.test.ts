@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { isTooltipOpen } from './isTooltipOpen'
 
-describe('isTooltipOpen', () => {
+describe('@lib/helpers/isTooltipOpen', () => {
   it('should return {false} when content is not defined', () => {
     expect(
       isTooltipOpen({

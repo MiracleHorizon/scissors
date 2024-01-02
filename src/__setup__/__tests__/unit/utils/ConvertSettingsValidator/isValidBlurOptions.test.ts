@@ -4,7 +4,7 @@ import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
 const isValidBlurOptions = ConvertSettingsValidator.isValidBlurOptions
 
-describe('isValidBlurOptions', () => {
+describe('@utils/ConvertSettingsValidator.isValidBlurOptions', () => {
   it('should return true for null', () => {
     expect(isValidBlurOptions(null)).toBe(true)
   })
