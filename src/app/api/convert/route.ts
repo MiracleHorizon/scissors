@@ -3,6 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 import { Sharp } from '@server/Sharp/Sharp'
 import { isValidFileSize } from '@helpers/isValidFileSize'
+import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 import type { ConvertSettings } from '@server/Sharp'
 
 export async function POST(req: NextRequest) {
@@ -24,8 +25,9 @@ export async function POST(req: NextRequest) {
 
   try {
     const settings = JSON.parse(settingsJSON) as ConvertSettings
+    const isValid = ConvertSettingsValidator.validate(settings)
 
-    if (settings === null || typeof settings !== 'object' || Array.isArray(settings)) {
+    if (!isValid) {
       return createResponseError('Invalid convert settings', 400)
     }
 

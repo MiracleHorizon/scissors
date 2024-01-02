@@ -17,7 +17,7 @@ import {
 // TODO: Try to refactor
 export class ConvertSettingsValidator {
   public static validate(settings: any): settings is ConvertSettings {
-    if (typeof settings !== 'object' || settings === null) {
+    if (typeof settings !== 'object' || settings === null || Array.isArray(settings)) {
       return false
     }
 
