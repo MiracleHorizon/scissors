@@ -1,2 +1,2 @@
 export { useExtendStore } from './store'
-export { InputMode } from './types'
+export { DirectionModel } from './types'

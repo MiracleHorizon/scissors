@@ -4,7 +4,7 @@ import type { ExtendOptions, ExtendWith } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
 
-export const enum InputMode {
+export const enum DirectionModel {
   NUMBER = 'number',
   AXIS = 'axis',
   SEPARATED = 'separated'
@@ -15,7 +15,7 @@ export interface ExtendValues extends Omit<ExtendOptions, 'background' | 'extend
 }
 
 export interface State extends ExtendOptions, Pick<ExtendValues, 'extendValue'> {
-  inputMode: InputMode
+  directionModel: DirectionModel
 }
 
 interface Computed {
@@ -35,27 +35,20 @@ interface Actions {
   set: (options: ExtendOptions | null) => void
   reset: VoidFunction
 
-  setInputMode: (inputMode: InputMode) => void
+  setDirectionModel: (inputMode: DirectionModel) => void
 
   // Default
-  setExtendValue: (value: number) => void
-  resetExtendValue: VoidFunction
+  setExtendValue: (value: number | null) => void
 
   // Axis
-  setXAxis: (value: number) => void
-  setYAxis: (value: number) => void
-  resetXAxis: VoidFunction
-  resetYAxis: VoidFunction
+  setXAxis: (value: number | null) => void
+  setYAxis: (value: number | null) => void
 
   // Separated
-  setLeft: (left: number) => void
-  setTop: (top: number) => void
-  setRight: (right: number) => void
-  setBottom: (bottom: number) => void
-  resetLeft: VoidFunction
-  resetRight: VoidFunction
-  resetTop: VoidFunction
-  resetBottom: VoidFunction
+  setLeft: (left: number | null) => void
+  setTop: (top: number | null) => void
+  setRight: (right: number | null) => void
+  setBottom: (bottom: number | null) => void
 
   setBackground: (background: Color) => void
   setExtendWith: (extendWith: ExtendWith) => void

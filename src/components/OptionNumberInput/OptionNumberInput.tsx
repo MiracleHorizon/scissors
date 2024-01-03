@@ -1,28 +1,14 @@
-'use client'
-
-import {
-  type ChangeEvent,
-  type InputHTMLAttributes,
-  type KeyboardEvent,
-  type ReactNode,
-  useCallback
-} from 'react'
+import { type ChangeEvent, type KeyboardEvent, useCallback } from 'react'
 import { TextField } from '@radix-ui/themes'
 
-export function OptionNumberInput({
-  icon,
-  max,
-  value,
-  setValue,
-  resetValue,
-  ...inputAttributes
-}: Props) {
+import type { Props } from './OptionNumberInput.types'
+
+export function OptionNumberInput({ icon, max, value, setValue, ...inputAttributes }: Props) {
   const handleChange = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
       const value = ev.target.value
-
       if (value.length === 0) {
-        resetValue()
+        return setValue(null)
       }
 
       const parsedValue = parseInt(value)
@@ -35,7 +21,7 @@ export function OptionNumberInput({
 
       setValue(parsedValue)
     },
-    [max, setValue, resetValue]
+    [max, setValue]
   )
 
   const handleKeyDown = (ev: KeyboardEvent<HTMLInputElement>) => {
@@ -67,29 +53,4 @@ export function OptionNumberInput({
       />
     </TextField.Root>
   )
-}
-
-type InputAttributes = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  | 'min'
-  | 'max'
-  | 'step'
-  | 'value'
-  | 'type'
-  | 'pattern'
-  | 'color'
-  | 'size'
-  | 'onChange'
-  | 'onKeyDown'
->
-
-/* eslint no-unused-vars: 0 */
-interface Props extends InputAttributes {
-  value: number | null
-  setValue: (value: number) => void
-  resetValue: VoidFunction
-  min: number
-  max: number
-  step: number
-  icon?: ReactNode
 }

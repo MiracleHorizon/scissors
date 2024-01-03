@@ -25,9 +25,6 @@ export function ResizeSizesForm() {
   const setWidth = useResizeStore(state => state.setWidth)
   const setHeight = useResizeStore(state => state.setHeight)
 
-  const resetWidth = useResizeStore(state => state.resetWidth)
-  const resetHeight = useResizeStore(state => state.resetHeight)
-
   return (
     <Flex asChild align='center' gap='2' width='100%'>
       <form>
@@ -35,7 +32,6 @@ export function ResizeSizesForm() {
           {...defaultInputProps}
           value={width}
           setValue={setWidth}
-          resetValue={resetWidth}
           max={MAX_RESIZE_WIDTH}
           placeholder='Width'
           icon={<WidthIcon />}
@@ -44,7 +40,6 @@ export function ResizeSizesForm() {
           {...defaultInputProps}
           value={height}
           setValue={setHeight}
-          resetValue={resetHeight}
           max={MAX_RESIZE_HEIGHT}
           placeholder='Height'
           icon={<HeightIcon />}

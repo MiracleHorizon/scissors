@@ -54,11 +54,20 @@ export const useResizeStore = create<Store>((set, get) => ({
   set: options => set({ ...defaultState, ...options }),
   reset: () => set(defaultState),
 
-  setWidth: width => set({ width }),
-  setHeight: height => set({ height }),
+  setWidth: width => {
+    if (width === null) {
+      return set({ width: null })
+    }
 
-  resetWidth: () => set({ width: null }),
-  resetHeight: () => set({ height: null }),
+    set({ width })
+  },
+  setHeight: height => {
+    if (height === null) {
+      return set({ height: null })
+    }
+
+    set({ height })
+  },
 
   setFit: fit => {
     const isCover = fit === ResizeFit.COVER

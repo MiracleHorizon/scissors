@@ -8,7 +8,6 @@ import { DEFAULT_EXTEND_WITH, ExtendWith } from '@server/Sharp'
 
 const data = [
   {
-    label: 'Extend with',
     value: Object.values(ExtendWith)
   }
 ]

@@ -8,32 +8,49 @@ import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { ButtonExtendReset } from './ButtonExtendReset'
 import { ExtendToolbarButton } from './ExtendToolbarButton'
-import { InputMode, useExtendStore } from '@stores/extend'
+import { DirectionModel, useExtendStore } from '@stores/extend'
 import styles from './ExtendToolbar.module.css'
 
 export function ExtendToolbar() {
-  const inputMode = useExtendStore(state => state.inputMode)
-  const setInputMode = useExtendStore(state => state.setInputMode)
+  const directionModel = useExtendStore(state => state.directionModel)
+  const setDirectionModel = useExtendStore(state => state.setDirectionModel)
 
-  const setInputModeNumber = useCallback(() => setInputMode(InputMode.NUMBER), [setInputMode])
-  const setInputModeAxis = useCallback(() => setInputMode(InputMode.AXIS), [setInputMode])
-  const setInputModeSeparated = useCallback(() => setInputMode(InputMode.SEPARATED), [setInputMode])
+  const setDirectionModelNumber = useCallback(
+    () => setDirectionModel(DirectionModel.NUMBER),
+    [setDirectionModel]
+  )
+  const setDirectionModelAxis = useCallback(
+    () => setDirectionModel(DirectionModel.AXIS),
+    [setDirectionModel]
+  )
+  const setDirectionModelSeparated = useCallback(
+    () => setDirectionModel(DirectionModel.SEPARATED),
+    [setDirectionModel]
+  )
 
   return (
     <Flex width='100%'>
       <Flex align='center' justify='end' gap='1' width='100%' className={styles.content}>
-        {inputMode !== InputMode.NUMBER && (
+        {directionModel !== DirectionModel.NUMBER && (
           <ExtendToolbarButton
-            onClick={inputMode === InputMode.AXIS ? setInputModeSeparated : setInputModeAxis}
+            onClick={
+              directionModel === DirectionModel.AXIS
+                ? setDirectionModelSeparated
+                : setDirectionModelAxis
+            }
           >
             <AllSidesIcon width='17px' height='17px' />
           </ExtendToolbarButton>
         )}
 
         <ExtendToolbarButton
-          onClick={inputMode !== InputMode.NUMBER ? setInputModeNumber : setInputModeAxis}
+          onClick={
+            directionModel !== DirectionModel.NUMBER
+              ? setDirectionModelNumber
+              : setDirectionModelAxis
+          }
         >
-          {inputMode !== InputMode.NUMBER ? (
+          {directionModel !== DirectionModel.NUMBER ? (
             <ChevronUpIcon width='20px' height='20px' />
           ) : (
             <ChevronDownIcon width='20px' height='20px' />

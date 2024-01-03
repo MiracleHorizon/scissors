@@ -11,11 +11,8 @@ interface Actions {
   set: (options: ResizeOptions | null) => void
   reset: VoidFunction
 
-  setWidth: (width: number) => void
-  setHeight: (height: number) => void
-
-  resetWidth: VoidFunction
-  resetHeight: VoidFunction
+  setWidth: (width: number | null) => void
+  setHeight: (height: number | null) => void
 
   // Extra
   setFit: (fit: ResizeFit) => void

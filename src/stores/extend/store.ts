@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 import { DEFAULT_EXTEND_BACKGROUND, DEFAULT_EXTEND_WITH } from '@server/Sharp'
-import { type ExtendValues, InputMode, type State, type Store } from './types'
+import { DirectionModel, type ExtendValues, type State, type Store } from './types'
 
 const defaultExtendValues: ExtendValues = {
   extendValue: null,
@@ -13,7 +13,7 @@ const defaultExtendValues: ExtendValues = {
 }
 const defaultState: State = {
   ...defaultExtendValues,
-  inputMode: InputMode.NUMBER,
+  directionModel: DirectionModel.NUMBER,
   extendWith: DEFAULT_EXTEND_WITH,
   background: DEFAULT_EXTEND_BACKGROUND
 }
@@ -111,24 +111,24 @@ export const useExtendStore = create(
 
       set({
         ...options,
-        inputMode: InputMode.SEPARATED
+        directionModel: DirectionModel.SEPARATED
       })
     },
     reset: () => set(defaultState),
 
-    setInputMode: inputMode =>
+    setDirectionModel: directionModel =>
       set(state => {
         if (state.isEmpty()) {
           return {
-            inputMode
+            directionModel
           }
         }
 
-        if (inputMode === InputMode.NUMBER) {
+        if (directionModel === DirectionModel.NUMBER) {
           const minValue = state.getMinValue()
 
           return {
-            inputMode,
+            directionModel,
             extendValue: minValue,
             left: minValue,
             right: minValue,
@@ -222,24 +222,30 @@ export const useExtendStore = create(
           }
         }
 
-        if (inputMode === InputMode.AXIS) {
+        if (directionModel === DirectionModel.AXIS) {
           handleAxisValue('x')
           handleAxisValue('y')
 
           return {
-            inputMode
+            directionModel
           }
         }
 
         return {
-          inputMode
+          directionModel
         }
       }),
 
     setExtendValue: value =>
       set(state => {
-        if (state.inputMode !== InputMode.NUMBER) {
+        if (state.directionModel !== DirectionModel.NUMBER) {
           return state
+        }
+
+        if (value === null) {
+          return {
+            ...defaultExtendValues
+          }
         }
 
         return {
@@ -250,15 +256,10 @@ export const useExtendStore = create(
           bottom: value
         }
       }),
-    resetExtendValue: () => {
-      if (get().inputMode !== InputMode.NUMBER) return
-
-      set({ ...defaultExtendValues })
-    },
 
     setXAxis: value =>
       set(state => {
-        if (state.inputMode !== InputMode.AXIS) {
+        if (state.directionModel !== DirectionModel.AXIS) {
           return state
         }
 
@@ -269,7 +270,7 @@ export const useExtendStore = create(
       }),
     setYAxis: value =>
       set(state => {
-        if (state.inputMode !== InputMode.AXIS) {
+        if (state.directionModel !== DirectionModel.AXIS) {
           return state
         }
 
@@ -278,51 +279,11 @@ export const useExtendStore = create(
           bottom: value
         }
       }),
-    resetXAxis: () => {
-      if (get().inputMode !== InputMode.AXIS) return
-
-      get().resetLeft()
-      get().resetRight()
-    },
-    resetYAxis: () => {
-      if (get().inputMode !== InputMode.AXIS) return
-
-      get().resetTop()
-      get().resetBottom()
-    },
 
     setLeft: left => set({ left }),
     setRight: right => set({ right }),
     setTop: top => set({ top }),
     setBottom: bottom => set({ bottom }),
-    resetLeft: () => {
-      set({ left: defaultState.left })
-
-      if (get().right === null) {
-        get().resetXAxis()
-      }
-    },
-    resetRight: () => {
-      set({ right: defaultState.right })
-
-      if (get().left === null) {
-        get().resetXAxis()
-      }
-    },
-    resetTop: () => {
-      set({ top: defaultState.top })
-
-      if (get().bottom === null) {
-        get().resetYAxis()
-      }
-    },
-    resetBottom: () => {
-      set({ bottom: defaultState.bottom })
-
-      if (get().top === null) {
-        get().resetYAxis()
-      }
-    },
 
     setBackground: background => set({ background }),
     setExtendWith: extendWith => set({ extendWith })
