@@ -9,30 +9,23 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import { isDevelopment } from '@helpers/isDevelopment'
+import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME } from '@lib/seo'
 import './globals.css'
 
 const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), { ssr: false })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Image Converter',
-    template: '%s | Image Converter'
+    default: APP_NAME,
+    template: `%s | ${APP_NAME}`
   },
-  description: 'Your awesome application for versatile image formatting and processing!',
-  keywords: [
-    'image',
-    'conversion',
-    'processing',
-    'resizing',
-    'quality',
-    'rotation',
-    'jpeg',
-    'jpg',
-    'png',
-    'webp',
-    'avif',
-    'tiff'
-  ],
+  description: APP_DESCRIPTION,
+  keywords: APP_KEYWORDS,
+  openGraph: {
+    title: APP_NAME,
+    description: APP_DESCRIPTION,
+    type: 'website'
+  },
   robots: {
     index: true,
     follow: true
