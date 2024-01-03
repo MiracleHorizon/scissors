@@ -1,8 +1,13 @@
 import { Flex, type PaddingProps } from '@radix-ui/themes'
+import type { Metadata } from 'next'
 
 import { ButtonBackTop } from '@ui/ButtonBackTop'
 import { DocsContent } from './components/DocsContent'
 import { DocsNavigation } from './components/DocsNavigation'
+
+export const metadata: Metadata = {
+  title: 'Documentation'
+}
 
 const padding: PaddingProps = {
   px: {

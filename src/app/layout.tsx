@@ -14,7 +14,25 @@ import './globals.css'
 const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), { ssr: false })
 
 export const metadata: Metadata = {
-  title: 'Image Converter',
+  title: {
+    default: 'Image Converter',
+    template: '%s | Image Converter'
+  },
+  description: 'Your awesome application for versatile image formatting and processing!',
+  keywords: [
+    'image',
+    'conversion',
+    'processing',
+    'resizing',
+    'quality',
+    'rotation',
+    'jpeg',
+    'jpg',
+    'png',
+    'webp',
+    'avif',
+    'tiff'
+  ],
   robots: {
     index: true,
     follow: true
