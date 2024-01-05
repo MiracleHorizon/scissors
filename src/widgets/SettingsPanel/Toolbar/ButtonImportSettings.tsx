@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { ButtonImport } from '@ui/ButtonImport'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
-import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
+import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import type { ConvertSettings } from '@server/Sharp'
 
 export function ButtonImportSettings() {
@@ -44,7 +44,7 @@ export function ButtonImportSettings() {
     try {
       const settingsJSON = await fileReaderPromise
       const settings = JSON.parse(settingsJSON)
-      const isValid = ConvertSettingsValidator.validate(settings)
+      const isValid = YupSettingsValidator.validate(settings)
 
       if (!isValid) {
         handleCloseConfirmAlert()

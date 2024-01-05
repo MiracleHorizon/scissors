@@ -3,7 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 import { Sharp } from '@server/Sharp/Sharp'
 import { isValidFileSize } from '@helpers/isValidFileSize'
-import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
+import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { errorMessages } from '@api/convertImage'
 import type { ConvertSettings } from '@server/Sharp'
 
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   try {
     const parsedSettings = JSON.parse(settingsJSON) as ConvertSettings
 
-    const isValidSettings = ConvertSettingsValidator.validate(parsedSettings)
+    const isValidSettings = YupSettingsValidator.validate(parsedSettings)
     if (!isValidSettings) {
       return createResponseError(errorMessages.invalidSettings, 400)
     }

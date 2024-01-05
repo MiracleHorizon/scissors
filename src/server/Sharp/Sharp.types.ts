@@ -1,7 +1,5 @@
 /* eslint no-unused-vars: 0 */
 
-import type { Color } from 'sharp'
-
 export interface ConvertSettings {
   flip: boolean
   flop: boolean
@@ -56,7 +54,7 @@ export interface ExtendOptions {
   right: number | null
   left: number | null
   extendWith: ExtendWith
-  background: Color
+  background: string
 }
 
 export enum ExtendWith {

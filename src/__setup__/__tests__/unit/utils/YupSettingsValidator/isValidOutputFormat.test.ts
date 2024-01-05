@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
+import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { ImageFileFormat } from '@server/Sharp'
-import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
 
-const isValidOutputFormat = ConvertSettingsValidator.isValidOutputFormat
+describe('@utils/YupSettingsValidator.isValidOutputFormat', () => {
+  const isValidOutputFormat = YupSettingsValidator.isValidOutputFormat
 
-describe('@utils/ConvertSettingsValidator.isValidOutputFormat', () => {
   it('should return true for null', () => {
     expect(isValidOutputFormat(null)).toBe(true)
   })
