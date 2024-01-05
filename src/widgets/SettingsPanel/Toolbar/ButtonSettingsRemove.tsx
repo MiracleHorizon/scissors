@@ -9,8 +9,8 @@ export function ButtonSettingsRemove() {
 
   return (
     <ConfirmAlert
-      title='Confirm removing of all settings'
-      description='All settings will be removed'
+      title='Confirm Removing'
+      description='Are you sure? All settings will be removed!'
       onConfirm={handleRemove}
     >
       <ButtonDelete tooltipContent='Remove All Settings' />

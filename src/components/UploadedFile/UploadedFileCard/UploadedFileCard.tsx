@@ -35,7 +35,7 @@ export function UploadedFileCard({ file, isLoading }: Props) {
                 tooltipContent='Upload New File'
               />
               <ConfirmAlert
-                title='Confirm deletion'
+                title='Confirm Deletion'
                 description='Are you sure you want to continue?'
                 onConfirm={handleRemoveFile}
               >

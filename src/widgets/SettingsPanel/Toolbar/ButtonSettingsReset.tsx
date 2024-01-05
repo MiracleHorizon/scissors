@@ -9,8 +9,8 @@ export function ButtonSettingsReset() {
 
   return (
     <ConfirmAlert
-      title='Confirm reset of all settings'
-      description='All settings will be reset to default values'
+      title='Confirm Reseting'
+      description='Are you sure? All settings will be reset to default values!'
       onConfirm={handleReset}
     >
       <ButtonReset tooltipContent='Reset All Settings' />

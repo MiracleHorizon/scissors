@@ -87,7 +87,7 @@ export function ButtonImportSettings() {
         <ConfirmAlert
           open={isConfirmAlertOpen}
           title='Confirm Import'
-          description='Are you sure to override the settings?'
+          description='Are you sure? All settings will be overwritten!'
           onConfirm={handleConfirmImport}
           onCancel={handleCancelImport}
         />
@@ -98,9 +98,8 @@ export function ButtonImportSettings() {
           open={isValidationAlertOpen}
           title='Invalid Settings'
           description='Please check the JSON format'
-          confirmLabel='Okay'
           canselLabel='Close'
-          onConfirm={handleCloseValidationAlert}
+          withTitleExclamation
           onCancel={handleCloseValidationAlert}
         />
       )}
