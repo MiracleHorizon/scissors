@@ -8,7 +8,7 @@ export function ButtonGithub() {
   return (
     <Tooltip content='Watch the project on GitHub'>
       <IconButton asChild size='3' color='gray' variant='ghost' radius='large'>
-        <a target='_blank' href={PROJECT_GITHUB_URL}>
+        <a target='_blank' rel='noreferrer' href={PROJECT_GITHUB_URL}>
           <GithubLogoIcon />
         </a>
       </IconButton>

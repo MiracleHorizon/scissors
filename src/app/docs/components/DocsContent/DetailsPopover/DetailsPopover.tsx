@@ -17,6 +17,7 @@ export function DetailsPopover({ children, title, moreInfoLink }: Props) {
           {moreInfoLink && (
             <Link
               target='_blank'
+              rel='noreferrer'
               underline='always'
               weight='medium'
               href={moreInfoLink}
