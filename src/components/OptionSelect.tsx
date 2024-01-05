@@ -10,6 +10,7 @@ export function OptionSelect<T extends string>({
   label,
   data,
   triggerLabelSize = '2',
+  withItemValueCapitalize = true,
   DetailsComponent,
   ...props
 }: Props<T>) {
@@ -33,7 +34,7 @@ export function OptionSelect<T extends string>({
             {label && <Select.Label>{label}</Select.Label>}
             {value.map(value => (
               <Select.Item key={value} value={value}>
-                {capitalize(value)}
+                {withItemValueCapitalize ? capitalize(value) : value}
               </Select.Item>
             ))}
             {index < data.length - 1 && <Select.Separator />}
@@ -52,6 +53,7 @@ interface Props<T extends string> {
   onValueChange: (value: T) => void
   defaultValue?: string
   triggerLabelSize?: TextSize
+  withItemValueCapitalize?: boolean
   DetailsComponent?: ReactNode
 }
 
