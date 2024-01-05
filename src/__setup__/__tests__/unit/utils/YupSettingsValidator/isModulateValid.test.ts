@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest'
 
-import { ConvertSettingsValidator } from '@utils/ConvertSettingsValidator'
+import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { MIN_BRIGHTNESS } from '@server/Sharp'
 
-const isValidModulateOptions = ConvertSettingsValidator.isValidModulateOptions
+describe('@utils/YupSettingsValidator.isModulateValid', () => {
+  const isModulateValid = YupSettingsValidator.isModulateValid
 
-describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
   it('should return true for null', () => {
-    expect(isValidModulateOptions(null)).toBe(true)
+    expect(isModulateValid(null)).toBe(true)
   })
 
   it('should return true for valid modulate options object', () => {
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: 2,
         brightness: null,
         saturation: null,
@@ -19,15 +20,15 @@ describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
       })
     ).toBe(true)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
-        brightness: 2,
+        brightness: MIN_BRIGHTNESS,
         saturation: null,
         hue: null
       })
     ).toBe(true)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         brightness: null,
         saturation: 2,
@@ -35,7 +36,7 @@ describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
       })
     ).toBe(true)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         brightness: null,
         saturation: null,
@@ -43,7 +44,7 @@ describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
       })
     ).toBe(true)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         brightness: null,
         saturation: null,
@@ -53,33 +54,33 @@ describe('@utils/ConvertSettingsValidator.isValidModulateOptions', () => {
   })
 
   it('should return false for invalid modulate options object', () => {
-    expect(isValidModulateOptions(undefined)).toBe(false)
-    expect(isValidModulateOptions({})).toBe(false)
-    expect(isValidModulateOptions([])).toBe(false)
-    expect(isValidModulateOptions(new Map())).toBe(false)
+    expect(isModulateValid(undefined)).toBe(false)
+    expect(isModulateValid({})).toBe(false)
+    expect(isModulateValid([])).toBe(false)
+    expect(isModulateValid(new Map())).toBe(false)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         saturation: null,
         hue: null
       })
     ).toBe(false)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         brightness: null,
         saturation: null,
         hue: null
       })
     ).toBe(false)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         brightness: null,
         hue: null
       })
     ).toBe(false)
     expect(
-      isValidModulateOptions({
+      isModulateValid({
         lightness: null,
         brightness: null,
         saturation: null

@@ -1,5 +1,3 @@
-import type { Color } from 'sharp'
-
 import type { ExtendOptions, ExtendWith } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
@@ -50,6 +48,6 @@ interface Actions {
   setRight: (right: number | null) => void
   setBottom: (bottom: number | null) => void
 
-  setBackground: (background: Color) => void
+  setBackground: (background: string) => void
   setExtendWith: (extendWith: ExtendWith) => void
 }
