@@ -1,20 +1,28 @@
 import { Code, Text } from '@radix-ui/themes'
+import { Fragment } from 'react'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_EXTEND_WITH } from '@server/Sharp'
+import { DEFAULT_EXTEND_WITH, ExtendWith } from '@server/Sharp'
+
+const values = Object.values(ExtendWith)
 
 export function ExtendWithRow() {
   return (
     <DocsTableRow
-      label='Extend with'
+      label='extend with'
       description={
         <Text as='p'>
-          Populate new pixels using one of variants: <Code variant='ghost'>background</Code>,{' '}
-          <Code variant='ghost'>copy</Code>, <Code variant='ghost'>repeat</Code>,{' '}
-          <Code variant='ghost'>mirror</Code>.
+          Populate new pixels using one of variants:{' '}
+          {values.map((value, index) => (
+            <Fragment key={value}>
+              <Code>&quot;{value}&quot;</Code>
+              {index < values.length - 1 && ', '}
+            </Fragment>
+          ))}
+          .
         </Text>
       }
-      defaultValue={DEFAULT_EXTEND_WITH}
+      defaultValue={`"${DEFAULT_EXTEND_WITH}"`}
     />
   )
 }

@@ -5,9 +5,9 @@ import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
 export function NegateRow() {
   return (
     <DocsTableRow
-      label='Negate'
+      label='negate'
       description={<Text as='p'>Produce the negative of the image.</Text>}
-      defaultValue='Disabled'
+      defaultValue='disabled'
     />
   )
 }

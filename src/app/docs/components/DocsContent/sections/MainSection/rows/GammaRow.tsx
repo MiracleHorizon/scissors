@@ -6,7 +6,7 @@ import { DEFAULT_GAMMA } from '@server/Sharp'
 export function GammaRow() {
   return (
     <DocsTableRow
-      label='Gamma'
+      label='gamma'
       description={
         <Text as='p'>
           Applies gamma correction (in the range between <Code variant='ghost'>1</Code> and{' '}

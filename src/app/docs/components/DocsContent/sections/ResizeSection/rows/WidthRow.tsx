@@ -6,7 +6,7 @@ import { MAX_RESIZE_WIDTH, MIN_RESIZE_SIZE } from '@server/Sharp'
 export function WidthRow() {
   return (
     <DocsTableRow
-      label='Width'
+      label='width'
       description={
         <>
           <Text as='p'>How many pixels wide the resultant image should be.</Text>
@@ -16,7 +16,6 @@ export function WidthRow() {
           </Text>
         </>
       }
-      defaultValue='Not set'
     />
   )
 }

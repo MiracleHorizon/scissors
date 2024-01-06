@@ -10,17 +10,19 @@ const previewBoxStyle = {
 export function BackgroundRow() {
   return (
     <DocsTableRow
-      label='Background'
+      label='background'
       description={
         <Text as='p'>
-          Background color when <Text weight='medium'>fit</Text> is{' '}
-          <Code variant='ghost'>{ResizeFit.CONTAIN}</Code>.
+          Background color when <Code variant='ghost'>fit</Code> is{' '}
+          <Code>&quot;{ResizeFit.CONTAIN}&quot;</Code>.
         </Text>
       }
       defaultValue={
         <Flex asChild align='center' gap='2' height='100%'>
           <Table.Cell>
-            <Code size='3'>{DEFAULT_RESIZE_BACKGROUND}</Code>
+            <Code color='gray' size='3'>
+              {DEFAULT_RESIZE_BACKGROUND}
+            </Code>
             <Box width='4' height='4' style={previewBoxStyle} />
           </Table.Cell>
         </Flex>

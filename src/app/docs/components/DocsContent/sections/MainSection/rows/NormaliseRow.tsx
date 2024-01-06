@@ -1,12 +1,12 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
+import { DEFAULT_NORMALISE, MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
 
 export function NormaliseRow() {
   return (
     <DocsTableRow
-      label='Normalise'
+      label='normalise'
       description={
         <Text as='div'>
           <Text as='p'>
@@ -28,7 +28,7 @@ export function NormaliseRow() {
           </Text>
         </Text>
       }
-      defaultValue='1 - 99%'
+      defaultValue={`${DEFAULT_NORMALISE.lower} - ${DEFAULT_NORMALISE.upper}%`}
     />
   )
 }

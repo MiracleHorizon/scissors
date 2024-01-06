@@ -10,20 +10,19 @@ const previewBoxStyle = {
 export function BackgroundRow() {
   return (
     <DocsTableRow
-      label='Background'
+      label='background'
       description={
         <Text as='p'>
-          Extending background color if{' '}
-          <Text as='span' weight='medium'>
-            &quot;extends with&quot;
-          </Text>{' '}
-          option is equal to <Code variant='ghost'>background</Code>
+          Extending background color if <Code variant='ghost'>extend with</Code> option is equal to{' '}
+          <Code>&quot;background&quot;</Code>
         </Text>
       }
       defaultValue={
         <Flex asChild align='center' gap='2' height='100%'>
           <Table.Cell>
-            <Code size='3'>{DEFAULT_EXTEND_BACKGROUND}</Code>
+            <Code color='gray' size='3'>
+              {DEFAULT_EXTEND_BACKGROUND}
+            </Code>
             <Box width='4' height='4' style={previewBoxStyle} />
           </Table.Cell>
         </Flex>

@@ -6,7 +6,7 @@ import { DEFAULT_WITHOUT_ENLARGEMENT } from '@server/Sharp'
 export function EnlargementRow() {
   return (
     <DocsTableRow
-      label='Enlargement'
+      label='enlargement'
       description={
         <Text as='p'>
           Do not scale up if the width or height are already less than the target dimensions.
@@ -14,7 +14,7 @@ export function EnlargementRow() {
           This may result in output dimensions smaller than the target dimensions.
         </Text>
       }
-      defaultValue={DEFAULT_WITHOUT_ENLARGEMENT ? 'Enabled' : 'Disabled'}
+      defaultValue={DEFAULT_WITHOUT_ENLARGEMENT ? 'enabled' : 'disabled'}
     />
   )
 }

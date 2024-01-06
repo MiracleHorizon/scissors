@@ -10,7 +10,7 @@ const previewBoxStyle = {
 export function RotateBackgroundRow() {
   return (
     <DocsTableRow
-      label='Rotate background'
+      label='rotate background'
       description={
         <Text as='p'>
           If you rotate by an angle other than a multiple of <Code variant='ghost'>90°</Code>, the
@@ -21,6 +21,7 @@ export function RotateBackgroundRow() {
         <Flex asChild align='center' gap='2' height='100%'>
           <Table.Cell>
             <Code
+              color='gray'
               size={{
                 initial: '2',
                 xs: '3'

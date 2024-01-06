@@ -6,7 +6,7 @@ import { MAX_RESIZE_HEIGHT, MIN_RESIZE_SIZE } from '@server/Sharp'
 export function HeightRow() {
   return (
     <DocsTableRow
-      label='Height'
+      label='height'
       description={
         <>
           <Text as='p'>How many pixels high the resultant image should be.</Text>
@@ -16,7 +16,6 @@ export function HeightRow() {
           </Text>
         </>
       }
-      defaultValue='Not set'
     />
   )
 }
