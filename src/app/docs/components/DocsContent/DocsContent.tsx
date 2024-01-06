@@ -1,6 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 
 import { MainSection } from './sections/MainSection'
+import { RotateSection } from './sections/RotateSection'
 import { ResizeSection } from './sections/ResizeSection'
 import { ModulateSection } from './sections/ModulateSection'
 import { ExtendSection } from './sections/ExtendSection'
@@ -19,6 +20,7 @@ export function DocsContent() {
     >
       <main>
         <MainSection />
+        <RotateSection />
         <ResizeSection />
         <ExtendSection />
         <ModulateSection />

@@ -8,8 +8,6 @@ import {
   NegateAlphaRow,
   NegateRow,
   NormaliseRow,
-  RotateAngleRow,
-  RotateBackgroundRow,
   TintRow
 } from './rows'
 import { DocsHash } from '@lib/router'
@@ -24,8 +22,6 @@ export function MainSection() {
         <NegateAlphaRow />
         <GrayscaleRow />
         <BlurRow />
-        <RotateAngleRow />
-        <RotateBackgroundRow />
         <NormaliseRow />
         <TintRow />
         <GammaRow />

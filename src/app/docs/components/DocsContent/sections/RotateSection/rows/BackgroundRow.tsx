@@ -7,14 +7,15 @@ const previewBoxStyle = {
   backgroundColor: DEFAULT_ROTATE_BACKGROUND
 }
 
-export function RotateBackgroundRow() {
+export function BackgroundRow() {
   return (
     <DocsTableRow
-      label='rotate background'
+      label='background'
       description={
         <Text as='p'>
-          If you rotate by an angle other than a multiple of <Code variant='ghost'>90°</Code>, the
-          background color set with the background option will be visible.
+          If you rotate by an <Code variant='ghost'>angle</Code> other than a multiple of{' '}
+          <Code variant='ghost'>90°</Code>, the background color set with the background option will
+          be visible.
         </Text>
       }
       defaultValue={
