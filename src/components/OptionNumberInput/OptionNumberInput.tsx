@@ -1,9 +1,12 @@
-import { type ChangeEvent, type KeyboardEvent, useCallback } from 'react'
+import { type ChangeEvent, type KeyboardEvent, useCallback, useRef } from 'react'
 import { TextField } from '@radix-ui/themes'
 
+import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import type { Props } from './OptionNumberInput.types'
 
 export function OptionNumberInput({ icon, max, value, setValue, ...inputAttributes }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleChange = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
       const value = ev.target.value
@@ -38,11 +41,16 @@ export function OptionNumberInput({ icon, max, value, setValue, ...inputAttribut
     }
   }
 
+  useEscapeBlur({
+    ref: inputRef
+  })
+
   return (
     <TextField.Root className='w-full'>
       {icon && <TextField.Slot>{icon}</TextField.Slot>}
       <TextField.Input
         {...inputAttributes}
+        ref={inputRef}
         value={value ?? ''}
         type='number'
         inputMode='numeric'
