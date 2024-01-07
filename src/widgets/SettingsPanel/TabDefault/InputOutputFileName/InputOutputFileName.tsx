@@ -3,6 +3,7 @@ import { type ChangeEvent, memo, useCallback, useMemo, useRef, useState } from '
 import { Flex, TextField } from '@radix-ui/themes'
 
 import { ButtonClear } from '@ui/ButtonClear'
+import { FileTextIcon } from '@ui/icons/FileTextIcon'
 import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
 import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
@@ -52,6 +53,7 @@ function InputOutputFileName() {
       if (!isValid) {
         setIsError(true)
       } else {
+        // TODO: else if?
         if (isError !== null) {
           setIsError(false)
         }
@@ -74,6 +76,10 @@ function InputOutputFileName() {
   return (
     <Flex gap='2' align='center' width='100%' mb='2' className={styles.root}>
       <TextField.Root className={styles.textFieldRoot}>
+        <TextField.Slot>
+          <FileTextIcon />
+        </TextField.Slot>
+
         <TextField.Input
           {...inputProps}
           ref={inputRef}
