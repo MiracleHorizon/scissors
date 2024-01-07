@@ -8,9 +8,12 @@ import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
 export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
-  ({ tooltipDelay, tooltipContent, disabled, ...props }, ref) => {
+  (
+    { tooltipDelay, tooltipContent, disabled, variant = 'outline', color = 'red', ...props },
+    ref
+  ) => {
     const Button = (
-      <IconButton {...props} disabled={disabled} ref={ref}>
+      <IconButton {...props} color={color} variant={variant} disabled={disabled} ref={ref}>
         <TrashIcon width='24px' height='24px' />
       </IconButton>
     )
