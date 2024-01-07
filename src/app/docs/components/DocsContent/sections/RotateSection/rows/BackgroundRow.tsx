@@ -7,20 +7,22 @@ const previewBoxStyle = {
   backgroundColor: DEFAULT_ROTATE_BACKGROUND
 }
 
-export function RotateBackgroundRow() {
+export function BackgroundRow() {
   return (
     <DocsTableRow
-      label='Rotate background'
+      label='background'
       description={
         <Text as='p'>
-          If you rotate by an angle other than a multiple of <Code variant='ghost'>90°</Code>, the
-          background color set with the background option will be visible.
+          If you rotate by an <Code variant='ghost'>angle</Code> other than a multiple of{' '}
+          <Code variant='ghost'>90°</Code>, the background color set with the background option will
+          be visible.
         </Text>
       }
       defaultValue={
         <Flex asChild align='center' gap='2' height='100%'>
           <Table.Cell>
             <Code
+              color='gray'
               size={{
                 initial: '2',
                 xs: '3'

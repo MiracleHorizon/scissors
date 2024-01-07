@@ -12,15 +12,15 @@ const MoirePatternPopover = dynamic(() => import('./MoirePatternPopover'), {
 export function FastShrinkRow() {
   return (
     <DocsTableRow
-      label='Fast shrink'
+      label='fast shrink'
       description={
         <Text as='p'>
-          Take greater advantage of the <Code variant='ghost'>JPEG</Code> and{' '}
-          <Code variant='ghost'>WebP</Code> shrink-on-load feature, which can lead to a slight{' '}
+          Take greater advantage of the <Code>&quot;jpeg&quot;</Code> and{' '}
+          <Code>&quot;webp&quot;</Code> shrink-on-load feature, which can lead to a slight{' '}
           <MoirePatternPopover /> or round-down of an auto-scaled dimension.
         </Text>
       }
-      defaultValue={DEFAULT_FAST_SHRINK ? 'Enabled' : 'Disabled'}
+      defaultValue={DEFAULT_FAST_SHRINK ? 'enabled' : 'disabled'}
     />
   )
 }

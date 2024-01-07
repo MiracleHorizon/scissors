@@ -1,14 +1,30 @@
 import { Code, Table } from '@radix-ui/themes'
 import type { ReactNode } from 'react'
 
+import { MinusIcon } from '@ui/icons/MinusIcon'
+
 export function DocsTableRow({ label, description, defaultValue }: Props) {
   return (
     <Table.Row>
-      <Table.RowHeaderCell>{label}</Table.RowHeaderCell>
+      <Table.RowHeaderCell>
+        <Code
+          size={{
+            initial: '2',
+            xs: '3'
+          }}
+        >
+          {label}
+        </Code>
+      </Table.RowHeaderCell>
       <Table.Cell>{description}</Table.Cell>
-      {typeof defaultValue !== 'object' ? (
+      {defaultValue === undefined ? (
+        <Table.Cell>
+          <MinusIcon color='gray' />
+        </Table.Cell>
+      ) : typeof defaultValue !== 'object' ? (
         <Table.Cell>
           <Code
+            color='gray'
             size={{
               initial: '2',
               xs: '3'
@@ -27,5 +43,5 @@ export function DocsTableRow({ label, description, defaultValue }: Props) {
 interface Props {
   label: string
   description: ReactNode
-  defaultValue: string | number | ReactNode
+  defaultValue?: string | number | ReactNode
 }

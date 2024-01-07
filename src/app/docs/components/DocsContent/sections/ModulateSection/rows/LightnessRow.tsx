@@ -1,16 +1,17 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MIN_LIGHTNESS } from '@server/Sharp'
+import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@server/Sharp'
 
 export function LightnessRow() {
   return (
     <DocsTableRow
-      label='Lightness'
+      label='lightness'
       description={
         <Text as='p'>
           The lightness of the image. The value ranges from{' '}
-          <Code variant='ghost'>{MIN_LIGHTNESS}</Code> to <Code variant='ghost'>100</Code>.
+          <Code variant='ghost'>{MIN_LIGHTNESS}%</Code> to{' '}
+          <Code variant='ghost'>{MAX_LIGHTNESS}%</Code>.
         </Text>
       }
       defaultValue={`${MIN_LIGHTNESS}%`}

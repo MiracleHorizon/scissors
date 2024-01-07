@@ -6,7 +6,7 @@ import { MAX_SATURATION, MIN_SATURATION } from '@server/Sharp'
 export function SaturationRow() {
   return (
     <DocsTableRow
-      label='Saturation'
+      label='saturation'
       description={
         <Text as='p'>
           The saturation of the image. The value ranges from{' '}

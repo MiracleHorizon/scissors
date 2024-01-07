@@ -1,17 +1,5 @@
 import { DocsSection } from '../../DocsSection'
-import {
-  BlurRow,
-  FlipRow,
-  FlopRow,
-  GammaRow,
-  GrayscaleRow,
-  NegateAlphaRow,
-  NegateRow,
-  NormaliseRow,
-  RotateAngleRow,
-  RotateBackgroundRow,
-  TintRow
-} from './rows'
+import { BlurRow, FlipRow, FlopRow, GammaRow, GrayscaleRow, NormaliseRow, TintRow } from './rows'
 import { DocsHash } from '@lib/router'
 
 export function MainSection() {
@@ -20,12 +8,8 @@ export function MainSection() {
       <>
         <FlipRow />
         <FlopRow />
-        <NegateRow />
-        <NegateAlphaRow />
         <GrayscaleRow />
         <BlurRow />
-        <RotateAngleRow />
-        <RotateBackgroundRow />
         <NormaliseRow />
         <TintRow />
         <GammaRow />

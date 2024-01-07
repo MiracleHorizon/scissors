@@ -2,12 +2,12 @@ import { Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
 
-export function NegateRow() {
+export function ValueRow() {
   return (
     <DocsTableRow
-      label='Negate'
+      label='value'
       description={<Text as='p'>Produce the negative of the image.</Text>}
-      defaultValue='Disabled'
+      defaultValue='disabled'
     />
   )
 }

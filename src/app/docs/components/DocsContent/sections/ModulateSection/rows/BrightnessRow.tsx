@@ -6,7 +6,7 @@ import { MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@server/Sharp'
 export function BrightnessRow() {
   return (
     <DocsTableRow
-      label='Brightness'
+      label='brightness'
       description={
         <Text as='p'>
           The brightness of the image. The value ranges from{' '}
