@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { MAX_GAMMA, MIN_GAMMA } from '@server/Sharp'
 

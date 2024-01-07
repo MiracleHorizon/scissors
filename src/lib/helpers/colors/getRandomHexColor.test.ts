@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { getRandomHexColor } from './getRandomHexColor'
 import { hexValidationRegex } from './regular-expressions'
 

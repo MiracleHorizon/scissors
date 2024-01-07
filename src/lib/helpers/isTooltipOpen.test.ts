@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { isTooltipOpen } from './isTooltipOpen'
 
 describe('@lib/helpers/isTooltipOpen', () => {

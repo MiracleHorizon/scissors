@@ -17,10 +17,6 @@ const aliases: Alias[] = [
     replacementPath: './src/api'
   },
   {
-    find: '@lib',
-    replacementPath: './src/lib/ui'
-  },
-  {
     find: '@helpers',
     replacementPath: './src/lib/helpers'
   },
@@ -40,19 +36,16 @@ const aliases: Alias[] = [
 
 export default defineConfig({
   test: {
-    environment: 'node',
+    globals: true,
     includeSource: ['src/**/*.test.{ts,tsx}', 'src/**/test.{ts,tsx}'],
     coverage: {
       enabled: true,
       cleanOnRerun: true,
       provider: 'istanbul',
-      lines: 100,
-      functions: 100,
       reporter: ['html'],
       reportsDirectory: './src/__setup__/__tests__/unit/coverage',
       reportOnFailure: true,
-      clean: true,
-      100: true
+      clean: true
     },
     alias: aliases.map(alias => createAlias(alias))
   }

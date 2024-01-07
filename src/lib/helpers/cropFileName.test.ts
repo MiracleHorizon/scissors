@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { cropFileName } from './cropFileName'
 
 describe('@lib/helpers/cropFileName', () => {

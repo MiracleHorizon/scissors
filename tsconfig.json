@@ -1,4 +1,14 @@
 {
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
@@ -13,6 +23,9 @@
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "vitest/globals"
     ],
     "jsx": "preserve",
     "useDefineForClassFields": true,
@@ -87,15 +100,5 @@
         "./src/types/*"
       ]
     }
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

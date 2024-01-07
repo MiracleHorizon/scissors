@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { ResizeFit, ResizeKernel, type ResizeOptions, ResizePosition } from '@server/Sharp'
 
