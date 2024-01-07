@@ -19,7 +19,7 @@ export function SliderRotateAngle() {
   return (
     <OptionSlider
       valueSign='°'
-      value={[rotateAngle ?? DEFAULT_ROTATE_ANGLE]}
+      value={rotateAngle ? [rotateAngle] : []}
       defaultValue={[DEFAULT_ROTATE_ANGLE]}
       min={MIN_ROTATE_ANGLE}
       max={MAX_ROTATE_ANGLE}

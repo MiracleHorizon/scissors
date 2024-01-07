@@ -5,14 +5,15 @@ import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'
 import { useRotateStore } from '@stores/rotate'
-import { DEFAULT_ROTATE_ANGLE } from '@server/Sharp'
+import { DocsHash, Route } from '@lib/router'
 
 export function RotateHeader() {
-  const rotateAngle = useRotateStore(state => state.angle)
+  const angle = useRotateStore(state => state.angle)
 
   return (
     <OptionSectionHeader
-      title={`Rotate: ${rotateAngle ?? DEFAULT_ROTATE_ANGLE}°`}
+      href={Route.DOCS + DocsHash.ROTATE}
+      title={angle ? `Rotate: ${angle}°` : 'Rotate'}
       icon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
     >
       <>
