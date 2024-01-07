@@ -3,15 +3,18 @@ import { Flex, Popover } from '@radix-ui/themes'
 import { HexColorPicker } from 'react-colorful'
 
 import { ButtonClipboardCopy } from '@ui/ButtonClipboardCopy'
+import { ButtonRandomize } from '@ui/ButtonRandomize'
 import { HexColorInput } from '../HexColorInput'
+import { getRandomHexColor } from '@lib/helpers/colors'
 import styles from './ColorPickerContent.module.css'
 
 export function ColorPickerContent({ color, setColor }: Props) {
-  const onColorValueChange = useCallback((color: string) => setColor(color), [setColor])
-  const onHexInputValueChange = useCallback(
+  const handleValueChange = useCallback((color: string) => setColor(color), [setColor])
+  const handleInputValueChange = useCallback(
     (color: string) => setColor(!color.startsWith('#') ? `#${color}` : color),
     [setColor]
   )
+  const handleRandomize = () => setColor(getRandomHexColor())
 
   return (
     <Popover.Content size='1' className={styles.root}>
@@ -19,11 +22,14 @@ export function ColorPickerContent({ color, setColor }: Props) {
         <HexColorPicker
           color={color}
           className={styles.reactColorfulColorPicker}
-          onChange={onColorValueChange}
+          onChange={handleValueChange}
         />
-        <Flex justify='between' gap='1' width='100%'>
-          <HexColorInput size='2' color={color} onChange={onHexInputValueChange} />
-          <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
+        <Flex direction='column' gap='2' width='100%'>
+          <Flex justify='between' gap='1' width='100%'>
+            <HexColorInput size='2' color={color} onChange={handleInputValueChange} />
+            <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
+          </Flex>
+          <ButtonRandomize onClick={handleRandomize} />
         </Flex>
       </Flex>
     </Popover.Content>

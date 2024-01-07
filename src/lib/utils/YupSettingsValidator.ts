@@ -29,8 +29,7 @@ import {
   ResizePosition,
   ResizePositionGravity
 } from '@server/Sharp'
-
-const hexValidationRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/
+import { hexValidationRegex } from '@helpers/colors'
 
 const tintSchema = string()
   .matches(hexValidationRegex, {
