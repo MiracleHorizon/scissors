@@ -1,7 +1,5 @@
 export { FlipRow } from './FlipRow'
 export { FlopRow } from './FlopRow'
-export { NegateRow } from './NegateRow'
-export { NegateAlphaRow } from './NegateAlphaRow'
 export { NormaliseRow } from './NormaliseRow'
 export { BlurRow } from './BlurRow'
 export { GrayscaleRow } from './GrayscaleRow'

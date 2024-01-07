@@ -11,6 +11,10 @@ const items = [
     hash: DocsHash.MAIN
   },
   {
+    title: 'Negate',
+    hash: DocsHash.NEGATE
+  },
+  {
     title: 'Rotate',
     hash: DocsHash.ROTATE
   },
