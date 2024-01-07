@@ -20,7 +20,7 @@ export function FileSizeAlert({ isOpen, onClose }: Props) {
 
         <Flex gap='3' mt='3' justify='end'>
           <AlertDialog.Cancel onClick={onClose}>
-            <Button color='gray' variant='soft'>
+            <Button color='gray' variant='soft' radius='large'>
               Okay
             </Button>
           </AlertDialog.Cancel>

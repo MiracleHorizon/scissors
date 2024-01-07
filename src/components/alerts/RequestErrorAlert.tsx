@@ -25,14 +25,14 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
         <Flex gap='3' mt='3' justify={isMessageEmpty ? 'center' : 'end'}>
           {retry && (
             <AlertDialog.Action>
-              <Button variant='soft' onClick={retry}>
+              <Button variant='soft' radius='large' onClick={retry}>
                 Retry
               </Button>
             </AlertDialog.Action>
           )}
 
           <AlertDialog.Cancel>
-            <Button color='gray' onClick={reset}>
+            <Button color='gray' radius='large' onClick={reset}>
               Okay
             </Button>
           </AlertDialog.Cancel>

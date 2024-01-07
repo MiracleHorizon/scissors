@@ -36,7 +36,13 @@ export function ConfirmAlert({
           <Flex gap='3' justify='end' mt='5'>
             {onCancel && (
               <AlertDialog.Cancel>
-                <Button color='gray' variant='soft' className={styles.button} onClick={onCancel}>
+                <Button
+                  color='gray'
+                  variant='soft'
+                  radius='large'
+                  className={styles.button}
+                  onClick={onCancel}
+                >
                   {canselLabel}
                 </Button>
               </AlertDialog.Cancel>
@@ -44,7 +50,7 @@ export function ConfirmAlert({
 
             {onConfirm && (
               <AlertDialog.Action>
-                <Button className={styles.button} onClick={onConfirm}>
+                <Button className={styles.button} radius='large' onClick={onConfirm}>
                   {confirmLabel}
                 </Button>
               </AlertDialog.Action>
