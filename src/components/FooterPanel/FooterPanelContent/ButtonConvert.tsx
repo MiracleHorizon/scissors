@@ -10,7 +10,12 @@ function ButtonConvert({ isPending, handleConvertImage }: Props) {
   const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
   return (
-    <Button size='3' disabled={!isFileUploaded || isPending} onClick={handleConvertImage}>
+    <Button
+      size='3'
+      radius='large'
+      disabled={!isFileUploaded || isPending}
+      onClick={handleConvertImage}
+    >
       <Text as='span'>Convert</Text>
       {!isFileUploaded || isPending ? (
         <LockClosedIcon width='20px' height='20px' />

@@ -17,7 +17,13 @@ export function ButtonDownload() {
 
   return (
     <>
-      <Button size='3' variant='surface' disabled={!downloadPayload} onClick={handleButtonClick}>
+      <Button
+        size='3'
+        variant='surface'
+        radius='large'
+        disabled={!downloadPayload}
+        onClick={handleButtonClick}
+      >
         <DownloadIcon width='20px' height='20px' />
         <Text as='span'>Download</Text>
       </Button>
