@@ -7,7 +7,7 @@ import { useRotateStore } from '@stores/rotate'
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/Sharp'
 
 export function SliderRotateAngle() {
-  const rotateAngle = useRotateStore(state => state.angle)
+  const angle = useRotateStore(state => state.angle)
 
   const setRotateAngle = useRotateStore(state => state.setAngle)
 
@@ -19,7 +19,7 @@ export function SliderRotateAngle() {
   return (
     <OptionSlider
       valueSign='°'
-      value={rotateAngle ? [rotateAngle] : []}
+      value={[angle ?? DEFAULT_ROTATE_ANGLE]}
       defaultValue={[DEFAULT_ROTATE_ANGLE]}
       min={MIN_ROTATE_ANGLE}
       max={MAX_ROTATE_ANGLE}
