@@ -1,6 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable'
-import { Flex, IconButton, Separator, Tooltip } from '@radix-ui/themes'
+import { Flex, IconButton, type PaddingProps, Separator, Tooltip } from '@radix-ui/themes'
 import { CSS } from '@dnd-kit/utilities'
+import { clsx } from 'clsx'
 import type { CSSProperties, PropsWithChildren } from 'react'
 import type { UniqueIdentifier } from '@dnd-kit/core'
 
@@ -8,6 +9,25 @@ import { TrashIcon } from '@ui/icons/TrashIcon'
 import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
+import type { FlexDirection } from '@lib/theme'
+import styles from './SortableSection.module.css'
+
+const direction: FlexDirection = {
+  initial: 'row-reverse',
+  sm: 'row'
+}
+const padding: PaddingProps = {
+  pl: {
+    initial: '2',
+    sm: '2'
+  },
+  pr: {
+    initial: '2',
+    sm: '0'
+  },
+  pt: '2',
+  pb: '1'
+}
 
 export function SortableSection({
   children,
@@ -23,7 +43,6 @@ export function SortableSection({
   })
 
   const getTransformCSS = () => {
-    // TODO: Substr
     const transformCSS = CSS.Transform.toString(transform)
     if (!transformCSS) return
     const split = transformCSS.split(' ')
@@ -44,11 +63,7 @@ export function SortableSection({
   const style: CSSProperties = {
     transition,
     transform: getTransformCSS(),
-    backgroundColor: 'var(--color-background)',
-    zIndex: isDragging ? 10 : 'auto',
-    touchAction: 'manipulation',
-    boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, 0.1)',
-    borderRadius: '10px'
+    zIndex: isDragging ? 10 : 1
   }
 
   const onMoveUp = () => handleMoveUp(id)
@@ -57,16 +72,19 @@ export function SortableSection({
 
   return (
     <Flex
+      {...padding}
       {...attributes}
       ref={setNodeRef}
+      direction={direction}
       align='start'
       gap='2'
-      pl='2'
-      py='1'
       width='100%'
       style={style}
+      className={clsx(styles.root, {
+        [styles.sectionDragging]: isDragging
+      })}
     >
-      <Flex mt='1' direction='column' gap='1'>
+      <Flex direction='column' gap='1'>
         <IconButton {...listeners} radius='large' size='1' variant='surface' color='gray'>
           <svg
             width='15'
