@@ -63,7 +63,7 @@ export function SortableSection({
   const style: CSSProperties = {
     transition,
     transform: getTransformCSS(),
-    zIndex: isDragging ? 10 : 1
+    zIndex: isDragging ? 2 : 1
   }
 
   const onMoveUp = () => handleMoveUp(id)
@@ -84,7 +84,7 @@ export function SortableSection({
         [styles.sectionDragging]: isDragging
       })}
     >
-      <Flex direction='column' gap='1'>
+      <Flex direction='column' gap='1' className={styles.actions}>
         <IconButton {...listeners} radius='large' size='1' variant='surface' color='gray'>
           <svg
             width='15'
