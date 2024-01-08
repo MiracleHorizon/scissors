@@ -26,7 +26,7 @@ export function TabResize() {
 
   return (
     <Tabs.Content value='resize'>
-      <Flex direction='column' gap='1' mt='1' pl='1' pr='3'>
+      <Flex direction='column' gap='2' mt='3' pb='2' pl={{ initial: '3', md: '2' }} pr='3'>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
