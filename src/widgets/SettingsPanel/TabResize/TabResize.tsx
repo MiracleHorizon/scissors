@@ -26,7 +26,7 @@ export function TabResize() {
 
   return (
     <Tabs.Content value='resize'>
-      <Flex direction='column' gap='2' mt='1' pl='1'>
+      <Flex direction='column' gap='1' mt='1' pl='1' pr='3'>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -44,8 +44,8 @@ export function TabResize() {
                 handleMoveDown={handleMoveDown}
                 handleRemove={handleRemove}
               >
-                {id === 'resize' && <Resize />}
-                {id === 'extend' && <Extend />}
+                {typeof id === 'string' && id.startsWith('resize') && <Resize />}
+                {typeof id === 'string' && id.startsWith('extend') && <Extend />}
               </SortableSection>
             ))}
           </SortableContext>

@@ -27,7 +27,8 @@ const options = [
 ]
 
 const padding: PaddingProps = {
-  px: '3',
+  pl: '3',
+  pr: '4',
   pb: '2',
   pt: '4'
 }
