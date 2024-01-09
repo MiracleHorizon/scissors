@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic'
 import { Box } from '@radix-ui/themes'
 
 import { FooterPanelContentSkeleton } from './FooterPanelContentSkeleton'
-import { useConvertImage } from '@stores/hooks/useConvertImage'
 import styles from './FooterPanel.module.css'
 
 const FooterPanelContent = dynamic(
@@ -23,4 +22,7 @@ export function FooterPanel(props: Props) {
   )
 }
 
-type Props = Pick<ReturnType<typeof useConvertImage>, 'isPending' | 'handleConvertImage'>
+interface Props {
+  isPending: boolean
+  trigger: VoidFunction
+}

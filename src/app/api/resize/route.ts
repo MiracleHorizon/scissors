@@ -1,11 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { SharpConvert } from '@server/Sharp/SharpConvert'
-import { isValidFileSize } from '@helpers/isValidFileSize'
+import { SharpResize } from '@server/Sharp/SharpResize'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { errorMessages } from '@api/convertImage'
-import type { ConvertSettings } from '@server/Sharp'
+import { isValidFileSize } from '@helpers/isValidFileSize'
+import { errorMessages } from '@api/resizeImage'
+import type { ResizeSettings } from '@server/Sharp'
 
 export async function POST(req: NextRequest) {
   let formData: FormData
@@ -31,12 +31,12 @@ export async function POST(req: NextRequest) {
   }
 
   // Try to parse settings JSON and validate it
-  let settings: ConvertSettings | null = null
+  let settings: ResizeSettings | null = null
 
   try {
-    const parsedSettings = JSON.parse(settingsJSON) as ConvertSettings
+    const parsedSettings = JSON.parse(settingsJSON) as ResizeSettings
 
-    const isValidSettings = YupSettingsValidator.validateConvert(parsedSettings)
+    const isValidSettings = YupSettingsValidator.validateResize(parsedSettings)
     if (!isValidSettings) {
       return createResponseError(errorMessages.invalidSettings, 400)
     }
@@ -48,10 +48,10 @@ export async function POST(req: NextRequest) {
       return createResponseError(errorMessages.invalidSettings, 400)
     }
 
-    return createResponseError('An error occurred while parsing conversion settings', 500)
+    return createResponseError('An error occurred while parsing resizing settings', 500)
   }
 
-  // Try to convert image file with provided settings
+  // Try to resize image file with provided settings
   try {
     const imageBuffer = await file.arrayBuffer()
 
@@ -59,16 +59,16 @@ export async function POST(req: NextRequest) {
       return new NextResponse(imageBuffer)
     }
 
-    const sharpConvert = new SharpConvert(imageBuffer)
-    const convertedImageBuffer = await sharpConvert.convert(settings)
+    const sharpResize = new SharpResize(imageBuffer)
+    const resizedImageBuffer = await sharpResize.resizeImage(settings)
 
-    return new NextResponse(convertedImageBuffer)
+    return new NextResponse(resizedImageBuffer)
   } catch (err) {
     if (err instanceof Error) {
       return createResponseError(err.message, 500)
     }
 
-    return createResponseError('An error occurred while converting the image', 500)
+    return createResponseError('An error occurred while resizing the image', 500)
   }
 }
 

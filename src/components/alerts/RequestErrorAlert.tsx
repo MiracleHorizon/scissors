@@ -3,10 +3,10 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
 import { TitleWithExclamation } from '@components/TitleWithExclamation'
-import { handleConvertError } from '@helpers/handleConvertError'
+import { handleRequestError } from '@api/helpers/handleRequestError'
 
 export function RequestErrorAlert({ open, error, reset, retry }: Props) {
-  const message = handleConvertError(error)
+  const message = handleRequestError(error)
   const isMessageEmpty = message.length === 0
 
   return (

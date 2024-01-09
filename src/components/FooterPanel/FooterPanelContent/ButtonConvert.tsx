@@ -3,19 +3,13 @@ import { Button, Text } from '@radix-ui/themes'
 
 import { SymbolIcon } from '@ui/icons/SymbolIcon'
 import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
-import { useConvertImage } from '@stores/hooks/useConvertImage'
 import { useOutputStore } from '@stores/output'
 
-function ButtonConvert({ isPending, handleConvertImage }: Props) {
+function ButtonConvert({ isPending, trigger }: Props) {
   const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
   return (
-    <Button
-      size='3'
-      radius='large'
-      disabled={!isFileUploaded || isPending}
-      onClick={handleConvertImage}
-    >
+    <Button size='3' radius='large' disabled={!isFileUploaded || isPending} onClick={trigger}>
       <Text as='span'>Convert</Text>
       {!isFileUploaded || isPending ? (
         <LockClosedIcon width='20px' height='20px' />
@@ -30,4 +24,7 @@ const Memoized = memo(ButtonConvert)
 
 export { Memoized as ButtonConvert }
 
-type Props = Pick<ReturnType<typeof useConvertImage>, 'isPending' | 'handleConvertImage'>
+interface Props {
+  isPending: boolean
+  trigger: VoidFunction
+}
