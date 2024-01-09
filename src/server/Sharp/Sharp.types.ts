@@ -9,11 +9,14 @@ export interface ConvertSettings {
   blur: BlurOptions | null
   rotate: RotateOptions | null
   gamma: GammaOptions | null
-  resize: ResizeOptions | null
-  extend: ExtendOptions | null
   tint: string | null
   modulate: ModulateOptions | null
   outputFormat: ImageFileFormat | null
+}
+
+export interface ResizeSettings {
+  resize: ResizeOptions | null
+  extend: ExtendOptions | null
 }
 
 export interface ModulateOptions {

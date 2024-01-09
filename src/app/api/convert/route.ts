@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   try {
     const parsedSettings = JSON.parse(settingsJSON) as ConvertSettings
 
-    const isValidSettings = YupSettingsValidator.validate(parsedSettings)
+    const isValidSettings = YupSettingsValidator.validateConvert(parsedSettings)
     if (!isValidSettings) {
       return createResponseError(errorMessages.invalidSettings, 400)
     }
