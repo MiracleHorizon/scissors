@@ -10,13 +10,19 @@ export class SharpResize {
     this.imageSharp = sharp(imageBuffer)
   }
 
-  public async resizeImage({ resize, extend }: ResizeSettings) {
-    if (resize) {
-      this.resize(resize)
+  public async resizeImage({ queue, ...settings }: ResizeSettings) {
+    if (queue.length === 0) {
+      return this.toBuffer()
     }
 
-    if (extend) {
-      this.extend(extend)
+    for (const { operationName } of Object.values(queue)) {
+      if (operationName === 'resize' && settings.resize) {
+        this.resize(settings.resize)
+      }
+
+      if (operationName === 'extend' && settings.extend) {
+        this.extend(settings.extend)
+      }
     }
 
     return this.toBuffer()

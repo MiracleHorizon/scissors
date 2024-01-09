@@ -15,8 +15,21 @@ export interface ConvertSettings {
 }
 
 export interface ResizeSettings {
+  queue: ResizeQueue
   resize: ResizeOptions | null
   extend: ExtendOptions | null
+}
+
+export type ResizeQueue = ResizeQueueOperation[]
+
+interface ResizeQueueOperation {
+  operationName: ResizeOperationName
+  index: number
+}
+
+export const enum ResizeOperationName {
+  RESIZE = 'resize',
+  EXTEND = 'extend'
 }
 
 export interface ModulateOptions {

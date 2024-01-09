@@ -13,7 +13,7 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { Resize } from './Resize'
 import { Extend } from './Extend'
 import { SortableSection } from './SortableSection'
-import { useTabResizeStore } from './store'
+import { useTabResizeStore } from '@stores/tab-resize'
 import { ToolbarTab } from '@stores/tabs'
 
 export function TabResize() {

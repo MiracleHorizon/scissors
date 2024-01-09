@@ -148,6 +148,8 @@ const settingsSchema = object({
   modulate: modulateSchema,
   outputFormat: outputFormatSchema
 })
+
+// TODO: Queue validation
 const resizeSettingsSchema = object({
   resize: resizeSchema,
   extend: extendSchema
