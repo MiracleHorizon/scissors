@@ -13,12 +13,19 @@ export interface State {
 }
 
 interface Computed {
+  isEmpty: () => boolean
+  isResizeAdded: () => boolean
+  isExtendAdded: () => boolean
   getQueue: () => ResizeQueue
 }
 
 /* eslint-disable no-unused-vars */
 interface Actions {
   setItems: (items: Item[]) => void
+
+  addResizeItem: VoidFunction
+  addExtendItem: VoidFunction
+
   handleDragEnd: (event: DragEndEvent) => void
   handleMoveUp: (itemId: UniqueIdentifier) => void
   handleMoveDown: (itemId: UniqueIdentifier) => void

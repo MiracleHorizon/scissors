@@ -33,6 +33,7 @@ const padding: PaddingProps = {
 export function SortableSection({
   children,
   id,
+  isDragDisabled,
   isUpMovable,
   isDownMovable,
   handleMoveUp,
@@ -89,7 +90,8 @@ export function SortableSection({
         <SortableSectionButton
           icon={<DragHandleDots2 />}
           tooltipContent='Drag'
-          tooltipDisabled={isDragging}
+          tooltipDisabled={isDragDisabled || isDragging}
+          isDisabled={isDragDisabled}
           listeners={listeners}
         />
         <SortableSectionButton
@@ -126,6 +128,7 @@ export function SortableSection({
 /* eslint-disable no-unused-vars */
 type Props = PropsWithChildren<{
   id: UniqueIdentifier
+  isDragDisabled: boolean
   isUpMovable: boolean
   isDownMovable: boolean
   handleMoveUp: (id: UniqueIdentifier) => void
