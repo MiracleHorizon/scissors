@@ -1,11 +1,11 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
 import { Flex, type MarginProps, ScrollArea, Tabs } from '@radix-ui/themes'
 
 import { TabDefault } from './TabDefault'
 import { ToolbarSkeleton } from '@ui/skeletons/ToolbarSkeleton'
+import { useTabsStore } from '@stores/tabs'
 import styles from './SettingsPanel.module.css'
 
 const Toolbar = dynamic(() => import('./Toolbar').then(mod => mod.Toolbar), {
@@ -25,13 +25,15 @@ const margin: MarginProps = {
 }
 
 export function SettingsPanel() {
-  const [tab, setTab] = useState('default')
+  const selectedTab = useTabsStore(state => state.selectedTab)
+  const selectTab = useTabsStore(state => state.selectTab)
 
   return (
     <ScrollArea {...margin} type='scroll' scrollbars='vertical' className={styles.root}>
       <Flex direction='column' height='100%'>
-        <Tabs.Root defaultValue='default' onValueChange={setTab}>
-          <Toolbar activeTab={tab} />
+        {/* eslint-disable no-unused-vars */}
+        <Tabs.Root defaultValue={selectedTab} onValueChange={selectTab as (value: string) => void}>
+          <Toolbar />
           <TabDefault />
           <TabResize />
         </Tabs.Root>

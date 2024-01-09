@@ -14,6 +14,7 @@ import { Resize } from './Resize'
 import { Extend } from './Extend'
 import { SortableSection } from './SortableSection'
 import { useTabResizeStore } from './store'
+import { ToolbarTab } from '@stores/tabs'
 
 export function TabResize() {
   const items = useTabResizeStore(state => state.items)
@@ -25,7 +26,7 @@ export function TabResize() {
   const handleRemove = useTabResizeStore(state => state.handleRemove)
 
   return (
-    <Tabs.Content value='resize'>
+    <Tabs.Content value={ToolbarTab.RESIZE}>
       <Flex direction='column' gap='2' mt='3' mb='2' pl={{ initial: '3', md: '2' }} pr='3'>
         <DndContext
           sensors={sensors}

@@ -5,30 +5,27 @@ import { ButtonImportSettings } from './ButtonImportSettings'
 import { ButtonExportSettings } from './ButtonExportSettings'
 import { ButtonSettingsRemove } from './ButtonSettingsRemove'
 import { ButtonSettingsReset } from './ButtonSettingsReset'
+import { ToolbarTab, useTabsStore } from '@stores/tabs'
 import styles from './Toolbar.module.css'
 
-export function Toolbar({ activeTab }: Props) {
+export function Toolbar() {
+  const selectedTab = useTabsStore(state => state.selectedTab)
+
   return (
     <Flex align='center' justify='between' pl='3' className={styles.root}>
       <ToolbarTabList />
 
-      <Flex align='center' justify='end' gap='1' py='2' px='3'>
-        <ButtonImportSettings />
-        <ButtonExportSettings />
+      {selectedTab === ToolbarTab.DEFAULT && (
+        <Flex align='center' justify='end' gap='1' py='2' px='3'>
+          <ButtonImportSettings />
+          <ButtonExportSettings />
 
-        {activeTab === 'default' && (
-          <>
-            <Separator orientation='vertical' mx='1' />
+          <Separator orientation='vertical' mx='1' />
 
-            <ButtonSettingsReset />
-            <ButtonSettingsRemove />
-          </>
-        )}
-      </Flex>
+          <ButtonSettingsReset />
+          <ButtonSettingsRemove />
+        </Flex>
+      )}
     </Flex>
   )
-}
-
-interface Props {
-  activeTab: string
 }

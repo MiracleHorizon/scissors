@@ -1,15 +1,16 @@
 import { Tabs } from '@radix-ui/themes'
 
+import { ToolbarTab } from '@stores/tabs'
 import styles from './ToolbarTabList.module.css'
 
 const tabs = [
   {
     label: 'Default',
-    value: 'default'
+    value: ToolbarTab.DEFAULT
   },
   {
     label: 'Resize',
-    value: 'resize'
+    value: ToolbarTab.RESIZE
   }
 ]
 
