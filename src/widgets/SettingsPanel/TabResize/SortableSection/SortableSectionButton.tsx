@@ -8,7 +8,6 @@ export const SortableSectionButton = memo(
   ({
     icon,
     tooltipContent,
-    tooltipDisabled,
     isDisabled,
     size = '1',
     radius = 'large',
@@ -20,7 +19,7 @@ export const SortableSectionButton = memo(
     <Tooltip
       content={tooltipContent}
       open={isTooltipOpen({
-        isParentDisabled: tooltipDisabled,
+        isParentDisabled: isDisabled,
         content: tooltipContent
       })}
     >
@@ -45,7 +44,6 @@ type Props = ButtonProps &
   Actions & {
     icon: ReactNode
     tooltipContent: string
-    tooltipDisabled?: boolean
     isDisabled?: boolean
   }
 
@@ -58,6 +56,7 @@ interface WithClick {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Listeners = Record<string, Function>
+
 interface WithListeners {
   listeners: Listeners | undefined
   onClick?: never

@@ -90,22 +90,19 @@ export function SortableSection({
         <SortableSectionButton
           icon={<DragHandleDots2 />}
           tooltipContent='Drag'
-          tooltipDisabled={isDragDisabled || isDragging}
           isDisabled={isDragDisabled}
           listeners={listeners}
         />
         <SortableSectionButton
           icon={<ChevronUpIcon width='17px' height='17px' />}
           tooltipContent='Move Up'
-          tooltipDisabled={isDragging || !isUpMovable}
-          isDisabled={!isUpMovable}
+          isDisabled={isDragging || !isUpMovable}
           onClick={onMoveUp}
         />
         <SortableSectionButton
           icon={<ChevronDownIcon width='17px' height='17px' />}
           tooltipContent='Move Down'
-          tooltipDisabled={isDragging || !isDownMovable}
-          isDisabled={!isDownMovable}
+          isDisabled={isDragging || !isDownMovable}
           onClick={onMoveDown}
         />
 
@@ -114,7 +111,7 @@ export function SortableSection({
         <SortableSectionButton
           icon={<TrashIcon width='18px' height='18px' />}
           tooltipContent='Remove Section'
-          tooltipDisabled={isDragging}
+          isDisabled={isDragging}
           color='red'
           onClick={onRemove}
         />
