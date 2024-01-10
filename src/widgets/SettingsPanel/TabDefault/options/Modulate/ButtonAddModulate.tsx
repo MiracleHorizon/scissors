@@ -13,7 +13,7 @@ export function ButtonAddModulate() {
 
   return (
     <ButtonAddOption
-      title='Add Modulation'
+      label='Add Modulation'
       leadIcon={<TokensIcon width='18px' height='18px' />}
       onClick={handleAddModulate}
     />
