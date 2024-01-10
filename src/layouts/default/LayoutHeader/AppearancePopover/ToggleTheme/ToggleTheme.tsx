@@ -12,8 +12,9 @@ import styles from './ToggleTheme.module.css'
 
 function getThemeIcon(theme: Theme) {
   const Icon = theme === 'dark' ? MoonIcon : SunIcon
+  const iconLabel = theme === 'dark' ? 'dark theme' : 'light theme'
 
-  return <Icon width='18px' height='18px' />
+  return <Icon width='18px' height='18px' label={iconLabel} />
 }
 
 export function ToggleTheme({ theme, className }: Props) {

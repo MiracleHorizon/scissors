@@ -14,7 +14,7 @@ export function ButtonAddRotate() {
   return (
     <ButtonAddOption
       label='Add Rotation'
-      leadIcon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
+      leadIcon={<RotateCounterClockwiseIcon width='18px' height='18px' label='add rotation' />}
       onClick={handleAddRotate}
     />
   )

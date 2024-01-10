@@ -15,7 +15,7 @@ export function ButtonAddResize() {
   return (
     <ButtonAddOption
       label='Add Resize'
-      leadIcon={<DimensionsIcon width='18px' height='18px' />}
+      leadIcon={<DimensionsIcon width='18px' height='18px' label='add resize section' />}
       onClick={handleAddResizeItem}
     />
   )

@@ -77,7 +77,7 @@ function InputOutputFileName() {
     <Flex gap='2' align='center' width='100%' mb='2' className={styles.root}>
       <TextField.Root className={styles.textFieldRoot}>
         <TextField.Slot>
-          <FileTextIcon />
+          <FileTextIcon label='output file name' />
         </TextField.Slot>
 
         <TextField.Input

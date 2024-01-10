@@ -30,7 +30,7 @@ export function DocsSectionHeader({ title, hash }: Props) {
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5' weight='bold'>
             <Link href={hash} scroll={false}>
-              <Link2Icon width='18px' height='18px' />
+              <Link2Icon width='18px' height='18px' label='go to section' />
               {title}
             </Link>
           </RadixLink>

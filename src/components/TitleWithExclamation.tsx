@@ -7,6 +7,7 @@ const iconStyle: CSSProperties = {
   marginRight: 'var(--space-2)'
 }
 
+// TODO: Arrow, memo
 export function TitleWithExclamation({ children, ...props }: Props) {
   return (
     <Flex {...props}>

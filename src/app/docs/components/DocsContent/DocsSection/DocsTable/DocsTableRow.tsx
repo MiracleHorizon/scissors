@@ -19,7 +19,7 @@ export function DocsTableRow({ label, description, defaultValue }: Props) {
       <Table.Cell>{description}</Table.Cell>
       {defaultValue === undefined ? (
         <Table.Cell>
-          <MinusIcon color='gray' />
+          <MinusIcon color='gray' label='not setted' />
         </Table.Cell>
       ) : typeof defaultValue !== 'object' ? (
         <Table.Cell>

@@ -9,10 +9,10 @@ import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
 
 const icons = {
-  left: <ArrowLeftIcon />,
-  right: <ArrowRightIcon />,
-  top: <ArrowUpIcon />,
-  bottom: <ArrowDownIcon />
+  left: <ArrowLeftIcon label='extend left' />,
+  right: <ArrowRightIcon label='extend right' />,
+  top: <ArrowUpIcon label='extend top' />,
+  bottom: <ArrowDownIcon label='extend bottom' />
 }
 
 export function ExtendDirectionFormSeparated() {

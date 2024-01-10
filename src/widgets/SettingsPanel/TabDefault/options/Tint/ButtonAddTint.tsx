@@ -14,7 +14,7 @@ export function ButtonAddTint() {
   return (
     <ButtonAddOption
       label='Add Tint'
-      leadIcon={<Half2Icon width='18px' height='18px' />}
+      leadIcon={<Half2Icon width='18px' height='18px' label='add tint' />}
       onClick={handleAddTint}
     />
   )

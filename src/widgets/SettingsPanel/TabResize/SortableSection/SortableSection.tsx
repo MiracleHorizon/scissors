@@ -95,13 +95,13 @@ export function SortableSection({
           listeners={listeners}
         />
         <SortableSectionButton
-          icon={<ChevronUpIcon width='17px' height='17px' />}
+          icon={<ChevronUpIcon width='17px' height='17px' label='move up' />}
           tooltipContent='Move Up'
           isDisabled={isDragging || !isUpMovable}
           onClick={onMoveUp}
         />
         <SortableSectionButton
-          icon={<ChevronDownIcon width='17px' height='17px' />}
+          icon={<ChevronDownIcon width='17px' height='17px' label='move down' />}
           tooltipContent='Move Down'
           isDisabled={isDragging || !isDownMovable}
           onClick={onMoveDown}
@@ -110,7 +110,7 @@ export function SortableSection({
         <Separator orientation='horizontal' size='4' my='1' />
 
         <SortableSectionButton
-          icon={<TrashIcon width='18px' height='18px' />}
+          icon={<TrashIcon width='18px' height='18px' label='remove section' />}
           tooltipContent='Remove Section'
           isDisabled={isDragging}
           color='red'

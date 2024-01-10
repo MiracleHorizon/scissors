@@ -34,7 +34,12 @@ export function ButtonClipboardCopy({ copyValue, size, variant = 'ghost', color 
         onClick={handleCopy}
       >
         {isCopied ? (
-          <CheckIcon width='24px' height='24px' color='var(--accent-9)' />
+          <CheckIcon
+            width='24px'
+            height='24px'
+            color='var(--accent-9)'
+            label='copied to clipboard'
+          />
         ) : (
           <CopyIcon width='20px' height='20px' />
         )}
