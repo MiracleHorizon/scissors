@@ -90,6 +90,7 @@ export function SortableSection({
         <SortableSectionButton
           icon={<DragHandleDots2 />}
           tooltipContent='Drag'
+          isTooltipDisabled={isDragging}
           isDisabled={isDragDisabled}
           listeners={listeners}
         />

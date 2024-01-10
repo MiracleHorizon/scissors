@@ -7,8 +7,9 @@ import type { ButtonProps } from '@lib/theme'
 export const SortableSectionButton = memo(
   ({
     icon,
-    tooltipContent,
     isDisabled,
+    tooltipContent,
+    isTooltipDisabled,
     size = '1',
     radius = 'large',
     color = 'gray',
@@ -19,7 +20,7 @@ export const SortableSectionButton = memo(
     <Tooltip
       content={tooltipContent}
       open={isTooltipOpen({
-        isParentDisabled: isDisabled,
+        isParentDisabled: isDisabled || isTooltipDisabled,
         content: tooltipContent
       })}
     >
@@ -45,6 +46,7 @@ type Props = ButtonProps &
     icon: ReactNode
     tooltipContent: string
     isDisabled?: boolean
+    isTooltipDisabled?: boolean
   }
 
 type Actions = WithClick | WithListeners
