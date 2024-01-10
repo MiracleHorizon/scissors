@@ -1,7 +1,13 @@
+import { AccessibleIcon } from '@radix-ui/themes'
 import type { SVGProps } from 'react'
 
-export function MinusIcon(props: SVGProps<SVGSVGElement>) {
-  return (
+import type { AccessibleIconProps } from '@lib/theme'
+
+export const MinusIcon = ({
+  label = 'minus',
+  ...props
+}: SVGProps<SVGSVGElement> & AccessibleIconProps) => (
+  <AccessibleIcon label={label}>
     <svg
       width='15'
       height='15'
@@ -18,5 +24,5 @@ export function MinusIcon(props: SVGProps<SVGSVGElement>) {
         clipRule='evenodd'
       />
     </svg>
-  )
-}
+  </AccessibleIcon>
+)

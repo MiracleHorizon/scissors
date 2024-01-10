@@ -8,7 +8,7 @@ import type { UniqueIdentifier } from '@dnd-kit/core'
 import { TrashIcon } from '@ui/icons/TrashIcon'
 import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
-import { DragHandleDots2 } from '@ui/icons/DragHandleDots2'
+import { DragHandleDots2Icon } from '@ui/icons/DragHandleDots2Icon'
 import { SortableSectionButton } from './SortableSectionButton'
 import type { FlexDirection } from '@lib/theme'
 import styles from './SortableSection.module.css'
@@ -88,7 +88,7 @@ export function SortableSection({
     >
       <Flex direction='column' gap='1' className={styles.actions}>
         <SortableSectionButton
-          icon={<DragHandleDots2 />}
+          icon={<DragHandleDots2Icon />}
           tooltipContent='Drag'
           isTooltipDisabled={isDragging}
           isDisabled={isDragDisabled}
