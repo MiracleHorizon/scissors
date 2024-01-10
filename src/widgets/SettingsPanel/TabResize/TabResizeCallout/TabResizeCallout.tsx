@@ -9,8 +9,7 @@ export const TabResizeCallout = () => (
       <InfoCircledIcon width='18px' height='18px' />
     </Callout.Icon>
     <Callout.Text size='2'>
-      You can move sections below to override the sequence in which they are executed by dragging
-      them
+      You can move sections below to change the sequence in which they are executed by dragging them
     </Callout.Text>
   </Callout.Root>
 )
