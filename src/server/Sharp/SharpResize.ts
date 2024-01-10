@@ -4,31 +4,32 @@ import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import type { ExtendOptions, ResizeOptions, ResizeSettings } from './Sharp.types'
 
 export class SharpResize {
-  public readonly imageSharp: sharp.Sharp
+  private imageSharp: sharp.Sharp
 
   constructor(imageBuffer: ArrayBuffer) {
     this.imageSharp = sharp(imageBuffer)
   }
 
-  public async resizeImage({ queue, ...settings }: ResizeSettings) {
+  /* eslint-disable no-await-in-loop */
+  public async resizeImage({ queue, resize, extend }: ResizeSettings): Promise<Buffer> {
     if (queue.length === 0) {
       return this.toBuffer()
     }
 
     for (const { operationName } of Object.values(queue)) {
-      if (operationName === 'resize' && settings.resize) {
-        this.resize(settings.resize)
+      if (operationName === 'resize' && resize) {
+        await this.resize(resize)
       }
 
-      if (operationName === 'extend' && settings.extend) {
-        this.extend(settings.extend)
+      if (operationName === 'extend' && extend) {
+        await this.extend(extend)
       }
     }
 
     return this.toBuffer()
   }
 
-  private resize({ width, height, ...options }: ResizeOptions) {
+  private async resize({ width, height, ...options }: ResizeOptions): Promise<void> {
     if (!width && !height) return
 
     const isValid = YupSettingsValidator.isResizeValid({
@@ -56,7 +57,7 @@ export class SharpResize {
     }
   }
 
-  private extend(options: ExtendOptions): void {
+  private async extend(options: ExtendOptions): Promise<void> {
     const isValid = YupSettingsValidator.isExtendValid(options)
     if (!isValid) {
       throw new Error('Invalid extend options')
@@ -74,6 +75,10 @@ export class SharpResize {
         extendWith: options.extendWith ?? undefined,
         background: options.background ?? undefined
       })
+
+      // Updating sharp with new buffer for correct queue operations after extending.
+      const updatedBuffer = await this.toBuffer()
+      this.imageSharp = sharp(updatedBuffer)
     } catch (err) {
       throw new Error('Failed to extend the image', {
         cause: err
