@@ -29,7 +29,7 @@ export function ColorPicker({
   return (
     <Popover.Root>
       <Popover.Trigger
-        className={clsx({
+        className={clsx(styles.triggerRoot, {
           [styles.disabled]: disabled
         })}
       >
