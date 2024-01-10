@@ -1,8 +1,8 @@
 import { Flex, type PaddingProps, Tabs } from '@radix-ui/themes'
 
+import { TabResizeCallout } from './TabResizeCallout'
+import { TabResizeActions } from './TabResizeActions'
 import { TabResizeContent } from './TabResizeContent'
-import { ButtonAddExtend } from './ButtonAddExtend'
-import { ButtonAddResize } from './ButtonAddResize'
 import { ToolbarTab } from '@stores/tabs'
 
 const padding: PaddingProps = {
@@ -20,10 +20,8 @@ export function TabResize() {
   return (
     <Tabs.Content value={ToolbarTab.RESIZE}>
       <Flex {...padding} direction='column' gap='2'>
-        <Flex gap='2'>
-          <ButtonAddResize />
-          <ButtonAddExtend />
-        </Flex>
+        <TabResizeCallout />
+        <TabResizeActions />
         <TabResizeContent />
       </Flex>
     </Tabs.Content>

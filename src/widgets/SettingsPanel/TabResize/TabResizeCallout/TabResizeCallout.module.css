@@ -1,0 +1,15 @@
+.root {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .root {
+    max-width: max-content;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .root {
+    max-width: 100%;
+  }
+}
