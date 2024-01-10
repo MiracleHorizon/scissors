@@ -15,17 +15,19 @@ export function Toolbar() {
     <Flex align='center' justify='between' pl='3' className={styles.root}>
       <ToolbarTabList />
 
-      {selectedTab === ToolbarTab.DEFAULT && (
-        <Flex align='center' justify='end' gap='1' py='2' px='3'>
-          <ButtonImportSettings />
-          <ButtonExportSettings />
+      <Flex align='center' justify='end' gap='1' py='2' px='3'>
+        <ButtonImportSettings />
+        <ButtonExportSettings />
 
-          <Separator orientation='vertical' mx='1' />
+        {selectedTab === ToolbarTab.DEFAULT && (
+          <>
+            <Separator orientation='vertical' mx='1' />
 
-          <ButtonSettingsReset />
-          <ButtonSettingsRemove />
-        </Flex>
-      )}
+            <ButtonSettingsReset />
+            <ButtonSettingsRemove />
+          </>
+        )}
+      </Flex>
     </Flex>
   )
 }
