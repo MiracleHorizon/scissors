@@ -5,17 +5,15 @@ import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   type BlurOptions,
   type ConvertSettings,
-  type ExtendOptions,
   type GammaOptions,
   ImageFileFormat,
   type ModulateOptions,
   type NegateOptions,
   type NormaliseOptions,
-  type ResizeOptions,
   type RotateOptions
 } from '@server/Sharp'
 
-export class Sharp {
+export class SharpConvert {
   private readonly imageSharp: sharp.Sharp
   private stats: Stats | null = null
 
@@ -33,8 +31,6 @@ export class Sharp {
     blur,
     rotate,
     gamma,
-    resize,
-    extend,
     modulate,
     outputFormat
   }: ConvertSettings): Promise<Buffer> {
@@ -71,14 +67,6 @@ export class Sharp {
 
     if (gamma?.value) {
       this.gamma(gamma)
-    }
-
-    if (resize) {
-      this.resize(resize)
-    }
-
-    if (extend) {
-      this.extend(extend)
     }
 
     if (rotate) {
@@ -239,59 +227,6 @@ export class Sharp {
       this.imageSharp.gamma(value)
     } catch (err) {
       throw new Error(`Failed to gammaize the image with gamma value: ${value}`, {
-        cause: err
-      })
-    }
-  }
-
-  private resize({ width, height, ...options }: ResizeOptions) {
-    if (!width && !height) return
-
-    const isValid = YupSettingsValidator.isResizeValid({
-      width,
-      height,
-      ...options
-    })
-    if (!isValid) {
-      throw new Error('Invalid resize options')
-    }
-
-    try {
-      this.imageSharp.resize({
-        width: width ?? undefined,
-        height: height ?? undefined,
-        fit: options.fit ?? undefined,
-        background: options.background ?? undefined,
-        position: options.position ?? undefined,
-        kernel: options.kernel ?? undefined
-      })
-    } catch (err) {
-      throw new Error('Failed to resize the image', {
-        cause: err
-      })
-    }
-  }
-
-  private extend(options: ExtendOptions): void {
-    const isValid = YupSettingsValidator.isExtendValid(options)
-    if (!isValid) {
-      throw new Error('Invalid extend options')
-    }
-
-    const { top, bottom, left, right } = options
-    if (!top && !bottom && !left && !right) return
-
-    try {
-      this.imageSharp.extend({
-        top: top ?? undefined,
-        bottom: bottom ?? undefined,
-        left: left ?? undefined,
-        right: right ?? undefined,
-        extendWith: options.extendWith ?? undefined,
-        background: options.background ?? undefined
-      })
-    } catch (err) {
-      throw new Error('Failed to extend the image', {
         cause: err
       })
     }

@@ -1,12 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 
 import { ButtonImport } from '@ui/ButtonImport'
-import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import type { ConvertSettings } from '@server/Sharp'
+
+const ConfirmAlert = dynamic(
+  () => import('@components/alerts/ConfirmAlert').then(mod => mod.ConfirmAlert),
+  { ssr: false }
+)
 
 export function ButtonImportSettings() {
   const [data, setData] = useState<ConvertSettings | null>(null)
@@ -44,7 +49,7 @@ export function ButtonImportSettings() {
     try {
       const settingsJSON = await fileReaderPromise
       const settings = JSON.parse(settingsJSON)
-      const isValid = YupSettingsValidator.validate(settings)
+      const isValid = YupSettingsValidator.validateConvert(settings)
 
       if (!isValid) {
         handleCloseConfirmAlert()

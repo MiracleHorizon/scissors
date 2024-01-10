@@ -9,7 +9,7 @@ import { SettingsPanel } from '@widgets/SettingsPanel'
 import { UploadedFileLoading } from '@components/UploadedFile/UploadedFileLoading'
 import { FileUploadZone } from '@components/FileUploadZone'
 import { useOutputStore } from '@stores/output'
-import { useConvertImage } from '@stores/hooks/useConvertImage'
+import { useCreateRequest } from '@stores/hooks/useCreateRequest'
 import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
@@ -48,12 +48,13 @@ export default function HomePage() {
   const file = useOutputStore(state => state.file)
   const setFile = useOutputStore(state => state.setFile)
 
-  const { handleConvertImage, isPending, error, reset } = useConvertImage()
+  const { getRequest } = useCreateRequest()
+  const { trigger, reset, isPending, error } = getRequest()
 
   const handleRetry = useCallback(() => {
     if (isPending) return
-    handleConvertImage()
-  }, [isPending, handleConvertImage])
+    trigger()
+  }, [isPending, trigger])
 
   return (
     <Box width='100%'>
@@ -83,7 +84,7 @@ export default function HomePage() {
           </main>
         </Flex>
 
-        <FooterPanel isPending={isPending} handleConvertImage={handleConvertImage} />
+        <FooterPanel isPending={isPending} trigger={trigger} />
       </Flex>
     </Box>
   )

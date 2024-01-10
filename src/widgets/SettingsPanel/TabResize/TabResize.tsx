@@ -1,17 +1,29 @@
-import { Separator, Tabs } from '@radix-ui/themes'
+import { Flex, type PaddingProps, Tabs } from '@radix-ui/themes'
 
-import { Resize } from './Resize'
-import { Extend } from './Extend'
-import styles from './TabResize.module.css'
+import { TabResizeCallout } from './TabResizeCallout'
+import { TabResizeActions } from './TabResizeActions'
+import { TabResizeContent } from './TabResizeContent'
+import { ToolbarTab } from '@stores/tabs'
 
-const TabSeparator = () => <Separator mt='3' ml='3' className={styles.separator} />
+const padding: PaddingProps = {
+  pt: '3',
+  pb: '2',
+  pl: {
+    initial: '3',
+    md: '2'
+  },
+  pr: '3'
+}
 
+// TODO: Dynamic imports
 export function TabResize() {
   return (
-    <Tabs.Content value='resize'>
-      <Resize />
-      <TabSeparator />
-      <Extend />
+    <Tabs.Content value={ToolbarTab.RESIZE}>
+      <Flex {...padding} direction='column' gap='2'>
+        <TabResizeCallout />
+        <TabResizeActions />
+        <TabResizeContent />
+      </Flex>
     </Tabs.Content>
   )
 }

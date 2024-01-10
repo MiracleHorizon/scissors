@@ -1,21 +1,17 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   type ConvertSettings,
-  ExtendWith,
   ImageFileFormat,
   MAX_NORMALISE,
   MIN_BRIGHTNESS,
   MIN_HUE,
   MIN_LIGHTNESS,
   MIN_NORMALISE,
-  MIN_SATURATION,
-  ResizeFit,
-  ResizeKernel,
-  ResizePosition
+  MIN_SATURATION
 } from '@server/Sharp'
 
-describe('@utils/YupSettingsValidator.validate', () => {
-  const validate = YupSettingsValidator.validate
+describe('@utils/YupSettingsValidator.validateConvert', () => {
+  const validate = YupSettingsValidator.validateConvert
 
   it('should return true for valid settings object', () => {
     const validSettings: ConvertSettings = {
@@ -41,25 +37,6 @@ describe('@utils/YupSettingsValidator.validate', () => {
       },
       gamma: {
         value: 2.2
-      },
-      resize: {
-        width: 100,
-        height: 100,
-        fit: ResizeFit.CONTAIN,
-        background: '#000000',
-        position: ResizePosition.CENTER,
-        kernel: ResizeKernel.LANCZOS3,
-        withoutEnlargement: true,
-        withoutReduction: false,
-        fastShrinkOnLoad: true
-      },
-      extend: {
-        top: 10,
-        bottom: 10,
-        right: 10,
-        left: 10,
-        extendWith: ExtendWith.BACKGROUND,
-        background: '#FFFFFF'
       },
       tint: '#FF0004',
       modulate: {
@@ -96,25 +73,6 @@ describe('@utils/YupSettingsValidator.validate', () => {
       },
       gamma: {
         value: 2.2
-      },
-      resize: {
-        width: 100,
-        height: 100,
-        fit: ResizeFit.CONTAIN,
-        background: '#000000',
-        position: ResizePosition.CENTER,
-        kernel: ResizeKernel.LANCZOS3,
-        withoutEnlargement: true,
-        withoutReduction: false,
-        fastShrinkOnLoad: true
-      },
-      extend: {
-        top: 10,
-        bottom: 10,
-        right: 10,
-        left: 10,
-        extendWith: 'background',
-        background: '#FFFFFF'
       },
       tint: '#FF0000',
       modulate: {

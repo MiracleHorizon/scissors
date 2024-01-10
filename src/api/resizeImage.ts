@@ -3,11 +3,11 @@ import { useMutation } from '@tanstack/react-query'
 import { useOutputStore } from '@stores/output'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
-import type { ConvertSettings } from '@server/Sharp'
+import type { ResizeSettings } from '@server/Sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { MutationPayload, RequestPayload } from './types'
 
-async function convertImage({ baseURL, formData }: RequestPayload): Promise<Blob> {
+async function resizeImage({ baseURL, formData }: RequestPayload): Promise<Blob> {
   const abortController = new AbortController()
   const abortTimeout = 15_000
 
@@ -16,7 +16,7 @@ async function convertImage({ baseURL, formData }: RequestPayload): Promise<Blob
       abortController.abort()
     }, abortTimeout)
 
-    const response = await fetch(baseURL + '/api/convert', {
+    const response = await fetch(baseURL + '/api/resize', {
       body: formData,
       method: 'POST',
       signal: abortController.signal
@@ -39,16 +39,16 @@ async function convertImage({ baseURL, formData }: RequestPayload): Promise<Blob
   }
 }
 
-export async function convertImageMutation({
+export async function resizeImageMutation({
   file,
   fileName,
   settings
-}: MutationPayload<ConvertSettings>): Promise<DownloadPayload> {
+}: MutationPayload<ResizeSettings>): Promise<DownloadPayload> {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('settings', JSON.stringify(settings))
 
-  const imageBlob = await convertImage({
+  const imageBlob = await resizeImage({
     baseURL: window.location.origin,
     formData
   })
@@ -60,20 +60,20 @@ export async function convertImageMutation({
   }
 }
 
-export function useConvertMutation() {
+export function useResizeMutation() {
   const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
 
   return useMutation({
-    mutationKey: ['convert'],
-    mutationFn: convertImageMutation,
+    mutationKey: ['resize'],
+    mutationFn: resizeImageMutation,
     onSuccess: downloadPayload => setDownloadPayload(downloadPayload)
   })
 }
 
 export const errorMessages = {
   missingFile: 'No image file is available',
-  missingSettings: 'No conversion settings are available',
+  missingSettings: 'No resize settings are available',
   invalidFileSize: 'Invalid file size',
-  invalidSettings: 'Invalid convert settings',
+  invalidSettings: 'Invalid resize settings',
   invalidDataTransferObject: 'Invalid data transfer object'
 }

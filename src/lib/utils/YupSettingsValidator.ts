@@ -145,16 +145,24 @@ const settingsSchema = object({
   blur: blurSchema,
   rotate: rotateSchema,
   gamma: gammaSchema,
-  resize: resizeSchema,
-  extend: extendSchema,
   modulate: modulateSchema,
   outputFormat: outputFormatSchema
 })
 
+// TODO: Queue validation
+const resizeSettingsSchema = object({
+  resize: resizeSchema,
+  extend: extendSchema
+})
+
 // TODO: Абстракция
 export class YupSettingsValidator {
-  public static validate(settings: unknown): boolean {
+  public static validateConvert(settings: unknown): boolean {
     return settingsSchema.isValidSync(settings)
+  }
+
+  public static validateResize(settings: unknown): boolean {
+    return resizeSettingsSchema.isValidSync(settings)
   }
 
   public static isTintValid(tint: unknown): boolean {
