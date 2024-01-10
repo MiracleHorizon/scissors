@@ -8,7 +8,7 @@ import type { UniqueIdentifier } from '@dnd-kit/core'
 import { TrashIcon } from '@ui/icons/TrashIcon'
 import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
-import { DragHandleDots2 } from '@ui/icons/DragHandleDots2'
+import { DragHandleDots2Icon } from '@ui/icons/DragHandleDots2Icon'
 import { SortableSectionButton } from './SortableSectionButton'
 import type { FlexDirection } from '@lib/theme'
 import styles from './SortableSection.module.css'
@@ -88,20 +88,20 @@ export function SortableSection({
     >
       <Flex direction='column' gap='1' className={styles.actions}>
         <SortableSectionButton
-          icon={<DragHandleDots2 />}
+          icon={<DragHandleDots2Icon />}
           tooltipContent='Drag'
           isTooltipDisabled={isDragging}
           isDisabled={isDragDisabled}
           listeners={listeners}
         />
         <SortableSectionButton
-          icon={<ChevronUpIcon width='17px' height='17px' />}
+          icon={<ChevronUpIcon width='17px' height='17px' label='move up' />}
           tooltipContent='Move Up'
           isDisabled={isDragging || !isUpMovable}
           onClick={onMoveUp}
         />
         <SortableSectionButton
-          icon={<ChevronDownIcon width='17px' height='17px' />}
+          icon={<ChevronDownIcon width='17px' height='17px' label='move down' />}
           tooltipContent='Move Down'
           isDisabled={isDragging || !isDownMovable}
           onClick={onMoveDown}
@@ -110,7 +110,7 @@ export function SortableSection({
         <Separator orientation='horizontal' size='4' my='1' />
 
         <SortableSectionButton
-          icon={<TrashIcon width='18px' height='18px' />}
+          icon={<TrashIcon width='18px' height='18px' label='remove section' />}
           tooltipContent='Remove Section'
           isDisabled={isDragging}
           color='red'

@@ -9,6 +9,7 @@ import { ImageFileFormat } from '@server/Sharp'
 
 const ALLOWED_FORMATS_FOR_FAST_SHRINK = [ImageFileFormat.JPEG, ImageFileFormat.WEBP]
 
+// TODO: Remove output format rel; check current file format
 export function CheckboxFastShrink() {
   const outputFormat = useOutputStore(state => state.outputFormat)
   const fastShrink = useResizeStore(state => state.fastShrinkOnLoad)

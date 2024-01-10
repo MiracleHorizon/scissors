@@ -8,7 +8,7 @@ export function GammaHeader({ gamma }: Props) {
   return (
     <OptionSectionHeader
       title={`Gamma: ${gamma.value}`}
-      icon={<ShadowIcon width='18px' height='18px' />}
+      icon={<ShadowIcon width='18px' height='18px' label='gamma' />}
     >
       <>
         <ButtonResetGamma />

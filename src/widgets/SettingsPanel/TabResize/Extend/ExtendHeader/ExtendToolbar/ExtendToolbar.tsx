@@ -39,7 +39,7 @@ export function ExtendToolbar() {
                 : setDirectionModelAxis
             }
           >
-            <AllSidesIcon width='17px' height='17px' />
+            <AllSidesIcon width='17px' height='17px' label='axes directions' />
           </ExtendToolbarButton>
         )}
 
@@ -51,9 +51,9 @@ export function ExtendToolbar() {
           }
         >
           {directionModel !== DirectionModel.NUMBER ? (
-            <ChevronUpIcon width='20px' height='20px' />
+            <ChevronUpIcon width='20px' height='20px' label='set all directions' />
           ) : (
-            <ChevronDownIcon width='20px' height='20px' />
+            <ChevronDownIcon width='20px' height='20px' label='set axes directions' />
           )}
         </ExtendToolbarButton>
 

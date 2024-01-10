@@ -8,7 +8,7 @@ export function ExtendHeader() {
     <OptionSectionHeader
       title='Extend'
       href={Route.DOCS + DocsHash.EXTEND}
-      icon={<MoveIcon width='18px' height='18px' />}
+      icon={<MoveIcon width='18px' height='18px' label='extend' />}
     >
       <ExtendToolbar />
     </OptionSectionHeader>

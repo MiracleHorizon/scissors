@@ -10,7 +10,7 @@ export function ModulateHeader() {
       mb='2'
       title='Modulate'
       href={Route.DOCS + DocsHash.MODULATE}
-      icon={<TokensIcon width='18px' height='18px' />}
+      icon={<TokensIcon width='18px' height='18px' label='modulation' />}
     >
       <>
         <ButtonResetModulate />

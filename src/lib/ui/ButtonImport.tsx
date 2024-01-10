@@ -8,7 +8,7 @@ import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 function ButtonImport({ children, tooltipcontent, onClick }: Props) {
   const Button = (
     <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
-      <UploadIcon width='20px' height='20px' />
+      <UploadIcon width='20px' height='20px' label='import' />
       {children}
     </IconButton>
   )

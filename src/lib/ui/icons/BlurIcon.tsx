@@ -1,7 +1,13 @@
+import { AccessibleIcon } from '@radix-ui/themes'
 import type { SVGProps } from 'react'
 
-export function BlurIcon(props: SVGProps<SVGSVGElement>) {
-  return (
+import type { AccessibleIconProps } from '@lib/theme'
+
+export const BlurIcon = ({
+  label = 'blur',
+  ...props
+}: SVGProps<SVGSVGElement> & AccessibleIconProps) => (
+  <AccessibleIcon label={label}>
     <svg
       width='15'
       height='15'
@@ -49,5 +55,5 @@ export function BlurIcon(props: SVGProps<SVGSVGElement>) {
         />
       </g>
     </svg>
-  )
-}
+  </AccessibleIcon>
+)

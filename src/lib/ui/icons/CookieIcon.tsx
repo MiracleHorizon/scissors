@@ -1,7 +1,13 @@
+import { AccessibleIcon } from '@radix-ui/themes'
 import type { SVGProps } from 'react'
 
-export function CookieIcon(props: SVGProps<SVGSVGElement>) {
-  return (
+import type { AccessibleIconProps } from '@lib/theme'
+
+export const CookieIcon = ({
+  label = 'cookie',
+  ...props
+}: SVGProps<SVGSVGElement> & AccessibleIconProps) => (
+  <AccessibleIcon label={label}>
     <svg
       width='40'
       height='38'
@@ -23,5 +29,5 @@ export function CookieIcon(props: SVGProps<SVGSVGElement>) {
         fill='#F7B658'
       />
     </svg>
-  )
-}
+  </AccessibleIcon>
+)

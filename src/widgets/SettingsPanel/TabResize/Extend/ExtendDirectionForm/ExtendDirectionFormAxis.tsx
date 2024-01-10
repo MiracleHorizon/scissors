@@ -20,8 +20,8 @@ export function ExtendDirectionFormAxis() {
       yAxisValue={axisY}
       setAxisX={setAxisX}
       setAxisY={setAxisY}
-      iconX={<ColumnSpacingIcon />}
-      iconY={<RowSpacingIcon />}
+      iconX={<ColumnSpacingIcon label='extend x axis' />}
+      iconY={<RowSpacingIcon label='extend y axis' />}
     />
   )
 }

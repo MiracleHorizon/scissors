@@ -15,7 +15,7 @@ export function ExtendDirectionFormNumber() {
       value={value}
       setValue={setValue}
       placeholder='Extend'
-      icon={<MoveIcon />}
+      icon={<MoveIcon label='extend value' />}
     />
   )
 }

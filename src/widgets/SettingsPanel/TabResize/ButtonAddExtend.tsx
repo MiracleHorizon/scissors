@@ -15,7 +15,7 @@ export function ButtonAddExtend() {
   return (
     <ButtonAddOption
       label='Add Extend'
-      leadIcon={<MoveIcon width='18px' height='18px' />}
+      leadIcon={<MoveIcon width='18px' height='18px' label='add extend section' />}
       onClick={handleAddExtendItem}
     />
   )

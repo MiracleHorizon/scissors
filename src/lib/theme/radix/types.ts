@@ -81,3 +81,8 @@ export interface TextFieldInputProps {
 
 export type TextFieldInputSize = Responsive<'1' | '2' | '3'>
 export type TextFieldInputVariant = 'classic' | 'surface' | 'soft'
+
+// AccessibleIcon
+export interface AccessibleIconProps {
+  label?: string
+}

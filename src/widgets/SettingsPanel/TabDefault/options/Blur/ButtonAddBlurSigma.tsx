@@ -15,9 +15,9 @@ export function ButtonAddBlurSigma(props: Props) {
   return (
     <ButtonAddOption
       label='Add Sigma'
-      leadIcon={!props.disabled && <BlurIcon width={18} height={18} />}
+      leadIcon={!props.disabled && <BlurIcon width={18} height={18} label='add blur sigma' />}
       onClick={handleAddSigma}
-      endIcon={props.disabled && <LockClosedIcon />}
+      endIcon={props.disabled && <LockClosedIcon label='blur sigma locked' />}
       {...props}
     />
   )

@@ -12,7 +12,12 @@ export function AppearancePopover({ theme, themeColor }: ThemeProps) {
     <Popover.Root>
       <Popover.Trigger>
         <IconButton size='3' color='gray' variant='ghost' radius='large'>
-          <MixerHorizontalIcon color='gray' width='16px' height='16px' />
+          <MixerHorizontalIcon
+            color='gray'
+            width='16px'
+            height='16px'
+            label='appearance settings'
+          />
         </IconButton>
       </Popover.Trigger>
 

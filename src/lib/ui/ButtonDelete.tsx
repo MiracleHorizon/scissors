@@ -14,7 +14,7 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
   ) => {
     const Button = (
       <IconButton {...props} color={color} variant={variant} disabled={disabled} ref={ref}>
-        <TrashIcon width='24px' height='24px' />
+        <TrashIcon width='24px' height='24px' label='delete' />
       </IconButton>
     )
 

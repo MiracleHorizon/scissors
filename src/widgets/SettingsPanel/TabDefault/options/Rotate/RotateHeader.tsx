@@ -14,7 +14,7 @@ export function RotateHeader() {
     <OptionSectionHeader
       href={Route.DOCS + DocsHash.ROTATE}
       title={angle ? `Rotate: ${angle}°` : 'Rotate'}
-      icon={<RotateCounterClockwiseIcon width='18px' height='18px' />}
+      icon={<RotateCounterClockwiseIcon width='18px' height='18px' label='rotation' />}
     >
       <>
         <ButtonResetRotate />

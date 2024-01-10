@@ -12,9 +12,9 @@ function ButtonConvert({ isPending, trigger }: Props) {
     <Button size='3' radius='large' disabled={!isFileUploaded || isPending} onClick={trigger}>
       <Text as='span'>Convert</Text>
       {!isFileUploaded || isPending ? (
-        <LockClosedIcon width='20px' height='20px' />
+        <LockClosedIcon width='20px' height='20px' label='convert locked' />
       ) : (
-        <SymbolIcon width='20px' height='20px' />
+        <SymbolIcon width='20px' height='20px' label='convert' />
       )}
     </Button>
   )

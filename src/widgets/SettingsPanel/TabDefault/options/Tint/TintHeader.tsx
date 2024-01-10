@@ -5,7 +5,7 @@ import { ButtonRemoveTint } from './ButtonRemoveTint'
 
 export function TintHeader() {
   return (
-    <OptionSectionHeader title='Tint' icon={<Half2Icon width='18px' height='18px' />}>
+    <OptionSectionHeader title='Tint' icon={<Half2Icon width='18px' height='18px' label='tint' />}>
       <>
         <ButtonResetTint />
         <ButtonRemoveTint />

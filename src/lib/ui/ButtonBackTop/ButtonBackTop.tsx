@@ -74,7 +74,7 @@ export function ButtonBackTop<T extends HTMLElement>({
       className={clsx(styles.root, className)}
       onClick={handleScrollToTop}
     >
-      <ChevronUpIcon width='22px' height='22px' />
+      <ChevronUpIcon width='22px' height='22px' label='back top' />
     </IconButton>
   )
 }

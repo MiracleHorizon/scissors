@@ -11,7 +11,7 @@ const items: NavigationItemModel[] = [
     label: 'Documentation',
     href: Route.DOCS,
     tooltipContent: 'Watch the documentation',
-    icon: <ReaderIcon width='18px' height='18px' />
+    icon: <ReaderIcon width='18px' height='18px' label='go to documentation' />
   }
 ]
 

@@ -9,7 +9,7 @@ export function ResizeHeader() {
     <OptionSectionHeader
       title='Resize'
       href={Route.DOCS + DocsHash.RESIZE}
-      icon={<DimensionsIcon width='18px' height='18px' />}
+      icon={<DimensionsIcon width='18px' height='18px' label='resize' />}
     >
       <ButtonResizeReset className={styles.buttonReset} />
     </OptionSectionHeader>

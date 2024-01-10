@@ -8,7 +8,7 @@ import { DownloadIcon } from '@ui/icons/DownloadIcon'
 export const ButtonExport = memo(({ tooltipContent, onClick }: Props) => {
   const Button = (
     <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
-      <DownloadIcon width='20px' height='20px' />
+      <DownloadIcon width='20px' height='20px' label='export' />
     </IconButton>
   )
 

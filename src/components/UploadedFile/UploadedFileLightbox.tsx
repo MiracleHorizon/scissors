@@ -37,7 +37,7 @@ function getLightboxProps({ downloadPayload, file }: Pick<Props, 'downloadPayloa
     render: {
       buttonPrev: () => null,
       buttonNext: () => null,
-      iconClose: () => <Cross1Icon width='22px' height='22px' />
+      iconClose: () => <Cross1Icon width='22px' height='22px' label='close lightbox' />
     },
     controller: {
       closeOnBackdropClick: true,
