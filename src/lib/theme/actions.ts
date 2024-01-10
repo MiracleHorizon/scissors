@@ -39,11 +39,14 @@ export async function getThemeColorCookie(): Promise<RadixThemeColor | null> {
 }
 
 export async function getThemeAppearance() {
+  const DEFAULT_THEME: Theme = 'dark'
+  const DEFAULT_THEME_COLOR: RadixThemeColor = 'gray'
+
   const theme = await getThemeCookie()
   const themeColor = await getThemeColorCookie()
 
   return {
-    theme: theme ?? 'dark',
-    themeColor: themeColor ?? 'iris'
+    theme: theme ?? DEFAULT_THEME,
+    themeColor: themeColor ?? DEFAULT_THEME_COLOR
   }
 }
