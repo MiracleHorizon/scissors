@@ -1,5 +1,5 @@
 .main {
-  height: calc(100vh - var(--space-8) - var(--space-9));
+  height: calc(100dvh - var(--space-8) - var(--space-9));
 }
 
 .content {
