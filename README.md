@@ -78,5 +78,9 @@ Currently, the following image formats are supported:
    pnpm docker:start
    ```
 
+### License
+
+MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
+
 [project-github]: https://github.com/MiracleHorizon/image-converter
 [preview-screenshot]: public/preview-screenshot.png
