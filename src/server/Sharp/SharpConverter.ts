@@ -2,6 +2,7 @@ import sharp, { type Color, type Stats } from 'sharp'
 import isEmpty from 'lodash.isempty'
 
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { getStatsOrNull } from './getStatsOrNull'
 import {
   type BlurOptions,
   type ConvertSettings,
@@ -34,8 +35,7 @@ export class SharpConverter {
     modulate,
     outputFormat
   }: ConvertSettings): Promise<Buffer> {
-    const stats = await this.getStatsOrNull()
-    if (stats) this.stats = stats
+    await this.initialiseStats()
 
     if (flip) {
       this.flip()
@@ -84,12 +84,9 @@ export class SharpConverter {
     return this.toBuffer()
   }
 
-  private async getStatsOrNull(): Promise<Stats | null> {
-    try {
-      return await this.imageSharp.stats()
-    } catch {
-      return null
-    }
+  private async initialiseStats(): Promise<void> {
+    const stats = await getStatsOrNull(this.imageSharp)
+    if (stats) this.stats = stats
   }
 
   private flip(): void {

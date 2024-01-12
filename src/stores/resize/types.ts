@@ -23,4 +23,5 @@ interface Actions {
   toggleEnlargement: VoidFunction
   toggleReduction: VoidFunction
   toggleFastShrink: VoidFunction
+  toggleDominantBackground: VoidFunction
 }

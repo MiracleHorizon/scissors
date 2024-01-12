@@ -69,8 +69,9 @@ export interface ExtendOptions {
   bottom: number | null
   right: number | null
   left: number | null
-  extendWith: ExtendWith
-  background: string
+  extendWith: ExtendWith | null
+  background: string | null
+  withDominantBackground: boolean
 }
 
 export enum ExtendWith {
@@ -116,6 +117,7 @@ export interface ResizeExtraOptions {
   withoutEnlargement: boolean
   withoutReduction: boolean
   fastShrinkOnLoad: boolean
+  withDominantBackground: boolean
 }
 
 export enum ResizeKernel {

@@ -8,7 +8,8 @@ export const enum DirectionModel {
   SEPARATED = 'separated'
 }
 
-export interface ExtendValues extends Omit<ExtendOptions, 'background' | 'extendWith'> {
+export interface ExtendValues
+  extends Omit<ExtendOptions, 'background' | 'extendWith' | 'withDominantBackground'> {
   extendValue: number | null
 }
 
@@ -48,6 +49,7 @@ interface Actions {
   setRight: (right: number | null) => void
   setBottom: (bottom: number | null) => void
 
-  setBackground: (background: string) => void
   setExtendWith: (extendWith: ExtendWith) => void
+  setBackground: (background: string) => void
+  toggleDominantBackground: VoidFunction
 }

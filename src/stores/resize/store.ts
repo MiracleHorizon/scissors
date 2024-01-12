@@ -8,11 +8,12 @@ import {
   DEFAULT_RESIZE_POSITION,
   DEFAULT_WITHOUT_ENLARGEMENT,
   DEFAULT_WITHOUT_REDUCTION,
-  ResizeFit
+  ResizeFit,
+  type ResizeOptions
 } from '@server/Sharp'
 import type { Store } from './types'
 
-export const defaultState = {
+export const defaultState: ResizeOptions = {
   width: null,
   height: null,
 
@@ -22,7 +23,8 @@ export const defaultState = {
   background: null,
   withoutEnlargement: DEFAULT_WITHOUT_ENLARGEMENT,
   withoutReduction: DEFAULT_WITHOUT_REDUCTION,
-  fastShrinkOnLoad: DEFAULT_FAST_SHRINK
+  fastShrinkOnLoad: DEFAULT_FAST_SHRINK,
+  withDominantBackground: false
 }
 
 export const useResizeStore = create<Store>((set, get) => ({
@@ -46,7 +48,8 @@ export const useResizeStore = create<Store>((set, get) => ({
       kernel: get().kernel,
       fastShrinkOnLoad: get().fastShrinkOnLoad,
       withoutEnlargement: get().withoutEnlargement,
-      withoutReduction: get().withoutReduction
+      withoutReduction: get().withoutReduction,
+      withDominantBackground: get().withDominantBackground
     }
   },
 
@@ -73,13 +76,14 @@ export const useResizeStore = create<Store>((set, get) => ({
     const isCover = fit === ResizeFit.COVER
     const isContain = fit === ResizeFit.CONTAIN
 
-    const background = isContain ? DEFAULT_RESIZE_BACKGROUND : null
     const position = isCover || isContain ? DEFAULT_RESIZE_POSITION : null
+    const background = isContain ? DEFAULT_RESIZE_BACKGROUND : null
 
     set({
       fit,
+      position,
       background,
-      position
+      withDominantBackground: defaultState.withDominantBackground
     })
   },
   setBackground: background => set({ background }),
@@ -88,5 +92,6 @@ export const useResizeStore = create<Store>((set, get) => ({
 
   toggleEnlargement: () => set({ withoutEnlargement: !get().withoutEnlargement }),
   toggleReduction: () => set({ withoutReduction: !get().withoutReduction }),
-  toggleFastShrink: () => set({ fastShrinkOnLoad: !get().fastShrinkOnLoad })
+  toggleFastShrink: () => set({ fastShrinkOnLoad: !get().fastShrinkOnLoad }),
+  toggleDominantBackground: () => set({ withDominantBackground: !get().withDominantBackground })
 }))

@@ -1,5 +1,3 @@
-'use client'
-
 import { useCallback, useEffect } from 'react'
 
 import { OptionSelect } from '@components/OptionSelect'
@@ -33,17 +31,17 @@ export function SelectExtendWith() {
   )
 
   useEffect(() => {
-    if (!outputFormat || outputFormat !== ImageFileFormat.PNG) return
+    if (!outputFormat || !extendWith || outputFormat !== ImageFileFormat.PNG) return
 
     if (unsupportedPNGExtendWith.includes(extendWith)) {
       setExtendWith(ExtendWith.BACKGROUND)
     }
-  }, [outputFormat, extendWith])
+  }, [outputFormat, extendWith, setExtendWith])
 
   return (
     <OptionSelect
       label='Extend with'
-      value={extendWith}
+      value={extendWith ?? DEFAULT_EXTEND_WITH}
       defaultValue={DEFAULT_EXTEND_WITH}
       onValueChange={handleSetExtendWith}
       data={!outputFormat || outputFormat !== ImageFileFormat.PNG ? defaultData : dataForPNG}
