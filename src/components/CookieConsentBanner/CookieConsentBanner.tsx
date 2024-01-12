@@ -4,16 +4,20 @@ import { useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
 
 import { CookieIcon } from '@ui/icons/CookieIcon'
-import { extractCookie, setCookie } from '@helpers/cookies'
 import styles from './CookieConsentBanner.module.css'
 
-const COOKIE_NAME = 'cookie-consent'
+const KEY = 'cookie-consent'
 
 export default function CookieConsentBanner() {
-  const [isVisible, setVisible] = useState(!extractCookie(COOKIE_NAME))
+  const [isVisible, setVisible] = useState(!localStorage.getItem(KEY))
 
   const handleCookiesAccept = () => {
-    setCookie(COOKIE_NAME, JSON.stringify({ accepted: true }))
+    localStorage.setItem(
+      'cookie-consent',
+      JSON.stringify({
+        accepted: true
+      })
+    )
     setVisible(false)
   }
 
@@ -59,7 +63,7 @@ export default function CookieConsentBanner() {
               xs: 'left'
             }}
           >
-            This website uses cookies to ensure you get the best experience on our website.
+            We use cookies to give you the best experience on our website.
           </Text>
           <Button onClick={handleCookiesAccept}>Accept</Button>
         </Flex>
