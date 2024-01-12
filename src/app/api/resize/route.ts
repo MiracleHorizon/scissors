@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { SharpResize } from '@server/Sharp/SharpResize'
+import { SharpResizer } from '@server/Sharp/SharpResizer'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { errorMessages } from '@api/resizeImage'
@@ -59,8 +59,8 @@ export async function POST(req: NextRequest) {
       return new NextResponse(imageBuffer)
     }
 
-    const sharpResize = new SharpResize(imageBuffer)
-    const resizedImageBuffer = await sharpResize.resizeImage(settings)
+    const sharpResizer = new SharpResizer(imageBuffer)
+    const resizedImageBuffer = await sharpResizer.resizeImage(settings)
 
     return new NextResponse(resizedImageBuffer)
   } catch (err) {

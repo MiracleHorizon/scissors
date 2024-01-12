@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { SharpConvert } from '@server/Sharp/SharpConvert'
+import { SharpConverter } from '@server/Sharp/SharpConverter'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { errorMessages } from '@api/convertImage'
@@ -59,8 +59,8 @@ export async function POST(req: NextRequest) {
       return new NextResponse(imageBuffer)
     }
 
-    const sharpConvert = new SharpConvert(imageBuffer)
-    const convertedImageBuffer = await sharpConvert.convert(settings)
+    const sharpConverter = new SharpConverter(imageBuffer)
+    const convertedImageBuffer = await sharpConverter.convert(settings)
 
     return new NextResponse(convertedImageBuffer)
   } catch (err) {

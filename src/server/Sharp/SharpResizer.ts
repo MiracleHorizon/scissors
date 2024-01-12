@@ -3,7 +3,7 @@ import sharp from 'sharp'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import type { ExtendOptions, ResizeOptions, ResizeSettings } from './Sharp.types'
 
-export class SharpResize {
+export class SharpResizer {
   private imageSharp: sharp.Sharp
 
   constructor(imageBuffer: ArrayBuffer) {

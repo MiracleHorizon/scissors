@@ -13,7 +13,7 @@ import {
   type RotateOptions
 } from '@server/Sharp'
 
-export class SharpConvert {
+export class SharpConverter {
   private readonly imageSharp: sharp.Sharp
   private stats: Stats | null = null
 
