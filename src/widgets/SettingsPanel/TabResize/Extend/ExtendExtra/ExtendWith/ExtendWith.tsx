@@ -7,10 +7,8 @@ const columns: Responsive<string> = {
   xs: '2'
 }
 
-export function ExtendWith() {
-  return (
-    <Grid width='100%' columns={columns} gap='2'>
-      <SelectExtendWith />
-    </Grid>
-  )
-}
+export const ExtendWith = () => (
+  <Grid columns={columns} gap='2' width='100%'>
+    <SelectExtendWith />
+  </Grid>
+)
