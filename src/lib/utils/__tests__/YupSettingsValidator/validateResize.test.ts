@@ -12,6 +12,7 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
 
   it('should return true for valid settings object', () => {
     const validSettings: ResizeSettings = {
+      queue: [],
       resize: {
         width: 100,
         height: 100,

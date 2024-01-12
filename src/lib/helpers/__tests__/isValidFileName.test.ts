@@ -3,7 +3,7 @@ import {
   MAX_FILE_NAME_LENGTH,
   MIN_FILE_NAME_LENGTH,
   notAllowedChars
-} from './isValidFileName'
+} from '@helpers/isValidFileName'
 
 describe('@lib/helpers/isValidFileName', () => {
   it(`should return false because file name length is less than ${MIN_FILE_NAME_LENGTH}`, () => {

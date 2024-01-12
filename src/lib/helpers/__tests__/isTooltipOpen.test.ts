@@ -1,4 +1,4 @@
-import { isTooltipOpen } from './isTooltipOpen'
+import { isTooltipOpen } from '@helpers/isTooltipOpen'
 
 describe('@lib/helpers/isTooltipOpen', () => {
   it('should return {false} when content is not defined', () => {

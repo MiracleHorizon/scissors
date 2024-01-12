@@ -3,7 +3,7 @@ import {
   handleRequestError,
   internalServerErrorMessage,
   timeoutErrorMessage
-} from './handleRequestError'
+} from '@api/helpers/handleRequestError'
 import { RequestError } from '@api/errors/RequestError'
 import { FetchException } from '@api/exceptions/FetchException'
 

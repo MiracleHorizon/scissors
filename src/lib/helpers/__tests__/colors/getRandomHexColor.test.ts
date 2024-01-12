@@ -1,5 +1,4 @@
-import { getRandomHexColor } from './getRandomHexColor'
-import { hexValidationRegex } from './regular-expressions'
+import { getRandomHexColor, hexValidationRegex } from '@helpers/colors'
 
 describe('@lib/helpers/colors/getRandomHexColor', () => {
   it('should return a random hex color', () => {

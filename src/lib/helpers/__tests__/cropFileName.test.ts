@@ -1,4 +1,4 @@
-import { cropFileName } from './cropFileName'
+import { cropFileName } from '@helpers/cropFileName'
 
 describe('@lib/helpers/cropFileName', () => {
   it('should crop the file name correctly', () => {

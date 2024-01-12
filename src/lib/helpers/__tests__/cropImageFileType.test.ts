@@ -1,4 +1,4 @@
-import { cropImageFileType } from './cropImageFileType'
+import { cropImageFileType } from '@helpers/cropImageFileType'
 
 describe('@lib/helpers/cropImageFileType', () => {
   it('should crop the file type correctly', () => {
