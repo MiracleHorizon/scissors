@@ -1,2 +1,2 @@
-export { AppearancePopover } from './AppearancePopover'
+export { default } from './AppearancePopover'
 export { AppearancePopoverSkeleton } from './AppearancePopoverSkeleton'

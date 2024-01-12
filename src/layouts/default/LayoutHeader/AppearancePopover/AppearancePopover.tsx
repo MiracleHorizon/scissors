@@ -7,7 +7,7 @@ import { ThemeColorGrid } from './ThemeColorGrid'
 import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
 import type { ThemeProps } from '@lib/theme'
 
-export function AppearancePopover({ theme, themeColor }: ThemeProps) {
+export default function AppearancePopover({ theme, themeColor }: ThemeProps) {
   return (
     <Popover.Root>
       <Popover.Trigger>
