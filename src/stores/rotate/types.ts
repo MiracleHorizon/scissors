@@ -21,5 +21,5 @@ interface Actions {
   reset: VoidFunction
   setAngle: (angle: number) => void
   setBackground: (background: string) => void
-  toggleWithDominantBackground: VoidFunction
+  toggleDominantBackground: VoidFunction
 }

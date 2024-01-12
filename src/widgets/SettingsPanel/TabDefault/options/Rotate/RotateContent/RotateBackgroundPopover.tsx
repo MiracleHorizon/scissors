@@ -1,5 +1,3 @@
-'use client'
-
 import { ColorPicker } from '@ui/ColorPicker'
 import { useRotateStore } from '@stores/rotate'
 

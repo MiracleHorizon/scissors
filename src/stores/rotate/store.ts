@@ -69,7 +69,7 @@ export const useRotateStore = create<Store>((set, get) => ({
         background
       }
     }),
-  toggleWithDominantBackground: () =>
+  toggleDominantBackground: () =>
     set(state => {
       if (!state.isAdded) {
         return state

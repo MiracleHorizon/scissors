@@ -1,5 +1,3 @@
-'use client'
-
 import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'

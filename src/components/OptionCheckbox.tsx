@@ -14,7 +14,7 @@ export const OptionCheckbox = memo(({ title, ...props }: Props) => (
 
 OptionCheckbox.displayName = 'OptionCheckbox'
 
-interface Props {
+export interface Props {
   title: string
   onClick: VoidFunction
   checked: boolean | undefined
