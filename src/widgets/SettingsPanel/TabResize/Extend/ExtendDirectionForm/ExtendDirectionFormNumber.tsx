@@ -1,7 +1,7 @@
 'use client'
 
 import { MoveIcon } from '@ui/icons/MoveIcon'
-import { DirectionFormNumber } from '@components/DirectionForm'
+import { OptionNumberInput } from '@components/OptionNumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
 import { useExtendStore } from '@stores/extend'
 
@@ -10,7 +10,7 @@ export function ExtendDirectionFormNumber() {
   const setValue = useExtendStore(state => state.setExtendValue)
 
   return (
-    <DirectionFormNumber
+    <OptionNumberInput
       {...DEFAULT_EXTEND_INPUT_PROPS}
       value={value}
       setValue={setValue}

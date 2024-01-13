@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import { Grid } from '@radix-ui/themes'
 
 import { ExtendDirectionFormNumber } from './ExtendDirectionFormNumber'
 import { ExtendDirectionFormAxis } from './ExtendDirectionFormAxis'
@@ -19,5 +20,17 @@ export function ExtendDirectionForm() {
 
   const Component = useMemo(() => variants[directionModel], [directionModel])
 
-  return <Component />
+  return (
+    <Grid
+      asChild
+      columns={directionModel === DirectionModel.NUMBER ? '1' : '2'}
+      align='center'
+      gap='2'
+      width='100%'
+    >
+      <form>
+        <Component />
+      </form>
+    </Grid>
+  )
 }

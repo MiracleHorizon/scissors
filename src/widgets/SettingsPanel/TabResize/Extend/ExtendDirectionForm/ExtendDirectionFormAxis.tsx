@@ -1,8 +1,6 @@
-'use client'
-
 import { RowSpacingIcon } from '@ui/icons/RowSpacingIcon'
 import { ColumnSpacingIcon } from '@ui/icons/ColumnSpacingIcon'
-import { DirectionFormAxis } from '@components/DirectionForm'
+import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
 
@@ -14,14 +12,21 @@ export function ExtendDirectionFormAxis() {
   const setAxisY = useExtendStore(state => state.setYAxis)
 
   return (
-    <DirectionFormAxis
-      {...DEFAULT_EXTEND_INPUT_PROPS}
-      xAxisValue={axisX}
-      yAxisValue={axisY}
-      setAxisX={setAxisX}
-      setAxisY={setAxisY}
-      iconX={<ColumnSpacingIcon label='extend x axis' />}
-      iconY={<RowSpacingIcon label='extend y axis' />}
-    />
+    <>
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={axisX}
+        setValue={setAxisX}
+        placeholder='X'
+        icon={<ColumnSpacingIcon label='extend x axis' />}
+      />
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={axisY}
+        setValue={setAxisY}
+        placeholder='Y'
+        icon={<RowSpacingIcon label='extend y axis' />}
+      />
+    </>
   )
 }

@@ -1,19 +1,10 @@
-'use client'
-
 import { ArrowUpIcon } from '@ui/icons/ArrowUpIcon'
 import { ArrowDownIcon } from '@ui/icons/ArrowDownIcon'
 import { ArrowLeftIcon } from '@ui/icons/ArrowLeftIcon'
 import { ArrowRightIcon } from '@ui/icons/ArrowRightIcon'
-import { DirectionFormSeparated } from '@components/DirectionForm'
+import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
-
-const icons = {
-  left: <ArrowLeftIcon label='extend left' />,
-  right: <ArrowRightIcon label='extend right' />,
-  top: <ArrowUpIcon label='extend top' />,
-  bottom: <ArrowDownIcon label='extend bottom' />
-}
 
 export function ExtendDirectionFormSeparated() {
   const top = useExtendStore(state => state.top)
@@ -27,17 +18,35 @@ export function ExtendDirectionFormSeparated() {
   const setRight = useExtendStore(state => state.setRight)
 
   return (
-    <DirectionFormSeparated
-      {...DEFAULT_EXTEND_INPUT_PROPS}
-      left={left}
-      right={right}
-      top={top}
-      bottom={bottom}
-      setLeft={setLeft}
-      setRight={setRight}
-      setTop={setTop}
-      setBottom={setBottom}
-      icons={icons}
-    />
+    <>
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={left}
+        setValue={setLeft}
+        placeholder='Left'
+        icon={<ArrowLeftIcon label='extend left' />}
+      />
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={right}
+        setValue={setRight}
+        placeholder='Right'
+        icon={<ArrowRightIcon label='extend right' />}
+      />
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={top}
+        setValue={setTop}
+        placeholder='Top'
+        icon={<ArrowUpIcon label='extend top' />}
+      />
+      <OptionNumberInput
+        {...DEFAULT_EXTEND_INPUT_PROPS}
+        value={bottom}
+        setValue={setBottom}
+        placeholder='Bottom'
+        icon={<ArrowDownIcon label='extend bottom' />}
+      />
+    </>
   )
 }
