@@ -36,7 +36,7 @@ jobs:
       - name: Lint project
         run: pnpm lint
 
-      - name: Link project styles
+      - name: Lint project styles
         run: pnpm lint:styles
 
       - name: Test project
