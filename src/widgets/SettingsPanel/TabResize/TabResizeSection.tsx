@@ -1,5 +1,5 @@
 import { Flex, type PaddingProps } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 
 const padding: PaddingProps = {
   pr: {
@@ -9,18 +9,16 @@ const padding: PaddingProps = {
   pb: '2'
 }
 
-export function TabResizeSection({ children }: PropsWithChildren) {
-  return (
-    <Flex
-      {...padding}
-      asChild
-      align='start'
-      direction='column'
-      gap='2'
-      width='100%'
-      data-id='tab-resize-section'
-    >
-      <section>{children}</section>
-    </Flex>
-  )
-}
+export const TabResizeSection: FC<PropsWithChildren> = ({ children }) => (
+  <Flex
+    {...padding}
+    asChild
+    align='start'
+    direction='column'
+    gap='2'
+    width='100%'
+    data-id='tab-resize-section'
+  >
+    <section>{children}</section>
+  </Flex>
+)

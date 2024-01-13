@@ -1,10 +1,10 @@
-import { memo, type ReactNode } from 'react'
+import { type FC, memo, type ReactNode } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
-export const SortableSectionButton = memo(
+export const SortableSectionButton: FC<Props> = memo(
   ({
     icon,
     isDisabled,
@@ -16,7 +16,7 @@ export const SortableSectionButton = memo(
     variant = 'surface',
     onClick,
     listeners
-  }: Props) => (
+  }) => (
     <Tooltip
       content={tooltipContent}
       open={isTooltipOpen({

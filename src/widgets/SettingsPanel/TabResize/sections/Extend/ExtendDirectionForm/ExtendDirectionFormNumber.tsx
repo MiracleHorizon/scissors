@@ -1,5 +1,3 @@
-'use client'
-
 import { MoveIcon } from '@ui/icons/MoveIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'

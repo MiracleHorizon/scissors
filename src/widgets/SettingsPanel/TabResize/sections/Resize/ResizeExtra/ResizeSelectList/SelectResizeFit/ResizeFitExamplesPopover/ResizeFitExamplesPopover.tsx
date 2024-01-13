@@ -68,38 +68,36 @@ const exampleListPadding: PaddingProps = {
   pb: '1'
 }
 
-export function ResizeFitExamplesPopover() {
-  return (
-    <Popover.Root>
-      <Popover.Trigger>
-        <ButtonInfo radius='full' className={styles.buttonInfo} />
-      </Popover.Trigger>
+export const ResizeFitExamplesPopover = () => (
+  <Popover.Root>
+    <Popover.Trigger>
+      <ButtonInfo radius='full' className={styles.buttonInfo} />
+    </Popover.Trigger>
 
-      <Popover.Content size='1' side='bottom' align='center' className={styles.content}>
-        <ScrollArea type='scroll' scrollbars='both'>
-          <Flex
-            {...exampleListStyle}
-            {...exampleListPadding}
-            width='100%'
-            className={styles.exampleList}
-          >
-            {examples.map(({ width, height, label, ...image }) => (
-              <Flex
-                key={image.src}
-                direction='column'
-                align='center'
-                gap='1'
-                className={styles.exampleItem}
-              >
-                <Image width={width / 4.4} height={height / 4.4} alt={label} {...image} />
-                <Text as='span' size='2' weight='bold' className={styles.exampleLabel}>
-                  {label}
-                </Text>
-              </Flex>
-            ))}
-          </Flex>
-        </ScrollArea>
-      </Popover.Content>
-    </Popover.Root>
-  )
-}
+    <Popover.Content size='1' side='bottom' align='center' className={styles.content}>
+      <ScrollArea type='scroll' scrollbars='both'>
+        <Flex
+          {...exampleListStyle}
+          {...exampleListPadding}
+          width='100%'
+          className={styles.exampleList}
+        >
+          {examples.map(({ width, height, label, ...image }) => (
+            <Flex
+              key={image.src}
+              direction='column'
+              align='center'
+              gap='1'
+              className={styles.exampleItem}
+            >
+              <Image width={width / 4.4} height={height / 4.4} alt={label} {...image} />
+              <Text as='span' size='2' weight='bold' className={styles.exampleLabel}>
+                {label}
+              </Text>
+            </Flex>
+          ))}
+        </Flex>
+      </ScrollArea>
+    </Popover.Content>
+  </Popover.Root>
+)

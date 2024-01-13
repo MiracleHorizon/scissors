@@ -10,8 +10,8 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Flex } from '@radix-ui/themes'
 
-import { Resize } from './Resize'
-import { Extend } from './Extend'
+import { Resize } from './sections/Resize'
+import { Extend } from './sections/Extend'
 import { SortableSection } from './SortableSection'
 import { useTabResizeStore } from '@stores/tab-resize'
 
@@ -44,8 +44,8 @@ export function TabResizeContent() {
               handleMoveDown={handleMoveDown}
               handleRemove={handleRemove}
             >
-              {typeof id === 'string' && id.startsWith('resize') && <Resize />}
-              {typeof id === 'string' && id.startsWith('extend') && <Extend />}
+              {id === 'resize' && <Resize />}
+              {id === 'extend' && <Extend />}
             </SortableSection>
           ))}
         </SortableContext>

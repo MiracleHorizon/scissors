@@ -1,5 +1,3 @@
-'use client'
-
 import { Flex } from '@radix-ui/themes'
 
 import { WidthIcon } from '@ui/icons/WidthIcon'
