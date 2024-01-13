@@ -1,4 +1,6 @@
-import Link from 'next/link'
+'use client'
+
+import { useRouter } from 'next/navigation'
 import { Flex } from '@radix-ui/themes'
 
 import { LogoIcon } from '@ui/icons/LogoIcon'
@@ -6,11 +8,13 @@ import { Route } from '@lib/router'
 import styles from './AppLogo.module.css'
 
 export function AppLogo() {
+  const router = useRouter()
+
+  const navigateToHome = () => router.replace(Route.HOME)
+
   return (
-    <Flex asChild align='center' justify='center' className={styles.root}>
-      <Link href={Route.HOME}>
-        <LogoIcon width='26px' height='26px' className={styles.icon} />
-      </Link>
+    <Flex align='center' justify='center' className={styles.root} onClick={navigateToHome}>
+      <LogoIcon width='26px' height='26px' className={styles.icon} />
     </Flex>
   )
 }
