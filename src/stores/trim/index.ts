@@ -1,0 +1,1 @@
+export { useTrimStore } from './store'

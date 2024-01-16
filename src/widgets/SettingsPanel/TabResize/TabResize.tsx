@@ -16,14 +16,12 @@ const padding: PaddingProps = {
 }
 
 // TODO: Dynamic imports
-export function TabResize() {
-  return (
-    <Tabs.Content value={ToolbarTab.RESIZE}>
-      <Flex {...padding} direction='column' gap='2'>
-        <TabResizeCallout />
-        <TabResizeActions />
-        <TabResizeContent />
-      </Flex>
-    </Tabs.Content>
-  )
-}
+export const TabResize = () => (
+  <Tabs.Content value={ToolbarTab.RESIZE}>
+    <Flex {...padding} direction='column' gap='2'>
+      <TabResizeCallout />
+      <TabResizeActions />
+      <TabResizeContent />
+    </Flex>
+  </Tabs.Content>
+)

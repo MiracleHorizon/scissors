@@ -1,0 +1,1 @@
+export { TrimHeader } from './TrimHeader'

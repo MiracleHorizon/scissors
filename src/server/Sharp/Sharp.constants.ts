@@ -88,6 +88,13 @@ export const DEFAULT_EXTEND_INPUT_PROPS = {
   step: EXTEND_DIRECTION_SIZE_STEP
 }
 
+// Trim
+export const DEFAULT_TRIM_BACKGROUND = '#000000'
+export const DEFAULT_TRIM_THRESHOLD = 10
+export const MIN_TRIM_THRESHOLD = 0
+export const MAX_TRIM_THRESHOLD = 255 // RGB max
+export const DEFAULT_TRIM_LINE_ART = false
+
 // Modulate
 export const MIN_LIGHTNESS = 0
 export const MAX_LIGHTNESS = 100

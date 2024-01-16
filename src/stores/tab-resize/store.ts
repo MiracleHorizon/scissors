@@ -5,12 +5,9 @@ import { ResizeOperationName, type ResizeQueue } from '@server/Sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {
-  items: [
+  sections: [
     {
       id: ResizeOperationName.RESIZE
-    },
-    {
-      id: ResizeOperationName.EXTEND
     }
   ]
 }
@@ -20,16 +17,19 @@ export const useTabResizeStore = create<Store>((set, get) => ({
   ...defaultState,
 
   // Computed
-  isEmpty: () => get().items.length === 0,
-  isResizeAdded: () => get().items.some(item => item.id === ResizeOperationName.RESIZE),
-  isExtendAdded: () => get().items.some(item => item.id === ResizeOperationName.EXTEND),
+  isEmpty: () => get().sections.length === 0,
+  isAllSettled: () => get().isResizeAdded() && get().isExtendAdded() && get().isTrimAdded(),
+  isResizeAdded: () => get().sections.some(section => section.id === ResizeOperationName.RESIZE),
+  isExtendAdded: () => get().sections.some(section => section.id === ResizeOperationName.EXTEND),
+  isTrimAdded: () => get().sections.some(section => section.id === ResizeOperationName.TRIM),
   getQueue: () => {
     // TODO: Rework to use Map
-    const items = get().items
-    const itemsIdentifiers = items.map(item => item.id)
+    const sections = get().sections
+    const sectionsIdentifiers = sections.map(section => section.id)
 
-    const resizeIndex = itemsIdentifiers.indexOf(ResizeOperationName.RESIZE)
-    const extendIndex = itemsIdentifiers.indexOf(ResizeOperationName.EXTEND)
+    const resizeIndex = sectionsIdentifiers.indexOf(ResizeOperationName.RESIZE)
+    const extendIndex = sectionsIdentifiers.indexOf(ResizeOperationName.EXTEND)
+    const trimIndex = sectionsIdentifiers.indexOf(ResizeOperationName.TRIM)
 
     const values: ResizeQueue = []
 
@@ -47,6 +47,13 @@ export const useTabResizeStore = create<Store>((set, get) => ({
       })
     }
 
+    if (trimIndex !== -1) {
+      values.push({
+        operationName: ResizeOperationName.TRIM,
+        index: trimIndex
+      })
+    }
+
     if (values.length === 0) {
       return []
     }
@@ -57,15 +64,19 @@ export const useTabResizeStore = create<Store>((set, get) => ({
   },
 
   // Actions
-  setItems: items => set({ items }),
+  setSections: sections => set({ sections }),
 
-  addResizeItem: () =>
+  addResizeSection: () =>
     set(state => ({
-      items: [...state.items, { id: ResizeOperationName.RESIZE }]
+      sections: [...state.sections, { id: ResizeOperationName.RESIZE }]
     })),
-  addExtendItem: () =>
+  addExtendSection: () =>
     set(state => ({
-      items: [...state.items, { id: ResizeOperationName.EXTEND }]
+      sections: [...state.sections, { id: ResizeOperationName.EXTEND }]
+    })),
+  addTrimSection: () =>
+    set(state => ({
+      sections: [...state.sections, { id: ResizeOperationName.TRIM }]
     })),
 
   handleDragEnd: event => {
@@ -74,52 +85,52 @@ export const useTabResizeStore = create<Store>((set, get) => ({
     if (!over || active.id === over.id) return
 
     set(state => {
-      const itemsIdentifiers = state.items.map(item => item.id)
+      const sectionsIdentifiers = state.sections.map(section => section.id)
 
-      const oldIndex = itemsIdentifiers.indexOf(active.id)
-      const newIndex = itemsIdentifiers.indexOf(over.id)
+      const oldIndex = sectionsIdentifiers.indexOf(active.id)
+      const newIndex = sectionsIdentifiers.indexOf(over.id)
 
       return {
-        items: arrayMove(state.items, oldIndex, newIndex)
+        sections: arrayMove(state.sections, oldIndex, newIndex)
       }
     })
   },
-  handleMoveUp: itemId => {
+  handleMoveUp: sectionId => {
     set(state => {
-      const items = state.items
-      const itemIndex = items.findIndex(item => item.id === itemId)
+      const sections = state.sections
+      const sectionIndex = sections.findIndex(section => section.id === sectionId)
 
-      const isFirstItem = itemIndex === 0
-      if (isFirstItem) {
+      const isFirstSection = sectionIndex === 0
+      if (isFirstSection) {
         return {
-          items
+          sections
         }
       }
 
       return {
-        items: arrayMove(state.items, itemIndex, itemIndex - 1)
+        sections: arrayMove(state.sections, sectionIndex, sectionIndex - 1)
       }
     })
   },
 
-  handleMoveDown: itemId =>
+  handleMoveDown: sectionId =>
     set(state => {
-      const items = state.items
-      const itemIndex = items.findIndex(item => item.id === itemId)
+      const sections = state.sections
+      const sectionIndex = sections.findIndex(section => section.id === sectionId)
 
-      const isLastItem = itemIndex === items.length - 1
-      if (isLastItem) {
+      const isLastSection = sectionIndex === sections.length - 1
+      if (isLastSection) {
         return {
-          items
+          sections
         }
       }
 
       return {
-        items: arrayMove(state.items, itemIndex, itemIndex + 1)
+        sections: arrayMove(state.sections, sectionIndex, sectionIndex + 1)
       }
     }),
-  handleRemove: itemId =>
+  handleRemove: sectionId =>
     set(state => ({
-      items: state.items.filter(item => item.id !== itemId)
+      sections: state.sections.filter(section => section.id !== sectionId)
     }))
 }))

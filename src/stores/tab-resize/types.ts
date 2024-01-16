@@ -4,27 +4,30 @@ import type { ResizeQueue } from '@server/Sharp'
 
 export type Store = State & Computed & Actions
 
-interface Item {
+interface Section {
   id: UniqueIdentifier
 }
 
 export interface State {
-  items: Item[]
+  sections: Section[]
 }
 
 interface Computed {
   isEmpty: () => boolean
+  isAllSettled: () => boolean
   isResizeAdded: () => boolean
   isExtendAdded: () => boolean
+  isTrimAdded: () => boolean
   getQueue: () => ResizeQueue
 }
 
 /* eslint-disable no-unused-vars */
 interface Actions {
-  setItems: (items: Item[]) => void
+  setSections: (sections: Section[]) => void
 
-  addResizeItem: VoidFunction
-  addExtendItem: VoidFunction
+  addResizeSection: VoidFunction
+  addExtendSection: VoidFunction
+  addTrimSection: VoidFunction
 
   handleDragEnd: (event: DragEndEvent) => void
   handleMoveUp: (itemId: UniqueIdentifier) => void

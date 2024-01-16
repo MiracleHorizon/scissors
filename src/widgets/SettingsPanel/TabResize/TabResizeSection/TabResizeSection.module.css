@@ -1,0 +1,9 @@
+.root button[data-id='button-reset'] {
+  width: 28px;
+  height: 28px;
+}
+
+.root button[data-id='button-reset'] svg {
+  width: 16px;
+  height: 16px;
+}

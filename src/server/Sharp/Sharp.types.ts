@@ -18,6 +18,7 @@ export interface ResizeSettings {
   queue: ResizeQueue
   resize: ResizeOptions | null
   extend: ExtendOptions | null
+  trim: TrimOptions | null
 }
 
 export type ResizeQueue = ResizeQueueOperation[]
@@ -29,7 +30,8 @@ interface ResizeQueueOperation {
 
 export const enum ResizeOperationName {
   RESIZE = 'resize',
-  EXTEND = 'extend'
+  EXTEND = 'extend',
+  TRIM = 'trim'
 }
 
 export interface ModulateOptions {
@@ -157,6 +159,12 @@ export enum ResizePositionGravity {
   SOUTH_EAST = 'southeast',
   SOUTH_WEST = 'southwest',
   NORTH_WEST = 'northwest'
+}
+
+export interface TrimOptions {
+  background: string | null
+  threshold: number | null
+  lineArt: boolean
 }
 
 export enum ImageFileFormat {

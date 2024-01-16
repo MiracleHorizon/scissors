@@ -27,7 +27,7 @@ const padding: PaddingProps = {
     sm: '0'
   },
   pt: '2',
-  pb: '1'
+  pb: '3'
 }
 
 export function SortableSection({

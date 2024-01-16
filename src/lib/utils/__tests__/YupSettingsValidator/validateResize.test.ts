@@ -1,6 +1,7 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   ExtendWith,
+  MIN_TRIM_THRESHOLD,
   ResizeFit,
   ResizeKernel,
   ResizePosition,
@@ -22,7 +23,8 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
         kernel: ResizeKernel.LANCZOS3,
         withoutEnlargement: true,
         withoutReduction: false,
-        fastShrinkOnLoad: true
+        fastShrinkOnLoad: true,
+        withDominantBackground: false
       },
       extend: {
         top: 10,
@@ -30,7 +32,13 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
         right: 10,
         left: 10,
         extendWith: ExtendWith.BACKGROUND,
-        background: '#FFFFFF'
+        background: '#FFFFFF',
+        withDominantBackground: false
+      },
+      trim: {
+        background: '#000000',
+        threshold: MIN_TRIM_THRESHOLD,
+        lineArt: false
       }
     }
 

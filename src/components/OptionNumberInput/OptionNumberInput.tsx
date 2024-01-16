@@ -1,10 +1,20 @@
-import { type ChangeEvent, type KeyboardEvent, useCallback, useRef } from 'react'
-import { TextField } from '@radix-ui/themes'
+'use client'
+
+import { type ChangeEvent, type FC, type KeyboardEvent, useCallback, useId, useRef } from 'react'
+import { Box, Flex, Text, TextField } from '@radix-ui/themes'
 
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
-import type { Props } from './OptionNumberInput.types'
+import type { LabelProps, Props } from './OptionNumberInput.types'
 
-export function OptionNumberInput({ icon, max, value, setValue, ...inputAttributes }: Props) {
+export function OptionNumberInput({
+  icon,
+  max,
+  value,
+  setValue,
+  label,
+  ...inputAttributes
+}: Props) {
+  const inputId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleChange = useCallback(
@@ -45,20 +55,42 @@ export function OptionNumberInput({ icon, max, value, setValue, ...inputAttribut
     ref: inputRef
   })
 
-  return (
-    <TextField.Root className='w-full'>
-      {icon && <TextField.Slot>{icon}</TextField.Slot>}
-      <TextField.Input
-        {...inputAttributes}
-        ref={inputRef}
-        value={value ?? ''}
-        type='number'
-        inputMode='numeric'
-        pattern='\d*'
-        max={max}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
-    </TextField.Root>
+  const JSX = (
+    <Box asChild width='100%'>
+      <TextField.Root>
+        {icon && <TextField.Slot>{icon}</TextField.Slot>}
+        <TextField.Input
+          {...inputAttributes}
+          ref={inputRef}
+          id={inputId}
+          value={value ?? ''}
+          type='number'
+          inputMode='numeric'
+          pattern='\d*'
+          max={max}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </TextField.Root>
+    </Box>
   )
+
+  if (label) {
+    return (
+      <WithLabel id={inputId} label={label}>
+        {JSX}
+      </WithLabel>
+    )
+  }
+
+  return JSX
 }
+
+const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
+  <Flex direction='column' gap='1' width='100%'>
+    <Text as='label' size='2' htmlFor={id}>
+      {label}
+    </Text>
+    {children}
+  </Flex>
+)

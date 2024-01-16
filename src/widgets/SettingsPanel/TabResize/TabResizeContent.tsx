@@ -10,13 +10,14 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Flex } from '@radix-ui/themes'
 
-import { Resize } from './Resize'
-import { Extend } from './Extend'
+import { Resize } from './sections/Resize'
+import { Extend } from './sections/Extend'
+import { Trim } from './sections/Trim'
 import { SortableSection } from './SortableSection'
 import { useTabResizeStore } from '@stores/tab-resize'
 
 export function TabResizeContent() {
-  const items = useTabResizeStore(state => state.items)
+  const sections = useTabResizeStore(state => state.sections)
   const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor))
 
   const handleDragEnd = useTabResizeStore(state => state.handleDragEnd)
@@ -32,20 +33,21 @@ export function TabResizeContent() {
         modifiers={[restrictToVerticalAxis, restrictToParentElement]}
         onDragEnd={handleDragEnd}
       >
-        <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          {items.map(({ id }, index) => (
+        <SortableContext items={sections} strategy={verticalListSortingStrategy}>
+          {sections.map(({ id }, index) => (
             <SortableSection
               key={id}
               id={id}
-              isDragDisabled={items.length <= 1}
-              isUpMovable={index > 0 && items.length > 1}
-              isDownMovable={index < items.length - 1 && items.length > 1}
+              isDragDisabled={sections.length <= 1}
+              isUpMovable={index > 0 && sections.length > 1}
+              isDownMovable={index < sections.length - 1 && sections.length > 1}
               handleMoveUp={handleMoveUp}
               handleMoveDown={handleMoveDown}
               handleRemove={handleRemove}
             >
-              {typeof id === 'string' && id.startsWith('resize') && <Resize />}
-              {typeof id === 'string' && id.startsWith('extend') && <Extend />}
+              {id === 'resize' && <Resize />}
+              {id === 'extend' && <Extend />}
+              {id === 'trim' && <Trim />}
             </SortableSection>
           ))}
         </SortableContext>
