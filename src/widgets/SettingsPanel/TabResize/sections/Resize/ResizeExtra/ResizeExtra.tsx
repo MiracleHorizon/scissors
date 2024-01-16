@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
-import { ResizeBackgroundPopover } from './ResizeBackgroundPopover'
+import { ResizeBackgroundPicker } from './ResizeBackgroundPicker'
 import { ResizeDominantBackground } from './ResizeDominantBackground'
 import { ResizeCheckboxes } from './ResizeCheckboxes'
 import { ResizeSelectList } from './ResizeSelectList'
@@ -14,7 +14,7 @@ export function ResizeExtra() {
       <ResizeSelectList />
       {background && (
         <Flex direction='column' gap='3'>
-          <ResizeBackgroundPopover background={background} />
+          <ResizeBackgroundPicker background={background} />
           <ResizeDominantBackground />
         </Flex>
       )}

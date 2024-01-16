@@ -2,7 +2,7 @@ import { ColorPicker } from '@ui/ColorPicker'
 import { useExtendStore } from '@stores/extend'
 import { ExtendWith } from '@server/Sharp'
 
-export function ExtendBackgroundPopover() {
+export function ExtendBackgroundPicker() {
   const extendBackground = useExtendStore(state => state.background)
   const withDominantBackground = useExtendStore(state => state.withDominantBackground)
   const extendWith = useExtendStore(state => state.extendWith)

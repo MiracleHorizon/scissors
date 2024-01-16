@@ -2,7 +2,13 @@ import sharp, { type Color, type Stats } from 'sharp'
 
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { getStatsOrNull } from './getStatsOrNull'
-import type { ExtendOptions, ResizeOptions, ResizeSettings } from './Sharp.types'
+import {
+  type ExtendOptions,
+  ResizeOperationName,
+  type ResizeOptions,
+  type ResizeSettings,
+  type TrimOptions
+} from './Sharp.types'
 
 export class SharpResizer {
   private imageSharp: sharp.Sharp
@@ -13,7 +19,7 @@ export class SharpResizer {
   }
 
   /* eslint-disable no-await-in-loop */
-  public async resizeImage({ queue, resize, extend }: ResizeSettings): Promise<Buffer> {
+  public async resizeImage({ queue, resize, extend, trim }: ResizeSettings): Promise<Buffer> {
     if (queue.length === 0) {
       return this.toBuffer()
     }
@@ -21,12 +27,16 @@ export class SharpResizer {
     await this.initialiseStats()
 
     for (const { operationName } of Object.values(queue)) {
-      if (operationName === 'resize' && resize) {
+      if (operationName === ResizeOperationName.RESIZE && resize) {
         await this.resize(resize)
       }
 
-      if (operationName === 'extend' && extend) {
+      if (operationName === ResizeOperationName.EXTEND && extend) {
         await this.extend(extend)
+      }
+
+      if (operationName === ResizeOperationName.TRIM && trim) {
+        await this.trim(trim)
       }
     }
 
@@ -100,6 +110,27 @@ export class SharpResizer {
       this.imageSharp = sharp(updatedBuffer)
     } catch (err) {
       throw new Error('Failed to extend the image', {
+        cause: err
+      })
+    }
+  }
+
+  private async trim(options: TrimOptions): Promise<void> {
+    const isValid = YupSettingsValidator.isTrimValid(options)
+    if (!isValid) {
+      throw new Error('Invalid trim options')
+    }
+
+    const { background, lineArt, threshold } = options
+
+    try {
+      this.imageSharp.trim({
+        background: background ?? undefined,
+        threshold: threshold ?? undefined,
+        lineArt
+      })
+    } catch (err) {
+      throw new Error('Failed to trim the image', {
         cause: err
       })
     }

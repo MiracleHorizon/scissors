@@ -18,7 +18,14 @@ export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
       })}
       content={tooltipContent}
     >
-      <IconButton ref={ref} {...props} color={color} variant={variant} disabled={disabled}>
+      <IconButton
+        {...props}
+        ref={ref}
+        color={color}
+        variant={variant}
+        disabled={disabled}
+        data-id='button-reset'
+      >
         <ResetIcon width='18px' height='18px' />
       </IconButton>
     </Tooltip>

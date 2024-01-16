@@ -1,0 +1,18 @@
+import type { TrimOptions } from '@server/Sharp'
+
+export type Store = TrimOptions & Computed & Action
+
+export type State = TrimOptions
+
+interface Computed {
+  getTrimOptions: () => TrimOptions | null
+}
+
+/* eslint-disable no-unused-vars */
+interface Action {
+  setBackground: (background: string | null) => void
+  setThreshold: (threshold: number | null) => void
+  toggleLineArt: VoidFunction
+
+  reset: VoidFunction
+}

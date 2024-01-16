@@ -2,13 +2,13 @@ import { Flex } from '@radix-ui/themes'
 
 import { ButtonAddResize } from './ButtonAddResize'
 import { ButtonAddExtend } from './ButtonAddExtend'
+import { ButtonAddTrim } from './ButtonAddTrim'
 import { useTabResizeStore } from '@stores/tab-resize'
 
 export function TabResizeActions() {
-  const isResizeAdded = useTabResizeStore(state => state.isResizeAdded())
-  const isExtendAdded = useTabResizeStore(state => state.isExtendAdded())
+  const isAllSettled = useTabResizeStore(state => state.isAllSettled())
 
-  if (isResizeAdded && isExtendAdded) {
+  if (isAllSettled) {
     return null
   }
 
@@ -16,6 +16,7 @@ export function TabResizeActions() {
     <Flex gap='2'>
       <ButtonAddResize />
       <ButtonAddExtend />
+      <ButtonAddTrim />
     </Flex>
   )
 }

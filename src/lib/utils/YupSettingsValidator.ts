@@ -14,6 +14,7 @@ import {
   MAX_RESIZE_WIDTH,
   MAX_ROTATE_ANGLE,
   MAX_SATURATION,
+  MAX_TRIM_THRESHOLD,
   MIN_BLUR_SIGMA,
   MIN_BRIGHTNESS,
   MIN_EXTEND_DIRECTION_SIZE,
@@ -24,6 +25,7 @@ import {
   MIN_RESIZE_SIZE,
   MIN_ROTATE_ANGLE,
   MIN_SATURATION,
+  MIN_TRIM_THRESHOLD,
   ResizeFit,
   ResizeKernel,
   ResizePosition,
@@ -31,12 +33,9 @@ import {
 } from '@server/Sharp'
 import { hexValidationRegex } from '@helpers/colors'
 
-const tintSchema = string()
-  .matches(hexValidationRegex, {
-    excludeEmptyString: true
-  })
-  .nullable()
-  .defined()
+const booleanSchema = boolean().defined()
+
+const tintSchema = string().matches(hexValidationRegex).nullable().defined()
 
 const blurSchema = object({
   value: boolean().defined().required(),
@@ -61,11 +60,7 @@ const normaliseSchema = object({
 
 const rotateSchema = object({
   angle: number().min(MIN_ROTATE_ANGLE).max(MAX_ROTATE_ANGLE).required(),
-  background: string()
-    .matches(hexValidationRegex, {
-      excludeEmptyString: true
-    })
-    .required(),
+  background: string().matches(hexValidationRegex).required(),
   withDominantBackground: boolean().defined().required()
 })
   .defined()
@@ -81,20 +76,16 @@ const resizeSchema = object({
   width: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_WIDTH).nullable().defined(),
   height: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_HEIGHT).nullable().defined(),
   fit: string().oneOf(Object.values(ResizeFit)).nullable().defined(),
-  background: string()
-    .matches(hexValidationRegex, {
-      excludeEmptyString: true
-    })
-    .nullable()
-    .defined(),
+  background: string().matches(hexValidationRegex).nullable().defined(),
   position: string()
     .oneOf([...Object.values(ResizePosition), ...Object.values(ResizePositionGravity)])
     .nullable()
     .defined(),
   kernel: string().oneOf(Object.values(ResizeKernel)).nullable().defined(),
-  withoutEnlargement: boolean().defined(),
-  withoutReduction: boolean().defined(),
-  fastShrinkOnLoad: boolean().defined()
+  withoutEnlargement: booleanSchema,
+  withoutReduction: booleanSchema,
+  fastShrinkOnLoad: booleanSchema,
+  withDominantBackground: booleanSchema
 })
   .nullable()
   .defined()
@@ -113,11 +104,15 @@ const extendSchema = object({
     .nullable()
     .defined(),
   extendWith: string().oneOf(Object.values(ExtendWith)).defined(),
-  background: string()
-    .matches(hexValidationRegex, {
-      excludeEmptyString: true
-    })
-    .defined()
+  background: string().matches(hexValidationRegex).defined()
+})
+  .nullable()
+  .defined()
+
+const trimSchema = object({
+  background: string().matches(hexValidationRegex).nullable().defined(),
+  threshold: number().min(MIN_TRIM_THRESHOLD).max(MAX_TRIM_THRESHOLD).nullable().defined(),
+  lineArt: booleanSchema
 })
   .nullable()
   .defined()
@@ -132,8 +127,6 @@ const modulateSchema = object({
   .defined()
 
 const outputFormatSchema = string().oneOf(Object.values(ImageFileFormat)).nullable().defined()
-
-const booleanSchema = boolean().defined()
 
 const settingsSchema = object({
   flip: booleanSchema,
@@ -152,7 +145,8 @@ const settingsSchema = object({
 // TODO: Queue validation
 const resizeSettingsSchema = object({
   resize: resizeSchema,
-  extend: extendSchema
+  extend: extendSchema,
+  trim: trimSchema
 })
 
 // TODO: Абстракция
@@ -195,6 +189,10 @@ export class YupSettingsValidator {
 
   public static isExtendValid(extend: unknown): boolean {
     return extendSchema.isValidSync(extend)
+  }
+
+  public static isTrimValid(trim: unknown): boolean {
+    return trimSchema.isValidSync(trim)
   }
 
   public static isModulateValid(modulate: unknown): boolean {

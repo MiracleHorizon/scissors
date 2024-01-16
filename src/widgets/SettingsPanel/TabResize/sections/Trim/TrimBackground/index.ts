@@ -1,0 +1,1 @@
+export { TrimBackground } from './TrimBackground'

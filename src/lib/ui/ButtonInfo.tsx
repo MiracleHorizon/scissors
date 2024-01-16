@@ -27,4 +27,5 @@ ButtonInfo.displayName = 'ButtonInfo'
 
 interface Props extends MarginProps, ClassNameProps {
   radius?: Radius
+  onClick?: VoidFunction
 }

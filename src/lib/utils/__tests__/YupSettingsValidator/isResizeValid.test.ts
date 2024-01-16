@@ -13,10 +13,13 @@ describe('@utils/YupSettingsValidator.isResizeValid', () => {
     kernel: ResizeKernel.LANCZOS3,
     withoutEnlargement: true,
     withoutReduction: false,
-    fastShrinkOnLoad: true
+    fastShrinkOnLoad: true,
+    withDominantBackground: true
   }
 
-  function testBoolean(key: 'withoutEnlargement' | 'withoutReduction' | 'fastShrinkOnLoad') {
+  function testBoolean(
+    key: 'withoutEnlargement' | 'withoutReduction' | 'fastShrinkOnLoad' | 'withDominantBackground'
+  ) {
     expect(
       isResizeValid({
         ...validOptions,
@@ -67,6 +70,9 @@ describe('@utils/YupSettingsValidator.isResizeValid', () => {
 
   it('should return false for invalid fit property', () => {
     expect(isResizeValid({ ...validOptions, fit: 'invalidFit' })).toBe(false)
+    // FIXME: should return false
+    // expect(isResizeValid({ ...validOptions, width: '100' })).toBe(false)
+    // expect(isResizeValid({ ...validOptions, height: '100' })).toBe(false)
     expect(isResizeValid({ ...validOptions, fit: ResizeFit.CONTAIN + 'foo' })).toBe(false)
     expect(isResizeValid({ ...validOptions, fit: 'bar' + ResizeFit.INSIDE })).toBe(false)
   })

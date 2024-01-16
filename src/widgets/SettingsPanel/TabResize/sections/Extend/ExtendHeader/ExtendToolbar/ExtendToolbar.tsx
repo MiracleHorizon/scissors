@@ -7,7 +7,6 @@ import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { ButtonExtendReset } from './ButtonExtendReset'
 import { ExtendToolbarButton } from './ExtendToolbarButton'
 import { DirectionModel, useExtendStore } from '@stores/extend'
-import styles from './ExtendToolbar.module.css'
 
 export function ExtendToolbar() {
   const directionModel = useExtendStore(state => state.directionModel)
@@ -28,7 +27,7 @@ export function ExtendToolbar() {
 
   return (
     <Flex width='100%'>
-      <Flex align='center' justify='end' gap='1' width='100%' className={styles.content}>
+      <Flex align='center' justify='end' gap='1' width='100%'>
         {directionModel !== DirectionModel.NUMBER && (
           <ExtendToolbarButton
             onClick={
@@ -57,7 +56,7 @@ export function ExtendToolbar() {
 
         <Separator mx='1' orientation='vertical' />
 
-        <ButtonExtendReset className={styles.buttonReset} />
+        <ButtonExtendReset />
       </Flex>
     </Flex>
   )

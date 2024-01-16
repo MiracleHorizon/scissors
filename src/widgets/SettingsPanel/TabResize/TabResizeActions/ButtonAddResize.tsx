@@ -4,9 +4,9 @@ import { useTabResizeStore } from '@stores/tab-resize'
 
 export function ButtonAddResize() {
   const isAdded = useTabResizeStore(state => state.isResizeAdded())
-  const addResizeItem = useTabResizeStore(state => state.addResizeItem)
+  const addResizeSection = useTabResizeStore(state => state.addResizeSection)
 
-  const handleAddResizeItem = () => addResizeItem()
+  const handleAddResizeSection = () => addResizeSection()
 
   if (isAdded) {
     return null
@@ -16,7 +16,7 @@ export function ButtonAddResize() {
     <ButtonAddOption
       label='Add Resize'
       leadIcon={<DimensionsIcon width='18px' height='18px' label='add resize section' />}
-      onClick={handleAddResizeItem}
+      onClick={handleAddResizeSection}
     />
   )
 }
