@@ -3,7 +3,6 @@ import { Flex } from '@radix-ui/themes'
 import { TrimHeader } from './TrimHeader'
 import { TrimBackground } from './TrimBackground'
 import { TrimThresholdInput } from './TrimThresholdInput'
-import { CheckboxTrimLineArt } from './CheckboxTrimLineArt'
 import { TabResizeSection } from '@widgets/SettingsPanel/TabResize/TabResizeSection'
 
 export const Trim = () => (
@@ -14,7 +13,8 @@ export const Trim = () => (
         <TrimThresholdInput />
         <TrimBackground />
       </Flex>
-      <CheckboxTrimLineArt />
+      {/* sharp v0.33.2*/}
+      {/*<CheckboxTrimLineArt />*/}
     </>
   </TabResizeSection>
 )

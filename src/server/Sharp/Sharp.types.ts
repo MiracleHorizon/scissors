@@ -164,7 +164,8 @@ export enum ResizePositionGravity {
 export interface TrimOptions {
   background: string | null
   threshold: number | null
-  lineArt: boolean
+  // sharp v0.33.2
+  // lineArt: boolean
 }
 
 export enum ImageFileFormat {

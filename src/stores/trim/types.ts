@@ -12,7 +12,8 @@ interface Computed {
 interface Action {
   setBackground: (background: string | null) => void
   setThreshold: (threshold: number | null) => void
-  toggleLineArt: VoidFunction
+  // sharp v0.33.2
+  // toggleLineArt: VoidFunction
 
   reset: VoidFunction
 }

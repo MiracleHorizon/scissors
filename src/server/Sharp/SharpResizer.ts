@@ -121,13 +121,16 @@ export class SharpResizer {
       throw new Error('Invalid trim options')
     }
 
-    const { background, lineArt, threshold } = options
+    const { background, threshold } = options
+    // sharp v0.33.2
+    // const { background, lineArt, threshold } = options
 
     try {
       this.imageSharp.trim({
         background: background ?? undefined,
-        threshold: threshold ?? undefined,
-        lineArt
+        threshold: threshold ?? undefined
+        // sharp v0.33.2
+        // lineArt
       })
     } catch (err) {
       throw new Error('Failed to trim the image', {
