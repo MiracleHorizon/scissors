@@ -37,8 +37,9 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
       },
       trim: {
         background: '#000000',
-        threshold: MIN_TRIM_THRESHOLD,
-        lineArt: false
+        threshold: MIN_TRIM_THRESHOLD
+        // sharp v0.33.2
+        // lineArt: false
       }
     }
 

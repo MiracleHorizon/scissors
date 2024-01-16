@@ -111,8 +111,9 @@ const extendSchema = object({
 
 const trimSchema = object({
   background: string().matches(hexValidationRegex).nullable().defined(),
-  threshold: number().min(MIN_TRIM_THRESHOLD).max(MAX_TRIM_THRESHOLD).nullable().defined(),
-  lineArt: booleanSchema
+  threshold: number().min(MIN_TRIM_THRESHOLD).max(MAX_TRIM_THRESHOLD).nullable().defined()
+  // sharp v0.33.2
+  // lineArt: booleanSchema
 })
   .nullable()
   .defined()
