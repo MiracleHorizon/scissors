@@ -1,11 +1,11 @@
 'use client'
 
-import { memo } from 'react'
+import { type FC, memo } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
 
-export const ButtonExport = memo(({ tooltipContent, onClick }: Props) => {
+export const ButtonExport: FC<Props> = memo(({ tooltipContent, onClick }) => {
   const Button = (
     <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
       <DownloadIcon width='20px' height='20px' label='export' />

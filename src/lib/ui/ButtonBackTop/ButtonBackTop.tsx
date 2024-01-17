@@ -10,8 +10,8 @@ import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ButtonBackTop.module.css'
 
 export function ButtonBackTop<T extends HTMLElement>({
-  visibilityOffset,
   container,
+  visibilityOffset = 0,
   size = '2',
   className
 }: Props<T>) {
@@ -25,7 +25,6 @@ export function ButtonBackTop<T extends HTMLElement>({
     }
 
     const node = container?.current
-
     if (!node) {
       window.scrollTo(scrollToOptions)
 
@@ -74,13 +73,13 @@ export function ButtonBackTop<T extends HTMLElement>({
       className={clsx(styles.root, className)}
       onClick={handleScrollToTop}
     >
-      <ChevronUpIcon width='22px' height='22px' label='back top' />
+      <ChevronUpIcon width='22px' height='22px' label='back scroll top' />
     </IconButton>
   )
 }
 
 interface Props<T extends HTMLElement> extends ClassNameProps {
-  visibilityOffset: number
+  visibilityOffset?: number
   container?: MutableRefObject<T>
   size?: ButtonSize
 }

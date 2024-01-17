@@ -1,12 +1,10 @@
-import { useMemo } from 'react'
+import type { FC } from 'react'
 
 import styles from './ColorSwatch.module.css'
 
-export function ColorSwatch({ color }: Props) {
-  const previewBoxStyle = useMemo(() => ({ backgroundColor: color }), [color])
-
-  return <div style={previewBoxStyle} className={styles.root} />
-}
+export const ColorSwatch: FC<Props> = ({ color }) => (
+  <div style={{ backgroundColor: color }} className={styles.root} />
+)
 
 interface Props {
   color: string
