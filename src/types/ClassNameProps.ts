@@ -1,3 +1,3 @@
-export interface ClassNameProps {
-  className?: string
-}
+import type { HTMLAttributes } from 'react'
+
+export type ClassNameProps = Pick<HTMLAttributes<HTMLElement>, 'className'>
