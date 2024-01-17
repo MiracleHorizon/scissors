@@ -14,7 +14,7 @@ export const TrimBackgroundInfoPopover = () => (
       <ButtonInfo radius='full' />
     </Popover.Trigger>
 
-    <Popover.Content size='1' style={contentStyle}>
+    <Popover.Content size='1' style={contentStyle} align='center' side='top'>
       <Box>
         <Text as='p' size='2'>
           The default background (trim color) value is set as <Code variant='ghost'>top-left</Code>{' '}

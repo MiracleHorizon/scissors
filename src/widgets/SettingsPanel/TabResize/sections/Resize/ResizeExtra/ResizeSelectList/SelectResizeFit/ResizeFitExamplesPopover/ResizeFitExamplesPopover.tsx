@@ -74,7 +74,7 @@ export const ResizeFitExamplesPopover = () => (
       <ButtonInfo radius='full' className={styles.buttonInfo} />
     </Popover.Trigger>
 
-    <Popover.Content size='1' side='bottom' align='center' className={styles.content}>
+    <Popover.Content size='1' side='top' align='center' className={styles.content}>
       <ScrollArea type='scroll' scrollbars='both'>
         <Flex
           {...exampleListStyle}
