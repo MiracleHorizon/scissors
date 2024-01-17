@@ -20,14 +20,12 @@ const gap: Gap = {
   xs: '3'
 }
 
-export function Navigation() {
-  return (
-    <Flex asChild align='center' gap={gap} mr='4'>
-      <nav>
-        {items.map(item => (
-          <NavigationItem key={item.label} {...item} />
-        ))}
-      </nav>
-    </Flex>
-  )
-}
+export const Navigation = () => (
+  <Flex asChild align='center' gap={gap} mr='4'>
+    <nav>
+      {items.map(item => (
+        <NavigationItem key={item.label} {...item} />
+      ))}
+    </nav>
+  </Flex>
+)
