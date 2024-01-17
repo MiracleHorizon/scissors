@@ -9,6 +9,8 @@ export type Props = ActionProps &
     withTitleExclamation?: boolean
   }>
 
+type ActionProps = WithConfirm | WithCansel | WithBothActions
+
 interface WithConfirm {
   onConfirm: VoidFunction
   confirmLabel?: string
@@ -29,5 +31,3 @@ interface WithBothActions {
   confirmLabel?: string
   canselLabel?: string
 }
-
-type ActionProps = WithConfirm | WithCansel | WithBothActions

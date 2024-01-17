@@ -1,11 +1,18 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Flex, Heading, Separator, Slider, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import { OptionSliderPopover } from './OptionSliderPopover'
 import type { Props } from './OptionSlider.types'
 import styles from './OptionSlider.module.css'
+
+const OptionSliderPopover = dynamic(
+  () => import('./OptionSliderPopover').then(mod => mod.OptionSliderPopover),
+  {
+    ssr: false
+  }
+)
 
 export function OptionSlider({
   title,

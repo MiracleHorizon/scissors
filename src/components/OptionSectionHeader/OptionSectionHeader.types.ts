@@ -9,14 +9,12 @@ export type Props = MarginProps &
     icon?: ReactNode
   }>
 
-type Status = WithBeta | WithNew
-
 // Status for badges
+type Status = WithBeta | WithNew
 type WithBeta = {
   isBeta?: boolean
   isNew?: never
 }
-
 type WithNew = {
   isNew?: boolean
   isBeta?: never

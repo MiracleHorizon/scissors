@@ -2,6 +2,7 @@
 
 import { Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
+import type { FC } from 'react'
 
 import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
@@ -19,37 +20,36 @@ const descriptionTextSize: TextSize = {
   xs: '3'
 }
 
-function FileUploadZone({ children, isDragOver, ...actions }: ComponentProps) {
-  return (
-    <Flex
-      title='File is not uploaded'
-      align='center'
-      justify='center'
-      direction='column'
-      width='100%'
-      p='2'
-      m='auto'
-      className={clsx(styles.root, {
-        [styles.dragOver]: isDragOver
-      })}
-      {...actions}
-    >
-      <Flex asChild align='center' gap='2'>
-        <Text as='span' weight='medium' size={uploadTextSize} mb='2'>
-          Upload file
-          <ImageIcon width='24px' height='24px' />
-        </Text>
-      </Flex>
-      <Text as='p' align='center' size={descriptionTextSize}>
-        Available file extensions: {Object.values(IMAGE_FILE_FORMAT).slice(0, 4).join(', ')}...
+const extensions = Object.values(IMAGE_FILE_FORMAT).slice(0, 4).join(', ')
+const FileUploadZone: FC<ComponentProps> = ({ children: FileInput, isDragOver, ...actions }) => (
+  <Flex
+    title='File is not uploaded'
+    align='center'
+    justify='center'
+    direction='column'
+    width='100%'
+    p='2'
+    m='auto'
+    className={clsx(styles.root, {
+      [styles.dragOver]: isDragOver
+    })}
+    {...actions}
+  >
+    <Flex asChild align='center' gap='2'>
+      <Text as='span' weight='medium' size={uploadTextSize} mb='2'>
+        Upload file
+        <ImageIcon width='24px' height='24px' />
       </Text>
-      <Text as='p' align='center' size={descriptionTextSize}>
-        Maximum file size: {MAX_FILE_SIZE_MB} MB
-      </Text>
-      {children}
     </Flex>
-  )
-}
+    <Text as='p' align='center' size={descriptionTextSize}>
+      Available file extensions: {extensions}...
+    </Text>
+    <Text as='p' align='center' size={descriptionTextSize}>
+      Maximum file size: {MAX_FILE_SIZE_MB} MB
+    </Text>
+    {FileInput}
+  </Flex>
+)
 
 const Uploader = withFileUploader(FileUploadZone)
 

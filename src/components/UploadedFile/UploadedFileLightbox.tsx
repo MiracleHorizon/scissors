@@ -1,7 +1,11 @@
 'use client'
 
 import { useMemo } from 'react'
-import Lightbox, { type Slide } from 'yet-another-react-lightbox'
+import Lightbox, {
+  type LightboxExternalProps,
+  type Plugin,
+  type Slide
+} from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import Download from 'yet-another-react-lightbox/plugins/download'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
@@ -9,18 +13,24 @@ import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 import { Cross1Icon } from '@ui/icons/Cross1Icon'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 
-function getLightboxProps({ downloadPayload, file }: Pick<Props, 'downloadPayload' | 'file'>) {
-  const plugins = [Zoom, Fullscreen]
+// TODO: Documentation
+function getLightboxProps({
+  downloadPayload,
+  file
+}: Pick<Props, 'downloadPayload' | 'file'>): LightboxExternalProps {
+  const plugins: Plugin[] = [Zoom, Fullscreen]
   const slides: Slide[] = []
 
   if (downloadPayload) {
+    const { link: url, fileName: filename } = downloadPayload
+
     plugins.push(Download)
     slides.push({
-      src: downloadPayload.link,
+      src: url,
       alt: file.name,
       download: {
-        url: downloadPayload.link,
-        filename: downloadPayload.fileName
+        url,
+        filename
       }
     })
   } else {
@@ -30,13 +40,15 @@ function getLightboxProps({ downloadPayload, file }: Pick<Props, 'downloadPayloa
     })
   }
 
+  const emptyComponent = () => null
+
   return {
     carousel: {
       finite: true
     },
     render: {
-      buttonPrev: () => null,
-      buttonNext: () => null,
+      buttonPrev: emptyComponent,
+      buttonNext: emptyComponent,
       iconClose: () => <Cross1Icon width='22px' height='22px' label='close lightbox' />
     },
     controller: {

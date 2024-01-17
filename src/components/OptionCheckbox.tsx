@@ -1,3 +1,5 @@
+'use client'
+
 import { memo } from 'react'
 import { Checkbox, Flex, Text } from '@radix-ui/themes'
 

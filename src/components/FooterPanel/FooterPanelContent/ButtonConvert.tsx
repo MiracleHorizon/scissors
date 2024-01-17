@@ -1,3 +1,5 @@
+'use client'
+
 import { memo } from 'react'
 import { Button, Text } from '@radix-ui/themes'
 
