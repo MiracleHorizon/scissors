@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MAX_NORMALISE, MIN_NORMALISE } from '@server/Sharp'
+import { MAX_NORMALISE, MIN_NORMALISE } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isNormaliseValid', () => {
   const isNormaliseValid = YupSettingsValidator.isNormaliseValid

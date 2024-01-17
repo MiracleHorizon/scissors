@@ -1,6 +1,6 @@
 import { ColorPicker } from '@ui/ColorPicker'
 import { useExtendStore } from '@stores/extend'
-import { ExtendWith } from '@server/Sharp'
+import { EXTEND_WITH } from '@server/sharp'
 
 export function ExtendBackgroundPicker() {
   const extendBackground = useExtendStore(state => state.background)
@@ -9,7 +9,7 @@ export function ExtendBackgroundPicker() {
 
   const setExtendBackground = useExtendStore(state => state.setBackground)
 
-  if (!extendBackground || extendWith !== ExtendWith.BACKGROUND) {
+  if (!extendBackground || extendWith !== EXTEND_WITH.BACKGROUND) {
     return null
   }
 

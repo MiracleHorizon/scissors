@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_ROTATE, DEFAULT_ROTATE_ANGLE, DEFAULT_ROTATE_BACKGROUND } from '@server/Sharp'
+import { DEFAULT_ROTATE, DEFAULT_ROTATE_ANGLE, DEFAULT_ROTATE_BACKGROUND } from '@server/sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {

@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_KERNEL } from '@server/Sharp'
+import { DEFAULT_RESIZE_KERNEL } from '@server/sharp'
 
 export function KernelRow() {
   return (

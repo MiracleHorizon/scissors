@@ -1,4 +1,4 @@
-import type { RotateOptions } from '@server/Sharp'
+import type { RotateOptions } from '@server/sharp'
 
 export type Store = State & Computed & Actions
 

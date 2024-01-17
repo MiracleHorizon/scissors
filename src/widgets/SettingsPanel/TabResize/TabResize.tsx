@@ -3,7 +3,7 @@ import { Flex, type PaddingProps, Tabs } from '@radix-ui/themes'
 import { TabResizeCallout } from './TabResizeCallout'
 import { TabResizeActions } from './TabResizeActions'
 import { TabResizeContent } from './TabResizeContent'
-import { ToolbarTab } from '@stores/tabs'
+import { TOOLBAR_TAB } from '@stores/tabs'
 
 const padding: PaddingProps = {
   pt: '3',
@@ -17,7 +17,7 @@ const padding: PaddingProps = {
 
 // TODO: Dynamic imports
 export const TabResize = () => (
-  <Tabs.Content value={ToolbarTab.RESIZE}>
+  <Tabs.Content value={TOOLBAR_TAB.RESIZE}>
     <Flex {...padding} direction='column' gap='2'>
       <TabResizeCallout />
       <TabResizeActions />

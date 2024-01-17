@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_FIT, ResizeFit } from '@server/Sharp'
+import { DEFAULT_RESIZE_FIT, RESIZE_FIT } from '@server/sharp'
 
-const values = Object.values(ResizeFit)
+const values = Object.values(RESIZE_FIT)
 
 export function FitRow() {
   return (

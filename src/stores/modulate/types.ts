@@ -1,4 +1,4 @@
-import type { ModulateOptions } from '@server/Sharp'
+import type { ModulateOptions } from '@server/sharp'
 
 export type Store = State & Computed & Actions
 

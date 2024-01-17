@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { OptionSelect } from '@components/OptionSelect'
 import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_FIT, ResizeFit } from '@server/Sharp'
+import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@server/sharp'
 
 const ResizeFitExamplesPopover = dynamic(
   () => import('./ResizeFitExamplesPopover').then(mod => mod.ResizeFitExamplesPopover),
@@ -16,7 +16,7 @@ const ResizeFitExamplesPopover = dynamic(
 
 const data = [
   {
-    value: Object.values(ResizeFit)
+    value: Object.values(RESIZE_FIT)
   }
 ]
 

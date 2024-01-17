@@ -5,10 +5,10 @@ import { useConvertMutation } from '@api/convertImage'
 import { useResizeMutation } from '@api/resizeImage'
 import { useConvertSettings } from './useConvertSettings'
 import { useResizeSettings } from './useResizeSettings'
-import { ToolbarTab, useTabsStore } from '@stores/tabs'
+import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
 export function useCreateRequest() {
-  const tab = useTabsStore(state => state.selectedTab)
+  const tab = useTabsStore(state => state.selectedTab) as keyof typeof TOOLBAR_TAB
   const file = useOutputStore(state => state.file)
   const fileName = useOutputStore(state => state.getFullFileName())
 
@@ -20,7 +20,7 @@ export function useCreateRequest() {
 
   const getRequest = useCallback(() => {
     switch (tab) {
-      case ToolbarTab.RESIZE:
+      case TOOLBAR_TAB.RESIZE:
         return {
           trigger: () => {
             if (!file) return

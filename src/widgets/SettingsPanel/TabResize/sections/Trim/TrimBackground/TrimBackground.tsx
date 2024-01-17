@@ -3,7 +3,7 @@ import { Flex } from '@radix-ui/themes'
 import { OptionCheckbox } from '@components/OptionCheckbox'
 import { TrimBackgroundPicker } from './TrimBackgroundPicker'
 import { TrimBackgroundInfoPopover } from './TrimBackgroundInfoPopover'
-import { DEFAULT_TRIM_BACKGROUND } from '@server/Sharp'
+import { DEFAULT_TRIM_BACKGROUND } from '@server/sharp'
 import { useTrimStore } from '@stores/trim'
 
 export function TrimBackground() {

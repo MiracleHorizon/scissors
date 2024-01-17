@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useOutputStore } from '@stores/output'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
-import type { ResizeSettings } from '@server/Sharp'
+import type { ResizeSettings } from '@server/sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { MutationPayload, RequestPayload } from './types'
 

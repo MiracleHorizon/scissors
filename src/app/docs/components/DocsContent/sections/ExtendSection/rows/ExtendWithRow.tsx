@@ -2,9 +2,9 @@ import { Code, Text } from '@radix-ui/themes'
 import { Fragment } from 'react'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_EXTEND_WITH, ExtendWith } from '@server/Sharp'
+import { DEFAULT_EXTEND_WITH, EXTEND_WITH } from '@server/sharp'
 
-const values = Object.values(ExtendWith)
+const values = Object.values(EXTEND_WITH)
 
 export function ExtendWithRow() {
   return (

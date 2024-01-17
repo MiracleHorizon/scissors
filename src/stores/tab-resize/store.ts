@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 import { arrayMove } from '@dnd-kit/sortable'
 
-import { ResizeOperationName, type ResizeQueue } from '@server/Sharp'
+import { RESIZE_OPERATION_NAME, type ResizeQueue } from '@server/sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {
   sections: [
     {
-      id: ResizeOperationName.RESIZE
+      id: RESIZE_OPERATION_NAME.RESIZE
     }
   ]
 }
@@ -19,38 +19,38 @@ export const useTabResizeStore = create<Store>((set, get) => ({
   // Computed
   isEmpty: () => get().sections.length === 0,
   isAllSettled: () => get().isResizeAdded() && get().isExtendAdded() && get().isTrimAdded(),
-  isResizeAdded: () => get().sections.some(section => section.id === ResizeOperationName.RESIZE),
-  isExtendAdded: () => get().sections.some(section => section.id === ResizeOperationName.EXTEND),
-  isTrimAdded: () => get().sections.some(section => section.id === ResizeOperationName.TRIM),
+  isResizeAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION_NAME.RESIZE),
+  isExtendAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION_NAME.EXTEND),
+  isTrimAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION_NAME.TRIM),
   getQueue: () => {
     // TODO: Rework to use Map
     const sections = get().sections
     const sectionsIdentifiers = sections.map(section => section.id)
 
-    const resizeIndex = sectionsIdentifiers.indexOf(ResizeOperationName.RESIZE)
-    const extendIndex = sectionsIdentifiers.indexOf(ResizeOperationName.EXTEND)
-    const trimIndex = sectionsIdentifiers.indexOf(ResizeOperationName.TRIM)
+    const resizeIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION_NAME.RESIZE)
+    const extendIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION_NAME.EXTEND)
+    const trimIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION_NAME.TRIM)
 
     const values: ResizeQueue = []
 
     if (resizeIndex !== -1) {
       values.push({
-        operationName: ResizeOperationName.RESIZE,
-        index: resizeIndex
+        name: RESIZE_OPERATION_NAME.RESIZE,
+        queueIndex: resizeIndex
       })
     }
 
     if (extendIndex !== -1) {
       values.push({
-        operationName: ResizeOperationName.EXTEND,
-        index: extendIndex
+        name: RESIZE_OPERATION_NAME.EXTEND,
+        queueIndex: extendIndex
       })
     }
 
     if (trimIndex !== -1) {
       values.push({
-        operationName: ResizeOperationName.TRIM,
-        index: trimIndex
+        name: RESIZE_OPERATION_NAME.TRIM,
+        queueIndex: trimIndex
       })
     }
 
@@ -58,7 +58,7 @@ export const useTabResizeStore = create<Store>((set, get) => ({
       return []
     }
 
-    values.sort((a, b) => a.index - b.index)
+    values.sort((a, b) => a.queueIndex - b.queueIndex)
 
     return values
   },
@@ -68,15 +68,15 @@ export const useTabResizeStore = create<Store>((set, get) => ({
 
   addResizeSection: () =>
     set(state => ({
-      sections: [...state.sections, { id: ResizeOperationName.RESIZE }]
+      sections: [...state.sections, { id: RESIZE_OPERATION_NAME.RESIZE }]
     })),
   addExtendSection: () =>
     set(state => ({
-      sections: [...state.sections, { id: ResizeOperationName.EXTEND }]
+      sections: [...state.sections, { id: RESIZE_OPERATION_NAME.EXTEND }]
     })),
   addTrimSection: () =>
     set(state => ({
-      sections: [...state.sections, { id: ResizeOperationName.TRIM }]
+      sections: [...state.sections, { id: RESIZE_OPERATION_NAME.TRIM }]
     })),
 
   handleDragEnd: event => {

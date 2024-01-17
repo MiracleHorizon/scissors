@@ -1,14 +1,15 @@
-import sharp, { type Color, type Stats } from 'sharp'
+import sharp, {
+  type Color,
+  type ExtendWith,
+  type FitEnum,
+  type KernelEnum,
+  type Stats
+} from 'sharp'
 
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { getStatsOrNull } from './getStatsOrNull'
-import {
-  type ExtendOptions,
-  ResizeOperationName,
-  type ResizeOptions,
-  type ResizeSettings,
-  type TrimOptions
-} from './Sharp.types'
+import { RESIZE_OPERATION_NAME } from './constants'
+import type { ExtendOptions, ResizeOptions, ResizeSettings, TrimOptions } from './types'
 
 export class SharpResizer {
   private imageSharp: sharp.Sharp
@@ -26,16 +27,16 @@ export class SharpResizer {
 
     await this.initialiseStats()
 
-    for (const { operationName } of Object.values(queue)) {
-      if (operationName === ResizeOperationName.RESIZE && resize) {
+    for (const { name } of Object.values(queue)) {
+      if (name === RESIZE_OPERATION_NAME.RESIZE && resize) {
         await this.resize(resize)
       }
 
-      if (operationName === ResizeOperationName.EXTEND && extend) {
+      if (name === RESIZE_OPERATION_NAME.EXTEND && extend) {
         await this.extend(extend)
       }
 
-      if (operationName === ResizeOperationName.TRIM && trim) {
+      if (name === RESIZE_OPERATION_NAME.TRIM && trim) {
         await this.trim(trim)
       }
     }
@@ -69,9 +70,9 @@ export class SharpResizer {
       this.imageSharp.resize({
         width: width ?? undefined,
         height: height ?? undefined,
-        fit: options.fit ?? undefined,
+        fit: (options.fit as keyof FitEnum | null) ?? undefined,
         position: options.position ?? undefined,
-        kernel: options.kernel ?? undefined,
+        kernel: (options.kernel as keyof KernelEnum | null) ?? undefined,
         background
       })
     } catch (err) {
@@ -101,7 +102,7 @@ export class SharpResizer {
         bottom: bottom ?? undefined,
         left: left ?? undefined,
         right: right ?? undefined,
-        extendWith: options.extendWith ?? undefined,
+        extendWith: (options.extendWith as ExtendWith | null) ?? undefined,
         background
       })
 

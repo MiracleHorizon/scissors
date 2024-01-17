@@ -1,2 +1,1 @@
-export { useTabsStore } from './store'
-export { ToolbarTab } from './types'
+export { useTabsStore, TOOLBAR_TAB } from './store'

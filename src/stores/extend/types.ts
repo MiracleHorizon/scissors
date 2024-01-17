@@ -1,17 +1,14 @@
-import type { ExtendOptions, ExtendWith } from '@server/Sharp'
+import type { ExtendOptions, ExtendWith } from '@server/sharp'
+import type { DIRECTION_MODEL } from './store'
 
 export type Store = State & Computed & Actions
-
-export const enum DirectionModel {
-  NUMBER = 'number',
-  AXIS = 'axis',
-  SEPARATED = 'separated'
-}
 
 export interface ExtendValues
   extends Omit<ExtendOptions, 'background' | 'extendWith' | 'withDominantBackground'> {
   extendValue: number | null
 }
+
+type DirectionModel = keyof typeof DIRECTION_MODEL
 
 export interface State extends ExtendOptions, Pick<ExtendValues, 'extendValue'> {
   directionModel: DirectionModel

@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MAX_GAMMA, MIN_GAMMA } from '@server/Sharp'
+import { MAX_GAMMA, MIN_GAMMA } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isGammaValid', () => {
   const isGammaValid = YupSettingsValidator.isGammaValid

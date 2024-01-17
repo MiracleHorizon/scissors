@@ -1,18 +1,18 @@
-import sharp, { type Color, type Stats } from 'sharp'
+import sharp, { type Color, type FormatEnum, type Stats } from 'sharp'
 import isEmpty from 'lodash.isempty'
 
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { getStatsOrNull } from './getStatsOrNull'
-import {
-  type BlurOptions,
-  type ConvertSettings,
-  type GammaOptions,
+import type {
+  BlurOptions,
+  ConvertSettings,
+  GammaOptions,
   ImageFileFormat,
-  type ModulateOptions,
-  type NegateOptions,
-  type NormaliseOptions,
-  type RotateOptions
-} from '@server/Sharp'
+  ModulateOptions,
+  NegateOptions,
+  NormaliseOptions,
+  RotateOptions
+} from './types'
 
 export class SharpConverter {
   private readonly imageSharp: sharp.Sharp
@@ -256,7 +256,7 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.toFormat(format)
+      this.imageSharp.toFormat(format as keyof FormatEnum)
     } catch (err) {
       throw new Error(`Failed to convert the image to the .${format} format`, {
         cause: err

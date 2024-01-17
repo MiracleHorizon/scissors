@@ -1,4 +1,4 @@
-import type { TrimOptions } from '@server/Sharp'
+import type { TrimOptions } from '@server/sharp'
 
 export type Store = TrimOptions & Computed & Action
 

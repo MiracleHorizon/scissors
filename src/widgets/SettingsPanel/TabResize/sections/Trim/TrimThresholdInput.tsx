@@ -1,6 +1,6 @@
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useTrimStore } from '@stores/trim'
-import { MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '@server/Sharp'
+import { MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '@server/sharp'
 
 export function TrimThresholdInput() {
   const threshold = useTrimStore(state => state.threshold)

@@ -2,7 +2,7 @@ import { ShadowIcon } from '@ui/icons/ShadowIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'
-import type { GammaOptions } from '@server/Sharp'
+import type { GammaOptions } from '@server/sharp'
 
 export function GammaHeader({ gamma }: Props) {
   return (

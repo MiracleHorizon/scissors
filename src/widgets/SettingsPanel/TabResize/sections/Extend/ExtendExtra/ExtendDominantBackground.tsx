@@ -1,6 +1,6 @@
 import { CheckboxDominantBackground } from '@components/CheckboxDominantBackground'
 import { useExtendStore } from '@stores/extend'
-import { ExtendWith } from '@server/Sharp'
+import { EXTEND_WITH } from '@server/sharp'
 
 export function ExtendDominantBackground() {
   const extendWith = useExtendStore(state => state.extendWith)
@@ -9,7 +9,7 @@ export function ExtendDominantBackground() {
 
   const handleToggleDominantBackground = () => toggleDominantBackground()
 
-  if (extendWith !== ExtendWith.BACKGROUND) {
+  if (extendWith !== EXTEND_WITH.BACKGROUND) {
     return null
   }
 

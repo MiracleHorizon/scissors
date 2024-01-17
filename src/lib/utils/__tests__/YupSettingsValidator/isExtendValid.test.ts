@@ -1,11 +1,11 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   DEFAULT_EXTEND_BACKGROUND,
+  EXTEND_WITH,
   type ExtendOptions,
-  ExtendWith,
   MAX_EXTEND_DIRECTION_SIZE,
   MIN_EXTEND_DIRECTION_SIZE
-} from '@server/Sharp'
+} from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isExtendValid', () => {
   const isExtendValid = YupSettingsValidator.isExtendValid
@@ -15,8 +15,9 @@ describe('@utils/YupSettingsValidator.isExtendValid', () => {
     top: 6,
     right: 2,
     bottom: 1,
-    extendWith: ExtendWith.BACKGROUND,
-    background: DEFAULT_EXTEND_BACKGROUND
+    extendWith: EXTEND_WITH.BACKGROUND,
+    background: DEFAULT_EXTEND_BACKGROUND,
+    withDominantBackground: false
   }
 
   it('should return true for null', () => {
@@ -91,13 +92,13 @@ describe('@utils/YupSettingsValidator.isExtendValid', () => {
     expect(
       isExtendValid({
         ...validOptions,
-        extendWith: ExtendWith.COPY + 'foo'
+        extendWith: EXTEND_WITH.COPY + 'foo'
       })
     ).toBe(false)
     expect(
       isExtendValid({
         ...validOptions,
-        extendWith: 'bar' + ExtendWith.MIRROR
+        extendWith: 'bar' + EXTEND_WITH.MIRROR
       })
     ).toBe(false)
   })

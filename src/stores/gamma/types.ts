@@ -1,4 +1,4 @@
-import type { GammaOptions } from '@server/Sharp'
+import type { GammaOptions } from '@server/sharp'
 
 export type Store = State & Actions
 

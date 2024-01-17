@@ -1,8 +1,8 @@
 import { boolean, number, object, string } from 'yup'
 
 import {
-  ExtendWith,
-  ImageFileFormat,
+  EXTEND_WITH,
+  IMAGE_FILE_FORMAT,
   MAX_BLUR_SIGMA,
   MAX_BRIGHTNESS,
   MAX_EXTEND_DIRECTION_SIZE,
@@ -26,11 +26,11 @@ import {
   MIN_ROTATE_ANGLE,
   MIN_SATURATION,
   MIN_TRIM_THRESHOLD,
-  ResizeFit,
-  ResizeKernel,
-  ResizePosition,
-  ResizePositionGravity
-} from '@server/Sharp'
+  RESIZE_FIT,
+  RESIZE_GRAVITY,
+  RESIZE_KERNEL,
+  RESIZE_POSITION
+} from '@server/sharp'
 import { hexValidationRegex } from '@helpers/colors'
 
 const booleanSchema = boolean().defined()
@@ -75,13 +75,13 @@ const gammaSchema = object({
 const resizeSchema = object({
   width: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_WIDTH).nullable().defined(),
   height: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_HEIGHT).nullable().defined(),
-  fit: string().oneOf(Object.values(ResizeFit)).nullable().defined(),
+  fit: string().oneOf(Object.values(RESIZE_FIT)).nullable().defined(),
   background: string().matches(hexValidationRegex).nullable().defined(),
   position: string()
-    .oneOf([...Object.values(ResizePosition), ...Object.values(ResizePositionGravity)])
+    .oneOf([...Object.values(RESIZE_POSITION), ...Object.values(RESIZE_GRAVITY)])
     .nullable()
     .defined(),
-  kernel: string().oneOf(Object.values(ResizeKernel)).nullable().defined(),
+  kernel: string().oneOf(Object.values(RESIZE_KERNEL)).nullable().defined(),
   withoutEnlargement: booleanSchema,
   withoutReduction: booleanSchema,
   fastShrinkOnLoad: booleanSchema,
@@ -103,7 +103,7 @@ const extendSchema = object({
     .max(MAX_EXTEND_DIRECTION_SIZE)
     .nullable()
     .defined(),
-  extendWith: string().oneOf(Object.values(ExtendWith)).defined(),
+  extendWith: string().oneOf(Object.values(EXTEND_WITH)).defined(),
   background: string().matches(hexValidationRegex).defined()
 })
   .nullable()
@@ -127,7 +127,7 @@ const modulateSchema = object({
   .nullable()
   .defined()
 
-const outputFormatSchema = string().oneOf(Object.values(ImageFileFormat)).nullable().defined()
+const outputFormatSchema = string().oneOf(Object.values(IMAGE_FILE_FORMAT)).nullable().defined()
 
 const settingsSchema = object({
   flip: booleanSchema,

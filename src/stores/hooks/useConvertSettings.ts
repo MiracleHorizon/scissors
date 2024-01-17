@@ -7,7 +7,7 @@ import { useGammaStore } from '@stores/gamma'
 import { useNormaliseStore } from '@stores/normalise'
 import { useTintStore } from '@stores/tint'
 import { useOutputStore } from '@stores/output'
-import type { ConvertSettings } from '@server/Sharp'
+import type { ConvertSettings } from '@server/sharp'
 
 export function useConvertSettings(): ConvertSettings {
   const convertSettings = useConvertStore(state => state.getConvertSettings())

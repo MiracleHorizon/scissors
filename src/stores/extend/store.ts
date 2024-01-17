@@ -1,8 +1,13 @@
 import { create } from 'zustand'
 
-import { DEFAULT_EXTEND_BACKGROUND, DEFAULT_EXTEND_WITH } from '@server/Sharp'
-import { DirectionModel, type ExtendValues, type State, type Store } from './types'
+import { DEFAULT_EXTEND_BACKGROUND, DEFAULT_EXTEND_WITH } from '@server/sharp'
+import type { ExtendValues, State, Store } from './types'
 
+export const DIRECTION_MODEL: Record<string, string> = {
+  NUMBER: 'number',
+  AXIS: 'axis',
+  SEPARATED: 'separated'
+} as const
 const defaultExtendValues: ExtendValues = {
   extendValue: null,
   left: null,
@@ -12,7 +17,7 @@ const defaultExtendValues: ExtendValues = {
 }
 const defaultState: State = {
   ...defaultExtendValues,
-  directionModel: DirectionModel.NUMBER,
+  directionModel: DIRECTION_MODEL.NUMBER,
   extendWith: DEFAULT_EXTEND_WITH,
   background: DEFAULT_EXTEND_BACKGROUND,
   withDominantBackground: false
@@ -111,7 +116,7 @@ export const useExtendStore = create<Store>((set, get) => ({
 
     set({
       ...options,
-      directionModel: DirectionModel.SEPARATED
+      directionModel: DIRECTION_MODEL.SEPARATED
     })
   },
   reset: () => set(defaultState),
@@ -124,7 +129,7 @@ export const useExtendStore = create<Store>((set, get) => ({
         }
       }
 
-      if (directionModel === DirectionModel.NUMBER) {
+      if (directionModel === DIRECTION_MODEL.NUMBER) {
         const minValue = state.getMinValue()
 
         return {
@@ -222,7 +227,7 @@ export const useExtendStore = create<Store>((set, get) => ({
         }
       }
 
-      if (directionModel === DirectionModel.AXIS) {
+      if (directionModel === DIRECTION_MODEL.AXIS) {
         handleAxisValue('x')
         handleAxisValue('y')
 
@@ -238,7 +243,7 @@ export const useExtendStore = create<Store>((set, get) => ({
 
   setExtendValue: value =>
     set(state => {
-      if (state.directionModel !== DirectionModel.NUMBER) {
+      if (state.directionModel !== DIRECTION_MODEL.NUMBER) {
         return state
       }
 
@@ -259,7 +264,7 @@ export const useExtendStore = create<Store>((set, get) => ({
 
   setXAxis: value =>
     set(state => {
-      if (state.directionModel !== DirectionModel.AXIS) {
+      if (state.directionModel !== DIRECTION_MODEL.AXIS) {
         return state
       }
 
@@ -270,7 +275,7 @@ export const useExtendStore = create<Store>((set, get) => ({
     }),
   setYAxis: value =>
     set(state => {
-      if (state.directionModel !== DirectionModel.AXIS) {
+      if (state.directionModel !== DIRECTION_MODEL.AXIS) {
         return state
       }
 

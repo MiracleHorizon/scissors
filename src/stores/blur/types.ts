@@ -1,4 +1,4 @@
-import type { BlurOptions } from '@server/Sharp'
+import type { BlurOptions } from '@server/sharp'
 
 export type Store = BlurOptions & Computed & Actions
 

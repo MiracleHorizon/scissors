@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_TRIM_THRESHOLD } from '@server/Sharp'
+import { DEFAULT_TRIM_THRESHOLD } from '@server/sharp'
 import type { State, Store } from './types'
 
 const defaultState: State = {
