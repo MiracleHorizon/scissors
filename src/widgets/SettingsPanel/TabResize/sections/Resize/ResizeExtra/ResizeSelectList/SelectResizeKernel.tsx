@@ -2,11 +2,11 @@ import { useCallback } from 'react'
 
 import { OptionSelect } from '@components/OptionSelect'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_KERNEL, ResizeKernel } from '@server/Sharp'
+import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@server/sharp'
 
 const data = [
   {
-    value: Object.values(ResizeKernel)
+    value: Object.values(RESIZE_KERNEL)
   }
 ]
 

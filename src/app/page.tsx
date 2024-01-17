@@ -10,7 +10,7 @@ import { UploadedFileLoading } from '@components/UploadedFile/UploadedFileLoadin
 import { FileUploadZone } from '@components/FileUploadZone'
 import { useOutputStore } from '@stores/output'
 import { useCreateRequest } from '@stores/hooks/useCreateRequest'
-import { ALLOWED_IMAGE_FORMATS } from '@server/Sharp'
+import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 

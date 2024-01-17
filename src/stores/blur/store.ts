@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/Sharp'
+import { DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/sharp'
 import type { Store } from './types'
 
 export const useBlurStore = create<Store>((set, get) => ({

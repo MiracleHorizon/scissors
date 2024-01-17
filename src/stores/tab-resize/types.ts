@@ -1,6 +1,6 @@
 import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core'
 
-import type { ResizeQueue } from '@server/Sharp'
+import type { ResizeQueue } from '@server/sharp'
 
 export type Store = State & Computed & Actions
 

@@ -9,7 +9,7 @@ import {
   MAX_RESIZE_WIDTH,
   MIN_RESIZE_SIZE,
   RESIZE_SIZE_STEP
-} from '@server/Sharp'
+} from '@server/sharp'
 
 const defaultInputProps = {
   min: MIN_RESIZE_SIZE,

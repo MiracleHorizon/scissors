@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { ImageFileFormat } from '@server/Sharp'
+import { IMAGE_FILE_FORMAT } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isValidOutputFormat', () => {
   const isValidOutputFormat = YupSettingsValidator.isValidOutputFormat
@@ -9,7 +9,7 @@ describe('@utils/YupSettingsValidator.isValidOutputFormat', () => {
   })
 
   it('should return true for valid output format', () => {
-    for (const value of Object.values(ImageFileFormat)) {
+    for (const value of Object.values(IMAGE_FILE_FORMAT)) {
       expect(isValidOutputFormat(value)).toBe(true)
     }
   })
@@ -18,7 +18,7 @@ describe('@utils/YupSettingsValidator.isValidOutputFormat', () => {
     expect(isValidOutputFormat(undefined)).toBe(false)
     expect(isValidOutputFormat({})).toBe(false)
     expect(isValidOutputFormat([])).toBe(false)
-    expect(isValidOutputFormat(ImageFileFormat.JPEG + 'foo')).toBe(false)
-    expect(isValidOutputFormat({ value: ImageFileFormat.JPG })).toBe(false)
+    expect(isValidOutputFormat(IMAGE_FILE_FORMAT.JPEG + 'foo')).toBe(false)
+    expect(isValidOutputFormat({ value: IMAGE_FILE_FORMAT.JPG })).toBe(false)
   })
 })

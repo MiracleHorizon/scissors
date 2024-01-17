@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NEGATE } from '@server/Sharp'
+import { DEFAULT_NEGATE } from '@server/sharp'
 import type { Store } from './types'
 
 export const useNegateStore = create<Store>((set, get) => ({

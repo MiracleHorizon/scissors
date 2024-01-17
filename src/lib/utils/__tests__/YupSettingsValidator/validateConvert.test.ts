@@ -1,14 +1,14 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   type ConvertSettings,
-  ImageFileFormat,
+  IMAGE_FILE_FORMAT,
   MAX_NORMALISE,
   MIN_BRIGHTNESS,
   MIN_HUE,
   MIN_LIGHTNESS,
   MIN_NORMALISE,
   MIN_SATURATION
-} from '@server/Sharp'
+} from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.validateConvert', () => {
   const validate = YupSettingsValidator.validateConvert
@@ -45,7 +45,7 @@ describe('@utils/YupSettingsValidator.validateConvert', () => {
         saturation: MIN_SATURATION,
         hue: MIN_HUE
       },
-      outputFormat: ImageFileFormat.PNG
+      outputFormat: IMAGE_FILE_FORMAT.PNG
     }
 
     expect(validate(validSettings)).toBe(true)

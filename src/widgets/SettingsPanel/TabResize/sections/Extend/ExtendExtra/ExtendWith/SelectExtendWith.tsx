@@ -3,19 +3,19 @@ import { useCallback, useEffect } from 'react'
 import { OptionSelect } from '@components/OptionSelect'
 import { useExtendStore } from '@stores/extend'
 import { useOutputStore } from '@stores/output'
-import { DEFAULT_EXTEND_WITH, ExtendWith, ImageFileFormat } from '@server/Sharp'
+import { DEFAULT_EXTEND_WITH, EXTEND_WITH, type ExtendWith, IMAGE_FILE_FORMAT } from '@server/sharp'
 
 const defaultData = [
   {
-    value: Object.values(ExtendWith)
+    value: Object.values(EXTEND_WITH)
   }
 ]
 // ExtendWith.REPEAT and ExtendWith.MIRROR throws "pngload_buffer: out of order read at line ..." error
-// Bug or feature? sharp version: 0.32.6 - 0.33.1; libvips version: 8.15.0
-const unsupportedPNGExtendWith = [ExtendWith.REPEAT, ExtendWith.MIRROR]
+// Bug or feature? sharp version: 0.32.5(6) - 0.33.1; libvips version: 8.15.0
+const unsupportedPNGExtendWith: string[] = [EXTEND_WITH.REPEAT, EXTEND_WITH.MIRROR]
 const dataForPNG = [
   {
-    value: [ExtendWith.BACKGROUND, ExtendWith.COPY]
+    value: [EXTEND_WITH.BACKGROUND, EXTEND_WITH.COPY]
   }
 ]
 
@@ -31,10 +31,10 @@ export function SelectExtendWith() {
   )
 
   useEffect(() => {
-    if (!outputFormat || !extendWith || outputFormat !== ImageFileFormat.PNG) return
+    if (!outputFormat || !extendWith || outputFormat !== IMAGE_FILE_FORMAT.PNG) return
 
     if (unsupportedPNGExtendWith.includes(extendWith)) {
-      setExtendWith(ExtendWith.BACKGROUND)
+      setExtendWith(EXTEND_WITH.BACKGROUND)
     }
   }, [outputFormat, extendWith, setExtendWith])
 
@@ -44,7 +44,7 @@ export function SelectExtendWith() {
       value={extendWith ?? DEFAULT_EXTEND_WITH}
       defaultValue={DEFAULT_EXTEND_WITH}
       onValueChange={handleSetExtendWith}
-      data={!outputFormat || outputFormat !== ImageFileFormat.PNG ? defaultData : dataForPNG}
+      data={!outputFormat || outputFormat !== IMAGE_FILE_FORMAT.PNG ? defaultData : dataForPNG}
     />
   )
 }

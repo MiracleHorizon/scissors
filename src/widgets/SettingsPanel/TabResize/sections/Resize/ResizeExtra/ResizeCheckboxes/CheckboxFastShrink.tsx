@@ -3,9 +3,9 @@ import { useCallback } from 'react'
 import { OptionCheckbox } from '@components/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
-import { ImageFileFormat } from '@server/Sharp'
+import { IMAGE_FILE_FORMAT } from '@server/sharp'
 
-const ALLOWED_FORMATS_FOR_FAST_SHRINK = [ImageFileFormat.JPEG, ImageFileFormat.WEBP]
+const ALLOWED_FORMATS_FOR_FAST_SHRINK: string[] = [IMAGE_FILE_FORMAT.JPEG, IMAGE_FILE_FORMAT.WEBP]
 
 // TODO: Remove output format rel; check current file format
 export function CheckboxFastShrink() {

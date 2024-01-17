@@ -1,2 +1,1 @@
-export { useExtendStore } from './store'
-export { DirectionModel } from './types'
+export { useExtendStore, DIRECTION_MODEL } from './store'

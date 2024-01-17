@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MIN_BRIGHTNESS } from '@server/Sharp'
+import { MIN_BRIGHTNESS } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isModulateValid', () => {
   const isModulateValid = YupSettingsValidator.isModulateValid

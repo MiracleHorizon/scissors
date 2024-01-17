@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/Sharp'
+import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isBlurValid', () => {
   const isBlurValid = YupSettingsValidator.isBlurValid

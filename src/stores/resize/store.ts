@@ -8,9 +8,9 @@ import {
   DEFAULT_RESIZE_POSITION,
   DEFAULT_WITHOUT_ENLARGEMENT,
   DEFAULT_WITHOUT_REDUCTION,
-  ResizeFit,
+  RESIZE_FIT,
   type ResizeOptions
-} from '@server/Sharp'
+} from '@server/sharp'
 import type { Store } from './types'
 
 export const defaultState: ResizeOptions = {
@@ -73,8 +73,8 @@ export const useResizeStore = create<Store>((set, get) => ({
   },
 
   setFit: fit => {
-    const isCover = fit === ResizeFit.COVER
-    const isContain = fit === ResizeFit.CONTAIN
+    const isCover = fit === RESIZE_FIT.COVER
+    const isContain = fit === RESIZE_FIT.CONTAIN
 
     const position = isCover || isContain ? DEFAULT_RESIZE_POSITION : null
     const background = isContain ? DEFAULT_RESIZE_BACKGROUND : null

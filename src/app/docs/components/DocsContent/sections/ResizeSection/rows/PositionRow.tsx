@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_POSITION, ResizeFit } from '@server/Sharp'
+import { DEFAULT_RESIZE_POSITION, RESIZE_FIT } from '@server/sharp'
 
 export function PositionRow() {
   return (
@@ -10,8 +10,8 @@ export function PositionRow() {
       description={
         <Text as='p'>
           A <Code variant='ghost'>position</Code> or <Code variant='ghost'>gravity</Code> to use
-          when <Text weight='medium'>fit</Text> is <Code>&quot;{ResizeFit.COVER}&quot;</Code> or{' '}
-          <Code>&quot;{ResizeFit.CONTAIN}&quot;</Code>.
+          when <Text weight='medium'>fit</Text> is <Code>&quot;{RESIZE_FIT.COVER}&quot;</Code> or{' '}
+          <Code>&quot;{RESIZE_FIT.CONTAIN}&quot;</Code>.
         </Text>
       }
       defaultValue={`"${DEFAULT_RESIZE_POSITION}"`}

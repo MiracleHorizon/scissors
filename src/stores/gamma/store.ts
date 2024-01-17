@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_GAMMA } from '@server/Sharp'
+import { DEFAULT_GAMMA } from '@server/sharp'
 import type { Store } from './types'
 
 export const useGammaStore = create<Store>(set => ({

@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { ResizeFit, ResizeKernel, type ResizeOptions, ResizePosition } from '@server/Sharp'
+import { RESIZE_FIT, RESIZE_KERNEL, RESIZE_POSITION, type ResizeOptions } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isResizeValid', () => {
   const isResizeValid = YupSettingsValidator.isResizeValid
@@ -7,10 +7,10 @@ describe('@utils/YupSettingsValidator.isResizeValid', () => {
   const validOptions: ResizeOptions = {
     width: 100,
     height: 100,
-    fit: ResizeFit.CONTAIN,
+    fit: RESIZE_FIT.CONTAIN,
     background: '#000000',
-    position: ResizePosition.CENTER,
-    kernel: ResizeKernel.LANCZOS3,
+    position: RESIZE_POSITION.CENTER,
+    kernel: RESIZE_KERNEL.LANCZOS3,
     withoutEnlargement: true,
     withoutReduction: false,
     fastShrinkOnLoad: true,
@@ -73,8 +73,8 @@ describe('@utils/YupSettingsValidator.isResizeValid', () => {
     // FIXME: should return false
     // expect(isResizeValid({ ...validOptions, width: '100' })).toBe(false)
     // expect(isResizeValid({ ...validOptions, height: '100' })).toBe(false)
-    expect(isResizeValid({ ...validOptions, fit: ResizeFit.CONTAIN + 'foo' })).toBe(false)
-    expect(isResizeValid({ ...validOptions, fit: 'bar' + ResizeFit.INSIDE })).toBe(false)
+    expect(isResizeValid({ ...validOptions, fit: RESIZE_FIT.CONTAIN + 'foo' })).toBe(false)
+    expect(isResizeValid({ ...validOptions, fit: 'bar' + RESIZE_FIT.INSIDE })).toBe(false)
   })
 
   it('should return false for invalid background property', () => {
@@ -93,7 +93,7 @@ describe('@utils/YupSettingsValidator.isResizeValid', () => {
     expect(
       isResizeValid({
         ...validOptions,
-        kernel: { value: ResizeKernel.CUBIC }
+        kernel: { value: RESIZE_KERNEL.CUBIC }
       })
     ).toBe(false)
     expect(isResizeValid({ ...validOptions, kernel: false })).toBe(false)

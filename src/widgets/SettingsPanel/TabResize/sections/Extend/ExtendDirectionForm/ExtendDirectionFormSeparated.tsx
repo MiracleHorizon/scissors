@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from '@ui/icons/ArrowLeftIcon'
 import { ArrowRightIcon } from '@ui/icons/ArrowRightIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
-import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/Sharp'
+import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/sharp'
 
 export function ExtendDirectionFormSeparated() {
   const top = useExtendStore(state => state.top)

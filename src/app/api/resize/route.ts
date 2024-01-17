@@ -1,11 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { SharpResizer } from '@server/Sharp/SharpResizer'
+import { SharpResizer } from '@server/sharp/SharpResizer'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { errorMessages } from '@api/resizeImage'
-import type { ResizeSettings } from '@server/Sharp'
+import type { ResizeSettings } from '@server/sharp'
 
 export async function POST(req: NextRequest) {
   let formData: FormData

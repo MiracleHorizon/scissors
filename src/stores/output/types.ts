@@ -1,5 +1,5 @@
 import type { DownloadPayload } from '@app-types/DownloadPayload'
-import type { ImageFileFormat } from '@server/Sharp'
+import type { ImageFileFormat } from '@server/sharp'
 
 export type Store = State & Computed & Actions
 

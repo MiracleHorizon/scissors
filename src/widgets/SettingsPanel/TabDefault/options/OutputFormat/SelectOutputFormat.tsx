@@ -1,15 +1,13 @@
-'use client'
-
 import { useCallback } from 'react'
 
 import { OptionSelect } from '@components/OptionSelect'
 import { useOutputStore } from '@stores/output'
-import { ImageFileFormat } from '@server/Sharp'
+import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@server/sharp'
 
 const data = [
   {
     label: 'Output format',
-    value: Object.values(ImageFileFormat)
+    value: Object.values(IMAGE_FILE_FORMAT)
   }
 ]
 

@@ -6,32 +6,32 @@ import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { ButtonExtendReset } from './ButtonExtendReset'
 import { ExtendToolbarButton } from './ExtendToolbarButton'
-import { DirectionModel, useExtendStore } from '@stores/extend'
+import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'
 
 export function ExtendToolbar() {
   const directionModel = useExtendStore(state => state.directionModel)
   const setDirectionModel = useExtendStore(state => state.setDirectionModel)
 
   const setDirectionModelNumber = useCallback(
-    () => setDirectionModel(DirectionModel.NUMBER),
+    () => setDirectionModel(DIRECTION_MODEL.NUMBER),
     [setDirectionModel]
   )
   const setDirectionModelAxis = useCallback(
-    () => setDirectionModel(DirectionModel.AXIS),
+    () => setDirectionModel(DIRECTION_MODEL.AXIS),
     [setDirectionModel]
   )
   const setDirectionModelSeparated = useCallback(
-    () => setDirectionModel(DirectionModel.SEPARATED),
+    () => setDirectionModel(DIRECTION_MODEL.SEPARATED),
     [setDirectionModel]
   )
 
   return (
     <Flex width='100%'>
       <Flex align='center' justify='end' gap='1' width='100%'>
-        {directionModel !== DirectionModel.NUMBER && (
+        {directionModel !== DIRECTION_MODEL.NUMBER && (
           <ExtendToolbarButton
             onClick={
-              directionModel === DirectionModel.AXIS
+              directionModel === DIRECTION_MODEL.AXIS
                 ? setDirectionModelSeparated
                 : setDirectionModelAxis
             }
@@ -42,12 +42,12 @@ export function ExtendToolbar() {
 
         <ExtendToolbarButton
           onClick={
-            directionModel !== DirectionModel.NUMBER
+            directionModel !== DIRECTION_MODEL.NUMBER
               ? setDirectionModelNumber
               : setDirectionModelAxis
           }
         >
-          {directionModel !== DirectionModel.NUMBER ? (
+          {directionModel !== DIRECTION_MODEL.NUMBER ? (
             <ChevronUpIcon width='20px' height='20px' label='set all directions' />
           ) : (
             <ChevronDownIcon width='20px' height='20px' label='set axes directions' />

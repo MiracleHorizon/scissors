@@ -1,11 +1,11 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import isEmpty from 'lodash.isempty'
 
-import { SharpConverter } from '@server/Sharp/SharpConverter'
+import { SharpConverter } from '@server/sharp/SharpConverter'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { errorMessages } from '@api/convertImage'
-import type { ConvertSettings } from '@server/Sharp'
+import type { ConvertSettings } from '@server/sharp'
 
 export async function POST(req: NextRequest) {
   let formData: FormData

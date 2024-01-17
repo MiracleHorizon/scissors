@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 import { ButtonImport } from '@ui/ButtonImport'
-import { ToolbarTab, useTabsStore } from '@stores/tabs'
+import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 
@@ -30,9 +30,9 @@ export function ButtonImportSettings() {
   const validateSettings = useCallback(
     (settings: unknown) => {
       switch (selectedTab) {
-        case ToolbarTab.DEFAULT:
+        case TOOLBAR_TAB.DEFAULT:
           return YupSettingsValidator.validateConvert(settings)
-        case ToolbarTab.RESIZE:
+        case TOOLBAR_TAB.RESIZE:
           return YupSettingsValidator.validateResize(settings)
         default:
           return false

@@ -9,7 +9,7 @@ import { OptionSwitch } from '@components/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 import { useBlurStore } from '@stores/blur'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/Sharp'
+import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 import type { AlignItems, FlexDirection, Gap } from '@lib/theme'
 
 function BlurInfo() {

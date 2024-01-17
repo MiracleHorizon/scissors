@@ -1,12 +1,12 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
-  ExtendWith,
+  EXTEND_WITH,
   MIN_TRIM_THRESHOLD,
-  ResizeFit,
-  ResizeKernel,
-  ResizePosition,
+  RESIZE_FIT,
+  RESIZE_KERNEL,
+  RESIZE_POSITION,
   type ResizeSettings
-} from '@server/Sharp'
+} from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.validateResize', () => {
   const validate = YupSettingsValidator.validateResize
@@ -17,10 +17,10 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
       resize: {
         width: 100,
         height: 100,
-        fit: ResizeFit.CONTAIN,
+        fit: RESIZE_FIT.CONTAIN,
         background: '#000000',
-        position: ResizePosition.CENTER,
-        kernel: ResizeKernel.LANCZOS3,
+        position: RESIZE_POSITION.CENTER,
+        kernel: RESIZE_KERNEL.LANCZOS3,
         withoutEnlargement: true,
         withoutReduction: false,
         fastShrinkOnLoad: true,
@@ -31,7 +31,7 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
         bottom: 10,
         right: 10,
         left: 10,
-        extendWith: ExtendWith.BACKGROUND,
+        extendWith: EXTEND_WITH.BACKGROUND,
         background: '#FFFFFF',
         withDominantBackground: false
       },
@@ -51,15 +51,15 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
       resize: {
         width: 100,
         height: 100,
-        fit: ResizeFit.CONTAIN,
+        fit: RESIZE_FIT.CONTAIN,
         background: {
           r: 0,
           g: 0,
           b: 0,
           a: 0
         }, // Invalid background color type
-        position: ResizePosition.CENTER,
-        kernel: ResizeKernel.LANCZOS3,
+        position: RESIZE_POSITION.CENTER,
+        kernel: RESIZE_KERNEL.LANCZOS3,
         withoutEnlargement: true,
         withoutReduction: false,
         fastShrinkOnLoad: true
@@ -69,7 +69,7 @@ describe('@utils/YupSettingsValidator.validateResize', () => {
         bottom: 10,
         right: -1, // Invalid extend direction size
         left: 10,
-        extendWith: ExtendWith.BACKGROUND,
+        extendWith: EXTEND_WITH.BACKGROUND,
         background: '#FFFFFF'
       }
     }

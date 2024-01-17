@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/Sharp'
+import { MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isRotateValid', () => {
   const isRotateValid = YupSettingsValidator.isRotateValid

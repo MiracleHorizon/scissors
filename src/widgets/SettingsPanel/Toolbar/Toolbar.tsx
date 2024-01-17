@@ -5,7 +5,7 @@ import { ButtonImportSettings } from './ButtonImportSettings'
 import { ButtonExportSettings } from './ButtonExportSettings'
 import { ButtonSettingsRemove } from './ButtonSettingsRemove'
 import { ButtonSettingsReset } from './ButtonSettingsReset'
-import { ToolbarTab, useTabsStore } from '@stores/tabs'
+import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import styles from './Toolbar.module.css'
 
 export function Toolbar() {
@@ -19,7 +19,7 @@ export function Toolbar() {
         <ButtonImportSettings />
         <ButtonExportSettings />
 
-        {selectedTab === ToolbarTab.DEFAULT && (
+        {selectedTab === TOOLBAR_TAB.DEFAULT && (
           <>
             <Separator orientation='vertical' mx='1' />
 

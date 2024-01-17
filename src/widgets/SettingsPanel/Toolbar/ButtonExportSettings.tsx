@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 import { ButtonExport } from '@ui/ButtonExport'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { useResizeSettings } from '@stores/hooks/useResizeSettings'
-import { ToolbarTab, useTabsStore } from '@stores/tabs'
+import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
 export function ButtonExportSettings() {
   const selectedTab = useTabsStore(state => state.selectedTab)
@@ -14,12 +14,12 @@ export function ButtonExportSettings() {
 
   const getExportPayload = useCallback(() => {
     switch (selectedTab) {
-      case ToolbarTab.DEFAULT:
+      case TOOLBAR_TAB.DEFAULT:
         return {
           fileName: 'morph-settings-convert',
           settings: convertSettings
         }
-      case ToolbarTab.RESIZE:
+      case TOOLBAR_TAB.RESIZE:
         return {
           fileName: 'morph-settings-resize',
           settings: resizeSettings

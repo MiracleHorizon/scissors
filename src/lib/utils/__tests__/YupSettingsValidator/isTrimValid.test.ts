@@ -1,5 +1,5 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { MAX_TRIM_THRESHOLD, type TrimOptions } from '@server/Sharp'
+import { MAX_TRIM_THRESHOLD, type TrimOptions } from '@server/sharp'
 
 describe('@utils/YupSettingsValidator.isTrimValid', () => {
   const isTrimValid = YupSettingsValidator.isTrimValid

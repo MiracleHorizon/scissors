@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_ROTATE_ANGLE } from '@server/Sharp'
+import { DEFAULT_ROTATE_ANGLE } from '@server/sharp'
 
 export function AngleRow() {
   return (
