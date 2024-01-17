@@ -5,6 +5,7 @@ import { Flex, Select, Text } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 
 import type { TextSize } from '@lib/theme'
+import styles from './OptionSelect.module.css'
 
 export function OptionSelect<T extends string>({
   label,
@@ -28,7 +29,7 @@ export function OptionSelect<T extends string>({
         <Select.Trigger id={triggerId} className='w-full' />
       </Flex>
 
-      <Select.Content position='popper' side='bottom' sideOffset={5}>
+      <Select.Content position='popper' side='bottom' sideOffset={5} className={styles.content}>
         {data.map(({ label, value }, index) => (
           <Select.Group key={index + value.slice(0, 3).join(', ')}>
             {label && <Select.Label>{label}</Select.Label>}
