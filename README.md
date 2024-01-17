@@ -45,13 +45,17 @@ Currently, the following image formats are supported:
 * Node.js v20+
 * pnpm
 
-### Run the project
 
-1. Install NPN packages
+### Run the project locally
+1. Clone repository
+   ```sh
+   git clone https://github.com/MiracleHorizon/scissors.git
+   ```
+2. Install NPN packages
    ```sh
    pnpm install --frozen-lockfile
    ```
-2. Run the project
+3. Run the project
    ```sh
    pnpm dev
    ```
