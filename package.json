@@ -21,6 +21,9 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },
+  "engines": {
+    "node": ">= 20"
+  },
   "dependencies": {
     "@dnd-kit/core": "6.1.0",
     "@dnd-kit/modifiers": "7.0.0",
