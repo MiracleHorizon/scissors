@@ -1,10 +1,10 @@
 <br />
 <div align="center">
-  <a href="https://raw.githubusercontent.com/MiracleHorizon/image-converter/main/public/favicon-32x32.png">
+  <a href="https://raw.githubusercontent.com/MiracleHorizon/scissors/main/public/favicon-32x32.png">
     <img src="public/apple-touch-icon-120x120.png" alt="Logo" width=120 height=120 style="border-radius: 50%;">
   </a>
 
-<h2 align="center">Image Converter</h3>
+<h2 align="center">Scissors</h3>
 
   <p align="center">
     Your awesome application for versatile image formatting and processing!
@@ -19,7 +19,7 @@
 
 <em>[ Work in progress ]</em>
 
-With the help of "Image Converter" you can use a large number of provided options to quickly format and process images.
+With the help of "Scissors" you can use a large number of provided options to quickly format and process images.
 
 Some of the features available are:
 * Resizing, Extending
@@ -82,5 +82,5 @@ Currently, the following image formats are supported:
 
 MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
 
-[project-github]: https://github.com/MiracleHorizon/image-converter
+[project-github]: https://github.com/MiracleHorizon/scissors
 [preview-screenshot]: public/preview-screenshot.png

@@ -1,20 +1,11 @@
 {
-  "name": "image-converter",
-  "version": "0.2.1",
+  "name": "scissors",
+  "version": "0.3.0",
   "private": true,
   "author": "MiracleHorizon",
   "description": "Your awesome application for versatile image formatting and processing!",
-  "homepage": "https://github.com/MiracleHorizon/image-converter",
+  "homepage": "https://github.com/MiracleHorizon/scissors",
   "authorGithub": "https://github.com/MiracleHorizon",
-  "keywords": [
-    "image",
-    "converter",
-    "rotation",
-    "crop",
-    "resizing",
-    "blur",
-    "gamma"
-  ],
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -71,5 +62,21 @@
     "stylelint-config-recommended": "^14.0.0",
     "typescript": "^5.3.3",
     "vitest": "^1.1.3"
-  }
+  },
+  "keywords": [
+    "image",
+    "converter",
+    "rotation",
+    "crop",
+    "resizing",
+    "blur",
+    "gamma",
+    "scissors",
+    "jpeg",
+    "jpg",
+    "png",
+    "webp",
+    "avif",
+    "gif"
+  ]
 }

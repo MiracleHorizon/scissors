@@ -1,4 +1,4 @@
-export const APP_NAME = 'Image Converter'
+export const APP_NAME = 'Scissors'
 export const APP_DESCRIPTION =
   'Your awesome application for versatile image formatting and processing!'
 export const APP_KEYWORDS = [
@@ -16,5 +16,6 @@ export const APP_KEYWORDS = [
   'png',
   'webp',
   'avif',
-  'tiff'
+  'tiff',
+  'scissors'
 ]
