@@ -62,8 +62,8 @@ const exampleListPadding: PaddingProps = {
     xs: '2'
   },
   pr: {
-    initial: '2',
-    xs: '1'
+    initial: '1',
+    xs: '2'
   },
   pb: '1'
 }

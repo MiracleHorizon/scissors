@@ -33,7 +33,6 @@
 
 @media screen and (max-width: 519px) {
   .content {
-    max-height: 300px;
     padding: var(--space-1);
   }
 
@@ -42,8 +41,12 @@
     background-color: white;
   }
 
+  .content,
   .exampleList {
-    max-height: 320px;
+    max-height: 300px;
+  }
+
+  .exampleList {
     height: 100%;
   }
 
