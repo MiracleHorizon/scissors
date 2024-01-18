@@ -9,7 +9,7 @@
   <p align="center">
     Your awesome application for versatile image formatting and processing!
     <br />
-    <a href="https://image-converter-omega.vercel.app" target="_blank">Try it out</a>
+    <a href="https://scissors-application.vercel.app" target="_blank">Try it out</a>
   </p>
 </div>
 
