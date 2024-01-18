@@ -2,5 +2,5 @@
 /next-env.d.ts
 /.next
 /.idea
-/image-converter.iml
+/scissors.iml
 **/coverage/
