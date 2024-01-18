@@ -8,7 +8,7 @@ export interface ExtendValues
   extendValue: number | null
 }
 
-type DirectionModel = keyof typeof DIRECTION_MODEL
+type DirectionModel = (typeof DIRECTION_MODEL)[keyof typeof DIRECTION_MODEL]
 
 export interface State extends ExtendOptions, Pick<ExtendValues, 'extendValue'> {
   directionModel: DirectionModel

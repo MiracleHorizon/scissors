@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 import type { Store } from './types'
 
-export const TOOLBAR_TAB: Record<string, string> = {
+export const TOOLBAR_TAB = {
   DEFAULT: 'default',
   RESIZE: 'resize'
 } as const

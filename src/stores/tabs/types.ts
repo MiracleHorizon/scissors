@@ -2,7 +2,7 @@ import type { TOOLBAR_TAB } from './store'
 
 export type Store = State & Actions
 
-type ToolbarTab = keyof typeof TOOLBAR_TAB
+type ToolbarTab = (typeof TOOLBAR_TAB)[keyof typeof TOOLBAR_TAB]
 
 export interface State {
   selectedTab: ToolbarTab

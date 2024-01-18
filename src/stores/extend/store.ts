@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { DEFAULT_EXTEND_BACKGROUND, DEFAULT_EXTEND_WITH } from '@server/sharp'
 import type { ExtendValues, State, Store } from './types'
 
-export const DIRECTION_MODEL: Record<string, string> = {
+export const DIRECTION_MODEL = {
   NUMBER: 'number',
   AXIS: 'axis',
   SEPARATED: 'separated'
