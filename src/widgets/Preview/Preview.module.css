@@ -1,0 +1,15 @@
+.root {
+  width: calc(100% - var(--settings-panel-width) - var(--space-4));
+}
+
+@media screen and (max-width: 1200px) {
+  .root {
+    width: calc(100% - var(--settings-panel-width-1200) - var(--space-4));
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .root {
+    width: 100%;
+  }
+}

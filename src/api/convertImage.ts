@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
 import { useOutputStore } from '@stores/output'
+import { useRequestStore } from '@stores/request'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
 import type { ConvertSettings } from '@server/sharp'
@@ -62,11 +63,13 @@ export async function convertImageMutation({
 
 export function useConvertMutation() {
   const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
+  const setLoading = useRequestStore(state => state.setLoading)
 
   return useMutation({
     mutationKey: ['convert'],
     mutationFn: convertImageMutation,
-    onSuccess: downloadPayload => setDownloadPayload(downloadPayload)
+    onSuccess: downloadPayload => setDownloadPayload(downloadPayload),
+    onSettled: () => setLoading(false)
   })
 }
 

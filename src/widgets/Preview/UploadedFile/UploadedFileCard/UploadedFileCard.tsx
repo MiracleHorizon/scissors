@@ -8,10 +8,13 @@ import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonImport } from '@ui/ButtonImport'
 import { useOutputStore } from '@stores/output'
+import { useRequestStore } from '@stores/request'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import styles from './UploadedFileCard.module.css'
 
-export function UploadedFileCard({ file, isLoading }: Props) {
+export function UploadedFileCard({ file }: Props) {
+  const isRequestLoading = useRequestStore(state => state.isLoading)
+
   const setFile = useOutputStore(state => state.setFile)
   const removeFile = useOutputStore(state => state.removeFile)
 
@@ -25,7 +28,7 @@ export function UploadedFileCard({ file, isLoading }: Props) {
           <Text as='span' ml='2' title={file.name} className={clsx(styles.fileName, 'truncate')}>
             {file.name}
           </Text>
-          {isLoading ? (
+          {isRequestLoading ? (
             <LoadingSpinner ml='auto' />
           ) : (
             <Flex ml='auto' align='center' gap='1'>
@@ -51,5 +54,4 @@ export function UploadedFileCard({ file, isLoading }: Props) {
 
 interface Props {
   file: File
-  isLoading: boolean
 }

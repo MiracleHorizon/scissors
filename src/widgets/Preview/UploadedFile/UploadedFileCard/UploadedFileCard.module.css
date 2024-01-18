@@ -1,3 +1,4 @@
 .fileName {
+  /* TODO: variables */
   max-width: calc(100% - 70px - var(--space-1) * 2 - var(--space-5));
 }

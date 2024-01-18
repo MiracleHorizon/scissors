@@ -2,13 +2,18 @@
   width: 140px;
 }
 
-.buttonConvert {
+.buttonRequest {
   width: 123px;
+}
+
+.buttonDownload,
+.buttonRequest {
+  border-radius: var(--radius-4);
 }
 
 @media screen and (max-width: 519px) {
   .buttonDownload,
-  .buttonConvert {
+  .buttonRequest {
     width: 52px;
   }
 }

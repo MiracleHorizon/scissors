@@ -1,1 +1,0 @@
-export { FooterPanelContentSkeleton } from './FooterPanelContentSkeleton'

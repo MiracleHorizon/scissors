@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
@@ -35,5 +33,4 @@ export function UploadedFile(props: Props) {
 
 interface Props {
   file: File
-  isLoading: boolean
 }

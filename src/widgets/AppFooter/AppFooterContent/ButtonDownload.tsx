@@ -1,5 +1,3 @@
-'use client'
-
 import { useRef } from 'react'
 import { Button, Link, Text } from '@radix-ui/themes'
 
