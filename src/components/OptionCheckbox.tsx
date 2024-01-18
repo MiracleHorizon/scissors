@@ -1,9 +1,9 @@
 'use client'
 
-import { memo } from 'react'
+import { type FC, memo } from 'react'
 import { Checkbox, Flex, Text } from '@radix-ui/themes'
 
-export const OptionCheckbox = memo(({ title, ...props }: Props) => (
+export const OptionCheckbox: FC<Props> = memo(({ title, ...props }) => (
   <Text as='label' size='2' title={title}>
     <Flex align='center' gap='2'>
       <Checkbox size='3' {...props} />
