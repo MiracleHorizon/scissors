@@ -1,10 +1,10 @@
 import { DocsSection } from '../../DocsSection'
 import { AngleRow, BackgroundRow } from './rows'
-import { DocsHash } from '@lib/router'
+import { DOCS_HASH } from '@lib/router'
 
 export function RotateSection() {
   return (
-    <DocsSection title='Rotate' hash={DocsHash.ROTATE}>
+    <DocsSection title='Rotate' hash={DOCS_HASH.ROTATE}>
       <>
         <AngleRow />
         <BackgroundRow />

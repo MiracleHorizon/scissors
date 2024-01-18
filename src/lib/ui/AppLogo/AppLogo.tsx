@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation'
 import { Flex } from '@radix-ui/themes'
 
 import { LogoIcon } from '@ui/icons/LogoIcon'
-import { Route } from '@lib/router'
+import { ROUTE } from '@lib/router'
 import styles from './AppLogo.module.css'
 
 export function AppLogo() {
   const router = useRouter()
 
-  const navigateToHome = () => router.replace(Route.HOME)
+  const navigateToHome = () => router.replace(ROUTE.HOME)
 
   return (
     <Flex align='center' justify='center' className={styles.root} onClick={navigateToHome}>

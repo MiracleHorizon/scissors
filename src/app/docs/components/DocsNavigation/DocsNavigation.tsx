@@ -2,33 +2,33 @@ import { Flex, Separator } from '@radix-ui/themes'
 import { Fragment } from 'react'
 
 import { DocsNavigationItem } from './DocsNavigationItem'
-import { DocsHash } from '@lib/router'
+import { DOCS_HASH } from '@lib/router'
 import styles from './DocsNavigation.module.css'
 
 const items = [
   {
     title: 'Main',
-    hash: DocsHash.MAIN
+    hash: DOCS_HASH.MAIN
   },
   {
     title: 'Negate',
-    hash: DocsHash.NEGATE
+    hash: DOCS_HASH.NEGATE
   },
   {
     title: 'Rotate',
-    hash: DocsHash.ROTATE
+    hash: DOCS_HASH.ROTATE
   },
   {
     title: 'Resize',
-    hash: DocsHash.RESIZE
+    hash: DOCS_HASH.RESIZE
   },
   {
     title: 'Extend',
-    hash: DocsHash.EXTEND
+    hash: DOCS_HASH.EXTEND
   },
   {
     title: 'Modulate',
-    hash: DocsHash.MODULATE
+    hash: DOCS_HASH.MODULATE
   }
 ]
 
