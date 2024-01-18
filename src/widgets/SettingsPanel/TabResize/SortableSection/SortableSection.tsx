@@ -18,15 +18,12 @@ const direction: FlexDirection = {
   sm: 'row'
 }
 const padding: PaddingProps = {
-  pl: {
-    initial: '2',
-    sm: '2'
-  },
+  pl: '3',
   pr: {
-    initial: '2',
+    initial: '3',
     sm: '0'
   },
-  pt: '2',
+  pt: '3',
   pb: '3'
 }
 
