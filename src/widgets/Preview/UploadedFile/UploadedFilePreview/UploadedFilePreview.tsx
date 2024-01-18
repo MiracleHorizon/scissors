@@ -1,5 +1,3 @@
-'use client'
-
 import { AspectRatio, Box } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
