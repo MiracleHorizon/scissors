@@ -13,8 +13,10 @@ export interface ResizeSettings {
   extend: ExtendOptions | null
   trim: TrimOptions | null
 }
+
 export type ResizeQueue = ResizeQueueOperation[]
-export type ResizeOperationName = keyof typeof RESIZE_OPERATION_NAME
+export type ResizeOperationName = (typeof RESIZE_OPERATION_NAME)[keyof typeof RESIZE_OPERATION_NAME]
+
 interface ResizeQueueOperation {
   name: ResizeOperationName
   queueIndex: number
@@ -28,18 +30,22 @@ type ResizeSizes =
   | ResizeWithHeight
   | ResizeWithWidthAndHeight
   | ResizeWithoutWidthAndHeight
+
 interface ResizeWithWidth {
   width: number
   height: null
 }
+
 interface ResizeWithHeight {
   height: number
   width: null
 }
+
 interface ResizeWithWidthAndHeight {
   width: number
   height: number
 }
+
 interface ResizeWithoutWidthAndHeight {
   width: null
   height: null
@@ -55,13 +61,15 @@ export interface ResizeExtraOptions {
   fastShrinkOnLoad: boolean
   withDominantBackground: boolean
 }
-export type ResizeKernel = keyof typeof RESIZE_KERNEL
-export type ResizeFit = keyof typeof RESIZE_FIT
-export type ResizePosition = keyof typeof RESIZE_POSITION
-export type ResizeGravity = keyof typeof RESIZE_GRAVITY
+
+export type ResizeKernel = (typeof RESIZE_KERNEL)[keyof typeof RESIZE_KERNEL]
+export type ResizeFit = (typeof RESIZE_FIT)[keyof typeof RESIZE_FIT]
+export type ResizePosition = (typeof RESIZE_POSITION)[keyof typeof RESIZE_POSITION]
+export type ResizeGravity = (typeof RESIZE_GRAVITY)[keyof typeof RESIZE_GRAVITY]
 
 // Extend
-export type ExtendWith = keyof typeof EXTEND_WITH
+export type ExtendWith = (typeof EXTEND_WITH)[keyof typeof EXTEND_WITH]
+
 export interface ExtendOptions {
   top: number | null
   bottom: number | null

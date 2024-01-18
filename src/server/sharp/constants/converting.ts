@@ -1,5 +1,3 @@
-import type { FormatEnum } from 'sharp'
-
 import type {
   BlurOptions,
   GammaOptions,
@@ -8,7 +6,7 @@ import type {
   RotateOptions
 } from '../types'
 
-export const IMAGE_FILE_FORMAT: Record<string, keyof FormatEnum> = {
+export const IMAGE_FILE_FORMAT = {
   JPEG: 'jpeg',
   JPG: 'jpg',
   PNG: 'png',

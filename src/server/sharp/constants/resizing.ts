@@ -1,29 +1,25 @@
-import type { ExtendWith, FitEnum, KernelEnum } from 'sharp'
-
-import type { ResizeFit, ResizeKernel, ResizePosition } from '../types'
-
-export const RESIZE_OPERATION_NAME: Record<string, string> = {
+export const RESIZE_OPERATION_NAME = {
   RESIZE: 'resize',
   EXTEND: 'extend',
   TRIM: 'trim'
 } as const
 
 // Resize
-export const RESIZE_FIT: Record<string, keyof FitEnum> = {
+export const RESIZE_FIT = {
   COVER: 'cover',
   CONTAIN: 'contain',
   FILL: 'fill',
   INSIDE: 'inside',
   OUTSIDE: 'outside'
 } as const
-export const RESIZE_KERNEL: Record<string, keyof KernelEnum> = {
+export const RESIZE_KERNEL = {
   LANCZOS3: 'lanczos3',
   LANCZOS2: 'lanczos2',
   NEAREST: 'nearest',
   CUBIC: 'cubic',
   MITCHELL: 'mitchell'
 } as const
-export const RESIZE_POSITION: Record<string, string> = {
+export const RESIZE_POSITION = {
   CENTER: 'center',
   LEFT: 'left',
   RIGHT: 'right',
@@ -34,7 +30,7 @@ export const RESIZE_POSITION: Record<string, string> = {
   LEFT_TOP: 'left top',
   LEFT_BOTTOM: 'left bottom'
 } as const
-export const RESIZE_GRAVITY: Record<string, string> = {
+export const RESIZE_GRAVITY = {
   NORTH: 'north',
   SOUTH: 'south',
   EAST: 'east',
@@ -49,16 +45,16 @@ export const RESIZE_SIZE_STEP = 100
 export const MIN_RESIZE_SIZE = 1
 export const MAX_RESIZE_WIDTH = 1920
 export const MAX_RESIZE_HEIGHT = 1080
-export const DEFAULT_RESIZE_FIT: ResizeFit = RESIZE_FIT.COVER
-export const DEFAULT_RESIZE_POSITION: ResizePosition = RESIZE_POSITION.CENTER
-export const DEFAULT_RESIZE_KERNEL: ResizeKernel = RESIZE_KERNEL.LANCZOS3
+export const DEFAULT_RESIZE_FIT = RESIZE_FIT.COVER
+export const DEFAULT_RESIZE_POSITION = RESIZE_POSITION.CENTER
+export const DEFAULT_RESIZE_KERNEL = RESIZE_KERNEL.LANCZOS3
 export const DEFAULT_RESIZE_BACKGROUND = '#000000'
 export const DEFAULT_WITHOUT_ENLARGEMENT = false
 export const DEFAULT_WITHOUT_REDUCTION = false
 export const DEFAULT_FAST_SHRINK = true
 
 // Extend
-export const EXTEND_WITH: Record<string, ExtendWith> = {
+export const EXTEND_WITH = {
   BACKGROUND: 'background',
   COPY: 'copy',
   REPEAT: 'repeat',
