@@ -23,6 +23,12 @@ export const useTrimStore = create<Store>((set, get) => ({
   }),
 
   // Actions
+  set: options => {
+    if (!options) return
+
+    set(options)
+  },
+
   setBackground: background => set({ background }),
   setThreshold: threshold => set({ threshold }),
   // sharp v0.33.2

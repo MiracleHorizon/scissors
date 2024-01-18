@@ -110,9 +110,7 @@ export const useExtendStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    if (!options) {
-      return
-    }
+    if (!options) return
 
     set({
       ...options,
