@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'standalone'
+const nextConfig = {}
+
+if (process.env.BUILD_STANDALONE === 'true') {
+  nextConfig.output = 'standalone'
 }
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
