@@ -9,12 +9,15 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import { isDevelopment } from '@helpers/isDevelopment'
-import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME } from '@lib/seo'
+import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME, getMetadataBase } from '@lib/seo'
 import './globals.css'
 
-const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), { ssr: false })
+const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), {
+  ssr: false
+})
 
 export const metadata: Metadata = {
+  metadataBase: getMetadataBase(),
   title: {
     default: APP_NAME,
     template: `%s | ${APP_NAME}`
