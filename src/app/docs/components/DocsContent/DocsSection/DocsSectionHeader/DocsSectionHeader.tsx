@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
 import { useParams } from 'next/navigation'
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Link2Icon } from '@ui/icons/Link2Icon'
 import styles from './DocsSectionHeader.module.css'
@@ -12,7 +12,7 @@ export function DocsSectionHeader({ title, hash }: Props) {
   const rootRef = useRef<HTMLDivElement>(null)
   const params = useParams()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const locationHash = location.hash
     const rootNode = rootRef.current
 
