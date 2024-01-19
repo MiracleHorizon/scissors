@@ -3,7 +3,7 @@ import { Flex, IconButton } from '@radix-ui/themes'
 import { MoonIcon } from '@ui/icons/MoonIcon'
 import { SunIcon } from '@ui/icons/SunIcon'
 import { AppearancePopoverTitle } from './AppearancePopoverTitle'
-import { setThemeCookie, type Theme, type ThemeProps } from '@lib/theme'
+import { setThemeCookie, type Theme, THEME_LS_KEY, type ThemeProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 function getThemeIcon(theme: Theme) {
@@ -14,7 +14,18 @@ function getThemeIcon(theme: Theme) {
 }
 
 export function ToggleTheme({ theme, className }: Props) {
-  const toggleTheme = () => setThemeCookie(theme === 'dark' ? 'light' : 'dark')
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+
+    localStorage.setItem(THEME_LS_KEY, newTheme)
+    const event = new StorageEvent('storage', {
+      key: THEME_LS_KEY,
+      newValue: newTheme
+    })
+    window.dispatchEvent(event)
+
+    void setThemeCookie(newTheme)
+  }
 
   return (
     <Flex align='center' justify='between' width='100%'>

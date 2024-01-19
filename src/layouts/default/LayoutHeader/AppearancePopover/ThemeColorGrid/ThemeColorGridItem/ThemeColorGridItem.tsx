@@ -2,11 +2,20 @@ import { Box, Tooltip } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
 import { clsx } from 'clsx'
 
-import { setThemeColorCookie, type ThemeColorItem } from '@lib/theme'
+import { setThemeColorCookie, THEME_COLOR_LS_KEY, type ThemeColorItem } from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
 export function ThemeColorGridItem({ color, isSelected }: Props) {
-  const handleSetThemeColor = () => setThemeColorCookie(color)
+  const handleSetThemeColor = () => {
+    localStorage.setItem(THEME_COLOR_LS_KEY, color)
+    const event = new StorageEvent('storage', {
+      key: THEME_COLOR_LS_KEY,
+      newValue: color
+    })
+    window.dispatchEvent(event)
+
+    void setThemeColorCookie(color)
+  }
 
   return (
     <Tooltip content={capitalize(color)}>
