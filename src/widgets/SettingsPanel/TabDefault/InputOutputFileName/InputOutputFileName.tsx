@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { type ChangeEvent, memo, useCallback, useMemo, useRef, useState } from 'react'
+import { type ChangeEvent, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Flex, TextField } from '@radix-ui/themes'
 
 import { ButtonClear } from '@ui/ButtonClear'
@@ -24,7 +24,7 @@ const PopoverOutputFileName = dynamic(
 )
 
 function InputOutputFileName() {
-  const [isError, setIsError] = useState<boolean>(false)
+  const [isError, setIsError] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const outputFileName = useOutputStore(state => state.outputFileName)
@@ -52,11 +52,8 @@ function InputOutputFileName() {
 
       if (!isValid) {
         setIsError(true)
-      } else {
-        // TODO: else if?
-        if (isError !== null) {
-          setIsError(false)
-        }
+      } else if (isError !== null) {
+        setIsError(false)
       }
 
       setOutputFileName(ev.target.value)
@@ -64,10 +61,14 @@ function InputOutputFileName() {
     [isError, setOutputFileName]
   )
 
-  const handleClear = useCallback(() => {
-    setOutputFileName('')
+  const handleClear = () => setOutputFileName('')
+
+  // If the value is empty and "isError" is true, it is cleared
+  useEffect(() => {
+    if (outputFileName.length !== 0 || !isError) return
+
     setIsError(false)
-  }, [setOutputFileName])
+  }, [outputFileName, isError])
 
   useEscapeBlur({
     ref: inputRef
