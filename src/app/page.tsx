@@ -2,7 +2,7 @@ import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
 
 import { Preview } from '@widgets/Preview'
 import { SettingsPanel } from '@widgets/SettingsPanel'
-import { AppFooter } from 'src/widgets/AppFooter'
+import { AppFooter } from '@widgets/AppFooter'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 
