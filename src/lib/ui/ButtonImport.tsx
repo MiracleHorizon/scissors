@@ -1,30 +1,21 @@
 'use client'
 
 import { IconButton, Tooltip } from '@radix-ui/themes'
-import { type FC, memo } from 'react'
 
 import { UploadIcon } from '@ui/icons/UploadIcon'
-import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
+import { withFileUploader } from '@hoc/withFileUploader'
 
-const ButtonImport: FC<Props> = memo(({ children, tooltipcontent, onClick }) => {
-  const Button = (
+export const ButtonImport = withFileUploader(({ children, tooltipcontent, onClick }) => {
+  const buttonJSX = (
     <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
       <UploadIcon width='20px' height='20px' label='import' />
       {children}
     </IconButton>
   )
 
-  if (!tooltipcontent) {
-    return Button
+  if (tooltipcontent) {
+    return <Tooltip content={tooltipcontent}>{buttonJSX}</Tooltip>
   }
 
-  return <Tooltip content={tooltipcontent}>{Button}</Tooltip>
+  return buttonJSX
 })
-
-ButtonImport.displayName = 'ButtonImport'
-
-type Props = Pick<ComponentProps, 'children' | 'tooltipcontent' | 'onClick'>
-
-const Button = withFileUploader(ButtonImport)
-
-export { Button as ButtonImport }
