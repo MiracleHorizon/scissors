@@ -80,6 +80,6 @@ export function ButtonBackTop<T extends HTMLElement>({
 
 interface Props<T extends HTMLElement> extends ClassNameProps {
   visibilityOffset?: number
-  container?: MutableRefObject<T>
+  container?: MutableRefObject<T | null>
   size?: ButtonSize
 }
