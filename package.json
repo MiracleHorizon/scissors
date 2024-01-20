@@ -2,6 +2,7 @@
   "name": "scissors",
   "version": "0.3.0",
   "private": true,
+  "type": "module",
   "author": "MiracleHorizon",
   "description": "Your awesome application for versatile image formatting and processing!",
   "homepage": "https://github.com/MiracleHorizon/scissors",

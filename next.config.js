@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
+import bundleAnalyzer from '@next/bundle-analyzer'
+
 const nextConfig = {
   env: {
     METADATA_BASE: process.env.METADATA_BASE
@@ -9,9 +10,9 @@ if (process.env.BUILD_STANDALONE === 'true') {
   nextConfig.output = 'standalone'
 }
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
   openAnalyzer: false
 })
 
-module.exports = withBundleAnalyzer(nextConfig)
+export default withBundleAnalyzer(nextConfig)
