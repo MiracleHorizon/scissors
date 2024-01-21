@@ -9,13 +9,16 @@ import type { ButtonSize } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ButtonBackTop.module.css'
 
+export const testId = 'button-back-top'
+export const accessibleIconLabel = 'back scroll top'
+
 export function ButtonBackTop<T extends HTMLElement>({
   container,
   visibilityOffset = 0,
   size = '2',
   className
 }: Props<T>) {
-  const [isVisible, setVisible] = useState(false)
+  const [isVisible, setVisible] = useState(visibilityOffset <= 0)
 
   const handleScrollToTop = () => {
     const scrollToOptions: ScrollToOptions = {
@@ -68,12 +71,13 @@ export function ButtonBackTop<T extends HTMLElement>({
 
   return (
     <IconButton
+      data-testid={testId}
       size={size}
       radius='large'
       className={clsx(styles.root, className)}
       onClick={handleScrollToTop}
     >
-      <ChevronUpIcon width='22px' height='22px' label='back scroll top' />
+      <ChevronUpIcon width='22px' height='22px' label={accessibleIconLabel} />
     </IconButton>
   )
 }

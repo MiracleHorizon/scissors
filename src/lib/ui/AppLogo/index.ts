@@ -1,1 +1,1 @@
-export { AppLogo } from './AppLogo'
+export { AppLogo, testId } from './AppLogo'
