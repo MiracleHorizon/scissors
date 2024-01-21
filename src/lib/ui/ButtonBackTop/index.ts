@@ -1,1 +1,1 @@
-export { ButtonBackTop } from './ButtonBackTop'
+export { ButtonBackTop, testId, accessibleIconLabel } from './ButtonBackTop'

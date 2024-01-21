@@ -11,9 +11,11 @@ const width: Size = {
   md: '100%'
 }
 
+export const labelTestId = 'option-switch-label'
+
 export const OptionSwitch: FC<Props> = memo(({ title, ...switchProps }) => (
   <Flex asChild justify='between' gap='2' width={width}>
-    <Text as='label' size='3'>
+    <Text data-testid={labelTestId} as='label' size='3'>
       <Text title={title} as='span' className='truncate'>
         {title}
       </Text>
@@ -24,9 +26,9 @@ export const OptionSwitch: FC<Props> = memo(({ title, ...switchProps }) => (
 
 OptionSwitch.displayName = 'OptionSwitch'
 
-interface Props {
+export interface Props {
   title: string
-  onClick: VoidFunction
   checked: boolean | undefined
+  onClick: VoidFunction
   disabled?: boolean
 }
