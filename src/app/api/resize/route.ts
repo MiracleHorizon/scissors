@@ -4,7 +4,7 @@ import isEmpty from 'lodash.isempty'
 import { SharpResizer } from '@server/sharp/SharpResizer'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { isValidFileSize } from '@helpers/isValidFileSize'
-import { errorMessages } from '@api/resizeImage'
+import { errorMessages } from '@api/resize-image'
 import type { ResizeSettings } from '@server/sharp'
 
 export async function POST(req: NextRequest) {

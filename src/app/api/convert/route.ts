@@ -4,7 +4,7 @@ import isEmpty from 'lodash.isempty'
 import { SharpConverter } from '@server/sharp/SharpConverter'
 import { isValidFileSize } from '@helpers/isValidFileSize'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { errorMessages } from '@api/convertImage'
+import { errorMessages } from '@api/convert-image'
 import type { ConvertSettings } from '@server/sharp'
 
 export async function POST(req: NextRequest) {
