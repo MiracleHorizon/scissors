@@ -98,6 +98,9 @@
       ],
       "@app-types/*": [
         "./src/types/*"
+      ],
+      "@testing/*": [
+        "./src/__setup__/*"
       ]
     }
   }

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
 interface Alias {
@@ -11,10 +12,27 @@ const createAlias = ({ find, replacementPath }: Alias) => ({
   replacement: path.resolve(__dirname, replacementPath)
 })
 
+const setupDir = path.resolve(__dirname, 'src/__setup__')
 const aliases: Alias[] = [
+  {
+    find: '@testing',
+    replacementPath: setupDir
+  },
   {
     find: '@api',
     replacementPath: './src/api'
+  },
+  {
+    find: '@lib',
+    replacementPath: './src/lib'
+  },
+  {
+    find: '@components',
+    replacementPath: './src/components'
+  },
+  {
+    find: '@ui',
+    replacementPath: './src/lib/ui'
   },
   {
     find: '@helpers',
@@ -35,15 +53,17 @@ const aliases: Alias[] = [
 ]
 
 export default defineConfig({
+  plugins: [react()],
   test: {
     globals: true,
     includeSource: ['src/**/*.test.{ts,tsx}', 'src/**/test.{ts,tsx}'],
+    setupFiles: [path.resolve(setupDir, 'vitest.setup.ts')],
     coverage: {
       enabled: true,
       cleanOnRerun: true,
       provider: 'istanbul',
       reporter: ['html'],
-      reportsDirectory: './src/__setup__/__tests__/unit/coverage',
+      reportsDirectory: path.resolve(setupDir, 'coverage'),
       reportOnFailure: true,
       clean: true
     },
