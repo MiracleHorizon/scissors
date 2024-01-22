@@ -3,8 +3,30 @@ import { create } from 'zustand'
 import { cropImageFileType } from '@helpers/cropImageFileType'
 import { cropFileName } from '@helpers/cropFileName'
 import { isValidFileName } from '@helpers/isValidFileName'
+import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { ImageFileFormat } from '@server/sharp'
-import type { State, Store } from './types'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  getOutputFormat: () => ImageFileFormat | null
+  getFullFileName: () => string
+  isFileUploaded: () => boolean
+  isValidOutputFileName: () => boolean
+
+  setFile: (file: File | null) => void
+  removeFile: VoidFunction
+  setOutputFileName: (outputFileName: string) => void
+  resetOutputFileName: VoidFunction
+  setOutputFormat: (outputFormat: ImageFileFormat | null) => void
+  setDownloadPayload: (downloadPayload: DownloadPayload) => void
+}
+
+interface State {
+  file: File | null
+  outputFileName: string
+  outputFormat: ImageFileFormat | null
+  downloadPayload: DownloadPayload | null
+}
 
 const defaultState: State = {
   file: null,
@@ -90,6 +112,5 @@ export const useOutputStore = create<Store>((set, get) => ({
   resetOutputFileName: () => set({ outputFileName: defaultState.outputFileName }),
 
   setOutputFormat: outputFormat => set({ outputFormat }),
-
   setDownloadPayload: downloadPayload => set({ downloadPayload })
 }))

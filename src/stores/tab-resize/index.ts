@@ -1,1 +1,0 @@
-export { useTabResizeStore } from './store'

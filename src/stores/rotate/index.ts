@@ -1,1 +1,0 @@
-export { useRotateStore } from './store'

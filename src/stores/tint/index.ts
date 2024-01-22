@@ -1,1 +1,0 @@
-export { useTintStore } from './store'

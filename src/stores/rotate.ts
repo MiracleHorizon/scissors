@@ -1,7 +1,31 @@
 import { create } from 'zustand'
 
-import { DEFAULT_ROTATE, DEFAULT_ROTATE_ANGLE, DEFAULT_ROTATE_BACKGROUND } from '@server/sharp'
-import type { State, Store } from './types'
+import {
+  DEFAULT_ROTATE,
+  DEFAULT_ROTATE_ANGLE,
+  DEFAULT_ROTATE_BACKGROUND,
+  type RotateOptions
+} from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  getRotateOptions: () => RotateOptions | null
+
+  set: (options: RotateOptions | null) => void
+  reset: VoidFunction
+  add: VoidFunction
+  remove: VoidFunction
+  setAngle: (angle: number) => void
+  setBackground: (background: string) => void
+  toggleDominantBackground: VoidFunction
+}
+
+interface State {
+  isAdded: boolean
+  angle: number | null
+  background: string | null
+  withDominantBackground: boolean
+}
 
 const defaultState: State = {
   isAdded: false,
@@ -31,12 +55,6 @@ export const useRotateStore = create<Store>((set, get) => ({
 
     set({ ...options, isAdded })
   },
-  add: () =>
-    set({
-      isAdded: true,
-      ...DEFAULT_ROTATE
-    }),
-  remove: () => set(defaultState),
   reset: () => {
     set(state => {
       if (!state.isAdded) {
@@ -49,6 +67,14 @@ export const useRotateStore = create<Store>((set, get) => ({
       }
     })
   },
+
+  add: () =>
+    set({
+      isAdded: true,
+      ...DEFAULT_ROTATE
+    }),
+  remove: () => set(defaultState),
+
   setAngle: angle =>
     set(state => {
       if (!state.isAdded) {

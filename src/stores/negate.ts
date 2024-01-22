@@ -1,7 +1,16 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NEGATE } from '@server/sharp'
-import type { Store } from './types'
+import { DEFAULT_NEGATE, type NegateOptions } from '@server/sharp'
+
+/* eslint-disable no-unused-vars */
+interface Store extends NegateOptions {
+  getNegateOptions: () => NegateOptions | null
+
+  set: (options: NegateOptions | null) => void
+  reset: VoidFunction
+  toggleValue: VoidFunction
+  toggleAlpha: VoidFunction
+}
 
 export const useNegateStore = create<Store>((set, get) => ({
   // State

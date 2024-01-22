@@ -1,1 +1,0 @@
-export { useGammaStore } from './store'

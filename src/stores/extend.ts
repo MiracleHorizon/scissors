@@ -1,13 +1,53 @@
 import { create } from 'zustand'
 
-import { DEFAULT_EXTEND_BACKGROUND, DEFAULT_EXTEND_WITH } from '@server/sharp'
-import type { ExtendValues, State, Store } from './types'
+import {
+  DEFAULT_EXTEND_BACKGROUND,
+  DEFAULT_EXTEND_WITH,
+  type ExtendOptions,
+  type ExtendWith
+} from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  isEmpty: () => boolean
+  isXAxisEmpty: () => boolean
+  isYAxisEmpty: () => boolean
+  getExtendOptions: () => ExtendOptions | null
+  getMinValue: () => number | null
+  getXAxis: () => number | null
+  getYAxis: () => number | null
+
+  set: (options: ExtendOptions | null) => void
+  reset: VoidFunction
+  setDirectionModel: (inputMode: DirectionModel) => void
+  setExtendValue: (value: number | null) => void
+  setXAxis: (value: number | null) => void
+  setYAxis: (value: number | null) => void
+  setLeft: (left: number | null) => void
+  setTop: (top: number | null) => void
+  setRight: (right: number | null) => void
+  setBottom: (bottom: number | null) => void
+  setExtendWith: (extendWith: ExtendWith) => void
+  setBackground: (background: string) => void
+  toggleDominantBackground: VoidFunction
+}
+
+interface ExtendValues
+  extends Omit<ExtendOptions, 'background' | 'extendWith' | 'withDominantBackground'> {
+  extendValue: number | null
+}
+
+interface State extends ExtendOptions, Pick<ExtendValues, 'extendValue'> {
+  directionModel: DirectionModel
+}
 
 export const DIRECTION_MODEL = {
   NUMBER: 'number',
   AXIS: 'axis',
   SEPARATED: 'separated'
 } as const
+type DirectionModel = (typeof DIRECTION_MODEL)[keyof typeof DIRECTION_MODEL]
+
 const defaultExtendValues: ExtendValues = {
   extendValue: null,
   left: null,
@@ -23,7 +63,7 @@ const defaultState: State = {
   withDominantBackground: false
 }
 
-// TODO: Rework :)
+// TODO: Rework? :)
 export const useExtendStore = create<Store>((set, get) => ({
   // State
   ...defaultState,

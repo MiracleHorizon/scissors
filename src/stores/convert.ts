@@ -1,8 +1,22 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@server/sharp'
-import type { Settings, Store } from './types'
+import { type ConvertSettings, DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@server/sharp'
+
+type Settings = Pick<ConvertSettings, 'flip' | 'flop' | 'grayscale'>
+
+/* eslint no-unused-vars: 0 */
+interface Store extends Settings {
+  getConvertSettings: () => Settings
+
+  reset: VoidFunction
+  setFlip: (flip: boolean) => void
+  setFlop: (flop: boolean) => void
+  setGrayscale: (grayscale: boolean) => void
+  toggleFlip: VoidFunction
+  toggleFlop: VoidFunction
+  toggleGrayscale: VoidFunction
+}
 
 const defaultState: Settings = {
   flip: DEFAULT_FLIP,

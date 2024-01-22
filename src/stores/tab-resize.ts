@@ -1,8 +1,35 @@
 import { create } from 'zustand'
 import { arrayMove } from '@dnd-kit/sortable'
+import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core'
 
 import { RESIZE_OPERATION_NAME, type ResizeQueue } from '@server/sharp'
-import type { State, Store } from './types'
+
+/* eslint-disable no-unused-vars */
+interface Store extends State {
+  isEmpty: () => boolean
+  isAllSettled: () => boolean
+  isResizeAdded: () => boolean
+  isExtendAdded: () => boolean
+  isTrimAdded: () => boolean
+  getQueue: () => ResizeQueue
+
+  setSections: (sections: Section[]) => void
+  addResizeSection: VoidFunction
+  addExtendSection: VoidFunction
+  addTrimSection: VoidFunction
+  handleDragEnd: (event: DragEndEvent) => void
+  handleMoveUp: (itemId: UniqueIdentifier) => void
+  handleMoveDown: (itemId: UniqueIdentifier) => void
+  handleRemove: (itemId: UniqueIdentifier) => void
+}
+
+interface Section {
+  id: UniqueIdentifier
+}
+
+interface State {
+  sections: Section[]
+}
 
 const defaultState: State = {
   sections: [
@@ -12,6 +39,7 @@ const defaultState: State = {
   ]
 }
 
+// TODO: move out of @stores
 export const useTabResizeStore = create<Store>((set, get) => ({
   // State
   ...defaultState,

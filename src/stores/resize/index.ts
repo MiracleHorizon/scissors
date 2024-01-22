@@ -1,1 +1,0 @@
-export { useResizeStore } from './store'

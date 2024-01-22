@@ -1,7 +1,22 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NORMALISE } from '@server/sharp'
-import type { Store } from './types'
+import { DEFAULT_NORMALISE, type NormaliseOptions } from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  getNormaliseOptions: () => NormaliseOptions | null
+
+  set: (options: NormaliseOptions | null) => void
+  reset: VoidFunction
+  add: VoidFunction
+  remove: VoidFunction
+  setLower: (lower: number) => void
+  setUpper: (upper: number) => void
+}
+
+interface State extends NormaliseOptions {
+  isAdded: boolean
+}
 
 export const useNormaliseStore = create<Store>((set, get) => ({
   // State
@@ -26,8 +41,6 @@ export const useNormaliseStore = create<Store>((set, get) => ({
 
     set({ ...options, isAdded })
   },
-  add: () => set({ isAdded: true }),
-  remove: () => set({ isAdded: false, ...DEFAULT_NORMALISE }),
   reset: () =>
     set(state => {
       if (!state.isAdded) {
@@ -38,6 +51,10 @@ export const useNormaliseStore = create<Store>((set, get) => ({
         ...DEFAULT_NORMALISE
       }
     }),
+
+  add: () => set({ isAdded: true }),
+  remove: () => set({ isAdded: false, ...DEFAULT_NORMALISE }),
+
   setLower: lower =>
     set(state => {
       if (!state.isAdded) {

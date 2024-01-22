@@ -9,11 +9,31 @@ import {
   DEFAULT_WITHOUT_ENLARGEMENT,
   DEFAULT_WITHOUT_REDUCTION,
   RESIZE_FIT,
-  type ResizeOptions
+  type ResizeFit,
+  type ResizeKernel,
+  type ResizeOptions,
+  type ResizePosition
 } from '@server/sharp'
-import type { Store } from './types'
 
-export const defaultState: ResizeOptions = {
+/* eslint no-unused-vars: 0 */
+type Store = ResizeOptions & {
+  getResizeOptions: () => ResizeOptions | null
+
+  set: (options: ResizeOptions | null) => void
+  reset: VoidFunction
+  setWidth: (width: number | null) => void
+  setHeight: (height: number | null) => void
+  setFit: (fit: ResizeFit) => void
+  setBackground: (background: string) => void
+  setPosition: (position: ResizePosition) => void
+  setKernel: (kernel: ResizeKernel) => void
+  toggleEnlargement: VoidFunction
+  toggleReduction: VoidFunction
+  toggleFastShrink: VoidFunction
+  toggleDominantBackground: VoidFunction
+}
+
+const defaultState: ResizeOptions = {
   width: null,
   height: null,
 

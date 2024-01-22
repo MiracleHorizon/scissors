@@ -1,7 +1,18 @@
 import { create } from 'zustand'
 
-import { DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/sharp'
-import type { Store } from './types'
+import { type BlurOptions, DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends BlurOptions {
+  getBlurOptions: () => BlurOptions | null
+
+  set: (options: BlurOptions | null) => void
+  reset: VoidFunction
+  toggle: VoidFunction
+  addSigma: VoidFunction
+  removeSigma: VoidFunction
+  setSigma: (sigma: number) => void
+}
 
 export const useBlurStore = create<Store>((set, get) => ({
   // State
@@ -21,11 +32,12 @@ export const useBlurStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => set({ ...(options ?? DEFAULT_BLUR) }),
+  reset: () => set({ ...DEFAULT_BLUR }),
+
   toggle: () =>
     set(state => ({
       value: !state.value
     })),
-  reset: () => set({ ...DEFAULT_BLUR }),
   addSigma: () =>
     set(state => {
       if (!state.value) {

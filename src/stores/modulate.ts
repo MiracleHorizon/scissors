@@ -1,6 +1,24 @@
 import { create } from 'zustand'
 
-import type { State, Store } from './types'
+import type { ModulateOptions } from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  getModulateOptions: () => ModulateOptions | null
+
+  set: (options: ModulateOptions | null) => void
+  reset: VoidFunction
+  add: VoidFunction
+  remove: VoidFunction
+  setLightness: (value: number) => void
+  setBrightness: (value: number) => void
+  setSaturation: (value: number) => void
+  setHue: (value: number) => void
+}
+
+interface State extends ModulateOptions {
+  isAdded: boolean
+}
 
 const defaultState: State = {
   isAdded: false,
@@ -40,14 +58,6 @@ export const useModulateStore = create<Store>((set, get) => ({
 
     set({ ...options, isAdded })
   },
-  add: () => set({ isAdded: true }),
-  remove: () => set({ ...defaultState }),
-
-  setLightness: value => set({ lightness: value }),
-  setBrightness: value => set({ brightness: value }),
-  setSaturation: value => set({ saturation: value }),
-  setHue: value => set({ hue: value }),
-
   reset: () =>
     set(state => {
       if (!state.isAdded) {
@@ -58,5 +68,13 @@ export const useModulateStore = create<Store>((set, get) => ({
         ...defaultState,
         isAdded: true
       }
-    })
+    }),
+
+  add: () => set({ isAdded: true }),
+  remove: () => set({ ...defaultState }),
+
+  setLightness: value => set({ lightness: value }),
+  setBrightness: value => set({ brightness: value }),
+  setSaturation: value => set({ saturation: value }),
+  setHue: value => set({ hue: value })
 }))

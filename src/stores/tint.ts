@@ -1,7 +1,20 @@
 import { create } from 'zustand'
 
 import { DEFAULT_TINT_COLOR } from '@server/sharp'
-import type { State, Store } from './types'
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  set: (color: string | null) => void
+  reset: VoidFunction
+  add: VoidFunction
+  remove: VoidFunction
+  setColor: (color: string) => void
+}
+
+interface State {
+  isAdded: boolean
+  color: string | null
+}
 
 const defaultState: State = {
   isAdded: false,
@@ -18,14 +31,6 @@ export const useTintStore = create<Store>(set => ({
 
     set({ color, isAdded })
   },
-  add: () =>
-    set({
-      isAdded: true,
-      color: DEFAULT_TINT_COLOR
-    }),
-
-  remove: () => set({ isAdded: false, color: null }),
-  setColor: color => set({ color }),
   reset: () =>
     set(state => {
       if (!state.isAdded) {
@@ -35,5 +40,14 @@ export const useTintStore = create<Store>(set => ({
       return {
         color: DEFAULT_TINT_COLOR
       }
-    })
+    }),
+
+  add: () =>
+    set({
+      isAdded: true,
+      color: DEFAULT_TINT_COLOR
+    }),
+  remove: () => set({ isAdded: false, color: null }),
+
+  setColor: color => set({ color })
 }))

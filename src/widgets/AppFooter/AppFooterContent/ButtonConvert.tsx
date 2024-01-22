@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { ButtonRequest } from './ButtonRequest'
-import { useConvertMutation } from '@api/convertImage'
+import { useConvertMutation } from '@api/convert-image'
 import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'

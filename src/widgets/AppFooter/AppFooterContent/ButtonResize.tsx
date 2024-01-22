@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { ButtonRequest } from './ButtonRequest'
-import { useResizeMutation } from '@api/resizeImage'
+import { useResizeMutation } from '@api/resize-image'
 import { useResizeSettings } from '@stores/hooks/useResizeSettings'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'

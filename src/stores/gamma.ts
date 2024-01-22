@@ -1,7 +1,18 @@
 import { create } from 'zustand'
 
-import { DEFAULT_GAMMA } from '@server/sharp'
-import type { Store } from './types'
+import { DEFAULT_GAMMA, type GammaOptions } from '@server/sharp'
+
+/* eslint no-unused-vars: 0 */
+interface Store {
+  isAdded: boolean
+  gamma: GammaOptions | null
+
+  set: (options: GammaOptions | null) => void
+  reset: VoidFunction
+  add: VoidFunction
+  remove: VoidFunction
+  setValue: (value: number) => void
+}
 
 export const useGammaStore = create<Store>(set => ({
   // State
@@ -14,16 +25,6 @@ export const useGammaStore = create<Store>(set => ({
 
     set({ gamma: options, isAdded })
   },
-  add: () =>
-    set({
-      isAdded: true,
-      gamma: DEFAULT_GAMMA
-    }),
-  remove: () =>
-    set({
-      isAdded: false,
-      gamma: null
-    }),
   reset: () =>
     set(state => {
       if (!state.isAdded) {
@@ -34,6 +35,18 @@ export const useGammaStore = create<Store>(set => ({
         gamma: DEFAULT_GAMMA
       }
     }),
+
+  add: () =>
+    set({
+      isAdded: true,
+      gamma: DEFAULT_GAMMA
+    }),
+  remove: () =>
+    set({
+      isAdded: false,
+      gamma: null
+    }),
+
   setValue: gamma =>
     set(state => {
       if (!state.isAdded) {
