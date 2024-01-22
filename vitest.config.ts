@@ -61,7 +61,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       cleanOnRerun: true,
-      provider: 'istanbul',
+      provider: 'v8',
       reporter: ['html'],
       reportsDirectory: path.resolve(setupDir, 'coverage'),
       reportOnFailure: true,
