@@ -60,11 +60,11 @@ const normaliseSchema = object({
 
 const rotateSchema = object({
   angle: number().min(MIN_ROTATE_ANGLE).max(MAX_ROTATE_ANGLE).required(),
-  background: string().matches(hexValidationRegex).required(),
+  background: string().matches(hexValidationRegex).nullable().defined(),
   withDominantBackground: boolean().defined().required()
 })
-  .defined()
   .nullable()
+  .defined()
 
 const gammaSchema = object({
   value: number().min(MIN_GAMMA).max(MAX_GAMMA).required()

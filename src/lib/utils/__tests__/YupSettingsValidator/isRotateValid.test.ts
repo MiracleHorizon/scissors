@@ -23,6 +23,13 @@ describe('@utils/YupSettingsValidator.isRotateValid', () => {
         withDominantBackground: false
       })
     ).toBe(true)
+    expect(
+      isRotateValid({
+        angle: 0,
+        background: null,
+        withDominantBackground: true
+      })
+    ).toBe(true)
   })
 
   it('should return false for invalid rotate options object', () => {

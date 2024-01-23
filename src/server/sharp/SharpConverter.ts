@@ -3,6 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { getStatsOrNull } from './getStatsOrNull'
+import { DEFAULT_ROTATE_BACKGROUND } from './constants'
 import type {
   BlurOptions,
   ConvertSettings,
@@ -163,7 +164,10 @@ export class SharpConverter {
       throw new Error('Invalid rotate options')
     }
 
-    const background = this.getRotateBackground(options)
+    const background = this.getRotateBackground({
+      background: options.background ?? DEFAULT_ROTATE_BACKGROUND,
+      withDominantBackground: options.withDominantBackground
+    })
 
     try {
       this.imageSharp.rotate(angle, {
@@ -185,7 +189,10 @@ export class SharpConverter {
   private getRotateBackground({
     background,
     withDominantBackground
-  }: Pick<RotateOptions, 'background' | 'withDominantBackground'>): Color {
+  }: {
+    background: string
+    withDominantBackground: boolean
+  }): Color {
     if (!this.stats && withDominantBackground) {
       throw new Error('Failed to rotate the image with the dominant background color')
     }

@@ -1,5 +1,6 @@
 import { ColorPicker } from '@ui/ColorPicker'
 import { useRotateStore } from '@stores/rotate'
+import { DEFAULT_ROTATE_BACKGROUND } from '@server/sharp'
 
 export function RotateBackgroundPopover() {
   const rotateBackground = useRotateStore(state => state.background)
@@ -7,13 +8,9 @@ export function RotateBackgroundPopover() {
 
   const setRotateBackground = useRotateStore(state => state.setBackground)
 
-  if (!rotateBackground) {
-    return null
-  }
-
   return (
     <ColorPicker
-      color={rotateBackground}
+      color={rotateBackground ?? DEFAULT_ROTATE_BACKGROUND}
       setColor={setRotateBackground}
       disabled={withDominantBackground}
       triggerLabel='Background'

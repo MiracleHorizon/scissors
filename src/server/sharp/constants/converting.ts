@@ -60,7 +60,7 @@ export const DEFAULT_ROTATE_BACKGROUND = '#000000'
 export const DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND = false
 export const DEFAULT_ROTATE: RotateOptions = {
   angle: DEFAULT_ROTATE_ANGLE,
-  background: DEFAULT_ROTATE_BACKGROUND,
+  background: null,
   withDominantBackground: DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND
 }
 

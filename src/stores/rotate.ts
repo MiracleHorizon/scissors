@@ -1,11 +1,6 @@
 import { create } from 'zustand'
 
-import {
-  DEFAULT_ROTATE,
-  DEFAULT_ROTATE_ANGLE,
-  DEFAULT_ROTATE_BACKGROUND,
-  type RotateOptions
-} from '@server/sharp'
+import { DEFAULT_ROTATE, type RotateOptions } from '@server/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
@@ -42,9 +37,14 @@ export const useRotateStore = create<Store>((set, get) => ({
       return null
     }
 
+    const angle = get().angle
+    if (!angle) {
+      return null
+    }
+
     return {
-      angle: get().angle ?? DEFAULT_ROTATE_ANGLE,
-      background: get().background ?? DEFAULT_ROTATE_BACKGROUND,
+      angle,
+      background: get().background,
       withDominantBackground: get().withDominantBackground
     }
   },
