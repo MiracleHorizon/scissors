@@ -12,13 +12,42 @@ import type { ConvertSettings } from '@server/sharp'
 export function useConvertSettings(): ConvertSettings {
   const convertSettings = useConvertStore(state => state.getConvertSettings())
   const rotate = useRotateStore(state => state.getRotateOptions())
-  const modulate = useModulateStore(state => state.getModulateOptions())
   const blur = useBlurStore(state => state.getBlurOptions())
   const negate = useNegateStore(state => state.getNegateOptions())
   const gamma = useGammaStore(state => state.gamma)
   const normalise = useNormaliseStore(state => state.getNormaliseOptions())
-  const tint = useTintStore(state => state.color)
   const outputFormat = useOutputStore(state => state.getOutputFormat())
+  const modulate = useModulateStore(state => {
+    const modulateOptions = state.getModulateOptions()
+
+    if (!modulateOptions) {
+      return null
+    }
+
+    /*
+     * The enabled grayscale option overrides the other options for working
+     * with image colors.
+     */
+    if (convertSettings.grayscale) {
+      return {
+        ...modulateOptions,
+        hue: null
+      }
+    }
+
+    return modulateOptions
+  })
+  const tint = useTintStore(state => {
+    /*
+     * The enabled grayscale option overrides the other options for working
+     * with image colors.
+     */
+    if (convertSettings.grayscale) {
+      return null
+    }
+
+    return state.color
+  })
 
   return {
     ...convertSettings,
