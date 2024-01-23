@@ -13,11 +13,10 @@ const options = [
   { key: 'hue', Component: SliderHue }
 ]
 
-export function ModulateList() {
-  return options.map(({ key, Component }, index) => (
+export const ModulateList = () =>
+  options.map(({ key, Component }, index) => (
     <Fragment key={key}>
       <Component />
       {index < options.length - 1 && <Separator my='1' size='4' />}
     </Fragment>
   ))
-}

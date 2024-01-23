@@ -10,13 +10,11 @@ const direction: FlexDirection = {
   md: 'column'
 }
 
-export function Negate() {
-  return (
-    <Flex asChild gap='2' direction={direction}>
-      <section>
-        <SwitchNegate />
-        <SwitchNegateAlpha />
-      </section>
-    </Flex>
-  )
-}
+export const Negate = () => (
+  <Flex asChild direction={direction} gap='2'>
+    <section>
+      <SwitchNegate />
+      <SwitchNegateAlpha />
+    </section>
+  </Flex>
+)

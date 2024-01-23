@@ -1,5 +1,3 @@
-'use client'
-
 import { useCallback, useMemo } from 'react'
 import { Flex, Strong, Text } from '@radix-ui/themes'
 
@@ -12,13 +10,11 @@ import { useBlurStore } from '@stores/blur'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 import type { AlignItems, FlexDirection, Gap } from '@lib/theme'
 
-function BlurInfo() {
-  return (
-    <Text as='p' size='3'>
-      More accurate <Strong>Gaussian</Strong> blur. Performs a <Strong>slower</Strong>
-    </Text>
-  )
-}
+const BlurInfo = () => (
+  <Text as='p' size='3'>
+    More accurate <Strong>Gaussian</Strong> blur. Performs a <Strong>slower</Strong>
+  </Text>
+)
 
 export function Blur() {
   const blur = useBlurStore(state => state.value)

@@ -1,5 +1,3 @@
-'use client'
-
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetNormalise } from './ButtonResetNormalise'
 import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'

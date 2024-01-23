@@ -11,14 +11,12 @@ const direction: FlexDirection = {
   md: 'column'
 }
 
-export function BasicOptions() {
-  return (
-    <Flex asChild gap='2' direction={direction}>
-      <section>
-        <SwitchFlip />
-        <SwitchFlop />
-        <SwitchGrayscale />
-      </section>
-    </Flex>
-  )
-}
+export const BasicOptions = () => (
+  <Flex asChild gap='2' direction={direction}>
+    <section>
+      <SwitchFlip />
+      <SwitchFlop />
+      <SwitchGrayscale />
+    </section>
+  </Flex>
+)

@@ -1,5 +1,3 @@
-'use client'
-
 import { useCallback } from 'react'
 
 import { OptionSlider } from '@components/OptionSlider'

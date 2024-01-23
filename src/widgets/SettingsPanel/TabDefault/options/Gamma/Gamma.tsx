@@ -1,5 +1,3 @@
-'use client'
-
 import { Flex } from '@radix-ui/themes'
 
 import { GammaContent } from './GammaContent'

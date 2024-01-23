@@ -1,5 +1,3 @@
-'use client'
-
 import { Fragment } from 'react'
 import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 

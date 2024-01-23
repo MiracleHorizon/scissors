@@ -1,5 +1,3 @@
-'use client'
-
 import { Flex } from '@radix-ui/themes'
 
 import { NormaliseContent } from './NormaliseContent'
