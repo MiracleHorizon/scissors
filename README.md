@@ -87,4 +87,4 @@ Currently, the following image formats are supported:
 MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
 
 [project-github]: https://github.com/MiracleHorizon/scissors
-[preview-screenshot]: public/preview-screenshot.png
+[preview-screenshot]: readme/preview-screenshot.png
