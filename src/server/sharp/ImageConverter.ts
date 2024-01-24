@@ -1,9 +1,9 @@
-import sharp, { type Color, type FormatEnum, type Stats } from 'sharp'
 import isEmpty from 'lodash.isempty'
+import type { FormatEnum } from 'sharp'
 
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { getStatsOrNull } from './getStatsOrNull'
+import { ImageSharp } from './ImageSharp'
 import { DEFAULT_ROTATE_BACKGROUND } from './constants'
+import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import type {
   BlurOptions,
   ConvertSettings,
@@ -14,12 +14,9 @@ import type {
   RotateOptions
 } from './types'
 
-export class SharpConverter {
-  private readonly imageSharp: sharp.Sharp
-  private stats: Stats | null = null
-
-  constructor(imageBuffer: ArrayBuffer) {
-    this.imageSharp = sharp(imageBuffer)
+export class ImageConverter extends ImageSharp {
+  constructor(buffer: ArrayBuffer) {
+    super(buffer)
   }
 
   public async convert({
@@ -35,7 +32,7 @@ export class SharpConverter {
     modulate,
     outputFormat
   }: ConvertSettings): Promise<Buffer> {
-    await this.initialiseStats()
+    await this.initialiseInputStatistics()
 
     if (flip) {
       this.flip()
@@ -84,21 +81,16 @@ export class SharpConverter {
     return this.toBuffer()
   }
 
-  private async initialiseStats(): Promise<void> {
-    const stats = await getStatsOrNull(this.imageSharp)
-    if (stats) this.stats = stats
-  }
-
   private flip(): void {
-    this.imageSharp.flip()
+    this.sharp.flip()
   }
 
   private flop(): void {
-    this.imageSharp.flop()
+    this.sharp.flop()
   }
 
   private grayscale(): void {
-    this.imageSharp.grayscale()
+    this.sharp.grayscale()
   }
 
   private blur({ value, sigma }: BlurOptions): void {
@@ -113,7 +105,7 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.blur(sigma ?? false)
+      this.sharp.blur(sigma ?? false)
     } catch (err) {
       throw new Error('Failed to blur the image', {
         cause: err
@@ -132,7 +124,7 @@ export class SharpConverter {
       throw new Error('Invalid negate options')
     }
 
-    this.imageSharp.negate({
+    this.sharp.negate({
       alpha
     })
   }
@@ -144,7 +136,7 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.normalise(options)
+      this.sharp.normalise(options)
     } catch (err) {
       throw new Error('Failed to normalise the image', {
         cause: err
@@ -163,13 +155,13 @@ export class SharpConverter {
       throw new Error('Invalid rotate options')
     }
 
-    const background = this.getRotateBackground({
+    const background = this.getBackground({
       background: options.background ?? DEFAULT_ROTATE_BACKGROUND,
       withDominantBackground: options.withDominantBackground
     })
 
     try {
-      this.imageSharp.rotate(angle, {
+      this.sharp.rotate(angle, {
         background
       })
     } catch (err) {
@@ -185,24 +177,6 @@ export class SharpConverter {
     }
   }
 
-  private getRotateBackground({
-    background,
-    withDominantBackground
-  }: {
-    background: string
-    withDominantBackground: boolean
-  }): Color {
-    if (!this.stats && withDominantBackground) {
-      throw new Error('Failed to rotate the image with the dominant background color')
-    }
-
-    if (!this.stats || !withDominantBackground) {
-      return background
-    }
-
-    return this.stats.dominant
-  }
-
   private tint(color: string): void {
     const isValid = YupSettingsValidator.isTintValid(color)
     if (!isValid) {
@@ -210,7 +184,7 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.tint(color)
+      this.sharp.tint(color)
     } catch (err) {
       throw new Error('Failed to tint the image. Sure that the color is valid', {
         cause: err
@@ -225,7 +199,7 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.gamma(gamma)
+      this.sharp.gamma(gamma)
     } catch (err) {
       throw new Error(`Failed to gammaize the image with gamma: ${gamma}`, {
         cause: err
@@ -250,7 +224,7 @@ export class SharpConverter {
 
     if (isEmpty(options)) return
 
-    this.imageSharp.modulate(options)
+    this.sharp.modulate(options)
   }
 
   private toFormat(format: ImageFileFormat): void {
@@ -260,15 +234,11 @@ export class SharpConverter {
     }
 
     try {
-      this.imageSharp.toFormat(format as keyof FormatEnum)
+      this.sharp.toFormat(format as keyof FormatEnum)
     } catch (err) {
       throw new Error(`Failed to convert the image to the .${format} format`, {
         cause: err
       })
     }
-  }
-
-  private async toBuffer(): Promise<Buffer> {
-    return this.imageSharp.toBuffer()
   }
 }
