@@ -1,8 +1,12 @@
 import type { ReactNode } from 'react'
 
+import type { NonEmptyArray } from '@app-types/NonEmptyArray'
+
 export type Props = SliderProps & {
   valueSign?: string
   disabled?: boolean
+  allowFloat?: boolean
+  maxFractionDigits?: number
 } & (WithHeader | WithoutHeader)
 
 interface WithHeader {
@@ -19,8 +23,8 @@ interface WithoutHeader {
 
 /* eslint no-unused-vars: 0 */
 interface SliderProps {
-  value: number[]
-  defaultValue: number[]
+  value: NonEmptyArray<number | null>
+  defaultValue: NonEmptyArray<number>
   min: number
   max: number
   onValueChange: (value: number[]) => void

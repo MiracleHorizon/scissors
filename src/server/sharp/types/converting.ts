@@ -9,7 +9,7 @@ export interface ConvertSettings {
   normalise: NormaliseOptions | null
   blur: BlurOptions | null
   rotate: RotateOptions | null
-  gamma: GammaOptions | null
+  gamma: GammaValue
   modulate: ModulateOptions | null
   outputFormat: ImageFileFormat | null
 }
@@ -32,13 +32,11 @@ export interface RotateOptions {
   withDominantBackground: boolean
 }
 
+export type GammaValue = number | null
+
 export interface NegateOptions {
   value: boolean
   alpha: boolean
-}
-
-export interface GammaOptions {
-  value: number
 }
 
 export interface NormaliseOptions {
@@ -46,4 +44,4 @@ export interface NormaliseOptions {
   upper: number
 }
 
-export type ImageFileFormat = keyof typeof IMAGE_FILE_FORMAT
+export type ImageFileFormat = (typeof IMAGE_FILE_FORMAT)[keyof typeof IMAGE_FILE_FORMAT]

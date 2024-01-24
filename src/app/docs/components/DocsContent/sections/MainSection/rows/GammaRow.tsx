@@ -18,7 +18,7 @@ export function GammaRow() {
           and then increasing the subsequent encoding size (brightening) by a factor of gamma.
         </Text>
       }
-      defaultValue={DEFAULT_GAMMA.value}
+      defaultValue={DEFAULT_GAMMA}
     />
   )
 }

@@ -27,6 +27,10 @@ const aliases: Alias[] = [
     replacementPath: './src/lib'
   },
   {
+    find: '@hooks',
+    replacementPath: './src/hooks'
+  },
+  {
     find: '@components',
     replacementPath: './src/components'
   },

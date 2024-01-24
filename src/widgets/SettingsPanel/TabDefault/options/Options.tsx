@@ -27,8 +27,7 @@ const options = [
 const padding: PaddingProps = {
   pl: '3',
   pr: '4',
-  pb: '2',
-  pt: '4'
+  py: '4'
 }
 
 export function Options() {

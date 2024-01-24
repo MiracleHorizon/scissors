@@ -3,19 +3,38 @@
 import { type ChangeEvent, type FC, type KeyboardEvent, useCallback, useId, useRef } from 'react'
 import { Box, Flex, Text, TextField } from '@radix-ui/themes'
 
+import { NOT_ALLOWED_KEYS, parseValue } from './utils'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import type { LabelProps, Props } from './OptionNumberInput.types'
 
+export const labelTestId = 'option-number-input-label'
+
+const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
+  <Flex data-testid={labelTestId} direction='column' gap='1' width='100%'>
+    <Text as='label' size='2' htmlFor={id}>
+      {label}
+    </Text>
+    {children}
+  </Flex>
+)
+
+export const fieldRootTestId = 'option-number-input-root'
+export const fieldTestId = 'option-number-input-field'
+export const slotTestId = 'option-number-input-slot'
+
 export function OptionNumberInput({
   icon,
+  min,
   max,
   value,
   setValue,
   label,
+  allowFloat,
+  maxFractionDigits,
   ...inputAttributes
 }: Props) {
-  const inputId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
+  const inputId = useId()
 
   const handleChange = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -24,49 +43,77 @@ export function OptionNumberInput({
         return setValue(null)
       }
 
-      const parsedValue = parseInt(value)
-      if (isNaN(parsedValue)) return
+      const parsedValue = parseValue({
+        value,
+        allowFloat,
+        maxFractionDigits
+      })
+      if (parsedValue === null) return
 
-      const isOverflowValue = parsedValue > max
-      if (isOverflowValue) {
+      if (parsedValue < min) {
+        return setValue(min)
+      }
+      if (parsedValue > max) {
         return setValue(max)
       }
 
       setValue(parsedValue)
     },
-    [max, setValue]
+    [min, max, setValue, allowFloat, maxFractionDigits]
   )
 
-  const handleKeyDown = (ev: KeyboardEvent<HTMLInputElement>) => {
-    const NOT_ALLOWED_NUMERIC_KEYS = ['e', 'E', '+', '-']
+  const handleKeyDown = useCallback(
+    (ev: KeyboardEvent<HTMLInputElement>) => {
+      const value = ev.currentTarget.value
 
-    const value = ev.currentTarget.value
-    const parsedValue = parseInt(value)
+      /*
+       * Allow '-' for negative values.
+       */
+      if (value.length === 0 && ev.key === '-') return
 
-    const isOverflowValue = parsedValue > max
-    const isNotAllowedKey = NOT_ALLOWED_NUMERIC_KEYS.includes(ev.key)
+      /*
+       * Prevent typing non-numeric keys and dot.
+       */
+      const isNotAllowedKey = NOT_ALLOWED_KEYS.includes(ev.key)
+      if (isNotAllowedKey && !value.startsWith('-')) {
+        return ev.preventDefault()
+      }
+      /*
+       * Prevent typing ',' when float numbers is not allowed.
+       */
+      if (!allowFloat && ev.key === ',') {
+        return ev.preventDefault()
+      }
 
-    if (isOverflowValue || isNotAllowedKey) {
-      ev.preventDefault()
-    }
-  }
+      /*
+       * Prevent typing out-of-range values.
+       */
+      const parsedValue = parseFloat(value)
+      if (parsedValue > max || parsedValue < min) {
+        ev.preventDefault()
+      }
+    },
+    [min, max, allowFloat]
+  )
 
   useEscapeBlur({
     ref: inputRef
   })
 
-  const JSX = (
+  const textFieldJSX = (
     <Box asChild width='100%'>
-      <TextField.Root>
-        {icon && <TextField.Slot>{icon}</TextField.Slot>}
+      <TextField.Root data-testid={fieldRootTestId}>
+        {icon && <TextField.Slot data-testid={slotTestId}>{icon}</TextField.Slot>}
         <TextField.Input
           {...inputAttributes}
+          data-testid={fieldTestId}
           ref={inputRef}
           id={inputId}
           value={value ?? ''}
           type='number'
           inputMode='numeric'
           pattern='\d*'
+          min={min}
           max={max}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
@@ -78,19 +125,10 @@ export function OptionNumberInput({
   if (label) {
     return (
       <WithLabel id={inputId} label={label}>
-        {JSX}
+        {textFieldJSX}
       </WithLabel>
     )
   }
 
-  return JSX
+  return textFieldJSX
 }
-
-const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
-  <Flex direction='column' gap='1' width='100%'>
-    <Text as='label' size='2' htmlFor={id}>
-      {label}
-    </Text>
-    {children}
-  </Flex>
-)

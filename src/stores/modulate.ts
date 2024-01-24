@@ -10,10 +10,10 @@ interface Store extends State {
   reset: VoidFunction
   add: VoidFunction
   remove: VoidFunction
-  setLightness: (value: number) => void
-  setBrightness: (value: number) => void
-  setSaturation: (value: number) => void
-  setHue: (value: number) => void
+  setLightness: (value: number | null) => void
+  setBrightness: (value: number | null) => void
+  setSaturation: (value: number | null) => void
+  setHue: (value: number | null) => void
 }
 
 interface State extends ModulateOptions {
@@ -34,18 +34,21 @@ export const useModulateStore = create<Store>((set, get) => ({
 
   // Computed
   getModulateOptions: () => {
-    if (!get().isAdded) {
+    const { isAdded, lightness, brightness, saturation, hue } = get()
+
+    if (!isAdded) {
       return null
     }
 
-    const options = {
-      lightness: get().lightness,
-      brightness: get().brightness,
-      saturation: get().saturation,
-      hue: get().hue
+    const options: ModulateOptions = {
+      lightness,
+      brightness,
+      saturation,
+      hue
     }
 
-    if (Object.values(options).every(value => value === null)) {
+    const isAllNullable = Object.values(options).every(value => value === null)
+    if (isAllNullable) {
       return null
     }
 
@@ -54,9 +57,16 @@ export const useModulateStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    const isAdded = options !== null
+    if (!options) return
 
-    set({ ...options, isAdded })
+    /*
+     * This method is only used for external import of settings. By default - the option is disabled.
+     * Therefore, if the imported options are not equal to null, you need to set the 'isAdded' flag to true.
+     */
+    set({
+      isAdded: true,
+      ...options
+    })
   },
   reset: () =>
     set(state => {

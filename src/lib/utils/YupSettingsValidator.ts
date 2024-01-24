@@ -66,11 +66,7 @@ const rotateSchema = object({
   .nullable()
   .defined()
 
-const gammaSchema = object({
-  value: number().min(MIN_GAMMA).max(MAX_GAMMA).required()
-})
-  .nullable()
-  .defined()
+const gammaSchema = number().min(MIN_GAMMA).max(MAX_GAMMA).nullable().defined()
 
 const resizeSchema = object({
   width: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_WIDTH).nullable().defined(),

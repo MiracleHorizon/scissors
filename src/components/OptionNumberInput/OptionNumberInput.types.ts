@@ -6,9 +6,10 @@ export interface Props extends InputAttributes {
   setValue: (value: number | null) => void
   min: number
   max: number
-  step: number
   label?: string
   icon?: ReactNode
+  allowFloat?: boolean
+  maxFractionDigits?: number
 }
 
 export type LabelProps = PropsWithChildren<{
@@ -18,14 +19,5 @@ export type LabelProps = PropsWithChildren<{
 
 type InputAttributes = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  | 'min'
-  | 'max'
-  | 'step'
-  | 'value'
-  | 'type'
-  | 'pattern'
-  | 'color'
-  | 'size'
-  | 'onChange'
-  | 'onKeyDown'
+  'min' | 'max' | 'value' | 'type' | 'pattern' | 'color' | 'size' | 'onChange' | 'onKeyDown'
 >

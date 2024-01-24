@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
@@ -10,19 +8,24 @@ export function SliderHue() {
   const isGrayscaleEnabled = useConvertStore(state => state.grayscale)
 
   const setHue = useModulateStore(state => state.setHue)
-  const handleSetHue = useCallback((value: number[]) => setHue(value[0]), [setHue])
+  const handleChangeHue = (value: number[]) => {
+    if (value.length === 1) {
+      return setHue(value[0])
+    }
+
+    return setHue(null)
+  }
 
   return (
     <OptionSlider
       title='Hue angle'
-      value={[hue ?? MIN_HUE]}
       valueSign='°'
+      value={[hue]}
+      defaultValue={[MIN_HUE]}
       min={MIN_HUE}
       max={MAX_HUE}
-      defaultValue={[MIN_HUE]}
-      step={1}
       disabled={isGrayscaleEnabled}
-      onValueChange={handleSetHue}
+      onValueChange={handleChangeHue}
     />
   )
 }
