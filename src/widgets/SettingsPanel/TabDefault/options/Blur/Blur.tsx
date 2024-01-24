@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Flex, Strong, Text } from '@radix-ui/themes'
 
 import { BlurIcon } from '@ui/icons/BlurIcon'
@@ -7,7 +7,7 @@ import { OptionSwitch } from '@components/OptionSwitch'
 import { ButtonAddBlurSigma } from './ButtonAddBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 import { useBlurStore } from '@stores/blur'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
+import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 import type { AlignItems, FlexDirection, Gap } from '@lib/theme'
 
 const BlurInfo = () => (
@@ -19,24 +19,24 @@ const BlurInfo = () => (
 export function Blur() {
   const blur = useBlurStore(state => state.value)
   const sigma = useBlurStore(state => state.sigma)
+  const isSigmaAdded = useBlurStore(state => state.isSigmaAdded)
 
   const isBlurDisabled = !blur
-  const withSigma = typeof sigma === 'number'
 
   const flexProps = useMemo(() => {
     const direction: FlexDirection = {
       initial: 'column',
-      xs: withSigma ? 'column' : 'row',
+      xs: isSigmaAdded ? 'column' : 'row',
       md: 'column'
     }
     const align: AlignItems = {
       initial: 'start',
-      xs: withSigma ? 'start' : 'center',
+      xs: isSigmaAdded ? 'start' : 'center',
       md: 'start'
     }
     const gap: Gap = {
       initial: '2',
-      xs: withSigma ? '2' : '4',
+      xs: isSigmaAdded ? '2' : '4',
       md: '2'
     }
 
@@ -45,31 +45,38 @@ export function Blur() {
       align,
       gap
     }
-  }, [withSigma])
+  }, [isSigmaAdded])
 
   const toggle = useBlurStore(state => state.toggle)
   const setSigma = useBlurStore(state => state.setSigma)
 
-  const handleToggle = useCallback(() => toggle(), [toggle])
-  const handleSigmaChange = useCallback((value: number[]) => setSigma(value[0]), [setSigma])
+  const handleToggle = () => toggle()
+  const handleChangeSigma = (value: number[]) => {
+    if (value.length === 1) {
+      return setSigma(value[0])
+    }
+
+    return setSigma(null)
+  }
 
   return (
     <Flex asChild {...flexProps} width='100%'>
       <section>
         <OptionSwitch title='Blur' checked={blur} onClick={handleToggle} />
-        {withSigma ? (
+
+        {isSigmaAdded ? (
           <Flex gap='4' align='center' width='100%'>
             <OptionSlider
-              title='Blur sigma'
+              title='Blur Sigma'
               titleIcon={<BlurIcon width={18} height={18} />}
-              value={[sigma ?? MIN_BLUR_SIGMA]}
+              value={[sigma]}
               defaultValue={[MIN_BLUR_SIGMA]}
-              step={0.1}
+              step={BLUR_SIGMA_STEP}
               min={MIN_BLUR_SIGMA}
               max={MAX_BLUR_SIGMA}
               disabled={isBlurDisabled}
               infoContent={<BlurInfo />}
-              onValueChange={handleSigmaChange}
+              onValueChange={handleChangeSigma}
             />
             <ButtonRemoveBlurSigma disabled={isBlurDisabled} />
           </Flex>

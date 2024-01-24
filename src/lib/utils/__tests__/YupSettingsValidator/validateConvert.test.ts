@@ -1,6 +1,7 @@
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import {
   type ConvertSettings,
+  DEFAULT_GAMMA,
   IMAGE_FILE_FORMAT,
   MAX_NORMALISE,
   MIN_BRIGHTNESS,
@@ -35,9 +36,7 @@ describe('@utils/YupSettingsValidator.validateConvert', () => {
         background: '#FFFFFF',
         withDominantBackground: false
       },
-      gamma: {
-        value: 2.2
-      },
+      gamma: DEFAULT_GAMMA,
       tint: '#FF0004',
       modulate: {
         lightness: MIN_LIGHTNESS,
@@ -72,7 +71,7 @@ describe('@utils/YupSettingsValidator.validateConvert', () => {
         withDominantBackground: false
       },
       gamma: {
-        value: 2.2
+        value: 2.2 // Invalid gamma options
       },
       tint: '#FF0000',
       modulate: {

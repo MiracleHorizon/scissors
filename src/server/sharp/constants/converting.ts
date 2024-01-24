@@ -1,10 +1,4 @@
-import type {
-  BlurOptions,
-  GammaOptions,
-  NegateOptions,
-  NormaliseOptions,
-  RotateOptions
-} from '../types'
+import type { BlurOptions, NegateOptions, NormaliseOptions } from '../types'
 
 export const IMAGE_FILE_FORMAT = {
   JPEG: 'jpeg',
@@ -32,6 +26,7 @@ export const DEFAULT_NORMALISE: NormaliseOptions = {
 // Blur
 export const MIN_BLUR_SIGMA = 0.3
 export const MAX_BLUR_SIGMA = 10
+export const BLUR_SIGMA_STEP = 0.1
 export const DEFAULT_BLUR: BlurOptions = {
   value: false,
   sigma: null
@@ -48,21 +43,14 @@ export const DEFAULT_NEGATE: NegateOptions = {
 // Gamma
 export const MIN_GAMMA = 1
 export const MAX_GAMMA = 3
-export const DEFAULT_GAMMA: GammaOptions = {
-  value: 2.2
-}
+export const DEFAULT_GAMMA = 2.2
+export const GAMMA_STEP = 0.1
 
 // Rotate
 export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
 export const DEFAULT_ROTATE_BACKGROUND = '#000000'
-export const DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND = false
-export const DEFAULT_ROTATE: RotateOptions = {
-  angle: DEFAULT_ROTATE_ANGLE,
-  background: null,
-  withDominantBackground: DEFAULT_ROTATE_WITH_DOMINANT_BACKGROUND
-}
 
 // Modulate
 export const MIN_LIGHTNESS = 0
@@ -70,9 +58,11 @@ export const MAX_LIGHTNESS = 100
 
 export const MIN_BRIGHTNESS = 0
 export const MAX_BRIGHTNESS = 1
+export const BRIGHTNESS_STEP = 0.1
 
 export const MIN_SATURATION = 0
 export const MAX_SATURATION = 10
+export const SATURATION_STEP = 0.1
 
 export const MIN_HUE = 0
 export const MAX_HUE = 360

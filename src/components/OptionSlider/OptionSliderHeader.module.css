@@ -1,0 +1,8 @@
+.heading {
+  font-size: 15px;
+}
+
+.separator {
+  margin: 0 6px;
+  background-color: var(--gray-a11);
+}

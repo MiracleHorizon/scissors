@@ -14,7 +14,7 @@ export function useConvertSettings(): ConvertSettings {
   const rotate = useRotateStore(state => state.getRotateOptions())
   const blur = useBlurStore(state => state.getBlurOptions())
   const negate = useNegateStore(state => state.getNegateOptions())
-  const gamma = useGammaStore(state => state.gamma)
+  const gamma = useGammaStore(state => state.getGammaOptions())
   const normalise = useNormaliseStore(state => state.getNormaliseOptions())
   const outputFormat = useOutputStore(state => state.getOutputFormat())
   const modulate = useModulateStore(state => {
@@ -26,7 +26,7 @@ export function useConvertSettings(): ConvertSettings {
 
     /*
      * The enabled grayscale option overrides the other options for working
-     * with image colors.
+     * with image color.
      */
     if (convertSettings.grayscale) {
       return {
@@ -40,7 +40,7 @@ export function useConvertSettings(): ConvertSettings {
   const tint = useTintStore(state => {
     /*
      * The enabled grayscale option overrides the other options for working
-     * with image colors.
+     * with image color.
      */
     if (convertSettings.grayscale) {
       return null

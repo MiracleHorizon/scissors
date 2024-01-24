@@ -7,7 +7,6 @@ import { DEFAULT_ROTATE_BACKGROUND } from './constants'
 import type {
   BlurOptions,
   ConvertSettings,
-  GammaOptions,
   ImageFileFormat,
   ModulateOptions,
   NegateOptions,
@@ -66,7 +65,7 @@ export class SharpConverter {
       this.blur(blur)
     }
 
-    if (gamma?.value) {
+    if (gamma) {
       this.gamma(gamma)
     }
 
@@ -219,18 +218,16 @@ export class SharpConverter {
     }
   }
 
-  private gamma({ value }: GammaOptions): void {
-    const isValid = YupSettingsValidator.isGammaValid({
-      value
-    })
+  private gamma(gamma: number): void {
+    const isValid = YupSettingsValidator.isGammaValid(gamma)
     if (!isValid) {
       throw new Error('Invalid gamma options')
     }
 
     try {
-      this.imageSharp.gamma(value)
+      this.imageSharp.gamma(gamma)
     } catch (err) {
-      throw new Error(`Failed to gammaize the image with gamma value: ${value}`, {
+      throw new Error(`Failed to gammaize the image with gamma: ${gamma}`, {
         cause: err
       })
     }

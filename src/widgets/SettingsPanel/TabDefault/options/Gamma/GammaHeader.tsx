@@ -1,23 +1,21 @@
-import type { FC } from 'react'
-
 import { ShadowIcon } from '@ui/icons/ShadowIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'
-import type { GammaOptions } from '@server/sharp'
+import { useGammaStore } from '@stores/gamma'
 
-export const GammaHeader: FC<Props> = ({ gamma }) => (
-  <OptionSectionHeader
-    title={`Gamma: ${gamma.value}`}
-    icon={<ShadowIcon width='18px' height='18px' label='gamma' />}
-  >
-    <>
-      <ButtonResetGamma />
-      <ButtonRemoveGamma />
-    </>
-  </OptionSectionHeader>
-)
+export function GammaHeader() {
+  const gamma = useGammaStore(state => state.gamma)
 
-interface Props {
-  gamma: GammaOptions
+  return (
+    <OptionSectionHeader
+      title={gamma !== null ? `Gamma: ${gamma}` : 'Gamma'}
+      icon={<ShadowIcon width='18px' height='18px' label='gamma' />}
+    >
+      <>
+        <ButtonResetGamma />
+        <ButtonRemoveGamma />
+      </>
+    </OptionSectionHeader>
+  )
 }

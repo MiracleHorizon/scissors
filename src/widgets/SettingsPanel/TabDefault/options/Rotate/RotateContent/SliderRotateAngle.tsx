@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import { OptionSlider } from '@components/OptionSlider'
 import { useRotateStore } from '@stores/rotate'
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/sharp'
@@ -7,21 +5,24 @@ import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@serve
 export function SliderRotateAngle() {
   const angle = useRotateStore(state => state.angle)
 
-  const setRotateAngle = useRotateStore(state => state.setAngle)
+  const setAngle = useRotateStore(state => state.setAngle)
+  const handleChangeAngle = (value: number[]) => {
+    if (value.length === 1) {
+      return setAngle(value[0])
+    }
 
-  const handleRotateAngleChange = useCallback(
-    (value: number[]) => setRotateAngle(value[0]),
-    [setRotateAngle]
-  )
+    setAngle(null)
+  }
 
   return (
     <OptionSlider
       valueSign='°'
-      value={[angle ?? DEFAULT_ROTATE_ANGLE]}
+      value={[angle]}
       defaultValue={[DEFAULT_ROTATE_ANGLE]}
       min={MIN_ROTATE_ANGLE}
       max={MAX_ROTATE_ANGLE}
-      onValueChange={handleRotateAngleChange}
+      allowFloat
+      onValueChange={handleChangeAngle}
     />
   )
 }

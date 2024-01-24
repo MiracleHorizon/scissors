@@ -1,28 +1,46 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { Flex, Heading, Separator, Slider, Text } from '@radix-ui/themes'
+import { useCallback } from 'react'
+import { Flex, Slider, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
+import { OptionNumberInput } from '../OptionNumberInput'
+import { OptionSliderHeader } from './OptionSliderHeader'
+import { getSliderTitleValue, getSliderValue } from './utils'
 import type { Props } from './OptionSlider.types'
 import styles from './OptionSlider.module.css'
 
-const OptionSliderPopover = dynamic(
-  () => import('./OptionSliderPopover').then(mod => mod.OptionSliderPopover),
-  {
-    ssr: false
-  }
-)
-
 export function OptionSlider({
+  value,
+  valueSign = '',
   title,
   titleIcon,
-  valueSign = '',
   infoContent,
+  allowFloat = false,
+  maxFractionDigits = 2,
   disabled,
   ...sliderProps
 }: Props) {
-  const { value, min, max } = sliderProps
+  const { defaultValue, min, max, step, onValueChange } = sliderProps
+
+  const isSingle = value.length === 1
+  const isMultiple = value.length > 1
+
+  const handleChangeInputValue = useCallback(
+    (inputValue: number | null) => {
+      /*
+       * Value input allows only for single value slider.
+       */
+      if (isMultiple) return
+
+      if (inputValue === null) {
+        return onValueChange([])
+      }
+
+      onValueChange([inputValue])
+    },
+    [isMultiple, onValueChange]
+  )
 
   return (
     <Flex
@@ -33,32 +51,29 @@ export function OptionSlider({
       })}
     >
       {title && (
-        <Flex asChild mb='3' px='0' align='center'>
-          <article>
-            {titleIcon && (
-              <>
-                <Flex asChild align='center' justify='center'>
-                  <span>{titleIcon}</span>
-                </Flex>
-                <Separator orientation='vertical' className={styles.separator} />
-              </>
-            )}
-
-            <Heading weight='medium' className={styles.title}>
-              {title}:{' '}
-              {value.length > 1 ? `${value[0]} - ${value[1]}${valueSign}` : value + valueSign}
-            </Heading>
-
-            {infoContent && (
-              <OptionSliderPopover isOptionDisabled={disabled}>{infoContent}</OptionSliderPopover>
-            )}
-          </article>
-        </Flex>
+        <OptionSliderHeader
+          title={getSliderTitleValue({
+            title,
+            value,
+            valueSign
+          })}
+          titleIcon={titleIcon}
+          disabled={disabled}
+          infoContent={infoContent}
+        />
       )}
 
-      <Flex align='start' gap='3' width='100%'>
-        <Flex direction='column' className={styles.sliderRoot}>
-          <Slider {...sliderProps} disabled={disabled} size='2' />
+      <Flex align='start' gap='3' width='100%' className={styles.content}>
+        <Flex direction='column' className={styles.sliderContainer}>
+          <Slider
+            {...sliderProps}
+            value={getSliderValue({
+              value,
+              defaultValue
+            })}
+            disabled={disabled}
+            size='2'
+          />
           <Flex mt='2' justify='between'>
             <Text size='3' weight='medium'>
               {min}
@@ -70,6 +85,23 @@ export function OptionSlider({
             </Text>
           </Flex>
         </Flex>
+
+        {/*
+          Value input allows only for single value slider.
+        */}
+        {isSingle && (
+          <OptionNumberInput
+            value={value[0]}
+            min={min}
+            max={max}
+            step={step}
+            disabled={disabled}
+            allowFloat={allowFloat}
+            maxFractionDigits={maxFractionDigits}
+            placeholder={`${defaultValue[0]}${valueSign}`}
+            setValue={handleChangeInputValue}
+          />
+        )}
       </Flex>
     </Flex>
   )

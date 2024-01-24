@@ -1,23 +1,28 @@
-import { useCallback } from 'react'
-
 import { OptionSlider } from '@components/OptionSlider'
 import { useGammaStore } from '@stores/gamma'
-import { MAX_GAMMA, MIN_GAMMA } from '@server/sharp'
+import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@server/sharp'
 
 export function SliderGamma() {
-  const gammaValue = useGammaStore(state => state.gamma?.value)
+  const gamma = useGammaStore(state => state.gamma)
 
   const setGamma = useGammaStore(state => state.setValue)
-  const handleGammaChange = useCallback((value: number[]) => setGamma(value[0]), [setGamma])
+  const handleChangeGamma = (value: number[]) => {
+    if (value.length === 1) {
+      return setGamma(value[0])
+    }
+
+    setGamma(null)
+  }
 
   return (
     <OptionSlider
-      value={[gammaValue ?? MIN_GAMMA]}
+      value={[gamma]}
       defaultValue={[MIN_GAMMA]}
-      step={0.1}
+      step={GAMMA_STEP}
       min={MIN_GAMMA}
       max={MAX_GAMMA}
-      onValueChange={handleGammaChange}
+      allowFloat
+      onValueChange={handleChangeGamma}
     />
   )
 }

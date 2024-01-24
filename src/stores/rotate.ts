@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_ROTATE, type RotateOptions } from '@server/sharp'
+import type { RotateOptions } from '@server/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
@@ -10,7 +10,7 @@ interface Store extends State {
   reset: VoidFunction
   add: VoidFunction
   remove: VoidFunction
-  setAngle: (angle: number) => void
+  setAngle: (angle: number | null) => void
   setBackground: (background: string) => void
   toggleDominantBackground: VoidFunction
 }
@@ -22,9 +22,14 @@ interface State {
   withDominantBackground: boolean
 }
 
+const defaultRotation: Omit<State, 'isAdded'> = {
+  angle: null,
+  background: null,
+  withDominantBackground: false
+}
 const defaultState: State = {
   isAdded: false,
-  ...DEFAULT_ROTATE
+  ...defaultRotation
 }
 
 export const useRotateStore = create<Store>((set, get) => ({
@@ -33,27 +38,34 @@ export const useRotateStore = create<Store>((set, get) => ({
 
   // Computed
   getRotateOptions: () => {
-    if (!get().isAdded) {
-      return null
-    }
+    const { isAdded, angle, background, withDominantBackground } = get()
 
-    const angle = get().angle
-    if (!angle) {
+    /*
+     * Falsy angle value (null or 0) is not available.
+     */
+    if (!isAdded || !angle) {
       return null
     }
 
     return {
       angle,
-      background: get().background,
-      withDominantBackground: get().withDominantBackground
+      background,
+      withDominantBackground
     }
   },
 
   // Actions
   set: options => {
-    const isAdded = options !== null
+    if (!options) return
 
-    set({ ...options, isAdded })
+    /*
+     * This method is only used for external import of settings. By default - the option is disabled.
+     * Therefore, if the imported options are not equal to null, you need to set the 'isAdded' flag to true
+     */
+    set({
+      isAdded: true,
+      ...options
+    })
   },
   reset: () => {
     set(state => {
@@ -62,7 +74,7 @@ export const useRotateStore = create<Store>((set, get) => ({
       }
 
       return {
-        ...DEFAULT_ROTATE,
+        ...defaultRotation,
         isAdded: true
       }
     })
@@ -70,8 +82,8 @@ export const useRotateStore = create<Store>((set, get) => ({
 
   add: () =>
     set({
-      isAdded: true,
-      ...DEFAULT_ROTATE
+      ...defaultRotation,
+      isAdded: true
     }),
   remove: () => set(defaultState),
 

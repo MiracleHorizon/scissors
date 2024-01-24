@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { type BlurOptions, DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/sharp'
 
 /* eslint no-unused-vars: 0 */
-interface Store extends BlurOptions {
+interface Store extends State {
   getBlurOptions: () => BlurOptions | null
 
   set: (options: BlurOptions | null) => void
@@ -11,28 +11,55 @@ interface Store extends BlurOptions {
   toggle: VoidFunction
   addSigma: VoidFunction
   removeSigma: VoidFunction
-  setSigma: (sigma: number) => void
+  setSigma: (sigma: number | null) => void
+}
+
+interface State extends BlurOptions {
+  isSigmaAdded: boolean
+}
+
+const defaultState: State = {
+  ...DEFAULT_BLUR,
+  isSigmaAdded: false
 }
 
 export const useBlurStore = create<Store>((set, get) => ({
   // State
-  ...DEFAULT_BLUR,
+  ...defaultState,
 
   // Computed
   getBlurOptions: () => {
-    if (!get().value) {
+    const { value, sigma, isSigmaAdded } = get()
+
+    if (!value) {
       return null
     }
 
+    const getSigma = () => {
+      if (!isSigmaAdded) {
+        return null
+      }
+
+      if (isSigmaAdded && sigma === null) {
+        return MIN_BLUR_SIGMA
+      }
+
+      return sigma
+    }
+
     return {
-      value: get().value,
-      sigma: get().sigma
+      value,
+      /*
+       * The user can add a blur sigma option and reset it to null in the input field (so the value here will be null).
+       * So, if the value is null and 'isSigmaAdded' flag is set to true, we return the min sigma value.
+       */
+      sigma: getSigma()
     }
   },
 
   // Actions
-  set: options => set({ ...(options ?? DEFAULT_BLUR) }),
-  reset: () => set({ ...DEFAULT_BLUR }),
+  set: options => set({ ...(options ?? defaultState) }),
+  reset: () => set({ ...defaultState }),
 
   toggle: () =>
     set(state => ({
@@ -45,13 +72,18 @@ export const useBlurStore = create<Store>((set, get) => ({
       }
 
       return {
+        isSigmaAdded: true,
         sigma: MIN_BLUR_SIGMA
       }
     }),
-  removeSigma: () => set({ sigma: null }),
+  removeSigma: () =>
+    set({
+      isSigmaAdded: false,
+      sigma: null
+    }),
   setSigma: sigma =>
     set(state => {
-      if (!state.value) {
+      if (!state.value || !state.isSigmaAdded) {
         return state
       }
 

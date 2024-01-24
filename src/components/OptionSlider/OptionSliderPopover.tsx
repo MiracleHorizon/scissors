@@ -1,28 +1,21 @@
 import { Popover } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
 
-export function OptionSliderPopover({ children, isOptionDisabled }: Props) {
-  const isDisabled = () => {
-    if (!isOptionDisabled) return
+export const OptionSliderPopover: FC<Props> = ({ content, disabled }) => (
+  <Popover.Root open={disabled ? false : undefined}>
+    <Popover.Trigger>
+      <ButtonInfo ml='3' />
+    </Popover.Trigger>
 
-    return false
-  }
+    <Popover.Content size='1' align='center'>
+      {content}
+    </Popover.Content>
+  </Popover.Root>
+)
 
-  return (
-    <Popover.Root open={isDisabled()}>
-      <Popover.Trigger>
-        <ButtonInfo ml='3' />
-      </Popover.Trigger>
-
-      <Popover.Content size='1' align='center'>
-        {children}
-      </Popover.Content>
-    </Popover.Root>
-  )
+interface Props {
+  content: ReactNode
+  disabled?: boolean
 }
-
-type Props = PropsWithChildren<{
-  isOptionDisabled?: boolean
-}>

@@ -1,27 +1,29 @@
-import { useCallback } from 'react'
-
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@server/sharp'
 
 export function SliderLightness() {
   const lightness = useModulateStore(state => state.lightness)
-  const setLightness = useModulateStore(state => state.setLightness)
 
-  const handleSetLightness = useCallback(
-    (value: number[]) => setLightness(value[0]),
-    [setLightness]
-  )
+  const setLightness = useModulateStore(state => state.setLightness)
+  const handleChangeLightness = (value: number[]) => {
+    if (value.length === 1) {
+      return setLightness(value[0])
+    }
+
+    setLightness(null)
+  }
 
   return (
     <OptionSlider
       title='Lightness'
-      value={[lightness ?? MIN_LIGHTNESS]}
+      valueSign='%'
+      value={[lightness]}
+      defaultValue={[MIN_LIGHTNESS]}
       min={MIN_LIGHTNESS}
       max={MAX_LIGHTNESS}
-      defaultValue={[MIN_LIGHTNESS]}
-      step={1}
-      onValueChange={handleSetLightness}
+      allowFloat
+      onValueChange={handleChangeLightness}
     />
   )
 }
