@@ -2,16 +2,19 @@ import { Flex, type MarginProps, type PaddingProps } from '@radix-ui/themes'
 import type { CSSProperties, FC, PropsWithChildren } from 'react'
 
 import { ExclamationTriangleIcon } from '@ui/icons/ExclamationTriangleIcon'
+import { getRadixSpaceVar } from '@lib/theme'
+
+export const testId = 'title-with-exclamation'
 
 const iconStyle: CSSProperties = {
-  marginRight: 'var(--space-2)'
+  marginRight: getRadixSpaceVar(2)
 }
 
 export const TitleWithExclamation: FC<Props> = ({ children, ...props }) => (
-  <Flex {...props}>
+  <Flex data-testid={testId} {...props}>
     <ExclamationTriangleIcon color='tomato' width='0.95rem' height='0.95rem' style={iconStyle} />
     {children}
   </Flex>
 )
 
-type Props = PropsWithChildren & MarginProps & PaddingProps
+export type Props = PropsWithChildren & MarginProps & PaddingProps
