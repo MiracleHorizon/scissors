@@ -47,6 +47,7 @@ export function useSettingsSetters() {
       outputFormat: setOutputFormat
     }),
     [
+      setTrim,
       setBlur,
       setFlip,
       setFlop,

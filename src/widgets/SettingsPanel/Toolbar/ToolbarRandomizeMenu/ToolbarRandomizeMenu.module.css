@@ -1,0 +1,14 @@
+.content {
+  width: 150px;
+}
+
+.content :global(.rt-ContextMenuViewport) {
+  padding-top: 5px;
+}
+
+.label {
+  justify-content: flex-end;
+  padding-left: 4px;
+  padding-right: 8px;
+  font-size: 13px;
+}

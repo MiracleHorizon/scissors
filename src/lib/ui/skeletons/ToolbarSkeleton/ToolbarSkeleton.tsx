@@ -13,6 +13,7 @@ export const ToolbarSkeleton = () => (
     <Flex align='center' justify='end' gap='1' py='2' px='3'>
       <Skeleton count={1} height={32} width={32} />
       <Skeleton count={1} height={32} width={32} />
+      <Skeleton count={1} height={32} width={32} />
 
       <Separator orientation='vertical' mx='1' />
 

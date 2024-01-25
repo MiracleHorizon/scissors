@@ -74,6 +74,7 @@ export function Blur() {
               step={BLUR_SIGMA_STEP}
               min={MIN_BLUR_SIGMA}
               max={MAX_BLUR_SIGMA}
+              allowFloat
               disabled={isBlurDisabled}
               infoContent={<BlurInfo />}
               onValueChange={handleChangeSigma}

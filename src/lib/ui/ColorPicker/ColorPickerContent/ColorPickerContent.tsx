@@ -24,12 +24,11 @@ export function ColorPickerContent({ color, setColor }: Props) {
           className={styles.reactColorfulColorPicker}
           onChange={handleValueChange}
         />
-        <Flex direction='column' gap='2' width='100%'>
-          <Flex justify='between' gap='1' width='100%'>
-            <HexColorInput size='2' color={color} onChange={handleInputValueChange} />
-            <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
-          </Flex>
-          <ButtonRandomize onClick={handleRandomize} />
+
+        <Flex justify='between' gap='1' width='100%'>
+          <HexColorInput size='2' color={color} onChange={handleInputValueChange} />
+          <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
+          <ButtonRandomize variant='solid' onClick={handleRandomize} />
         </Flex>
       </Flex>
     </Popover.Content>

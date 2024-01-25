@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
-import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
@@ -10,6 +9,7 @@ import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import { isDevelopment } from '@helpers/isDevelopment'
 import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME, getMetadataBase } from '@lib/seo'
+import { inter } from './fonts'
 import './globals.css'
 
 const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), {
@@ -94,12 +94,6 @@ export const metadata: Metadata = {
     ]
   }
 }
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
-})
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   const { theme, themeColor } = await getThemeAppearance()

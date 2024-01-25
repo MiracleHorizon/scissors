@@ -118,7 +118,7 @@ const modulateSchema = object({
   lightness: number().min(MIN_LIGHTNESS).max(MAX_LIGHTNESS).nullable().defined(),
   brightness: number().min(MIN_BRIGHTNESS).max(MAX_BRIGHTNESS).nullable().defined(),
   saturation: number().min(MIN_SATURATION).max(MAX_SATURATION).nullable().defined(),
-  hue: number().min(MIN_HUE).max(MAX_HUE).nullable().defined()
+  hue: number().integer().min(MIN_HUE).max(MAX_HUE).nullable().defined()
 })
   .nullable()
   .defined()

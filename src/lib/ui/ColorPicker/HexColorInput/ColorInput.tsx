@@ -1,7 +1,7 @@
 /**
  * NOTE: Merged radix-ui/TextField.Input with react-colorful/HexColorInput;
  * <br />
- * <a color='white' href="https://github.com/omgovich/react-colorful/blob/master/src/components/ColorInput.tsx">ColorInput<a/>;
+ * <a color='white' href="https://github.com/omgovich/react-colorful/blob/master/src/components/common/ColorInput.tsx">ColorInput<a/>;
  * <br />
  * <a color='white' href="https://github.com/omgovich/react-colorful/blob/master/src/components/HexColorInput.tsx">HexColorInput<a/>;
  */
