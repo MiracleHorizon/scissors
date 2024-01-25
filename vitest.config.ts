@@ -2,75 +2,25 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
-interface Alias {
-  find: string | RegExp
-  replacementPath: string
-}
+import { getAliases } from './src/__setup__/aliases'
 
-const createAlias = ({ find, replacementPath }: Alias) => ({
-  find,
-  replacement: path.resolve(__dirname, replacementPath)
-})
-
-const setupDir = path.resolve(__dirname, 'src/__setup__')
-const aliases: Alias[] = [
-  {
-    find: '@testing',
-    replacementPath: setupDir
-  },
-  {
-    find: '@api',
-    replacementPath: './src/api'
-  },
-  {
-    find: '@lib',
-    replacementPath: './src/lib'
-  },
-  {
-    find: '@hooks',
-    replacementPath: './src/hooks'
-  },
-  {
-    find: '@components',
-    replacementPath: './src/components'
-  },
-  {
-    find: '@ui',
-    replacementPath: './src/lib/ui'
-  },
-  {
-    find: '@helpers',
-    replacementPath: './src/lib/helpers'
-  },
-  {
-    find: '@utils',
-    replacementPath: './src/lib/utils'
-  },
-  {
-    find: '@server',
-    replacementPath: './src/server'
-  },
-  {
-    find: '@app-types',
-    replacementPath: './src/types'
-  }
-]
+const setupPath = path.resolve(__dirname, 'src/__setup__')
 
 export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
     includeSource: ['src/**/*.test.{ts,tsx}', 'src/**/test.{ts,tsx}'],
-    setupFiles: [path.resolve(setupDir, 'vitest.setup.ts')],
+    setupFiles: [path.resolve(setupPath, 'vitest.setup.ts')],
     coverage: {
       enabled: true,
       cleanOnRerun: true,
       provider: 'v8',
       reporter: ['html'],
-      reportsDirectory: path.resolve(setupDir, 'coverage'),
+      reportsDirectory: path.resolve(setupPath, 'coverage'),
       reportOnFailure: true,
       clean: true
     },
-    alias: aliases.map(alias => createAlias(alias))
+    alias: getAliases(__dirname)
   }
 })
