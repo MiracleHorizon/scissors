@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { Flex, type MarginProps, ScrollArea, Tabs } from '@radix-ui/themes'
 
-import { TabDefault } from './TabDefault'
+import { TabConvert } from './TabConvert'
 import { ToolbarSkeleton } from '@ui/skeletons/ToolbarSkeleton'
 import { useTabsStore } from '@stores/tabs'
 import styles from './SettingsPanel.module.css'
@@ -34,7 +34,7 @@ export function SettingsPanel() {
         {/* eslint-disable no-unused-vars */}
         <Tabs.Root defaultValue={selectedTab} onValueChange={selectTab as (value: string) => void}>
           <Toolbar />
-          <TabDefault />
+          <TabConvert />
           <TabResize />
         </Tabs.Root>
       </Flex>

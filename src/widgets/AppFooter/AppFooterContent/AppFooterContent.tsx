@@ -24,7 +24,7 @@ export default function AppFooterContent() {
     <Flex align='center' justify='end' gap='3' height='100%' width='100%' className={styles.root}>
       <ButtonDownload />
       <Separator orientation='vertical' size='2' />
-      {selectedTab === TOOLBAR_TAB.DEFAULT && <ButtonConvert />}
+      {selectedTab === TOOLBAR_TAB.CONVERT && <ButtonConvert />}
       {selectedTab === TOOLBAR_TAB.RESIZE && <ButtonResize />}
     </Flex>
   )

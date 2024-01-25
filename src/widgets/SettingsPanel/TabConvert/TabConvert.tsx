@@ -9,8 +9,8 @@ const Options = dynamic(() => import('./options').then(mod => mod.Options), {
   loading: () => <OptionsSkeleton />
 })
 
-export const TabDefault = () => (
-  <Tabs.Content value={TOOLBAR_TAB.DEFAULT}>
+export const TabConvert = () => (
+  <Tabs.Content value={TOOLBAR_TAB.CONVERT}>
     <Options />
   </Tabs.Content>
 )

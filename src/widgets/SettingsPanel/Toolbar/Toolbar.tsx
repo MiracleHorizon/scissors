@@ -19,7 +19,7 @@ export function Toolbar() {
         <ButtonImportSettings />
         <ButtonExportSettings />
 
-        {selectedTab === TOOLBAR_TAB.DEFAULT && (
+        {selectedTab === TOOLBAR_TAB.CONVERT && (
           <>
             <Separator orientation='vertical' mx='1' />
 

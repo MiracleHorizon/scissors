@@ -30,7 +30,7 @@ export function ButtonImportSettings() {
   const validateSettings = useCallback(
     (settings: unknown) => {
       switch (selectedTab) {
-        case TOOLBAR_TAB.DEFAULT:
+        case TOOLBAR_TAB.CONVERT:
           return YupSettingsValidator.validateConvert(settings)
         case TOOLBAR_TAB.RESIZE:
           return YupSettingsValidator.validateResize(settings)

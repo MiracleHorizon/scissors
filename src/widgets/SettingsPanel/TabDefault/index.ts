@@ -1,1 +1,0 @@
-export { TabDefault } from './TabDefault'

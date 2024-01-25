@@ -5,8 +5,8 @@ import styles from './ToolbarTabList.module.css'
 
 const tabs = [
   {
-    label: 'Default',
-    value: TOOLBAR_TAB.DEFAULT
+    label: 'Convert',
+    value: TOOLBAR_TAB.CONVERT
   },
   {
     label: 'Resize',

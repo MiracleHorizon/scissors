@@ -14,7 +14,7 @@ export function ButtonExportSettings() {
 
   const getExportPayload = useCallback(() => {
     switch (selectedTab) {
-      case TOOLBAR_TAB.DEFAULT:
+      case TOOLBAR_TAB.CONVERT:
         return {
           fileName: 'morph-settings-convert',
           settings: convertSettings
