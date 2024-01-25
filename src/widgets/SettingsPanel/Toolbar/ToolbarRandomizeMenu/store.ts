@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 import { MAX_OPERATIONS } from './constants'
 import type { Label, Setting } from './types'
@@ -14,7 +15,7 @@ interface Store {
   toggleSettingChecked: (label: Label) => void
 }
 
-const settings: Setting[] = [
+const defaultSettings: Setting[] = [
   {
     label: 'flip',
     checked: true
@@ -53,43 +54,51 @@ const settings: Setting[] = [
   }
 ]
 
-export const useRandomizeStore = create<Store>((set, get) => ({
-  settings,
+// TODO: Rehydrate with DOM event: https://docs.pmnd.rs/zustand/integrations/persisting-store-data#how-can-i-rehydrate-on-storage-event
+export const useRandomizeStore = create(
+  persist<Store>(
+    (set, get) => ({
+      settings: defaultSettings,
 
-  isMaxOperations: () => get().getTotalChecked() >= MAX_OPERATIONS,
-  getTotalChecked: () => get().getCheckedSettings().length,
-  getCheckedSettings: () => get().settings.filter(s => s.checked),
+      isMaxOperations: () => get().getTotalChecked() >= MAX_OPERATIONS,
+      getTotalChecked: () => get().getCheckedSettings().length,
+      getCheckedSettings: () => get().settings.filter(s => s.checked),
 
-  toggleSettingChecked: label =>
-    set(state => {
-      const totalChecked = state.getTotalChecked()
+      toggleSettingChecked: label =>
+        set(state => {
+          const totalChecked = state.getTotalChecked()
 
-      const settings = state.settings.map(setting => {
-        if (setting.label !== label) {
-          return setting
-        }
+          const settings = state.settings.map(setting => {
+            if (setting.label !== label) {
+              return setting
+            }
 
-        const updatedValue = !setting.checked
+            const updatedValue = !setting.checked
 
-        if (totalChecked === MAX_OPERATIONS && updatedValue) {
-          return setting
-        }
+            if (totalChecked === MAX_OPERATIONS && updatedValue) {
+              return setting
+            }
 
-        /*
-         * At least one option must always be checked.
-         */
-        if (totalChecked === 1 && !updatedValue) {
-          return setting
-        }
+            /*
+             * At least one option must always be checked.
+             */
+            if (totalChecked === 1 && !updatedValue) {
+              return setting
+            }
 
-        return {
-          ...setting,
-          checked: updatedValue
-        }
-      })
+            return {
+              ...setting,
+              checked: updatedValue
+            }
+          })
 
-      return {
-        settings
-      }
-    })
-}))
+          return {
+            settings
+          }
+        })
+    }),
+    {
+      name: 'scissors-randomize-settings'
+    }
+  )
+)

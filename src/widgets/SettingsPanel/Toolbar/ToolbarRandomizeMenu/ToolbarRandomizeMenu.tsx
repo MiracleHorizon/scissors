@@ -75,7 +75,7 @@ export function ToolbarRandomizeMenu() {
 
         <Separator size='4' orientation='horizontal' mt='1' mb='2' />
 
-        {settings.map(setting => (
+        {(settings ?? []).map(setting => (
           <ToolbarRandomizeMenuCheckbox key={setting.label} {...setting} />
         ))}
       </ContextMenu.Content>
