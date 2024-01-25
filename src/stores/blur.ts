@@ -58,7 +58,25 @@ export const useBlurStore = create<Store>((set, get) => ({
   },
 
   // Actions
-  set: options => set({ ...(options ?? defaultState) }),
+  set: options => {
+    if (!options) return
+
+    const { value, sigma } = options
+
+    if (!value) {
+      return set({
+        value,
+        isSigmaAdded: false,
+        sigma: null
+      })
+    }
+
+    set({
+      value,
+      isSigmaAdded: sigma !== null,
+      sigma
+    })
+  },
   reset: () => set({ ...defaultState }),
 
   toggle: () =>

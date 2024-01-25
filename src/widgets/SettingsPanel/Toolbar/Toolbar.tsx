@@ -5,6 +5,7 @@ import { ButtonImportSettings } from './ButtonImportSettings'
 import { ButtonExportSettings } from './ButtonExportSettings'
 import { ButtonSettingsRemove } from './ButtonSettingsRemove'
 import { ButtonSettingsReset } from './ButtonSettingsReset'
+import { ToolbarRandomizeMenu } from './ToolbarRandomizeMenu'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import styles from './Toolbar.module.css'
 
@@ -21,6 +22,8 @@ export function Toolbar() {
 
         {selectedTab === TOOLBAR_TAB.CONVERT && (
           <>
+            <ToolbarRandomizeMenu />
+
             <Separator orientation='vertical' mx='1' />
 
             <ButtonSettingsReset />

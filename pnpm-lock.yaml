@@ -32,6 +32,12 @@ dependencies:
   lodash.isempty:
     specifier: ^4.4.0
     version: 4.4.0
+  lodash.random:
+    specifier: 3.2.0
+    version: 3.2.0
+  lodash.shuffle:
+    specifier: 4.2.0
+    version: 4.2.0
   next:
     specifier: 14.0.4
     version: 14.0.4(@babel/core@7.23.7)(react-dom@18.2.0)(react@18.2.0)
@@ -82,6 +88,12 @@ devDependencies:
   '@types/lodash.isempty':
     specifier: ^4.4.9
     version: 4.4.9
+  '@types/lodash.random':
+    specifier: 3.2.9
+    version: 3.2.9
+  '@types/lodash.shuffle':
+    specifier: 4.2.9
+    version: 4.2.9
   '@types/node':
     specifier: ^20
     version: 20.9.0
@@ -2284,6 +2296,18 @@ packages:
 
   /@types/lodash.isempty@4.4.9:
     resolution: {integrity: sha512-DPSFfnT2JmZiAWNWOU8IRZws/Ha6zyGF5m06TydfsY+0dVoQqby2J61Na2QU4YtwiZ+moC6cJS6zWYBJq4wBVw==}
+    dependencies:
+      '@types/lodash': 4.14.202
+    dev: true
+
+  /@types/lodash.random@3.2.9:
+    resolution: {integrity: sha512-tIkVWoiBVVguQG5lpTErD9tOADYA5A1V6Ie0WgG/cVNN9jIJIlXCTS0FCcurV+OBnu7uJBpNKgA9gx3eYUj19Q==}
+    dependencies:
+      '@types/lodash': 4.14.202
+    dev: true
+
+  /@types/lodash.shuffle@4.2.9:
+    resolution: {integrity: sha512-4siLZ4/vQH4T7Bm4254sG4n6hh9k7vd/bqfDVoeIwSha4Itu3MuoTxPX2I2Tue2JN94y7Y2I27QzwHZLdMlrBg==}
     dependencies:
       '@types/lodash': 4.14.202
     dev: true
@@ -4720,6 +4744,14 @@ packages:
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash.random@3.2.0:
+    resolution: {integrity: sha512-A6Vn7teN0+qSnhOsE8yx2bGowCS1G7D9e5abq8VhwOP98YHS/KrGMf43yYxA05lvcvloT+W9Z2ffkSajFTcPUA==}
+    dev: false
+
+  /lodash.shuffle@4.2.0:
+    resolution: {integrity: sha512-V/rTAABKLFjoecTZjKSv+A1ZomG8hZg8hlgeG6wwQVD9AGv+10zqqSf6mFq2tVA703Zd5R0YhSuSlXA+E/Ei+Q==}
+    dev: false
 
   /lodash.truncate@4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==}

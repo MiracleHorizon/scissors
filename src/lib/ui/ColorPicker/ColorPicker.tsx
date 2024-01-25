@@ -2,18 +2,13 @@
 
 import dynamic from 'next/dynamic'
 import { Button, Flex, Popover, Text } from '@radix-ui/themes'
-import { DM_Mono as DMMono } from 'next/font/google'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
 
+import { dmMono } from '@app/fonts'
 import { ColorSwatch } from '@ui/ColorSwatch'
 import type { TextSize } from '@lib/theme'
 import styles from './ColorPicker.module.css'
-
-const dmMono = DMMono({
-  subsets: ['latin'],
-  weight: '500'
-})
 
 const ColorPickerContent = dynamic(
   () => import('./ColorPickerContent').then(mod => mod.ColorPickerContent),
