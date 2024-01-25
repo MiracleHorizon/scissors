@@ -2,7 +2,7 @@ import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
-import { getAliases } from './src/__setup__/aliases'
+import { getAliases } from './src/__setup__/test-aliases'
 
 const setupPath = path.resolve(__dirname, 'src/__setup__')
 
