@@ -4,6 +4,17 @@
 }
 
 .link {
-  color: initial;
-  text-decoration-color: initial;
+  display: flex;
+  gap: var(--space-1);
+  color: inherit;
+  text-decoration-color: inherit;
+}
+
+.link:hover .linkIcon {
+  display: block;
+}
+
+.linkIcon {
+  align-self: center;
+  display: none;
 }

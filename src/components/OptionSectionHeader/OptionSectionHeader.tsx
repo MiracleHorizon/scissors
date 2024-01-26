@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
 import type { FC } from 'react'
 
+import { Link2Icon } from '@ui/icons/Link2Icon'
 import type { Props } from './OptionSectionHeader.types'
 import styles from './OptionSectionHeader.module.css'
 
@@ -37,7 +38,10 @@ export const OptionSectionHeader: FC<Props> = ({
 
           {href ? (
             <RadixLink asChild weight='medium' className={styles.link}>
-              <Link href={href}>{title}</Link>
+              <Link href={href}>
+                {title}
+                <Link2Icon width='17px' height='17px' className={styles.linkIcon} />
+              </Link>
             </RadixLink>
           ) : (
             <Heading size='3' weight='medium'>
