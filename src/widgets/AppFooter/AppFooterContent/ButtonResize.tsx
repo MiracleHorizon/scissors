@@ -39,6 +39,7 @@ export function ButtonResize() {
       makeRequest={handleResize}
       retry={handleRetry}
       reset={reset}
+      isDisabled={resizeSettings.queue.length === 0}
     />
   )
 }

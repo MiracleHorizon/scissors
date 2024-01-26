@@ -12,7 +12,7 @@ const RequestErrorAlert = dynamic(
 )
 
 export const ButtonRequest: FC<Props> = memo(
-  ({ label, isPending, error, makeRequest, retry, reset }) => {
+  ({ label, isPending, error, makeRequest, retry, reset, isDisabled }) => {
     const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
     return (
@@ -20,7 +20,7 @@ export const ButtonRequest: FC<Props> = memo(
         <Button
           size='3'
           radius='large'
-          disabled={!isFileUploaded || isPending}
+          disabled={isDisabled || isPending || !isFileUploaded}
           onClick={makeRequest}
         >
           <Text as='span'>{label}</Text>
@@ -46,4 +46,5 @@ interface Props {
   makeRequest: VoidFunction
   retry: VoidFunction
   reset: VoidFunction
+  isDisabled?: boolean
 }
