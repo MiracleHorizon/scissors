@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 import type { NonEmptyArray } from '@app-types/NonEmptyArray'
 
@@ -7,6 +7,8 @@ export type Props = SliderProps & {
   disabled?: boolean
   allowFloat?: boolean
   maxFractionDigits?: number
+  sliderStyle?: CSSProperties
+  sliderClassName?: string
 } & (WithHeader | WithoutHeader)
 
 interface WithHeader {

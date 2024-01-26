@@ -1,7 +1,10 @@
+import type { CSSProperties } from 'react'
+
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
 import { MAX_HUE, MIN_HUE } from '@server/sharp'
+import styles from './SliderHue.module.css'
 
 export function SliderHue() {
   const hue = useModulateStore(state => state.hue)
@@ -16,6 +19,10 @@ export function SliderHue() {
     return setHue(null)
   }
 
+  const sliderThumbStyle = {
+    '--hue-angle': hue ?? 0
+  } as CSSProperties
+
   return (
     <OptionSlider
       title='Hue angle'
@@ -25,6 +32,8 @@ export function SliderHue() {
       min={MIN_HUE}
       max={MAX_HUE}
       disabled={isGrayscaleEnabled}
+      sliderStyle={sliderThumbStyle}
+      sliderClassName={styles.slider}
       onValueChange={handleChangeHue}
     />
   )

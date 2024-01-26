@@ -19,6 +19,8 @@ export function OptionSlider({
   allowFloat = false,
   maxFractionDigits = 2,
   disabled,
+  sliderStyle,
+  sliderClassName,
   ...sliderProps
 }: Props) {
   const { defaultValue, min, max, step, onValueChange } = sliderProps
@@ -73,6 +75,8 @@ export function OptionSlider({
             })}
             disabled={disabled}
             size='2'
+            style={sliderStyle}
+            className={sliderClassName}
           />
           <Flex mt='2' justify='between'>
             <Text size='3' weight='medium'>
