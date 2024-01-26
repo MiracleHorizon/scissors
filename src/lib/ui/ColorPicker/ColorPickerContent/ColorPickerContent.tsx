@@ -4,12 +4,16 @@ import { HexColorPicker } from 'react-colorful'
 
 import { ButtonClipboardCopy } from '@ui/ButtonClipboardCopy'
 import { ButtonRandomize } from '@ui/ButtonRandomize'
+import { EyeDropper } from '@ui/EyeDropper'
 import { HexColorInput } from './HexColorInput'
 import { ColorPickerSwatches } from './ColorPickerSwatches'
+import { useEyeDropper } from '@hooks/useEyeDropper'
 import { getRandomHexColor } from '@lib/helpers/colors'
 import styles from './ColorPickerContent.module.css'
 
 export function ColorPickerContent({ color, setColor }: Props) {
+  const { isSupported: isEyeDropperSupported } = useEyeDropper()
+
   const handleValueChange = useCallback((color: string) => setColor(color), [setColor])
   const handleInputValueChange = useCallback(
     (color: string) => setColor(!color.startsWith('#') ? `#${color}` : color),
@@ -28,6 +32,8 @@ export function ColorPickerContent({ color, setColor }: Props) {
 
         <Flex justify='between' gap='1' width='100%'>
           <HexColorInput size='2' color={color} onChange={handleInputValueChange} />
+
+          {isEyeDropperSupported && <EyeDropper color='gray' setColor={setColor} />}
           <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
           <ButtonRandomize
             color='gray'
