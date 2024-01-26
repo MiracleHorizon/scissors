@@ -8,8 +8,21 @@
   }
 }
 
+.withFile {
+  padding-top: var(--space-5);
+}
+
 @media screen and (max-width: 1023px) {
   .root {
     width: 100%;
+    padding-top: var(--space-5);
+  }
+
+  .withFile {
+    padding-bottom: var(--space-4);
+  }
+
+  .withoutFile {
+    padding-bottom: var(--space-5);
   }
 }

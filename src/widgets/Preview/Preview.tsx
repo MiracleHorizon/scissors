@@ -8,6 +8,7 @@ import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import { useOutputStore } from '@stores/output'
 import styles from './Preview.module.css'
+import { clsx } from 'clsx'
 
 const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.UploadedFile), {
   ssr: false,
@@ -15,7 +16,6 @@ const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.Uplo
 })
 
 const padding: PaddingProps = {
-  pt: '5',
   px: {
     initial: '4',
     md: '0'
@@ -27,7 +27,11 @@ export function Preview() {
   const setFile = useOutputStore(state => state.setFile)
 
   return (
-    <Flex {...padding} direction='column' className={styles.root}>
+    <Flex
+      {...padding}
+      direction='column'
+      className={clsx(styles.root, file ? styles.withFile : styles.withoutFile)}
+    >
       {file ? (
         <UploadedFile file={file} />
       ) : (
