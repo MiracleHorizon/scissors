@@ -4,7 +4,8 @@ import { HexColorPicker } from 'react-colorful'
 
 import { ButtonClipboardCopy } from '@ui/ButtonClipboardCopy'
 import { ButtonRandomize } from '@ui/ButtonRandomize'
-import { HexColorInput } from '../HexColorInput'
+import { HexColorInput } from './HexColorInput'
+import { ColorPickerSwatches } from './ColorPickerSwatches'
 import { getRandomHexColor } from '@lib/helpers/colors'
 import styles from './ColorPickerContent.module.css'
 
@@ -28,8 +29,14 @@ export function ColorPickerContent({ color, setColor }: Props) {
         <Flex justify='between' gap='1' width='100%'>
           <HexColorInput size='2' color={color} onChange={handleInputValueChange} />
           <ButtonClipboardCopy copyValue={color} size='2' variant='outline' />
-          <ButtonRandomize variant='solid' onClick={handleRandomize} />
+          <ButtonRandomize
+            color='gray'
+            tooltipContent='Randomize Color'
+            onClick={handleRandomize}
+          />
         </Flex>
+
+        <ColorPickerSwatches setColor={setColor} />
       </Flex>
     </Popover.Content>
   )
