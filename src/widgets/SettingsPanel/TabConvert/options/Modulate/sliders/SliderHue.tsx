@@ -20,7 +20,7 @@ export function SliderHue() {
   }
 
   const sliderThumbStyle = {
-    '--hue-angle': hue ?? 0
+    '--hue-angle': hue ?? MIN_HUE
   } as CSSProperties
 
   return (
