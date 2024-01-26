@@ -27,6 +27,8 @@ function EyeDropperComponent({ setColor, radius = 'large', variant = 'outline', 
     } catch (err) {
       // eslint-disable-next-line no-console
       console.warn(err)
+    } finally {
+      document.body.classList.remove('eye-dropper-active')
     }
   }, [isSupported, openEyeDropper, setColor])
 

@@ -44,6 +44,10 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.eye-dropper-active {
+  pointer-events: none;
+}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;
