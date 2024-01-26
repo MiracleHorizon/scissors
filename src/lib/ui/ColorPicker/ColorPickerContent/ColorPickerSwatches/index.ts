@@ -1,0 +1,1 @@
+export { ColorPickerSwatches } from './ColorPickerSwatches'
