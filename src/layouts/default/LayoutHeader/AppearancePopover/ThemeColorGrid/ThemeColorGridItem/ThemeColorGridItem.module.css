@@ -1,7 +1,9 @@
 .root {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
+  --size: 20px;
+
+  cursor: pointer;
+  width: var(--size) !important;
+  height: var(--size) !important;
 }
 
 .selected {
