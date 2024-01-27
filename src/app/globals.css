@@ -58,10 +58,6 @@ input[type='number'] {
   display: none;
 }
 
-.alert-content {
-  max-width: 400px;
-}
-
 /* react-loading-skeleton */
 span[aria-live='polite'] {
   height: inherit;

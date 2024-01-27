@@ -1,27 +1,35 @@
 'use client'
 
-import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { FC } from 'react'
+import { AlertDialog, Button, Flex, Text } from '@radix-ui/themes'
+import type { CSSProperties, FC } from 'react'
 
 import { TitleWithExclamation } from '@components/TitleWithExclamation'
 import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
 
+const contentStyle: CSSProperties = {
+  padding: '22px',
+  maxWidth: 370
+}
+const maxFileSizeTextStyle: CSSProperties = {
+  fontWeight: '600'
+}
+
 export const FileSizeAlert: FC<Props> = ({ isOpen, onClose }) => (
   <AlertDialog.Root open={isOpen} defaultOpen={false}>
-    <AlertDialog.Content size='2' className='alert-content' onEscapeKeyDown={onClose}>
+    <AlertDialog.Content size='3' style={contentStyle} onEscapeKeyDown={onClose}>
       <TitleWithExclamation mb='3'>
-        <AlertDialog.Title mb='0'>Invalid File Size</AlertDialog.Title>
+        <AlertDialog.Title mb='0'>Invalid file size</AlertDialog.Title>
       </TitleWithExclamation>
 
-      <AlertDialog.Description size='3'>
-        The selected file is too large. Please select a file smaller than {MAX_FILE_SIZE_MB}
-        MB.
+      <AlertDialog.Description>
+        The selected file is too large. The maximum file size is{' '}
+        <Text style={maxFileSizeTextStyle}>{MAX_FILE_SIZE_MB}</Text> mb.
       </AlertDialog.Description>
 
       <Flex gap='3' mt='3' justify='end'>
         <AlertDialog.Cancel onClick={onClose}>
           <Button color='gray' variant='soft' radius='large'>
-            Okay
+            Close
           </Button>
         </AlertDialog.Cancel>
       </Flex>

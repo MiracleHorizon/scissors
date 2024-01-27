@@ -1,12 +1,12 @@
 import { DropdownMenu } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
+import { ConfirmSettingsResetAlert } from '@components/alerts/ConfirmSettingsResetAlert'
 import { ResetIcon } from '@ui/icons/ResetIcon'
 import { ButtonReset } from '@ui/ButtonReset'
-import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
 
-function WithConfirmAlert({ children, onConfirm }: WithConfirmAlertProps) {
+function WithConfirmAlert({ children, onCancel, onConfirm }: WithConfirmAlertProps) {
   const { handleReset } = useResetSettings()
 
   const handleConfirm = () => {
@@ -15,19 +15,18 @@ function WithConfirmAlert({ children, onConfirm }: WithConfirmAlertProps) {
   }
 
   return (
-    <ConfirmAlert
-      title='Confirm Reseting'
-      description='Are you sure? All settings will be reset to default values!'
-      onConfirm={handleConfirm}
-    >
+    <ConfirmSettingsResetAlert onCancel={onCancel} onConfirm={handleConfirm}>
       {children}
-    </ConfirmAlert>
+    </ConfirmSettingsResetAlert>
   )
 }
 
-type WithConfirmAlertProps = PropsWithChildren<{
+type WithConfirmAlertProps = Pick<
+  ComponentPropsWithoutRef<typeof ConfirmSettingsResetAlert>,
+  'children' | 'onCancel'
+> & {
   onConfirm?: VoidFunction
-}>
+}
 
 export const ButtonSettingsReset = () => (
   <WithConfirmAlert>
@@ -44,7 +43,7 @@ export function DropdownItemResetSettings({ onClose }: DropdownItemProps) {
   }
 
   return (
-    <WithConfirmAlert onConfirm={onClose}>
+    <WithConfirmAlert onConfirm={onClose} onCancel={onClose}>
       <DropdownMenu.Item color='red' onSelect={handleClick}>
         Reset <ResetIcon width='16px' height='16px' />
       </DropdownMenu.Item>

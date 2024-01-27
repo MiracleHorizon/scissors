@@ -1,12 +1,12 @@
 import { DropdownMenu } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
+import { ConfirmSettingsRemoveAlert } from '@components/alerts/ConfirmSettingsRemoveAlert'
 import { TrashIcon } from '@ui/icons/TrashIcon'
 import { ButtonDelete } from '@ui/ButtonDelete'
-import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'
 
-function WithConfirmAlert({ children, onConfirm }: WithConfirmAlertProps) {
+function WithConfirmAlert({ children, onCancel, onConfirm }: WithConfirmAlertProps) {
   const { handleRemove } = useRemoveSettings()
 
   const handleConfirm = () => {
@@ -15,19 +15,18 @@ function WithConfirmAlert({ children, onConfirm }: WithConfirmAlertProps) {
   }
 
   return (
-    <ConfirmAlert
-      title='Confirm Removing'
-      description='Are you sure? All settings will be removed!'
-      onConfirm={handleConfirm}
-    >
+    <ConfirmSettingsRemoveAlert onCancel={onCancel} onConfirm={handleConfirm}>
       {children}
-    </ConfirmAlert>
+    </ConfirmSettingsRemoveAlert>
   )
 }
 
-type WithConfirmAlertProps = PropsWithChildren<{
+type WithConfirmAlertProps = Pick<
+  ComponentPropsWithoutRef<typeof ConfirmSettingsRemoveAlert>,
+  'children' | 'onCancel'
+> & {
   onConfirm?: VoidFunction
-}>
+}
 
 export const ButtonSettingsRemove = () => (
   <WithConfirmAlert>

@@ -1,1 +1,0 @@
-export { ConfirmAlert } from './ConfirmAlert'

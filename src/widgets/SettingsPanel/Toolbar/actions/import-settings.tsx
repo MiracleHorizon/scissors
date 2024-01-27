@@ -20,8 +20,10 @@ const ConfirmImportAlert: FC<{
 }> = props => (
   <ConfirmAlert
     {...props}
-    title='Confirm Import'
-    description='Are you sure? All settings will be overwritten!'
+    title='Import settings'
+    description='All your selected settings will be overwritten. Are you sure you want to proceed?'
+    confirmLabel='Import'
+    maxWidth={390}
   />
 )
 
@@ -31,8 +33,8 @@ const ValidationAlert: FC<{
 }> = props => (
   <ConfirmAlert
     {...props}
-    title='Invalid Settings'
-    description='Please check the JSON format'
+    title='Invalid settings'
+    description='The file may have been corrupted. Please check it and try again'
     canselLabel='Close'
     withTitleExclamation
   />

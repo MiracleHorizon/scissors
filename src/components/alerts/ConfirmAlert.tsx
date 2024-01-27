@@ -1,12 +1,9 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import { clsx } from 'clsx'
-import type { FC } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 
 import { TitleWithExclamation } from '@components/TitleWithExclamation'
-import type { Props } from './ConfirmAlert.types'
-import styles from './ConfirmAlert.module.css'
 
 export const ConfirmAlert: FC<Props> = ({
   children,
@@ -18,12 +15,20 @@ export const ConfirmAlert: FC<Props> = ({
   confirmLabel = 'Confirm',
   canselLabel = 'Cancel',
   contentClassName,
-  withTitleExclamation
+  withTitleExclamation,
+  maxWidth
 }) => (
   <AlertDialog.Root open={open}>
     <AlertDialog.Trigger>{children}</AlertDialog.Trigger>
 
-    <AlertDialog.Content size='1' className={clsx(styles.content, contentClassName)}>
+    <AlertDialog.Content
+      size='3'
+      style={{
+        padding: '22px',
+        maxWidth: maxWidth ?? 370
+      }}
+      className={contentClassName}
+    >
       <Flex direction='column'>
         {withTitleExclamation ? (
           <TitleWithExclamation mb='3'>
@@ -36,13 +41,11 @@ export const ConfirmAlert: FC<Props> = ({
         <AlertDialog.Description>{description}</AlertDialog.Description>
 
         <Flex gap='3' justify='end' mt='5'>
-          {onCancel && (
-            <AlertDialog.Cancel>
-              <Button color='gray' variant='soft' radius='large' onClick={onCancel}>
-                {canselLabel}
-              </Button>
-            </AlertDialog.Cancel>
-          )}
+          <AlertDialog.Cancel>
+            <Button color='gray' variant='soft' radius='large' onClick={onCancel}>
+              {canselLabel}
+            </Button>
+          </AlertDialog.Cancel>
 
           {onConfirm && (
             <AlertDialog.Action>
@@ -56,3 +59,34 @@ export const ConfirmAlert: FC<Props> = ({
     </AlertDialog.Content>
   </AlertDialog.Root>
 )
+
+export type Props = PropsWithChildren<{
+  title: string
+  description: string
+  open?: boolean
+  contentClassName?: string
+  withTitleExclamation?: boolean
+  maxWidth?: number | string
+}> &
+  (WithConfirm | WithCansel | WithBothActions)
+
+interface WithConfirm {
+  onConfirm: VoidFunction
+  confirmLabel?: string
+  canselLabel?: never
+  onCancel?: never
+}
+
+interface WithCansel {
+  onCancel: VoidFunction
+  canselLabel?: string
+  confirmLabel?: never
+  onConfirm?: never
+}
+
+interface WithBothActions {
+  onConfirm?: VoidFunction
+  onCancel?: VoidFunction
+  confirmLabel?: string
+  canselLabel?: string
+}
