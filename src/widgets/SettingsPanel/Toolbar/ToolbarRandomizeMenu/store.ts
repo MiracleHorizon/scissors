@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { array, boolean, object, string } from 'yup'
 
 import { MAX_OPERATIONS } from './constants'
 import type { Label, Setting } from './types'
@@ -15,7 +16,7 @@ interface Store {
   toggleSettingChecked: (label: Label) => void
 }
 
-const defaultSettings: Setting[] = [
+export const defaultSettings: Setting[] = [
   {
     label: 'flip',
     checked: true
@@ -98,7 +99,57 @@ export const useRandomizeStore = create(
         })
     }),
     {
-      name: 'scissors-randomize-settings'
+      name: 'scissors-randomize-settings',
+      merge: mergeState
     }
   )
 )
+
+export function mergeState<State>(persistedState: unknown, currentState: State): State {
+  if (!persistedState) {
+    return currentState
+  }
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (!('settings' in persistedState)) {
+    return currentState
+  }
+
+  const settings = persistedState.settings
+
+  const isValid = isSettingsValid(settings)
+  if (!isValid) {
+    return {
+      ...currentState,
+      settings: defaultSettings
+    }
+  }
+
+  const totalChecked = (settings as Setting[]).filter(s => s.checked).length
+  if (totalChecked <= MAX_OPERATIONS) {
+    return {
+      ...currentState,
+      settings
+    }
+  }
+
+  return {
+    ...currentState,
+    settings: defaultSettings
+  }
+}
+
+// TODO: Performance check
+export function isSettingsValid(settings: unknown): boolean {
+  const oneSettingSchema = object({
+    label: string()
+      .oneOf(defaultSettings.map(s => s.label))
+      .defined()
+      .required(),
+    checked: boolean().defined().required()
+  })
+  const settingsSchema = array(oneSettingSchema).length(defaultSettings.length).defined().required()
+
+  return settingsSchema.isValidSync(settings)
+}
