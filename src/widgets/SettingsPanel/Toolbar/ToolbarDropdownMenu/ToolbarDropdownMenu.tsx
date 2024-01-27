@@ -1,0 +1,56 @@
+import { type FC, useEffect, useState } from 'react'
+import { Button, DropdownMenu } from '@radix-ui/themes'
+
+import { ToolbarDropdownMenuContent } from './ToolbarDropdownMenuContent'
+import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
+import type { ClassNameProps } from '@app-types/ClassNameProps'
+
+const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
+  <DropdownMenu.Trigger {...props}>
+    <Button variant='outline' radius='large' color='gray'>
+      Menu
+      <ChevronDownIcon width='18px' height='18px' color='var(--gray-a11)' />
+    </Button>
+  </DropdownMenu.Trigger>
+)
+
+interface TriggerProps extends ClassNameProps {
+  onClick: VoidFunction
+}
+
+export function ToolbarDropdownMenu({ triggerClassName }: Props) {
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      if (!open) return
+
+      const breakpoint = 519
+      const isMobile = matchMedia(`(max-width: ${breakpoint}px)`).matches
+
+      if (!isMobile) {
+        handleClose()
+      }
+    }
+
+    window.addEventListener('resize', handleWindowResize)
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  }, [open])
+
+  return (
+    <DropdownMenu.Root open={open}>
+      <ToolbarDropdownMenuTrigger onClick={handleOpen} className={triggerClassName} />
+      <ToolbarDropdownMenuContent onClose={handleClose} />
+    </DropdownMenu.Root>
+  )
+}
+
+interface Props {
+  triggerClassName?: string
+}

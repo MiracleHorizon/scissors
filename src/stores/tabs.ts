@@ -11,7 +11,7 @@ export const TOOLBAR_TAB = {
   CONVERT: 'convert',
   RESIZE: 'resize'
 } as const
-type ToolbarTab = (typeof TOOLBAR_TAB)[keyof typeof TOOLBAR_TAB]
+export type ToolbarTab = (typeof TOOLBAR_TAB)[keyof typeof TOOLBAR_TAB]
 
 export const useTabsStore = create<Store>(set => ({
   // State

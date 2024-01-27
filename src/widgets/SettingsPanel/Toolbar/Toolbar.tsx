@@ -1,36 +1,23 @@
-import { Flex, Separator } from '@radix-ui/themes'
+import { Flex, type PaddingProps } from '@radix-ui/themes'
 
 import { ToolbarTabList } from './ToolbarTabList'
-import { ButtonImportSettings } from './ButtonImportSettings'
-import { ButtonExportSettings } from './ButtonExportSettings'
-import { ButtonSettingsRemove } from './ButtonSettingsRemove'
-import { ButtonSettingsReset } from './ButtonSettingsReset'
-import { ToolbarRandomizeMenu } from './ToolbarRandomizeMenu'
-import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
+import { ToolbarContent } from './ToolbarContent'
+import { ToolbarDropdownMenu } from './ToolbarDropdownMenu'
 import styles from './Toolbar.module.css'
 
-export function Toolbar() {
-  const selectedTab = useTabsStore(state => state.selectedTab)
-
-  return (
-    <Flex align='center' justify='between' pl='3' className={styles.root}>
-      <ToolbarTabList />
-
-      <Flex align='center' justify='end' gap='1' py='2' px='3'>
-        <ButtonImportSettings />
-        <ButtonExportSettings />
-
-        {selectedTab === TOOLBAR_TAB.CONVERT && (
-          <>
-            <ToolbarRandomizeMenu />
-
-            <Separator orientation='vertical' mx='1' />
-
-            <ButtonSettingsReset />
-            <ButtonSettingsRemove />
-          </>
-        )}
-      </Flex>
-    </Flex>
-  )
+const padding: PaddingProps = {
+  pl: '3',
+  pr: {
+    initial: '3',
+    xs: '0'
+  }
 }
+
+// TODO: dynamic import with react-responsive / react-device-detect
+export const Toolbar = () => (
+  <Flex {...padding} align='center' justify='between' className={styles.root}>
+    <ToolbarTabList />
+    <ToolbarContent className={styles.content} />
+    <ToolbarDropdownMenu triggerClassName={styles.dropdownMenuTrigger} />
+  </Flex>
+)
