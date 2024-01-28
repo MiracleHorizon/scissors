@@ -4,31 +4,37 @@ import { useEffect, useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
 
 import { CookieIcon } from '@ui/icons/CookieIcon'
-import { isTourCompleted, TOUR_LS_KEY } from '@lib/tour'
+import { isTourCompleted as isTourCompletedCheck, TOUR_LS_KEY } from '@lib/tour'
 import styles from './CookieConsentBanner.module.css'
 
 const KEY = 'scissors-cookie-consent'
 
-function checkVisibility(): boolean {
+function isVisibleCheck(): boolean {
   /*
    * Check if already accepted.
    */
-  if (localStorage.getItem(KEY) !== null) {
+  const isAccepted = !!localStorage.getItem(KEY)
+  if (isAccepted) {
     return false
   }
 
   /*
    * Banner can be shown only once and only if user tour is completed.
    */
-  return isTourCompleted()
+  const isTourCompleted = isTourCompletedCheck()
+  if (!isTourCompleted) {
+    return false
+  }
+
+  return isTourCompleted && !isAccepted
 }
 
 export default function CookieConsentBanner() {
-  const [isVisible, setVisible] = useState(checkVisibility())
+  const [isVisible, setVisible] = useState(isVisibleCheck())
 
   const handleCookiesAccept = () => {
     localStorage.setItem(
-      'cookie-consent',
+      KEY,
       JSON.stringify({
         accepted: true
       })
