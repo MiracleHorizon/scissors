@@ -1,8 +1,12 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
     METADATA_BASE: process.env.METADATA_BASE
+  },
+  images: {
+    domains: ['raw.githubusercontent.com']
   }
 }
 

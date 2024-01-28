@@ -2,43 +2,41 @@ import Image from 'next/image'
 import { Flex, type PaddingProps, Popover, ScrollArea, Text } from '@radix-ui/themes'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
-import coverExample from '@public/resize-fit-examples/cover.png'
-import containExample from '@public/resize-fit-examples/contain.png'
-import fillExample from '@public/resize-fit-examples/fill.png'
-import insideExample from '@public/resize-fit-examples/inside.png'
-import outsideExample from '@public/resize-fit-examples/outside.png'
 import type { FlexDirection, Gap } from '@lib/theme'
 import styles from './ResizeFitExamplesPopover.module.css'
 
+const githubRowPath = 'https://raw.githubusercontent.com'
+const repositoryPublicPath = 'MiracleHorizon/scissors/main/public'
+const exampleStaticPath = `${githubRowPath}/${repositoryPublicPath}/resize-fit-examples`
 const examples = [
   {
-    src: coverExample.src,
-    width: coverExample.width,
-    height: coverExample.height,
+    src: `${exampleStaticPath}/cover.png`,
+    width: 360,
+    height: 264,
     label: 'Cover'
   },
   {
-    src: containExample.src,
-    width: containExample.width,
-    height: containExample.height,
+    src: `${exampleStaticPath}/contain.png`,
+    width: 264,
+    height: 264,
     label: 'Contain'
   },
   {
-    src: fillExample.src,
-    width: fillExample.width,
-    height: fillExample.height,
+    src: `${exampleStaticPath}/fill.png`,
+    width: 264,
+    height: 264,
     label: 'Fill'
   },
   {
-    src: insideExample.src,
-    width: insideExample.width,
-    height: insideExample.height,
+    src: `${exampleStaticPath}/inside.png`,
+    width: 264,
+    height: 264,
     label: 'Inside'
   },
   {
-    src: outsideExample.src,
-    width: outsideExample.width,
-    height: outsideExample.height,
+    src: `${exampleStaticPath}/outside.png`,
+    width: 360,
+    height: 264,
     label: 'Outside'
   }
 ]
