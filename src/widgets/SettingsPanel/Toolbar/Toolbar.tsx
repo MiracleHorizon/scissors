@@ -1,23 +1,33 @@
-import { Flex, type PaddingProps } from '@radix-ui/themes'
+import dynamic from 'next/dynamic'
+import MediaQuery from 'react-responsive'
+import { Flex } from '@radix-ui/themes'
 
 import { ToolbarTabList } from './ToolbarTabList'
-import { ToolbarContent } from './ToolbarContent'
-import { ToolbarDropdownMenu } from './ToolbarDropdownMenu'
+import { ToolbarContentSkeleton, ToolbarDropdownMenuSkeleton } from '@ui/skeletons/ToolbarSkeleton'
 import styles from './Toolbar.module.css'
 
-const padding: PaddingProps = {
-  pl: '3',
-  pr: {
-    initial: '3',
-    xs: '0'
+const ToolbarContent = dynamic(() => import('./ToolbarContent').then(mod => mod.ToolbarContent), {
+  ssr: false,
+  loading: () => <ToolbarContentSkeleton />
+})
+const ToolbarDropdownMenu = dynamic(
+  () => import('./ToolbarDropdownMenu').then(mod => mod.ToolbarDropdownMenu),
+  {
+    ssr: false,
+    loading: () => <ToolbarDropdownMenuSkeleton />
   }
-}
+)
 
-// TODO: dynamic import with react-responsive / react-device-detect
 export const Toolbar = () => (
-  <Flex {...padding} align='center' justify='between' className={styles.root}>
+  <Flex px='3' align='center' justify='between' className={styles.root}>
     <ToolbarTabList />
-    <ToolbarContent className={styles.content} />
-    <ToolbarDropdownMenu triggerClassName={styles.dropdownMenuTrigger} />
+
+    <MediaQuery minWidth={520}>
+      <ToolbarContent />
+    </MediaQuery>
+
+    <MediaQuery maxWidth={519}>
+      <ToolbarDropdownMenu />
+    </MediaQuery>
   </Flex>
 )

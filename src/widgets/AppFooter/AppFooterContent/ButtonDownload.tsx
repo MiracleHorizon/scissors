@@ -3,6 +3,7 @@ import { Button, Link, Text } from '@radix-ui/themes'
 
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
 import { useOutputStore } from '@stores/output'
+import { TOUR_STEP } from '@lib/tour'
 
 export function ButtonDownload() {
   const linkRef = useRef<HTMLAnchorElement>(null)
@@ -18,6 +19,7 @@ export function ButtonDownload() {
   return (
     <>
       <Button
+        data-tourstep={TOUR_STEP.DOWNLOAD_BUTTON}
         size='3'
         variant='surface'
         radius='large'

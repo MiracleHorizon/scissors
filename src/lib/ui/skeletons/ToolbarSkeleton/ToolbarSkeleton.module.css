@@ -2,3 +2,17 @@
   background-color: var(--color-background);
   box-shadow: 0 1px var(--gray-a4);
 }
+
+.toolbarDropdownMenu {
+  display: none;
+}
+
+@media screen and (max-width: 519px) {
+  .toolbarContent {
+    display: none;
+  }
+
+  .toolbarDropdownMenu {
+    display: flex;
+  }
+}

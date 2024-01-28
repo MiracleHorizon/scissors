@@ -1,17 +1,21 @@
 import { Flex } from '@radix-ui/themes'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { ReaderIcon } from '@ui/icons/ReaderIcon'
 import { NavigationItem } from './NavigationItem'
 import { ROUTE } from '@lib/router'
+import { TOUR_STEP } from '@lib/tour'
 import type { Gap } from '@lib/theme'
-import type { NavigationItemModel } from './Navigation.types'
 
-const items: NavigationItemModel[] = [
+const items: ComponentPropsWithoutRef<typeof NavigationItem>[] = [
   {
     label: 'Documentation',
     href: ROUTE.DOCS,
     tooltipContent: 'Watch the documentation',
-    icon: <ReaderIcon width='18px' height='18px' label='go to documentation' />
+    icon: <ReaderIcon width='18px' height='18px' label='go to documentation' />,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    'data-tourstep': TOUR_STEP.DOCUMENTATION_LINK
   }
 ]
 

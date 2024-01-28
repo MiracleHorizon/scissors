@@ -3,10 +3,11 @@ import { Button, DropdownMenu } from '@radix-ui/themes'
 
 import { ToolbarDropdownMenuContent } from './ToolbarDropdownMenuContent'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
+import { TOUR_STEP } from '@lib/tour'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
-  <DropdownMenu.Trigger {...props}>
+  <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS} {...props}>
     <Button variant='outline' radius='large' color='gray'>
       Menu
       <ChevronDownIcon width='18px' height='18px' color='var(--gray-a11)' />

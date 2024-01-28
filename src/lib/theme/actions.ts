@@ -39,8 +39,8 @@ export async function getThemeColorCookie(): Promise<RadixThemeColor | null> {
 }
 
 export async function getThemeAppearance() {
-  const DEFAULT_THEME: Theme = 'dark'
-  const DEFAULT_THEME_COLOR: RadixThemeColor = 'gray'
+  const DEFAULT_THEME: Theme = 'light'
+  const DEFAULT_THEME_COLOR: RadixThemeColor = 'indigo'
 
   const theme = await getThemeCookie()
   const themeColor = await getThemeColorCookie()
