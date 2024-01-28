@@ -5,6 +5,7 @@ import { type FC, memo } from 'react'
 import { SymbolIcon } from '@ui/icons/SymbolIcon'
 import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
 import { useOutputStore } from '@stores/output'
+import { TOUR_STEP } from '@lib/tour'
 
 const RequestErrorAlert = dynamic(
   () => import('@components/alerts/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
@@ -18,6 +19,7 @@ export const ButtonRequest: FC<Props> = memo(
     return (
       <>
         <Button
+          data-tourstep={TOUR_STEP.REQUEST_BUTTON}
           size='3'
           radius='large'
           disabled={isDisabled || isPending || !isFileUploaded}

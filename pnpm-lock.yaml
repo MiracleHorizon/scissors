@@ -26,6 +26,9 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  driver.js:
+    specifier: 1.3.1
+    version: 1.3.1
   lodash.capitalize:
     specifier: ^4.2.1
     version: 4.2.1
@@ -3283,6 +3286,10 @@ packages:
   /dom-accessibility-api@0.6.3:
     resolution: {integrity: sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==}
     dev: true
+
+  /driver.js@1.3.1:
+    resolution: {integrity: sha512-MvUdXbqSgEsgS/H9KyWb5Rxy0aE6BhOVT4cssi2x2XjmXea6qQfgdx32XKVLLSqTaIw7q/uxU5Xl3NV7+cN6FQ==}
+    dev: false
 
   /duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}

@@ -13,6 +13,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
   return function FileUploaderHOC<T extends Props>({
     setFile,
     tooltipContent,
+    htmlAttributes,
     ...inputAttributes
   }: T) {
     const [isDragOver, setIsDragOver] = useState(false)
@@ -73,6 +74,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
     return (
       <>
         <Component
+          {...htmlAttributes}
           tooltipcontent={tooltipContent}
           isDragOver={isDragOver}
           onClick={triggerInputClick}

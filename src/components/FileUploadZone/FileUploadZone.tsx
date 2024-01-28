@@ -11,8 +11,9 @@ import { IMAGE_FILE_FORMAT } from '@server/sharp'
 import styles from './FileUploadZone.module.css'
 
 const extensions = Object.values(IMAGE_FILE_FORMAT).slice(0, 4).join(', ')
-const FileUploadZone: FC<ComponentProps> = ({ children: FileInput, isDragOver, ...actions }) => (
+const FileUploadZone: FC<ComponentProps> = ({ children: FileInput, isDragOver, ...props }) => (
   <Flex
+    {...props}
     title='File is not uploaded'
     align='center'
     justify='center'
@@ -23,7 +24,6 @@ const FileUploadZone: FC<ComponentProps> = ({ children: FileInput, isDragOver, .
     className={clsx(styles.root, {
       [styles.dragOver]: isDragOver
     })}
-    {...actions}
   >
     <Flex asChild align='center' gap='2'>
       <Text as='span' weight='medium' size='5' mb='2' className={styles.uploadText}>

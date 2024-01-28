@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Flex, IconButton, Link as RadixLink, Text, Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 import styles from './NavigationItem.module.css'
 
-export function NavigationItem({ label, href, tooltipContent, icon }: Props) {
+export function NavigationItem({ label, href, tooltipContent, icon, ...attributes }: Props) {
   const pathname = usePathname()
   const isSelected = pathname === href || pathname.startsWith(href)
 
@@ -22,7 +22,7 @@ export function NavigationItem({ label, href, tooltipContent, icon }: Props) {
         })}
       >
         <RadixLink asChild color='gray' underline='hover' size='2' className={styles.link}>
-          <Link href={href}>
+          <Link {...attributes} href={href}>
             <Text className={styles.text}>{label}</Text>
             <IconButton
               color='gray'
@@ -40,7 +40,7 @@ export function NavigationItem({ label, href, tooltipContent, icon }: Props) {
   )
 }
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLAnchorElement>, 'href'> {
   label: string
   href: string
   tooltipContent: string
