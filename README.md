@@ -15,7 +15,8 @@
 
 ### About The Project
 
-[![Product Screen Shot][preview-screenshot]][project-github]
+[![Project screenshot 1][preview-screenshot-1]][project-github]
+[![Project screenshot 2][preview-screenshot-2]][project-github]
 
 <em>[ Work in progress ]</em>
 
@@ -87,4 +88,5 @@ Currently, the following image formats are supported:
 MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
 
 [project-github]: https://github.com/MiracleHorizon/scissors
-[preview-screenshot]: readme/preview-screenshot.png
+[preview-screenshot-1]: readme/preview-screenshot-1.png
+[preview-screenshot-2]: readme/preview-screenshot-2.png
