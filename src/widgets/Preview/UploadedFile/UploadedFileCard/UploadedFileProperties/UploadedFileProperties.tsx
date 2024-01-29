@@ -48,7 +48,7 @@ export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
       {properties.map(({ label, value }, index) => (
         <Fragment key={label}>
           {index > 0 && (
-            <MediaQuery maxWidth={700}>
+            <MediaQuery minWidth={701}>
               <Separator orientation='vertical' className={styles.separator} />
             </MediaQuery>
           )}
