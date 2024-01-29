@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
-import { cropImageFileType } from '@helpers/cropImageFileType'
-import { cropFileName } from '@helpers/cropFileName'
-import { isValidFileName } from '@helpers/isValidFileName'
+import { isValidFileName } from '@helpers/file/isValidFileName'
+import { cropFileName } from '@helpers/file/cropFileName'
+import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { ImageFileFormat } from '@server/sharp'
 

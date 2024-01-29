@@ -1,0 +1,41 @@
+.root {
+  --grid-item-count: 3;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: var(--space-3);
+  width: 100%;
+}
+
+.propertyItem {
+  min-width: max-content;
+}
+
+.propertyItem,
+.separator {
+  height: 32px;
+}
+
+.propertyItem span {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 700px) {
+  .root {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-6);
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .root {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(var(--grid-item-count), 1fr);
+  }
+
+  .propertyItem span {
+    font-size: var(--font-size-2);
+  }
+}

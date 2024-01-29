@@ -1,4 +1,71 @@
+.card {
+  --card-inset-width: 54px;
+  --card-inset-offset: var(--space-4);
+  --buttons-width: 64px;
+  --buttons-offset: var(--space-4);
+
+  width: 100%;
+}
+
+.card :global(.rt-CardInner) {
+  padding: 0;
+}
+
+.cardInset {
+  width: var(--card-inset-width);
+  min-width: var(--card-inset-width);
+  margin-right: var(--card-inset-offset);
+  box-shadow: 0 0 0 1px var(--gray-a5);
+}
+
+.content {
+  max-width: calc(
+    100% - var(--card-inset-width) - var(--card-inset-offset) - var(--buttons-width) -
+      var(--buttons-offset)
+  );
+  padding: var(--space-4) 0;
+}
+
+.buttons {
+  width: var(--buttons-width);
+  min-width: var(--buttons-width);
+  margin-left: var(--buttons-offset);
+}
+
 .fileName {
-  /* TODO: variables */
-  max-width: calc(100% - 70px - var(--space-1) * 2 - var(--space-5));
+  display: inline-block;
+  height: 24px;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .buttons {
+    justify-content: flex-end;
+    padding: var(--space-4) 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card :global(.rt-CardInner) {
+    padding: var(--card-padding);
+  }
+
+  .root {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-2);
+  }
+
+  .buttons {
+    align-self: flex-end;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
 }

@@ -6,7 +6,7 @@ import type { FC } from 'react'
 
 import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
-import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
+import { MAX_FILE_SIZE_MB } from '@helpers/file/constants'
 import { IMAGE_FILE_FORMAT } from '@server/sharp'
 import styles from './FileUploadZone.module.css'
 

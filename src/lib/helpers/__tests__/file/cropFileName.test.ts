@@ -1,6 +1,6 @@
-import { cropFileName } from '@helpers/cropFileName'
+import { cropFileName } from '@helpers/file/cropFileName'
 
-describe('@lib/helpers/cropFileName', () => {
+describe('@lib/helpers/file/cropFileName', () => {
   it('should crop the file name correctly', () => {
     expect(cropFileName('hello-world.png')).toBe('hello-world')
     expect(cropFileName('foo.jpeg')).toBe('foo')

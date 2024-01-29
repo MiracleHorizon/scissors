@@ -1,6 +1,4 @@
-export const MIN_FILE_NAME_LENGTH = 1
-export const MAX_FILE_NAME_LENGTH = 255
-export const notAllowedChars = ['/', '\\', '<', '>', ':', '|', '"', '?', '*']
+import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH, notAllowedChars } from './constants'
 
 /**
  * @param fileName - file name to be checked
