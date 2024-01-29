@@ -3,7 +3,7 @@ import isEmpty from 'lodash.isempty'
 
 import { ImageResizer } from '@server/sharp/ImageResizer'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { isValidFileSize } from '@helpers/isValidFileSize'
+import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { errorMessages } from '@api/resize-image'
 import type { ResizeSettings } from '@server/sharp'
 

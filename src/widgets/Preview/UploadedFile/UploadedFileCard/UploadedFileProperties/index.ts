@@ -1,0 +1,1 @@
+export { UploadedFileProperties } from './UploadedFileProperties'

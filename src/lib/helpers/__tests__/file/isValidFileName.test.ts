@@ -1,11 +1,11 @@
+import { isValidFileName } from '@helpers/file/isValidFileName'
 import {
-  isValidFileName,
   MAX_FILE_NAME_LENGTH,
   MIN_FILE_NAME_LENGTH,
   notAllowedChars
-} from '@helpers/isValidFileName'
+} from '@helpers/file/constants'
 
-describe('@lib/helpers/isValidFileName', () => {
+describe('@lib/helpers/file/isValidFileName', () => {
   it(`should return false because file name length is less than ${MIN_FILE_NAME_LENGTH}`, () => {
     expect(isValidFileName('a'.repeat(MIN_FILE_NAME_LENGTH - 1))).toBe(false)
   })

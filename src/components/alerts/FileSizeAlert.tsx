@@ -4,7 +4,7 @@ import { AlertDialog, Button, Flex, Text } from '@radix-ui/themes'
 import type { CSSProperties, FC } from 'react'
 
 import { TitleWithExclamation } from '@components/TitleWithExclamation'
-import { MAX_FILE_SIZE_MB } from '@helpers/isValidFileSize'
+import { MAX_FILE_SIZE_MB } from '@helpers/file/constants'
 
 const contentStyle: CSSProperties = {
   padding: '22px',

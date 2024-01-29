@@ -1,9 +1,11 @@
-import { useCallback } from 'react'
-import { Box, Card, Flex, Text } from '@radix-ui/themes'
+import { type FC, useCallback } from 'react'
+import { Card, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
+import MediaQuery from 'react-responsive'
 
+import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
-import { FileIcon } from '@ui/icons/FileIcon'
+import { ImageFileIcon } from '@ui/icons/ImageFileIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonImport } from '@ui/ButtonImport'
@@ -12,7 +14,7 @@ import { useRequestStore } from '@stores/request'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import styles from './UploadedFileCard.module.css'
 
-export function UploadedFileCard({ file }: Props) {
+export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
 
   const setFile = useOutputStore(state => state.setFile)
@@ -21,34 +23,49 @@ export function UploadedFileCard({ file }: Props) {
   const handleRemoveFile = useCallback(() => removeFile(), [removeFile])
 
   return (
-    <Box asChild width='100%'>
-      <Card size='2'>
-        <Flex align='center' justify='start'>
-          <FileIcon width='22px' height='22px' />
-          <Text as='span' ml='2' title={file.name} className={clsx(styles.fileName, 'truncate')}>
+    <Card size='2' className={styles.card}>
+      <Flex align='center' height='100%' width='100%' className={styles.root}>
+        <MediaQuery maxWidth={700}>
+          <Flex align='center' justify='center' height='100%' className={styles.cardInset}>
+            <ImageFileIcon width='28px' height='28px' />
+          </Flex>
+        </MediaQuery>
+
+        <Flex direction='column' gap='1' mr='auto' className={styles.content}>
+          <Text as='span' title={file.name} className={clsx(styles.fileName, 'truncate')}>
             {file.name}
           </Text>
-          {isRequestLoading ? (
-            <LoadingSpinner ml='auto' />
-          ) : (
-            <Flex ml='auto' align='center' gap='1'>
-              <ButtonImport
-                accept={ALLOWED_IMAGE_FORMATS}
-                setFile={setFile}
-                tooltipContent='Upload New File'
-              />
-              <ConfirmAlert
-                title='Confirm Deletion'
-                description='Are you sure you want to continue?'
-                onConfirm={handleRemoveFile}
-              >
-                <ButtonDelete tooltipDelay={600} tooltipContent='Delete File' />
-              </ConfirmAlert>
-            </Flex>
-          )}
+          <UploadedFileProperties file={file} />
         </Flex>
-      </Card>
-    </Box>
+
+        {isRequestLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Flex
+            direction='column'
+            justify='center'
+            align='center'
+            gap='1'
+            height='100%'
+            className={styles.buttons}
+          >
+            <ButtonImport
+              accept={ALLOWED_IMAGE_FORMATS}
+              setFile={setFile}
+              tooltipContent='Upload New File'
+            />
+            <ConfirmAlert
+              title='Confirm deletion'
+              description='Are you sure you want to continue?'
+              confirmLabel='Delete'
+              onConfirm={handleRemoveFile}
+            >
+              <ButtonDelete tooltipContent='Delete File' />
+            </ConfirmAlert>
+          </Flex>
+        )}
+      </Flex>
+    </Card>
   )
 }
 

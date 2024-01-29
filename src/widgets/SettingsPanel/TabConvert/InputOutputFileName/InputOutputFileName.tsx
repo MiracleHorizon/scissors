@@ -7,11 +7,8 @@ import { FileTextIcon } from '@ui/icons/FileTextIcon'
 import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
 import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
-import {
-  isValidFileName,
-  MAX_FILE_NAME_LENGTH,
-  MIN_FILE_NAME_LENGTH
-} from '@helpers/isValidFileName'
+import { isValidFileName } from '@helpers/file/isValidFileName'
+import { MIN_FILE_NAME_LENGTH, MAX_FILE_NAME_LENGTH } from '@helpers/file/constants'
 import type { TextFieldInputProps } from '@lib/theme'
 import styles from './InputOutputFileName.module.css'
 
