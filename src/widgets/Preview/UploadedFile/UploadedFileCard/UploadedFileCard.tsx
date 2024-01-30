@@ -39,7 +39,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
         </Flex>
 
         {isRequestLoading ? (
-          <LoadingSpinner />
+          <LoadingSpinner className={styles.loadingSpinner} />
         ) : (
           <Flex
             direction='column'

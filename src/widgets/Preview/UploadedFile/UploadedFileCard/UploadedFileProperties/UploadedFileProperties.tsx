@@ -1,4 +1,4 @@
-import { type FC, Fragment, memo, useEffect, useMemo, useState } from 'react'
+import { type CSSProperties, type FC, Fragment, memo, useEffect, useMemo, useState } from 'react'
 import { Flex, Separator, Text } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
@@ -39,12 +39,16 @@ export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
     return items
   }, [dimension, file.size])
 
+  const rootStyle = {
+    '--grid-item-count': properties.length
+  } as CSSProperties
+
   useEffect(() => {
     getImageDimension(file).then(setDimension).catch(setDimension)
   }, [file])
 
   return (
-    <div className={styles.root}>
+    <div style={rootStyle} className={styles.root}>
       {properties.map(({ label, value }, index) => (
         <Fragment key={label}>
           {index > 0 && (

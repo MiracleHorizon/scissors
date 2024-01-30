@@ -1,14 +1,21 @@
 import { Box, type MarginProps } from '@radix-ui/themes'
+import { clsx } from 'clsx/lite'
 import type { FC } from 'react'
 
 import type { Size } from '@lib/theme'
+import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './LoadingSpinner.module.css'
 
-export const LoadingSpinner: FC<Props> = ({ width = '6', height = '6', ...marginProps }) => (
-  <Box {...marginProps} width={width} height={height} className={styles.spinner} />
+export const LoadingSpinner: FC<Props> = ({
+  width = '6',
+  height = '6',
+  className,
+  ...marginProps
+}) => (
+  <Box {...marginProps} width={width} height={height} className={clsx(styles.spinner, className)} />
 )
 
-interface Props extends MarginProps {
+interface Props extends MarginProps, ClassNameProps {
   width?: Size
   height?: Size
 }

@@ -38,6 +38,10 @@
   width: 100%;
 }
 
+.loadingSpinner {
+  margin-right: var(--space-4);
+}
+
 @media screen and (max-width: 700px) {
   .buttons {
     justify-content: flex-end;
@@ -63,9 +67,17 @@
   }
 
   .buttons {
-    align-self: flex-end;
     flex-direction: row;
     margin: 0;
     padding: 0;
+  }
+
+  .loadingSpinner {
+    margin-right: 0;
+    margin-top: var(--space-4);
+  }
+
+  .buttons, .loadingSpinner {
+    align-self: flex-end;
   }
 }

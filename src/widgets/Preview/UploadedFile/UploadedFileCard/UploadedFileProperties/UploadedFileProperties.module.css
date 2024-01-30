@@ -1,6 +1,4 @@
 .root {
-  --grid-item-count: 3;
-
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -33,6 +31,10 @@
   .root {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(var(--grid-item-count), 1fr);
+  }
+
+  .propertyItem {
+    width: max-content;
   }
 
   .propertyItem span {
