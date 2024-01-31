@@ -1,0 +1,10 @@
+.root {
+  width: 20dvw;
+  max-width: 200px;
+  flex-shrink: 0;
+}
+
+.content {
+  position: sticky;
+  top: var(--space-2);
+}
