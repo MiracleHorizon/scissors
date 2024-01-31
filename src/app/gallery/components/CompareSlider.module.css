@@ -1,0 +1,8 @@
+.root {
+  position: relative;
+}
+
+.root,
+.root img {
+  max-height: calc(100dvh - var(--header-height) - var(--page-padding-y) * 2);
+}

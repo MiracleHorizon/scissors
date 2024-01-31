@@ -1,0 +1,13 @@
+.root {
+  --page-padding-y: var(--space-4);
+  --header-height: var(--space-8);
+}
+
+.root :global(.rt-ScrollAreaScrollbar) {
+  margin-top: var(--page-padding-y);
+  margin-bottom: var(--page-padding-y);
+}
+
+.root :global(.rt-ScrollAreaViewport) {
+  height: calc(100dvh - var(--header-height));
+}
