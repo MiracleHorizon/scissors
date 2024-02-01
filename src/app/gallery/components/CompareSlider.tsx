@@ -14,12 +14,12 @@ function getRandomPosition(index: number): number {
    * Make the default position values for "handle" random for a more interesting UI.
    */
   const isEven = index % 2 === 0
-  const restrictions: [number, number] = isEven ? [40, 60] : [30, 50]
+  const range: [number, number] = isEven ? [40, 60] : [30, 50]
 
-  return Math.floor(getRandomValueFromRange(...restrictions))
+  return Math.floor(getRandomValueFromRange(...range))
 }
 
-export function CompareSlider({ beforeSrc, afterSrc, index }: Props) {
+export function CompareSlider({ index, beforeSrc, afterSrc }: Props) {
   /*
    * Prevent scrolling to element when clicking on the handle container.
    * https://github.com/nerdyman/react-compare-slider/blob/main/lib/src/ReactCompareSlider.tsx#L192-L195
@@ -57,6 +57,7 @@ export function CompareSlider({ beforeSrc, afterSrc, index }: Props) {
   return (
     <ReactCompareSlider
       ref={sliderRef}
+      boundsPadding={20}
       position={getRandomPosition(index)}
       handle={<DragHandle />}
       itemOne={<ReactCompareSliderImage src={beforeSrc} />}
@@ -67,7 +68,7 @@ export function CompareSlider({ beforeSrc, afterSrc, index }: Props) {
 }
 
 interface Props {
+  index: number
   beforeSrc: string
   afterSrc: string
-  index: number
 }
