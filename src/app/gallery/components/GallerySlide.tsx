@@ -2,25 +2,34 @@
 
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, FC } from 'react'
 
 import { CompareSlider } from './CompareSlider'
 import { GallerySlideAside } from './GallerySlideAside'
+import { GallerySlidePopover } from './GallerySlidePopover'
+import { GallerySlideInfo } from './GallerySlideInfo'
+import styles from './GallerySlide.module.css'
 
-export default function GallerySlide({ index, label, afterSrc, beforeSrc, details }: Props) {
-  return (
-    <Flex gap='2'>
+const GallerySlide: FC<Props> = ({ index, label, afterSrc, beforeSrc, details }) => (
+  <Flex gap='2'>
+    <Flex className={styles.sliderContainer}>
       <CompareSlider index={index} beforeSrc={beforeSrc} afterSrc={afterSrc} />
 
-      <MediaQuery minWidth={1025}>
-        <GallerySlideAside label={label} details={details} />
+      <MediaQuery maxWidth={1024}>
+        <GallerySlidePopover label={label} details={details} />
       </MediaQuery>
     </Flex>
-  )
-}
+
+    <MediaQuery minWidth={1025}>
+      <GallerySlideAside label={label} details={details} />
+    </MediaQuery>
+  </Flex>
+)
+
+export default GallerySlide
 
 interface Props
   extends ComponentPropsWithoutRef<typeof CompareSlider>,
-    ComponentPropsWithoutRef<typeof GallerySlideAside> {
+    ComponentPropsWithoutRef<typeof GallerySlideInfo> {
   label: string
 }

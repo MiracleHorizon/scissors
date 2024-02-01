@@ -1,0 +1,31 @@
+.trigger {
+  --background-color: white;
+
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 15;
+  background-color: var(--background-color);
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: color-mix(in srgb, var(--background-color), #000 4%);
+  }
+}
+
+.trigger:active {
+  background-color: color-mix(in srgb, var(--background-color), #000 8%);
+}
+
+.content {
+  max-width: 170px;
+}
+
+.content h4 {
+  font-size: var(--font-size-3);
+}
+
+.content span {
+  font-size: var(--font-size-2);
+}

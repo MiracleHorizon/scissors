@@ -4,7 +4,7 @@
   flex-shrink: 0;
 }
 
-.content {
+.info {
   position: sticky;
   top: var(--space-2);
 }
