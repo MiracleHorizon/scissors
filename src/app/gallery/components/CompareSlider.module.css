@@ -4,5 +4,5 @@
 
 .root,
 .root img {
-  max-height: calc(100dvh - var(--header-height) - var(--page-padding-y) * 2);
+  max-height: calc(100dvh - var(--header-height) - var(--page-padding) * 2);
 }
