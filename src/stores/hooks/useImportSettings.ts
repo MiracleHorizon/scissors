@@ -80,13 +80,6 @@ export function useImportSettings(selectedTab: ToolbarTab) {
         return Promise.reject(new Error('Invalid settings JSON file'))
       }
 
-      console.log({
-        ...NULL_CONVERT_SETTINGS,
-        settings
-      })
-
-      console.log(settings)
-
       const isValid = validateSettings({
         ...NULL_CONVERT_SETTINGS,
         settings
