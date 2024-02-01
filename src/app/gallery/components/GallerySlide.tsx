@@ -10,18 +10,18 @@ import { GallerySlidePopover } from './GallerySlidePopover'
 import { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlide.module.css'
 
-const GallerySlide: FC<Props> = ({ index, label, afterSrc, beforeSrc, details }) => (
+const GallerySlide: FC<Props> = ({ index, afterSrc, beforeSrc, ...info }) => (
   <Flex gap='2'>
     <Flex className={styles.sliderContainer}>
       <CompareSlider index={index} beforeSrc={beforeSrc} afterSrc={afterSrc} />
 
       <MediaQuery maxWidth={1024}>
-        <GallerySlidePopover label={label} details={details} />
+        <GallerySlidePopover index={index} {...info} />
       </MediaQuery>
     </Flex>
 
     <MediaQuery minWidth={1025}>
-      <GallerySlideAside label={label} details={details} />
+      <GallerySlideAside index={index} {...info} />
     </MediaQuery>
   </Flex>
 )

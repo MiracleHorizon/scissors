@@ -22,8 +22,20 @@ export const slides: SlideProps[] = [
       {
         label: 'Gamma',
         value: 2.7
+      },
+      {
+        label: 'Grayscale',
+        value: 'enabled'
       }
-    ]
+    ],
+    settings: {
+      blur: {
+        value: true,
+        sigma: 4.5
+      },
+      gamma: 2.7,
+      grayscale: true
+    }
   },
   {
     label: 'Monstera Deliciosa',
@@ -34,7 +46,13 @@ export const slides: SlideProps[] = [
         label: 'Blur',
         value: 4.5
       }
-    ]
+    ],
+    settings: {
+      blur: {
+        value: true,
+        sigma: 4.5
+      }
+    }
   },
   {
     label: 'Sahara',
@@ -45,6 +63,14 @@ export const slides: SlideProps[] = [
         label: 'Hue',
         value: '315°'
       }
-    ]
+    ],
+    settings: {
+      modulate: {
+        hue: 315,
+        lightness: null,
+        brightness: null,
+        saturation: null
+      }
+    }
   }
 ]
