@@ -2,12 +2,12 @@ import { useCallback } from 'react'
 
 import { useConvertSettings } from './useConvertSettings'
 import { useResizeSettings } from './useResizeSettings'
+import { useExportJSON } from '@hooks/useExportJSON'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
-import { createJSONBlob, downloadFile } from '@utils/export'
-
-const FILE_EXTENSION = 'json'
 
 export function useExportSettings(selectedTab: ToolbarTab) {
+  const { handleExportJSON } = useExportJSON()
+
   const convertSettings = useConvertSettings()
   const resizeSettings = useResizeSettings()
 
@@ -32,14 +32,13 @@ export function useExportSettings(selectedTab: ToolbarTab) {
     const exportPayload = collectExportPayload()
     if (!exportPayload) return
 
-    const { fileName, settings } = exportPayload
-    const blob = createJSONBlob(settings)
+    const { fileName, settings: payload } = exportPayload
 
-    downloadFile({
-      blob,
-      download: `${fileName}.${FILE_EXTENSION}`
+    handleExportJSON({
+      fileName,
+      payload
     })
-  }, [collectExportPayload])
+  }, [collectExportPayload, handleExportJSON])
 
   return { exportSettings }
 }
