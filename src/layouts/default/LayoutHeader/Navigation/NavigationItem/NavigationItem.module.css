@@ -4,9 +4,11 @@
     text-decoration-color 50ms ease-in-out;
 }
 
-.root:hover {
-  color: var(--accent-12);
-  text-decoration-color: var(--accent-8);
+@media (hover: hover) {
+  .root:hover {
+    color: var(--accent-12);
+    text-decoration-color: var(--accent-8);
+  }
 }
 
 .selected {

@@ -4,14 +4,16 @@
   width: 100%;
 }
 
-.root img:hover {
-  filter: brightness(70%);
-  transition: filter 0.1s ease-in-out;
-}
+@media (hover: hover) {
+  .root img:hover {
+    filter: brightness(70%);
+    transition: filter 0.1s ease-in-out;
+  }
 
-.root:hover .icon {
-  opacity: 1;
-  visibility: visible;
+  .root:hover .icon {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .icon {

@@ -9,8 +9,10 @@
   transition: background-color 50ms ease-in;
 }
 
-.root:hover {
-  background-color: var(--gray-a3);
+@media (hover: hover) {
+  .root:hover {
+    background-color: var(--gray-a3);
+  }
 }
 
 .dragOver {

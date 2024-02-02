@@ -10,8 +10,10 @@
   text-decoration-color: inherit;
 }
 
-.link:hover .linkIcon {
-  display: block;
+@media (hover: hover) {
+  .link:hover .linkIcon {
+    display: block;
+  }
 }
 
 .linkIcon {

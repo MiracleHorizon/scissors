@@ -3,8 +3,10 @@
   text-decoration-style: dotted;
 }
 
-.trigger:hover {
-  cursor: help;
+@media (hover: hover) {
+  .trigger:hover {
+    cursor: help;
+  }
 }
 
 .content {
