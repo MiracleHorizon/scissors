@@ -1,6 +1,5 @@
 .root {
   width: var(--slide-aside-w);
-  flex-shrink: 0;
 }
 
 .info {

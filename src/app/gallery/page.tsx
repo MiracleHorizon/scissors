@@ -12,7 +12,7 @@ const GallerySlide = dynamic(() => import('./components/GallerySlide'), {
 
 const GalleryPage = () => (
   <ScrollArea scrollbars='vertical' size='2' className={styles.root}>
-    <Flex direction='column' align='center' width='100%' gap='1' p='4'>
+    <Flex direction='row' wrap='wrap' justify='start' width='100%' p='4' className={styles.content}>
       {slides.map((slide, index) => (
         <GallerySlide key={index + slide.beforeSrc + slide.afterSrc} index={index} {...slide} />
       ))}

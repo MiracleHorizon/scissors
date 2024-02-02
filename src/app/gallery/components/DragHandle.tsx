@@ -1,15 +1,29 @@
+import { type FC, memo } from 'react'
 import { Flex } from '@radix-ui/themes'
+import { clsx } from 'clsx/lite'
 
 import { DragHandleDots2Icon } from '@ui/icons/DragHandleDots2Icon'
 import styles from './DragHandle.module.css'
 
-export const DragHandle = () => (
-  <Flex direction='column' align='center' height='100%' className={styles.root}>
-    <div className={styles.gutter} />
-    <div className={styles.gutterThumb}>
-      <DragHandleDots2Icon />
-    </div>
-    <div className={styles.gutter} />
-  </Flex>
-)
+const DragHandleGutter = () => <Flex grow='1' className={styles.gutter} />
 
+export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
+  <Flex
+    height='100%'
+    align='center'
+    direction={isPortrait ? 'row' : 'column'}
+    className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
+  >
+    <DragHandleGutter />
+    <Flex shrink='0' className={styles.gutterThumb}>
+      <DragHandleDots2Icon />
+    </Flex>
+    <DragHandleGutter />
+  </Flex>
+))
+
+DragHandle.displayName = 'DragHandle'
+
+interface Props {
+  isPortrait: boolean
+}

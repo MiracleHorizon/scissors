@@ -4,6 +4,7 @@ import {
   ReactCompareSliderImage,
   useReactCompareSliderRef
 } from 'react-compare-slider'
+import { clsx } from 'clsx/lite'
 
 import { DragHandle } from './DragHandle'
 import { getRandomValueFromRange } from '@helpers/getRandomValueFromRange'
@@ -19,7 +20,7 @@ function getRandomPosition(index: number): number {
   return Math.floor(getRandomValueFromRange(...range))
 }
 
-export function CompareSlider({ index, beforeSrc, afterSrc }: Props) {
+export function CompareSlider({ index, label, beforeSrc, afterSrc, orientation }: Props) {
   /*
    * Prevent scrolling to element when clicking on the handle container.
    * https://github.com/nerdyman/react-compare-slider/blob/main/lib/src/ReactCompareSlider.tsx#L192-L195
@@ -54,21 +55,26 @@ export function CompareSlider({ index, beforeSrc, afterSrc }: Props) {
     }
   }, [sliderRef])
 
+  const isPortrait = orientation === 'portrait'
+
   return (
     <ReactCompareSlider
       ref={sliderRef}
       boundsPadding={20}
       position={getRandomPosition(index)}
-      handle={<DragHandle />}
-      itemOne={<ReactCompareSliderImage src={beforeSrc} />}
-      itemTwo={<ReactCompareSliderImage src={afterSrc} />}
-      className={styles.root}
+      handle={<DragHandle isPortrait={isPortrait} />}
+      itemOne={<ReactCompareSliderImage src={beforeSrc} alt={`${label} before`} />}
+      itemTwo={<ReactCompareSliderImage src={afterSrc} alt={`${label} after`} />}
+      portrait={isPortrait}
+      className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
     />
   )
 }
 
 interface Props {
   index: number
+  label: string
   beforeSrc: string
   afterSrc: string
+  orientation?: 'landscape' | 'portrait'
 }

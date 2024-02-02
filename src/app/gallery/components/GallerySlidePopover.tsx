@@ -17,7 +17,7 @@ export const GallerySlidePopover: FC<Props> = props => (
   <Popover.Root modal>
     <GallerySlidePopoverTrigger />
 
-    <Popover.Content side='top' align='end' className={styles.content}>
+    <Popover.Content align='end' className={styles.content}>
       <GallerySlideInfo {...props} />
     </Popover.Content>
   </Popover.Root>
