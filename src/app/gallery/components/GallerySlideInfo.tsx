@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 import { ButtonExport } from '@ui/ButtonExport'
 import { useExportJSON } from '@hooks/useExportJSON'
-import { dmMono } from '@app/fonts'
+import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import type { ConvertSettings } from '@server/sharp'
 import styles from './GallerySlideInfo.module.css'
@@ -34,7 +34,7 @@ const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) 
 }
 
 export const GallerySlideInfo: FC<Props> = ({ index, label, settings, details, className }) => (
-  <Flex direction='column' width='100%' style={dmMono.style} className={className}>
+  <Flex direction='column' width='100%' style={geistMono.style} className={className}>
     <Heading size='4' as='h4'>
       {label}
     </Heading>

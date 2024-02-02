@@ -6,7 +6,7 @@ import type { PopoverDOM } from './types'
 
 export async function createTour() {
   const { driver } = await import('driver.js')
-  const { inter } = await import('@app/fonts')
+  const { geistSans } = await import('@app/fonts')
 
   const steps = [
     {
@@ -75,7 +75,7 @@ export async function createTour() {
       element,
       popover: {
         ...popover,
-        popoverClass: clsx('tour-popover', inter.className)
+        popoverClass: clsx('tour-popover', geistSans.variable)
       }
     })),
     prevBtnText: '&#8592; Prev',

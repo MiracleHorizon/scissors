@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { ColorSwatch } from '@ui/ColorSwatch'
 import type { TextSize } from '@lib/theme'
-import { dmMono } from '@app/fonts'
+import { geistMono } from '@app/fonts'
 import styles from './ColorPickerTrigger.module.css'
 
 export const ColorPickerTrigger: FC<Props> = ({ color, label, labelSize, disabled }) => (
@@ -21,7 +21,7 @@ export const ColorPickerTrigger: FC<Props> = ({ color, label, labelSize, disable
         radius='large'
         variant='outline'
         disabled={disabled}
-        className={clsx(styles.button, dmMono.className)}
+        className={clsx(styles.button, geistMono.className)}
       >
         <ColorSwatch color={color} />
         {color}

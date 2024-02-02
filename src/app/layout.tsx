@@ -10,7 +10,7 @@ import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import { isDevelopment } from '@helpers/isDevelopment'
 import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME, getMetadataBase } from '@lib/seo'
-import { inter } from './fonts'
+import { geistSans } from './fonts'
 import './globals.css'
 
 const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), {
@@ -101,7 +101,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.variable}>
+      <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
           {isDevelopment() && <ThemePanel defaultOpen={false} />}
 
