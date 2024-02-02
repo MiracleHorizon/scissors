@@ -1,14 +1,28 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 import type { ComponentPropsWithoutRef, FC } from 'react'
 
 import { CompareSlider } from './CompareSlider'
-import { GallerySlideAside } from './GallerySlideAside'
-import { GallerySlidePopover } from './GallerySlidePopover'
-import { GallerySlideInfo } from './GallerySlideInfo'
+import { AsideSkeleton } from './GallerySlideSkeleton'
+import type { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlide.module.css'
+
+const GallerySlideAside = dynamic(
+  () => import('./GallerySlideAside').then(mod => mod.GallerySlideAside),
+  {
+    ssr: false,
+    loading: () => <AsideSkeleton />
+  }
+)
+const GallerySlidePopover = dynamic(
+  () => import('./GallerySlidePopover').then(mod => mod.GallerySlidePopover),
+  {
+    ssr: false
+  }
+)
 
 const GallerySlide: FC<Props> = ({
   index,
