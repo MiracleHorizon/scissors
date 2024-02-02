@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { Flex, Text } from '@radix-ui/themes'
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
@@ -10,6 +11,8 @@ import { DragHandle } from './DragHandle'
 import { getRandomValueFromRange } from '@helpers/getRandomValueFromRange'
 import styles from './CompareSlider.module.css'
 
+const totalImages = 2
+
 function getRandomPosition(index: number): number {
   /*
    * Make the default position values for "handle" random for a more interesting UI.
@@ -18,6 +21,17 @@ function getRandomPosition(index: number): number {
   const range: [number, number] = isEven ? [40, 60] : [30, 50]
 
   return Math.floor(getRandomValueFromRange(...range))
+}
+
+function getImageFallback({ orientation }: Pick<Props, 'orientation'>): string {
+  const landscapeFallback = '/slide-landscape-fallback.jpeg'
+  const portraitFallback = '/slide-portrait-fallback.jpeg'
+
+  if (!orientation || orientation === 'landscape') {
+    return landscapeFallback
+  }
+
+  return portraitFallback
 }
 
 export function CompareSlider({ index, label, beforeSrc, afterSrc, orientation }: Props) {
@@ -57,14 +71,50 @@ export function CompareSlider({ index, label, beforeSrc, afterSrc, orientation }
 
   const isPortrait = orientation === 'portrait'
 
+  const [errors, setErrors] = useState<Array<'before' | 'after'>>([])
+  const [loaded, setLoaded] = useState(0)
+  const imagesStyle = {
+    opacity: loaded === totalImages ? 1 : 0
+  }
+
+  const handleLoadImage = () => setLoaded(prevState => prevState + 1)
+  const setBeforeImageError = () => setErrors(prevState => [...prevState, 'before'])
+  const setAfterImageError = () => setErrors(prevState => [...prevState, 'after'])
+
+  if (errors.length === totalImages) {
+    return (
+      <Flex align='center' justify='center' px='2' py='9' width='100%' height='100%'>
+        <Text as='p' size='4' weight='medium'>
+          Failed to load the images
+        </Text>
+      </Flex>
+    )
+  }
+
   return (
     <ReactCompareSlider
       ref={sliderRef}
       boundsPadding={20}
       position={getRandomPosition(index)}
-      handle={<DragHandle isPortrait={isPortrait} />}
-      itemOne={<ReactCompareSliderImage src={beforeSrc} alt={`${label} before`} />}
-      itemTwo={<ReactCompareSliderImage src={afterSrc} alt={`${label} after`} />}
+      handle={loaded === totalImages ? <DragHandle isPortrait={isPortrait} /> : null}
+      itemOne={
+        <ReactCompareSliderImage
+          style={imagesStyle}
+          src={errors.includes('before') ? getImageFallback({ orientation }) : beforeSrc}
+          alt={`${label} before`}
+          onLoad={handleLoadImage}
+          onError={setBeforeImageError}
+        />
+      }
+      itemTwo={
+        <ReactCompareSliderImage
+          style={imagesStyle}
+          src={errors.includes('after') ? getImageFallback({ orientation }) : afterSrc}
+          alt={`${label} after`}
+          onLoad={handleLoadImage}
+          onError={setAfterImageError}
+        />
+      }
       portrait={isPortrait}
       className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
     />
