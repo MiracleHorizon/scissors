@@ -10,7 +10,7 @@
 }
 
 .icon {
-  min-width: 40px;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 519px) {
@@ -22,7 +22,6 @@
   }
 
   .icon {
-    min-width: 50px;
     width: 50px;
     height: 48px;
   }

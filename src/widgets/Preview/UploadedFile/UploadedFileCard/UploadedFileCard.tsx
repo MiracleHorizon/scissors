@@ -26,7 +26,13 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
     <Card size='2' className={styles.card}>
       <Flex align='center' height='100%' width='100%' className={styles.root}>
         <MediaQuery minWidth={401}>
-          <Flex align='center' justify='center' height='100%' className={styles.cardInset}>
+          <Flex
+            align='center'
+            justify='center'
+            shrink='0'
+            height='100%'
+            className={styles.cardInset}
+          >
             <ImageFileIcon width='28px' height='28px' />
           </Flex>
         </MediaQuery>
@@ -45,8 +51,8 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             direction='column'
             justify='center'
             align='center'
+            shrink='0'
             gap='1'
-            height='100%'
             className={styles.buttons}
           >
             <ButtonImport

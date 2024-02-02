@@ -13,7 +13,6 @@
 
 .cardInset {
   width: var(--card-inset-width);
-  min-width: var(--card-inset-width);
   margin-right: var(--card-inset-offset);
   box-shadow: 0 0 0 1px var(--gray-a5);
 }
@@ -28,7 +27,7 @@
 
 .buttons {
   width: var(--buttons-width);
-  min-width: var(--buttons-width);
+  height: 100%;
   margin-left: var(--buttons-offset);
 }
 
@@ -68,6 +67,7 @@
 
   .buttons {
     flex-direction: row;
+    height: auto;
     margin: 0;
     padding: 0;
   }

@@ -1,6 +1,5 @@
 .root {
   width: 210px;
-  min-width: 210px;
 }
 
 .root :global(.react-colorful__saturation-pointer) {
