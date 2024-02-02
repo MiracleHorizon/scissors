@@ -38,7 +38,7 @@
   height: 100%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .slider {
     width: var(--width-md);
     height: calc(calc(var(--width-md) / var(--ratio-w)) * var(--ratio-h));

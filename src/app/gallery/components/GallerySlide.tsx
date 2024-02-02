@@ -7,6 +7,7 @@ import type { ComponentPropsWithoutRef, FC } from 'react'
 
 import { CompareSlider } from './CompareSlider'
 import { AsideSkeleton } from './GallerySlideSkeleton'
+import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
 import type { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlide.module.css'
 
@@ -52,14 +53,14 @@ const GallerySlide: FC<Props> = ({
         {isPortrait ? (
           <GallerySlidePopover index={index} {...info} />
         ) : (
-          <MediaQuery maxWidth={1024}>
+          <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.md}>
             <GallerySlidePopover index={index} {...info} />
           </MediaQuery>
         )}
       </Flex>
 
       {isLandscape && (
-        <MediaQuery minWidth={1025}>
+        <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.md}>
           <GallerySlideAside index={index} {...info} />
         </MediaQuery>
       )}
