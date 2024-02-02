@@ -1,12 +1,12 @@
-import { clsx } from 'clsx'
+import { clsx } from 'clsx/lite'
 
-import { inter } from '@app/fonts'
 import { completeTour } from './actions'
 import { MIN_STEP_TO_SKIP, TOUR_STEP } from './constants'
 import type { PopoverDOM } from './types'
 
 export async function createTour() {
   const { driver } = await import('driver.js')
+  const { inter } = await import('@app/fonts')
 
   const steps = [
     {
