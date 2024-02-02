@@ -1,0 +1,18 @@
+.root {
+  --max-slider-h: calc(100dvh - var(--header-height) - var(--page-padding) * 2);
+
+  position: relative;
+}
+
+.landscape,
+.landscape img {
+  max-height: calc(100dvh - var(--header-height) - var(--page-padding) * 2);
+  max-width: 1920px;
+}
+
+.portrait,
+.portrait img {
+  width: 100%;
+  max-width: 960px;
+  max-height: var(--max-slider-h);
+}

@@ -3,7 +3,9 @@ import { useCallback, useState } from 'react'
 import { useSettingsSetters } from './useSettingsSetters'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
+import { NULL_CONVERT_SETTINGS } from '@server/sharp'
 
+// TODO: Refactor, decompose
 export function useImportSettings(selectedTab: ToolbarTab) {
   const [data, setData] = useState<unknown>(null)
   const { setters } = useSettingsSetters()
@@ -78,7 +80,10 @@ export function useImportSettings(selectedTab: ToolbarTab) {
         return Promise.reject(new Error('Invalid settings JSON file'))
       }
 
-      const isValid = validateSettings(settings)
+      const isValid = validateSettings({
+        ...NULL_CONVERT_SETTINGS,
+        settings
+      })
       if (!isValid) {
         handleCloseConfirmAlert()
         handleOpenValidationAlert()

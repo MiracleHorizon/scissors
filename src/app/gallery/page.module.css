@@ -1,0 +1,20 @@
+.root {
+  --page-padding: var(--space-4);
+  --header-height: var(--space-8);
+  --content-gap: var(--space-1);
+
+  --slide-aside-w: 200px;
+}
+
+.root :global(.rt-ScrollAreaScrollbar) {
+  margin-top: var(--page-padding);
+  margin-bottom: var(--page-padding);
+}
+
+.root :global(.rt-ScrollAreaViewport) {
+  height: calc(100dvh - var(--header-height));
+}
+
+.content {
+  gap: var(--content-gap);
+}

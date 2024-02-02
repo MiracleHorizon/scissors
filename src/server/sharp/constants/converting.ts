@@ -1,4 +1,4 @@
-import type { BlurOptions, NegateOptions, NormaliseOptions } from '../types'
+import type { BlurOptions, ConvertSettings, NegateOptions, NormaliseOptions } from '../types'
 
 export const IMAGE_FILE_FORMAT = {
   JPEG: 'jpeg',
@@ -68,3 +68,17 @@ export const SATURATION_STEP = 0.1
 
 export const MIN_HUE = 0
 export const MAX_HUE = 360
+
+export const NULL_CONVERT_SETTINGS: ConvertSettings = {
+  flip: false,
+  flop: false,
+  grayscale: false,
+  tint: null,
+  negate: null,
+  normalise: null,
+  blur: null,
+  rotate: null,
+  gamma: null,
+  modulate: null,
+  outputFormat: null
+} as const

@@ -1,0 +1,55 @@
+.root {
+  pointer-events: none;
+}
+
+.landscape {
+  cursor: ew-resize;
+}
+
+.portrait {
+  cursor: ns-resize;
+}
+
+.landscape .gutter {
+  height: 100%;
+  width: 4px;
+}
+
+.portrait .gutter {
+  width: 100%;
+  height: 4px;
+}
+
+.portrait .gutterThumb {
+  rotate: 90deg;
+}
+
+.gutter {
+  background-color: var(--color-background);
+  box-shadow: 0 0 4px rgba(0 0 0 / 0.5);
+}
+
+.gutterThumb {
+  padding: 4px 0;
+  border-radius: 6px;
+  background-color: var(--color-background);
+  box-shadow: rgba(0 0 0 / 0.35) 0 0 4px;
+  z-index: 10;
+}
+
+.gutterThumb svg {
+  width: 24px;
+  height: 24px;
+}
+
+.gutter,
+.gutterThumb {
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .gutterThumb svg {
+    width: 20px;
+    height: 20px;
+  }
+}
