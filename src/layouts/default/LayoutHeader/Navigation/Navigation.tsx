@@ -3,14 +3,14 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 import { ReaderIcon } from '@ui/icons/ReaderIcon'
 import { NavigationItem } from './NavigationItem'
-import { ROUTE } from '@lib/router'
+import { PATH_DOCS, PATH_GALLERY } from '@site/paths'
 import { TOUR_STEP } from '@lib/tour'
 import { ImageIcon } from '@ui/icons/ImageIcon'
 
 const items: ComponentPropsWithoutRef<typeof NavigationItem>[] = [
   {
     label: 'Documentation',
-    href: ROUTE.DOCS,
+    href: PATH_DOCS,
     tooltipContent: 'Watch the documentation',
     icon: <ReaderIcon width='18px' height='18px' label='go to documentation' />,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -19,7 +19,7 @@ const items: ComponentPropsWithoutRef<typeof NavigationItem>[] = [
   },
   {
     label: 'Gallery',
-    href: ROUTE.GALLERY,
+    href: PATH_GALLERY,
     tooltipContent: 'Watch the gallery',
     icon: <ImageIcon width='18px' height='18px' label='go to gallery' />
   }

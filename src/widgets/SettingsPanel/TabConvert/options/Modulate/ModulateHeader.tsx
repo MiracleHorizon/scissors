@@ -2,13 +2,13 @@ import { TokensIcon } from '@ui/icons/TokensIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonRemoveModulate } from './ButtonRemoveModulate'
 import { ButtonResetModulate } from './ButtonResetModulate'
-import { DOCS_HASH, ROUTE } from '@lib/router'
+import { DOCS_HASH_MODULATE, PATH_DOCS } from '@site/paths'
 
 export const ModulateHeader = () => (
   <OptionSectionHeader
     mb='2'
     title='Modulate'
-    href={ROUTE.DOCS + DOCS_HASH.MODULATE}
+    href={PATH_DOCS + DOCS_HASH_MODULATE}
     icon={<TokensIcon width='18px' height='18px' label='modulation' />}
   >
     <>

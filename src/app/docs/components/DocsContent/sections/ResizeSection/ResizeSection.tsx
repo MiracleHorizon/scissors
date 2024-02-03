@@ -10,22 +10,20 @@ import {
   ReductionRow,
   WidthRow
 } from './rows'
-import { DOCS_HASH } from '@lib/router'
+import { DOCS_HASH_RESIZE } from '@site/paths'
 
-export function ResizeSection() {
-  return (
-    <DocsSection title='Resize' hash={DOCS_HASH.RESIZE}>
-      <>
-        <WidthRow />
-        <HeightRow />
-        <FitRow />
-        <KernelRow />
-        <PositionRow />
-        <BackgroundRow />
-        <EnlargementRow />
-        <ReductionRow />
-        <FastShrinkRow />
-      </>
-    </DocsSection>
-  )
-}
+export const ResizeSection = () => (
+  <DocsSection title='Resize' hash={DOCS_HASH_RESIZE}>
+    <>
+      <WidthRow />
+      <HeightRow />
+      <FitRow />
+      <KernelRow />
+      <PositionRow />
+      <BackgroundRow />
+      <EnlargementRow />
+      <ReductionRow />
+      <FastShrinkRow />
+    </>
+  </DocsSection>
+)

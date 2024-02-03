@@ -4,6 +4,7 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
+import { PATH_API_RESIZE } from '@site/paths'
 import type { ResizeSettings } from '@server/sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { MutationPayload, RequestPayload } from './types'
@@ -17,7 +18,7 @@ async function resizeImage({ baseURL, formData }: RequestPayload): Promise<Blob>
       abortController.abort()
     }, abortTimeout)
 
-    const response = await fetch(baseURL + '/api/resize', {
+    const response = await fetch(baseURL + PATH_API_RESIZE, {
       body: formData,
       method: 'POST',
       signal: abortController.signal

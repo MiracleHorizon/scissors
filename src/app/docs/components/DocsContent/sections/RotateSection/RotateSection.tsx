@@ -1,14 +1,12 @@
 import { DocsSection } from '../../DocsSection'
 import { AngleRow, BackgroundRow } from './rows'
-import { DOCS_HASH } from '@lib/router'
+import { DOCS_HASH_ROTATE } from '@site/paths'
 
-export function RotateSection() {
-  return (
-    <DocsSection title='Rotate' hash={DOCS_HASH.ROTATE}>
-      <>
-        <AngleRow />
-        <BackgroundRow />
-      </>
-    </DocsSection>
-  )
-}
+export const RotateSection = () => (
+  <DocsSection title='Rotate' hash={DOCS_HASH_ROTATE}>
+    <>
+      <AngleRow />
+      <BackgroundRow />
+    </>
+  </DocsSection>
+)

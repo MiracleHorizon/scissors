@@ -1,14 +1,12 @@
 import { DocsSection } from '../../DocsSection'
 import { AlphaRow, ValueRow } from './rows'
-import { DOCS_HASH } from '@lib/router'
+import { DOCS_HASH_NEGATE } from '@site/paths'
 
-export function NegateSection() {
-  return (
-    <DocsSection title='Negate' hash={DOCS_HASH.NEGATE}>
-      <>
-        <ValueRow />
-        <AlphaRow />
-      </>
-    </DocsSection>
-  )
-}
+export const NegateSection = () => (
+  <DocsSection title='Negate' hash={DOCS_HASH_NEGATE}>
+    <>
+      <ValueRow />
+      <AlphaRow />
+    </>
+  </DocsSection>
+)

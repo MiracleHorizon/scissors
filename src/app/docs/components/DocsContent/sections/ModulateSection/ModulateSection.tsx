@@ -1,16 +1,14 @@
 import { DocsSection } from '../../DocsSection'
 import { BrightnessRow, HueRow, LightnessRow, SaturationRow } from './rows'
-import { DOCS_HASH } from '@lib/router'
+import { DOCS_HASH_MODULATE } from '@site/paths'
 
-export function ModulateSection() {
-  return (
-    <DocsSection title='Modulate' hash={DOCS_HASH.MODULATE}>
-      <>
-        <LightnessRow />
-        <BrightnessRow />
-        <SaturationRow />
-        <HueRow />
-      </>
-    </DocsSection>
-  )
-}
+export const ModulateSection = () => (
+  <DocsSection title='Modulate' hash={DOCS_HASH_MODULATE}>
+    <>
+      <LightnessRow />
+      <BrightnessRow />
+      <SaturationRow />
+      <HueRow />
+    </>
+  </DocsSection>
+)
