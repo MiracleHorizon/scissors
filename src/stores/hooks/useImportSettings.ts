@@ -4,8 +4,8 @@ import { useSettingsSetters } from './useSettingsSetters'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 import { NULL_CONVERT_SETTINGS } from '@server/sharp'
+import { readJSONFile } from '@utils/json-file'
 
-// TODO: Refactor, decompose
 export function useImportSettings(selectedTab: ToolbarTab) {
   const [data, setData] = useState<unknown>(null)
   const { setters } = useSettingsSetters()
@@ -18,28 +18,6 @@ export function useImportSettings(selectedTab: ToolbarTab) {
 
   const handleOpenValidationAlert = () => setIsValidationAlertOpen(true)
   const handleCloseValidationAlert = () => setIsValidationAlertOpen(false)
-
-  // TODO: Move to a separate file
-  function readFile<T>(file: File): Promise<T> {
-    const fileReader = new FileReader()
-    const fileReaderPromise = new Promise<T>((resolve, reject) => {
-      fileReader.onload = () => {
-        const result = fileReader.result
-
-        if (!result) {
-          reject('Failed to read file')
-        }
-
-        resolve(result as T)
-      }
-
-      fileReader.onerror = reject
-    })
-
-    fileReader.readAsText(file)
-
-    return fileReaderPromise
-  }
 
   function parseSettings(settingsJSON: string): string | null {
     try {
@@ -70,7 +48,7 @@ export function useImportSettings(selectedTab: ToolbarTab) {
     if (!file) return
 
     try {
-      const settingsJSON = await readFile<string>(file)
+      const settingsJSON = await readJSONFile(file)
 
       const settings = parseSettings(settingsJSON)
       if (!settings) {
