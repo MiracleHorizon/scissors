@@ -10,6 +10,7 @@ import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import {
   isDevelopment,
+  pathForSocial,
   SITE_DESCRIPTION,
   SITE_DOMAIN,
   SITE_KEYWORDS,
@@ -34,12 +35,28 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     siteName: SITE_TITLE,
+    images: [
+      {
+        url: pathForSocial('og-image-share-dark.png'),
+        width: 2880,
+        height: 1746,
+        type: 'image/png'
+      }
+    ],
     type: 'website'
   },
   twitter: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    card: 'summary_large_image'
+    card: 'summary_large_image',
+    images: [
+      {
+        url: pathForSocial('og-image-share-dark.png'),
+        width: 2880,
+        height: 1746,
+        type: 'image/png'
+      }
+    ]
   },
   robots: {
     index: true,
