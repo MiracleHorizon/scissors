@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     type: 'website'
   },
+  twitter: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION
+  },
   robots: {
     index: true,
     follow: true
@@ -69,33 +73,8 @@ export const metadata: Metadata = {
       },
       {
         rel: 'apple-touch-icon',
-        sizes: '60x60',
-        url: '/apple-touch-icon-60x60.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '76x76',
-        url: '/apple-touch-icon-76x76.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '120x120',
-        url: '/apple-touch-icon-120x120.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '152x152',
-        url: '/apple-touch-icon-152x152.png'
-      },
-      {
-        rel: 'apple-touch-icon',
         sizes: '180x180',
         url: '/apple-touch-icon-180x180.png'
-      },
-      {
-        rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
-        color: '#5bbads'
       }
     ]
   }
