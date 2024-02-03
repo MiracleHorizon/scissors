@@ -1,9 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Flex } from '@radix-ui/themes'
 
-import { LogoIcon } from '@ui/icons/LogoIcon'
 import { PATH_ROOT } from '@site/paths'
 import styles from './AppLogo.module.css'
 
@@ -22,7 +22,7 @@ export function AppLogo() {
       className={styles.root}
       onClick={navigateToHome}
     >
-      <LogoIcon width='26px' height='26px' className={styles.icon} />
+      <Image src='/favicons/dark.png' alt='Logo' width={34} height={34} className={styles.icon} />
     </Flex>
   )
 }

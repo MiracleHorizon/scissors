@@ -88,3 +88,9 @@ export function pathForGallerySlide(slideName: string): string {
 
   return `${GITHUB_USER_CONTENT_REPO_PATH}/${GALLERY_PATH}/${GALLERY_SLIDES_PATH}/${slideName}`
 }
+
+export function pathForSocial(path: string): string {
+  const SOCIAL_PATH = 'social'
+
+  return `${GITHUB_USER_CONTENT_REPO_PATH}/${SOCIAL_PATH}/${path}`
+}

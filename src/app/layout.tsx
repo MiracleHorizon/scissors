@@ -10,6 +10,7 @@ import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import {
   isDevelopment,
+  pathForSocial,
   SITE_DESCRIPTION,
   SITE_DOMAIN,
   SITE_KEYWORDS,
@@ -33,72 +34,69 @@ export const metadata: Metadata = {
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    siteName: SITE_TITLE,
+    images: [
+      {
+        url: pathForSocial('og-image-share-dark.png'),
+        width: 2880,
+        height: 1746,
+        type: 'image/png'
+      }
+    ],
     type: 'website'
+  },
+  twitter: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    card: 'summary_large_image',
+    images: [
+      {
+        url: pathForSocial('og-image-share-dark.png'),
+        width: 2880,
+        height: 1746,
+        type: 'image/png'
+      }
+    ]
   },
   robots: {
     index: true,
     follow: true
   },
   manifest: '/manifest.json',
-  icons: {
-    icon: '/favicon.ico',
-    other: [
-      {
-        rel: 'icon',
-        sizes: '16x16',
-        type: 'image/png',
-        url: '/favicon-16x16.png'
-      },
-      {
-        rel: 'icon',
-        sizes: '32x32',
-        type: 'image/png',
-        url: '/favicon-32x32.png'
-      },
-      {
-        rel: 'icon',
-        sizes: '192x192',
-        type: 'image/png',
-        url: '/android-chrome-192x192.png'
-      },
-      {
-        rel: 'icon',
-        sizes: '512x512',
-        type: 'image/png',
-        url: '/android-chrome-512x512.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '60x60',
-        url: '/apple-touch-icon-60x60.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '76x76',
-        url: '/apple-touch-icon-76x76.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '120x120',
-        url: '/apple-touch-icon-120x120.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '152x152',
-        url: '/apple-touch-icon-152x152.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        url: '/apple-touch-icon-180x180.png'
-      },
-      {
-        rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
-        color: '#5bbads'
-      }
-    ]
-  }
+  icons: [
+    {
+      rel: 'icon',
+      url: '/favicons/dark.png',
+      type: 'image/png',
+      sizes: '180x180',
+      media: '(prefers-color-scheme: dark)'
+    },
+    {
+      rel: 'icon',
+      url: '/favicons/light.png',
+      type: 'image/png',
+      sizes: '180x180',
+      media: '(prefers-color-scheme: light)'
+    },
+    {
+      rel: 'apple-touch-icon',
+      url: '/apple-touch-icon.png',
+      type: 'image/png',
+      sizes: '180x180'
+    },
+    {
+      rel: 'icon',
+      url: '/android-chrome-192x192.png',
+      type: 'image/png',
+      sizes: '192x192'
+    },
+    {
+      rel: 'icon',
+      url: '/android-chrome-512x512.png',
+      type: 'image/png',
+      sizes: '512x512'
+    }
+  ]
 }
 
 export default async function RootLayout({ children }: PropsWithChildren) {

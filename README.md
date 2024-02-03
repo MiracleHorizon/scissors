@@ -1,19 +1,19 @@
 <br />
 <div align="center">
   <a href="https://raw.githubusercontent.com/MiracleHorizon/scissors/main/public/favicon-32x32.png">
-    <img src="public/apple-touch-icon-120x120.png" alt="Logo" width=120 height=120 style="border-radius: 50%;">
+    <img src="public/android-chrome-192x192.png" alt="Logo" width=128 height=128>
   </a>
 
-<h2 align="center">Scissors</h3>
+  <h1 style="font-size: 32px; margin-top: 0">Scissors</h1>
 
-  <p align="center">
+  <p>
     Your awesome application for versatile image formatting and processing!
     <br />
-    <a href="https://scissors-application.vercel.app" target="_blank">Try it out</a>
+    <a href="https://scissors-application.vercel.app" rel="noreferrer" target="_blank">Try it out</a>
   </p>
 </div>
 
-### About The Project
+<h2 align="center" style="font-size: 24px;">About The Project</h2>
 
 [![Project screenshot 1][preview-screenshot-1]][project-github]
 [![Project screenshot 2][preview-screenshot-2]][project-github]
@@ -88,5 +88,5 @@ Currently, the following image formats are supported:
 MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
 
 [project-github]: https://github.com/MiracleHorizon/scissors
-[preview-screenshot-1]: readme/preview-screenshot-1.png
-[preview-screenshot-2]: readme/preview-screenshot-2.png
+[preview-screenshot-1]: social/og-image-share-light.png
+[preview-screenshot-2]: social/og-image-share-dark.png
