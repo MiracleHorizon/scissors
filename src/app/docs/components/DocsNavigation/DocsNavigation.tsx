@@ -5,6 +5,7 @@ import { DocsNavigationItem } from './DocsNavigationItem'
 import {
   DOCS_HASH_EXTEND,
   DOCS_HASH_MAIN,
+  DOCS_HASH_MODULATE,
   DOCS_HASH_NEGATE,
   DOCS_HASH_RESIZE,
   DOCS_HASH_ROTATE
@@ -34,7 +35,7 @@ const items = [
   },
   {
     title: 'Modulate',
-    hash: DOCS_HASH_EXTEND
+    hash: DOCS_HASH_MODULATE
   }
 ]
 
