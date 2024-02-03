@@ -63,6 +63,9 @@
       "@app/*": [
         "./src/app/*"
       ],
+      "@site/*": [
+        "./src/site/*"
+      ],
       "@api/*": [
         "./src/api/*"
       ],

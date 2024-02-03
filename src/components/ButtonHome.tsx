@@ -3,13 +3,13 @@
 import { useRouter } from 'next/navigation'
 import { Button, type MarginProps } from '@radix-ui/themes'
 
-import { ROUTE } from '@lib/router'
+import { PATH_ROOT } from '@site/paths'
 import type { ButtonProps } from '@lib/theme'
 
 export function ButtonHome({ radius = 'large', ...props }: ButtonProps & MarginProps) {
   const router = useRouter()
 
-  const navigateToHome = () => router.replace(ROUTE.HOME)
+  const navigateToHome = () => router.replace(PATH_ROOT)
 
   return (
     <Button {...props} radius={radius} onClick={navigateToHome}>

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { Flex } from '@radix-ui/themes'
 
 import { LogoIcon } from '@ui/icons/LogoIcon'
-import { ROUTE } from '@lib/router'
+import { PATH_ROOT } from '@site/paths'
 import styles from './AppLogo.module.css'
 
 export const testId = 'app-logo'
@@ -12,7 +12,7 @@ export const testId = 'app-logo'
 export function AppLogo() {
   const router = useRouter()
 
-  const navigateToHome = () => router.replace(ROUTE.HOME)
+  const navigateToHome = () => router.push(PATH_ROOT)
 
   return (
     <Flex

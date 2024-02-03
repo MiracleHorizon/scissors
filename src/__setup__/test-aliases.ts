@@ -18,6 +18,10 @@ const aliases: Alias[] = [
     find: '@app',
     replacementPath: './src/app'
   },
+  {
+    find: '@site',
+    replacementPath: './src/site'
+  },
   /* Components */
   {
     find: '@layouts',

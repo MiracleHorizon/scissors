@@ -8,8 +8,13 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
-import { isDevelopment } from '@helpers/isDevelopment'
-import { APP_DESCRIPTION, APP_KEYWORDS, APP_NAME, getMetadataBase } from '@lib/seo'
+import {
+  isDevelopment,
+  SITE_DESCRIPTION,
+  SITE_DOMAIN,
+  SITE_KEYWORDS,
+  SITE_TITLE
+} from '@site/config'
 import { geistSans } from './fonts'
 import './globals.css'
 
@@ -18,16 +23,16 @@ const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanne
 })
 
 export const metadata: Metadata = {
-  metadataBase: getMetadataBase(),
+  metadataBase: new URL(SITE_DOMAIN),
   title: {
-    default: APP_NAME,
-    template: `%s | ${APP_NAME}`
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`
   },
-  description: APP_DESCRIPTION,
-  keywords: APP_KEYWORDS,
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   openGraph: {
-    title: APP_NAME,
-    description: APP_DESCRIPTION,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     type: 'website'
   },
   robots: {
@@ -103,7 +108,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html lang='en' suppressHydrationWarning>
       <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
-          {isDevelopment() && <ThemePanel defaultOpen={false} />}
+          {isDevelopment && <ThemePanel defaultOpen={false} />}
 
           <CookieConsentBanner />
 
