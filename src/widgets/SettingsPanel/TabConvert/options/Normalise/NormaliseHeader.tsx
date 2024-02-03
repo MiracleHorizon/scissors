@@ -1,3 +1,4 @@
+import { Half2Icon } from '@ui/icons/Half2Icon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetNormalise } from './ButtonResetNormalise'
 import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'
@@ -8,7 +9,10 @@ export function NormaliseHeader() {
   const upper = useNormaliseStore(state => state.upper)
 
   return (
-    <OptionSectionHeader title={`Normalise: ${lower} - ${upper}%`}>
+    <OptionSectionHeader
+      title={`Normalise: ${lower} - ${upper}%`}
+      icon={<Half2Icon width='18px' height='18px' label='normalisation' />}
+    >
       <>
         <ButtonResetNormalise />
         <ButtonRemoveNormalise />
