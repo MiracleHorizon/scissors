@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import isEmpty from 'lodash.isempty'
 
 import { ImageResizer } from '@server/sharp/ImageResizer'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
@@ -55,7 +54,7 @@ export async function POST(req: NextRequest) {
   try {
     const imageBuffer = await file.arrayBuffer()
 
-    if (isEmpty(settings)) {
+    if (settings.queue.length === 0) {
       return new NextResponse(imageBuffer)
     }
 

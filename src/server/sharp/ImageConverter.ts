@@ -1,9 +1,9 @@
-import isEmpty from 'lodash.isempty'
 import type { FormatEnum } from 'sharp'
 
 import { ImageSharp } from './ImageSharp'
 import { DEFAULT_ROTATE_BACKGROUND } from './constants'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import type {
   BlurOptions,
   ConvertSettings,
@@ -213,7 +213,7 @@ export class ImageConverter extends ImageSharp {
       throw new Error('Invalid modulate options')
     }
 
-    if (isEmpty(modulateOptions)) return
+    if (isAllObjectValuesEmpty(modulateOptions)) return
 
     const options: Record<string, number> = {}
     for (const [key, value] of Object.entries(modulateOptions)) {
@@ -222,7 +222,7 @@ export class ImageConverter extends ImageSharp {
       options[key] = value
     }
 
-    if (isEmpty(options)) return
+    if (isAllObjectValuesEmpty(options)) return
 
     this.sharp.modulate(options)
   }

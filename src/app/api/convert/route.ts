@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import isEmpty from 'lodash.isempty'
 
 import { ImageConverter } from '@server/sharp/ImageConverter'
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
+import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import { YupSettingsValidator } from '@utils/YupSettingsValidator'
 import { errorMessages } from '@api/convert-image'
 import type { ConvertSettings } from '@server/sharp'
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
   try {
     const imageBuffer = await file.arrayBuffer()
 
-    if (isEmpty(settings)) {
+    if (isAllObjectValuesEmpty(settings)) {
       return new NextResponse(imageBuffer)
     }
 

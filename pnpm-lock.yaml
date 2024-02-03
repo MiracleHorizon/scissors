@@ -38,9 +38,6 @@ dependencies:
   lodash.capitalize:
     specifier: ^4.2.1
     version: 4.2.1
-  lodash.isempty:
-    specifier: ^4.4.0
-    version: 4.4.0
   lodash.random:
     specifier: 3.2.0
     version: 3.2.0
@@ -100,9 +97,6 @@ devDependencies:
   '@types/lodash.capitalize':
     specifier: ^4.2.9
     version: 4.2.9
-  '@types/lodash.isempty':
-    specifier: ^4.4.9
-    version: 4.4.9
   '@types/lodash.random':
     specifier: 3.2.9
     version: 3.2.9
@@ -2616,12 +2610,6 @@ packages:
 
   /@types/lodash.capitalize@4.2.9:
     resolution: {integrity: sha512-SV1dav/WbuI816SVig4trFz8ID/m5maVzC8I/E/DejPvmlXvIhw7Y0GWxJ03UhU6qaZOj6qQnR1xxC0mP7ZXoQ==}
-    dependencies:
-      '@types/lodash': 4.14.202
-    dev: true
-
-  /@types/lodash.isempty@4.4.9:
-    resolution: {integrity: sha512-DPSFfnT2JmZiAWNWOU8IRZws/Ha6zyGF5m06TydfsY+0dVoQqby2J61Na2QU4YtwiZ+moC6cJS6zWYBJq4wBVw==}
     dependencies:
       '@types/lodash': 4.14.202
     dev: true
@@ -5140,10 +5128,6 @@ packages:
 
   /lodash.capitalize@4.2.1:
     resolution: {integrity: sha512-kZzYOKspf8XVX5AvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
-    dev: false
-
-  /lodash.isempty@4.4.0:
-    resolution: {integrity: sha512-oKMuF3xEeqDltrGMfDxAPGIVMSSRv8tbRSODbrs4KGsRRLEhrW8N8Rd4DRgB2+621hY8A8XwwrTVhXWpxFvMzg==}
     dev: false
 
   /lodash.merge@4.6.2:
