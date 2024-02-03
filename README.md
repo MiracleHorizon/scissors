@@ -4,7 +4,7 @@
     <img src="public/android-chrome-192x192.png" alt="Logo" width=128 height=128>
   </a>
 
-  <h1 style="font-size: 32px; margin-top: 0">Scissors</h1>
+  <h1 style="font-size: 32px; margin-top: 0">️Scissors</h1>
 
   <p>
     Your awesome application for versatile image formatting and processing!
@@ -16,76 +16,84 @@
 <h2 align="center" style="font-size: 24px;">About The Project</h2>
 
 [![Project screenshot 1][preview-screenshot-1]][project-github]
+<p align="center" style="margin-top: -10px;">You can convert images with a large number of options</p>
+
 [![Project screenshot 2][preview-screenshot-2]][project-github]
+<p align="center" style="margin-top: -10px;">Also, you can use "resize", "extend" and other options</p>
 
-<em>[ Work in progress ]</em>
+The "Scissors" supports:
+* 🌓 Dark mode
+* 🎨 Theme color
+* 💾 Export / import settings
+* 📖 Documentation
+* 🖼️ Gallery
 
-With the help of "Scissors" you can use a large number of provided options to quickly format and process images.
-
+### 🧨 Features
 Some of the features available are:
-* Resizing, Extending
 * Rotation
+* Resizing, Extending, Trimming
 * Quality control
-* Grayscale, Gamma, Tint and other
+* Grayscale, Gammaize, Tint and other
 
 Currently, the following image formats are supported:
 * PNG
-* JPEG
-* JPG
+* JPEG / JPG
 * WEBP
 
-### Technologies
+### 🔧 Technologies
 
 * Next.js (App Router)
 * Zustand
-* React-query
+* Radix UI
+* @tanstack/react-query
 * [Sharp](https://sharp.pixelplumbing.com/)
 
-### Requirements
+### 📋 Requirements
 
 * Node.js v20+
 * pnpm
 
-
-### Run the project locally
-1. Clone repository
+### 💻 Run the project locally
+* Clone repository
    ```sh
    git clone https://github.com/MiracleHorizon/scissors.git
    ```
-2. Install NPN packages
+* Install NPN packages
    ```sh
    pnpm install --frozen-lockfile
    ```
-3. Run the project
+* Run the project
    ```sh
    pnpm dev
    ```
 
-### Production build
+### 🚀 Production build
 
-1. Build the project
+* Build the project
    ```sh
    pnpm build
    ```
-2. Run the project
+* Run the project
    ```sh
    pnpm start
    ```
 
-### Production build with Docker
+### 🐳 Production build with Docker
 
-1. Build the project
+* Build the project
    ```sh
    pnpm docker:build
    ```
-2. Run the project
+* Run the project
    ```sh
    pnpm docker:start
    ```
 
 ### License
 
-MIT © [MiracleHorizon](https://github.com/MiracleHorizon)
+Licensed under the MIT License, Copyright © 2023 - present [MiracleHorizon](https://github.com/MiracleHorizon).
+
+See [LICENSE](https://github.com/MiracleHorizon/scissors/blob/main/LICENSE) for more information.
 
 [project-github]: https://github.com/MiracleHorizon/scissors
 [preview-screenshot-1]: social/og-image-share-light.png
