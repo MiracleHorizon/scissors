@@ -3,10 +3,16 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    METADATA_BASE: process.env.METADATA_BASE
+    SITE_DOMAIN_PRODUCTION: process.env.SITE_DOMAIN_PRODUCTION,
+    SITE_DOMAIN_DEVELOPMENT: process.env.SITE_DOMAIN_DEVELOPMENT
   },
   images: {
-    domains: ['raw.githubusercontent.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com'
+      }
+    ]
   }
 }
 
