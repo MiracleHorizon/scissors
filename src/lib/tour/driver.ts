@@ -7,6 +7,7 @@ import type { PopoverDOM } from './types'
 export async function createTour() {
   const { driver } = await import('driver.js')
   const { geistSans } = await import('@app/fonts')
+  const { isPrefersReduceMotion } = await import('@helpers/isPrefersReduceMotion')
 
   const steps = [
     {
@@ -69,6 +70,7 @@ export async function createTour() {
   const tourDriver = driver({
     allowClose: false,
     showProgress: true,
+    animate: !isPrefersReduceMotion(),
     showButtons: ['previous', 'next'],
     onDestroyed: completeTour,
     steps: steps.map(({ element, popover }) => ({
