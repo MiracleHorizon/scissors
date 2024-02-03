@@ -1,23 +1,18 @@
 .root {
   cursor: pointer;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background-color: var(--accent-9);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
 }
 
 .icon {
-  fill: var(--accent-9-contrast);
+  width: inherit;
+  height: inherit;
 }
 
 @media screen and (max-width: 519px) {
   .root {
     width: 32px;
     height: 32px;
-  }
-
-  .icon {
-    width: 22px;
-    height: 22px;
   }
 }
