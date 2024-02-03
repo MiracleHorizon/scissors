@@ -1,18 +1,14 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
+import { pathForGallerySlide } from '@site/config'
 import type GallerySlide from '../components/GallerySlide'
-
-// TODO: Унифицировать
-const githubRowPath = 'https://raw.githubusercontent.com'
-const staticFilePath = 'MiracleHorizon/scissors/main/src/app/gallery/slides/'
-const slidePath = `${githubRowPath}/${staticFilePath}/`
 
 type SlideProps = Omit<ComponentPropsWithoutRef<typeof GallerySlide>, 'index'>
 export const slides: SlideProps[] = [
   {
     label: 'Volkswagen Käfer',
-    beforeSrc: slidePath + 'slide-1-before.jpeg',
-    afterSrc: slidePath + 'slide-1-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-1-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-1-after.jpeg'),
     details: [
       {
         label: 'Blur',
@@ -38,8 +34,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Monstera Deliciosa',
-    beforeSrc: slidePath + 'slide-2-before.jpeg',
-    afterSrc: slidePath + 'slide-2-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-2-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-2-after.jpeg'),
     details: [
       {
         label: 'Blur',
@@ -55,8 +51,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Giza, Egypt',
-    beforeSrc: slidePath + 'slide-6-before.jpeg',
-    afterSrc: slidePath + 'slide-6-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-6-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-6-after.jpeg'),
     details: [
       {
         label: 'Grayscale',
@@ -69,8 +65,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Abstraction 1',
-    beforeSrc: slidePath + 'slide-4-before.jpeg',
-    afterSrc: slidePath + 'slide-4-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-4-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-4-after.jpeg'),
     details: [
       {
         label: 'Negate',
@@ -87,8 +83,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Blueberry',
-    beforeSrc: slidePath + 'slide-5-before.jpeg',
-    afterSrc: slidePath + 'slide-5-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-5-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-5-after.jpeg'),
     details: [
       {
         label: 'Negate',
@@ -118,8 +114,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Sahara',
-    beforeSrc: slidePath + 'slide-3-before.jpeg',
-    afterSrc: slidePath + 'slide-3-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-3-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-3-after.jpeg'),
     details: [
       {
         label: 'Hue',
@@ -138,8 +134,8 @@ export const slides: SlideProps[] = [
   {
     // eslint-disable-next-line quotes
     label: "The lion's leader",
-    beforeSrc: slidePath + 'slide-7-before.jpeg',
-    afterSrc: slidePath + 'slide-7-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-7-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-7-after.jpeg'),
     details: [
       {
         label: 'Grayscale',
@@ -153,8 +149,8 @@ export const slides: SlideProps[] = [
   },
   {
     label: 'Jellyfish',
-    beforeSrc: slidePath + 'slide-9-before.jpeg',
-    afterSrc: slidePath + 'slide-9-after.jpeg',
+    beforeSrc: pathForGallerySlide('slide-9-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-9-after.jpeg'),
     details: [
       {
         label: 'Negate',
