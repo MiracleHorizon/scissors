@@ -1,7 +1,13 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
-import { pathForGallerySlide } from '@site/config'
-import type GallerySlide from '../components/GallerySlide'
+import { pathForAssets } from '@site/config'
+import type GallerySlide from './components/GallerySlide'
+
+function pathForGallerySlide(slideName: string): string {
+  const GALLERY_SLIDES_PATH = 'slides'
+
+  return `${pathForAssets}/${GALLERY_SLIDES_PATH}/${slideName}`
+}
 
 type SlideProps = Omit<ComponentPropsWithoutRef<typeof GallerySlide>, 'index'>
 export const slides: SlideProps[] = [

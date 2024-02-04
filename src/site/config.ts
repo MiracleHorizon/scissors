@@ -76,17 +76,10 @@ const GITHUB_USER_CONTENT_REPO_PATH = `https://${GITHUB_USER_CONTENT_PATH}/${REP
 
 export const GITHUB_REPO_PATH = `https://github.com/${REPO_PATH}`
 
-export function pathForPublic(path: string): string {
-  const PUBLIC_PATH = 'public'
+export function pathForAssets(path: string): string {
+  const ASSETS_PATH = 'src/assets'
 
-  return `${GITHUB_USER_CONTENT_REPO_PATH}/${PUBLIC_PATH}/${path}`
-}
-
-export function pathForGallerySlide(slideName: string): string {
-  const GALLERY_PATH = 'src/app/gallery'
-  const GALLERY_SLIDES_PATH = 'slides'
-
-  return `${GITHUB_USER_CONTENT_REPO_PATH}/${GALLERY_PATH}/${GALLERY_SLIDES_PATH}/${slideName}`
+  return `${GITHUB_USER_CONTENT_REPO_PATH}/${ASSETS_PATH}/${path}`
 }
 
 export function pathForSocial(path: string): string {

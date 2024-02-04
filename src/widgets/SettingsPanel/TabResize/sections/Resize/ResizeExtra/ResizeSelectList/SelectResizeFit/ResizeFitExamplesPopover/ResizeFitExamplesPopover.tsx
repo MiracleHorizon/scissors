@@ -3,7 +3,7 @@ import { Flex, type PaddingProps, Popover, ScrollArea, Text } from '@radix-ui/th
 import type { FC } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
-import { pathForPublic } from '@site/config'
+import { pathForAssets } from '@site/config'
 import type { FlexDirection, Gap } from '@lib/theme'
 import styles from './ResizeFitExamplesPopover.module.css'
 
@@ -53,10 +53,10 @@ const examples: Example[] = [
   }
 ]
 
-function getExampleImagePath(fileName: string): string {
+function pathForExampleImage(fileName: string): string {
   const EXAMPLES_PUBLIC_PATH = 'resize-fit-examples'
 
-  return pathForPublic(`${EXAMPLES_PUBLIC_PATH}/${fileName}`)
+  return pathForAssets(`${EXAMPLES_PUBLIC_PATH}/${fileName}`)
 }
 
 const ASPECT_RATION_REDUCTION = 4.4
@@ -73,13 +73,13 @@ const ResizeFitExampleImage: FC<Example> = ({ srcLight, srcDark, width, height, 
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <Image
         {...common}
-        src={getExampleImagePath(srcLight)}
+        src={pathForExampleImage(srcLight)}
         className='resize-fit-example-image-light'
       />
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <Image
         {...common}
-        src={getExampleImagePath(srcDark)}
+        src={pathForExampleImage(srcDark)}
         className='resize-fit-example-image-dark'
       />
     </>
