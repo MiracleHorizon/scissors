@@ -4,7 +4,6 @@ import { Button, DropdownMenu } from '@radix-ui/themes'
 import { ToolbarDropdownMenuContent } from './ToolbarDropdownMenuContent'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { TOUR_STEP } from '@lib/tour'
-import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
   <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS} {...props}>
@@ -15,11 +14,11 @@ const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
   </DropdownMenu.Trigger>
 )
 
-interface TriggerProps extends ClassNameProps {
+interface TriggerProps {
   onClick: VoidFunction
 }
 
-export function ToolbarDropdownMenu({ triggerClassName }: Props) {
+export function ToolbarDropdownMenu() {
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => setOpen(true)
@@ -46,12 +45,8 @@ export function ToolbarDropdownMenu({ triggerClassName }: Props) {
 
   return (
     <DropdownMenu.Root open={open}>
-      <ToolbarDropdownMenuTrigger onClick={handleOpen} className={triggerClassName} />
+      <ToolbarDropdownMenuTrigger onClick={handleOpen} />
       <ToolbarDropdownMenuContent onClose={handleClose} />
     </DropdownMenu.Root>
   )
-}
-
-interface Props {
-  triggerClassName?: string
 }

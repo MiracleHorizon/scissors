@@ -1,39 +1,31 @@
-import { Flex, Separator } from '@radix-ui/themes'
+import dynamic from 'next/dynamic'
+import MediaQuery from 'react-responsive'
 
-import { ButtonImportSettings } from './actions/import-settings'
-import { ButtonExportSettings } from './actions/export-settings'
-import { ButtonSettingsReset } from './actions/reset-settings'
-import { ToolbarRandomizeMenu } from './ToolbarRandomizeMenu'
-import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
-import { TOUR_STEP } from '@lib/tour'
-import type { ClassNameProps } from '@app-types/ClassNameProps'
+import { ToolbarContentSkeleton, ToolbarDropdownMenuSkeleton } from '@ui/skeletons/ToolbarSkeleton'
+import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
 
-export function ToolbarContent(props: ClassNameProps) {
-  const selectedTab = useTabsStore(state => state.selectedTab)
+const ToolbarMenu = dynamic(() => import('./ToolbarMenu').then(mod => mod.ToolbarMenu), {
+  ssr: false,
+  loading: () => <ToolbarContentSkeleton />
+})
+const ToolbarDropdownMenu = dynamic(
+  () => import('./ToolbarDropdownMenu').then(mod => mod.ToolbarDropdownMenu),
+  {
+    ssr: false,
+    loading: () => <ToolbarDropdownMenuSkeleton />
+  }
+)
 
+export function ToolbarContent() {
   return (
-    <Flex
-      data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS}
-      align='center'
-      justify='end'
-      gap='1'
-      py='2'
-      {...props}
-    >
-      <Flex align='center' gap='1'>
-        <ButtonImportSettings />
-        <ButtonExportSettings />
+    <>
+      <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.xs}>
+        <ToolbarMenu />
+      </MediaQuery>
 
-        {selectedTab === TOOLBAR_TAB.CONVERT && <ToolbarRandomizeMenu />}
-      </Flex>
-
-      {selectedTab === TOOLBAR_TAB.CONVERT && (
-        <>
-          <Separator orientation='vertical' mx='1' />
-
-          <ButtonSettingsReset />
-        </>
-      )}
-    </Flex>
+      <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.xs}>
+        <ToolbarDropdownMenu />
+      </MediaQuery>
+    </>
   )
 }
