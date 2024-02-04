@@ -1,6 +1,6 @@
 .root {
   width: 100dvw;
-  height: calc(100dvh - var(--space-8));
+  height: var(--layout-content-height);
   padding-top: 200px;
 }
 

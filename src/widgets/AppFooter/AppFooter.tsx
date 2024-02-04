@@ -10,7 +10,7 @@ const AppFooterContent = dynamic(() => import('./AppFooterContent'), {
 })
 
 export const AppFooter = () => (
-  <Box asChild px='4' width='100%' height='9' className={styles.root}>
+  <Box asChild px='4' width='100%' className={styles.root}>
     <footer>
       <AppFooterContent />
     </footer>

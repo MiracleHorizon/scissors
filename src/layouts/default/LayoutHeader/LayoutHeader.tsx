@@ -30,7 +30,6 @@ export const LayoutHeader: FC<ThemeProps> = themeProps => (
     align='center'
     justify='between'
     width='100%'
-    height='8'
     className={styles.root}
   >
     <header>

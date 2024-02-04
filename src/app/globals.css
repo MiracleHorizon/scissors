@@ -5,7 +5,11 @@
   --settings-panel-width: 520px;
   --settings-panel-width-1200: 440px;
   --settings-panel-width-md: 100%;
-  --settings-panel-toobar-height: 48px;
+  --settings-panel-toobar-height: 48px; /* var(--space-8) */
+
+  --layout-header-height: 48px; /* var(--space-8) */
+  --layout-content-height: calc(100dvh - var(--layout-header-height));
+  --app-footer-height: 64px; /* var(--space-9) */
 }
 
 * {
