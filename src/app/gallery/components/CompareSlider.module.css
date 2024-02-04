@@ -17,6 +17,7 @@
 }
 
 .portrait,
-.landscape {
+.landscape,
+.portrait img {
   max-height: calc(var(--layout-content-height) - var(--page-padding) * 2);
 }
