@@ -19,16 +19,32 @@
 .exampleList,
 .content :global(.rt-ScrollAreaViewport) {
   border-radius: var(--radius-2);
-  background-color: white;
 }
 
-.exampleLabel {
-  color: black;
+.exampleItem {
+  gap: 6px;
 }
 
 .buttonInfo {
   padding: 0;
   margin: 0;
+}
+
+/* 🤬 */
+.content :global(:is(html.dark .resize-fit-example-image-light)) {
+  display: none;
+}
+
+.content :global(:is(html.dark .resize-fit-example-image-dark)) {
+  display: block;
+}
+
+.content :global(:is(html.light .resize-fit-example-image-dark)) {
+  display: none;
+}
+
+.content :global(:is(html.light .resize-fit-example-image-light)) {
+  display: block;
 }
 
 @media screen and (max-width: 519px) {
@@ -38,12 +54,12 @@
 
   .content :global(.rt-ScrollAreaViewport) {
     border-radius: var(--radius-2);
-    background-color: white;
   }
 
   .content,
   .exampleList {
-    max-height: 300px;
+    max-height: 40dvh;
+    min-height: 300px;
   }
 
   .exampleList {
