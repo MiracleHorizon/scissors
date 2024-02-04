@@ -1,18 +1,24 @@
+import { type ComponentPropsWithoutRef, useCallback } from 'react'
 import { DropdownMenu } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef } from 'react'
 
 import { ConfirmSettingsResetAlert } from '@components/alerts/ConfirmSettingsResetAlert'
 import { ResetIcon } from '@ui/icons/ResetIcon'
 import { ButtonReset } from '@ui/ButtonReset'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
+import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'
 
 function WithConfirmAlert({ children, onCancel, onConfirm }: WithConfirmAlertProps) {
   const { handleReset } = useResetSettings()
+  const { handleRemove } = useRemoveSettings()
 
-  const handleConfirm = () => {
-    if (onConfirm) onConfirm()
-    handleReset()
-  }
+  const handleConfirm = useCallback(
+    (removeAll: boolean) => {
+      if (onConfirm) onConfirm()
+      handleReset()
+      if (removeAll) handleRemove()
+    },
+    [onConfirm, handleReset, handleRemove]
+  )
 
   return (
     <ConfirmSettingsResetAlert onCancel={onCancel} onConfirm={handleConfirm}>

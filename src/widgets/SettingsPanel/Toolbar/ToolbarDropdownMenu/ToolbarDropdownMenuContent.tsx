@@ -3,7 +3,6 @@ import { DropdownMenu } from '@radix-ui/themes'
 import { DropdownItemImportSettings } from '../actions/import-settings'
 import { DropdownItemExportSettings } from '../actions/export-settings'
 import { DropdownItemResetSettings } from '../actions/reset-settings'
-import { DropdownItemRemoveSettings } from '../actions/remove-settings'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import styles from './ToolbarDropdownMenuContent.module.css'
 
@@ -26,7 +25,6 @@ export function ToolbarDropdownMenuContent({ onClose }: Props) {
           <DropdownMenu.Separator />
 
           <DropdownItemResetSettings onClose={onClose} />
-          <DropdownItemRemoveSettings onClose={onClose} />
         </>
       )}
     </DropdownMenu.Content>

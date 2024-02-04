@@ -3,7 +3,6 @@ import { Flex, Separator } from '@radix-ui/themes'
 import { ButtonImportSettings } from './actions/import-settings'
 import { ButtonExportSettings } from './actions/export-settings'
 import { ButtonSettingsReset } from './actions/reset-settings'
-import { ButtonSettingsRemove } from './actions/remove-settings'
 import { ToolbarRandomizeMenu } from './ToolbarRandomizeMenu'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import { TOUR_STEP } from '@lib/tour'
@@ -32,10 +31,7 @@ export function ToolbarContent(props: ClassNameProps) {
         <>
           <Separator orientation='vertical' mx='1' />
 
-          <Flex align='center' gap='1'>
-            <ButtonSettingsReset />
-            <ButtonSettingsRemove />
-          </Flex>
+          <ButtonSettingsReset />
         </>
       )}
     </Flex>
