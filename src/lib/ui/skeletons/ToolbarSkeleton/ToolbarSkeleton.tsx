@@ -13,7 +13,6 @@ export const ToolbarContentSkeleton = (props: ClassNameProps) => (
     <Separator orientation='vertical' mx='1' />
 
     <Skeleton count={1} height={32} width={32} />
-    <Skeleton count={1} height={32} width={32} />
   </Flex>
 )
 
@@ -25,7 +24,7 @@ export const ToolbarDropdownMenuSkeleton = (props: ClassNameProps) => (
 
 export const ToolbarSkeleton = () => (
   <Flex align='center' justify='between' py='2' px='3' className={styles.root}>
-    <Flex align='center' gap='2' pl='3'>
+    <Flex align='center' gap='2' pl='2'>
       <Skeleton count={1} height={32} width={70} />
       <Skeleton count={1} height={32} width={70} />
     </Flex>
