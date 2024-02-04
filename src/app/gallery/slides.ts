@@ -6,7 +6,7 @@ import type GallerySlide from './components/GallerySlide'
 function pathForGallerySlide(slideName: string): string {
   const GALLERY_SLIDES_PATH = 'slides'
 
-  return `${pathForAssets}/${GALLERY_SLIDES_PATH}/${slideName}`
+  return pathForAssets(`${GALLERY_SLIDES_PATH}/${slideName}`)
 }
 
 type SlideProps = Omit<ComponentPropsWithoutRef<typeof GallerySlide>, 'index'>
