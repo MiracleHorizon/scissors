@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.root img {
+  height: auto !important;
+}
+
 .landscape,
 .landscape img {
   max-width: 1920px;
@@ -9,7 +13,6 @@
 
 .portrait,
 .portrait img {
-  width: 100%;
   max-width: 960px;
 }
 

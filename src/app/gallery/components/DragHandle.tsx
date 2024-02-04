@@ -1,6 +1,6 @@
 import { type FC, memo } from 'react'
 import { Flex } from '@radix-ui/themes'
-import { clsx } from 'clsx/lite'
+import { clsx } from 'clsx'
 
 import { DragHandleDots2Icon } from '@ui/icons/DragHandleDots2Icon'
 import styles from './DragHandle.module.css'

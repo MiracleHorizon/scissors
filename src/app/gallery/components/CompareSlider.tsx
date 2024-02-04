@@ -5,7 +5,7 @@ import {
   ReactCompareSliderImage,
   useReactCompareSliderRef
 } from 'react-compare-slider'
-import { clsx } from 'clsx/lite'
+import { clsx } from 'clsx'
 
 import { DragHandle } from './DragHandle'
 import { getRandomValueFromRange } from '@helpers/getRandomValueFromRange'
