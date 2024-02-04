@@ -2,6 +2,7 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { ButtonImportSettings } from './actions/import-settings'
 import { ButtonExportSettings } from './actions/export-settings'
+import { ButtonRandomizeSettings } from './actions/randomize-settings'
 import { ButtonSettingsReset } from './actions/reset-settings'
 import { ToolbarRandomizeMenu } from './ToolbarRandomizeMenu'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
@@ -24,7 +25,11 @@ export function ToolbarMenu(props: ClassNameProps) {
         <ButtonImportSettings />
         <ButtonExportSettings />
 
-        {selectedTab === TOOLBAR_TAB.CONVERT && <ToolbarRandomizeMenu />}
+        {selectedTab === TOOLBAR_TAB.CONVERT && (
+          <ToolbarRandomizeMenu>
+            <ButtonRandomizeSettings />
+          </ToolbarRandomizeMenu>
+        )}
       </Flex>
 
       {selectedTab === TOOLBAR_TAB.CONVERT && (

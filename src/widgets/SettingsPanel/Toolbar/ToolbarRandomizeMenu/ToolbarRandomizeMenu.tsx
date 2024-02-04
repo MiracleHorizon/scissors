@@ -1,40 +1,11 @@
-import { useCallback } from 'react'
 import { ContextMenu, Separator } from '@radix-ui/themes'
 import capitalize from 'lodash.capitalize'
+import type { ReactNode } from 'react'
 
-import { ButtonRandomize } from '@ui/ButtonRandomize'
-import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
-import { ConvertSettingsRandomizer } from '@utils/ConvertSettingsRandomizer'
 import { useRandomizeStore } from './store'
 import { MAX_OPERATIONS } from './constants'
 import type { Setting } from './types'
 import styles from './ToolbarRandomizeMenu.module.css'
-
-function ToolbarRandomizeMenuTrigger() {
-  // TODO: Try to refactor :)
-  const checkedSettings = useRandomizeStore(state => state.getCheckedSettings())
-  const { setters } = useSettingsSetters()
-
-  const handleRandomize = useCallback(() => {
-    const operations = checkedSettings.map(s => s.label)
-    const settingsRandomizer = new ConvertSettingsRandomizer(operations)
-    const randomSettings = settingsRandomizer.randomize()
-
-    for (const [key, value] of Object.entries(randomSettings)) {
-      if (!(key in setters)) continue
-
-      // eslint-disable-next-line
-      // @ts-expect-error
-      setters[key](value)
-    }
-  }, [setters, checkedSettings])
-
-  return (
-    <ContextMenu.Trigger>
-      <ButtonRandomize color='gray' tooltipContent='Randomize Settings' onClick={handleRandomize} />
-    </ContextMenu.Trigger>
-  )
-}
 
 function ToolbarRandomizeMenuCheckbox({ label, checked }: Setting) {
   const isMaxOperations = useRandomizeStore(state => state.isMaxOperations())
@@ -60,13 +31,13 @@ function ToolbarRandomizeMenuCheckbox({ label, checked }: Setting) {
   )
 }
 
-export function ToolbarRandomizeMenu() {
+export function ToolbarRandomizeMenu({ children }: Props) {
   const settings = useRandomizeStore(state => state.settings)
   const totalChecked = useRandomizeStore(state => state.getTotalChecked())
 
   return (
     <ContextMenu.Root>
-      <ToolbarRandomizeMenuTrigger />
+      {children}
 
       <ContextMenu.Content className={styles.content}>
         <ContextMenu.Label className={styles.label}>
@@ -81,4 +52,8 @@ export function ToolbarRandomizeMenu() {
       </ContextMenu.Content>
     </ContextMenu.Root>
   )
+}
+
+interface Props {
+  children: ReactNode
 }

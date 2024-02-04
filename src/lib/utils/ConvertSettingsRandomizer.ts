@@ -44,7 +44,7 @@ interface Randomizer {
   getRandomNormalise: () => NormaliseOptions
 }
 
-type Operation = keyof ConvertSettings
+export type Operation = keyof ConvertSettings
 
 // TODO: Try to refactor :)
 export class ConvertSettingsRandomizer implements Randomizer {
