@@ -1,6 +1,6 @@
 'use client'
 
-import { Flex, Text } from '@radix-ui/themes'
+import { Flex, type PaddingProps, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
 
@@ -9,15 +9,22 @@ import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@site/config'
 import styles from './ImageDropzone.module.css'
 
+const padding: PaddingProps = {
+  py: '2',
+  px: {
+    initial: '4',
+    xs: '6'
+  }
+}
+
 const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ...props }) => (
   <Flex
+    {...padding}
     {...props}
     title='File is not uploaded'
     align='center'
     justify='center'
     width='100%'
-    py='2'
-    px='6'
     gap='3'
     m='auto'
     className={clsx(styles.root, {
@@ -28,8 +35,12 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
 
     <Flex asChild justify='center' direction='column' className={styles.article}>
       <article>
-        <Text as='p' weight='medium' size='3'>
+        <Text as='p' weight='medium' size='3' className={styles.title}>
           Drag image here or click to upload
+        </Text>
+
+        <Text as='p' weight='medium' size='3' className={styles.titleTouch}>
+          Tap here for upload file
         </Text>
 
         <Text as='p' size='2' className={styles.maxFileSize}>

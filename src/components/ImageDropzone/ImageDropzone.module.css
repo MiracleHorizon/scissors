@@ -9,6 +9,10 @@
   transition: background-color 50ms ease-in;
 }
 
+.root svg {
+  flex-shrink: 0;
+}
+
 @media (hover: hover) {
   .root:hover {
     background-color: var(--gray-a3);
@@ -27,8 +31,28 @@
   gap: 2px;
 }
 
+.titleTouch {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .title {
+    display: none;
+  }
+
+  .titleTouch {
+    display: block;
+  }
+}
+
 .maxFileSize {
   color: var(--gray-11);
+}
+
+@media screen and (max-width: 767px) {
+  .root {
+    max-width: 340px;
+  }
 }
 
 @media screen and (max-width: 519px) {
