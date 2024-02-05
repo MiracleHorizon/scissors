@@ -52,6 +52,10 @@ export const defaultSettings: Setting[] = [
   {
     label: 'tint',
     checked: false
+  },
+  {
+    label: 'normalise',
+    checked: false
   }
 ]
 
