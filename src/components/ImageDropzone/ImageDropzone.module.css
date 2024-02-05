@@ -23,6 +23,14 @@
   font-size: var(--font-size-5);
 }
 
+.article {
+  gap: 2px;
+}
+
+.maxFileSize {
+  color: var(--gray-11);
+}
+
 @media screen and (max-width: 519px) {
   .uploadText {
     font-size: 19px;

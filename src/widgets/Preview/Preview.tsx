@@ -5,7 +5,7 @@ import { Flex, type PaddingProps } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { HTMLAttributes } from 'react'
 
-import { FileUploadZone } from '@components/FileUploadZone'
+import { ImageDropzone } from '@components/ImageDropzone'
 import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import { useOutputStore } from '@stores/output'
@@ -41,7 +41,7 @@ export function Preview() {
       {file ? (
         <UploadedFile file={file} />
       ) : (
-        <FileUploadZone
+        <ImageDropzone
           accept={ALLOWED_IMAGE_FORMATS}
           setFile={setFile}
           htmlAttributes={fileUploadZoneHTMLAttributes}
