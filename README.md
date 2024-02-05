@@ -58,7 +58,7 @@ Currently, the following image formats are supported:
    ```sh
    git clone https://github.com/MiracleHorizon/scissors.git
    ```
-* Install NPN packages
+* Install NPM packages
    ```sh
    pnpm install --frozen-lockfile
    ```
