@@ -56,9 +56,15 @@ export async function resizeImageMutation({
   })
   const link = URL.createObjectURL(imageBlob)
 
+  let outputFileName = fileName
+  const { resize } = settings
+  if (resize && resize.width && resize.height) {
+    outputFileName = `${fileName}-${resize.width}x${resize.height}`
+  }
+
   return {
     link,
-    fileName
+    fileName: outputFileName
   }
 }
 
