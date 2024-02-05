@@ -59,7 +59,9 @@ export const useBlurStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    if (!options) return
+    if (!options) {
+      return get().reset()
+    }
 
     const { value, sigma } = options
 
@@ -77,7 +79,7 @@ export const useBlurStore = create<Store>((set, get) => ({
       sigma
     })
   },
-  reset: () => set({ ...defaultState }),
+  reset: () => set(defaultState),
 
   toggle: () =>
     set(state => ({

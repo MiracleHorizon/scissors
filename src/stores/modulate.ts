@@ -57,7 +57,9 @@ export const useModulateStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    if (!options) return
+    if (!options) {
+      return set(defaultState)
+    }
 
     /*
      * This method is only used for external import of settings. By default - the option is disabled.

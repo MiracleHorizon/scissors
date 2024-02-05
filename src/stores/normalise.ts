@@ -18,10 +18,14 @@ interface State extends NormaliseOptions {
   isAdded: boolean
 }
 
+const defaultState: State = {
+  isAdded: false,
+  ...DEFAULT_NORMALISE
+}
+
 export const useNormaliseStore = create<Store>((set, get) => ({
   // State
-  isAdded: false,
-  ...DEFAULT_NORMALISE,
+  ...defaultState,
 
   // Computed
   getNormaliseOptions: () => {
@@ -37,9 +41,14 @@ export const useNormaliseStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    const isAdded = options !== null
+    if (!options) {
+      return set(defaultState)
+    }
 
-    set({ ...options, isAdded })
+    set({
+      ...options,
+      isAdded: true
+    })
   },
   reset: () =>
     set(state => {

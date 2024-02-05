@@ -56,15 +56,17 @@ export const useRotateStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    if (!options) return
+    if (!options) {
+      return set(defaultState)
+    }
 
     /*
      * This method is only used for external import of settings. By default - the option is disabled.
      * Therefore, if the imported options are not equal to null, you need to set the 'isAdded' flag to true
      */
     set({
-      isAdded: true,
-      ...options
+      ...options,
+      isAdded: true
     })
   },
   reset: () => {
