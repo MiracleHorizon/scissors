@@ -1,1 +1,5 @@
-export { AppFooterContentSkeleton, ButtonRequestSkeleton } from './AppFooterContentSkeleton'
+export {
+  AppFooterContentSkeleton,
+  ButtonDownloadSkeleton,
+  ButtonRequestSkeleton
+} from './AppFooterContentSkeleton'

@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Button, Link, Text } from '@radix-ui/themes'
+import MediaQuery from 'react-responsive'
 
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
 import { useOutputStore } from '@stores/output'
@@ -27,7 +28,10 @@ export function ButtonDownload() {
         onClick={handleButtonClick}
       >
         <DownloadIcon width='20px' height='20px' />
-        <Text as='span'>Download</Text>
+
+        <MediaQuery minWidth={401}>
+          <Text as='span'>Download</Text>
+        </MediaQuery>
       </Button>
 
       <Link

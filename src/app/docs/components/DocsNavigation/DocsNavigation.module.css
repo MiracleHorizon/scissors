@@ -4,9 +4,3 @@
   width: 160px;
   margin-left: var(--space-6);
 }
-
-@media screen and (max-width: 767px) {
-  .root {
-    display: none;
-  }
-}

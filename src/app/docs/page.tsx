@@ -1,9 +1,13 @@
+import dynamic from 'next/dynamic'
 import { Flex, type PaddingProps } from '@radix-ui/themes'
 import type { Metadata } from 'next'
 
 import { ButtonBackTop } from '@ui/ButtonBackTop'
 import { DocsContent } from './components/DocsContent'
-import { DocsNavigation } from './components/DocsNavigation'
+
+const DocsNavigation = dynamic(() => import('./components/DocsNavigation'), {
+  ssr: false
+})
 
 export const metadata: Metadata = {
   title: 'Documentation'

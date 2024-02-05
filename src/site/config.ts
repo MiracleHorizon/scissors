@@ -74,7 +74,8 @@ const REPO_PATH = `${REPO_OWNER}/${REPO_NAME}`
 const GITHUB_USER_CONTENT_PATH = 'raw.githubusercontent.com'
 const GITHUB_USER_CONTENT_REPO_PATH = `https://${GITHUB_USER_CONTENT_PATH}/${REPO_PATH}/${REPO_BRANCH}`
 
-export const GITHUB_REPO_PATH = `https://github.com/${REPO_PATH}`
+export const GITHUB_PATH = 'github.com'
+export const GITHUB_REPO_PATH = `https://${GITHUB_PATH}/${REPO_PATH}`
 
 export function pathForAssets(path: string): string {
   const ASSETS_PATH = 'src/assets'

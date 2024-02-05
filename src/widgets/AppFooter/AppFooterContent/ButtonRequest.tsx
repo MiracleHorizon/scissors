@@ -1,6 +1,7 @@
-import dynamic from 'next/dynamic'
-import { Button, Text } from '@radix-ui/themes'
 import { type FC, memo } from 'react'
+import dynamic from 'next/dynamic'
+import MediaQuery from 'react-responsive'
+import { Button, Text } from '@radix-ui/themes'
 
 import { SymbolIcon } from '@ui/icons/SymbolIcon'
 import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
@@ -25,12 +26,19 @@ export const ButtonRequest: FC<Props> = memo(
           disabled={isDisabled || isPending || !isFileUploaded}
           onClick={makeRequest}
         >
-          <Text as='span'>{label}</Text>
-          {!isFileUploaded || isPending ? (
-            <LockClosedIcon width='20px' height='20px' label={`${label.toLowerCase()} locked`} />
-          ) : (
+          <MediaQuery minWidth={401}>
+            <Text as='span'>{label}</Text>
+
+            {!isFileUploaded || isPending ? (
+              <LockClosedIcon width='20px' height='20px' label={`${label.toLowerCase()} locked`} />
+            ) : (
+              <SymbolIcon width='20px' height='20px' label={label.toLowerCase()} />
+            )}
+          </MediaQuery>
+
+          <MediaQuery maxWidth={400}>
             <SymbolIcon width='20px' height='20px' label={label.toLowerCase()} />
-          )}
+          </MediaQuery>
         </Button>
 
         {error && <RequestErrorAlert open={!!error} error={error} reset={reset} retry={retry} />}

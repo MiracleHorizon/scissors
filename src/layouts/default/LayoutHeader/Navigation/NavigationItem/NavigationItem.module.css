@@ -19,10 +19,6 @@
   text-underline-offset: 4px;
 }
 
-.text {
-  display: initial;
-}
-
 .iconButton {
   display: none;
 }
@@ -37,6 +33,8 @@
   }
 
   .iconButton svg {
-    display: initial;
+    display: block;
+    width: 20px;
+    height: 20px;
   }
 }

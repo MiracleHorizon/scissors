@@ -1,1 +1,1 @@
-export { DocsNavigation } from './DocsNavigation'
+export { default } from './DocsNavigation'
