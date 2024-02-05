@@ -1,5 +1,6 @@
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
-import { BYTES_IN_MB, MAX_FILE_SIZE, MAX_FILE_SIZE_MB } from '@helpers/file/constants'
+import { BYTES_IN_MB, MAX_FILE_SIZE } from '@helpers/file/constants'
+import { MAX_FILE_SIZE_MB } from '@site/config'
 
 describe('@lib/helpers/file/isValidFileSize', () => {
   it(`should return true if file size is less than ${MAX_FILE_SIZE_MB} MB`, () => {

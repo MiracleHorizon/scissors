@@ -1,7 +1,4 @@
-/*
- *Vercel specifies a limit of 4,500,000 bytes (in decimal variant) for the Serverless Functions payload.
- */
-export const MAX_FILE_SIZE_MB = 4.5
+import { MAX_FILE_SIZE_MB } from '@site/config'
 
 export const BYTES_IN_KB = 1000
 export const KILOBYTES_IN_MB = 1000

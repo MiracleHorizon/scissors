@@ -6,7 +6,7 @@ import type { FC } from 'react'
 
 import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
-import { MAX_FILE_SIZE_MB } from '@helpers/file/constants'
+import { MAX_FILE_SIZE_MB } from '@site/config'
 import styles from './ImageDropzone.module.css'
 
 const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ...props }) => (

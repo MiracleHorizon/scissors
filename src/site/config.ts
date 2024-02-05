@@ -1,7 +1,7 @@
 export const isProduction = process.env.NODE_ENV === 'production'
 export const isDevelopment = process.env.NODE_ENV === 'development'
 
-// Metadata
+// METADATA
 export const SITE_TITLE = 'Scissors'
 export const SITE_DESCRIPTION =
   'Your awesome application for versatile image formatting and processing!'
@@ -46,7 +46,7 @@ export const SITE_KEYWORDS = [
   'scissors'
 ]
 
-// Domains
+// DOMAINS
 const SITE_DOMAIN_PRODUCTION = process.env.SITE_DOMAIN_PRODUCTION
 const SITE_DOMAIN_DEVELOPMENT = process.env.SITE_DOMAIN_DEVELOPMENT
 const SITE_DOMAIN_FALLBACK = 'http://localhost:3000'
@@ -65,7 +65,7 @@ function getSiteDomain(): string {
 
 export const SITE_DOMAIN = getSiteDomain()
 
-// Repository
+// REPOSITORY
 const REPO_OWNER = 'MiracleHorizon'
 const REPO_NAME = 'scissors'
 const REPO_BRANCH = 'main'
@@ -88,3 +88,8 @@ export function pathForSocial(path: string): string {
 
   return `${GITHUB_USER_CONTENT_REPO_PATH}/${SOCIAL_PATH}/${path}`
 }
+
+// VERCEL
+const VERCEL_SERVERLESS_PAYLOAD_LIMIT_MB = 4.5 // decimal variant
+
+export const MAX_FILE_SIZE_MB = VERCEL_SERVERLESS_PAYLOAD_LIMIT_MB
