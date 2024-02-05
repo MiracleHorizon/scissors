@@ -23,7 +23,7 @@ export function HexColorInput(props: Props) {
 }
 
 /* eslint no-unused-vars: 0 */
-interface Props extends Omit<TextFieldInputProps, 'color'> {
+interface Props extends Omit<TextFieldInputProps, 'color' | 'onChange'> {
   color: string
   onChange: (color: string) => void
 }
