@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import type { Metadata } from 'next'
@@ -117,7 +118,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           </Flex>
         </RadixTheme>
 
-        <SpeedInsights />
+        <Analytics debug={false} />
+        <SpeedInsights debug={false} />
       </body>
     </html>
   )
