@@ -1,7 +1,7 @@
 import sharp, { type ExtendWith, type FitEnum, type KernelEnum } from 'sharp'
 
 import { ImageSharp } from './ImageSharp'
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { RESIZE_OPERATION_NAME } from './constants'
 import type { ExtendOptions, ResizeOptions, ResizeSettings, TrimOptions } from './types'
 

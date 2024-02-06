@@ -1,7 +1,7 @@
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { IMAGE_FILE_FORMAT } from '@server/sharp'
 
-describe('@utils/YupSettingsValidator.isValidOutputFormat', () => {
+describe('@utility/YupSettingsValidator.isValidOutputFormat', () => {
   const isValidOutputFormat = YupSettingsValidator.isValidOutputFormat
 
   it('should return true for null', () => {

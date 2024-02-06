@@ -49,10 +49,6 @@ const aliases: Alias[] = [
     replacementPath: './src/lib/ui'
   },
   {
-    find: '@utils',
-    replacementPath: './src/lib/utils'
-  },
-  {
     find: '@helpers',
     replacementPath: './src/lib/helpers'
   },
@@ -60,6 +56,10 @@ const aliases: Alias[] = [
   {
     find: '@api',
     replacementPath: './src/api'
+  },
+  {
+    find: '@utility',
+    replacementPath: './src/utility'
   },
   {
     find: '@hooks',

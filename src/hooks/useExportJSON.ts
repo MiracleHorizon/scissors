@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
-import { createJSONBlob } from '@utils/json-file'
-import { downloadFile } from '@utils/export'
+import { createJSONBlob } from '@utility/json-file'
+import { downloadFile } from '@utility/export'
 
 export function useExportJSON() {
   const handleExportJSON = useCallback(

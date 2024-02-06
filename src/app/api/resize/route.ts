@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
 import { ImageResizer } from '@server/sharp/ImageResizer'
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { errorMessages } from '@api/resize-image'
 import type { ResizeSettings } from '@server/sharp'
