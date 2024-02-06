@@ -1,7 +1,7 @@
 import { clsx } from 'clsx/lite'
 
 import { completeTour } from './actions'
-import { MIN_STEP_TO_SKIP, TOUR_STEP } from './constants'
+import { TOUR_STEP } from './constants'
 import type { PopoverDOM } from './types'
 
 export async function createTour() {
@@ -81,7 +81,7 @@ export async function createTour() {
       }
     })),
     prevBtnText: '&#8592; Prev',
-    onPopoverRender: (popover, { state: { activeIndex: step } }) => onPopoverRender(popover, step)
+    onPopoverRender: popover => onPopoverRender(popover)
   })
 
   function createSkipButton() {
@@ -93,13 +93,9 @@ export async function createTour() {
     return skipButton
   }
 
-  function onPopoverRender(popover: PopoverDOM, step?: number) {
+  function onPopoverRender(popover: PopoverDOM) {
     const skipButton = createSkipButton()
     popover.title.appendChild(skipButton)
-
-    if (!step || step + 1 < MIN_STEP_TO_SKIP) {
-      skipButton.style.display = 'none'
-    }
 
     skipButton.addEventListener('click', () => {
       tourDriver.destroy()

@@ -8,4 +8,3 @@ export const TOUR_STEP = {
   DOWNLOAD_BUTTON: 6,
   DOCUMENTATION_LINK: 7
 } as const
-export const MIN_STEP_TO_SKIP = TOUR_STEP.REQUEST_BUTTON
