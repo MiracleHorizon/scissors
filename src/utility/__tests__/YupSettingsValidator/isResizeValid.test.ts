@@ -1,7 +1,7 @@
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { RESIZE_FIT, RESIZE_KERNEL, RESIZE_POSITION, type ResizeOptions } from '@server/sharp'
 
-describe('@utils/YupSettingsValidator.isResizeValid', () => {
+describe('@utility/YupSettingsValidator.isResizeValid', () => {
   const isResizeValid = YupSettingsValidator.isResizeValid
 
   const validOptions: ResizeOptions = {

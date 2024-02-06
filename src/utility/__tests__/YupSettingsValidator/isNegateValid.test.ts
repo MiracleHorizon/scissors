@@ -1,6 +1,6 @@
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 
-describe('@utils/YupSettingsValidator.isNegateValid', () => {
+describe('@utility/YupSettingsValidator.isNegateValid', () => {
   const isNegateValid = YupSettingsValidator.isNegateValid
 
   it('should return true for null', () => {

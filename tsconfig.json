@@ -99,8 +99,8 @@
       "@helpers/*": [
         "./src/lib/helpers/*"
       ],
-      "@utils/*": [
-        "./src/lib/utils/*"
+      "@utility/*": [
+        "./src/utility/*"
       ],
       "@app-types/*": [
         "./src/types/*"

@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useSettingsSetters } from './useSettingsSetters'
-import { ConvertSettingsRandomizer, type Operation } from '@utils/ConvertSettingsRandomizer'
+import { ConvertSettingsRandomizer, type Operation } from '@utility/ConvertSettingsRandomizer'
 
 export function useRandomizeSettings() {
   const { setters } = useSettingsSetters()

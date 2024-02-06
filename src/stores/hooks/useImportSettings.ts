@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react'
 
 import { useSettingsSetters } from './useSettingsSetters'
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
-import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { readJSONFile } from '@utility/json-file'
 import { NULL_CONVERT_SETTINGS } from '@server/sharp'
-import { readJSONFile } from '@utils/json-file'
+import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 
 export function useImportSettings(selectedTab: ToolbarTab) {
   const [data, setData] = useState<unknown>(null)

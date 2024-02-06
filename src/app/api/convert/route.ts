@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { ImageConverter } from '@server/sharp/ImageConverter'
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { errorMessages } from '@api/convert-image'
 import type { ConvertSettings } from '@server/sharp'
 

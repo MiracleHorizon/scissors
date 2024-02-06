@@ -2,7 +2,7 @@ import type { FormatEnum } from 'sharp'
 
 import { ImageSharp } from './ImageSharp'
 import { DEFAULT_ROTATE_BACKGROUND } from './constants'
-import { YupSettingsValidator } from '@utils/YupSettingsValidator'
+import { YupSettingsValidator } from '@utility/YupSettingsValidator'
 import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import type {
   BlurOptions,
