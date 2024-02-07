@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     images: [
       {
-        url: pathForSocial('og-image-share-dark.png'),
+        url: pathForSocial('og-image-share.png'),
         width: 2880,
         height: 1746,
         type: 'image/png'
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [
       {
-        url: pathForSocial('og-image-share-dark.png'),
+        url: pathForSocial('og-image-share.png'),
         width: 2880,
         height: 1746,
         type: 'image/png'
