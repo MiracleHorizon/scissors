@@ -3,13 +3,10 @@
 import dynamic from 'next/dynamic'
 import { Flex, type PaddingProps } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { HTMLAttributes } from 'react'
 
-import { ImageDropzone } from '@components/ImageDropzone'
+import { ImageUploader } from '@components/ImageUploader'
 import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
-import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import { useOutputStore } from '@stores/output'
-import { TOUR_STEP } from '@lib/tour'
 import styles from './Preview.module.css'
 
 const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.UploadedFile), {
@@ -24,13 +21,8 @@ const padding: PaddingProps = {
   }
 }
 
-const fileUploadZoneHTMLAttributes = {
-  'data-tourstep': TOUR_STEP.FILE_UPLOAD
-} as HTMLAttributes<HTMLDivElement>
-
 export function Preview() {
   const file = useOutputStore(state => state.file)
-  const setFile = useOutputStore(state => state.setFile)
 
   return (
     <Flex
@@ -38,15 +30,7 @@ export function Preview() {
       direction='column'
       className={clsx(styles.root, file ? styles.withFile : styles.withoutFile)}
     >
-      {file ? (
-        <UploadedFile file={file} />
-      ) : (
-        <ImageDropzone
-          accept={ALLOWED_IMAGE_FORMATS}
-          setFile={setFile}
-          htmlAttributes={fileUploadZoneHTMLAttributes}
-        />
-      )}
+      {file ? <UploadedFile file={file} /> : <ImageUploader />}
     </Flex>
   )
 }

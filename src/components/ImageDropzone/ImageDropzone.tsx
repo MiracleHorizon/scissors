@@ -26,7 +26,6 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
     justify='center'
     width='100%'
     gap='3'
-    m='auto'
     className={clsx(styles.root, {
       [styles.dragOver]: isDragOver
     })}
@@ -44,7 +43,7 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
         </Text>
 
         <Text as='p' size='2' className={styles.maxFileSize}>
-          Maximum file size: {MAX_FILE_SIZE_MB}mb
+          The maximum file size per file is {MAX_FILE_SIZE_MB}mb
         </Text>
       </article>
     </Flex>

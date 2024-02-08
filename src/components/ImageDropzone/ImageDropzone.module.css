@@ -1,8 +1,6 @@
 .root {
   cursor: pointer;
-  max-width: 430px;
-  height: 140px;
-  flex-shrink: 0;
+  max-height: 140px;
   border: 1px dashed var(--gray-a9);
   border-radius: var(--radius-3);
   background-color: var(--gray-a2);
@@ -47,12 +45,6 @@
 
 .maxFileSize {
   color: var(--gray-11);
-}
-
-@media screen and (max-width: 767px) {
-  .root {
-    max-width: 340px;
-  }
 }
 
 @media screen and (max-width: 519px) {
