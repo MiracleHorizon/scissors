@@ -3,8 +3,8 @@
 import { Flex } from '@radix-ui/themes'
 import type { HTMLAttributes } from 'react'
 
-import { ImageDropzone } from '../ImageDropzone'
-import { ImageUploadPopover } from '../ImageUploadPopover/ImageUploadPopover'
+import { ImageDropzone } from '@components/ImageDropzone'
+import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { useOutputStore } from '@stores/output'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import { TOUR_STEP } from '@lib/tour'
