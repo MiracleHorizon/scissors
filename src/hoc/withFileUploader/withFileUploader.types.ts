@@ -20,4 +20,4 @@ export type ComponentProps = PropsWithChildren<
   } & ComponentHTMLAttributes
 >
 
-type ComponentHTMLAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onClick'>
+type ComponentHTMLAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>

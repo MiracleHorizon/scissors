@@ -17,7 +17,12 @@ const padding: PaddingProps = {
   }
 }
 
-const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ...props }) => (
+const ImageDropzone: FC<ComponentProps> = ({
+  children: fileInput,
+  isDragOver,
+  className,
+  ...props
+}) => (
   <Flex
     {...padding}
     {...props}
@@ -26,9 +31,13 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
     justify='center'
     width='100%'
     gap='3'
-    className={clsx(styles.root, {
-      [styles.dragOver]: isDragOver
-    })}
+    className={clsx(
+      styles.root,
+      {
+        [styles.dragOver]: isDragOver
+      },
+      className
+    )}
   >
     <ImageIcon width='44px' height='44px' />
 

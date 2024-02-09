@@ -19,3 +19,18 @@
     max-width: 90dvw;
   }
 }
+
+@media screen and (max-width: 519px) {
+  .root {
+    height: auto;
+  }
+
+  .dropzone {
+    min-height: 80px;
+  }
+
+  .dropzone svg {
+    width: 38px;
+    height: 38px;
+  }
+}
