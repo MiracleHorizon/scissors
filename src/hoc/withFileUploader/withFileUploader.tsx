@@ -91,7 +91,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
           />
         </Component>
 
-        {isAlertOpen && <FileSizeAlert isOpen={isAlertOpen} onClose={handleCloseAlert} />}
+        {isAlertOpen && <FileSizeAlert open={isAlertOpen} onClose={handleCloseAlert} />}
       </>
     )
   }
