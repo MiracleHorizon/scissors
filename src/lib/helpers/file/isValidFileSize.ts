@@ -1,13 +1,13 @@
 import { MAX_FILE_SIZE } from './constants'
 
 /**
- * @param file - default file object
+ * @param size - the size of the file in bytes
  * @returns boolean indicating whether the file size is valid
  */
-export function isValidFileSize(file: File): boolean {
-  if (file.size < 0) {
+export function isValidFileSize(size: number): boolean {
+  if (size < 0) {
     return false
   }
 
-  return file.size <= MAX_FILE_SIZE
+  return size <= MAX_FILE_SIZE
 }

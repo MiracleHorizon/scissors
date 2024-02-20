@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   const file = formData.get('file') as File | null
   if (!file) {
     return createResponseError(errorMessages.missingFile, 400)
-  } else if (!isValidFileSize(file)) {
+  } else if (!isValidFileSize(file.size)) {
     return createResponseError(errorMessages.invalidFileSize, 413)
   }
 

@@ -14,8 +14,9 @@ const maxFileSizeTextStyle: CSSProperties = {
   fontWeight: '600'
 }
 
-export const FileSizeAlert: FC<Props> = ({ isOpen, onClose }) => (
-  <AlertDialog.Root open={isOpen} defaultOpen={false}>
+// TODO: Унифицировать
+export const FileSizeAlert: FC<Props> = ({ open, onClose }) => (
+  <AlertDialog.Root open={open} defaultOpen={false}>
     <AlertDialog.Content size='3' style={contentStyle} onEscapeKeyDown={onClose}>
       <TitleWithExclamation mb='3'>
         <AlertDialog.Title mb='0'>Invalid file size</AlertDialog.Title>
@@ -26,7 +27,7 @@ export const FileSizeAlert: FC<Props> = ({ isOpen, onClose }) => (
         <Text style={maxFileSizeTextStyle}>{MAX_FILE_SIZE_MB}</Text> mb.
       </AlertDialog.Description>
 
-      <Flex gap='3' mt='3' justify='end'>
+      <Flex justify='end' mt='3'>
         <AlertDialog.Cancel onClick={onClose}>
           <Button color='gray' variant='soft' radius='large'>
             Close
@@ -38,6 +39,6 @@ export const FileSizeAlert: FC<Props> = ({ isOpen, onClose }) => (
 )
 
 interface Props {
-  isOpen: boolean
+  open: boolean
   onClose: VoidFunction
 }

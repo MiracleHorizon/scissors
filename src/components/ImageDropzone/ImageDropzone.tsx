@@ -17,7 +17,12 @@ const padding: PaddingProps = {
   }
 }
 
-const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ...props }) => (
+const ImageDropzone: FC<ComponentProps> = ({
+  children: fileInput,
+  isDragOver,
+  className,
+  ...props
+}) => (
   <Flex
     {...padding}
     {...props}
@@ -26,10 +31,13 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
     justify='center'
     width='100%'
     gap='3'
-    m='auto'
-    className={clsx(styles.root, {
-      [styles.dragOver]: isDragOver
-    })}
+    className={clsx(
+      styles.root,
+      {
+        [styles.dragOver]: isDragOver
+      },
+      className
+    )}
   >
     <ImageIcon width='44px' height='44px' />
 
@@ -44,7 +52,7 @@ const ImageDropzone: FC<ComponentProps> = ({ children: fileInput, isDragOver, ..
         </Text>
 
         <Text as='p' size='2' className={styles.maxFileSize}>
-          Maximum file size: {MAX_FILE_SIZE_MB}mb
+          The maximum file size per file is {MAX_FILE_SIZE_MB}mb
         </Text>
       </article>
     </Flex>

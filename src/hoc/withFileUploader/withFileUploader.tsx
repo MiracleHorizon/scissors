@@ -39,7 +39,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       const file = fileList.item(0)
       if (!file) return
 
-      if (isValidFileSize(file)) {
+      if (isValidFileSize(file.size)) {
         setFile(file)
       } else {
         handleOpenAlert()
@@ -56,7 +56,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
 
       if (!firstFile) return
 
-      if (isValidFileSize(firstFile)) {
+      if (isValidFileSize(firstFile.size)) {
         setFile(firstFile)
       } else {
         handleOpenAlert()
@@ -91,7 +91,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
           />
         </Component>
 
-        {isAlertOpen && <FileSizeAlert isOpen={isAlertOpen} onClose={handleCloseAlert} />}
+        {isAlertOpen && <FileSizeAlert open={isAlertOpen} onClose={handleCloseAlert} />}
       </>
     )
   }
