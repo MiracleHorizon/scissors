@@ -1,7 +1,7 @@
 .card {
   --card-inset-width: 54px;
   --card-inset-offset: var(--space-4);
-  --buttons-width: 64px;
+  --buttons-width: 84px;
   --buttons-offset: var(--space-4);
 
   width: 100%;
@@ -25,7 +25,7 @@
   padding: var(--space-4) 0;
 }
 
-.buttons {
+.buttonsContainer {
   width: var(--buttons-width);
   height: 100%;
   margin-left: var(--buttons-offset);
@@ -42,9 +42,9 @@
 }
 
 @media screen and (max-width: 700px) {
-  .buttons {
+  .buttonsContainer {
     justify-content: flex-end;
-    padding: var(--space-4) 0;
+    padding: var(--space-4) var(--space-4) var(--space-4) 0;
   }
 }
 
@@ -65,7 +65,7 @@
     gap: var(--space-2);
   }
 
-  .buttons {
+  .buttonsContainer {
     flex-direction: row;
     height: auto;
     margin: 0;
@@ -76,7 +76,7 @@
     margin-right: 0;
   }
 
-  .buttons, .loadingSpinner {
+  .buttonsContainer, .loadingSpinner {
     align-self: flex-end;
   }
 }

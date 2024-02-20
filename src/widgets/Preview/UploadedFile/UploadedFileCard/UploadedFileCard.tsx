@@ -13,6 +13,7 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import styles from './UploadedFileCard.module.css'
+import { ImageUploadPopover } from '@components/ImageUploadPopover'
 
 export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
@@ -50,16 +51,20 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           <Flex
             direction='column'
             justify='center'
-            align='center'
+            align='end'
             shrink='0'
             gap='1'
-            className={styles.buttons}
+            pr='4'
+            className={styles.buttonsContainer}
           >
-            <ButtonImport
-              accept={ALLOWED_IMAGE_FORMATS}
-              setFile={setFile}
-              tooltipContent='Upload New File'
-            />
+            <Flex gap='1'>
+              <ImageUploadPopover />
+              <ButtonImport
+                accept={ALLOWED_IMAGE_FORMATS}
+                setFile={setFile}
+                tooltipContent='Upload New File'
+              />
+            </Flex>
             <ConfirmAlert
               title='Confirm deletion'
               description='Are you sure you want to continue?'
