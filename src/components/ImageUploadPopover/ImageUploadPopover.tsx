@@ -144,7 +144,6 @@ export function ImageUploadPopover() {
 
 function ErrorAlert({ message, onClose }: ErrorAlertProps) {
   const props = useMemo(() => ({ open: true, onClose }), [onClose])
-  console.log(message)
 
   // TODO: Проверить динамические импорты
   const Component = useMemo(() => {
