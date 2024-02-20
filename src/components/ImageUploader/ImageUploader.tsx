@@ -38,13 +38,10 @@ export function ImageUploader() {
 
       <Flex
         direction={{
-          initial: 'row',
+          initial: 'row-reverse',
           xs: 'column'
         }}
-        justify={{
-          initial: 'end',
-          xs: 'start'
-        }}
+        justify='start'
         className={styles.buttons}
       >
         <ButtonImport
