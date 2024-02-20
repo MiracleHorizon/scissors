@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Button, Flex, IconButton, Popover, TextField, Tooltip } from '@radix-ui/themes'
-import { type ChangeEvent, useState } from 'react'
+import { type ChangeEvent, useMemo, useState } from 'react'
 import { string } from 'yup'
 
 import { Link2Icon } from '@ui/icons/Link2Icon'
@@ -25,7 +25,14 @@ const FileTypeAlert = dynamic(
     ssr: false
   }
 )
+const DefaultErrorAlert = dynamic(
+  () => import('@components/alerts/DefaultErrorAlert').then(mod => mod.DefaultErrorAlert),
+  {
+    ssr: false
+  }
+)
 
+// TODO: Декомозировать
 function isURL(value: string): boolean {
   const urlSchema = string().url().defined().required()
   return urlSchema.isValidSync(value)
@@ -34,6 +41,10 @@ function isURL(value: string): boolean {
 const INVALID_FILE_SIZE_MESSAGE = 'Invalid file size'
 const INVALID_FILE_TYPE_MESSAGE = 'Invalid file type'
 const SOMETHING_WENT_WRONG_MESSAGE = 'Something went wrong. Please try again later'
+type ErrorMessage =
+  | typeof INVALID_FILE_SIZE_MESSAGE
+  | typeof INVALID_FILE_TYPE_MESSAGE
+  | typeof SOMETHING_WENT_WRONG_MESSAGE
 
 export function ImageUploadPopover() {
   const [value, setValue] = useState('')
@@ -57,7 +68,7 @@ export function ImageUploadPopover() {
     try {
       const response = await fetch(value)
       if (!response.ok) {
-        return Promise.reject(new Error(SOMETHING_WENT_WRONG_MESSAGE))
+        return setError(new Error(SOMETHING_WENT_WRONG_MESSAGE))
       }
 
       const blob = await response.blob()
@@ -76,10 +87,6 @@ export function ImageUploadPopover() {
 
       setFile(file)
     } catch (err) {
-      if (err instanceof Error) {
-        return setError(err)
-      }
-
       // eslint-disable-next-line no-console
       console.log(err)
       setError(new Error(SOMETHING_WENT_WRONG_MESSAGE))
@@ -129,16 +136,32 @@ export function ImageUploadPopover() {
       </Popover.Root>
 
       {error !== null && (
-        <>
-          {error.message === INVALID_FILE_SIZE_MESSAGE && (
-            <FileSizeAlert open onClose={handleResetState} />
-          )}
-
-          {error.message === INVALID_FILE_TYPE_MESSAGE && (
-            <FileTypeAlert open onClose={handleResetState} />
-          )}
-        </>
+        <ErrorAlert message={error.message as ErrorMessage} onClose={handleResetState} />
       )}
     </>
   )
+}
+
+function ErrorAlert({ message, onClose }: ErrorAlertProps) {
+  const props = useMemo(() => ({ open: true, onClose }), [onClose])
+  console.log(message)
+
+  // TODO: Проверить динамические импорты
+  const Component = useMemo(() => {
+    switch (message) {
+      case INVALID_FILE_SIZE_MESSAGE:
+        return FileSizeAlert
+      case INVALID_FILE_TYPE_MESSAGE:
+        return FileTypeAlert
+      case SOMETHING_WENT_WRONG_MESSAGE:
+        return DefaultErrorAlert
+    }
+  }, [message])
+
+  return <Component {...props} />
+}
+
+interface ErrorAlertProps {
+  message: ErrorMessage
+  onClose: VoidFunction
 }
