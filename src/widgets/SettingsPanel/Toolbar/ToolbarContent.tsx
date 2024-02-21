@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import MediaQuery from 'react-responsive'
 
-import { ToolbarContentSkeleton, ToolbarDropdownMenuSkeleton } from '@ui/skeletons/ToolbarSkeleton'
+import { ToolbarContentSkeleton, ToolbarDropdownMenuSkeleton } from './ToolbarSkeleton'
 import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
 
 const ToolbarMenu = dynamic(() => import('./ToolbarMenu').then(mod => mod.ToolbarMenu), {

@@ -2,7 +2,7 @@ import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
 import { clsx } from 'clsx'
 
-import styles from './OptionsSkeleton.module.css'
+import styles from './TabConvertSkeleton.module.css'
 
 const SwitchSkeleton = () => (
   <Flex align='center' width='100%'>
@@ -11,16 +11,18 @@ const SwitchSkeleton = () => (
   </Flex>
 )
 
-const ButtonSkeleton = () => <Skeleton inline count={1} height={32} width='145px' />
+const ButtonSkeleton = () => (
+  <Skeleton inline count={1} height={32} borderRadius='6px' width='145px' />
+)
 
-const padding: PaddingProps = {
+const optionsPadding: PaddingProps = {
   px: '3',
   pb: '2',
   pt: '4'
 }
 
-export const OptionsSkeleton = () => (
-  <Flex direction='column' width='100%' {...padding} gap='2'>
+const OptionsSkeleton = () => (
+  <>
     <Skeleton inline count={1} height={30} containerClassName={clsx(styles.input, 'w-full')} />
     <Flex direction='column' gap='2'>
       <SwitchSkeleton />
@@ -45,5 +47,11 @@ export const OptionsSkeleton = () => (
     <ButtonSkeleton />
     <Separator my='1' size='4' />
     <ButtonSkeleton />
+  </>
+)
+
+export const TabConvertSkeleton = () => (
+  <Flex direction='column' width='100%' {...optionsPadding} gap='2'>
+    <OptionsSkeleton />
   </Flex>
 )
