@@ -5,6 +5,7 @@ import MediaQuery from 'react-responsive'
 
 import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
+import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { ImageFileIcon } from '@ui/icons/ImageFileIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
@@ -13,7 +14,7 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import styles from './UploadedFileCard.module.css'
-import { ImageUploadPopover } from '@components/ImageUploadPopover'
+import { ImageCameraDialog } from '@components/ImageCameraDialog'
 
 export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
@@ -58,6 +59,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             className={styles.buttonsContainer}
           >
             <Flex gap='1'>
+              <ImageCameraDialog />
               <ImageUploadPopover />
               <ButtonImport
                 accept={ALLOWED_IMAGE_FORMATS}
