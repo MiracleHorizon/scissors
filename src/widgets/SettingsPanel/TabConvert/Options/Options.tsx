@@ -10,7 +10,7 @@ import { Gamma } from './Gamma'
 import { Tint } from './Tint'
 import { Normalise } from './Normalise'
 import { OutputFormat } from './OutputFormat'
-import { InputOutputFileName } from '../InputOutputFileName'
+import { InputOutputFileName } from './OutputFileName'
 import { useOutputStore } from '@stores/output'
 
 const options = [

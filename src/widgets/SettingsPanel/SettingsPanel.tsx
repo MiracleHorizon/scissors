@@ -5,9 +5,10 @@ import { useEffect } from 'react'
 import { Flex, type MarginProps, ScrollArea, Tabs } from '@radix-ui/themes'
 import 'driver.js/dist/driver.css'
 
-import { TabConvert } from './TabConvert'
-import { ToolbarSkeleton } from '@ui/skeletons/ToolbarSkeleton'
-import { useTabsStore } from '@stores/tabs'
+import { ToolbarSkeleton } from './Toolbar/ToolbarSkeleton'
+import { TabConvertSkeleton } from './TabConvert/TabConvertSkeleton'
+import { TabResizeSkeleton } from './TabResize/TabResizeSkeleton'
+import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import { createTour, isTourCompleted, TOUR_STEP } from '@lib/tour'
 import '@lib/tour/tour.css'
 import styles from './SettingsPanel.module.css'
@@ -16,8 +17,13 @@ const Toolbar = dynamic(() => import('./Toolbar').then(mod => mod.Toolbar), {
   ssr: false,
   loading: () => <ToolbarSkeleton />
 })
+const TabConvert = dynamic(() => import('./TabConvert').then(mod => mod.TabConvert), {
+  ssr: false,
+  loading: () => <TabConvertSkeleton />
+})
 const TabResize = dynamic(() => import('./TabResize').then(mod => mod.TabResize), {
-  ssr: false
+  ssr: false,
+  loading: () => <TabResizeSkeleton />
 })
 
 const margin: MarginProps = {
@@ -55,8 +61,8 @@ export function SettingsPanel() {
         {/* eslint-disable no-unused-vars */}
         <Tabs.Root defaultValue={selectedTab} onValueChange={selectTab as (value: string) => void}>
           <Toolbar />
-          <TabConvert />
-          <TabResize />
+          {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
+          {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
         </Tabs.Root>
       </Flex>
     </ScrollArea>
