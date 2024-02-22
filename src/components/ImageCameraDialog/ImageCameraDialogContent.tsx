@@ -1,5 +1,6 @@
-import { Button, Dialog, Flex } from '@radix-ui/themes'
 import { type CSSProperties, useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { Button, Dialog, Flex, Link as RadixLink, Text } from '@radix-ui/themes'
+import { clsx } from 'clsx'
 
 import { useOutputStore } from '@stores/output'
 
@@ -12,8 +13,11 @@ const videoStyle = {
   MozTransform: 'rotateY(180deg)'
 } as CSSProperties
 
+// TODO: Custom photo sizes
 export function ImageCameraDialogContent() {
   const [isStreaming, setIsStreaming] = useState(false)
+  const [isNoAccess, setIsNoAccess] = useState(false)
+
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -97,29 +101,61 @@ export function ImageCameraDialogContent() {
       .then(stream => {
         video.srcObject = stream
         void video.play()
+        setIsNoAccess(false)
       })
       .catch(err => {
+        setIsNoAccess(true)
         // eslint-disable-next-line no-console
         console.log('An error occurred while accessing the device camera', err)
       })
   }, [])
 
   return (
-    <Dialog.Content>
+    <Dialog.Content
+      style={{
+        maxWidth: isNoAccess ? '440px' : undefined
+      }}
+    >
       <Flex direction='column' align='center' justify='center' gap='2'>
-        <Dialog.Title mb='0' align='left'>
-          Device Camera
-        </Dialog.Title>
-        <Dialog.Description mb='2'>Take a photo with your device camera.</Dialog.Description>
+        {isNoAccess ? (
+          <Text align='center'>
+            The device does not have a camera or you have not provided access to it.{' '}
+            <RadixLink
+              href='https://support.google.com/chrome/answer/2693767?hl=en&co=GENIE.Platform%3DDesktop'
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              Learn more
+            </RadixLink>
+          </Text>
+        ) : (
+          <>
+            <Dialog.Title mb='0' align='left'>
+              Device Camera
+            </Dialog.Title>
+            <Dialog.Description mb='2'>Take a photo with your device camera.</Dialog.Description>
+          </>
+        )}
 
-        <video ref={videoRef} style={videoStyle} onCanPlay={handleVideoCanPlay} />
+        <video
+          ref={videoRef}
+          style={videoStyle}
+          className={clsx(isNoAccess && 'hidden')}
+          onCanPlay={handleVideoCanPlay}
+        />
         <canvas ref={canvasRef} className='hidden' />
 
-        <Flex justify='end' gap='3' width='100%' mt='4'>
+        <Flex justify='end' gap='3' width='100%' mt={isNoAccess ? '2' : '4'}>
           <Dialog.Close>
-            <Button radius='large' onClick={handleMakePhoto}>
-              Take photo
-            </Button>
+            {isNoAccess ? (
+              <Button color='gray' radius='large' variant='soft'>
+                Close
+              </Button>
+            ) : (
+              <Button radius='large' onClick={handleMakePhoto}>
+                Take photo
+              </Button>
+            )}
           </Dialog.Close>
         </Flex>
       </Flex>
