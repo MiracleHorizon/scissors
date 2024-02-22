@@ -1,44 +1,19 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Dialog, IconButton } from '@radix-ui/themes'
+import { useState } from 'react'
+import { Dialog } from '@radix-ui/themes'
 
-import { ImageUploadVideo } from './ImageUploadVideo'
-import { CameraIcon } from '@ui/icons/CameraIcon'
-import { CameraOffIcon } from '@ui/icons/CameraOffIcon'
+import { ImageCameraDialogTrigger } from './ImageCameraDialogTrigger'
+import { ImageCameraDialogContent } from './ImageCameraDialogContent'
 
-function ImageCameraDialogTrigger() {
-  const [isSupported, setIsSupported] = useState(false)
-
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({
-        video: true,
-        audio: false
-      })
-      .then(() => setIsSupported(true))
-      .catch(() => setIsSupported(false))
-  }, [])
+export const ImageCameraDialog = () => {
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Dialog.Trigger>
-      <IconButton color='gray' variant='outline' disabled={!isSupported}>
-        {isSupported ? (
-          <CameraIcon width='19px' height='19px' />
-        ) : (
-          <CameraOffIcon width='19px' height='19px' />
-        )}
-      </IconButton>
-    </Dialog.Trigger>
+    <Dialog.Root open={isOpen} defaultOpen={false} onOpenChange={setIsOpen}>
+      <ImageCameraDialogTrigger />
+
+      {isOpen && <ImageCameraDialogContent />}
+    </Dialog.Root>
   )
 }
-
-export const ImageCameraDialog = () => (
-  <Dialog.Root>
-    <ImageCameraDialogTrigger />
-
-    <Dialog.Content style={{ padding: 'var(--space-4)' }}>
-      <ImageUploadVideo />
-    </Dialog.Content>
-  </Dialog.Root>
-)
