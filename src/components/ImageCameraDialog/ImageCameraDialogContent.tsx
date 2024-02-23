@@ -1,4 +1,11 @@
-import { type CSSProperties, useCallback, useLayoutEffect, useRef, useState } from 'react'
+import {
+  type CSSProperties,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react'
 import { Button, Dialog, Flex, Link as RadixLink, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -87,7 +94,7 @@ export function ImageCameraDialogContent() {
     canvasToFile(canvas)
   }
 
-  useLayoutEffect(() => {
+  function handleInitCamera() {
     const video = videoRef.current
     if (!video) return
 
@@ -108,6 +115,18 @@ export function ImageCameraDialogContent() {
         // eslint-disable-next-line no-console
         console.log('An error occurred while accessing the device camera', err)
       })
+  }
+
+  useEffect(() => {
+    navigator.mediaDevices.addEventListener('devicechange', handleInitCamera)
+
+    return () => {
+      navigator.mediaDevices.removeEventListener('devicechange', handleInitCamera)
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    handleInitCamera()
   }, [])
 
   return (
