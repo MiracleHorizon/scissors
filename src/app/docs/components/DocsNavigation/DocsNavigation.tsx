@@ -11,8 +11,10 @@ import {
   DOCS_HASH_MODULATE,
   DOCS_HASH_NEGATE,
   DOCS_HASH_RESIZE,
-  DOCS_HASH_ROTATE
+  DOCS_HASH_ROTATE,
+  DOCS_HASH_TRIM
 } from '@site/paths'
+import { BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
 import styles from './DocsNavigation.module.css'
 
 const items = [
@@ -29,6 +31,10 @@ const items = [
     hash: DOCS_HASH_ROTATE
   },
   {
+    title: 'Modulate',
+    hash: DOCS_HASH_MODULATE
+  },
+  {
     title: 'Resize',
     hash: DOCS_HASH_RESIZE
   },
@@ -37,13 +43,13 @@ const items = [
     hash: DOCS_HASH_EXTEND
   },
   {
-    title: 'Modulate',
-    hash: DOCS_HASH_MODULATE
+    title: 'Trim',
+    hash: DOCS_HASH_TRIM
   }
 ]
 
 const DocsNavigation = () => (
-  <MediaQuery minWidth={768}>
+  <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>
     <nav className={styles.root}>
       <Flex asChild align='start' justify='center' direction='column' width='100%'>
         <ul>
