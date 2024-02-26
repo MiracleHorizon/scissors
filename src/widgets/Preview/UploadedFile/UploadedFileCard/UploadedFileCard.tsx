@@ -8,7 +8,7 @@ import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { ImageFileIcon } from '@ui/icons/ImageFileIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
-import { ButtonImport } from '@ui/ButtonImport'
+import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
@@ -59,7 +59,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           >
             <Flex gap='1'>
               <ImageUploadPopover />
-              <ButtonImport
+              <ButtonUpload
                 accept={ALLOWED_IMAGE_FORMATS}
                 setFile={setFile}
                 tooltipContent='Upload New File'

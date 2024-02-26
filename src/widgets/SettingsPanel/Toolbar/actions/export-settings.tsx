@@ -1,6 +1,6 @@
 import { DropdownMenu } from '@radix-ui/themes'
 
-import { ButtonExport } from '@ui/ButtonExport'
+import { ButtonDownload } from '@ui/ButtonDownload'
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
 import { useTabsStore } from '@stores/tabs'
 import { useExportSettings } from '@stores/hooks/useExportSettings'
@@ -9,7 +9,7 @@ export function ButtonExportSettings() {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const { exportSettings } = useExportSettings(selectedTab)
 
-  return <ButtonExport tooltipContent='Export Settings' onClick={exportSettings} />
+  return <ButtonDownload tooltipContent='Export Settings' onClick={exportSettings} />
 }
 
 export function DropdownItemExportSettings({ onClose }: DropdownItemProps) {

@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'react'
 
 import { ImageDropzone } from '@components/ImageDropzone'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
-import { ButtonImport } from '@ui/ButtonImport'
+import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
 import { TOUR_STEP } from '@lib/tour'
@@ -44,7 +44,7 @@ export function ImageUploader() {
         justify='start'
         className={styles.buttons}
       >
-        <ButtonImport
+        <ButtonUpload
           accept={ALLOWED_IMAGE_FORMATS}
           setFile={setFile}
           tooltipContent='Upload an image from device'

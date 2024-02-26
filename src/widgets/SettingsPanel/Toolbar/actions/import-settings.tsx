@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { UploadIcon } from '@ui/icons/UploadIcon'
-import { ButtonImport } from '@ui/ButtonImport'
+import { ButtonUpload } from '@ui/ButtonUpload'
 import { useTabsStore } from '@stores/tabs'
 import { useImportSettings } from '@stores/hooks/useImportSettings'
 
@@ -54,7 +54,7 @@ export function ButtonImportSettings() {
 
   return (
     <>
-      <ButtonImport accept='.json' tooltipContent='Import Settings' setFile={handleImport} />
+      <ButtonUpload accept='.json' tooltipContent='Import Settings' setFile={handleImport} />
 
       {isConfirmAlertOpen && (
         <ConfirmImportAlert open onConfirm={handleConfirmImport} onCancel={handleCancelImport} />

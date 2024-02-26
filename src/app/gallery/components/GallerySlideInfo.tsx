@@ -1,7 +1,7 @@
 import { Flex, Heading, Text } from '@radix-ui/themes'
 import type { FC } from 'react'
 
-import { ButtonExport } from '@ui/ButtonExport'
+import { ButtonDownload } from '@ui/ButtonDownload'
 import { useExportJSON } from '@hooks/useExportJSON'
 import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
@@ -28,7 +28,7 @@ const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) 
 
   return (
     <Flex mt='2' className={styles.export}>
-      <ButtonExport onClick={handleExport} />
+      <ButtonDownload onClick={handleExport} />
     </Flex>
   )
 }
