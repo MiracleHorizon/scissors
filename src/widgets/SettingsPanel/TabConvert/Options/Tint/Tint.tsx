@@ -1,8 +1,14 @@
+import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
-import { TintContent } from './TintContent'
 import { ButtonAddTint } from './ButtonAddTint'
+import { TintContentSkeleton } from './TintContentSkeleton'
 import { useTintStore } from '@stores/tint'
+
+const TintContent = dynamic(() => import('./TintContent').then(mod => mod.TintContent), {
+  ssr: false,
+  loading: () => <TintContentSkeleton />
+})
 
 export function Tint() {
   const isAdded = useTintStore(state => state.isAdded)

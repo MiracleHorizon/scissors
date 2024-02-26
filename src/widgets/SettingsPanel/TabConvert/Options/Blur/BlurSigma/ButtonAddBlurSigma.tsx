@@ -6,9 +6,8 @@ import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useBlurStore } from '@stores/blur'
 
 export function ButtonAddBlurSigma(props: Props) {
-  const addSigma = useBlurStore(state => state.addSigma)
-
-  const handleAddSigma = useCallback(() => addSigma(), [addSigma])
+  const add = useBlurStore(state => state.addSigma)
+  const handleAddSigma = useCallback(() => add(), [add])
 
   return (
     <ButtonAddOption
