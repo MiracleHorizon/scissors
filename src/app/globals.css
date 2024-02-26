@@ -69,6 +69,9 @@ span[aria-live='polite'] {
   display: flex;
   align-items: center;
 }
+span[aria-live='polite'] br {
+  display: none;
+}
 
 .dark .react-loading-skeleton {
   --base-color: #333333;

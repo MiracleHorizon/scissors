@@ -1,8 +1,17 @@
+import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
-import { ModulateContent } from './ModulateContent'
 import { ButtonAddModulate } from './ButtonAddModulate'
+import { ModulateContentSkeleton } from './ModulateContentSkeleton'
 import { useModulateStore } from '@stores/modulate'
+
+const ModulateContent = dynamic(
+  () => import('./ModulateContent').then(mod => mod.ModulateContent),
+  {
+    ssr: false,
+    loading: () => <ModulateContentSkeleton />
+  }
+)
 
 export function Modulate() {
   const isAdded = useModulateStore(state => state.isAdded)

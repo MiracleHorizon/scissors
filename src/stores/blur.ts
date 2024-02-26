@@ -12,6 +12,7 @@ interface Store extends State {
   addSigma: VoidFunction
   removeSigma: VoidFunction
   setSigma: (sigma: number | null) => void
+  resetSigma: VoidFunction
 }
 
 interface State extends BlurOptions {
@@ -110,5 +111,10 @@ export const useBlurStore = create<Store>((set, get) => ({
       return {
         sigma
       }
+    }),
+  resetSigma: () =>
+    set({
+      isSigmaAdded: true,
+      sigma: MIN_BLUR_SIGMA
     })
 }))
