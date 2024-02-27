@@ -1,0 +1,46 @@
+name: Main branch pull request / push
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  validate:
+    name: Validate and create pull request
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./apps/frontend
+    strategy:
+      matrix:
+        node-version: [ 20.x ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8.14.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Lint project
+        run: pnpm lint
+
+      - name: Lint project styles
+        run: pnpm lint:styles
+
+      - name: Test project
+        run: pnpm test:coverage

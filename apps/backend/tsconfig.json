@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "module": "NodeNext",
+    "target": "ESNext",
+    "declaration": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@internal/*": [
+        "./src/internal/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@pipes/*": [
+        "./src/lib/pipes/*"
+      ],
+      "@helpers/*": [
+        "./src/lib/helpers/*"
+      ]
+    }
+  }
+}

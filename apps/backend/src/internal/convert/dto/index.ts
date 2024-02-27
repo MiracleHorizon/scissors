@@ -1,0 +1,7 @@
+export { ConvertDto } from './convert.dto'
+export { ConvertSettingsDto } from './convert-settings.dto'
+export { BlurDto } from './blur.dto'
+export { NegateDto } from './negate.dto'
+export { NormaliseDto } from './normalise.dto'
+export { RotateDto } from './rotate.dto'
+export { ModulateDto } from './modulate.dto'
