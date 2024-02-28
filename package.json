@@ -7,6 +7,15 @@
   "repository": "https://github.com/MiracleHorizon/scissors",
   "authorGithub": "https://github.com/MiracleHorizon",
   "license": "MIT",
+  "scripts": {
+    "frontend:dev": "cd apps/frontend && pnpm dev",
+    "frontend:build": "cd apps/frontend && pnpm build",
+    "frontend:start": "cd apps/frontend && pnpm start",
+    "backend:dev": "cd apps/backend && pnpm dev",
+    "backend:build": "cd apps/backend && pnpm build",
+    "backend:start": "cd apps/backend && pnpm start",
+    "backend:prod": "cd apps/backend && pnpm prod"
+  },
   "engines": {
     "node": ">= 20"
   },
