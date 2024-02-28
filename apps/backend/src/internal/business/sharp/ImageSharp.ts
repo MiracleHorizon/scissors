@@ -1,11 +1,13 @@
 import sharp, { type Color } from 'sharp'
 
-export class ImageSharp {
-  // Not readonly because it is may be overridden / overloaded in subclasses
+export abstract class ImageSharp {
+  /*
+   * Not readonly because it is may be overridden / overloaded in subclasses
+   */
   protected sharp: sharp.Sharp
   protected stats: sharp.Stats | null = null
 
-  constructor(buffer: ArrayBuffer) {
+  protected constructor(buffer: ArrayBuffer) {
     this.sharp = sharp(buffer)
   }
 
@@ -22,8 +24,13 @@ export class ImageSharp {
     }
   }
 
-  // TODO: Allow side-effects with returning background if withDominantBackground if true, but stats is null?
-  protected getBackground(background: string, withDominantBackground: boolean): Color {
+  protected getBackground({
+    background,
+    withDominantBackground
+  }: {
+    background: string
+    withDominantBackground: boolean
+  }): Color {
     if (!withDominantBackground) {
       return background
     }

@@ -1,6 +1,6 @@
 import { ImageSharp } from './ImageSharp'
 import { SharpErrorsChecker } from './SharpErrorsChecker'
-import { nullToUndefined } from '@helpers/nullToUndefined'
+import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import type {
   BlurDto,
   ConvertSettingsDto,
@@ -16,45 +16,34 @@ export class ImageConverter extends ImageSharp {
     super(buffer)
   }
 
-  public async convert(settings: ConvertSettingsDto): Promise<Buffer> {
-    if (this.isSettingsEmpty(settings)) {
-      return this.toBuffer()
-    }
-
+  public async convert({
+    flip,
+    flop,
+    grayscale,
+    tint,
+    negate,
+    normalise,
+    blur,
+    rotate,
+    gamma,
+    modulate,
+    outputFormat
+  }: ConvertSettingsDto): Promise<Buffer> {
     await this.initialiseInputStatistics()
-
-    const {
-      flip,
-      flop,
-      grayscale,
-      tint,
-      blur,
-      negate,
-      normalise,
-      gamma,
-      modulate,
-      rotate,
-      outputFormat
-    } = settings
 
     if (flip) this.flip()
     if (flop) this.flop()
     if (grayscale) this.grayscale()
     if (tint) this.tint(tint)
-    if (blur) this.blur(blur)
     if (negate) this.negate(negate)
     if (normalise) this.normalise(normalise)
+    if (blur) this.blur(blur)
+    if (rotate) this.rotate(rotate)
     if (gamma) this.gammaize(gamma)
     if (modulate) this.modulate(modulate)
-    if (rotate) this.rotate(rotate)
     if (outputFormat) this.toFormat(outputFormat)
 
     return this.toBuffer()
-  }
-
-  private isSettingsEmpty(settings: ConvertSettingsDto): boolean {
-    // Check that all settings fields are falsy
-    return Object.values(settings).every(value => value === false || value === null)
   }
 
   private flip(): void {
@@ -79,21 +68,23 @@ export class ImageConverter extends ImageSharp {
         throw new Error(`Failed to tint the image with "${color}" color`)
       }
 
-      throw new Error('Failed to tint the image')
+      throw new Error('Failed to tint the image', {
+        cause: err
+      })
     }
   }
 
   private blur({ value, sigma }: BlurDto): void {
     if (!value) return
 
-    const sigmaValue: number | boolean = sigma ?? false
-
     try {
-      this.sharp.blur(sigmaValue)
+      this.sharp.blur(sigma ?? false)
     } catch (err) {
       console.error(err)
 
-      throw new Error('Failed to blur the image')
+      throw new Error('Failed to blur the image', {
+        cause: err
+      })
     }
   }
 
@@ -122,50 +113,49 @@ export class ImageConverter extends ImageSharp {
     try {
       this.sharp.gamma(value)
     } catch (err) {
-      console.error(err)
-
-      throw new Error('Failed to gammaize the image')
+      throw new Error(`Failed to gammaize the image with gamma: ${value}`, {
+        cause: err
+      })
     }
   }
 
-  private modulate(modulate: ModulateDto): void {
-    const entries = Object.entries(modulate)
-    const isEmpty = entries.every(([, value]) => value === null)
+  private modulate(modulateOptions: ModulateDto): void {
+    if (isAllObjectValuesEmpty(modulateOptions)) return
 
-    if (isEmpty) return
+    const options: Record<string, number> = {}
+    for (const [key, value] of Object.entries(modulateOptions)) {
+      if (value === null) continue
 
-    const options = Object.fromEntries(entries.map(([key, value]) => [key, nullToUndefined(value)]))
-
-    try {
-      this.sharp.modulate(options)
-    } catch (err) {
-      console.error(err)
-
-      throw new Error('Failed to modulate the image')
+      options[key] = value
     }
+
+    if (isAllObjectValuesEmpty(options)) return
+
+    this.sharp.modulate(options)
   }
 
-  private rotate({ angle, background: bg, withDominantBackground }: RotateDto): void {
+  private rotate({ angle, ...options }: RotateDto): void {
     if (!angle) return
 
-    // FIXME: Если бэкграунда нет в настройкe, то withDominantBackground всё равно может быть
-    let background
-    if (bg) {
-      background = this.getBackground(bg, withDominantBackground)
-    }
+    const background = this.getBackground({
+      background: options.background ?? '#000000',
+      withDominantBackground: options.withDominantBackground
+    })
 
     try {
       this.sharp.rotate(angle, {
         background
       })
     } catch (err) {
-      console.error(err)
-
-      if (SharpErrorsChecker.isColorParsingError(err)) {
-        throw new Error(`Failed to rotate the image with "${background}" background color`)
+      if (err instanceof Error && err.message.startsWith('Unable to parse color from string')) {
+        throw new Error(`Failed to rotate the image with the background color: ${background}`, {
+          cause: err
+        })
       }
 
-      throw new Error('Failed to rotate the image')
+      throw new Error('Failed to rotate the image', {
+        cause: err
+      })
     }
   }
 
@@ -175,7 +165,9 @@ export class ImageConverter extends ImageSharp {
     } catch (err) {
       console.error(err)
 
-      throw new Error(`Failed to convert the image to the .${format} format`)
+      throw new Error(`Failed to convert the image to the .${format} format`, {
+        cause: err
+      })
     }
   }
 }
