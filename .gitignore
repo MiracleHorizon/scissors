@@ -1,7 +1,6 @@
 /node_modules
-/next-env.d.ts
-/.next
 /.idea
 /scissors.iml
-**/coverage/
 .env
+.env.development
+.env.production
