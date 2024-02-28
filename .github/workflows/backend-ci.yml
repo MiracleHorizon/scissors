@@ -1,4 +1,4 @@
-name: Main branch pull request / push (Frontend)
+name: Main branch pull request / push (Backend)
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./apps/frontend
+        working-directory: ./apps/backend
     strategy:
       matrix:
         node-version: [ 20.x ]
@@ -35,12 +35,3 @@ jobs:
 
       - name: Build project
         run: pnpm build
-
-      - name: Lint project
-        run: pnpm lint
-
-      - name: Lint project styles
-        run: pnpm lint:styles
-
-      - name: Test project
-        run: pnpm test:coverage
