@@ -41,23 +41,24 @@ Currently, the following image formats are supported:
 * WEBP
 
 ### 🔧 Technologies
-
 * Next.js (App Router)
 * Zustand
 * Radix UI
 * @tanstack/react-query
 * [Sharp](https://sharp.pixelplumbing.com/)
+* Nest.js
 
 ### 📋 Requirements
 
 * Node.js v20+
 * pnpm
 
-### 💻 Run the project locally
+### 💻 Run the project locally (to be rewritten)
 * Clone repository
    ```sh
    git clone https://github.com/MiracleHorizon/scissors.git
    ```
+#### Frontend / Backend
 * Install NPM packages
    ```sh
    pnpm install --frozen-lockfile
@@ -67,8 +68,9 @@ Currently, the following image formats are supported:
    pnpm dev
    ```
 
-### 🚀 Production build
+### 🚀 Production build (to be rewritten)
 
+Frontend
 * Build the project
    ```sh
    pnpm build
@@ -76,6 +78,16 @@ Currently, the following image formats are supported:
 * Run the project
    ```sh
    pnpm start
+   ```
+
+Backend
+* Build the project
+   ```sh
+   pnpm build
+   ```
+* Run the project
+   ```sh
+   pnpm prod
    ```
 
 ### License
