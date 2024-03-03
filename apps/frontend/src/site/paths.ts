@@ -2,11 +2,10 @@
 export const PATH_ROOT = '/'
 export const PATH_DOCS = '/docs'
 export const PATH_GALLERY = '/gallery'
-export const PATH_API = '/api'
 
 // API paths
-export const PATH_API_CONVERT = `${PATH_API}/convert`
-export const PATH_API_RESIZE = `${PATH_API}/resize`
+export const PATH_API_CONVERT = 'convert'
+export const PATH_API_RESIZE = 'resize'
 
 // Docs hash anchors
 export const DOCS_HASH_MAIN = '#main'

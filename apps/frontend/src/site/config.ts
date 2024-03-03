@@ -50,6 +50,11 @@ export const SITE_KEYWORDS = [
 const SITE_DOMAIN_FALLBACK = 'http://localhost:3000'
 export const SITE_DOMAIN = process.env.SITE_DOMAIN ?? SITE_DOMAIN_FALLBACK
 
+// API
+const SERVER_API_FALLBACK = 'http://localhost:4200'
+const SERVER_API = process.env.SERVER_API ?? SERVER_API_FALLBACK
+export const createApiURL = (path: string) => `${SERVER_API}/${path}`
+
 // REPOSITORY
 const REPO_OWNER = 'MiracleHorizon'
 const REPO_NAME = 'scissors'

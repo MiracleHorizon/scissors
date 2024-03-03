@@ -4,12 +4,13 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
+import { createApiURL } from '@site/config'
 import { PATH_API_CONVERT } from '@site/paths'
 import type { ConvertSettings } from '@server/sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
-import type { MutationPayload, RequestPayload } from './types'
+import type { MutationPayload } from './types'
 
-async function convertImage({ baseURL, formData }: RequestPayload): Promise<Blob> {
+async function convertImage(formData: FormData): Promise<Blob> {
   const abortController = new AbortController()
   const abortTimeout = 15_000
 
@@ -18,7 +19,8 @@ async function convertImage({ baseURL, formData }: RequestPayload): Promise<Blob
       abortController.abort()
     }, abortTimeout)
 
-    const response = await fetch(baseURL + PATH_API_CONVERT, {
+    const url = createApiURL(PATH_API_CONVERT)
+    const response = await fetch(url, {
       body: formData,
       method: 'POST',
       signal: abortController.signal
@@ -50,10 +52,7 @@ export async function convertImageMutation({
   formData.append('file', file)
   formData.append('settings', JSON.stringify(settings))
 
-  const imageBlob = await convertImage({
-    baseURL: window.location.origin,
-    formData
-  })
+  const imageBlob = await convertImage(formData)
   const link = URL.createObjectURL(imageBlob)
 
   return {
@@ -72,12 +71,4 @@ export function useConvertMutation() {
     onSuccess: downloadPayload => setDownloadPayload(downloadPayload),
     onSettled: () => setLoading(false)
   })
-}
-
-export const errorMessages = {
-  missingFile: 'No image file is available',
-  missingSettings: 'No conversion settings are available',
-  invalidFileSize: 'Invalid file size',
-  invalidSettings: 'Invalid convert settings',
-  invalidDataTransferObject: 'Invalid data transfer object'
 }
