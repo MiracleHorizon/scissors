@@ -3,7 +3,8 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    SITE_DOMAIN: process.env.SITE_DOMAIN
+    SITE_DOMAIN: process.env.SITE_DOMAIN,
+    SERVER_API: process.env.SERVER_API
   },
   images: {
     remotePatterns: [
