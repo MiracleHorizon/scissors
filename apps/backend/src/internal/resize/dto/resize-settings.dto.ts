@@ -12,23 +12,23 @@ export class ResizeSettingsDto {
   @IsArray()
   @MinLength(1)
   @MaxLength(Object.values(RESIZE_OPERATION_NAME).length)
-  queue: ResizeQueue
+  readonly queue: ResizeQueue
 
   @ValidateNested()
   @IsNullable()
   @Type(() => ResizeOptionsDto)
   @IsDefined()
-  resize: ResizeOptionsDto | null
+  readonly resize: ResizeOptionsDto | null
 
   @ValidateNested()
   @IsNullable()
   @Type(() => ExtendOptionsDto)
   @IsDefined()
-  extend: ExtendOptionsDto | null
+  readonly extend: ExtendOptionsDto | null
 
   @ValidateNested()
   @IsNullable()
   @Type(() => TrimOptionsDto)
   @IsDefined()
-  trim: TrimOptionsDto | null
+  readonly trim: TrimOptionsDto | null
 }

@@ -9,6 +9,7 @@ import type { File } from '@internal/types'
 
 @Controller('resize')
 export class ResizeController {
+  // eslint-disable-next-line no-unused-vars
   constructor(private readonly resizeService: ResizeService) {}
 
   @Post()
@@ -16,6 +17,7 @@ export class ResizeController {
   public async resize(
     @Res() res: Response,
     @UploadedFile() file: File,
+    /* eslint-disable indent */
     @Body(
       new ParseFormDataJsonPipe({
         except: ['file']

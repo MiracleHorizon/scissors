@@ -8,18 +8,24 @@
   "authorGithub": "https://github.com/MiracleHorizon",
   "license": "MIT",
   "scripts": {
+    "lint": "pnpm frontend:lint && pnpm backend:lint",
     "frontend:dev": "cd apps/frontend && pnpm dev",
     "frontend:build": "cd apps/frontend && pnpm build",
     "frontend:start": "cd apps/frontend && pnpm start",
+    "frontend:lint": "cd apps/frontend && pnpm lint",
     "backend:dev": "cd apps/backend && pnpm dev",
     "backend:build": "cd apps/backend && pnpm build",
     "backend:start": "cd apps/backend && pnpm start",
-    "backend:prod": "cd apps/backend && pnpm prod"
+    "backend:prod": "cd apps/backend && pnpm prod",
+    "backend:lint": "npx eslint ./apps/backend"
   },
   "engines": {
     "node": ">= 20"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.18.0",
+    "@typescript-eslint/parser": "6.18.0",
+    "eslint": "8.56.0",
     "prettier": "3.2.5"
   },
   "keywords": [

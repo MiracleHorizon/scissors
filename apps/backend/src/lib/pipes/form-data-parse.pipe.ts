@@ -9,6 +9,7 @@ interface TParseFormDataJsonOptions {
 
 // https://stackoverflow.com/a/67440125/18696400
 export class ParseFormDataJsonPipe implements PipeTransform {
+  // eslint-disable-next-line no-unused-vars
   constructor(private options?: TParseFormDataJsonOptions) {}
 
   transform(value: unknown) {

@@ -10,6 +10,7 @@ import type { File } from '@internal/types'
 
 @Controller('convert')
 export class ConvertController {
+  // eslint-disable-next-line no-unused-vars
   constructor(private readonly convertService: ConvertService) {}
 
   @Post()
@@ -24,6 +25,7 @@ export class ConvertController {
           fieldname: string
           mimetype: string
         },
+        // eslint-disable-next-line no-unused-vars
         callback: (error: Error | null, acceptFile: boolean) => void
       ) {
         const allowedMimeTypes = Object.values(OUTPUT_FORMATS).map(format => `image/${format}`)
@@ -45,6 +47,7 @@ export class ConvertController {
   public async convert(
     @Res() res: Response,
     @UploadedFile() file: File,
+    /* eslint-disable indent */
     @Body(
       new ParseFormDataJsonPipe({
         except: ['file']

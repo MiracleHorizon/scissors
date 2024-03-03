@@ -1,5 +1,6 @@
 // Internal Nest.js / Express types
 
+/* eslint-disable no-unused-vars */
 type StaticOrigin = boolean | string | RegExp | (string | RegExp)[]
 type CustomOrigin = (
   requestOrigin: string,

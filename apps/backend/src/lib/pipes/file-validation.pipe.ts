@@ -1,5 +1,8 @@
 import { type ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common'
 
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 // TODO: Validation
 @Injectable()
 export class FileSizeValidationPipe implements PipeTransform {
