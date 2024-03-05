@@ -1,4 +1,4 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   EXTEND_WITH,
   MIN_TRIM_THRESHOLD,
@@ -8,8 +8,8 @@ import {
   type ResizeSettings
 } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.validateResize', () => {
-  const validate = YupSettingsValidator.validateResize
+describe('@utility/SettingsValidator.validateResize', () => {
+  const validate = SettingsValidator.validateResize
 
   it('should return true for valid settings object', () => {
     const validSettings: ResizeSettings = {

@@ -33,32 +33,32 @@ import {
 } from '@server/sharp'
 import { hexValidationRegex } from '@helpers/colors'
 
-const booleanSchema = boolean().defined()
+export const booleanSchema = boolean().defined()
 
-const tintSchema = string().matches(hexValidationRegex).nullable().defined()
+export const tintSchema = string().matches(hexValidationRegex).nullable().defined()
 
-const blurSchema = object({
+export const blurSchema = object({
   value: boolean().defined().required(),
   sigma: number().min(MIN_BLUR_SIGMA).max(MAX_BLUR_SIGMA).nullable().defined()
 })
   .nullable()
   .defined()
 
-const negateSchema = object({
+export const negateSchema = object({
   value: boolean().defined().required(),
   alpha: boolean().defined().required()
 })
   .nullable()
   .defined()
 
-const normaliseSchema = object({
+export const normaliseSchema = object({
   lower: number().min(MIN_NORMALISE).max(MAX_NORMALISE).required(),
   upper: number().min(MIN_NORMALISE).max(MAX_NORMALISE).required()
 })
   .nullable()
   .defined()
 
-const rotateSchema = object({
+export const rotateSchema = object({
   angle: number().min(MIN_ROTATE_ANGLE).max(MAX_ROTATE_ANGLE).required(),
   background: string().matches(hexValidationRegex).nullable().defined(),
   withDominantBackground: boolean().defined().required()
@@ -66,9 +66,9 @@ const rotateSchema = object({
   .nullable()
   .defined()
 
-const gammaSchema = number().min(MIN_GAMMA).max(MAX_GAMMA).nullable().defined()
+export const gammaSchema = number().min(MIN_GAMMA).max(MAX_GAMMA).nullable().defined()
 
-const resizeSchema = object({
+export const resizeSchema = object({
   width: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_WIDTH).nullable().defined(),
   height: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_HEIGHT).nullable().defined(),
   fit: string().oneOf(Object.values(RESIZE_FIT)).nullable().defined(),
@@ -86,7 +86,7 @@ const resizeSchema = object({
   .nullable()
   .defined()
 
-const extendSchema = object({
+export const extendSchema = object({
   top: number().min(MIN_EXTEND_DIRECTION_SIZE).max(MAX_EXTEND_DIRECTION_SIZE).nullable().defined(),
   bottom: number()
     .min(MIN_EXTEND_DIRECTION_SIZE)
@@ -105,7 +105,7 @@ const extendSchema = object({
   .nullable()
   .defined()
 
-const trimSchema = object({
+export const trimSchema = object({
   background: string().matches(hexValidationRegex).nullable().defined(),
   threshold: number()
     .positive()
@@ -119,7 +119,7 @@ const trimSchema = object({
   .nullable()
   .defined()
 
-const modulateSchema = object({
+export const modulateSchema = object({
   lightness: number().min(MIN_LIGHTNESS).max(MAX_LIGHTNESS).nullable().defined(),
   brightness: number().min(MIN_BRIGHTNESS).max(MAX_BRIGHTNESS).nullable().defined(),
   saturation: number().min(MIN_SATURATION).max(MAX_SATURATION).nullable().defined(),
@@ -128,9 +128,12 @@ const modulateSchema = object({
   .nullable()
   .defined()
 
-const outputFormatSchema = string().oneOf(Object.values(IMAGE_FILE_FORMAT)).nullable().defined()
+export const outputFormatSchema = string()
+  .oneOf(Object.values(IMAGE_FILE_FORMAT))
+  .nullable()
+  .defined()
 
-const settingsSchema = object({
+export const settingsSchema = object({
   flip: booleanSchema,
   flop: booleanSchema,
   grayscale: booleanSchema,
@@ -144,64 +147,8 @@ const settingsSchema = object({
   outputFormat: outputFormatSchema
 })
 
-// TODO: Queue validation
-const resizeSettingsSchema = object({
+export const resizeSettingsSchema = object({
   resize: resizeSchema,
   extend: extendSchema,
   trim: trimSchema
 })
-
-// TODO: Абстракция
-export class YupSettingsValidator {
-  public static validateConvert(settings: unknown): boolean {
-    return settingsSchema.isValidSync(settings)
-  }
-
-  public static validateResize(settings: unknown): boolean {
-    return resizeSettingsSchema.isValidSync(settings)
-  }
-
-  public static isTintValid(tint: unknown): boolean {
-    return tintSchema.isValidSync(tint)
-  }
-
-  public static isNegateValid(negate: unknown): boolean {
-    return negateSchema.isValidSync(negate)
-  }
-
-  public static isNormaliseValid(normalise: unknown): boolean {
-    return normaliseSchema.isValidSync(normalise)
-  }
-
-  public static isBlurValid(blur: unknown): boolean {
-    return blurSchema.isValidSync(blur)
-  }
-
-  public static isGammaValid(gamma: unknown): boolean {
-    return gammaSchema.isValidSync(gamma)
-  }
-
-  public static isRotateValid(rotate: unknown): boolean {
-    return rotateSchema.isValidSync(rotate)
-  }
-
-  public static isResizeValid(resize: unknown): boolean {
-    return resizeSchema.isValidSync(resize)
-  }
-
-  public static isExtendValid(extend: unknown): boolean {
-    return extendSchema.isValidSync(extend)
-  }
-
-  public static isTrimValid(trim: unknown): boolean {
-    return trimSchema.isValidSync(trim)
-  }
-
-  public static isModulateValid(modulate: unknown): boolean {
-    return modulateSchema.isValidSync(modulate)
-  }
-
-  public static isValidOutputFormat(outputFormat: unknown): boolean {
-    return outputFormatSchema.isValidSync(outputFormat)
-  }
-}

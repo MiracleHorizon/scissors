@@ -1,7 +1,7 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/YupSettingsValidator.isTintValid', () => {
-  const isTintValid = YupSettingsValidator.isTintValid
+describe('@utility/SettingsValidator.isTintValid', () => {
+  const isTintValid = SettingsValidator.isTintValid
 
   it('should return true for null', () => {
     expect(isTintValid(null)).toBe(true)

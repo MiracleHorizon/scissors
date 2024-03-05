@@ -1,8 +1,8 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import { MAX_NORMALISE, MIN_NORMALISE } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.isNormaliseValid', () => {
-  const isNormaliseValid = YupSettingsValidator.isNormaliseValid
+describe('@utility/SettingsValidator.isNormaliseValid', () => {
+  const isNormaliseValid = SettingsValidator.isNormaliseValid
 
   it('should return true for null', () => {
     expect(isNormaliseValid(null)).toBe(true)

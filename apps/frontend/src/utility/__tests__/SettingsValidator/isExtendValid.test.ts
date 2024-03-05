@@ -1,4 +1,4 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   DEFAULT_EXTEND_BACKGROUND,
   EXTEND_WITH,
@@ -7,8 +7,8 @@ import {
   MIN_EXTEND_DIRECTION_SIZE
 } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.isExtendValid', () => {
-  const isExtendValid = YupSettingsValidator.isExtendValid
+describe('@utility/SettingsValidator.isExtendValid', () => {
+  const isExtendValid = SettingsValidator.isExtendValid
 
   const validOptions: ExtendOptions = {
     left: 4,

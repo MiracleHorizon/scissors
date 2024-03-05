@@ -1,8 +1,8 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import { MIN_BRIGHTNESS } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.isModulateValid', () => {
-  const isModulateValid = YupSettingsValidator.isModulateValid
+describe('@utility/SettingsValidator.isModulateValid', () => {
+  const isModulateValid = SettingsValidator.isModulateValid
 
   it('should return true for null', () => {
     expect(isModulateValid(null)).toBe(true)

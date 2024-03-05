@@ -1,4 +1,4 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   type ConvertSettings,
   DEFAULT_GAMMA,
@@ -11,8 +11,8 @@ import {
   MIN_SATURATION
 } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.validateConvert', () => {
-  const validate = YupSettingsValidator.validateConvert
+describe('@utility/SettingsValidator.validateConvert', () => {
+  const validate = SettingsValidator.validateConvert
 
   it('should return true for valid settings object', () => {
     const validSettings: ConvertSettings = {

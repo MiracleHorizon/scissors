@@ -1,8 +1,8 @@
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 
-describe('@utility/YupSettingsValidator.isBlurValid', () => {
-  const isBlurValid = YupSettingsValidator.isBlurValid
+describe('@utility/SettingsValidator.isBlurValid', () => {
+  const isBlurValid = SettingsValidator.isBlurValid
 
   it('should return true for null', () => {
     expect(isBlurValid(null)).toBe(true)

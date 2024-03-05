@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 import { useSettingsSetters } from './useSettingsSetters'
-import { YupSettingsValidator } from '@utility/YupSettingsValidator'
+import { SettingsValidator } from '@utility/SettingsValidator'
 import { readJSONFile } from '@utility/json-file'
 import { NULL_CONVERT_SETTINGS } from '@server/sharp'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
@@ -34,9 +34,9 @@ export function useImportSettings(selectedTab: ToolbarTab) {
     (settings: unknown) => {
       switch (selectedTab) {
         case TOOLBAR_TAB.CONVERT:
-          return YupSettingsValidator.validateConvert(settings)
+          return SettingsValidator.validateConvert(settings)
         case TOOLBAR_TAB.RESIZE:
-          return YupSettingsValidator.validateResize(settings)
+          return SettingsValidator.validateResize(settings)
         default:
           return false
       }
