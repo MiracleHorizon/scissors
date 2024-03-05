@@ -1,4 +1,7 @@
-// TODO: Docs
+/**
+ * @param file - JSON file to read
+ * @returns parsed JSON object or rejects with error
+ */
 export function readJSONFile(file: File): Promise<string> {
   const fileReader = new FileReader()
   const fileReaderPromise = new Promise<string>((resolve, reject) => {
@@ -20,6 +23,10 @@ export function readJSONFile(file: File): Promise<string> {
   return fileReaderPromise
 }
 
+/**
+ * @param payload - any value to convert to JSON
+ * @returns JSON blob
+ */
 export function createJSONBlob<T>(payload: T): Blob {
   const json = JSON.stringify(payload, null, 2)
 
