@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import {
   closestCenter,
   DndContext,
@@ -10,11 +11,22 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Flex } from '@radix-ui/themes'
 
-import { Resize } from './sections/Resize'
-import { Extend } from './sections/Extend'
-import { Trim } from './sections/Trim'
 import { SortableSection } from './SortableSection'
+import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
 import { useTabResizeStore } from '@stores/tab-resize'
+
+const Resize = dynamic(() => import('./sections/Resize').then(mod => mod.Resize), {
+  ssr: false,
+  loading: () => <TabResizeSectionSkeleton height={168} />
+})
+const Extend = dynamic(() => import('./sections/Extend').then(mod => mod.Extend), {
+  ssr: false,
+  loading: () => <TabResizeSectionSkeleton height={228} />
+})
+const Trim = dynamic(() => import('./sections/Trim').then(mod => mod.Trim), {
+  ssr: false,
+  loading: () => <TabResizeSectionSkeleton height={120} />
+})
 
 export function TabResizeContent() {
   const sections = useTabResizeStore(state => state.sections)

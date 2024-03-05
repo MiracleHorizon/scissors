@@ -3,7 +3,7 @@ import { Flex } from '@radix-ui/themes'
 import { ExtendHeader } from './ExtendHeader'
 import { ExtendDirectionForm } from './ExtendDirectionForm'
 import { ExtendExtra } from './ExtendExtra'
-import { TabResizeSection } from '@widgets/SettingsPanel/TabResize/TabResizeSection'
+import { TabResizeSection } from '../../TabResizeSection'
 
 export const Extend = () => (
   <TabResizeSection>

@@ -3,7 +3,7 @@ import { Flex } from '@radix-ui/themes'
 import { TrimHeader } from './TrimHeader'
 import { TrimBackground } from './TrimBackground'
 import { TrimThresholdInput } from './TrimThresholdInput'
-import { TabResizeSection } from '@widgets/SettingsPanel/TabResize/TabResizeSection'
+import { TabResizeSection } from '../../TabResizeSection'
 
 export const Trim = () => (
   <TabResizeSection>
