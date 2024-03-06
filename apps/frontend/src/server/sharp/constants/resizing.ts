@@ -1,4 +1,4 @@
-export const RESIZE_OPERATION_NAME = {
+export const RESIZE_OPERATION = {
   RESIZE: 'resize',
   EXTEND: 'extend',
   TRIM: 'trim'

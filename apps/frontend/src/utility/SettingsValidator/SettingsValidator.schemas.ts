@@ -1,4 +1,4 @@
-import { boolean, number, object, string } from 'yup'
+import { array, boolean, number, object, string } from 'yup'
 
 import {
   EXTEND_WITH,
@@ -29,11 +29,14 @@ import {
   RESIZE_FIT,
   RESIZE_GRAVITY,
   RESIZE_KERNEL,
+  RESIZE_OPERATION,
   RESIZE_POSITION
 } from '@server/sharp'
 import { hexValidationRegex } from '@helpers/colors'
 
 export const booleanSchema = boolean().defined()
+
+// Convert settings
 
 export const tintSchema = string().matches(hexValidationRegex).nullable().defined()
 
@@ -68,6 +71,35 @@ export const rotateSchema = object({
 
 export const gammaSchema = number().min(MIN_GAMMA).max(MAX_GAMMA).nullable().defined()
 
+export const modulateSchema = object({
+  lightness: number().min(MIN_LIGHTNESS).max(MAX_LIGHTNESS).nullable().defined(),
+  brightness: number().min(MIN_BRIGHTNESS).max(MAX_BRIGHTNESS).nullable().defined(),
+  saturation: number().min(MIN_SATURATION).max(MAX_SATURATION).nullable().defined(),
+  hue: number().integer().min(MIN_HUE).max(MAX_HUE).nullable().defined()
+})
+  .nullable()
+  .defined()
+
+export const outputFormatSchema = string()
+  .oneOf(Object.values(IMAGE_FILE_FORMAT))
+  .nullable()
+  .defined()
+
+export const convertSettingsSchema = object({
+  flip: booleanSchema,
+  flop: booleanSchema,
+  grayscale: booleanSchema,
+  tint: tintSchema,
+  negate: negateSchema,
+  normalise: normaliseSchema,
+  blur: blurSchema,
+  rotate: rotateSchema,
+  gamma: gammaSchema,
+  modulate: modulateSchema,
+  outputFormat: outputFormatSchema
+})
+
+// Resize settings
 export const resizeSchema = object({
   width: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_WIDTH).nullable().defined(),
   height: number().min(MIN_RESIZE_SIZE).max(MAX_RESIZE_HEIGHT).nullable().defined(),
@@ -119,36 +151,17 @@ export const trimSchema = object({
   .nullable()
   .defined()
 
-export const modulateSchema = object({
-  lightness: number().min(MIN_LIGHTNESS).max(MAX_LIGHTNESS).nullable().defined(),
-  brightness: number().min(MIN_BRIGHTNESS).max(MAX_BRIGHTNESS).nullable().defined(),
-  saturation: number().min(MIN_SATURATION).max(MAX_SATURATION).nullable().defined(),
-  hue: number().integer().min(MIN_HUE).max(MAX_HUE).nullable().defined()
+const resizeOperations = Object.values(RESIZE_OPERATION)
+const resizeQueueItemSchema = object({
+  name: string().oneOf(resizeOperations),
+  queueIndex: number()
+    .integer()
+    .min(0)
+    .max(resizeOperations.length - 1)
 })
-  .nullable()
-  .defined()
-
-export const outputFormatSchema = string()
-  .oneOf(Object.values(IMAGE_FILE_FORMAT))
-  .nullable()
-  .defined()
-
-export const settingsSchema = object({
-  flip: booleanSchema,
-  flop: booleanSchema,
-  grayscale: booleanSchema,
-  tint: tintSchema,
-  negate: negateSchema,
-  normalise: normaliseSchema,
-  blur: blurSchema,
-  rotate: rotateSchema,
-  gamma: gammaSchema,
-  modulate: modulateSchema,
-  outputFormat: outputFormatSchema
-})
-
 export const resizeSettingsSchema = object({
   resize: resizeSchema,
   extend: extendSchema,
-  trim: trimSchema
+  trim: trimSchema,
+  queue: array().of(resizeQueueItemSchema).max(resizeOperations.length).defined().required()
 })

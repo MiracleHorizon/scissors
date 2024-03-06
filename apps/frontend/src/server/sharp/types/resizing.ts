@@ -3,7 +3,7 @@ import type {
   RESIZE_FIT,
   RESIZE_GRAVITY,
   RESIZE_KERNEL,
-  RESIZE_OPERATION_NAME,
+  RESIZE_OPERATION,
   RESIZE_POSITION
 } from '../constants'
 
@@ -15,10 +15,10 @@ export interface ResizeSettings {
 }
 
 export type ResizeQueue = ResizeQueueOperation[]
-export type ResizeOperationName = (typeof RESIZE_OPERATION_NAME)[keyof typeof RESIZE_OPERATION_NAME]
+export type ResizeOperation = (typeof RESIZE_OPERATION)[keyof typeof RESIZE_OPERATION]
 
 interface ResizeQueueOperation {
-  name: ResizeOperationName
+  name: ResizeOperation
   queueIndex: number
 }
 

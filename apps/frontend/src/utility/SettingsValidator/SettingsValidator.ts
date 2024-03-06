@@ -9,14 +9,14 @@ import {
   resizeSchema,
   resizeSettingsSchema,
   rotateSchema,
-  settingsSchema,
+  convertSettingsSchema,
   tintSchema,
   trimSchema
 } from './SettingsValidator.schemas'
 
 export class SettingsValidator {
   public static validateConvert(settings: unknown): boolean {
-    return settingsSchema.isValidSync(settings)
+    return convertSettingsSchema.isValidSync(settings)
   }
 
   public static validateResize(settings: unknown): boolean {
