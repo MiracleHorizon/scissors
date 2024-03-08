@@ -1,4 +1,4 @@
-import { RESIZE_OPERATION_NAME } from './resize.constants'
+import { RESIZE_OPERATION } from './resize.constants'
 import type { File } from '@internal/types'
 import type { ResizeSettingsDto } from './dto'
 
@@ -14,9 +14,7 @@ export interface ResizeParams {
 
 export type ResizeQueue = ResizeQueueOperation[]
 
-type ResizeQueueOperationName = (typeof RESIZE_OPERATION_NAME)[keyof typeof RESIZE_OPERATION_NAME]
-
 interface ResizeQueueOperation {
-  name: ResizeQueueOperationName
+  name: (typeof RESIZE_OPERATION)[keyof typeof RESIZE_OPERATION]
   queueIndex: number
 }

@@ -1,9 +1,16 @@
-import sharp from 'sharp'
+import sharp, { type TrimOptions } from 'sharp'
 
 import { ImageSharp } from './ImageSharp'
-import { RESIZE_OPERATION_NAME } from '@internal/resize/resize.constants'
-import { TrimOptionsDto } from '@internal/resize/dto/trim-options.dto'
-import { ExtendOptionsDto, ResizeOptionsDto, ResizeSettingsDto } from '@internal/resize/dto'
+import {
+  ExtendOptionsDto,
+  TrimOptionsDto,
+  ResizeOptionsDto,
+  ExtractOptionsDto,
+  ResizeSettingsDto
+} from '@internal/resize/dto'
+import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
+import { nullToUndefined } from '@helpers/nullToUndefined'
+import { RESIZE_OPERATION } from '@internal/resize/resize.constants'
 
 export class ImageResizer extends ImageSharp {
   constructor(buffer: ArrayBuffer) {
@@ -11,7 +18,13 @@ export class ImageResizer extends ImageSharp {
   }
 
   /* eslint-disable no-await-in-loop */
-  public async resizeImage({ queue, resize, extend, trim }: ResizeSettingsDto): Promise<Buffer> {
+  public async resizeImage({
+    queue,
+    resize,
+    extend,
+    extract,
+    trim
+  }: ResizeSettingsDto): Promise<Buffer> {
     if (queue.length === 0) {
       return this.toBuffer()
     }
@@ -19,15 +32,19 @@ export class ImageResizer extends ImageSharp {
     await this.initialiseInputStatistics()
 
     for (const { name } of Object.values(queue)) {
-      if (name === RESIZE_OPERATION_NAME.RESIZE && resize) {
+      if (name === RESIZE_OPERATION.RESIZE && resize) {
         await this.resize(resize)
       }
 
-      if (name === RESIZE_OPERATION_NAME.EXTEND && extend) {
+      if (name === RESIZE_OPERATION.EXTEND && extend) {
         await this.extend(extend)
       }
 
-      if (name === RESIZE_OPERATION_NAME.TRIM && trim) {
+      if (name === RESIZE_OPERATION.EXTRACT && extract) {
+        await this.extract(extract)
+      }
+
+      if (name === RESIZE_OPERATION.TRIM && trim) {
         await this.trim(trim)
       }
     }
@@ -35,52 +52,57 @@ export class ImageResizer extends ImageSharp {
     return this.toBuffer()
   }
 
-  private async resize({ width, height, ...options }: ResizeOptionsDto): Promise<void> {
-    if (!width && !height) return
+  private async resize({
+    background: bg,
+    withDominantBackground,
+    ...options
+  }: ResizeOptionsDto): Promise<void> {
+    if (!options.width && !options.height) return
 
     let background
-    if (options.background) {
+    if (bg) {
       background = this.getBackground({
-        background: options.background,
-        withDominantBackground: options.withDominantBackground
+        background: bg,
+        withDominantBackground
       })
     }
 
     try {
       this.sharp.resize({
-        width: width ?? undefined,
-        height: height ?? undefined,
-        fit: options.fit ?? undefined,
-        position: options.position ?? undefined,
-        kernel: options.kernel ?? undefined,
+        ...Object.values(options).map(nullToUndefined),
         background
       })
     } catch (err) {
+      console.error(err)
+
       throw new Error('Failed to resize the image', {
         cause: err
       })
     }
   }
 
-  private async extend(options: ExtendOptionsDto): Promise<void> {
-    const { top, bottom, left, right } = options
-    if (!top && !bottom && !left && !right) return
+  private async extend({
+    withDominantBackground,
+    extendWith,
+    background: bg,
+    ...sizes
+  }: ExtendOptionsDto): Promise<void> {
+    if (isAllObjectValuesEmpty(sizes)) return
 
     let background
-    if (options.background) {
+    if (bg) {
       background = this.getBackground({
-        background: options.background,
-        withDominantBackground: options.withDominantBackground
+        background: bg,
+        withDominantBackground
       })
     }
 
     try {
       this.sharp.extend({
-        top: top ?? undefined,
-        bottom: bottom ?? undefined,
-        left: left ?? undefined,
-        right: right ?? undefined,
-        extendWith: options.extendWith ?? undefined,
+        ...Object.values({
+          ...sizes,
+          extendWith
+        }).map(nullToUndefined),
         background
       })
 
@@ -88,25 +110,36 @@ export class ImageResizer extends ImageSharp {
       const updatedBuffer = await this.toBuffer()
       this.sharp = sharp(updatedBuffer)
     } catch (err) {
+      console.error(err)
+
       throw new Error('Failed to extend the image', {
         cause: err
       })
     }
   }
 
-  private async trim(options: TrimOptionsDto): Promise<void> {
-    const { background, threshold } = options
-    // sharp v0.33.2
-    // const { background, lineArt, threshold } = options
+  private async extract(options: ExtractOptionsDto): Promise<void> {
+    try {
+      this.sharp.extract(options)
+    } catch (err) {
+      console.error(err)
 
+      throw new Error('Failed to extract the region from the image', {
+        cause: err
+      })
+    }
+  }
+
+  private async trim(options: TrimOptionsDto): Promise<void> {
     try {
       this.sharp.trim({
-        background: background ?? undefined,
-        threshold: threshold ?? undefined
+        ...(Object.values(options).map(nullToUndefined) as TrimOptions)
         // sharp v0.33.2
         // lineArt
       })
     } catch (err) {
+      console.error(err)
+
       throw new Error('Failed to trim the image', {
         cause: err
       })
