@@ -15,15 +15,15 @@ import { SortableSection } from './SortableSection'
 import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
 import { useTabResizeStore } from '@stores/tab-resize'
 
-const Resize = dynamic(() => import('./sections/Resize').then(mod => mod.Resize), {
+const ResizeSection = dynamic(() => import('./sections/resize').then(mod => mod.ResizeSection), {
   ssr: false,
   loading: () => <TabResizeSectionSkeleton height={168} />
 })
-const Extend = dynamic(() => import('./sections/Extend').then(mod => mod.Extend), {
+const ExtendSection = dynamic(() => import('./sections/extend').then(mod => mod.ExtendSection), {
   ssr: false,
   loading: () => <TabResizeSectionSkeleton height={228} />
 })
-const Trim = dynamic(() => import('./sections/Trim').then(mod => mod.Trim), {
+const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.TrimSection), {
   ssr: false,
   loading: () => <TabResizeSectionSkeleton height={120} />
 })
@@ -57,9 +57,9 @@ export function TabResizeContent() {
               handleMoveDown={handleMoveDown}
               handleRemove={handleRemove}
             >
-              {id === 'resize' && <Resize />}
-              {id === 'extend' && <Extend />}
-              {id === 'trim' && <Trim />}
+              {id === 'resize' && <ResizeSection />}
+              {id === 'extend' && <ExtendSection />}
+              {id === 'trim' && <TrimSection />}
             </SortableSection>
           ))}
         </SortableContext>

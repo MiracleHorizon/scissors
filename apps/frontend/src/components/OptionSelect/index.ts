@@ -1,1 +1,1 @@
-export { OptionSelect } from './OptionSelect'
+export { OptionSelect, type OptionSelectData } from './OptionSelect'

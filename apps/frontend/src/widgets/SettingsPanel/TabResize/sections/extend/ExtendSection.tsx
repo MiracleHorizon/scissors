@@ -5,7 +5,7 @@ import { ExtendDirectionForm } from './ExtendDirectionForm'
 import { ExtendExtra } from './ExtendExtra'
 import { TabResizeSection } from '../../TabResizeSection'
 
-export const Extend = () => (
+export const ExtendSection = () => (
   <TabResizeSection>
     <Flex direction='column' gap='2' width='100%'>
       <ExtendHeader />
