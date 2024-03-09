@@ -11,6 +11,7 @@ export interface ResizeSettings {
   queue: ResizeQueue
   resize: ResizeOptions | null
   extend: ExtendOptions | null
+  extract: ExtractOptions | null
   trim: TrimOptions | null
 }
 
@@ -79,6 +80,16 @@ export interface ExtendOptions {
   background: string | null
   withDominantBackground: boolean
 }
+
+// Extract
+export interface ExtractRegion {
+  left: number
+  top: number
+  width: number
+  height: number
+}
+
+export type ExtractOptions = ExtractRegion
 
 // Trim
 export interface TrimOptions {

@@ -23,6 +23,10 @@ const ExtendSection = dynamic(() => import('./sections/extend').then(mod => mod.
   ssr: false,
   loading: () => <TabResizeSectionSkeleton height={228} />
 })
+const ExtractSection = dynamic(() => import('./sections/extract').then(mod => mod.ExtractSection), {
+  ssr: false,
+  loading: () => <TabResizeSectionSkeleton height={120} />
+})
 const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.TrimSection), {
   ssr: false,
   loading: () => <TabResizeSectionSkeleton height={120} />
@@ -59,6 +63,7 @@ export function TabResizeContent() {
             >
               {id === 'resize' && <ResizeSection />}
               {id === 'extend' && <ExtendSection />}
+              {id === 'extract' && <ExtractSection />}
               {id === 'trim' && <TrimSection />}
             </SortableSection>
           ))}

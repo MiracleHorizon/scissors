@@ -1,6 +1,7 @@
 export const RESIZE_OPERATION = {
   RESIZE: 'resize',
   EXTEND: 'extend',
+  EXTRACT: 'extract',
   TRIM: 'trim'
 } as const
 

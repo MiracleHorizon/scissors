@@ -1,0 +1,1 @@
+export { ExtractContent } from './ExtractContent'
