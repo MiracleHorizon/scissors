@@ -1,7 +1,7 @@
 import { Callout, Strong } from '@radix-ui/themes'
 
-import { useOutputStore } from '@stores/output'
 import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
+import { useOutputStore } from '@stores/output'
 
 export function ExtractCallout() {
   const isFileUploaded = useOutputStore(state => !!state.file)

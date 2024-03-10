@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
 import { ExtractCallout } from './ExtractCallout'
+import { ExtractRegionPreview } from './ExtractRegionPreview'
 import { useOutputStore } from '@stores/output'
 import { useExtractStore } from '@stores/extract'
 
@@ -21,15 +22,7 @@ export function ExtractContent() {
     <Flex direction='column' gap='2'>
       <ExtractCallout />
 
-      {previewFile && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          width={200}
-          height={200 / previewAspectRatio}
-          src={URL.createObjectURL(previewFile)}
-          alt='extracted image preview'
-        />
-      )}
+      {previewFile && <ExtractRegionPreview file={previewFile} aspectRatio={previewAspectRatio} />}
 
       {file && <ExtractSectionDialog file={file} />}
     </Flex>

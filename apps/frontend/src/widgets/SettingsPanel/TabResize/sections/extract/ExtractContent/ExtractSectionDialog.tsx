@@ -7,20 +7,18 @@ import { SelectExtractAspectRatio } from './SelectExtractAspectRatio'
 import { ExtractCallout } from './ExtractCallout'
 import { BadgeBeta } from '@ui/badges/BadgeBeta'
 import { useExtractStore } from '@stores/extract'
-import { type ExtractRegion, IMAGE_FILE_FORMAT } from '@server/sharp'
+import { IMAGE_FILE_FORMAT } from '@server/sharp'
+import { cropperDataToExtractRegion, extractRegionToCropperData } from './utils'
 import { aspectRatioList } from './data'
+import styles from './ExtractSectionDialog.module.css'
 
-const defaultCropperOptions: Partial<Cropper.Options> = {
+Cropper.setDefaults({
   rotatable: false,
   scalable: false,
   zoomable: false,
-  movable: false,
-  responsive: false
-}
+  movable: false
+})
 
-Cropper.setDefaults(defaultCropperOptions)
-
-// TODO: Lazy loading cropper?
 export const ExtractSectionDialog = ({ file }: Props) => {
   const imageRef = useRef<HTMLImageElement>(null)
   const [open, setOpen] = useState(false)
@@ -44,16 +42,20 @@ export const ExtractSectionDialog = ({ file }: Props) => {
 
   const createPreviewImage = useCallback(
     async (cropper: Cropper) => {
-      cropper.getCroppedCanvas().toBlob(blob => {
-        if (!blob) return
-
-        const fileType = IMAGE_FILE_FORMAT.PNG
-        const file = new File([blob], `extracted-region.${fileType}`, {
-          type: `image/${fileType}`
+      cropper
+        .getCroppedCanvas({
+          fillColor: '#252525'
         })
+        .toBlob(blob => {
+          if (!blob) return
 
-        setPreviewFile(file)
-      })
+          const fileType = IMAGE_FILE_FORMAT.PNG
+          const file = new File([blob], `extracted-region.${fileType}`, {
+            type: `image/${fileType}`
+          })
+
+          setPreviewFile(file)
+        })
     },
     [setPreviewFile]
   )
@@ -61,51 +63,32 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   const handleSetRegion = useCallback(async () => {
     if (!cropper) return
 
-    const { x, y, width, height } = cropper.getData()
-
-    const region: ExtractRegion = {
-      left: Math.floor(x),
-      top: Math.floor(y),
-      width: Math.floor(width),
-      height: Math.floor(height)
-    }
+    const cropperData = cropper.getData()
+    const region = cropperDataToExtractRegion(cropperData)
 
     setExtractRegion(region)
     setPreviewAspectRatio(aspectRatio)
+
     await createPreviewImage(cropper)
-
-    cropper.setData(region)
   }, [cropper, aspectRatio, createPreviewImage, setExtractRegion, setPreviewAspectRatio])
-
-  function onOpenChange(value: boolean) {
-    setOpen(value)
-
-    if (!value && cropper) {
-      setCropper(null)
-    }
-  }
-
-  useEffect(() => {
-    if (!cropper) return
-
-    cropper.setData(extractRegion)
-  }, [cropper, extractRegion])
 
   useEffect(() => {
     if (!open) return
 
-    // Да, это костыль.
-    // TODO: Checkout https://fengyuanchen.github.io/cropperjs/examples/cropper-in-modal.html
+    /*
+     * setTimeout is needed to wait for the image to be rendered.
+     */
     setTimeout(() => {
-      console.log('Костыль')
-
       if (!imageRef.current) return
 
+      const data = extractRegionToCropperData(extractRegion)
       const options: Cropper.Options = {
-        data: extractRegion,
+        preview: '#extract-preview',
+        data,
+        // NOTE: NaN - default value for aspectRatio.
+        // https://github.com/fengyuanchen/cropperjs/blob/b122bb6769e867e867ee6a913e12231cbcdf5463/src/js/defaults.js#L18
         aspectRatio: aspectRatio > 0 ? aspectRatio : NaN
       }
-
       setCropper(new Cropper(imageRef.current, options))
     }, 0)
 
@@ -116,16 +99,16 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   }, [open])
 
   return (
-    <Dialog.Root defaultOpen={false} open={open} onOpenChange={onOpenChange}>
-      <Dialog.Trigger>
+    <Dialog.Root defaultOpen={false} open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger className={styles.trigger}>
         <Button>Configure</Button>
       </Dialog.Trigger>
 
       {open && (
         <Dialog.Content>
-          <Flex direction='column' gap='2' width='100%'>
+          <Flex direction='column' gap='3' width='100%'>
             <Flex asChild align='center' wrap='wrap' gap='2'>
-              <Dialog.Title className='truncate'>
+              <Dialog.Title mb='1' className='truncate'>
                 Extract
                 <BadgeBeta />
               </Dialog.Title>
@@ -136,24 +119,19 @@ export const ExtractSectionDialog = ({ file }: Props) => {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               ref={imageRef}
-              style={{
-                width: '100%',
-                maxWidth: '100%',
-                maxHeight: '20dvh'
-              }}
               src={file ? URL.createObjectURL(file) : undefined}
-              alt='image to extract'
+              alt='Image to extract'
+              className={styles.image}
             />
 
-            <SelectExtractAspectRatio
-              aspectRatio={aspectRatio}
-              setAspectRatio={handleChangeAspectRatio}
-            />
-
-            <Flex justify='end' width='100%' mt='2'>
-              {/*<Dialog.Close>*/}
-              <Button onClick={handleSetRegion}>Confirm</Button>
-              {/*</Dialog.Close>*/}
+            <Flex align='end' justify='end' width='100%'>
+              <SelectExtractAspectRatio
+                aspectRatio={aspectRatio}
+                setAspectRatio={handleChangeAspectRatio}
+              />
+              <Dialog.Close>
+                <Button onClick={handleSetRegion}>Confirm</Button>
+              </Dialog.Close>
             </Flex>
           </Flex>
         </Dialog.Content>
