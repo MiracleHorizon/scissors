@@ -105,6 +105,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang='en' suppressHydrationWarning>
+      <head>
+        <meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests' />
+      </head>
       <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
           {isDevelopment && <ThemePanel defaultOpen={false} />}
