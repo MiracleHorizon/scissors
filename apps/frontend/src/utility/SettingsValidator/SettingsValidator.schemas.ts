@@ -144,9 +144,8 @@ export const trimSchema = object({
     .min(MIN_TRIM_THRESHOLD)
     .max(MAX_TRIM_THRESHOLD)
     .nullable()
-    .defined()
-  // sharp v0.33.2
-  // lineArt: booleanSchema
+    .defined(),
+  lineArt: booleanSchema
 })
   .nullable()
   .defined()

@@ -95,6 +95,5 @@ export type ExtractOptions = ExtractRegion
 export interface TrimOptions {
   background: string | null
   threshold: number | null
-  // sharp v0.33.2
-  // lineArt: boolean
+  lineArt: boolean
 }

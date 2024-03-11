@@ -1,4 +1,4 @@
-import sharp, { type TrimOptions } from 'sharp'
+import sharp from 'sharp'
 
 import { ImageSharp } from './ImageSharp'
 import {
@@ -69,7 +69,9 @@ export class ImageResizer extends ImageSharp {
 
     try {
       this.sharp.resize({
-        ...Object.values(options).map(nullToUndefined),
+        ...Object.fromEntries(
+          Object.entries(options).map(([option, value]) => [option, nullToUndefined(value)])
+        ),
         background
       })
     } catch (err) {
@@ -99,10 +101,12 @@ export class ImageResizer extends ImageSharp {
 
     try {
       this.sharp.extend({
-        ...Object.values({
-          ...sizes,
-          extendWith
-        }).map(nullToUndefined),
+        ...Object.fromEntries(
+          Object.entries({
+            ...sizes,
+            extendWith
+          }).map(([option, value]) => [option, nullToUndefined(value)])
+        ),
         background
       })
 
@@ -130,12 +134,13 @@ export class ImageResizer extends ImageSharp {
     }
   }
 
-  private async trim(options: TrimOptionsDto): Promise<void> {
+  private async trim({ lineArt, ...options }: TrimOptionsDto): Promise<void> {
     try {
       this.sharp.trim({
-        ...(Object.values(options).map(nullToUndefined) as TrimOptions)
-        // sharp v0.33.2
-        // lineArt
+        ...Object.fromEntries(
+          Object.entries(options).map(([option, value]) => [option, nullToUndefined(value)])
+        ),
+        lineArt
       })
     } catch (err) {
       console.error(err)

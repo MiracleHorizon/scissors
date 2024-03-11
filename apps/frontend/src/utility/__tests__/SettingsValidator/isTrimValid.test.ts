@@ -6,9 +6,8 @@ describe('@utility/SettingsValidator.isTrimValid', () => {
 
   const validOptions: TrimOptions = {
     background: '#000000',
-    threshold: MAX_TRIM_THRESHOLD
-    // sharp v0.33.2
-    // lineArt: false
+    threshold: MAX_TRIM_THRESHOLD,
+    lineArt: false
   }
 
   it('should return true for null', () => {
@@ -23,8 +22,7 @@ describe('@utility/SettingsValidator.isTrimValid', () => {
   it('should return false for invalid trim options object', () => {
     expect(isTrimValid({})).toBe(false)
     expect(isTrimValid([])).toBe(false)
-    // sharp v0.33.2
-    // expect(isTrimValid({ ...validOptions, lineArt: null })).toBe(false)
+    expect(isTrimValid({ ...validOptions, lineArt: null })).toBe(false)
     expect(
       isTrimValid({
         ...validOptions,

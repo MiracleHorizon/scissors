@@ -49,9 +49,14 @@ describe('@utility/SettingsValidator.validateResize', () => {
     },
     trim: {
       background: '#000000',
-      threshold: MIN_TRIM_THRESHOLD
-      // sharp v0.33.2
-      // lineArt: false
+      threshold: MIN_TRIM_THRESHOLD,
+      lineArt: false
+    },
+    extract: {
+      left: 10,
+      top: 10,
+      width: 100,
+      height: 100
     }
   }
 
@@ -90,9 +95,8 @@ describe('@utility/SettingsValidator.validateResize', () => {
     },
     trim: {
       background: '#000000',
-      threshold: MIN_TRIM_THRESHOLD - 1 // Invalid threshold
-      // sharp v0.33.2
-      // lineArt: false
+      threshold: MIN_TRIM_THRESHOLD - 1, // Invalid threshold
+      lineArt: false
     }
   }
 

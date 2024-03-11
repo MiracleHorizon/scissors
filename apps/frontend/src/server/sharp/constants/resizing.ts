@@ -78,5 +78,4 @@ export const DEFAULT_TRIM_BACKGROUND = '#000000'
 export const DEFAULT_TRIM_THRESHOLD = 10
 export const MIN_TRIM_THRESHOLD = 0
 export const MAX_TRIM_THRESHOLD = 255 // RGB max
-// sharp v0.33.2
-// export const DEFAULT_TRIM_LINE_ART = false
+export const DEFAULT_TRIM_LINE_ART = false

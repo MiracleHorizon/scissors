@@ -4,6 +4,7 @@ import { TrimHeader } from './TrimHeader'
 import { TrimBackground } from './TrimBackground'
 import { TrimThresholdInput } from './TrimThresholdInput'
 import { TabResizeSection } from '../../TabResizeSection'
+import { CheckboxTrimLineArt } from './CheckboxTrimLineArt'
 
 export const TrimSection = () => (
   <TabResizeSection>
@@ -13,8 +14,7 @@ export const TrimSection = () => (
         <TrimThresholdInput />
         <TrimBackground />
       </Flex>
-      {/* sharp v0.33.2*/}
-      {/*<CheckboxTrimLineArt />*/}
+      <CheckboxTrimLineArt />
     </>
   </TabResizeSection>
 )

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_TRIM_THRESHOLD, type TrimOptions } from '@server/sharp'
+import { DEFAULT_TRIM_LINE_ART, DEFAULT_TRIM_THRESHOLD, type TrimOptions } from '@server/sharp'
 
 /* eslint-disable no-unused-vars */
 interface Store extends TrimOptions {
@@ -10,15 +10,13 @@ interface Store extends TrimOptions {
   reset: VoidFunction
   setBackground: (background: string | null) => void
   setThreshold: (threshold: number | null) => void
-  // sharp v0.33.2
-  // toggleLineArt: VoidFunction
+  toggleLineArt: VoidFunction
 }
 
 const defaultState: TrimOptions = {
   background: null,
-  threshold: DEFAULT_TRIM_THRESHOLD
-  // sharp v0.33.2
-  // lineArt: DEFAULT_TRIM_LINE_ART
+  threshold: DEFAULT_TRIM_THRESHOLD,
+  lineArt: DEFAULT_TRIM_LINE_ART
 } as const
 
 export const useTrimStore = create<Store>((set, get) => ({
@@ -28,9 +26,8 @@ export const useTrimStore = create<Store>((set, get) => ({
   // Computed
   getTrimOptions: () => ({
     background: get().background,
-    threshold: get().threshold
-    // sharp v0.33.2
-    // lineArt: get().lineArt
+    threshold: get().threshold,
+    lineArt: get().lineArt
   }),
 
   // Actions
@@ -42,7 +39,6 @@ export const useTrimStore = create<Store>((set, get) => ({
   reset: () => set(defaultState),
 
   setBackground: background => set({ background }),
-  setThreshold: threshold => set({ threshold })
-  // sharp v0.33.2
-  // toggleLineArt: () => set(state => ({ lineArt: !state.lineArt })),
+  setThreshold: threshold => set({ threshold }),
+  toggleLineArt: () => set(state => ({ lineArt: !state.lineArt }))
 }))

@@ -1,5 +1,5 @@
 import { DocsSection } from '../../DocsSection'
-import { BackgroundRow, ThresholdRow } from './rows'
+import { BackgroundRow, ThresholdRow, LineArtSection } from './rows'
 import { DOCS_HASH_TRIM } from '@site/paths'
 
 export const TrimSection = () => (
@@ -7,6 +7,7 @@ export const TrimSection = () => (
     <>
       <ThresholdRow />
       <BackgroundRow />
+      <LineArtSection />
     </>
   </DocsSection>
 )
