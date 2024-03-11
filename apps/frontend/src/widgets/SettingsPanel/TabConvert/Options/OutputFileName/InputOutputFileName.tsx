@@ -1,24 +1,15 @@
-import dynamic from 'next/dynamic'
 import { type ChangeEvent, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Flex, TextField } from '@radix-ui/themes'
 
 import { ButtonClear } from '@ui/ButtonClear'
 import { FileTextIcon } from '@ui/icons/FileTextIcon'
-import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
+import { PopoverOutputFileName } from './PopoverOutputFileName'
 import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { MIN_FILE_NAME_LENGTH, MAX_FILE_NAME_LENGTH } from '@helpers/file/constants'
 import type { TextFieldInputProps } from '@lib/theme'
 import styles from './InputOutputFileName.module.css'
-
-const PopoverOutputFileName = dynamic(
-  () => import('./PopoverOutputFileName').then(mod => mod.PopoverOutputFileName),
-  {
-    ssr: false,
-    loading: () => <ButtonInfoSkeleton />
-  }
-)
 
 function InputOutputFileName() {
   const [isError, setIsError] = useState(false)
