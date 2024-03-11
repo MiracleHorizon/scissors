@@ -44,7 +44,7 @@ export const ExtractSectionDialog = ({ file }: Props) => {
     async (cropper: Cropper) => {
       cropper
         .getCroppedCanvas({
-          fillColor: '#252525'
+          fillColor: '#454545'
         })
         .toBlob(blob => {
           if (!blob) return
@@ -63,11 +63,15 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   const handleSetRegion = useCallback(async () => {
     if (!cropper) return
 
-    const cropperData = cropper.getData()
-    const region = cropperDataToExtractRegion(cropperData)
+    const region = cropperDataToExtractRegion({
+      data: cropper.getData(),
+      imageData: cropper.getImageData()
+    })
 
     setExtractRegion(region)
     setPreviewAspectRatio(aspectRatio)
+
+    cropper.setData(extractRegionToCropperData(region))
 
     await createPreviewImage(cropper)
   }, [cropper, aspectRatio, createPreviewImage, setExtractRegion, setPreviewAspectRatio])
@@ -83,7 +87,6 @@ export const ExtractSectionDialog = ({ file }: Props) => {
 
       const data = extractRegionToCropperData(extractRegion)
       const options: Cropper.Options = {
-        preview: '#extract-preview',
         data,
         // NOTE: NaN - default value for aspectRatio.
         // https://github.com/fengyuanchen/cropperjs/blob/b122bb6769e867e867ee6a913e12231cbcdf5463/src/js/defaults.js#L18

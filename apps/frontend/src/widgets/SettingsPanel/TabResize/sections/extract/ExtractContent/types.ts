@@ -11,6 +11,14 @@ export interface CropperData {
   y: number
   width: number
   height: number
-  scaleX?: number
-  scaleY?: number
+}
+
+export interface CropperImageData {
+  left: number
+  top: number
+  width: number
+  height: number
+  naturalWidth: number
+  naturalHeight: number
+  aspectRatio: number
 }
