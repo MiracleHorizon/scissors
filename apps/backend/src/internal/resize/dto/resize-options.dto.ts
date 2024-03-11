@@ -6,7 +6,7 @@ import { RESIZE_FIT, RESIZE_GRAVITY, RESIZE_KERNEL, RESIZE_POSITION } from '../r
 
 const MIN_SIZE = 1
 const MAX_WIDTH = 1920
-const MAX_HEIGHT = 1080
+const MAX_HEIGHT = 1920
 
 // FIXME: Сравнение width & height. Не могут оба быть равны null
 export class ResizeOptionsDto {

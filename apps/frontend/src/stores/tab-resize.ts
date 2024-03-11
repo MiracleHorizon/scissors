@@ -10,12 +10,14 @@ interface Store extends State {
   isAllSettled: () => boolean
   isResizeAdded: () => boolean
   isExtendAdded: () => boolean
+  isExtractAdded: () => boolean
   isTrimAdded: () => boolean
   getQueue: () => ResizeQueue
 
   setSections: (sections: Section[]) => void
   addResizeSection: VoidFunction
   addExtendSection: VoidFunction
+  addExtractSection: VoidFunction
   addTrimSection: VoidFunction
   handleDragEnd: (event: DragEndEvent) => void
   handleMoveUp: (itemId: UniqueIdentifier) => void
@@ -46,9 +48,11 @@ export const useTabResizeStore = create<Store>((set, get) => ({
 
   // Computed
   isEmpty: () => get().sections.length === 0,
-  isAllSettled: () => get().isResizeAdded() && get().isExtendAdded() && get().isTrimAdded(),
+  isAllSettled: () =>
+    get().isResizeAdded() && get().isExtendAdded() && get().isExtractAdded() && get().isTrimAdded(),
   isResizeAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.RESIZE),
   isExtendAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.EXTEND),
+  isExtractAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.EXTRACT),
   isTrimAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.TRIM),
   getQueue: () => {
     // TODO: Rework to use Map
@@ -57,10 +61,12 @@ export const useTabResizeStore = create<Store>((set, get) => ({
 
     const resizeIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.RESIZE)
     const extendIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.EXTEND)
+    const extractIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.EXTRACT)
     const trimIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.TRIM)
 
     const values: ResizeQueue = []
 
+    // TODO: Rework
     if (resizeIndex !== -1) {
       values.push({
         name: RESIZE_OPERATION.RESIZE,
@@ -72,6 +78,13 @@ export const useTabResizeStore = create<Store>((set, get) => ({
       values.push({
         name: RESIZE_OPERATION.EXTEND,
         queueIndex: extendIndex
+      })
+    }
+
+    if (extractIndex !== -1) {
+      values.push({
+        name: RESIZE_OPERATION.EXTRACT,
+        queueIndex: extractIndex
       })
     }
 
@@ -101,6 +114,10 @@ export const useTabResizeStore = create<Store>((set, get) => ({
   addExtendSection: () =>
     set(state => ({
       sections: [...state.sections, { id: RESIZE_OPERATION.EXTEND }]
+    })),
+  addExtractSection: () =>
+    set(state => ({
+      sections: [...state.sections, { id: RESIZE_OPERATION.EXTRACT }]
     })),
   addTrimSection: () =>
     set(state => ({

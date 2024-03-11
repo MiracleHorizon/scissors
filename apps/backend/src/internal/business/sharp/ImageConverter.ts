@@ -113,6 +113,8 @@ export class ImageConverter extends ImageSharp {
     try {
       this.sharp.gamma(value)
     } catch (err) {
+      console.error(err)
+
       throw new Error(`Failed to gammaize the image with gamma: ${value}`, {
         cause: err
       })
@@ -147,6 +149,8 @@ export class ImageConverter extends ImageSharp {
         background
       })
     } catch (err) {
+      console.error(err)
+
       if (err instanceof Error && err.message.startsWith('Unable to parse color from string')) {
         throw new Error(`Failed to rotate the image with the background color: ${background}`, {
           cause: err

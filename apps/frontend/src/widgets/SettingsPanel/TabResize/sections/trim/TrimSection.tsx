@@ -5,7 +5,7 @@ import { TrimBackground } from './TrimBackground'
 import { TrimThresholdInput } from './TrimThresholdInput'
 import { TabResizeSection } from '../../TabResizeSection'
 
-export const Trim = () => (
+export const TrimSection = () => (
   <TabResizeSection>
     <>
       <TrimHeader />

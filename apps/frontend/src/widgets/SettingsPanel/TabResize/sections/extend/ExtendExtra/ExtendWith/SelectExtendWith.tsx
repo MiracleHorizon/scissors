@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react'
 
-import { OptionSelect } from '@components/OptionSelect'
+import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useExtendStore } from '@stores/extend'
 import { useOutputStore } from '@stores/output'
 import { DEFAULT_EXTEND_WITH, EXTEND_WITH, type ExtendWith, IMAGE_FILE_FORMAT } from '@server/sharp'
 
-const defaultData = [
+const defaultData: OptionSelectData<ExtendWith> = [
   {
     value: Object.values(EXTEND_WITH)
   }
@@ -13,7 +13,7 @@ const defaultData = [
 // ExtendWith.REPEAT and ExtendWith.MIRROR throws "pngload_buffer: out of order read at line ..." error
 // Bug or feature? sharp version: 0.32.5(6) - 0.33.1; libvips version: 8.15.0
 const unsupportedPNGExtendWith: string[] = [EXTEND_WITH.REPEAT, EXTEND_WITH.MIRROR]
-const dataForPNG = [
+const dataForPNG: OptionSelectData<ExtendWith> = [
   {
     value: [EXTEND_WITH.BACKGROUND, EXTEND_WITH.COPY]
   }

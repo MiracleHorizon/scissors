@@ -1,8 +1,9 @@
 import type { ExtendWith, FitEnum, KernelEnum } from 'sharp'
 
-export const RESIZE_OPERATION_NAME = {
+export const RESIZE_OPERATION = {
   RESIZE: 'resize',
   EXTEND: 'extend',
+  EXTRACT: 'extract',
   TRIM: 'trim'
 } as const
 

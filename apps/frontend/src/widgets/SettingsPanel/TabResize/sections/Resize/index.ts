@@ -1,1 +1,0 @@
-export { Resize } from './Resize'

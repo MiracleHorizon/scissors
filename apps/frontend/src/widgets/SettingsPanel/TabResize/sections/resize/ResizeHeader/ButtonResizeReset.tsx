@@ -4,16 +4,16 @@ import { ButtonReset } from '@ui/ButtonReset'
 import { useResizeStore } from '@stores/resize'
 
 export function ButtonResizeReset() {
-  const resetResize = useResizeStore(state => state.reset)
+  const reset = useResizeStore(state => state.reset)
 
-  const handleResetResize = useCallback(() => resetResize(), [resetResize])
+  const handleReset = useCallback(() => reset(), [reset])
 
   return (
     <ButtonReset
       tooltipContent='Reset Resizing'
       variant='outline'
       radius='large'
-      onClick={handleResetResize}
+      onClick={handleReset}
     />
   )
 }

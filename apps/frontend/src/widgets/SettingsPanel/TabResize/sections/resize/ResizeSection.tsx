@@ -5,7 +5,7 @@ import { ResizeSizesForm } from './ResizeSizesForm'
 import { ResizeExtra } from './ResizeExtra'
 import { TabResizeSection } from '../../TabResizeSection'
 
-export const Resize = () => (
+export const ResizeSection = () => (
   <TabResizeSection>
     <>
       <ResizeHeader />

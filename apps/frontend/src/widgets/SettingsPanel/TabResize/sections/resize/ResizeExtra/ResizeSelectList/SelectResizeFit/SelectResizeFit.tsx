@@ -1,20 +1,11 @@
-import dynamic from 'next/dynamic'
 import { useCallback } from 'react'
 
-import { OptionSelect } from '@components/OptionSelect'
-import { ButtonInfoSkeleton } from '@ui/skeletons/ButtonInfoSkeleton'
+import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
+import { ResizeFitExamplesPopover } from './ResizeFitExamplesPopover'
 import { useResizeStore } from '@stores/resize'
 import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@server/sharp'
 
-const ResizeFitExamplesPopover = dynamic(
-  () => import('./ResizeFitExamplesPopover').then(mod => mod.ResizeFitExamplesPopover),
-  {
-    ssr: false,
-    loading: () => <ButtonInfoSkeleton variant='minimal' radius='full' withoutMargin />
-  }
-)
-
-const data = [
+const data: OptionSelectData<ResizeFit> = [
   {
     value: Object.values(RESIZE_FIT)
   }
