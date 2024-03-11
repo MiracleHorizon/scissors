@@ -31,6 +31,7 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   const setPreviewFile = useExtractStore(state => state.setPreviewFile)
   const setPreviewAspectRatio = useExtractStore(state => state.setPreviewAspectRatio)
   const setCropperAspectRatio = useExtractStore(state => state.setCropperAspectRatio)
+  const reset = useExtractStore(state => state.reset)
 
   function handleChangeAspectRatio(displayValue: string) {
     const value = aspectRatioList.find(v => v.displayValue === displayValue)?.value ?? -1
@@ -102,6 +103,13 @@ export const ExtractSectionDialog = ({ file }: Props) => {
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
+
+  useEffect(() => {
+    if (!cropper) return
+
+    cropper.reset()
+    reset()
+  }, [cropper, file, reset])
 
   return (
     <Dialog.Root defaultOpen={false} open={open} onOpenChange={setOpen}>
