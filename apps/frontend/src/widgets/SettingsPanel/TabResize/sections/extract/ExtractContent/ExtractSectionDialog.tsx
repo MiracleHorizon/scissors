@@ -88,6 +88,8 @@ export const ExtractSectionDialog = ({ file }: Props) => {
       const data = extractRegionToCropperData(extractRegion)
       const options: Cropper.Options = {
         data,
+        minCropBoxWidth: 20,
+        minCropBoxHeight: 20,
         // NOTE: NaN - default value for aspectRatio.
         // https://github.com/fengyuanchen/cropperjs/blob/b122bb6769e867e867ee6a913e12231cbcdf5463/src/js/defaults.js#L18
         aspectRatio: aspectRatio > 0 ? aspectRatio : NaN
