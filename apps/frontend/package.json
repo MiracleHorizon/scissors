@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "dev:secure": "concurrently \"next dev\" \"caddy run\"",
     "dev:turbo": "next dev --turbo",
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
@@ -62,6 +63,7 @@
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.2.1",
     "@vitest/ui": "1.2.1",
+    "concurrently": "^8.2.2",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-plugin-react-hooks": "4.6.0",
