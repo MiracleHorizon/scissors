@@ -19,7 +19,7 @@ interface State {
 const defaultState: State = {
   isAdded: false,
   color: null
-}
+} as const
 
 export const useTintStore = create<Store>(set => ({
   // State

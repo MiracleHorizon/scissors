@@ -33,7 +33,7 @@ const defaultState: State = {
   outputFileName: '',
   outputFormat: null,
   downloadPayload: null
-}
+} as const
 
 export const useOutputStore = create<Store>((set, get) => ({
   // State

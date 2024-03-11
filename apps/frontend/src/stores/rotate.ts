@@ -26,11 +26,11 @@ const defaultRotation: Omit<State, 'isAdded'> = {
   angle: null,
   background: null,
   withDominantBackground: false
-}
+} as const
 const defaultState: State = {
   isAdded: false,
   ...defaultRotation
-}
+} as const
 
 export const useRotateStore = create<Store>((set, get) => ({
   // State

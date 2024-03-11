@@ -22,7 +22,7 @@ const defaultState: Settings = {
   flip: DEFAULT_FLIP,
   flop: DEFAULT_FLOP,
   grayscale: DEFAULT_GRAYSCALE
-}
+} as const
 
 export const useConvertStore = create(
   devtools<Store>((set, get) => ({

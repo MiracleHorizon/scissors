@@ -39,7 +39,7 @@ const defaultState: State = {
       id: RESIZE_OPERATION.RESIZE
     }
   ]
-}
+} as const
 
 // TODO: move out of @stores
 export const useTabResizeStore = create<Store>((set, get) => ({

@@ -54,14 +54,14 @@ const defaultExtendValues: ExtendValues = {
   top: null,
   right: null,
   bottom: null
-}
+} as const
 const defaultState: State = {
   ...defaultExtendValues,
   directionModel: DIRECTION_MODEL.NUMBER,
   extendWith: DEFAULT_EXTEND_WITH,
   background: DEFAULT_EXTEND_BACKGROUND,
   withDominantBackground: false
-}
+} as const
 
 // TODO: Rework? :)
 export const useExtendStore = create<Store>((set, get) => ({

@@ -21,7 +21,7 @@ interface State {
 const defaultState: State = {
   isAdded: false,
   gamma: null
-}
+} as const
 
 export const useGammaStore = create<Store>((set, get) => ({
   // State

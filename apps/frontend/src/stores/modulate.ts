@@ -26,7 +26,7 @@ const defaultState: State = {
   brightness: null,
   saturation: null,
   hue: null
-}
+} as const
 
 export const useModulateStore = create<Store>((set, get) => ({
   // State

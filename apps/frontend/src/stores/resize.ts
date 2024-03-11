@@ -45,7 +45,7 @@ const defaultState: ResizeOptions = {
   withoutReduction: DEFAULT_WITHOUT_REDUCTION,
   fastShrinkOnLoad: DEFAULT_FAST_SHRINK,
   withDominantBackground: false
-}
+} as const
 
 export const useResizeStore = create<Store>((set, get) => ({
   // State

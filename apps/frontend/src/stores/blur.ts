@@ -22,7 +22,7 @@ interface State extends BlurOptions {
 const defaultState: State = {
   ...DEFAULT_BLUR,
   isSigmaAdded: false
-}
+} as const
 
 export const useBlurStore = create<Store>((set, get) => ({
   // State

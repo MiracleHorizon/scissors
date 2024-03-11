@@ -19,7 +19,7 @@ const defaultState: TrimOptions = {
   threshold: DEFAULT_TRIM_THRESHOLD
   // sharp v0.33.2
   // lineArt: DEFAULT_TRIM_LINE_ART
-}
+} as const
 
 export const useTrimStore = create<Store>((set, get) => ({
   // State

@@ -21,7 +21,7 @@ interface State extends NormaliseOptions {
 const defaultState: State = {
   isAdded: false,
   ...DEFAULT_NORMALISE
-}
+} as const
 
 export const useNormaliseStore = create<Store>((set, get) => ({
   // State
