@@ -27,7 +27,6 @@ export function getLocalStorageThemeColor(): ThemeColor | null {
   }
 
   const isThemeColorValid = validateThemeColor(themeColor)
-  console.log(isThemeColorValid, themeColor)
   if (!isThemeColorValid) {
     return null
   }
