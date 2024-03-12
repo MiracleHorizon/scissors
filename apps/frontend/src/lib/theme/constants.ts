@@ -1,3 +1,10 @@
+import type { Theme, ThemeColor } from './types'
+
+// Defaults
+export const DEFAULT_THEME: Theme = 'light'
+export const DEFAULT_THEME_COLOR: ThemeColor = 'indigo'
+
+// Storages
 export const THEME_COOKIE_NAME = 'scissors-theme'
 export const THEME_LS_KEY = THEME_COOKIE_NAME
 export const THEME_COLOR_COOKIE_NAME = 'scissors-theme-color'

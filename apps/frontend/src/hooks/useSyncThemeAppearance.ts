@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
 import {
-  type RadixThemeColor,
   setThemeColorCookie,
   setThemeCookie,
   THEME_COLOR_LS_KEY,
   THEME_LS_KEY,
+  type ThemeColor,
   themeColorItems,
   type ThemeProps
 } from '@lib/theme'
@@ -37,11 +37,11 @@ export function useSyncThemeAppearance({ theme, themeColor }: ThemeProps) {
       if (!newThemeColor) return
       const isValidThemeColor = themeColorItems
         .map(v => v.color)
-        .includes(newThemeColor as RadixThemeColor)
+        .includes(newThemeColor as ThemeColor)
       if (!isValidThemeColor) return
 
       if (themeColor !== newThemeColor) {
-        void setThemeColorCookie(newThemeColor as RadixThemeColor)
+        void setThemeColorCookie(newThemeColor as ThemeColor)
       }
     }
 

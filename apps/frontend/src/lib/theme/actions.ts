@@ -2,9 +2,13 @@
 
 import { cookies } from 'next/headers'
 
-import { THEME_COLOR_COOKIE_NAME, THEME_COOKIE_NAME } from './constants'
-import type { Theme } from './types'
-import type { RadixThemeColor } from '@lib/theme'
+import {
+  DEFAULT_THEME,
+  DEFAULT_THEME_COLOR,
+  THEME_COLOR_COOKIE_NAME,
+  THEME_COOKIE_NAME
+} from './constants'
+import type { Theme, ThemeColor } from './types'
 
 export async function setThemeCookie(value: Theme): Promise<void> {
   const cookieStore = cookies()
@@ -22,12 +26,12 @@ export async function getThemeCookie(): Promise<Theme | null> {
   return theme.value as Theme
 }
 
-export async function setThemeColorCookie(value: RadixThemeColor): Promise<void> {
+export async function setThemeColorCookie(value: ThemeColor): Promise<void> {
   const cookieStore = cookies()
   cookieStore.set(THEME_COLOR_COOKIE_NAME, value)
 }
 
-export async function getThemeColorCookie(): Promise<RadixThemeColor | null> {
+export async function getThemeColorCookie(): Promise<ThemeColor | null> {
   const cookieStore = cookies()
   const themeColor = cookieStore.get(THEME_COLOR_COOKIE_NAME)
 
@@ -35,13 +39,10 @@ export async function getThemeColorCookie(): Promise<RadixThemeColor | null> {
     return null
   }
 
-  return themeColor.value as RadixThemeColor
+  return themeColor.value as ThemeColor
 }
 
 export async function getThemeAppearance() {
-  const DEFAULT_THEME: Theme = 'light'
-  const DEFAULT_THEME_COLOR: RadixThemeColor = 'indigo'
-
   const theme = await getThemeCookie()
   const themeColor = await getThemeColorCookie()
 
