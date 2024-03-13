@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import capitalize from 'lodash.capitalize'
 
 import { splitStringByUppercase } from '@helpers/splitStringByUppercase'
 import type { TableItemValue } from './types'
@@ -25,7 +26,19 @@ export function formatLabel(label: string): string {
     return 'YCbCr Positioning'
   }
 
+  if (label === 'FocalLengthIn35mmFormat') {
+    return 'Focal Length In 35mm Format'
+  }
+
+  if (label.startsWith('GPS')) {
+    const gpsLabel = label.split('GPS')[1]
+    return `GPS ${splitStringByUppercase(gpsLabel).join(' ')}`
+  }
+
   const splitLabel = splitStringByUppercase(label)
+  if (splitLabel.length === 1) {
+    return capitalize(splitLabel[0])
+  }
 
   return splitLabel.join(' ')
 }
