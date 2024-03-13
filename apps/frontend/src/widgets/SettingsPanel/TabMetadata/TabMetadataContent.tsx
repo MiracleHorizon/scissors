@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Flex, Text } from '@radix-ui/themes'
 
 import * as Accordion from '@ui/Accordion'
+import { CalloutDefault } from '@ui/CalloutDefault'
 import { MetadataTable } from './MetadataTable'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
@@ -27,7 +28,6 @@ export function TabMetadataContent() {
 
       exifr
         .parse(file, {
-          icc: false,
           mergeOutput: false
         })
         .then(result => setMetadata(result ?? null))
@@ -41,10 +41,20 @@ export function TabMetadataContent() {
   }, [file])
 
   return (
-    <Flex direction='column' px='2' pt='2' pb='4' gap='4' width='100%'>
-      {!file && <p>No file</p>}
-      {file && !metadata && isFileTypeAllowed && <p>No metadata</p>}
-      {file && !isFileTypeAllowed && <p>File type not allowed</p>}
+    <Flex direction='column' px='2' pt='3' pb='4' gap='4' width='100%'>
+      {!file && <CalloutDefault text='To continue, please upload an image file' color='yellow' />}
+      {file && !metadata && isFileTypeAllowed && (
+        <CalloutDefault
+          text='This image has no metadata, but you can add them below'
+          color='gray'
+        />
+      )}
+      {file && !isFileTypeAllowed && (
+        <CalloutDefault
+          text={`This file type is not supported. Allowed file types: ${allowedFileTypes.join(', ')}`}
+          color='gray'
+        />
+      )}
 
       {metadata && (
         <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
@@ -61,7 +71,7 @@ export function TabMetadataContent() {
               </Accordion.Header>
 
               <Accordion.Content>
-                <MetadataTable label={name} data={data} />
+                <MetadataTable data={data} />
               </Accordion.Content>
             </Accordion.Item>
           ))}
