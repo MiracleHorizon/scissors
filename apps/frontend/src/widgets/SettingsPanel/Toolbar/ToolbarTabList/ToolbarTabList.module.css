@@ -1,9 +1,0 @@
-.root {
-  height: 100%;
-  box-shadow: none;
-}
-
-.root :global(.rt-TabsTriggerInner) {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}

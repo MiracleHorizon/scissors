@@ -1,0 +1,26 @@
+.root {
+  height: 100%;
+  box-shadow: none;
+}
+
+.root :global(.rt-TabsTriggerInner) {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.mobile {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 6px 0;
+}
+
+.mobile :global(.rt-TabsTrigger::before) {
+  display: none;
+}
+
+.mobile :global(.rt-TabsTriggerInner) {
+  gap: 6px;
+}
