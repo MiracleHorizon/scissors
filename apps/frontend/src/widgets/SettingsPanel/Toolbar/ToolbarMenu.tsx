@@ -22,8 +22,12 @@ export function ToolbarMenu(props: ClassNameProps) {
       {...props}
     >
       <Flex align='center' gap='1'>
-        <ButtonImportSettings />
-        <ButtonExportSettings />
+        {selectedTab !== TOOLBAR_TAB.METADATA && (
+          <>
+            <ButtonImportSettings />
+            <ButtonExportSettings />
+          </>
+        )}
 
         {selectedTab === TOOLBAR_TAB.CONVERT && (
           <ToolbarRandomizeMenu>

@@ -1,0 +1,8 @@
+.nameColumnHeaderCell {
+  width: 100px;
+}
+
+.rowHeaderCell {
+  width: 200px;
+  max-width: 200px;
+}

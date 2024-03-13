@@ -12,6 +12,10 @@ const tabs = [
   {
     label: 'Resize',
     value: TOOLBAR_TAB.RESIZE
+  },
+  {
+    label: 'Metadata',
+    value: TOOLBAR_TAB.METADATA
   }
 ]
 
