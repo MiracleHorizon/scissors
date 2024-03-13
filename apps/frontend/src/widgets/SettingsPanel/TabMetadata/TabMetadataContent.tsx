@@ -52,7 +52,7 @@ export function TabMetadataContent() {
       {file && !isFileTypeAllowed && (
         <CalloutDefault
           text={`This file type is not supported. Allowed file types: ${allowedFileTypes.join(', ')}`}
-          color='gray'
+          color='yellow'
         />
       )}
 
