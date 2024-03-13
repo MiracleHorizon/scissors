@@ -99,9 +99,15 @@ export function ImageUploadPopover() {
     setIsValidURL(true)
   }
 
+  const onOpenChange = (value: boolean) => {
+    if (!value) {
+      handleResetState()
+    }
+  }
+
   return (
     <>
-      <Popover.Root>
+      <Popover.Root onOpenChange={onOpenChange}>
         <Tooltip content='Upload an image using a link'>
           <Popover.Trigger>
             <IconButton color='gray' variant='outline'>
