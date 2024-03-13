@@ -5,3 +5,5 @@ export interface ExifrReturn {
   gps?: ExifrData
   ifd0?: ExifrData
 }
+
+export type TableItemValue = string | number | Date | Array<number>

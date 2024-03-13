@@ -1,38 +1,25 @@
 import { useMemo } from 'react'
 import { Table } from '@radix-ui/themes'
-import dayjs from 'dayjs'
 
+import { formatLabel, formatValue } from './utils'
 import type { ExifrData } from './types'
 import styles from './MetadataTable.module.css'
 
 export function MetadataTable({ data }: Props) {
-  const items = useMemo(() => {
+  const items: [string, string][] = useMemo(() => {
     const entries = Object.entries(data)
-    const filteredEntries = entries.filter(([_, value]) => {
+    const filteredEntries = entries.filter(([, value]) => {
       if (value === undefined || value === null) {
         return false
-      } else if (typeof value === 'string' && value.toLowerCase() === 'unknown') {
+      } else if (value instanceof Uint8Array) {
         return false
       }
 
       return true
     })
 
-    return filteredEntries
+    return filteredEntries.map(([label, value]) => [formatLabel(label), formatValue(value)])
   }, [data])
-
-  function formatDate(date: string | Date) {
-    const template = 'D MMM YYYY hh:mmA'
-    return dayjs(date).format(template)
-  }
-
-  function formatValue(value: any) {
-    if (value instanceof Date) {
-      return formatDate(value)
-    }
-
-    return value.toString()
-  }
 
   return (
     <Table.Root size='2'>
@@ -46,12 +33,12 @@ export function MetadataTable({ data }: Props) {
       </Table.Header>
 
       <Table.Body>
-        {items.map(([key, value]) => (
-          <Table.Row key={key}>
-            <Table.RowHeaderCell title={key} className={styles.rowHeaderCell}>
-              {key}
+        {items.map(([label, value]) => (
+          <Table.Row key={label}>
+            <Table.RowHeaderCell title={label} className={styles.rowHeaderCell}>
+              {label}
             </Table.RowHeaderCell>
-            <Table.Cell>{formatValue(value)}</Table.Cell>
+            <Table.Cell>{value}</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
@@ -60,6 +47,5 @@ export function MetadataTable({ data }: Props) {
 }
 
 interface Props {
-  label: string
   data: ExifrData
 }
