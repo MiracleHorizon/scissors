@@ -25,6 +25,8 @@ export class ImageResizer extends ImageSharp {
     extract,
     trim
   }: ResizeSettingsDto): Promise<Buffer> {
+    this.sharp.keepMetadata()
+
     if (queue.length === 0) {
       return this.toBuffer()
     }

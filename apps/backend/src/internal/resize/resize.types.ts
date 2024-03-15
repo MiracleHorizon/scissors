@@ -4,7 +4,7 @@ import type { ResizeSettingsDto } from './dto'
 
 export interface ResizeServiceAbstraction {
   // eslint-disable-next-line no-unused-vars
-  resize(resizeParams: ResizeParams): Promise<Buffer>
+  resize(params: ResizeParams): Promise<Buffer>
 }
 
 export interface ResizeParams {
