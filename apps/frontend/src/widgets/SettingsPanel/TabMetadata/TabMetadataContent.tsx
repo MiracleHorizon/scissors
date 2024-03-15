@@ -1,9 +1,8 @@
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { Flex, Text } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
 
-import * as Accordion from '@ui/Accordion'
 import { CalloutDefault } from '@ui/CalloutDefault'
-import { MetadataTable } from './MetadataTable'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import { IMAGE_FILE_FORMAT } from '@server/sharp'
@@ -15,19 +14,27 @@ const allowedFileTypes: string[] = [
   IMAGE_FILE_FORMAT.PNG
 ]
 
+const MetadataTablesAccordion = dynamic(
+  () => import('./MetadataTablesAccordion').then(mod => mod.MetadataTablesAccordion),
+  {
+    ssr: false
+  }
+)
+
 export function TabMetadataContent() {
   const [metadata, setMetadata] = useState<ExifrReturn | null>(null)
   const file = useOutputStore(state => state.file)
+  const downloadPayload = useOutputStore(state => state.downloadPayload)
   const isFileTypeAllowed = file ? allowedFileTypes.includes(cropImageFileType(file.type)) : false
 
   useEffect(() => {
     if (!file) return
 
-    import('exifr').then(mod => {
-      const exifr = mod.default
+    import('exifr').then(({ default: exifr }) => {
+      const data: File | Blob = downloadPayload ? downloadPayload.blob : file
 
       exifr
-        .parse(file, {
+        .parse(data, {
           mergeOutput: false
         })
         .then(result => setMetadata(result ?? null))
@@ -38,10 +45,16 @@ export function TabMetadataContent() {
           setMetadata(null)
         })
     })
-  }, [file])
+  }, [file, downloadPayload])
+
+  useEffect(() => {
+    if (!file && !downloadPayload && metadata) {
+      setMetadata(null)
+    }
+  }, [file, downloadPayload, metadata])
 
   return (
-    <Flex direction='column' px='2' pt='3' pb='4' gap='4' width='100%'>
+    <Flex direction='column' gap='4' px='3' pt='3' pb='4' width='100%'>
       {!file && <CalloutDefault text='To continue, please upload an image file' color='yellow' />}
       {file && !metadata && isFileTypeAllowed && (
         <CalloutDefault
@@ -56,27 +69,7 @@ export function TabMetadataContent() {
         />
       )}
 
-      {metadata && (
-        <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
-          {Object.entries(metadata).map(([name, data]) => (
-            <Accordion.Item key={name} value={name} defaultChecked>
-              <Accordion.Header>
-                <Accordion.Trigger>
-                  <Text size='3' weight='medium'>
-                    {name.toUpperCase()}
-                  </Text>
-
-                  <Accordion.Chevron />
-                </Accordion.Trigger>
-              </Accordion.Header>
-
-              <Accordion.Content>
-                <MetadataTable data={data} />
-              </Accordion.Content>
-            </Accordion.Item>
-          ))}
-        </Accordion.Root>
-      )}
+      {metadata && <MetadataTablesAccordion metadata={metadata} />}
     </Flex>
   )
 }

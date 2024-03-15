@@ -6,18 +6,19 @@ import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
 import { createApiURL } from '@site/config'
 import { PATH_API_RESIZE } from '@site/paths'
+import { ABORT_TIMEOUT } from './config'
+import { cropFileName } from '@helpers/file/cropFileName'
 import type { ResizeSettings } from '@server/sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { MutationPayload } from './types'
 
 async function resizeImage(formData: FormData): Promise<Blob> {
   const abortController = new AbortController()
-  const abortTimeout = 15_000
 
   try {
     setTimeout(() => {
       abortController.abort()
-    }, abortTimeout)
+    }, ABORT_TIMEOUT)
 
     const url = createApiURL(PATH_API_RESIZE)
     const response = await fetch(url, {
@@ -43,7 +44,7 @@ async function resizeImage(formData: FormData): Promise<Blob> {
   }
 }
 
-export async function resizeImageMutation({
+async function resizeImageMutation({
   file,
   fileName,
   settings
@@ -58,12 +59,17 @@ export async function resizeImageMutation({
   let outputFileName = fileName
   const { resize } = settings
   if (resize && resize.width && resize.height) {
-    outputFileName = `${fileName}-${resize.width}x${resize.height}`
+    // TODO: Refactor
+    const fileNameWithoutExtension = cropFileName(outputFileName)
+    const extension = outputFileName.replace(fileNameWithoutExtension, '')
+
+    outputFileName = `${cropFileName(outputFileName)}-${resize.width}x${resize.height}${extension}`
   }
 
   return {
     link,
-    fileName: outputFileName
+    fileName: outputFileName,
+    blob: imageBlob
   }
 }
 

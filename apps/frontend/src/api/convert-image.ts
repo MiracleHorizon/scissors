@@ -6,18 +6,18 @@ import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
 import { createApiURL } from '@site/config'
 import { PATH_API_CONVERT } from '@site/paths'
+import { ABORT_TIMEOUT } from './config'
 import type { ConvertSettings } from '@server/sharp'
 import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { MutationPayload } from './types'
 
 async function convertImage(formData: FormData): Promise<Blob> {
   const abortController = new AbortController()
-  const abortTimeout = 15_000
 
   try {
     setTimeout(() => {
       abortController.abort()
-    }, abortTimeout)
+    }, ABORT_TIMEOUT)
 
     const url = createApiURL(PATH_API_CONVERT)
     const response = await fetch(url, {
@@ -43,7 +43,7 @@ async function convertImage(formData: FormData): Promise<Blob> {
   }
 }
 
-export async function convertImageMutation({
+async function convertImageMutation({
   file,
   fileName,
   settings
@@ -57,7 +57,8 @@ export async function convertImageMutation({
 
   return {
     link,
-    fileName
+    fileName,
+    blob: imageBlob
   }
 }
 

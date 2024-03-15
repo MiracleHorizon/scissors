@@ -6,7 +6,14 @@ import type { StyleProps } from '@app-types/StyleProps'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 export const CalloutDefault: FC<Props> = ({ text, style, ...props }) => (
-  <Callout.Root style={{ width: 'max-content', ...style }} {...props}>
+  <Callout.Root
+    style={{
+      width: 'max-content',
+      borderRadius: 'var(--radius-3)',
+      ...style
+    }}
+    {...props}
+  >
     <Callout.Icon>
       <InfoCircledIcon width='18px' height='18px' />
     </Callout.Icon>

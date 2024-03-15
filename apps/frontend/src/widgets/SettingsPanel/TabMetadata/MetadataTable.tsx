@@ -2,13 +2,13 @@ import { useMemo } from 'react'
 import { Table } from '@radix-ui/themes'
 
 import { formatLabel, formatValue } from './utils'
-import type { ExifrData } from './types'
+import type { ExifrData, TableItemValue } from './types'
 import styles from './MetadataTable.module.css'
 
 export function MetadataTable({ data }: Props) {
   const items: [string, string][] = useMemo(() => {
     const entries = Object.entries(data)
-    const filteredEntries = entries.filter(([, value]) => {
+    const filteredEntries: [string, TableItemValue][] = entries.filter(([, value]) => {
       if (value === undefined || value === null) {
         return false
       } else if (value instanceof Uint8Array) {
@@ -18,7 +18,7 @@ export function MetadataTable({ data }: Props) {
       return true
     })
 
-    return filteredEntries.map(([label, value]) => [formatLabel(label), formatValue(value)])
+    return filteredEntries.map(([label, value]) => [formatLabel(label), formatValue(value, label)])
   }, [data])
 
   return (

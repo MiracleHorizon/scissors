@@ -18,7 +18,7 @@ const ButtonSkeleton = () => (
 const optionsPadding: PaddingProps = {
   px: '3',
   pb: '2',
-  pt: '4'
+  pt: '3'
 }
 
 const OptionsSkeleton = () => (
