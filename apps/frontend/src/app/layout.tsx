@@ -97,7 +97,10 @@ export const metadata: Metadata = {
       type: 'image/png',
       sizes: '512x512'
     }
-  ]
+  ],
+  other: {
+    'darkreader-lock': 'true'
+  }
 }
 
 export default async function RootLayout({ children }: PropsWithChildren) {
