@@ -29,6 +29,9 @@ dependencies:
   deep-parse-json:
     specifier: ^2.0.0
     version: 2.0.0
+  lodash.capitalize:
+    specifier: ^4.2.1
+    version: 4.2.1
   lodash.merge:
     specifier: ^4.6.2
     version: 4.6.2
@@ -61,6 +64,9 @@ devDependencies:
   '@types/express':
     specifier: ^4.17.13
     version: 4.17.21
+  '@types/lodash.capitalize':
+    specifier: ^4.2.9
+    version: 4.2.9
   '@types/lodash.merge':
     specifier: ^4.6.9
     version: 4.6.9
@@ -733,6 +739,12 @@ packages:
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: true
+
+  /@types/lodash.capitalize@4.2.9:
+    resolution: {integrity: sha512-SV1dav/WbuI816SVig4trFz8ID/m5maVzC8I/E/DejPvmlXvIhw7Y0GWxJ03UhU6qaZOj6qQnR1xxC0mP7ZXoQ==}
+    dependencies:
+      '@types/lodash': 4.14.202
     dev: true
 
   /@types/lodash.merge@4.6.9:
@@ -2217,6 +2229,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash.capitalize@4.2.1:
+    resolution: {integrity: sha512-kZzYOKspf8XVX5AvmQF94gQW0lejFVgb80G85bU4ZWzoJ6C03PQg3coYAUpSTpQWelrZELd3XWgHzw4Ck5kaIw==}
+    dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
