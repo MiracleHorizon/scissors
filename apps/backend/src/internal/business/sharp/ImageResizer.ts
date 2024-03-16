@@ -76,6 +76,10 @@ export class ImageResizer extends ImageSharp {
         ),
         background
       })
+
+      // Updating sharp with new buffer for correct queue operations after resizing.
+      const updatedBuffer = await this.toBuffer()
+      this.sharp = sharp(updatedBuffer)
     } catch (err) {
       console.error(err)
 
