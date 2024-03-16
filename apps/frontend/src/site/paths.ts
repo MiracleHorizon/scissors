@@ -6,6 +6,7 @@ export const PATH_GALLERY = '/gallery'
 // API paths
 export const PATH_API_CONVERT = 'convert'
 export const PATH_API_RESIZE = 'resize'
+export const PATH_API_METADATA = 'metadata'
 
 // Docs hash anchors
 export const DOCS_HASH_MAIN = '#main'

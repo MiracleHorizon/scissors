@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
+import { Ifd0OptionsForm } from './ifd0-form'
 import { CalloutDefault } from '@ui/CalloutDefault'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
@@ -68,6 +69,8 @@ export function TabMetadataContent() {
           color='yellow'
         />
       )}
+
+      <Ifd0OptionsForm />
 
       {metadata && <MetadataTablesAccordion metadata={metadata} />}
     </Flex>

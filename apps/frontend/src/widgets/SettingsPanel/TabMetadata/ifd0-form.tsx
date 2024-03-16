@@ -1,0 +1,120 @@
+import { Flex, Heading } from '@radix-ui/themes'
+import * as Form from '@radix-ui/react-form'
+import type { ChangeEvent } from 'react'
+
+import { DatePicker } from '@ui/DatePicker'
+import { ButtonReset } from '@ui/ButtonReset'
+import { MetadataForm } from './MetadataForm'
+import { MetadataFormField } from './MetadataFormField'
+import { useMetadataStore } from '@stores/metadata'
+
+export function Ifd0OptionsForm() {
+  const { model, artist, copyright, dateTime, imageDescription, make, software } = useMetadataStore(
+    state => state.ifd0
+  )
+
+  const setMake = useMetadataStore(state => state.setMake)
+  const setModel = useMetadataStore(state => state.setModel)
+  const setCopyright = useMetadataStore(state => state.setCopyright)
+  const setSoftware = useMetadataStore(state => state.setSoftware)
+  const setArtist = useMetadataStore(state => state.setArtist)
+  const setDateTime = useMetadataStore(state => state.setDateTime)
+  const setImageDescription = useMetadataStore(state => state.setImageDescription)
+  const reset = useMetadataStore(state => state.resetIfd0)
+
+  const handleReset = () => reset()
+
+  const handleSetMake = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setMake(value === '' ? null : value)
+  }
+  const handleSetModel = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setModel(value === '' ? null : value)
+  }
+  const handleSetCopyright = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setCopyright(value === '' ? null : value)
+  }
+  const handleSetSoftware = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setSoftware(value === '' ? null : value)
+  }
+  const handleSetArtist = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setArtist(value === '' ? null : value)
+  }
+  const handleSetImageDescription = (ev: ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value
+    setImageDescription(value === '' ? null : value)
+  }
+  const handleDateTimeChange = (date: Date) => setDateTime(date)
+
+  return (
+    <MetadataForm
+      headerContent={
+        <>
+          <Heading as='h3' size='4'>
+            IFD0
+          </Heading>
+
+          <ButtonReset tooltipContent='Reset IFD0 form' onClick={handleReset} />
+        </>
+      }
+      content={
+        <>
+          <MetadataFormField
+            name='make'
+            label='Make'
+            value={make ?? ''}
+            placeholder='Canon'
+            onChange={handleSetMake}
+          />
+          <MetadataFormField
+            name='model'
+            label='Model'
+            value={model ?? ''}
+            placeholder='Canon EOS 6D'
+            onChange={handleSetModel}
+          />
+          <MetadataFormField
+            name='copyright'
+            label='Copyright'
+            value={copyright ?? ''}
+            placeholder='@miraclehorizon'
+            onChange={handleSetCopyright}
+          />
+          <MetadataFormField
+            name='artist'
+            label='Artist'
+            value={artist ?? ''}
+            placeholder='John Doe'
+            onChange={handleSetArtist}
+          />
+          <MetadataFormField
+            name='software'
+            label='Software'
+            value={software ?? ''}
+            placeholder='Adobe Photoshop'
+            onChange={handleSetSoftware}
+          />
+          <MetadataFormField
+            name='imageDescription'
+            label='Description'
+            value={imageDescription ?? ''}
+            placeholder='Photo taken with...'
+            onChange={handleSetImageDescription}
+          />
+          <Flex asChild direction='column'>
+            <Form.Field name='dateTime'>
+              <Form.Label>Date Time</Form.Label>
+              <Form.Control asChild>
+                <DatePicker value={dateTime ?? new Date()} onValueChange={handleDateTimeChange} />
+              </Form.Control>
+            </Form.Field>
+          </Flex>
+        </>
+      }
+    />
+  )
+}

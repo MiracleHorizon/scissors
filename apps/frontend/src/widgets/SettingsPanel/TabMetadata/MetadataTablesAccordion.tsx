@@ -6,7 +6,7 @@ import { MetadataTable } from './MetadataTable'
 import type { ExifrReturn } from './types'
 
 export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
-  <Accordion.Root className='hidden-' type='multiple' defaultValue={Object.keys(metadata)}>
+  <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
     {Object.entries(metadata).map(([name, data]) => (
       <Accordion.Item key={name} value={name} defaultChecked>
         <Accordion.Header>

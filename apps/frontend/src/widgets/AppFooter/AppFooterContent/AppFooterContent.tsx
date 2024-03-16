@@ -18,6 +18,10 @@ const ButtonResize = dynamic(() => import('./ButtonResize').then(mod => mod.Butt
   ssr: false,
   loading: () => <ButtonRequestSkeleton />
 })
+const ButtonMetadata = dynamic(() => import('./ButtonMetadata').then(mod => mod.ButtonMetadata), {
+  ssr: false,
+  loading: () => <ButtonRequestSkeleton />
+})
 
 export default function AppFooterContent() {
   const selectedTab = useTabsStore(state => state.selectedTab)
@@ -28,6 +32,7 @@ export default function AppFooterContent() {
       <Separator orientation='vertical' size='2' />
       {selectedTab === TOOLBAR_TAB.CONVERT && <ButtonConvert />}
       {selectedTab === TOOLBAR_TAB.RESIZE && <ButtonResize />}
+      {selectedTab === TOOLBAR_TAB.METADATA && <ButtonMetadata />}
     </Flex>
   )
 }

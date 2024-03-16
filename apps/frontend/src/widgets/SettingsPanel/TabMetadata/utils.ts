@@ -5,7 +5,7 @@ import { splitStringByUppercase } from '@helpers/splitStringByUppercase'
 import type { TableItemValue } from './types'
 
 export function formatDate(date: string | Date): string {
-  const template = 'D MMM YYYY, hh:mmA'
+  const template = 'D MMM YYYY, hh:mm A'
   return dayjs(date).format(template)
 }
 

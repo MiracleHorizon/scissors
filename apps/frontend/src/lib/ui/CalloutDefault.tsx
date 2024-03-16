@@ -8,7 +8,7 @@ import type { ClassNameProps } from '@app-types/ClassNameProps'
 export const CalloutDefault: FC<Props> = ({ text, style, ...props }) => (
   <Callout.Root
     style={{
-      width: 'max-content',
+      maxWidth: 'max-content',
       borderRadius: 'var(--radius-3)',
       ...style
     }}
