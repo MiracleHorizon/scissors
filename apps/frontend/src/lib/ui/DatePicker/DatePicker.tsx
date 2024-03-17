@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from 'react'
-import { Button, Flex, Popover, TextField } from '@radix-ui/themes'
+import { Button, Flex, Popover, Text, TextField } from '@radix-ui/themes'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import dayjs from 'dayjs'
@@ -12,6 +12,7 @@ const currentDate = new Date()
 
 export function DatePicker({ value, onValueChange }: Props) {
   const [time, setTime] = useState(`${currentDate.getHours()}:${currentDate.getMinutes()}`)
+  const formattedDate = getFormattedDate()
 
   function handleTimeChange(ev: ChangeEvent<HTMLInputElement>) {
     const time = ev.target.value
@@ -37,8 +38,8 @@ export function DatePicker({ value, onValueChange }: Props) {
   return (
     <Popover.Root>
       <Popover.Trigger>
-        <Button variant='outline' color='gray' className={styles.trigger}>
-          {getFormattedDate()}
+        <Button title={formattedDate} variant='outline' color='gray' className={styles.trigger}>
+          <Text className='truncate'>{formattedDate}</Text>
 
           <CalendarIcon />
         </Button>

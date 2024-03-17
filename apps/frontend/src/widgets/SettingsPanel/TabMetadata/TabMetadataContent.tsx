@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { Flex } from '@radix-ui/themes'
+import { Flex, Separator } from '@radix-ui/themes'
 
 import { Ifd0OptionsForm } from './ifd0-form'
+import { Ifd2OptionsForm } from './ifd2-form'
 import { CalloutDefault } from '@ui/CalloutDefault'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
@@ -23,7 +24,7 @@ const MetadataTablesAccordion = dynamic(
 )
 
 export function TabMetadataContent() {
-  const [metadata, setMetadata] = useState<ExifrReturn | null>(null)
+  const [parsedMetadata, setParsedMetadata] = useState<ExifrReturn | null>(null)
   const file = useOutputStore(state => state.file)
   const downloadPayload = useOutputStore(state => state.downloadPayload)
   const isFileTypeAllowed = file ? allowedFileTypes.includes(cropImageFileType(file.type)) : false
@@ -38,26 +39,26 @@ export function TabMetadataContent() {
         .parse(data, {
           mergeOutput: false
         })
-        .then(result => setMetadata(result ?? null))
+        .then(result => setParsedMetadata(result ?? null))
         .catch(err => {
           // eslint-disable-next-line no-console
           console.log(err)
 
-          setMetadata(null)
+          setParsedMetadata(null)
         })
     })
   }, [file, downloadPayload])
 
   useEffect(() => {
-    if (!file && !downloadPayload && metadata) {
-      setMetadata(null)
+    if (!file && !downloadPayload && parsedMetadata) {
+      setParsedMetadata(null)
     }
-  }, [file, downloadPayload, metadata])
+  }, [file, downloadPayload, parsedMetadata])
 
   return (
     <Flex direction='column' gap='4' px='3' pt='3' pb='4' width='100%'>
       {!file && <CalloutDefault text='To continue, please upload an image file' color='yellow' />}
-      {file && !metadata && isFileTypeAllowed && (
+      {file && !parsedMetadata && isFileTypeAllowed && (
         <CalloutDefault
           text='This image has no metadata, but you can add them below'
           color='gray'
@@ -71,8 +72,10 @@ export function TabMetadataContent() {
       )}
 
       <Ifd0OptionsForm />
+      <Separator size='4' mt='2' />
+      <Ifd2OptionsForm />
 
-      {metadata && <MetadataTablesAccordion metadata={metadata} />}
+      {parsedMetadata && <MetadataTablesAccordion metadata={parsedMetadata} />}
     </Flex>
   )
 }

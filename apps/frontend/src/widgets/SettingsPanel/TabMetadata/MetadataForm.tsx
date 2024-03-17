@@ -1,28 +1,35 @@
-import { Flex, Grid } from '@radix-ui/themes'
+import { Flex, Grid, Heading } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
 import type { FC, ReactNode } from 'react'
 
 import type { GridColumns } from '@lib/theme'
-import styles from './MetadataTable.module.css'
+import styles from './MetadataForm.module.css'
 
 const gridColumns: GridColumns = {
   initial: '2',
   xs: '3'
 }
 
-export const MetadataForm: FC<Props> = ({ headerContent, content }) => (
-  <Flex direction='column' gap='2' className={styles.root}>
+export const MetadataForm: FC<Props> = ({ title, headerContent, content }) => (
+  <Flex direction='column' gap='2'>
     <Flex asChild justify='between'>
-      <header>{headerContent}</header>
+      <header>
+        <Heading as='h3' size='4'>
+          {title}
+        </Heading>
+
+        {headerContent}
+      </header>
     </Flex>
 
-    <Grid asChild columns={gridColumns} rows='2' gap='2'>
+    <Grid asChild columns={gridColumns} rows='2' gap='2' className={styles.grid}>
       <Form.Root>{content}</Form.Root>
     </Grid>
   </Flex>
 )
 
 interface Props {
+  title: string
   headerContent: ReactNode
   content: ReactNode
 }

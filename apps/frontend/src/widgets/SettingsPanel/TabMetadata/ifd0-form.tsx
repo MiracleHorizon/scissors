@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
 import type { ChangeEvent } from 'react'
 
@@ -52,15 +52,8 @@ export function Ifd0OptionsForm() {
 
   return (
     <MetadataForm
-      headerContent={
-        <>
-          <Heading as='h3' size='4'>
-            IFD0
-          </Heading>
-
-          <ButtonReset tooltipContent='Reset IFD0 form' onClick={handleReset} />
-        </>
-      }
+      title='IFD0'
+      headerContent={<ButtonReset tooltipContent='Reset IFD0 form fields' onClick={handleReset} />}
       content={
         <>
           <MetadataFormField
@@ -108,9 +101,7 @@ export function Ifd0OptionsForm() {
           <Flex asChild direction='column'>
             <Form.Field name='dateTime'>
               <Form.Label>Date Time</Form.Label>
-              <Form.Control asChild>
-                <DatePicker value={dateTime ?? new Date()} onValueChange={handleDateTimeChange} />
-              </Form.Control>
+              <DatePicker value={dateTime ?? new Date()} onValueChange={handleDateTimeChange} />
             </Form.Field>
           </Flex>
         </>
