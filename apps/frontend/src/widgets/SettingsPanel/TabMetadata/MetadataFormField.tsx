@@ -10,12 +10,13 @@ export const MetadataFormField: FC<Props> = ({
   label,
   value,
   register,
+  disabled,
   placeholder,
   onChange
 }) => (
   <Form.Field name={name}>
     <Form.Label className={clsx(styles.label, 'truncate')}>{label}</Form.Label>
-    <Form.Control asChild>
+    <Form.Control disabled={disabled} asChild>
       <TextField.Input value={value} placeholder={placeholder} onChange={onChange} {...register} />
     </Form.Control>
   </Form.Field>
@@ -28,6 +29,7 @@ interface Props extends WithReactHookForm {
   value?: string
   placeholder?: string
   type?: HTMLInputTypeAttribute
+  disabled?: boolean
   onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
 }
 

@@ -9,9 +9,11 @@ import { MetadataFormField } from './MetadataFormField'
 import { useMetadataStore } from '@stores/metadata'
 
 export function Ifd0OptionsForm() {
-  const { model, artist, copyright, dateTime, imageDescription, make, software } = useMetadataStore(
-    state => state.ifd0
-  )
+  const { keepMetadata, model, artist, copyright, dateTime, imageDescription, make, software } =
+    useMetadataStore(state => ({
+      ...state.ifd0,
+      keepMetadata: state.keepMetadata
+    }))
 
   const setMake = useMetadataStore(state => state.setMake)
   const setModel = useMetadataStore(state => state.setModel)
@@ -59,6 +61,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='make'
             label='Make'
+            disabled={!keepMetadata}
             value={make ?? ''}
             placeholder='Canon'
             onChange={handleSetMake}
@@ -66,6 +69,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='model'
             label='Model'
+            disabled={!keepMetadata}
             value={model ?? ''}
             placeholder='Canon EOS 6D'
             onChange={handleSetModel}
@@ -73,6 +77,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='copyright'
             label='Copyright'
+            disabled={!keepMetadata}
             value={copyright ?? ''}
             placeholder='@miraclehorizon'
             onChange={handleSetCopyright}
@@ -80,6 +85,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='artist'
             label='Artist'
+            disabled={!keepMetadata}
             value={artist ?? ''}
             placeholder='John Doe'
             onChange={handleSetArtist}
@@ -87,6 +93,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='software'
             label='Software'
+            disabled={!keepMetadata}
             value={software ?? ''}
             placeholder='Adobe Photoshop'
             onChange={handleSetSoftware}
@@ -94,6 +101,7 @@ export function Ifd0OptionsForm() {
           <MetadataFormField
             name='imageDescription'
             label='Description'
+            disabled={!keepMetadata}
             value={imageDescription ?? ''}
             placeholder='Photo taken with...'
             onChange={handleSetImageDescription}
@@ -101,7 +109,11 @@ export function Ifd0OptionsForm() {
           <Flex asChild direction='column'>
             <Form.Field name='dateTime'>
               <Form.Label>Date Time</Form.Label>
-              <DatePicker value={dateTime ?? new Date()} onValueChange={handleDateTimeChange} />
+              <DatePicker
+                disabled={!keepMetadata}
+                value={dateTime ?? new Date()}
+                onValueChange={handleDateTimeChange}
+              />
             </Form.Field>
           </Flex>
         </>

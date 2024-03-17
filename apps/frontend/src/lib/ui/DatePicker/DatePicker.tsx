@@ -10,7 +10,7 @@ import styles from './DatePicker.module.css'
 // TODO: Checkout
 const currentDate = new Date()
 
-export function DatePicker({ value, onValueChange }: Props) {
+export function DatePicker({ value, disabled, onValueChange }: Props) {
   const [time, setTime] = useState(`${currentDate.getHours()}:${currentDate.getMinutes()}`)
   const formattedDate = getFormattedDate()
 
@@ -37,7 +37,7 @@ export function DatePicker({ value, onValueChange }: Props) {
 
   return (
     <Popover.Root>
-      <Popover.Trigger>
+      <Popover.Trigger disabled={disabled}>
         <Button title={formattedDate} variant='outline' color='gray' className={styles.trigger}>
           <Text className='truncate'>{formattedDate}</Text>
 
@@ -71,4 +71,5 @@ export function DatePicker({ value, onValueChange }: Props) {
 interface Props {
   value: Date
   onValueChange: (value: Date) => void
+  disabled?: boolean
 }

@@ -9,7 +9,28 @@ export class ImageMetadataHandler extends ImageSharp {
     super(buffer)
   }
 
-  public async handle({ ifd0, ifd2 }: HandleMetadataSettingsDto): Promise<Buffer> {
+  public async handle({
+    keepMetadata,
+    keepExif,
+    keepICCProfile,
+    ifd0,
+    ifd2
+  }: HandleMetadataSettingsDto): Promise<Buffer> {
+    // TODO: Checkout
+    if (!keepMetadata) {
+      return this.toBuffer()
+    } else {
+      this.sharp.keepMetadata()
+    }
+
+    if (keepExif) {
+      this.sharp.keepExif()
+    }
+
+    if (keepICCProfile) {
+      this.sharp.keepIccProfile()
+    }
+
     const exifPayload: sharp.Exif = {}
     if (ifd0) {
       exifPayload.IFD0 = this.handleExifPayload(ifd0)

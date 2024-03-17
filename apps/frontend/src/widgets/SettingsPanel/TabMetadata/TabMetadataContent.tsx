@@ -4,6 +4,7 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { Ifd0OptionsForm } from './ifd0-form'
 import { Ifd2OptionsForm } from './ifd2-form'
+import { MetadataCheckboxGroup } from './MetadataCheckboxGroup'
 import { CalloutDefault } from '@ui/CalloutDefault'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
@@ -56,7 +57,7 @@ export function TabMetadataContent() {
   }, [file, downloadPayload, parsedMetadata])
 
   return (
-    <Flex direction='column' gap='4' px='3' pt='3' pb='4' width='100%'>
+    <Flex direction='column' gap='4' pl='3' pr='4' pt='3' pb='4' width='100%'>
       {!file && <CalloutDefault text='To continue, please upload an image file' color='yellow' />}
       {file && !parsedMetadata && isFileTypeAllowed && (
         <CalloutDefault
@@ -71,11 +72,23 @@ export function TabMetadataContent() {
         />
       )}
 
+      {parsedMetadata && (
+        <>
+          <MetadataCheckboxGroup hasExif={!!parsedMetadata?.exif} hasICC={!!parsedMetadata?.icc} />
+          <Separator size='4' />
+        </>
+      )}
+
       <Ifd0OptionsForm />
       <Separator size='4' mt='2' />
       <Ifd2OptionsForm />
 
-      {parsedMetadata && <MetadataTablesAccordion metadata={parsedMetadata} />}
+      {parsedMetadata && (
+        <>
+          <Separator size='4' mt='2' />
+          <MetadataTablesAccordion metadata={parsedMetadata} />
+        </>
+      )}
     </Flex>
   )
 }
