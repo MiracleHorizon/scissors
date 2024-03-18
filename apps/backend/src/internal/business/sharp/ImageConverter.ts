@@ -30,6 +30,7 @@ export class ImageConverter extends ImageSharp {
     outputFormat
   }: ConvertSettingsDto): Promise<Buffer> {
     await this.initialiseInputStatistics()
+    this.sharp.keepMetadata()
 
     if (flip) this.flip()
     if (flop) this.flop()

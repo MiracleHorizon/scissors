@@ -1,0 +1,38 @@
+.trigger {
+  font-size: 12px;
+}
+
+.content :global(.rdp) {
+  --rdp-cell-size: 36px;
+  --rdp-caption-font-size: 18px;
+  --rdp-accent-color: var(--accent-9);
+  --rdp-background-color: var(--accent-4);
+  --rdp-accent-color-dark: var(--accent-9);
+  --rdp-background-color-dark: var(--accent-4);
+  --rdp-outline: 2px solid var(--accent-9);
+  --rdp-outline-selected: 3px solid var(--accent-9);
+  --rdp-selected-color: var(--accent-9-contrast);
+
+  margin: 0;
+}
+
+.content :global(.rdp-day) {
+  margin: 1px;
+}
+
+.content :global(.rdp-button) {
+  font-size: 15px;
+}
+
+.content :global(.rdp-nav_button svg) {
+  width: 14px;
+  height: 14px;
+}
+
+.timeInput {
+  width: 76px;
+}
+
+.timeInput input::-webkit-calendar-picker-indicator {
+  display: none;
+}

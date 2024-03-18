@@ -9,7 +9,8 @@ interface Store {
 
 export const TOOLBAR_TAB = {
   CONVERT: 'convert',
-  RESIZE: 'resize'
+  RESIZE: 'resize',
+  METADATA: 'metadata'
 } as const
 export type ToolbarTab = (typeof TOOLBAR_TAB)[keyof typeof TOOLBAR_TAB]
 

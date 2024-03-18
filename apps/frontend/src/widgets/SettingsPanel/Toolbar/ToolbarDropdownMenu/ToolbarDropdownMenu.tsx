@@ -7,7 +7,7 @@ import { TOUR_STEP } from '@lib/tour'
 
 const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
   <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS} {...props}>
-    <Button variant='outline' radius='large' color='gray'>
+    <Button variant='soft' radius='large' color='gray'>
       Menu
       <ChevronDownIcon width='18px' height='18px' color='var(--gray-a11)' />
     </Button>

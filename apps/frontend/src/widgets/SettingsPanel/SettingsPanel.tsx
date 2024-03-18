@@ -25,6 +25,9 @@ const TabResize = dynamic(() => import('./TabResize').then(mod => mod.TabResize)
   ssr: false,
   loading: () => <TabResizeSkeleton />
 })
+const TabMetadata = dynamic(() => import('./TabMetadata').then(mod => mod.TabMetadata), {
+  ssr: false
+})
 
 const margin: MarginProps = {
   mt: '0',
@@ -63,6 +66,7 @@ export function SettingsPanel() {
           <Toolbar />
           {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
           {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
+          {selectedTab === TOOLBAR_TAB.METADATA && <TabMetadata />}
         </Tabs.Root>
       </Flex>
     </ScrollArea>
