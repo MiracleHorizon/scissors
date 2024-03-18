@@ -26,7 +26,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
   return (
     <Card size='2' className={styles.card}>
       <Flex align='center' height='100%' width='100%' className={styles.root}>
-        <MediaQuery minWidth={401}>
+        <MediaQuery minWidth={601}>
           <Flex
             align='center'
             justify='center'

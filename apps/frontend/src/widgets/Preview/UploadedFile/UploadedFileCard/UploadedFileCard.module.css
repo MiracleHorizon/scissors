@@ -1,6 +1,6 @@
 .card {
   --card-inset-width: 54px;
-  --card-inset-offset: var(--space-4);
+  --card-content-offset: var(--space-4);
   --buttons-width: 84px;
   --buttons-offset: var(--space-4);
 
@@ -13,15 +13,15 @@
 
 .cardInset {
   width: var(--card-inset-width);
-  margin-right: var(--card-inset-offset);
   box-shadow: 0 0 0 1px var(--gray-a5);
 }
 
 .content {
   max-width: calc(
-    100% - var(--card-inset-width) - var(--card-inset-offset) - var(--buttons-width) -
+    100% - var(--card-inset-width) - var(--card-content-offset) - var(--buttons-width) -
       var(--buttons-offset)
   );
+  margin-left: var(--card-content-offset);
   padding: var(--space-4) 0;
 }
 
@@ -41,6 +41,12 @@
   margin-right: var(--space-4);
 }
 
+@media screen and (max-width: 1023px) {
+  .cardInset {
+    box-shadow: none;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .buttonsContainer {
     justify-content: flex-end;
@@ -48,7 +54,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .card :global(.rt-CardInner) {
     padding: var(--card-padding);
   }
@@ -76,7 +82,8 @@
     margin-right: 0;
   }
 
-  .buttonsContainer, .loadingSpinner {
+  .buttonsContainer,
+  .loadingSpinner {
     align-self: flex-end;
   }
 }
