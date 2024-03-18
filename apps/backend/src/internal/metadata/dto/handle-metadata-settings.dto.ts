@@ -8,15 +8,15 @@ import { Ifd2OptionsDto } from './ifd2-options.dto'
 export class HandleMetadataSettingsDto {
   @IsBoolean()
   @IsDefined()
-  keepMetadata: boolean
+  readonly keepMetadata: boolean
 
   @IsBoolean()
   @IsDefined()
-  keepExif: boolean
+  readonly keepExif: boolean
 
   @IsBoolean()
   @IsDefined()
-  keepICCProfile: boolean
+  readonly keepICCProfile: boolean
 
   @IsNullable()
   @ValidateNested()
