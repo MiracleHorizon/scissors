@@ -38,7 +38,7 @@ export function MetadataTable({ data }: Props) {
             <Table.RowHeaderCell title={label} className={styles.rowHeaderCell}>
               {label}
             </Table.RowHeaderCell>
-            <Table.Cell>{value}</Table.Cell>
+            <Table.Cell className={styles.cell}>{value}</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
