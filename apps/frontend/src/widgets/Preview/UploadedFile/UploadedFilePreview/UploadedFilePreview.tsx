@@ -4,17 +4,19 @@ import { type CSSProperties, type FC, useEffect, useLayoutEffect, useRef, useSta
 
 import { EnterFullScreenIcon } from '@ui/icons/EnterFullScreenIcon'
 import { pathForAssets } from '@site/config'
-import type { DownloadPayload } from '@app-types/DownloadPayload'
+import { useOutputStore } from '@stores/output'
 import styles from './UploadedFilePreview.module.css'
 
 const rootStyle: CSSProperties = {
   backgroundImage: `url(${pathForAssets('image-fill-tiles.png')})`
 }
 
-export const UploadedFilePreview: FC<Props> = ({ file, downloadPayload, handleOpenLightbox }) => {
+export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => {
   const [rootRect, setRootRect] = useState<DOMRect>({} as DOMRect)
   const rootRef = useRef<HTMLDivElement>(null)
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   const updateRootRect = () => {
     const rootNode = rootRef.current
@@ -65,6 +67,5 @@ export const UploadedFilePreview: FC<Props> = ({ file, downloadPayload, handleOp
 
 interface Props {
   file: File
-  downloadPayload: DownloadPayload | null
   handleOpenLightbox: VoidFunction
 }

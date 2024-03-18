@@ -9,13 +9,15 @@ import Download from 'yet-another-react-lightbox/plugins/download'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 
 import { Cross1Icon } from '@ui/icons/Cross1Icon'
-import type { DownloadPayload } from '@app-types/DownloadPayload'
+import { type DownloadPayload, useOutputStore } from '@stores/output'
 
-// TODO: Documentation
 function getLightboxProps({
   downloadPayload,
   file
-}: Pick<Props, 'downloadPayload' | 'file'>): LightboxExternalProps {
+}: {
+  downloadPayload: DownloadPayload | null
+  file: File
+}): LightboxExternalProps {
   const plugins: Plugin[] = [Zoom, Fullscreen]
   const slides: Slide[] = []
 
@@ -58,15 +60,22 @@ function getLightboxProps({
   }
 }
 
-export function UploadedFileLightbox({ isOpen, onClose, ...props }: Props) {
-  const lightboxProps = useMemo(() => getLightboxProps(props), [props])
+export function UploadedFileLightbox({ file, isOpen, onClose }: Props) {
+  const downloadPayload = useOutputStore(state => state.downloadPayload)
+  const lightboxProps = useMemo(
+    () =>
+      getLightboxProps({
+        file,
+        downloadPayload
+      }),
+    [file, downloadPayload]
+  )
 
   return <Lightbox open={isOpen} close={onClose} {...lightboxProps} />
 }
 
 interface Props {
   file: File
-  downloadPayload: DownloadPayload | null
   isOpen: boolean
   onClose: VoidFunction
 }

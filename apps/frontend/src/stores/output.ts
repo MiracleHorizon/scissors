@@ -3,8 +3,13 @@ import { create } from 'zustand'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
-import type { DownloadPayload } from '@app-types/DownloadPayload'
 import type { ImageFileFormat } from '@server/sharp'
+
+export interface DownloadPayload {
+  link: string
+  fileName: string
+  blob: Blob
+}
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {

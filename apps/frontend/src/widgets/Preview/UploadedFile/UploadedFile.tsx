@@ -4,29 +4,18 @@ import { Flex } from '@radix-ui/themes'
 import { UploadedFileCard } from './UploadedFileCard'
 import { UploadedFilePreview } from './UploadedFilePreview'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
-import { useOutputStore } from '@stores/output'
 
-export function UploadedFile(props: Props) {
+export function UploadedFile({ file }: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
 
-  const handleOpenLightbox = () => setLightboxOpen(true)
-  const handleCloseLightbox = () => setLightboxOpen(false)
+  const openLightbox = () => setLightboxOpen(true)
+  const closeLightbox = () => setLightboxOpen(false)
 
   return (
     <Flex direction='column' align='center' gap='3'>
-      <UploadedFileCard {...props} />
-      <UploadedFileLightbox
-        file={props.file}
-        downloadPayload={downloadPayload}
-        isOpen={lightboxOpen}
-        onClose={handleCloseLightbox}
-      />
-      <UploadedFilePreview
-        file={props.file}
-        downloadPayload={downloadPayload}
-        handleOpenLightbox={handleOpenLightbox}
-      />
+      <UploadedFileCard file={file} />
+      <UploadedFileLightbox file={file} isOpen={lightboxOpen} onClose={closeLightbox} />
+      <UploadedFilePreview file={file} handleOpenLightbox={openLightbox} />
     </Flex>
   )
 }
