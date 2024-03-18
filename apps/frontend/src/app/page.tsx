@@ -1,4 +1,4 @@
-import { Box, Flex, type PaddingProps } from '@radix-ui/themes'
+import { Flex, type PaddingProps, ScrollArea } from '@radix-ui/themes'
 
 import { Preview } from '@widgets/Preview'
 import { SettingsPanel } from '@widgets/SettingsPanel'
@@ -18,24 +18,24 @@ const mainPadding: PaddingProps = {
 }
 
 const HomePage = () => (
-  <Box width='100%'>
-    <Flex width='100%' align='center' direction='column'>
+  <Flex width='100%' align='center' direction='column' className={styles.root}>
+    <ScrollArea scrollbars='vertical' size='1' className={styles.scrollArea}>
       <Flex
+        {...mainPadding}
         asChild
         justify='end'
         direction={mainDirection}
         width='100%'
         className={styles.main}
-        {...mainPadding}
       >
         <main>
           <Preview />
           <SettingsPanel />
         </main>
       </Flex>
-      <AppFooter />
-    </Flex>
-  </Box>
+    </ScrollArea>
+    <AppFooter />
+  </Flex>
 )
 
 export default HomePage

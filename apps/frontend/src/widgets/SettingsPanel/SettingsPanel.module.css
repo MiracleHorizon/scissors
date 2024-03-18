@@ -21,6 +21,6 @@
 @media screen and (max-width: 1023px) {
   .root {
     width: var(--settings-panel-width-md);
-    box-shadow: 0 -1px 0 0 var(--gray-a5);
+    box-shadow: none
   }
 }

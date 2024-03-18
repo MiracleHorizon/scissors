@@ -1,18 +1,29 @@
 .root {
   position: relative;
-  cursor: pointer;
   width: 100%;
+  height: calc(var(--layout-content-height) - var(--app-footer-height) - 200px);
+}
+
+.image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  overflow: hidden;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 @media (hover: hover) {
-  .root img:hover {
-    filter: brightness(70%);
-    transition: filter 0.1s ease-in-out;
-  }
-
   .root:hover .icon {
     opacity: 1;
     visibility: visible;
+  }
+
+  .image:hover {
+    filter: brightness(70%);
+    transition: filter 0.1s ease-in-out;
   }
 }
 
@@ -36,12 +47,6 @@
   top: 50%;
   bottom: 50%;
   transform: translate3d(-50%, -50%, 0);
-}
-
-@media screen and (max-width: 1023px) {
-  .root {
-    width: 60%;
-  }
 }
 
 @media screen and (max-width: 700px) {
