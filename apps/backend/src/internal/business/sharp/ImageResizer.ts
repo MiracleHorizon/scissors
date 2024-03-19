@@ -1,5 +1,6 @@
 import sharp from 'sharp'
 import { isAllObjectValuesEmpty } from '@scissors/utility'
+import { RESIZE_OPERATION } from '@scissors/sharp'
 
 import { ImageSharp } from './ImageSharp'
 import {
@@ -10,7 +11,6 @@ import {
   TrimOptionsDto
 } from '@internal/resize/dto'
 import { nullToUndefined } from '@helpers/nullToUndefined'
-import { RESIZE_OPERATION } from '@internal/resize/resize.constants'
 
 export class ImageResizer extends ImageSharp {
   constructor(buffer: ArrayBuffer) {

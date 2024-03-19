@@ -1,38 +1,42 @@
 import { IsBoolean, IsDefined, IsHexColor, IsIn, IsInt, Max, Min } from 'class-validator'
-import type { FitEnum, KernelEnum } from 'sharp'
+import {
+  MAX_RESIZE_WIDTH,
+  MIN_RESIZE_SIZE,
+  RESIZE_FIT,
+  RESIZE_GRAVITY,
+  RESIZE_KERNEL,
+  RESIZE_POSITION,
+  type ResizeFit,
+  type ResizeKernel
+} from '@scissors/sharp'
 
 import { IsNullable } from '@lib/validation'
-import { RESIZE_FIT, RESIZE_GRAVITY, RESIZE_KERNEL, RESIZE_POSITION } from '../resize.constants'
 
-const MIN_SIZE = 1
-const MAX_WIDTH = 1920
-const MAX_HEIGHT = 1920
-
-// FIXME: Сравнение width & height. Не могут оба быть равны null
+// TODO: Сравнение width & height. Не могут оба быть равны null
 export class ResizeOptionsDto {
   @IsInt()
   @IsNullable()
-  @Min(MIN_SIZE)
-  @Max(MAX_WIDTH)
+  @Min(MIN_RESIZE_SIZE)
+  @Max(MAX_RESIZE_WIDTH)
   @IsDefined()
   readonly width: number | null
 
   @IsInt()
   @IsNullable()
-  @Min(MIN_SIZE)
-  @Max(MAX_HEIGHT)
+  @Min(MIN_RESIZE_SIZE)
+  @Max(MAX_RESIZE_WIDTH)
   @IsDefined()
   readonly height: number | null
 
   @IsIn(Object.values(RESIZE_FIT))
   @IsNullable()
   @IsDefined()
-  readonly fit: keyof FitEnum | null
+  readonly fit: keyof ResizeFit | null
 
   @IsIn(Object.values(RESIZE_KERNEL))
   @IsNullable()
   @IsDefined()
-  readonly kernel: keyof KernelEnum | null
+  readonly kernel: keyof ResizeKernel | null
 
   @IsIn(Object.values([...Object.values(RESIZE_POSITION), ...Object.values(RESIZE_GRAVITY)]))
   @IsNullable()

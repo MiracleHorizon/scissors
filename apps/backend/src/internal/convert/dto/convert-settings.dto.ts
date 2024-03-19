@@ -9,6 +9,7 @@ import {
   ValidateNested
 } from 'class-validator'
 import { Type } from 'class-transformer'
+import { IMAGE_FILE_FORMAT, type ImageFileFormat, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
 import { IsNullable } from '@lib/validation'
 import { BlurDto } from './blur.dto'
@@ -16,9 +17,6 @@ import { NegateDto } from './negate.dto'
 import { NormaliseDto } from './normalise.dto'
 import { ModulateDto } from './modulate.dto'
 import { RotateDto } from './rotate.dto'
-import { MAX_GAMMA, MIN_GAMMA } from '../convert.constants'
-import { OUTPUT_FORMATS } from '@internal/constants'
-import type { ImageFileFormat } from '@internal/types'
 
 export class ConvertSettingsDto {
   @IsBoolean()
@@ -75,7 +73,7 @@ export class ConvertSettingsDto {
   @IsDefined()
   readonly rotate: RotateDto | null
 
-  @IsIn(Object.values(OUTPUT_FORMATS))
+  @IsIn(Object.values(IMAGE_FILE_FORMAT))
   @IsNullable()
   @IsDefined()
   readonly outputFormat: ImageFileFormat | null

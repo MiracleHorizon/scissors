@@ -1,12 +1,10 @@
 import { IsBoolean, IsDefined, IsHexColor, IsInt, Max, Min } from 'class-validator'
-
-const MAX_ANGLE = 360
-const MIN_ANGLE = -MAX_ANGLE
+import { MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@scissors/sharp'
 
 export class RotateDto {
   @IsInt()
-  @Min(MIN_ANGLE)
-  @Max(MAX_ANGLE)
+  @Min(MIN_ROTATE_ANGLE)
+  @Max(MAX_ROTATE_ANGLE)
   @IsDefined()
   readonly angle: number
 

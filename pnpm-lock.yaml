@@ -41,6 +41,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^9.0.0
         version: 9.4.3(@nestjs/common@9.4.3)(@nestjs/core@9.4.3)
+      '@scissors/sharp':
+        specifier: workspace:*
+        version: link:../../libs/sharp
       '@scissors/utility':
         specifier: workspace:*
         version: link:../../libs/utility
@@ -210,6 +213,9 @@ importers:
       react-loading-skeleton:
         specifier: 3.3.1
         version: 3.3.1(react@18.2.0)
+      react-modern-drawer:
+        specifier: 1.2.2
+        version: 1.2.2(react@18.2.0)
       react-responsive:
         specifier: 9.0.2
         version: 9.0.2(react@18.2.0)
@@ -7352,6 +7358,15 @@ packages:
     resolution: {integrity: sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==}
     peerDependencies:
       react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-modern-drawer@1.2.2(react@18.2.0):
+    resolution: {integrity: sha512-SXUNjofHzeoEas0kdMWWafuF2+vwdtbQD1cpkHxo7oyFj3v+2l2CMeJjc/GodYsnxVhSiYj75xosMJXXed9ykQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>16.0.0'
     dependencies:
       react: 18.2.0
     dev: false

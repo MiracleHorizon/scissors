@@ -1,13 +1,12 @@
 import { IsArray, IsDefined, MaxLength, MinLength, ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer'
+import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
 
 import { IsNullable } from '@lib/validation'
 import { ResizeOptionsDto } from './resize-options.dto'
 import { ExtendOptionsDto } from './extend-options.dto'
 import { ExtractOptionsDto } from './extract-options.dto'
 import { TrimOptionsDto } from './trim-options.dto'
-import { RESIZE_OPERATION } from '../resize.constants'
-import type { ResizeQueue } from '../resize.types'
 
 export class ResizeSettingsDto {
   @IsArray()

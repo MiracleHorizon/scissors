@@ -1,10 +1,11 @@
 import { Body, Controller, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
+import { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
 import type { Response } from 'express'
 
 import { ConvertService } from './convert.service'
 import { ConvertDto } from './dto'
-import { MAX_FILE_SIZE, OUTPUT_FORMATS } from '../constants'
+import { MAX_FILE_SIZE } from '../constants'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
 import type { File } from '@internal/types'
 
@@ -28,9 +29,7 @@ export class ConvertController {
         // eslint-disable-next-line no-unused-vars
         callback: (error: Error | null, acceptFile: boolean) => void
       ) {
-        const allowedMimeTypes = Object.values(OUTPUT_FORMATS).map(format => `image/${format}`)
-
-        if (!allowedMimeTypes.includes(file.mimetype)) {
+        if (!ALLOWED_IMAGE_FORMATS.includes(file.mimetype)) {
           callback(new Error('Unsupported file format'), false)
           return
         }

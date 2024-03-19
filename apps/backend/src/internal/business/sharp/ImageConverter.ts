@@ -1,4 +1,5 @@
 import { isAllObjectValuesEmpty } from '@scissors/utility'
+import type { ImageFileFormat } from '@scissors/sharp'
 
 import { ImageSharp } from './ImageSharp'
 import { SharpErrorsChecker } from './SharpErrorsChecker'
@@ -10,7 +11,6 @@ import type {
   NormaliseDto,
   RotateDto
 } from '@internal/convert/dto'
-import type { ImageFileFormat } from '@internal/types'
 
 export class ImageConverter extends ImageSharp {
   constructor(buffer: ArrayBuffer) {
