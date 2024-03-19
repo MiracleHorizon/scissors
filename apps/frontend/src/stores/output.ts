@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
-import type { ImageFileFormat } from '@server/sharp'
+import type { ImageFileFormat } from '@scissors/sharp'
 
 export interface DownloadPayload {
   link: string

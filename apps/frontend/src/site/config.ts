@@ -1,6 +1,8 @@
 export const isProduction = process.env.NODE_ENV === 'production'
 export const isDevelopment = process.env.NODE_ENV === 'development'
 
+export { ALLOWED_IMAGE_FORMATS as allowedImageFormats } from '@scissors/sharp'
+
 // METADATA
 export const SITE_TITLE = 'Scissors'
 export const SITE_DESCRIPTION =

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NORMALISE, type NormaliseOptions } from '@server/sharp'
+import { DEFAULT_NORMALISE, type NormaliseOptions } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {

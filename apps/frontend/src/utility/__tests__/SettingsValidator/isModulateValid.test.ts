@@ -1,5 +1,6 @@
+import { MIN_BRIGHTNESS } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MIN_BRIGHTNESS } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isModulateValid', () => {
   const isModulateValid = SettingsValidator.isModulateValid

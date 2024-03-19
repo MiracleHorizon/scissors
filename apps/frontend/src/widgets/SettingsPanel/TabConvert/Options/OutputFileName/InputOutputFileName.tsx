@@ -7,7 +7,7 @@ import { PopoverOutputFileName } from './PopoverOutputFileName'
 import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import { isValidFileName } from '@helpers/file/isValidFileName'
-import { MIN_FILE_NAME_LENGTH, MAX_FILE_NAME_LENGTH } from '@helpers/file/constants'
+import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH } from '@helpers/file/constants'
 import type { TextFieldInputProps } from '@lib/theme'
 import styles from './InputOutputFileName.module.css'
 

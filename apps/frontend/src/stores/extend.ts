@@ -5,7 +5,7 @@ import {
   DEFAULT_EXTEND_WITH,
   type ExtendOptions,
   type ExtendWith
-} from '@server/sharp'
+} from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {

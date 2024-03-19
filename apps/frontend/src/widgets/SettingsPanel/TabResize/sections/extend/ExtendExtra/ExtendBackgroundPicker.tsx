@@ -1,6 +1,7 @@
+import { EXTEND_WITH } from '@scissors/sharp'
+
 import { ColorPicker } from '@ui/ColorPicker'
 import { useExtendStore } from '@stores/extend'
-import { EXTEND_WITH } from '@server/sharp'
 
 export function ExtendBackgroundPicker() {
   const extendBackground = useExtendStore(state => state.background)

@@ -1,7 +1,12 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { type ConvertSettings, DEFAULT_FLIP, DEFAULT_FLOP, DEFAULT_GRAYSCALE } from '@server/sharp'
+import {
+  type ConvertSettings,
+  DEFAULT_FLIP,
+  DEFAULT_FLOP,
+  DEFAULT_GRAYSCALE
+} from '@scissors/sharp'
 
 type Settings = Pick<ConvertSettings, 'flip' | 'flop' | 'grayscale'>
 

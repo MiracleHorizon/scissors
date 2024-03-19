@@ -1,4 +1,5 @@
 {
+  "name": "scissors-frontend",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,7 +16,7 @@
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "precommit": "pnpm lint && pnpm lint:styles && pnpm test"
+    "check": "pnpm lint && pnpm lint:styles && pnpm test:coverage"
   },
   "engines": {
     "node": ">=20"
@@ -28,6 +29,8 @@
     "@radix-ui/react-accordion": "1.1.2",
     "@radix-ui/react-form": "^0.0.3",
     "@radix-ui/themes": "2.0.3",
+    "@scissors/sharp": "workspace:*",
+    "@scissors/utility": "workspace:*",
     "@tanstack/react-query": "5.17.8",
     "@vercel/analytics": "1.1.2",
     "@vercel/speed-insights": "1.0.9",

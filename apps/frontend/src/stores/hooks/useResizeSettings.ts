@@ -3,7 +3,7 @@ import { useExtendStore } from '@stores/extend'
 import { useExtractStore } from '@stores/extract'
 import { useTrimStore } from '@stores/trim'
 import { useTabResizeStore } from '@stores/tab-resize'
-import type { ResizeSettings } from '@server/sharp'
+import type { ResizeSettings } from '@scissors/sharp'
 
 export function useResizeSettings(): ResizeSettings {
   const queue = useTabResizeStore(state => state.getQueue())

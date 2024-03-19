@@ -1,5 +1,6 @@
+import { MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isRotateValid', () => {
   const isRotateValid = SettingsValidator.isRotateValid

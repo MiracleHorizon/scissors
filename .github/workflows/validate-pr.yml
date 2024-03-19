@@ -1,4 +1,4 @@
-name: Main branch pull request / push (Backend)
+name: Main branch push / PR
 
 on:
   workflow_dispatch:
@@ -6,13 +6,10 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   validate:
-    name: Validate and create pull request
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./apps/backend
     strategy:
       matrix:
         node-version: [ 20.x ]
@@ -30,14 +27,20 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: Install eslint dependencies
-        run: cd ../../ && npm install
+      - name: Install Turborepo
+        run: pnpm add turbo --global
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build project
+      - name: Build libs / packages
         run: pnpm build
 
-      - name: Lint project
+      - name: Build Frontend
+        run: pnpm frontend:build
+
+      - name: Build Backend
+        run: pnpm backend:build
+
+      - name: Lint
         run: pnpm lint

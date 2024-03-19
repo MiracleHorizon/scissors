@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_TRIM_LINE_ART, DEFAULT_TRIM_THRESHOLD, type TrimOptions } from '@server/sharp'
+import { DEFAULT_TRIM_LINE_ART, DEFAULT_TRIM_THRESHOLD, type TrimOptions } from '@scissors/sharp'
 
 /* eslint-disable no-unused-vars */
 interface Store extends TrimOptions {

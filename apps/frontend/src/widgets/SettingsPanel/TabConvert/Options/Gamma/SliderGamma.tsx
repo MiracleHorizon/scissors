@@ -1,6 +1,7 @@
+import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
+
 import { OptionSlider } from '@components/OptionSlider'
 import { useGammaStore } from '@stores/gamma'
-import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@server/sharp'
 
 export function SliderGamma() {
   const gamma = useGammaStore(state => state.gamma)

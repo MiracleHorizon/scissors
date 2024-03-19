@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { Code, Text } from '@radix-ui/themes'
+import { DEFAULT_RESIZE_FIT, RESIZE_FIT } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_FIT, RESIZE_FIT } from '@server/sharp'
 
 const values = Object.values(RESIZE_FIT)
 

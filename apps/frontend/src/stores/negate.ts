@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_NEGATE, type NegateOptions } from '@server/sharp'
+import { DEFAULT_NEGATE, type NegateOptions } from '@scissors/sharp'
 
 /* eslint-disable no-unused-vars */
 interface Store extends NegateOptions {

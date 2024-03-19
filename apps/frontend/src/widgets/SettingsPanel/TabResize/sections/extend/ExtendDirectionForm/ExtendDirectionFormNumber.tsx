@@ -1,6 +1,6 @@
 import { MoveIcon } from '@ui/icons/MoveIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
-import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/sharp'
+import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 
 export function ExtendDirectionFormNumber() {

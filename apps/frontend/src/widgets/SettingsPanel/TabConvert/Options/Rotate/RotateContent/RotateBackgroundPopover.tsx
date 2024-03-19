@@ -1,6 +1,7 @@
+import { DEFAULT_ROTATE_BACKGROUND } from '@scissors/sharp'
+
 import { ColorPicker } from '@ui/ColorPicker'
 import { useRotateStore } from '@stores/rotate'
-import { DEFAULT_ROTATE_BACKGROUND } from '@server/sharp'
 
 export function RotateBackgroundPopover() {
   const rotateBackground = useRotateStore(state => state.background)

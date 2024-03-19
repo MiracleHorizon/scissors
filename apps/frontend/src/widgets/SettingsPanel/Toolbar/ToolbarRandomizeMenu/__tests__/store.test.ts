@@ -1,4 +1,4 @@
-import { mergeState, defaultSettings } from '../store'
+import { defaultSettings, mergeState } from '../store'
 import { MAX_OPERATIONS } from '../constants'
 
 describe('ToolbarRandomizeMenu/store/mergeState', () => {

@@ -1,5 +1,6 @@
+import { RESIZE_FIT, RESIZE_KERNEL, RESIZE_POSITION, type ResizeOptions } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { RESIZE_FIT, RESIZE_KERNEL, RESIZE_POSITION, type ResizeOptions } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isResizeValid', () => {
   const isResizeValid = SettingsValidator.isResizeValid

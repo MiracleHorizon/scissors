@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react'
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
-import { MAX_HUE, MIN_HUE } from '@server/sharp'
+import { MAX_HUE, MIN_HUE } from '@scissors/sharp'
 import styles from './SliderHue.module.css'
 
 export function SliderHue() {

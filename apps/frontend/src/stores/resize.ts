@@ -13,7 +13,7 @@ import {
   type ResizeKernel,
   type ResizeOptions,
   type ResizePosition
-} from '@server/sharp'
+} from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 type Store = ResizeOptions & {

@@ -2,7 +2,7 @@ import { RowSpacingIcon } from '@ui/icons/RowSpacingIcon'
 import { ColumnSpacingIcon } from '@ui/icons/ColumnSpacingIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
-import { DEFAULT_EXTEND_INPUT_PROPS } from '@server/sharp'
+import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 
 export function ExtendDirectionFormAxis() {
   const axisX = useExtendStore(state => state.getXAxis())

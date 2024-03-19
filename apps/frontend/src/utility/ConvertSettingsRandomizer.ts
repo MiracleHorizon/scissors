@@ -26,7 +26,7 @@ import {
   type NegateOptions,
   type NormaliseOptions,
   type RotateOptions
-} from '@server/sharp'
+} from '@scissors/sharp'
 
 /*
  * All methods name must start with "getRandom".

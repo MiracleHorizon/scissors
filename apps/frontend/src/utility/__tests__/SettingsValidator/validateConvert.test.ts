@@ -1,4 +1,3 @@
-import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   type ConvertSettings,
   DEFAULT_GAMMA,
@@ -9,7 +8,9 @@ import {
   MIN_LIGHTNESS,
   MIN_NORMALISE,
   MIN_SATURATION
-} from '@server/sharp'
+} from '@scissors/sharp'
+
+import { SettingsValidator } from '@utility/SettingsValidator'
 
 describe('@utility/SettingsValidator.validateConvert', () => {
   const validate = SettingsValidator.validateConvert

@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
+import { DEFAULT_NORMALISE, MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_NORMALISE, MAX_NORMALISE, MIN_NORMALISE } from '@server/sharp'
 
 export function NormaliseRow() {
   return (

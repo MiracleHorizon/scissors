@@ -1,11 +1,11 @@
 import { Flex, Heading, Text } from '@radix-ui/themes'
 import type { FC } from 'react'
+import type { ConvertSettings } from '@scissors/sharp'
 
 import { ButtonDownload } from '@ui/ButtonDownload'
 import { useExportJSON } from '@hooks/useExportJSON'
 import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
-import type { ConvertSettings } from '@server/sharp'
 import styles from './GallerySlideInfo.module.css'
 
 const DetailsItem: FC<SlideDetail> = ({ label, value }) => (

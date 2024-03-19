@@ -1,9 +1,14 @@
 import { useCallback, useEffect } from 'react'
+import {
+  DEFAULT_EXTEND_WITH,
+  EXTEND_WITH,
+  type ExtendWith,
+  IMAGE_FILE_FORMAT
+} from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useExtendStore } from '@stores/extend'
 import { useOutputStore } from '@stores/output'
-import { DEFAULT_EXTEND_WITH, EXTEND_WITH, type ExtendWith, IMAGE_FILE_FORMAT } from '@server/sharp'
 
 const defaultData: OptionSelectData<ExtendWith> = [
   {

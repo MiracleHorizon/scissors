@@ -1,5 +1,6 @@
+import type { ExtractRegion } from '@scissors/sharp'
+
 import type { CropperData, CropperImageData } from './types'
-import type { ExtractRegion } from '@server/sharp'
 
 export function extractRegionToCropperData(extractRegion: ExtractRegion): CropperData {
   const { left: x, top: y, width, height } = extractRegion

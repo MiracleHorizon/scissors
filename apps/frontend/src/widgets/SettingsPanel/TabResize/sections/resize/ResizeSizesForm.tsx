@@ -1,15 +1,15 @@
 import { Flex } from '@radix-ui/themes'
-
-import { WidthIcon } from '@ui/icons/WidthIcon'
-import { HeightIcon } from '@ui/icons/HeightIcon'
-import { OptionNumberInput } from '@components/OptionNumberInput'
-import { useResizeStore } from '@stores/resize'
 import {
   MAX_RESIZE_HEIGHT,
   MAX_RESIZE_WIDTH,
   MIN_RESIZE_SIZE,
   RESIZE_SIZE_STEP
-} from '@server/sharp'
+} from '@scissors/sharp'
+
+import { WidthIcon } from '@ui/icons/WidthIcon'
+import { HeightIcon } from '@ui/icons/HeightIcon'
+import { OptionNumberInput } from '@components/OptionNumberInput'
+import { useResizeStore } from '@stores/resize'
 
 const defaultInputProps = {
   min: MIN_RESIZE_SIZE,

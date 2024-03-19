@@ -1,5 +1,6 @@
+import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isBlurValid', () => {
   const isBlurValid = SettingsValidator.isBlurValid

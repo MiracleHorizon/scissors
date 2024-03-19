@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
+import { DEFAULT_TRIM_LINE_ART } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_TRIM_LINE_ART } from '@server/sharp'
 
 export const LineArtSection = () => (
   <DocsTableRow

@@ -1,5 +1,6 @@
+import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { IMAGE_FILE_FORMAT } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isValidOutputFormat', () => {
   const isValidOutputFormat = SettingsValidator.isValidOutputFormat

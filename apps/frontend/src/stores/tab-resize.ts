@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { arrayMove } from '@dnd-kit/sortable'
 import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core'
 
-import { RESIZE_OPERATION, type ResizeQueue } from '@server/sharp'
+import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
 
 /* eslint-disable no-unused-vars */
 interface Store extends State {

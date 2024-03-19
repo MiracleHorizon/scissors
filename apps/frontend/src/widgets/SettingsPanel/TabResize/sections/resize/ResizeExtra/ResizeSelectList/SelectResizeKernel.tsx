@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
+import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@server/sharp'
 
 const data: OptionSelectData<ResizeKernel> = [
   {

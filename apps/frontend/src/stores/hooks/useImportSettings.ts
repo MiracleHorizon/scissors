@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 import { useSettingsSetters } from './useSettingsSetters'
 import { SettingsValidator } from '@utility/SettingsValidator'
 import { readJSONFile } from '@utility/json-file'
-import { NULL_CONVERT_SETTINGS } from '@server/sharp'
+import { NULL_CONVERT_SETTINGS } from '@scissors/sharp'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 
 export function useImportSettings(selectedTab: ToolbarTab) {

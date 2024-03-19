@@ -1,5 +1,6 @@
+import { MAX_TRIM_THRESHOLD, type TrimOptions } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MAX_TRIM_THRESHOLD, type TrimOptions } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isTrimValid', () => {
   const isTrimValid = SettingsValidator.isTrimValid

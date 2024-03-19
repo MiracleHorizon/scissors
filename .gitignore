@@ -1,7 +1,14 @@
-/node_modules
-**/coverage/
+# JetBrains IDEs
 /.idea
 /scissors.iml
+
+**/node_modules
+**/coverage/
+**/dist
+
+.turbo
+
+# Environment
 .env
 .env.development
 .env.production

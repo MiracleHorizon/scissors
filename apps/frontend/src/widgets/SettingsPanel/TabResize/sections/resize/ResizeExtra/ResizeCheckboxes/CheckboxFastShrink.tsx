@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
+import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { OptionCheckbox } from '@components/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
-import { IMAGE_FILE_FORMAT } from '@server/sharp'
 
 const ALLOWED_FORMATS_FOR_FAST_SHRINK: string[] = [IMAGE_FILE_FORMAT.JPEG, IMAGE_FILE_FORMAT.WEBP]
 

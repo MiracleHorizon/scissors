@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
+import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useOutputStore } from '@stores/output'
-import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@server/sharp'
 
 const data: OptionSelectData<ImageFileFormat> = [
   {
