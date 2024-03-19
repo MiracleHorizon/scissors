@@ -1,0 +1,30 @@
+name: Main branch push / PR
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 20.x ]
+    steps:
+      - name: Install Turborepo
+        run: pnpm add turbo --global
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build libs / packages
+        run: pnpm build
+
+      - name: Build Frontend
+        run: pnpm frontend:build
+
+      - name: Build Backend
+        run: pnpm backend:build

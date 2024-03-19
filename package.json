@@ -13,16 +13,14 @@
   ],
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo run dev",
+    "dev": "turbo dev",
     "frontend:dev": "cd apps/frontend && pnpm dev",
     "frontend:build": "cd apps/frontend && pnpm build",
     "frontend:start": "cd apps/frontend && pnpm start",
-    "frontend:lint": "cd apps/frontend && pnpm lint",
     "backend:dev": "cd apps/backend && pnpm dev",
     "backend:build": "cd apps/backend && pnpm build",
     "backend:start": "cd apps/backend && pnpm start",
-    "backend:prod": "cd apps/backend && pnpm prod",
-    "backend:lint": "npx eslint ./apps/backend"
+    "backend:prod": "cd apps/backend && pnpm prod"
   },
   "engines": {
     "node": ">= 20"
@@ -32,7 +30,8 @@
     "@typescript-eslint/parser": "6.18.0",
     "eslint": "8.56.0",
     "prettier": "3.2.5",
-    "typescript": "5.4.2"
+    "typescript": "5.4.2",
+    "turbo": "1.12.5"
   },
   "keywords": [
     "image",
