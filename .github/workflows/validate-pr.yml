@@ -39,5 +39,11 @@ jobs:
       - name: Build Frontend
         run: pnpm frontend:build
 
+      - name: Check Frontend
+        run: pnpm frontend:check
+
       - name: Build Backend
         run: pnpm backend:build
+
+      - name: Lint Backend
+        run: pnpm backend:lint

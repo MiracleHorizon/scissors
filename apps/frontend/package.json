@@ -16,7 +16,7 @@
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "precommit": "pnpm lint && pnpm lint:styles && pnpm test"
+    "check": "pnpm lint && pnpm lint:styles && pnpm test:coverage"
   },
   "engines": {
     "node": ">=20"

@@ -17,10 +17,12 @@
     "frontend:dev": "cd apps/frontend && pnpm dev",
     "frontend:build": "cd apps/frontend && pnpm build",
     "frontend:start": "cd apps/frontend && pnpm start",
+    "frontend:check": "cd apps/frontend && pnpm check",
     "backend:dev": "cd apps/backend && pnpm dev",
     "backend:build": "cd apps/backend && pnpm build",
     "backend:start": "cd apps/backend && pnpm start",
-    "backend:prod": "cd apps/backend && pnpm prod"
+    "backend:prod": "cd apps/backend && pnpm prod",
+    "backend:lint": "cd apps/backend && pnpm lint"
   },
   "engines": {
     "node": ">= 20"
