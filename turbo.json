@@ -22,6 +22,11 @@
       "cache": false,
       "persistent": true
     },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
     "postbuild": {
       "dependsOn": [
         "^build"
