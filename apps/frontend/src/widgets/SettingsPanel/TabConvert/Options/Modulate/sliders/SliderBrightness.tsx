@@ -1,6 +1,6 @@
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
-import { BRIGHTNESS_STEP, MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@server/sharp'
+import { BRIGHTNESS_STEP, MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@scissors/sharp'
 
 export function SliderBrightness() {
   const brightness = useModulateStore(state => state.brightness)

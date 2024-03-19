@@ -6,6 +6,6 @@ import { OptionSliderSkeleton } from '@components/OptionSlider/OptionSliderSkele
 export const GammaContentSkeleton = () => (
   <Flex direction='column' gap='2' width='100%'>
     <OptionSectionHeaderSkeleton />
-    <OptionSliderSkeleton  />
+    <OptionSliderSkeleton />
   </Flex>
 )

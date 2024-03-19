@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common'
+import { isAllObjectValuesEmpty } from '@scissors/utility'
 
 import { ImageConverter } from '@internal/business/sharp'
-import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import type { ConvertParams, ConvertServiceAbstraction } from './convert.types'
 
 @Injectable()

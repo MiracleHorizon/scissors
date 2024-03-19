@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
+import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { ResizeFitExamplesPopover } from './ResizeFitExamplesPopover'
 import { useResizeStore } from '@stores/resize'
-import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@server/sharp'
 
 const data: OptionSelectData<ResizeFit> = [
   {

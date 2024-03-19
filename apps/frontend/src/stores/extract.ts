@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
-import type { ExtractRegion, ExtractOptions } from '@server/sharp'
+import type { ExtractRegion } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
   getExtractRegion: () => ExtractRegion
-  getExtractOptions: () => ExtractOptions
+  getExtractOptions: () => ExtractRegion
 
   setRegion: (region: ExtractRegion) => void
   setPreviewFile: (file: File | null) => void
@@ -14,7 +14,7 @@ interface Store extends State {
   reset: VoidFunction
 }
 
-interface State extends ExtractOptions {
+interface State extends ExtractRegion {
   previewFile: File | null
   previewAspectRatio: number
   cropperAspectRatio: number

@@ -2,7 +2,7 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { TitleWithExclamation, type Props, testId } from '@components/TitleWithExclamation'
+import { type Props, testId, TitleWithExclamation } from '@components/TitleWithExclamation'
 import { getRadixSpaceVar } from '@lib/theme'
 
 describe('@components/TitleWithExclamation', () => {

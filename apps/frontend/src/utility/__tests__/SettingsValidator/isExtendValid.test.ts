@@ -1,11 +1,12 @@
-import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   DEFAULT_EXTEND_BACKGROUND,
   EXTEND_WITH,
   type ExtendOptions,
   MAX_EXTEND_DIRECTION_SIZE,
   MIN_EXTEND_DIRECTION_SIZE
-} from '@server/sharp'
+} from '@scissors/sharp'
+
+import { SettingsValidator } from '@utility/SettingsValidator'
 
 describe('@utility/SettingsValidator.isExtendValid', () => {
   const isExtendValid = SettingsValidator.isExtendValid

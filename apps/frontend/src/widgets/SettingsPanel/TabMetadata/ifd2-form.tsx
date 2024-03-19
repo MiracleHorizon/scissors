@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { useCallback, useMemo } from 'react'
+import { DEFAULT_IFD2_OPTIONS, type IFD2Options } from '@scissors/sharp'
 
 import { ButtonReset } from '@ui/ButtonReset'
 import { MetadataForm } from './MetadataForm'
 import { MetadataFormField } from './MetadataFormField'
 import { useMetadataStore } from '@stores/metadata'
-import { DEFAULT_IFD2_OPTIONS, type IFD2Options } from '@server/sharp'
 
 const fieldList: {
   name: keyof IFD2Options

@@ -1,10 +1,11 @@
+import { DEFAULT_ROTATE_ANGLE } from '@scissors/sharp'
+
 import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'
 import { useRotateStore } from '@stores/rotate'
 import { DOCS_HASH_ROTATE, PATH_DOCS } from '@site/paths'
-import { DEFAULT_ROTATE_ANGLE } from '@server/sharp'
 
 export function RotateHeader() {
   const angle = useRotateStore(state => {

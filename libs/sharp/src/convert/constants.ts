@@ -1,4 +1,4 @@
-import type { BlurOptions, ConvertSettings, NegateOptions, NormaliseOptions } from '../types'
+import type { BlurOptions, ConvertSettings, NegateOptions, NormaliseOptions } from './types'
 
 export const IMAGE_FILE_FORMAT = {
   JPEG: 'jpeg',

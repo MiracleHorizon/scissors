@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
+import { MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@server/sharp'
 
 export function BrightnessRow() {
   return (

@@ -5,15 +5,15 @@ import MediaQuery from 'react-responsive'
 
 import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
+import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { ImageFileIcon } from '@ui/icons/ImageFileIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
-import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
+import { allowedImageFormats } from '@site/config'
 import styles from './UploadedFileCard.module.css'
-import { ImageUploadPopover } from '@components/ImageUploadPopover'
 
 export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
@@ -60,7 +60,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             <Flex gap='1'>
               <ImageUploadPopover />
               <ButtonUpload
-                accept={ALLOWED_IMAGE_FORMATS}
+                accept={allowedImageFormats}
                 setFile={setFile}
                 tooltipContent='Upload New File'
               />

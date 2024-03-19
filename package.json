@@ -7,8 +7,13 @@
   "repository": "https://github.com/MiracleHorizon/scissors",
   "authorGithub": "https://github.com/MiracleHorizon",
   "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "scripts": {
-    "lint": "pnpm frontend:lint && pnpm backend:lint",
+    "build": "turbo build",
+    "dev": "turbo run dev",
     "frontend:dev": "cd apps/frontend && pnpm dev",
     "frontend:build": "cd apps/frontend && pnpm build",
     "frontend:start": "cd apps/frontend && pnpm start",
@@ -26,7 +31,8 @@
     "@typescript-eslint/eslint-plugin": "6.18.0",
     "@typescript-eslint/parser": "6.18.0",
     "eslint": "8.56.0",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "typescript": "5.4.2"
   },
   "keywords": [
     "image",

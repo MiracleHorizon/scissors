@@ -1,14 +1,14 @@
 import sharp from 'sharp'
+import { isAllObjectValuesEmpty } from '@scissors/utility'
 
 import { ImageSharp } from './ImageSharp'
 import {
   ExtendOptionsDto,
-  TrimOptionsDto,
-  ResizeOptionsDto,
   ExtractOptionsDto,
-  ResizeSettingsDto
+  ResizeOptionsDto,
+  ResizeSettingsDto,
+  TrimOptionsDto
 } from '@internal/resize/dto'
-import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import { nullToUndefined } from '@helpers/nullToUndefined'
 import { RESIZE_OPERATION } from '@internal/resize/resize.constants'
 

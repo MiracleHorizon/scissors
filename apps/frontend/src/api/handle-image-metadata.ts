@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
+import type { MetadataSettings } from '@scissors/sharp'
 
-import { useOutputStore, type DownloadPayload } from '@stores/output'
+import { type DownloadPayload, useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
@@ -8,7 +9,6 @@ import { createApiURL } from '@site/config'
 import { PATH_API_METADATA } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
 import type { MutationPayload } from './types'
-import type { MetadataSettings } from '@server/sharp'
 
 async function handleImageMetadata(formData: FormData): Promise<Blob> {
   const abortController = new AbortController()

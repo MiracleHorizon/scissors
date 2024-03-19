@@ -1,6 +1,7 @@
+import { isAllObjectValuesEmpty } from '@scissors/utility'
+
 import { ImageSharp } from './ImageSharp'
 import { SharpErrorsChecker } from './SharpErrorsChecker'
-import { isAllObjectValuesEmpty } from '@helpers/isAllObjectValuesEmpty'
 import type {
   BlurDto,
   ConvertSettingsDto,

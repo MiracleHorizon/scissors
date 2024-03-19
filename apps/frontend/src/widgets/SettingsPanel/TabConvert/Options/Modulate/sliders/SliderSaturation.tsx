@@ -1,6 +1,7 @@
+import { MAX_SATURATION, MIN_SATURATION, SATURATION_STEP } from '@scissors/sharp'
+
 import { OptionSlider } from '@components/OptionSlider'
 import { useModulateStore } from '@stores/modulate'
-import { MAX_SATURATION, MIN_SATURATION, SATURATION_STEP } from '@server/sharp'
 
 export function SliderSaturation() {
   const saturation = useModulateStore(state => state.saturation)

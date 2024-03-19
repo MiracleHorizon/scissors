@@ -1,4 +1,3 @@
-import { SettingsValidator } from '@utility/SettingsValidator'
 import {
   EXTEND_WITH,
   MIN_TRIM_THRESHOLD,
@@ -6,7 +5,9 @@ import {
   RESIZE_KERNEL,
   RESIZE_POSITION,
   type ResizeSettings
-} from '@server/sharp'
+} from '@scissors/sharp'
+
+import { SettingsValidator } from '@utility/SettingsValidator'
 
 describe('@utility/SettingsValidator.validateResize', () => {
   const validate = SettingsValidator.validateResize

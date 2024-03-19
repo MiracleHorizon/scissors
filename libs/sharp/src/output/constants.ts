@@ -1,4 +1,4 @@
-import type { IFD0Options, IFD2Options } from '@server/sharp'
+import type { IFD0Options, IFD2Options } from './types'
 
 export const DEFAULT_IFD0_OPTIONS: IFD0Options = {
   make: null,

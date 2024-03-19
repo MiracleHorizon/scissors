@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
+import { DEFAULT_TRIM_THRESHOLD } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_TRIM_THRESHOLD } from '@server/sharp'
 
 export const ThresholdRow = () => (
   <DocsTableRow

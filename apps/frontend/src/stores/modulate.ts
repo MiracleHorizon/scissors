@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import type { ModulateOptions } from '@server/sharp'
+import type { ModulateOptions } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {

@@ -1,4 +1,4 @@
-import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
+import {allowedImageFormats} from '@site/config'
 
 /**
  * @param type - image file type (example: 'image/png' or 'png')
@@ -11,5 +11,5 @@ export function isValidFileType(type: string): boolean {
     value = `image/${type}`
   }
 
-  return ALLOWED_IMAGE_FORMATS.split(', ').some(v => v === value)
+  return allowedImageFormats.split(', ').some(v => v === value)
 }

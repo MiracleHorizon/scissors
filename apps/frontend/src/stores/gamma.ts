@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { DEFAULT_GAMMA, type GammaValue, MIN_GAMMA } from '@server/sharp'
+import { DEFAULT_GAMMA, type GammaValue, MIN_GAMMA } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {

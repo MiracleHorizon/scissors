@@ -1,4 +1,4 @@
-import type { IMAGE_FILE_FORMAT } from '../constants'
+import type { IMAGE_FILE_FORMAT } from './constants'
 
 export interface ConvertSettings {
   flip: boolean

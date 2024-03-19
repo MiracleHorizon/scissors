@@ -7,7 +7,7 @@ import { ImageDropzone } from '@components/ImageDropzone'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
-import { ALLOWED_IMAGE_FORMATS } from '@server/sharp'
+import { allowedImageFormats } from '@site/config'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ImageUploader.module.css'
 
@@ -31,7 +31,7 @@ export function ImageUploader() {
       className={styles.root}
     >
       <ImageDropzone
-        accept={ALLOWED_IMAGE_FORMATS}
+        accept={allowedImageFormats}
         setFile={setFile}
         htmlAttributes={fileUploadZoneHTMLAttributes}
       />
@@ -45,7 +45,7 @@ export function ImageUploader() {
         className={styles.buttons}
       >
         <ButtonUpload
-          accept={ALLOWED_IMAGE_FORMATS}
+          accept={allowedImageFormats}
           setFile={setFile}
           tooltipContent='Upload an image from device'
         />

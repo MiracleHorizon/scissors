@@ -5,7 +5,7 @@ import type {
   RESIZE_KERNEL,
   RESIZE_OPERATION,
   RESIZE_POSITION
-} from '../constants'
+} from './constants'
 
 export interface ResizeSettings {
   queue: ResizeQueue

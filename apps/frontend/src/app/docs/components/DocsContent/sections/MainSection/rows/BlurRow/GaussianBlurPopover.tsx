@@ -1,9 +1,9 @@
 'use client'
 
 import { Code, Text } from '@radix-ui/themes'
+import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
 import { DetailsPopover } from '@app/docs/components/DocsContent/DetailsPopover'
-import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
 
 export default function GaussianBlurPopover() {
   return (

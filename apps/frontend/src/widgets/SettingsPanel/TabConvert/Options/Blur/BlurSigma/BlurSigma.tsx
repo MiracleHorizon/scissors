@@ -3,7 +3,7 @@ import { Flex } from '@radix-ui/themes'
 import { OptionSlider } from '@components/OptionSlider'
 import { BlurSigmaHeader } from './BlurSigmaHeader'
 import { useBlurStore } from '@stores/blur'
-import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@server/sharp'
+import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
 export function BlurSigma({ disabled }: Props) {
   const sigma = useBlurStore(state => state.sigma)

@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
+import type { ResizeSettings } from '@scissors/sharp'
 
-import { useOutputStore, type DownloadPayload } from '@stores/output'
+import { type DownloadPayload, useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
@@ -8,7 +9,6 @@ import { createApiURL } from '@site/config'
 import { PATH_API_RESIZE } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
 import { cropFileName } from '@helpers/file/cropFileName'
-import type { ResizeSettings } from '@server/sharp'
 import type { MutationPayload } from './types'
 
 async function resizeImage(formData: FormData): Promise<Blob> {

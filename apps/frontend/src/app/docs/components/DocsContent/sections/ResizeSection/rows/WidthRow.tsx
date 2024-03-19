@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
+import { MAX_RESIZE_WIDTH, MIN_RESIZE_SIZE } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { MAX_RESIZE_WIDTH, MIN_RESIZE_SIZE } from '@server/sharp'
 
 export function WidthRow() {
   return (

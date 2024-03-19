@@ -1,0 +1,1 @@
+export { isAllObjectValuesEmpty } from './isAllObjectValuesEmpty'

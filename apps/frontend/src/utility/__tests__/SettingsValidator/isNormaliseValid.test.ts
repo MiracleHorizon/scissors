@@ -1,5 +1,6 @@
+import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MAX_NORMALISE, MIN_NORMALISE } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isNormaliseValid', () => {
   const isNormaliseValid = SettingsValidator.isNormaliseValid

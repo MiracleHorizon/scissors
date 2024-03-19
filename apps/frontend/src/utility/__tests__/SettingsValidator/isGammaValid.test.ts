@@ -1,5 +1,6 @@
+import { MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
+
 import { SettingsValidator } from '@utility/SettingsValidator'
-import { MAX_GAMMA, MIN_GAMMA } from '@server/sharp'
 
 describe('@utility/SettingsValidator.isGammaValid', () => {
   const isGammaValid = SettingsValidator.isGammaValid

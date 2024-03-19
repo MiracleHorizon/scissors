@@ -1,8 +1,8 @@
-import { Code, Text } from '@radix-ui/themes'
 import { Fragment } from 'react'
+import { Code, Text } from '@radix-ui/themes'
+import { DEFAULT_EXTEND_WITH, EXTEND_WITH } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_EXTEND_WITH, EXTEND_WITH } from '@server/sharp'
 
 const values = Object.values(EXTEND_WITH)
 

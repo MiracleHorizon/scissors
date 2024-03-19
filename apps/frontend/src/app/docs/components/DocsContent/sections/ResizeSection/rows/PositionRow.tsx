@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
+import { DEFAULT_RESIZE_POSITION, RESIZE_FIT } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_RESIZE_POSITION, RESIZE_FIT } from '@server/sharp'
 
 export function PositionRow() {
   return (

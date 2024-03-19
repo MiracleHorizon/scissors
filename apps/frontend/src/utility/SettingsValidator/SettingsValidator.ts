@@ -1,5 +1,6 @@
 import {
   blurSchema,
+  convertSettingsSchema,
   extendSchema,
   gammaSchema,
   modulateSchema,
@@ -9,7 +10,6 @@ import {
   resizeSchema,
   resizeSettingsSchema,
   rotateSchema,
-  convertSettingsSchema,
   tintSchema,
   trimSchema
 } from './SettingsValidator.schemas'

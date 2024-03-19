@@ -1,7 +1,7 @@
 import { Text } from '@radix-ui/themes'
+import { DEFAULT_WITHOUT_ENLARGEMENT } from '@scissors/sharp'
 
 import { DocsTableRow } from '../../../DocsSection/DocsTable/DocsTableRow'
-import { DEFAULT_WITHOUT_ENLARGEMENT } from '@server/sharp'
 
 export function EnlargementRow() {
   return (

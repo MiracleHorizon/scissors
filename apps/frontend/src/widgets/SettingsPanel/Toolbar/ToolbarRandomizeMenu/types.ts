@@ -1,4 +1,4 @@
-import type { ConvertSettings } from '@server/sharp'
+import type { ConvertSettings } from '@scissors/sharp'
 
 export type Label = keyof ConvertSettings
 export type Setting = {

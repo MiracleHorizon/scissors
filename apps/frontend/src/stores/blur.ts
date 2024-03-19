@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { type BlurOptions, DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@server/sharp'
+import { type BlurOptions, DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
