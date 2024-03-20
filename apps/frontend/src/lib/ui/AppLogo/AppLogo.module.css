@@ -1,7 +1,9 @@
 .root {
+  --size: 34px;
+
   cursor: pointer;
-  width: 34px;
-  height: 34px;
+  width: var(--size);
+  height: var(--size);
   border-radius: 8px;
 }
 
@@ -10,9 +12,8 @@
   height: inherit;
 }
 
-@media screen and (max-width: 519px) {
+@media screen and (max-width: 767px) {
   .root {
-    width: 32px;
-    height: 32px;
+    --size: 32px;
   }
 }

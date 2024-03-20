@@ -1,6 +1,9 @@
 .root {
-  width: 18px;
-  height: 18px;
+  --size: 18px;
+
+  flex-shrink: 0;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   border: 1px solid rgba(170 170 170 / 0.2);
 }

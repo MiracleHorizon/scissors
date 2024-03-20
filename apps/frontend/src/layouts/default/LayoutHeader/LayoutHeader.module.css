@@ -6,5 +6,42 @@
   height: var(--layout-header-height);
   z-index: 10;
   background-color: var(--color-background);
-  box-shadow: 0 1px var(--gray-a4);
+  border-bottom: 1px solid var(--gray-a4);
+}
+
+.desktopContent {
+  display: flex;
+  height: 100%;
+}
+
+.themeMobileActions {
+  display: none;
+}
+
+.root :global(.EZDrawer) {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .root :global(.EZDrawer) {
+    display: block !important;
+  }
+
+  .themeMobileActions {
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-4);
+    margin-right: auto;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+  }
+
+  .desktopContent {
+    display: none;
+  }
 }

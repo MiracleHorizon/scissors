@@ -1,0 +1,22 @@
+.trigger {
+  --trigger-size: 20px;
+
+  width: var(--trigger-size) !important;
+  height: var(--trigger-size) !important;
+}
+
+.content :global(.rt-ScrollAreaRoot) {
+  max-height: 60dvh;
+}
+
+.content :global(.rt-DropdownMenuViewport) {
+  width: 120px;
+}
+
+.content div[role='menuitemradio'] {
+  padding-right: 8px !important;
+}
+
+.itemText {
+  text-transform: capitalize;
+}

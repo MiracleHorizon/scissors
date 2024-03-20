@@ -1,0 +1,32 @@
+.root {
+  min-height: 30dvh !important;
+  height: max-content !important;
+  background: var(--color-background) !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+.root,
+.overlay {
+  top: var(--layout-header-height) !important;
+}
+
+.root,
+.trigger {
+  display: none !important;
+}
+
+.heading {
+  padding-left: var(--space-3);
+  font-weight: 600;
+}
+
+@media screen and (max-width: 767px) {
+  .root {
+    display: flex !important;
+  }
+
+  .trigger {
+    display: inline-flex !important;
+  }
+}

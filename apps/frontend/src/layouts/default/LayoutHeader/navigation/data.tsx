@@ -1,13 +1,11 @@
-import { Flex } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { NavigationItemModel } from './types'
 
-import { ImageIcon } from '@ui/icons/ImageIcon'
 import { ReaderIcon } from '@ui/icons/ReaderIcon'
-import { NavigationItem } from './NavigationItem'
+import { ImageIcon } from '@ui/icons/ImageIcon'
 import { PATH_DOCS, PATH_GALLERY } from '@site/paths'
 import { TOUR_STEP } from '@lib/tour'
 
-const items: ComponentPropsWithoutRef<typeof NavigationItem>[] = [
+export const navigationItems: NavigationItemModel[] = [
   {
     label: 'Documentation',
     href: PATH_DOCS,
@@ -24,13 +22,3 @@ const items: ComponentPropsWithoutRef<typeof NavigationItem>[] = [
     icon: <ImageIcon width='18px' height='18px' label='go to gallery' />
   }
 ]
-
-export const Navigation = () => (
-  <Flex asChild align='center' gap='4' mr='4'>
-    <nav>
-      {items.map(item => (
-        <NavigationItem key={item.label} {...item} />
-      ))}
-    </nav>
-  </Flex>
-)
