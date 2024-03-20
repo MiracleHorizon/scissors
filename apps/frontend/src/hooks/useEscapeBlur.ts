@@ -1,19 +1,15 @@
-import { type RefObject, useEffect } from 'react'
+'use client'
+
+import type { RefObject } from 'react'
+
+import { useEscapeAction } from './useEscapeAction'
 
 export function useEscapeBlur<T extends HTMLElement>({ ref, options }: Params<T>) {
-  useEffect(() => {
-    const handleEscapeKeydown = (ev: KeyboardEvent) => {
-      if (ev.key !== 'Escape' || !ref.current) return
+  useEscapeAction(() => {
+    if (!ref.current) return
 
-      ref.current.blur()
-    }
-
-    window.addEventListener('keydown', handleEscapeKeydown, options)
-
-    return () => {
-      window.removeEventListener('keydown', handleEscapeKeydown, options)
-    }
-  }, [ref, options])
+    ref.current.blur()
+  }, options)
 }
 
 interface Params<T extends HTMLElement> {

@@ -1,9 +1,12 @@
-import { Flex, IconButton } from '@radix-ui/themes'
+'use client'
+
+import { IconButton } from '@radix-ui/themes'
+import type { CSSProperties } from 'react'
 
 import { MoonIcon } from '@ui/icons/MoonIcon'
 import { SunIcon } from '@ui/icons/SunIcon'
-import { AppearancePopoverTitle } from './AppearancePopoverTitle'
 import { setThemeCookie, type Theme, THEME_LS_KEY, type ThemeProps } from '@lib/theme'
+import type { StyleProps } from '@app-types/StyleProps'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 function getThemeIcon(theme: Theme) {
@@ -13,7 +16,12 @@ function getThemeIcon(theme: Theme) {
   return <Icon width='18px' height='18px' label={iconLabel} />
 }
 
-export function ToggleTheme({ theme, className }: Props) {
+const style: CSSProperties = {
+  width: '20px',
+  height: '20px'
+}
+
+export function ButtonToggleTheme({ theme, className }: Props) {
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
 
@@ -28,13 +36,16 @@ export function ToggleTheme({ theme, className }: Props) {
   }
 
   return (
-    <Flex align='center' justify='between' width='100%'>
-      <AppearancePopoverTitle title='Theme' />
-      <IconButton size='2' color='gray' variant='ghost' className={className} onClick={toggleTheme}>
-        {getThemeIcon(theme)}
-      </IconButton>
-    </Flex>
+    <IconButton
+      variant='ghost'
+      color='gray'
+      style={style}
+      className={className}
+      onClick={toggleTheme}
+    >
+      {getThemeIcon(theme)}
+    </IconButton>
   )
 }
 
-type Props = Pick<ThemeProps, 'theme'> & ClassNameProps
+type Props = Pick<ThemeProps, 'theme'> & ClassNameProps & StyleProps

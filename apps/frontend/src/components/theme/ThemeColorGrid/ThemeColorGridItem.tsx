@@ -1,8 +1,15 @@
+'use client'
+
 import { clsx } from 'clsx'
 import capitalize from 'lodash.capitalize'
 
 import { ColorSwatch } from '@ui/ColorSwatch'
-import { setThemeColorCookie, THEME_COLOR_LS_KEY, type ThemeColorItem } from '@lib/theme'
+import {
+  getRadixColorVar,
+  setThemeColorCookie,
+  THEME_COLOR_LS_KEY,
+  type ThemeColorItem
+} from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
 export function ThemeColorGridItem({ color, isSelected }: Props) {
@@ -19,7 +26,7 @@ export function ThemeColorGridItem({ color, isSelected }: Props) {
 
   return (
     <ColorSwatch
-      color={`var(--${color}-9)`}
+      color={getRadixColorVar(color, 9)}
       tooltipContent={capitalize(color)}
       className={clsx(styles.root, {
         [styles.selected]: isSelected
