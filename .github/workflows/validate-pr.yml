@@ -42,5 +42,8 @@ jobs:
       - name: Build Backend
         run: pnpm backend:build
 
+      - name: Test Backend
+        run: pnpm backend:test
+
       - name: Lint
         run: pnpm lint
