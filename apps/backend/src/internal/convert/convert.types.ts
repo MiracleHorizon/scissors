@@ -1,5 +1,5 @@
 import type { ConvertSettingsDto } from './dto'
-import type { File } from '@internal/types'
+import type { MulterFile } from '@internal/types'
 
 export interface ConvertServiceAbstraction {
   // eslint-disable-next-line no-unused-vars
@@ -7,6 +7,6 @@ export interface ConvertServiceAbstraction {
 }
 
 export interface ConvertParams {
-  file: File
+  file: MulterFile
   settings: ConvertSettingsDto
 }

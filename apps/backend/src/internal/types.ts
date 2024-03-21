@@ -1,1 +1,1 @@
-export type File = Express.Multer.File
+export type MulterFile = Express.Multer.File

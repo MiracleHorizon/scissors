@@ -23,7 +23,8 @@
     "backend:build": "cd apps/backend && pnpm build",
     "backend:start": "cd apps/backend && pnpm start",
     "backend:prod": "cd apps/backend && pnpm prod",
-    "backend:lint": "cd apps/backend && pnpm lint"
+    "backend:lint": "cd apps/backend && pnpm lint",
+    "backend:test": "cd apps/backend && pnpm test"
   },
   "engines": {
     "node": ">= 20"

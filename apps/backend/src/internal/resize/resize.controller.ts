@@ -5,9 +5,10 @@ import type { Response } from 'express'
 import { ResizeService } from './resize.service'
 import { ResizeDto } from './dto'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
-import type { File } from '@internal/types'
+import { RESIZE_ENDPOINT } from '@config/endpoints'
+import type { MulterFile } from '@internal/types'
 
-@Controller('resize')
+@Controller(RESIZE_ENDPOINT)
 export class ResizeController {
   // eslint-disable-next-line no-unused-vars
   constructor(private readonly resizeService: ResizeService) {}
@@ -16,7 +17,7 @@ export class ResizeController {
   @UseInterceptors(FileInterceptor('file'))
   public async resize(
     @Res() res: Response,
-    @UploadedFile() file: File,
+    @UploadedFile() file: MulterFile,
     /* eslint-disable indent */
     @Body(
       new ParseFormDataJsonPipe({
@@ -32,6 +33,6 @@ export class ResizeController {
 
     // FIXME: set content type
     // res.set('Content-Type', 'image/jpeg')
-    res.send(buffer)
+    res.status(200).send(buffer)
   }
 }

@@ -9,7 +9,9 @@
     "prod": "node dist/main",
     "docker:build": "docker build -t scissors-backend .",
     "docker:start": "docker run -p 4200:4200 scissors-backend",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "test": "jest --forceExit",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -33,15 +35,22 @@
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
+    "@nestjs/testing": "9.4.3",
+    "@scissors/test-utils": "workspace:*",
     "@types/body-parser": "^1.19.5",
     "@types/express": "^4.17.13",
+    "@types/jest": "29.5.12",
     "@types/lodash.capitalize": "^4.2.9",
     "@types/lodash.merge": "^4.6.9",
     "@types/lodash.pick": "^4.4.9",
     "@types/multer": "^1.4.11",
     "@types/node": "^16.0.0",
+    "@types/supertest": "6.0.2",
     "eslint": "8.56.0",
+    "jest": "29.7.0",
     "source-map-support": "^0.5.20",
+    "supertest": "6.3.4",
+    "ts-jest": "29.1.2",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "typescript": "^5.3.3"
