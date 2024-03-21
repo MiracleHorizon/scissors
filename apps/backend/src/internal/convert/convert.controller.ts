@@ -7,9 +7,10 @@ import { ConvertService } from './convert.service'
 import { ConvertDto } from './dto'
 import { MAX_FILE_SIZE } from '../constants'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
-import type { File } from '@internal/types'
+import { CONVERT_ENDPOINT } from '@config/endpoints'
+import type { MulterFile } from '@internal/types'
 
-@Controller('convert')
+@Controller(CONVERT_ENDPOINT)
 export class ConvertController {
   // eslint-disable-next-line no-unused-vars
   constructor(private readonly convertService: ConvertService) {}
@@ -45,7 +46,7 @@ export class ConvertController {
   )
   public async convert(
     @Res() res: Response,
-    @UploadedFile() file: File,
+    @UploadedFile() file: MulterFile,
     /* eslint-disable indent */
     @Body(
       new ParseFormDataJsonPipe({
@@ -61,6 +62,6 @@ export class ConvertController {
 
     // FIXME: set content type
     // res.set('Content-Type', 'image/jpeg')
-    res.send(buffer)
+    res.status(200).send(buffer)
   }
 }

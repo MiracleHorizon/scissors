@@ -5,9 +5,10 @@ import type { Response } from 'express'
 import { MetadataService } from './metadata.service'
 import { HandleMetadataSettingsDto } from './dto'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
-import type { File } from '@internal/types'
+import { METADATA_ENDPOINT } from '@config/endpoints'
+import type { MulterFile } from '@internal/types'
 
-@Controller('metadata')
+@Controller(METADATA_ENDPOINT)
 export class MetadataController {
   // eslint-disable-next-line no-unused-vars
   constructor(private readonly metadataService: MetadataService) {}
@@ -16,7 +17,7 @@ export class MetadataController {
   @UseInterceptors(FileInterceptor('file'))
   public async handle(
     @Res() res: Response,
-    @UploadedFile() file: File,
+    @UploadedFile() file: MulterFile,
     /* eslint-disable indent */
     @Body(
       new ParseFormDataJsonPipe({
@@ -34,6 +35,6 @@ export class MetadataController {
 
     // FIXME: set content type
     // res.set('Content-Type', 'image/jpeg')
-    res.send(buffer)
+    res.status(200).send(buffer)
   }
 }

@@ -1,4 +1,4 @@
-import type { File } from '@internal/types'
+import type { MulterFile } from '@internal/types'
 import type { ResizeSettingsDto } from './dto'
 
 export interface ResizeServiceAbstraction {
@@ -7,6 +7,6 @@ export interface ResizeServiceAbstraction {
 }
 
 export interface ResizeParams {
-  file: File
+  file: MulterFile
   settings: ResizeSettingsDto
 }

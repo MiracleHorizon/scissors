@@ -1,5 +1,5 @@
 import type { HandleMetadataSettingsDto } from './dto'
-import type { File } from '@internal//types'
+import type { MulterFile } from '@internal//types'
 
 export interface MetadataServiceAbstraction {
   // eslint-disable-next-line no-unused-vars
@@ -7,6 +7,6 @@ export interface MetadataServiceAbstraction {
 }
 
 export interface HandleMetadataParams {
-  file: File
+  file: MulterFile
   settings: HandleMetadataSettingsDto
 }

@@ -4,6 +4,7 @@
     "outDir": "./dist",
     "module": "NodeNext",
     "target": "ESNext",
+    "allowJs": true,
     "declaration": true,
     "esModuleInterop": true,
     "removeComments": true,
@@ -19,6 +20,9 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+      "@config/*": [
+        "./src/config/*"
+      ],
       "@internal/*": [
         "./src/internal/*"
       ],
