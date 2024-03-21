@@ -12,7 +12,8 @@ export default {
     ]
   },
   moduleNameMapper: {
-    '^@config(.*)$': '<rootDir>/src/config',
+    '^@test(.*)$': '<rootDir>/test$1',
+    '^@config(.*)$': '<rootDir>/src/config$1',
     '^@internal(.*)$': '<rootDir>/src/internal$1',
     '^@lib(.*)$': '<rootDir>/src/lib$1',
     '^@helpers(.*)$': '<rootDir>/src/lib/helpers$1',
