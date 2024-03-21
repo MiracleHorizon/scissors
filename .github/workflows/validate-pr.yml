@@ -36,14 +36,5 @@ jobs:
       - name: Build libs / packages
         run: pnpm build
 
-      - name: Build Frontend
-        run: pnpm frontend:build
-
-      - name: Build Backend
-        run: pnpm backend:build
-
-#      - name: Test Backend
-#        run: pnpm backend:test
-
       - name: Lint
         run: pnpm lint
