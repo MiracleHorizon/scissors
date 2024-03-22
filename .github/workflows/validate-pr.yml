@@ -33,8 +33,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build libs / packages
+      - name: Build apps / libs
         run: pnpm build
+
+      - name: Test Backend
+        run: pnpm backend:test
 
       - name: Lint
         run: pnpm lint
