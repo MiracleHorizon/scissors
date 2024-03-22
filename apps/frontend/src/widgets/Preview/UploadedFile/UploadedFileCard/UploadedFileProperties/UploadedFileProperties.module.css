@@ -41,3 +41,14 @@
     font-size: var(--font-size-2);
   }
 }
+
+@media screen and (max-width: 320px) {
+  .propertyItem {
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 32px;
+    height: auto;
+    min-width: auto;
+    row-gap: var(--space-1);
+  }
+}

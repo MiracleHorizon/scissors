@@ -6,7 +6,7 @@ import MediaQuery from 'react-responsive'
 import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
-import { ImageFileIcon } from '@ui/icons/ImageFileIcon'
+import { FileImageIcon } from '@ui/icons/FileImageIcon'
 import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonUpload } from '@ui/ButtonUpload'
@@ -34,7 +34,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             height='100%'
             className={styles.cardInset}
           >
-            <ImageFileIcon width='28px' height='28px' />
+            <FileImageIcon width='28px' height='28px' />
           </Flex>
         </MediaQuery>
 

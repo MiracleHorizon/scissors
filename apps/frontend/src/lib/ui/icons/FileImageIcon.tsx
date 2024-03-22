@@ -3,7 +3,7 @@ import type { SVGProps } from 'react'
 
 import type { AccessibleIconProps } from '@lib/theme'
 
-export const ImageFileIcon = ({
+export const FileImageIcon = ({
   label = 'image file',
   ...props
 }: SVGProps<SVGSVGElement> & AccessibleIconProps) => (
