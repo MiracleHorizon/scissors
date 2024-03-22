@@ -7,6 +7,10 @@ import { cropFileName } from './cropFileName'
  * @returns file name with image sizes added (example: 'logo-100x100.png')
  */
 export function addImageSizesToFileName({ fullFileName, width, height }: Parameters): string {
+  if (fullFileName.length === 0) {
+    return fullFileName
+  }
+
   const fileName = cropFileName(fullFileName)
   const fileNameWithSizes = `${fileName}-${width}x${height}`
   const fileExtension = fullFileName.replace(fileName, '')
