@@ -53,41 +53,24 @@ Currently, the following image formats are supported:
 * Node.js v20+
 * pnpm
 
-### 💻 Run the project locally (to be rewritten)
+### 💻 Run the project locally
 * Clone repository
    ```sh
    git clone https://github.com/MiracleHorizon/scissors.git
    ```
-#### Frontend / Backend
 * Install NPM packages
    ```sh
    pnpm install --frozen-lockfile
    ```
+
+* Build project workspace libs
+   ```sh
+   pnpm build:libs
+   ```
+
 * Run the project
    ```sh
    pnpm dev
-   ```
-
-### 🚀 Production build (to be rewritten)
-
-Frontend
-* Build the project
-   ```sh
-   pnpm build
-   ```
-* Run the project
-   ```sh
-   pnpm start
-   ```
-
-Backend
-* Build the project
-   ```sh
-   pnpm build
-   ```
-* Run the project
-   ```sh
-   pnpm prod
    ```
 
 ### License
