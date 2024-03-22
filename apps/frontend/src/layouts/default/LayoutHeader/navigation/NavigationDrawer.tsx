@@ -13,7 +13,7 @@ import { useEscapeAction } from '@hooks/useEscapeAction'
 import { GITHUB_REPO_PATH } from '@site/config'
 import styles from './NavigationDrawer.module.css'
 
-export function NavigationDrawer() {
+export default function NavigationDrawer() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 

@@ -4,7 +4,6 @@ import type { FC } from 'react'
 
 import { AppLogo } from '@ui/AppLogo'
 import { NavigationDesktop } from './navigation/NavigationDesktop'
-import { NavigationDrawer } from './navigation/NavigationDrawer'
 import { AppearancePopoverSkeleton } from './AppearancePopover'
 import { ButtonGithub } from './ButtonGithub'
 import { ButtonToggleTheme } from '@components/theme/ButtonToggleTheme'
@@ -15,6 +14,9 @@ import styles from './LayoutHeader.module.css'
 const AppearancePopover = dynamic(() => import('./AppearancePopover'), {
   ssr: false,
   loading: () => <AppearancePopoverSkeleton />
+})
+const NavigationDrawer = dynamic(() => import('./navigation/NavigationDrawer'), {
+  ssr: false
 })
 
 // TODO: Optimize components imports and rendering
