@@ -24,6 +24,4 @@ describe('@ui/AppLogo', () => {
     await user.click(element)
     expect(element.onclick).toHaveBeenCalled()
   })
-
-  // TODO: should navigate to home page with onClick
 })
