@@ -21,12 +21,12 @@ export function ToolbarDropdownMenuContent({ onClose }: Props) {
       <DropdownItemImportSettings onClose={onClose} />
       <DropdownItemExportSettings onClose={onClose} />
 
-      <ToolbarRandomizeMenu>
-        <DropdownItemRandomizeSettings onClose={onClose} />
-      </ToolbarRandomizeMenu>
-
       {selectedTab === TOOLBAR_TAB.CONVERT && (
         <>
+          <ToolbarRandomizeMenu>
+            <DropdownItemRandomizeSettings onClose={onClose} />
+          </ToolbarRandomizeMenu>
+
           <DropdownMenu.Separator />
 
           <DropdownItemResetSettings onClose={onClose} />
