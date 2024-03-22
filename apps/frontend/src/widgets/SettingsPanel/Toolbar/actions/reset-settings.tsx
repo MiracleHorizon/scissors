@@ -51,7 +51,7 @@ export function DropdownItemResetSettings({ onClose }: DropdownItemProps) {
   return (
     <WithConfirmAlert onConfirm={onClose} onCancel={onClose}>
       <DropdownMenu.Item color='red' onSelect={handleClick}>
-        Reset <ResetIcon width='16px' height='16px' />
+        Reset <ResetIcon width='18px' height='18px' />
       </DropdownMenu.Item>
     </WithConfirmAlert>
   )
