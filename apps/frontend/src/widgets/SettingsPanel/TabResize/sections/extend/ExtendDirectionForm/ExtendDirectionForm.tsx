@@ -1,10 +1,42 @@
-import { useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import { Grid } from '@radix-ui/themes'
 
-import { ExtendDirectionFormNumber } from './ExtendDirectionFormNumber'
-import { ExtendDirectionFormAxis } from './ExtendDirectionFormAxis'
-import { ExtendDirectionFormSeparated } from './ExtendDirectionFormSeparated'
+import { ExtendDirectionFormInputSkeleton } from './skeletons'
 import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'
+
+const ExtendDirectionFormNumber = dynamic(
+  () => import('./ExtendDirectionFormNumber').then(mod => mod.ExtendDirectionFormNumber),
+  {
+    ssr: false,
+    loading: () => <ExtendDirectionFormInputSkeleton />
+  }
+)
+const ExtendDirectionFormAxis = dynamic(
+  () => import('./ExtendDirectionFormAxis').then(mod => mod.ExtendDirectionFormAxis),
+  {
+    ssr: false,
+    loading: () => (
+      <>
+        <ExtendDirectionFormInputSkeleton />
+        <ExtendDirectionFormInputSkeleton />
+      </>
+    )
+  }
+)
+const ExtendDirectionFormSeparated = dynamic(
+  () => import('./ExtendDirectionFormSeparated').then(mod => mod.ExtendDirectionFormSeparated),
+  {
+    ssr: false,
+    loading: () => (
+      <>
+        <ExtendDirectionFormInputSkeleton />
+        <ExtendDirectionFormInputSkeleton />
+        <ExtendDirectionFormInputSkeleton />
+        <ExtendDirectionFormInputSkeleton />
+      </>
+    )
+  }
+)
 
 const variants = {
   [DIRECTION_MODEL.NUMBER]: ExtendDirectionFormNumber,
@@ -12,11 +44,9 @@ const variants = {
   [DIRECTION_MODEL.SEPARATED]: ExtendDirectionFormSeparated
 }
 
-// TODO: Dynamic imports?
 export function ExtendDirectionForm() {
   const directionModel = useExtendStore(state => state.directionModel)
-
-  const Component = useMemo(() => variants[directionModel], [directionModel])
+  const Component = variants[directionModel]
 
   return (
     <Grid
