@@ -70,10 +70,6 @@ const aliases: Alias[] = [
     replacementPath: './src/stores'
   },
   {
-    find: '@server',
-    replacementPath: './src/server'
-  },
-  {
     find: '@app-types',
     replacementPath: './src/types'
   }
