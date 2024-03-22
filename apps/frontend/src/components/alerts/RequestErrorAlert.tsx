@@ -3,7 +3,7 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { CSSProperties } from 'react'
 
-import { TitleWithExclamation } from '@components/TitleWithExclamation'
+import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 import { handleRequestError } from '@api/helpers/handleRequestError'
 
 const contentStyle: CSSProperties = {

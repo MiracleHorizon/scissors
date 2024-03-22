@@ -1,8 +1,9 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import { TitleWithExclamation } from '../TitleWithExclamation'
 import type { ComponentPropsWithoutRef, CSSProperties, FC } from 'react'
+
+import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 
 const contentStyle: CSSProperties = {
   padding: '22px',

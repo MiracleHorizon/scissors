@@ -3,7 +3,7 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { FC, PropsWithChildren } from 'react'
 
-import { TitleWithExclamation } from '@components/TitleWithExclamation'
+import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 
 export const ConfirmAlert: FC<Props> = ({
   children,
