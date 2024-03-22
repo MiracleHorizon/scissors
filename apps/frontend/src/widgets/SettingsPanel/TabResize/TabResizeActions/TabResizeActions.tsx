@@ -4,7 +4,7 @@ import { ButtonAddResize } from './ButtonAddResize'
 import { ButtonAddExtend } from './ButtonAddExtend'
 import { ButtonAddExtract } from './ButtonAddExtract'
 import { ButtonAddTrim } from './ButtonAddTrim'
-import { useTabResizeStore } from '@stores/tab-resize'
+import { useTabResizeStore } from '../store'
 
 export function TabResizeActions() {
   const isAllSettled = useTabResizeStore(state => state.isAllSettled())

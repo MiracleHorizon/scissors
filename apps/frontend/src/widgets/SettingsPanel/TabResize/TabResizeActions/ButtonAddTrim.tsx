@@ -1,6 +1,6 @@
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { ScissorsIcon } from '@ui/icons/ScissorsIcon'
-import { useTabResizeStore } from '@stores/tab-resize'
+import { useTabResizeStore } from '../store'
 
 export function ButtonAddTrim() {
   const isAdded = useTabResizeStore(state => state.isTrimAdded())
