@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "turbo build",
+    "build:libs": "turbo build --filter='./libs/*'",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "frontend:dev": "cd apps/frontend && pnpm dev",
