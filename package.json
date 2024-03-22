@@ -20,6 +20,7 @@
     "frontend:build": "cd apps/frontend && pnpm build",
     "frontend:start": "cd apps/frontend && pnpm start",
     "frontend:check": "cd apps/frontend && pnpm check",
+    "frontend:test": "cd apps/frontend && pnpm test",
     "backend:dev": "cd apps/backend && pnpm dev",
     "backend:build": "cd apps/backend && pnpm build",
     "backend:start": "cd apps/backend && pnpm start",
