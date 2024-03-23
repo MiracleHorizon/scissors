@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  HttpException,
   Post,
   Res,
   UploadedFile,
@@ -34,11 +35,19 @@ export class ResizeController {
       }),
       new ValidationPipe()
     )
-    body: ResizeDto
+    { settings }: ResizeDto
   ): Promise<void> {
+    const resize = settings.resize
+    if (resize) {
+      const { width, height } = resize
+      if (width === null && height === null) {
+        throw new HttpException('Width and height cannot be null', 400)
+      }
+    }
+
     const buffer = await this.resizeService.resize({
       file,
-      settings: body.settings
+      settings
     })
 
     res.status(200).send(buffer)
