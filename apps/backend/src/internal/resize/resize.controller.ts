@@ -6,6 +6,7 @@ import { ResizeService } from './resize.service'
 import { ResizeDto } from './dto'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
 import { RESIZE_ENDPOINT } from '@config/endpoints'
+import { fileInterceptorOptions } from '@lib/validation'
 import type { MulterFile } from '@internal/types'
 
 @Controller(RESIZE_ENDPOINT)
@@ -14,7 +15,7 @@ export class ResizeController {
   constructor(private readonly resizeService: ResizeService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', fileInterceptorOptions))
   public async resize(
     @Res() res: Response,
     @UploadedFile() file: MulterFile,

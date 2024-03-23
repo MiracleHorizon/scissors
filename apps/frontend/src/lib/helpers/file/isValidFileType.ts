@@ -1,4 +1,4 @@
-import {allowedImageFormats} from '@site/config'
+import { allowedImageFormats } from '@site/config'
 
 /**
  * @param type - image file type (example: 'image/png' or 'png')

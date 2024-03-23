@@ -6,6 +6,7 @@ import { MetadataService } from './metadata.service'
 import { HandleMetadataSettingsDto } from './dto'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
 import { METADATA_ENDPOINT } from '@config/endpoints'
+import { fileInterceptorOptions } from '@lib/validation'
 import type { MulterFile } from '@internal/types'
 
 @Controller(METADATA_ENDPOINT)
@@ -14,7 +15,7 @@ export class MetadataController {
   constructor(private readonly metadataService: MetadataService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', fileInterceptorOptions))
   public async handle(
     @Res() res: Response,
     @UploadedFile() file: MulterFile,
