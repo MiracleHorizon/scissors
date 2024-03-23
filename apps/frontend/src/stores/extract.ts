@@ -25,8 +25,8 @@ const defaultState: State = {
   previewAspectRatio: -1,
   cropperAspectRatio: -1,
 
-  left: 0,
-  top: 0,
+  left: 1,
+  top: 1,
   width: 100,
   height: 100
 } as const

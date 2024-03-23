@@ -1,7 +1,6 @@
 import randomNumber from 'lodash.random'
 import capitalize from 'lodash.capitalize'
 
-import { getRandomHexColor } from '@helpers/colors'
 import {
   type BlurOptions,
   type ConvertSettings,
@@ -28,8 +27,10 @@ import {
   type RotateOptions
 } from '@scissors/sharp'
 
+import { getRandomHexColor } from '@helpers/colors'
+
 /*
- * All methods name must start with "getRandom".
+ * All methods name must start with "getRandom" prefix.
  */
 interface Randomizer {
   getRandomFlip: () => boolean
@@ -46,7 +47,6 @@ interface Randomizer {
 
 export type Operation = keyof ConvertSettings
 
-// TODO: Try to refactor :)
 export class ConvertSettingsRandomizer implements Randomizer {
   // eslint-disable-next-line
   constructor(private readonly operations: Operation[]) {}
@@ -55,7 +55,8 @@ export class ConvertSettingsRandomizer implements Randomizer {
     const randomSettings: Partial<ConvertSettings> = {}
 
     for (const operation of this.operations) {
-      const methodName = 'getRandom' + capitalize(operation)
+      const methodPrefix = 'getRandom'
+      const methodName = methodPrefix + capitalize(operation)
       // eslint-disable-next-line
       // @ts-expect-error
       randomSettings[operation] = this[methodName]()

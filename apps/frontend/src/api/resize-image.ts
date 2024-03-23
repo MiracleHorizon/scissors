@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+
 import type { ResizeSettings } from '@scissors/sharp'
 
 import { type DownloadPayload, useOutputStore } from '@stores/output'
@@ -8,7 +9,7 @@ import { FetchException } from './exceptions/FetchException'
 import { createApiURL } from '@site/config'
 import { PATH_API_RESIZE } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
-import { cropFileName } from '@helpers/file/cropFileName'
+import { addImageSizesToFileName } from '@helpers/file/addImageSizesToFileName'
 import type { MutationPayload } from './types'
 
 async function resizeImage(formData: FormData): Promise<Blob> {
@@ -56,13 +57,14 @@ async function resizeImageMutation({
   const link = URL.createObjectURL(imageBlob)
 
   let outputFileName = fileName
+
   const { resize } = settings
   if (resize && resize.width && resize.height) {
-    // TODO: Refactor
-    const fileNameWithoutExtension = cropFileName(outputFileName)
-    const extension = outputFileName.replace(fileNameWithoutExtension, '')
-
-    outputFileName = `${cropFileName(outputFileName)}-${resize.width}x${resize.height}${extension}`
+    outputFileName = addImageSizesToFileName({
+      fullFileName: outputFileName,
+      width: resize.width,
+      height: resize.height
+    })
   }
 
   return {

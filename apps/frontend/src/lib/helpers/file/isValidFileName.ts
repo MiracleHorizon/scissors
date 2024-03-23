@@ -1,4 +1,4 @@
-import {MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH, notAllowedChars} from './constants'
+import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH, notAllowedChars } from './constants'
 
 /**
  * @param fileName - file name to be checked

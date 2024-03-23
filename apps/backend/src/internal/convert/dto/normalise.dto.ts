@@ -1,7 +1,7 @@
 import { IsDefined, IsInt, Max, Min } from 'class-validator'
+
 import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 
-// TODO: Сравнение lower & upper через ValidateIf
 export class NormaliseDto {
   @IsInt()
   @Min(MIN_NORMALISE)

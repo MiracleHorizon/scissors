@@ -1,21 +1,28 @@
 import { useCallback } from 'react'
+
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { OptionCheckbox } from '@components/OptionCheckbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
+import { cropImageFileType } from '@helpers/file/cropImageFileType'
 
-const ALLOWED_FORMATS_FOR_FAST_SHRINK: string[] = [IMAGE_FILE_FORMAT.JPEG, IMAGE_FILE_FORMAT.WEBP]
+const ALLOWED_FILE_TYPES: string[] = [IMAGE_FILE_FORMAT.JPEG, IMAGE_FILE_FORMAT.WEBP]
 
-// TODO: Remove output format rel; check current file format
 export function CheckboxFastShrink() {
-  const outputFormat = useOutputStore(state => state.outputFormat)
+  const file = useOutputStore(state => state.file)
   const fastShrink = useResizeStore(state => state.fastShrinkOnLoad)
   const toggleFastShrink = useResizeStore(state => state.toggleFastShrink)
 
   const handleToggleFastShrink = useCallback(() => toggleFastShrink(), [toggleFastShrink])
 
-  if (!outputFormat || !ALLOWED_FORMATS_FOR_FAST_SHRINK.includes(outputFormat)) {
+  if (!file) {
+    return null
+  }
+
+  const fileType = cropImageFileType(file.type)
+  const isAllowedFileType = ALLOWED_FILE_TYPES.includes(fileType)
+  if (!isAllowedFileType) {
     return null
   }
 

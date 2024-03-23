@@ -1,6 +1,6 @@
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { CropIcon } from '@ui/icons/CropIcon'
-import { useTabResizeStore } from '@stores/tab-resize'
+import { useTabResizeStore } from '../store'
 
 export function ButtonAddExtract() {
   const isAdded = useTabResizeStore(state => state.isExtractAdded())

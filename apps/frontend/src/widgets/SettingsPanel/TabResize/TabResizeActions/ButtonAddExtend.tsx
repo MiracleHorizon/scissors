@@ -1,6 +1,6 @@
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { MoveIcon } from '@ui/icons/MoveIcon'
-import { useTabResizeStore } from '@stores/tab-resize'
+import { useTabResizeStore } from '../store'
 
 export function ButtonAddExtend() {
   const isAdded = useTabResizeStore(state => state.isExtendAdded())

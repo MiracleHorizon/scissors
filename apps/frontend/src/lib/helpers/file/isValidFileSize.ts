@@ -1,4 +1,4 @@
-import {MAX_FILE_SIZE} from './constants'
+import { MAX_FILE_SIZE } from './constants'
 
 /**
  * @param size - the size of the file in bytes

@@ -1,4 +1,13 @@
-import { Body, Controller, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  HttpException,
+  Post,
+  Res,
+  UploadedFile,
+  UseInterceptors,
+  ValidationPipe
+} from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import type { Response } from 'express'
 
@@ -6,6 +15,7 @@ import { ResizeService } from './resize.service'
 import { ResizeDto } from './dto'
 import { ParseFormDataJsonPipe } from '@pipes/form-data-parse.pipe'
 import { RESIZE_ENDPOINT } from '@config/endpoints'
+import { fileInterceptorOptions } from '@lib/validation'
 import type { MulterFile } from '@internal/types'
 
 @Controller(RESIZE_ENDPOINT)
@@ -14,7 +24,7 @@ export class ResizeController {
   constructor(private readonly resizeService: ResizeService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', fileInterceptorOptions))
   public async resize(
     @Res() res: Response,
     @UploadedFile() file: MulterFile,
@@ -22,17 +32,24 @@ export class ResizeController {
     @Body(
       new ParseFormDataJsonPipe({
         except: ['file']
-      })
+      }),
+      new ValidationPipe()
     )
-    body: ResizeDto
+    { settings }: ResizeDto
   ): Promise<void> {
+    const resize = settings.resize
+    if (resize) {
+      const { width, height } = resize
+      if (width === null && height === null) {
+        throw new HttpException('Width and height cannot be null', 400)
+      }
+    }
+
     const buffer = await this.resizeService.resize({
       file,
-      settings: body.settings
+      settings
     })
 
-    // FIXME: set content type
-    // res.set('Content-Type', 'image/jpeg')
     res.status(200).send(buffer)
   }
 }

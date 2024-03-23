@@ -1,4 +1,5 @@
 import { IsBoolean, IsDefined, IsHexColor, IsIn, IsInt, Max, Min } from 'class-validator'
+
 import {
   MAX_RESIZE_WIDTH,
   MIN_RESIZE_SIZE,
@@ -12,7 +13,6 @@ import {
 
 import { IsNullable } from '@lib/validation'
 
-// TODO: Сравнение width & height. Не могут оба быть равны null
 export class ResizeOptionsDto {
   @IsInt()
   @IsNullable()
@@ -38,7 +38,7 @@ export class ResizeOptionsDto {
   @IsDefined()
   readonly kernel: keyof ResizeKernel | null
 
-  @IsIn(Object.values([...Object.values(RESIZE_POSITION), ...Object.values(RESIZE_GRAVITY)]))
+  @IsIn([...Object.values(RESIZE_POSITION), ...Object.values(RESIZE_GRAVITY)])
   @IsNullable()
   @IsDefined()
   readonly position: string | null

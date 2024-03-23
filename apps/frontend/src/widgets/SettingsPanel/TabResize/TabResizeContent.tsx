@@ -13,7 +13,7 @@ import { Flex } from '@radix-ui/themes'
 
 import { SortableSection } from './SortableSection'
 import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
-import { useTabResizeStore } from '@stores/tab-resize'
+import { useTabResizeStore } from './store'
 
 const ResizeSection = dynamic(() => import('./sections/resize').then(mod => mod.ResizeSection), {
   ssr: false,

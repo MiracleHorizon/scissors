@@ -57,9 +57,8 @@ export const defaultSettings: Setting[] = [
     label: 'normalise',
     checked: false
   }
-]
+] as const
 
-// TODO: Rehydrate with DOM event: https://docs.pmnd.rs/zustand/integrations/persisting-store-data#how-can-i-rehydrate-on-storage-event
 export const useRandomizeStore = create(
   persist<Store>(
     (set, get) => ({
@@ -144,16 +143,15 @@ export function mergeState<State>(persistedState: unknown, currentState: State):
   }
 }
 
-// TODO: Performance check
 export function isSettingsValid(settings: unknown): boolean {
-  const oneSettingSchema = object({
+  const optionSchema = object({
     label: string()
       .oneOf(defaultSettings.map(s => s.label))
       .defined()
       .required(),
     checked: boolean().defined().required()
   })
-  const settingsSchema = array(oneSettingSchema).length(defaultSettings.length).defined().required()
+  const settingsSchema = array(optionSchema).length(defaultSettings.length).defined().required()
 
   return settingsSchema.isValidSync(settings)
 }
