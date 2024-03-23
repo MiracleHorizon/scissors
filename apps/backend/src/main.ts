@@ -3,9 +3,10 @@ import type { NestExpressApplication } from '@nestjs/platform-express'
 
 import { AppModule } from './app.module'
 import { corsOptions } from './cors/options'
+import { DEFAULT_PORT } from '@config/constants'
 
 async function bootstrap() {
-  const PORT = process.env.PORT || 4200
+  const PORT = process.env.PORT ?? DEFAULT_PORT
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
   app.enableCors(corsOptions)
