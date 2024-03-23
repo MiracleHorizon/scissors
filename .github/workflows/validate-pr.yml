@@ -37,10 +37,10 @@ jobs:
         run: pnpm build
 
       - name: Test Frontend
-        run: pnpm frontend:test
+        run: pnpm fe:test
 
       - name: Test Backend
-        run: pnpm backend:test
+        run: pnpm be:test
 
       - name: Lint
         run: pnpm lint

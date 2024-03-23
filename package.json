@@ -11,25 +11,25 @@
     "apps/*",
     "libs/*"
   ],
+  "engines": {
+    "node": ">= 20"
+  },
   "scripts": {
     "build": "turbo build",
     "build:libs": "turbo build --filter='./libs/*'",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "frontend:dev": "cd apps/frontend && pnpm dev",
-    "frontend:build": "cd apps/frontend && pnpm build",
-    "frontend:start": "cd apps/frontend && pnpm start",
-    "frontend:check": "cd apps/frontend && pnpm check",
-    "frontend:test": "cd apps/frontend && pnpm test",
-    "backend:dev": "cd apps/backend && pnpm dev",
-    "backend:build": "cd apps/backend && pnpm build",
-    "backend:start": "cd apps/backend && pnpm start",
-    "backend:prod": "cd apps/backend && pnpm prod",
-    "backend:lint": "cd apps/backend && pnpm lint",
-    "backend:test": "cd apps/backend && pnpm test"
-  },
-  "engines": {
-    "node": ">= 20"
+    "fe:dev": "cd apps/frontend && pnpm dev",
+    "fe:build": "cd apps/frontend && pnpm build",
+    "fe:start": "cd apps/frontend && pnpm start",
+    "fe:check": "cd apps/frontend && pnpm check",
+    "fe:test": "cd apps/frontend && pnpm test",
+    "be:dev": "cd apps/backend && pnpm dev",
+    "be:build": "cd apps/backend && pnpm build",
+    "be:start": "cd apps/backend && pnpm start",
+    "be:prod": "cd apps/backend && pnpm prod",
+    "be:lint": "cd apps/backend && pnpm lint",
+    "be:test": "cd apps/backend && pnpm test"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.18.0",
