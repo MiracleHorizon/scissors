@@ -33,8 +33,6 @@ export class MetadataController {
       settings: body.settings
     })
 
-    // FIXME: set content type
-    // res.set('Content-Type', 'image/jpeg')
     res.status(200).send(buffer)
   }
 }
