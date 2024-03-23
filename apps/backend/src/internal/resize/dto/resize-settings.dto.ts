@@ -1,5 +1,6 @@
-import { IsArray, IsDefined, MaxLength, MinLength, ValidateNested } from 'class-validator'
+import { ArrayMaxSize, ArrayMinSize, IsArray, IsDefined, ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer'
+
 import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
 
 import { IsNullable } from '@lib/validation'
@@ -10,8 +11,8 @@ import { TrimOptionsDto } from './trim-options.dto'
 
 export class ResizeSettingsDto {
   @IsArray()
-  @MinLength(1)
-  @MaxLength(Object.values(RESIZE_OPERATION).length)
+  @ArrayMinSize(1)
+  @ArrayMaxSize(Object.values(RESIZE_OPERATION).length)
   readonly queue: ResizeQueue
 
   @ValidateNested()

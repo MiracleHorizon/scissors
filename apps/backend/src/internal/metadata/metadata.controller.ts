@@ -1,4 +1,12 @@
-import { Body, Controller, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Post,
+  Res,
+  UploadedFile,
+  UseInterceptors,
+  ValidationPipe
+} from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import type { Response } from 'express'
 
@@ -23,7 +31,8 @@ export class MetadataController {
     @Body(
       new ParseFormDataJsonPipe({
         except: ['file']
-      })
+      }),
+      new ValidationPipe()
     )
     body: {
       settings: HandleMetadataSettingsDto
