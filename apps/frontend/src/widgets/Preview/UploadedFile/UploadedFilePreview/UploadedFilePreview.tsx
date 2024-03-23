@@ -1,6 +1,6 @@
 import { Box } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import { type CSSProperties, type FC, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import type { CSSProperties, FC } from 'react'
 
 import { EnterFullScreenIcon } from '@ui/icons/EnterFullScreenIcon'
 import { pathForAssets } from '@site/config'
@@ -12,42 +12,10 @@ const rootStyle: CSSProperties = {
 }
 
 export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => {
-  const [rootRect, setRootRect] = useState<DOMRect>({} as DOMRect)
-  const rootRef = useRef<HTMLDivElement>(null)
-  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
-  const updateRootRect = () => {
-    const rootNode = rootRef.current
-    if (!rootNode) return
-
-    const rect = rootNode.getBoundingClientRect()
-    setRootRect(rect)
-  }
-
-  useLayoutEffect(() => {
-    updateRootRect()
-  }, [file])
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      if (debounceTimer.current !== null) {
-        clearTimeout(debounceTimer.current)
-      }
-
-      debounceTimer.current = setTimeout(updateRootRect, 500)
-    }
-
-    window.addEventListener('resize', handleWindowResize)
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize)
-    }
-  }, [])
-
   return (
-    <Box ref={rootRef} style={rootStyle} className={styles.root}>
+    <Box style={rootStyle} className={styles.root}>
       <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -55,10 +23,6 @@ export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => 
         src={downloadPayload?.link ?? URL.createObjectURL(file)}
         alt={file.name}
         className={styles.image}
-        style={{
-          maxWidth: rootRect?.width,
-          maxHeight: rootRect?.height
-        }}
         onClick={handleOpenLightbox}
       />
     </Box>
