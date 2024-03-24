@@ -5,7 +5,6 @@ import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'

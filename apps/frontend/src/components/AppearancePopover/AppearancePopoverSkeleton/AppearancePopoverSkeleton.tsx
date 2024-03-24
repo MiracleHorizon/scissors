@@ -1,8 +1,8 @@
-import Skeleton from 'react-loading-skeleton'
+import { Skeleton } from '@radix-ui/themes'
 
 import styles from './AppearancePopoverSkeleton.module.css'
 
-const size = 32
+const size = '32px'
 export const AppearancePopoverSkeleton = () => (
-  <Skeleton inline count={1} width={size} height={size} className={styles.root} />
+  <Skeleton width={size} height={size} className={styles.root} />
 )

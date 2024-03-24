@@ -17,19 +17,19 @@ import { useTabResizeStore } from './store'
 
 const ResizeSection = dynamic(() => import('./sections/resize').then(mod => mod.ResizeSection), {
   ssr: false,
-  loading: () => <TabResizeSectionSkeleton height={168} />
+  loading: () => <TabResizeSectionSkeleton height='168px' />
 })
 const ExtendSection = dynamic(() => import('./sections/extend').then(mod => mod.ExtendSection), {
   ssr: false,
-  loading: () => <TabResizeSectionSkeleton height={228} />
+  loading: () => <TabResizeSectionSkeleton height='228px' />
 })
 const ExtractSection = dynamic(() => import('./sections/extract').then(mod => mod.ExtractSection), {
   ssr: false,
-  loading: () => <TabResizeSectionSkeleton height={120} />
+  loading: () => <TabResizeSectionSkeleton height='120px' />
 })
 const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.TrimSection), {
   ssr: false,
-  loading: () => <TabResizeSectionSkeleton height={120} />
+  loading: () => <TabResizeSectionSkeleton height='120px' />
 })
 
 export function TabResizeContent() {

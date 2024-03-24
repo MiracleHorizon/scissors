@@ -1,5 +1,4 @@
-import { Flex } from '@radix-ui/themes'
-import Skeleton from 'react-loading-skeleton'
+import { Flex, Skeleton } from '@radix-ui/themes'
 
 import styles from './GallerySlideSkeleton.module.css'
 
