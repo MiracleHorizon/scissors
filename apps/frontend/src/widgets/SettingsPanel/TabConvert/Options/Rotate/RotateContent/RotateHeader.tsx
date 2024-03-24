@@ -5,7 +5,7 @@ import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'
 import { useRotateStore } from '@stores/rotate'
-import { DOCS_HASH_ROTATE, PATH_DOCS } from '@site/paths'
+import { DOCS_ANCHOR_ROTATE, PATH_DOCS } from '@site/paths'
 
 export function RotateHeader() {
   const angle = useRotateStore(state => {
@@ -20,7 +20,7 @@ export function RotateHeader() {
 
   return (
     <OptionSectionHeader
-      href={PATH_DOCS + DOCS_HASH_ROTATE}
+      href={PATH_DOCS + DOCS_ANCHOR_ROTATE}
       title={`Rotate: ${angle}°`}
       icon={<RotateCounterClockwiseIcon width='18px' height='18px' label='rotation' />}
     >

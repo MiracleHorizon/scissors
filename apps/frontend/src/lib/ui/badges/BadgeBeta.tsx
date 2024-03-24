@@ -1,4 +1,5 @@
-import { Badge, type MarginProps, Tooltip } from '@radix-ui/themes'
+import { Badge, Tooltip } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 import type { BadgeProps } from '@lib/theme'

@@ -1,5 +1,5 @@
 /**
- * NOTE: Merged radix-ui/TextField.Input with react-colorful/HexColorInput;
+ * NOTE: Merged radix-ui/TextField.Root with react-colorful/HexColorInput;
  * <br />
  * <a color='white' href="https://github.com/omgovich/react-colorful/blob/master/src/components/common/ColorInput.tsx">ColorInput<a/>;
  * <br />
@@ -15,7 +15,8 @@ import {
   useRef,
   useState
 } from 'react'
-import { type Responsive, TextField } from '@radix-ui/themes'
+import { TextField } from '@radix-ui/themes'
+import type { Responsive } from '@radix-ui/themes/props'
 
 export function useEventCallback<T>(handler?: (value: T) => void): (value: T) => void {
   const callbackRef = useRef(handler)
@@ -31,6 +32,7 @@ export function useEventCallback<T>(handler?: (value: T) => void): (value: T) =>
   return callback.current
 }
 
+// TODO: UPDATE PROPS
 export function ColorInput({ color, onChange, onBlur, validate, escape, ...inputProps }: Props) {
   const [value, setValue] = useState(() => escape(color))
 
@@ -64,9 +66,10 @@ export function ColorInput({ color, onChange, onBlur, validate, escape, ...input
   useEffect(() => setValue(escape(color)), [color, escape])
 
   return (
-    <TextField.Input
+    <TextField.Root
       {...inputProps}
       value={value}
+      radius='large'
       spellCheck='false'
       onChange={handleChange}
       onBlur={handleBlur}
@@ -76,7 +79,7 @@ export function ColorInput({ color, onChange, onBlur, validate, escape, ...input
 
 type ColorInputHTMLAttributes = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'onChange' | 'value' | 'size'
+  'onChange' | 'value' | 'size' | 'defaultValue' | 'type'
 >
 
 /* eslint no-unused-vars: 0 */

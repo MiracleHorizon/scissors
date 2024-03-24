@@ -113,14 +113,13 @@ export function ImageUploadPopover() {
         <Popover.Content align='center'>
           <Flex gap='2' className={styles.content}>
             <form className='w-full' onSubmit={ev => ev.preventDefault()}>
-              <TextField.Root className='w-full'>
-                <TextField.Input
-                  color={!isValidURL || error !== null ? 'red' : undefined}
-                  value={value}
-                  placeholder='Paste link to an image...'
-                  onChange={onValueChange}
-                />
-              </TextField.Root>
+              <TextField.Root
+                color={!isValidURL || error !== null ? 'red' : undefined}
+                value={value}
+                placeholder='Paste link to an image...'
+                onChange={onValueChange}
+                className='w-full'
+              />
             </form>
 
             <Popover.Close>

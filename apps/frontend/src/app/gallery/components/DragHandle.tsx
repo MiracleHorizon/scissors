@@ -5,7 +5,7 @@ import { clsx } from 'clsx'
 import { DragHandleDots2Icon } from '@ui/icons/DragHandleDots2Icon'
 import styles from './DragHandle.module.css'
 
-const DragHandleGutter = () => <Flex grow='1' className={styles.gutter} />
+const DragHandleGutter = () => <Flex flexGrow='1' className={styles.gutter} />
 
 export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
   <Flex
@@ -15,7 +15,7 @@ export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
     className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
   >
     <DragHandleGutter />
-    <Flex shrink='0' className={styles.gutterThumb}>
+    <Flex flexShrink='0' className={styles.gutterThumb}>
       <DragHandleDots2Icon />
     </Flex>
     <DragHandleGutter />

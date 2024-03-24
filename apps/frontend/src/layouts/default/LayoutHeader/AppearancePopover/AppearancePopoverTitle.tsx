@@ -1,4 +1,5 @@
-import { Heading, type MarginProps } from '@radix-ui/themes'
+import { Heading } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 export const AppearancePopoverTitle: FC<Props> = ({ title, ...props }) => (

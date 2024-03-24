@@ -1,4 +1,5 @@
-import { Flex, type MarginProps } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 import { NavigationItem } from './NavigationItem'

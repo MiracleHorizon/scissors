@@ -107,7 +107,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const { theme, themeColor } = await getThemeAppearance()
 
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en'>
       <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
           {isDevelopment && <ThemePanel defaultOpen={false} />}

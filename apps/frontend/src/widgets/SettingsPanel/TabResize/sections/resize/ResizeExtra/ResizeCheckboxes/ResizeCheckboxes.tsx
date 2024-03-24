@@ -1,4 +1,5 @@
-import { Grid, type MarginProps, type Responsive } from '@radix-ui/themes'
+import { Grid } from '@radix-ui/themes'
+import type { MarginProps, Responsive } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 import { CheckboxEnlargement } from './CheckboxEnlargement'

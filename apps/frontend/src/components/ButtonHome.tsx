@@ -1,7 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { Button, type MarginProps } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { PATH_ROOT } from '@site/paths'
 import type { ButtonProps } from '@lib/theme'

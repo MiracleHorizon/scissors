@@ -8,7 +8,7 @@ import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH } from '@helpers/file/constants'
-import type { TextFieldInputProps } from '@lib/theme'
+import type { TextFieldProps } from '@lib/theme'
 import styles from './InputOutputFileName.module.css'
 
 function InputOutputFileName() {
@@ -24,7 +24,7 @@ function InputOutputFileName() {
     return {
       color: 'red',
       variant: 'soft'
-    } as TextFieldInputProps
+    } as TextFieldProps
   }, [isError])
 
   const handleChange = useCallback(
@@ -69,7 +69,7 @@ function InputOutputFileName() {
           <FileTextIcon label='output file name' />
         </TextField.Slot>
 
-        <TextField.Input
+        <TextField.Root
           {...inputProps}
           ref={inputRef}
           mr='1'

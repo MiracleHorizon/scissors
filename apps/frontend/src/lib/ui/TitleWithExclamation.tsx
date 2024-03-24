@@ -1,4 +1,5 @@
-import { Flex, type MarginProps, type PaddingProps } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+import type { PaddingProps, MarginProps } from '@radix-ui/themes/props'
 import type { CSSProperties, FC, PropsWithChildren } from 'react'
 
 import { ExclamationTriangleIcon } from './icons/ExclamationTriangleIcon'

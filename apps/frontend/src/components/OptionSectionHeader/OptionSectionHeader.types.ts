@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from 'react'
-import type { MarginProps } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 export type Props = MarginProps &
   Status &

@@ -1,4 +1,5 @@
-import { Flex, Heading, type PaddingProps, Separator, Text } from '@radix-ui/themes'
+import { Flex, Heading, Separator, Text } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 import type { Metadata } from 'next'
 
 import { ButtonHome } from '@components/ButtonHome'

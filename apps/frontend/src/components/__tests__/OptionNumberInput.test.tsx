@@ -3,7 +3,6 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
 import {
-  fieldRootTestId,
   fieldTestId,
   labelTestId,
   NOT_ALLOWED_KEYS,
@@ -41,9 +40,6 @@ describe('@components/OptionNumberInput - rendering', () => {
     const labelElement = getByTestId(labelTestId)
     expect(labelElement).toBeInTheDocument()
     expect(labelElement).toHaveTextContent(label)
-
-    const fieldRootElement = getByTestId(fieldRootTestId)
-    expect(fieldRootElement).toBeInTheDocument()
 
     const slotElement = getByTestId(slotTestId)
     expect(slotElement).toBeInTheDocument()

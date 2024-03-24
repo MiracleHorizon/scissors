@@ -10,7 +10,7 @@ export const SliderSkeleton = () => (
 )
 
 export const AsideSkeleton = () => (
-  <Flex shrink='0' className={styles.sliderAside}>
+  <Flex flexShrink='0' className={styles.sliderAside}>
     <Skeleton />
   </Flex>
 )

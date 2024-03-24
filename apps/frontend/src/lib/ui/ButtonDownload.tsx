@@ -1,7 +1,8 @@
 'use client'
 
 import { type FC, memo } from 'react'
-import { IconButton, type MarginProps, Tooltip } from '@radix-ui/themes'
+import { IconButton, Tooltip } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
 

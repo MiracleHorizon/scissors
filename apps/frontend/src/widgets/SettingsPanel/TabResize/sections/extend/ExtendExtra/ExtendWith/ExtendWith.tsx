@@ -1,4 +1,5 @@
-import { Grid, type Responsive } from '@radix-ui/themes'
+import { Grid } from '@radix-ui/themes'
+import type { Responsive } from '@radix-ui/themes/props'
 
 import { SelectExtendWith } from './SelectExtendWith'
 

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
-import { Flex, type PaddingProps } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 import type { Metadata } from 'next'
 
 import { ButtonBackTop } from '@ui/ButtonBackTop'
@@ -26,22 +27,22 @@ const padding: PaddingProps = {
   }
 }
 
-export default function DocsPage() {
-  return (
-    <>
-      <ButtonBackTop visibilityOffset={400} />
+const DocsPage = () => (
+  <>
+    <ButtonBackTop visibilityOffset={400} />
 
-      <Flex
-        {...padding}
-        align='start'
-        justify='center'
-        direction='row-reverse'
-        width='100%'
-        height='100%'
-      >
-        <DocsNavigation />
-        <DocsContent />
-      </Flex>
-    </>
-  )
-}
+    <Flex
+      {...padding}
+      align='start'
+      justify='center'
+      direction='row-reverse'
+      width='100%'
+      height='100%'
+    >
+      <DocsNavigation />
+      <DocsContent />
+    </Flex>
+  </>
+)
+
+export default DocsPage

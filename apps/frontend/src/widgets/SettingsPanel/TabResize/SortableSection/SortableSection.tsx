@@ -1,7 +1,8 @@
 import { useSortable } from '@dnd-kit/sortable'
-import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 import { CSS } from '@dnd-kit/utilities'
 import { clsx } from 'clsx'
+import { Flex, Separator } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 import type { CSSProperties, PropsWithChildren } from 'react'
 import type { UniqueIdentifier } from '@dnd-kit/core'
 

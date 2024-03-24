@@ -1,7 +1,8 @@
 'use client'
 
 import { type FC, memo } from 'react'
-import { IconButton, type MarginProps } from '@radix-ui/themes'
+import { IconButton } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { Cross2Icon } from '@ui/icons/Cross2Icon'
 

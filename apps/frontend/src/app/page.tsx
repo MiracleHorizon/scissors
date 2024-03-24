@@ -1,4 +1,5 @@
-import { Flex, type PaddingProps, ScrollArea } from '@radix-ui/themes'
+import { Flex, ScrollArea } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { Preview } from '@widgets/Preview'
 import { SettingsPanel } from '@widgets/SettingsPanel'

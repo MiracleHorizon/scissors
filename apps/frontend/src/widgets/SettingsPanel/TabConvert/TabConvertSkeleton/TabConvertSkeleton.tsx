@@ -1,6 +1,7 @@
-import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
 import Skeleton from 'react-loading-skeleton'
 import { clsx } from 'clsx'
+import { Flex, Separator } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import styles from './TabConvertSkeleton.module.css'
 

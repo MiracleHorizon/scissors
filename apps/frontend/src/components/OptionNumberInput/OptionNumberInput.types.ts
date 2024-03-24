@@ -19,5 +19,14 @@ export type LabelProps = PropsWithChildren<{
 
 type InputAttributes = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'min' | 'max' | 'value' | 'type' | 'pattern' | 'color' | 'size' | 'onChange' | 'onKeyDown'
+  | 'min'
+  | 'max'
+  | 'value'
+  | 'type'
+  | 'pattern'
+  | 'color'
+  | 'size'
+  | 'onChange'
+  | 'onKeyDown'
+  | 'defaultValue'
 >

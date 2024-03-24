@@ -6,13 +6,13 @@ import MediaQuery from 'react-responsive'
 
 import { DocsNavigationItem } from './DocsNavigationItem'
 import {
-  DOCS_HASH_EXTEND,
-  DOCS_HASH_MAIN,
-  DOCS_HASH_MODULATE,
-  DOCS_HASH_NEGATE,
-  DOCS_HASH_RESIZE,
-  DOCS_HASH_ROTATE,
-  DOCS_HASH_TRIM
+  DOCS_ANCHOR_EXTEND,
+  DOCS_ANCHOR_MAIN,
+  DOCS_ANCHOR_MODULATE,
+  DOCS_ANCHOR_NEGATE,
+  DOCS_ANCHOR_RESIZE,
+  DOCS_ANCHOR_ROTATE,
+  DOCS_ANCHOR_TRIM
 } from '@site/paths'
 import { BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
 import styles from './DocsNavigation.module.css'
@@ -20,31 +20,31 @@ import styles from './DocsNavigation.module.css'
 const items = [
   {
     title: 'Main',
-    hash: DOCS_HASH_MAIN
+    hash: DOCS_ANCHOR_MAIN
   },
   {
     title: 'Negate',
-    hash: DOCS_HASH_NEGATE
+    hash: DOCS_ANCHOR_NEGATE
   },
   {
     title: 'Rotate',
-    hash: DOCS_HASH_ROTATE
+    hash: DOCS_ANCHOR_ROTATE
   },
   {
     title: 'Modulate',
-    hash: DOCS_HASH_MODULATE
+    hash: DOCS_ANCHOR_MODULATE
   },
   {
     title: 'Resize',
-    hash: DOCS_HASH_RESIZE
+    hash: DOCS_ANCHOR_RESIZE
   },
   {
     title: 'Extend',
-    hash: DOCS_HASH_EXTEND
+    hash: DOCS_ANCHOR_EXTEND
   },
   {
     title: 'Trim',
-    hash: DOCS_HASH_TRIM
+    hash: DOCS_ANCHOR_TRIM
   }
 ]
 

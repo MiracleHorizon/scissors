@@ -30,7 +30,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           <Flex
             align='center'
             justify='center'
-            shrink='0'
+            flexShrink='0'
             height='100%'
             className={styles.cardInset}
           >
@@ -52,7 +52,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             direction='column'
             justify='center'
             align='end'
-            shrink='0'
+            flexShrink='0'
             gap='1'
             pr='4'
             className={styles.buttonsContainer}

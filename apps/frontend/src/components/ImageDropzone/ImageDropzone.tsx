@@ -1,8 +1,9 @@
 'use client'
 
-import { Flex, type PaddingProps, Text } from '@radix-ui/themes'
+import { Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'

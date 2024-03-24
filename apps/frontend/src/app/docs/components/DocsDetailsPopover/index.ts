@@ -1,0 +1,1 @@
+export { DocsDetailsPopover } from './DocsDetailsPopover'

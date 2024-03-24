@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
-import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
+import { Flex, Separator } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { BasicOptions } from './Basic'
 import { Negate } from './Negate'

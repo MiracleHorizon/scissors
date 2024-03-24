@@ -1,4 +1,5 @@
-import { Flex, type PaddingProps } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 import type { FC, PropsWithChildren } from 'react'
 
 import styles from './TabResizeSection.module.css'

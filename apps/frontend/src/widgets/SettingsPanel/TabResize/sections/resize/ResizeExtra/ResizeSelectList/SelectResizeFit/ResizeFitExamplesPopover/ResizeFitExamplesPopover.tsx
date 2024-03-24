@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Flex, type PaddingProps, Popover, ScrollArea, Text } from '@radix-ui/themes'
+import { Flex, Popover, ScrollArea, Text } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'

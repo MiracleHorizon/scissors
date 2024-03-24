@@ -1,5 +1,6 @@
-import { Box, type MarginProps } from '@radix-ui/themes'
 import { clsx } from 'clsx/lite'
+import { Box } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 import type { FC } from 'react'
 
 import type { Size } from '@lib/theme'

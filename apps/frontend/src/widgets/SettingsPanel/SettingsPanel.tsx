@@ -2,7 +2,8 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
-import { Flex, type MarginProps, ScrollArea, Tabs } from '@radix-ui/themes'
+import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 import 'driver.js/dist/driver.css'
 
 import { ToolbarSkeleton } from './Toolbar/ToolbarSkeleton'

@@ -1,9 +1,11 @@
-import { DocsSection } from '../../DocsSection'
-import { BackgroundRow, LineArtSection, ThresholdRow } from './rows'
-import { DOCS_HASH_TRIM } from '@site/paths'
+import { DocsSection } from '@app/docs/components/DocsSection'
+import { ThresholdRow } from './ThresholdRow'
+import { BackgroundRow } from './BackgroundRow'
+import { LineArtSection } from './LineArtSection'
+import { DOCS_ANCHOR_TRIM } from '@site/paths'
 
 export const TrimSection = () => (
-  <DocsSection title='Trim' hash={DOCS_HASH_TRIM}>
+  <DocsSection title='Trim' hash={DOCS_ANCHOR_TRIM}>
     <>
       <ThresholdRow />
       <BackgroundRow />

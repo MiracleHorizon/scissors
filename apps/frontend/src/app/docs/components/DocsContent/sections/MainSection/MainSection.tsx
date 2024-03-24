@@ -1,9 +1,15 @@
-import { DocsSection } from '../../DocsSection'
-import { BlurRow, FlipRow, FlopRow, GammaRow, GrayscaleRow, NormaliseRow, TintRow } from './rows'
-import { DOCS_HASH_MAIN } from '@site/paths'
+import { DocsSection } from '@app/docs/components/DocsSection'
+import { FlipRow } from './FlipRow'
+import { FlopRow } from './FlopRow'
+import { GrayscaleRow } from './GrayscaleRow'
+import { BlurRow } from './BlurRow'
+import { NormaliseRow } from './NormaliseRow'
+import { TintRow } from './TintRow'
+import { GammaRow } from './GammaRow'
+import { DOCS_ANCHOR_MAIN } from '@site/paths'
 
 export const MainSection = () => (
-  <DocsSection title='Main' hash={DOCS_HASH_MAIN}>
+  <DocsSection title='Main' hash={DOCS_ANCHOR_MAIN}>
     <>
       <FlipRow />
       <FlopRow />

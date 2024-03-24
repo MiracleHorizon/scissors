@@ -18,7 +18,6 @@ const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
   </Flex>
 )
 
-export const fieldRootTestId = 'option-number-input-root'
 export const fieldTestId = 'option-number-input-field'
 export const slotTestId = 'option-number-input-slot'
 
@@ -102,22 +101,21 @@ export function OptionNumberInput({
 
   const textFieldJSX = (
     <Box asChild width='100%'>
-      <TextField.Root data-testid={fieldRootTestId}>
+      <TextField.Root
+        {...inputAttributes}
+        data-testid={fieldTestId}
+        ref={inputRef}
+        id={inputId}
+        value={value ?? ''}
+        type='number'
+        inputMode='numeric'
+        pattern='\d*'
+        min={min}
+        max={max}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      >
         {icon && <TextField.Slot data-testid={slotTestId}>{icon}</TextField.Slot>}
-        <TextField.Input
-          {...inputAttributes}
-          data-testid={fieldTestId}
-          ref={inputRef}
-          id={inputId}
-          value={value ?? ''}
-          type='number'
-          inputMode='numeric'
-          pattern='\d*'
-          min={min}
-          max={max}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
       </TextField.Root>
     </Box>
   )

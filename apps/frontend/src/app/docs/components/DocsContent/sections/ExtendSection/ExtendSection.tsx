@@ -1,11 +1,11 @@
-import { DocsSection } from '../../DocsSection'
-import { PositionsRow } from './rows/PositionsRow'
-import { ExtendWithRow } from './rows/ExtendWithRow'
-import { BackgroundRow } from './rows/BackgroundRow'
-import { DOCS_HASH_EXTEND } from '@site/paths'
+import { DocsSection } from '@app/docs/components/DocsSection'
+import { PositionsRow } from './PositionsRow'
+import { ExtendWithRow } from './ExtendWithRow'
+import { BackgroundRow } from './BackgroundRow'
+import { DOCS_ANCHOR_EXTEND } from '@site/paths'
 
 export const ExtendSection = () => (
-  <DocsSection title='Extend' hash={DOCS_HASH_EXTEND}>
+  <DocsSection title='Extend' hash={DOCS_ANCHOR_EXTEND}>
     <>
       <PositionsRow />
       <ExtendWithRow />
