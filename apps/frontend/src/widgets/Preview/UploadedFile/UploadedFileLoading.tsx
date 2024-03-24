@@ -1,18 +1,10 @@
-import { Flex, Skeleton } from '@radix-ui/themes'
-
-import { LoadingSpinner } from '@ui/LoadingSpinner'
-import type { Size } from '@lib/theme'
-
-const spinnerSize: Size = {
-  initial: '7',
-  sm: '8'
-}
+import { Flex, Skeleton, Spinner } from '@radix-ui/themes'
 
 export const UploadedFileLoading = () => (
   <Flex direction='column' gap='3' width='100%'>
     <Skeleton height='92px' width='100%' />
     <Flex align='center' justify='center' width='100%'>
-      <LoadingSpinner mt='9' width={spinnerSize} height={spinnerSize} />
+      <Spinner size='3' mt='9' />
     </Flex>
   </Flex>
 )

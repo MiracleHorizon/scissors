@@ -1,5 +1,5 @@
 import { type FC, useCallback } from 'react'
-import { Card, Flex, Text } from '@radix-ui/themes'
+import { Card, Flex, Spinner, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import MediaQuery from 'react-responsive'
 
@@ -7,7 +7,6 @@ import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { FileImageIcon } from '@ui/icons/FileImageIcon'
-import { LoadingSpinner } from '@ui/LoadingSpinner'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
@@ -45,8 +44,8 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           <UploadedFileProperties file={file} />
         </Flex>
 
-        {isRequestLoading ? (
-          <LoadingSpinner className={styles.loadingSpinner} />
+        {!isRequestLoading ? (
+          <Spinner mr='4' className={styles.spinner} />
         ) : (
           <Flex
             direction='column'

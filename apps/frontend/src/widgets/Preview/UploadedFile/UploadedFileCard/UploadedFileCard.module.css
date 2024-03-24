@@ -34,8 +34,9 @@
   width: 100%;
 }
 
-.loadingSpinner {
-  margin-right: var(--space-4);
+.spinner {
+  width: var(--space-6);
+  height: var(--space-6);
 }
 
 @media screen and (max-width: 1023px) {
@@ -72,12 +73,12 @@
     padding: 0;
   }
 
-  .loadingSpinner {
+  .spinner {
     margin-right: 0;
   }
 
   .buttonsContainer,
-  .loadingSpinner {
+  .spinner {
     align-self: flex-end;
   }
 }
