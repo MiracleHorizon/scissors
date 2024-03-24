@@ -32,6 +32,7 @@ const ImageDropzone: FC<ComponentProps> = ({
     justify='center'
     width='100%'
     gap='3'
+    maxHeight='140px'
     className={clsx(
       styles.root,
       {

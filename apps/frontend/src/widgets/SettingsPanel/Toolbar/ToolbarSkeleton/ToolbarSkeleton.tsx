@@ -27,7 +27,7 @@ const ToolbarTabMenuSkeleton = () => (
     <Flex align='center' gap='2' className={styles.toolbarTabMenu}>
       <Skeleton count={1} height={32} width={70} />
       <Skeleton count={1} height={32} width={70} />
-      <Skeleton count={1} height={32} width={70} />
+      {/*<Skeleton count={1} height={32} width={70} />*/}
     </Flex>
 
     <Flex className={styles.toolbarTabMenuMobile}>

@@ -11,7 +11,6 @@ import { isValidFileType } from '@helpers/file/isValidFileType'
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import { createFileFromBlob } from '@helpers/file/createFileFromBlob'
-import styles from './ImageUploadPopover.module.css'
 
 const FileSizeAlert = dynamic(
   () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
@@ -111,14 +110,13 @@ export function ImageUploadPopover() {
         </Tooltip>
 
         <Popover.Content align='center'>
-          <Flex gap='2' className={styles.content}>
+          <Flex gap='2' width='340px'>
             <form className='w-full' onSubmit={ev => ev.preventDefault()}>
               <TextField.Root
                 color={!isValidURL || error !== null ? 'red' : undefined}
                 value={value}
                 placeholder='Paste link to an image...'
                 onChange={onValueChange}
-                className='w-full'
               />
             </form>
 

@@ -8,6 +8,10 @@
   padding-bottom: 6px;
 }
 
+.root :global(.rt-TabsTrigger) {
+  height: 100%;
+}
+
 .mobile {
   height: 100%;
   display: flex;

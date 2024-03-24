@@ -5,10 +5,6 @@
   --buttons-offset: var(--space-4);
 
   width: 100%;
-}
-
-.card :global(.rt-CardInner) {
-  width: 100%;
   padding: 0;
 }
 
@@ -56,10 +52,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .card :global(.rt-CardInner) {
-    padding: var(--card-padding);
-  }
-
   .root {
     flex-direction: column;
     align-items: flex-start;

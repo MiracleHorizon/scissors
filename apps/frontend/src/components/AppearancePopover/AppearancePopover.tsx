@@ -1,18 +1,14 @@
 'use client'
 
 import { Flex, IconButton, Popover, Separator } from '@radix-ui/themes'
-import type { CSSProperties, FC } from 'react'
+import type { FC } from 'react'
 
-import { ThemeColorGrid } from 'src/components/theme/ThemeColorGrid'
+import { ThemeColorGrid } from '@components/theme/ThemeColorGrid'
 import { AppearancePopoverTitle } from './AppearancePopoverTitle'
 import { ButtonToggleTheme } from '@components/theme/ButtonToggleTheme'
 import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
 import { useSyncThemeAppearance } from '@hooks/useSyncThemeAppearance'
 import type { ThemeProps } from '@lib/theme'
-
-const contentStyle: CSSProperties = {
-  width: '180px'
-}
 
 const AppearancePopover: FC<ThemeProps> = ({ theme, themeColor }) => {
   useSyncThemeAppearance({
@@ -33,8 +29,8 @@ const AppearancePopover: FC<ThemeProps> = ({ theme, themeColor }) => {
         </IconButton>
       </Popover.Trigger>
 
-      <Popover.Content style={contentStyle} sideOffset={3}>
-        <Flex direction='column' align='start' gap='3' width='100%'>
+      <Popover.Content sideOffset={3}>
+        <Flex direction='column' align='start' gap='3' width='170px'>
           <Flex align='center' justify='between' width='100%'>
             <AppearancePopoverTitle title='Theme' />
             <ButtonToggleTheme theme={theme} />

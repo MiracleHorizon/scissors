@@ -19,7 +19,7 @@ export const ConfirmAlert: FC<Props> = ({
   maxWidth
 }) => (
   <AlertDialog.Root open={open}>
-    <AlertDialog.Trigger>{children}</AlertDialog.Trigger>
+    {typeof open !== 'boolean' && <AlertDialog.Trigger>{children}</AlertDialog.Trigger>}
 
     <AlertDialog.Content
       size='3'

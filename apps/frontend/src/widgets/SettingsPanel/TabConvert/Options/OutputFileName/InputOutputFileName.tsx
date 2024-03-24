@@ -64,22 +64,21 @@ function InputOutputFileName() {
 
   return (
     <Flex gap='2' align='center' width='100%' mb='2' className={styles.root}>
-      <TextField.Root className={styles.textFieldRoot}>
+      <TextField.Root
+        {...inputProps}
+        ref={inputRef}
+        mr='1'
+        type='text'
+        placeholder='Output file name'
+        minLength={MIN_FILE_NAME_LENGTH}
+        maxLength={MAX_FILE_NAME_LENGTH}
+        value={outputFileName}
+        onChange={handleChange}
+        className='w-full'
+      >
         <TextField.Slot>
           <FileTextIcon label='output file name' />
         </TextField.Slot>
-
-        <TextField.Root
-          {...inputProps}
-          ref={inputRef}
-          mr='1'
-          type='text'
-          placeholder='Output file name'
-          minLength={MIN_FILE_NAME_LENGTH}
-          maxLength={MAX_FILE_NAME_LENGTH}
-          value={outputFileName}
-          onChange={handleChange}
-        />
 
         {outputFileName.length > 0 && (
           <TextField.Slot>

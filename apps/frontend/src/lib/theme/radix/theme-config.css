@@ -1,3 +1,7 @@
 .radix-themes {
   --default-font-family: var(--font-geist-sans);
 }
+
+.rt-Code:where(.rt-variant-ghost) {
+  color: var(--accent-a11);
+}
