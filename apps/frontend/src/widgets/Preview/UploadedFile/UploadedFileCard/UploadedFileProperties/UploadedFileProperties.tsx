@@ -14,7 +14,7 @@ import MediaQuery from 'react-responsive'
 import { FileIcon } from '@ui/icons/FileIcon'
 import { RatioIcon } from '@ui/icons/RatioIcon'
 import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
-import { getAspectRatio, getFileSize, getImageDimension } from './utils'
+import { getAspectRatio, getFileSize, getImageDimension, isCorrectAspectRatio } from './utils'
 import type { Dimension } from './types'
 import styles from './UploadedFileProperties.module.css'
 
@@ -42,11 +42,11 @@ export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
       icon: <DimensionsIcon />
     })
 
-    const [widthRatio, heightRatio] = getAspectRatio(width, height)
-    if (width !== widthRatio && height !== heightRatio) {
+    const ratio = getAspectRatio(width, height)
+    if (isCorrectAspectRatio(ratio, width, height)) {
       items.push({
         label: 'Aspect',
-        value: `${widthRatio}:${heightRatio}`,
+        value: `${ratio[0]}:${ratio[1]}`,
         icon: <RatioIcon width='16px' height='16px' />
       })
     }

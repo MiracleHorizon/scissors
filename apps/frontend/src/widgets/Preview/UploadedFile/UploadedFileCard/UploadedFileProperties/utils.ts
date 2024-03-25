@@ -18,6 +18,18 @@ export function getAspectRatio(width: number, height: number): [number, number] 
   return [width, height]
 }
 
+export function isCorrectAspectRatio(
+  [widthRatio, heightRatio]: [number, number],
+  width: number,
+  height: number
+): boolean {
+  const ULTRAWIDE_MONITOR_WIDTH_RATIO = 21
+
+  return (
+    width !== widthRatio && height !== heightRatio && widthRatio <= ULTRAWIDE_MONITOR_WIDTH_RATIO
+  )
+}
+
 export function getFileSize(fileSize: number): string {
   const formatFileSize = (size: number) => size.toFixed(1).replace('.0', '')
 
