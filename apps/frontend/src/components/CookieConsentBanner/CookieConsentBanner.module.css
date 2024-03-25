@@ -1,9 +1,12 @@
 .root {
+  --margin-x: var(--space-2);
+
   width: 100%;
   max-width: 440px;
   position: fixed !important;
   left: 20px;
-  z-index: 10000;
+  z-index: 10;
+  margin: 0 var(--margin-x);
   background-color: var(--gray-2) !important;
   box-shadow: 0 14px 42px 0 rgba(8 15 52 / 0.15);
 }
@@ -17,7 +20,7 @@
     max-width: 300px;
     left: 50%;
     right: 50%;
-    transform: translateX(-50%);
+    transform: translate3d(calc(-50% - var(--margin-x)), 0, 0);
   }
 
   .icon {
