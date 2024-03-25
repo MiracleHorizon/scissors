@@ -1,13 +1,9 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef, CSSProperties, FC, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
 import { TitleWithExclamation } from '@ui/TitleWithExclamation'
-
-const contentStyle: CSSProperties = {
-  padding: '22px'
-}
 
 export const FileValidationAlert: FC<Props> = ({
   open,
@@ -17,7 +13,7 @@ export const FileValidationAlert: FC<Props> = ({
   onOpenChange
 }) => (
   <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
-    <AlertDialog.Content size='3' maxWidth='370px' style={contentStyle} onEscapeKeyDown={onClose}>
+    <AlertDialog.Content size='3' onEscapeKeyDown={onClose}>
       <TitleWithExclamation mb='3'>
         <AlertDialog.Title mb='0'>{title}</AlertDialog.Title>
       </TitleWithExclamation>

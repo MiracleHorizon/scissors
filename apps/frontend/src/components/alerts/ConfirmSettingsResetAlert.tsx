@@ -1,19 +1,10 @@
 'use client'
 
-import {
-  type ComponentPropsWithoutRef,
-  type CSSProperties,
-  type FC,
-  type PropsWithChildren,
-  useState
-} from 'react'
+import { type ComponentPropsWithoutRef, type FC, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
 import { OptionCheckbox } from '@components/OptionCheckbox'
 
-const contentStyle: CSSProperties = {
-  padding: '22px'
-}
 const contentActionsProps = {
   gap: {
     initial: '3',
@@ -23,7 +14,7 @@ const contentActionsProps = {
     initial: '4',
     xs: '5'
   }
-}
+} as const
 
 export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCancel }) => {
   const [removeAll, setRemoveAll] = useState(false)
@@ -36,7 +27,7 @@ export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCa
     <AlertDialog.Root>
       <AlertDialog.Trigger>{children}</AlertDialog.Trigger>
 
-      <AlertDialog.Content size='3' maxWidth='370px' style={contentStyle}>
+      <AlertDialog.Content size='3'>
         <Flex direction='column' width='100%'>
           <AlertDialog.Title>Reset all settings</AlertDialog.Title>
           <AlertDialog.Description>

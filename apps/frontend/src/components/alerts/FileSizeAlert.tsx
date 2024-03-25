@@ -3,12 +3,12 @@
 import { Text } from '@radix-ui/themes'
 import type { CSSProperties, FC } from 'react'
 
-import { MAX_FILE_SIZE_MB } from '@site/config'
 import { FileValidationAlert, type FileValidationAlertExternalProps } from './FileValidationAlert'
+import { MAX_FILE_SIZE_MB } from '@site/config'
 
 const maxFileSizeTextStyle: CSSProperties = {
   fontWeight: '600'
-}
+} as const
 
 export const FileSizeAlert: FC<FileValidationAlertExternalProps> = props => (
   <FileValidationAlert

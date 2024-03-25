@@ -1,14 +1,9 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { CSSProperties } from 'react'
 
 import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 import { handleRequestError } from '@api/helpers/handleRequestError'
-
-const contentStyle: CSSProperties = {
-  padding: '22px'
-}
 
 export function RequestErrorAlert({ open, error, reset, retry }: Props) {
   const message = handleRequestError(error)
@@ -16,7 +11,7 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
 
   return (
     <AlertDialog.Root open={open}>
-      <AlertDialog.Content size='3' maxWidth='390px' style={contentStyle}>
+      <AlertDialog.Content size='3' maxWidth='390px'>
         <TitleWithExclamation mb='3'>
           <AlertDialog.Title mb='0'>
             {isMessageEmpty ? 'Something went wrong' : 'Error'}

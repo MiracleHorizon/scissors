@@ -13,3 +13,7 @@
 .rt-Code:where(.rt-variant-ghost) {
   color: var(--accent-a11);
 }
+
+.rt-AlertDialogContent:where([style='--max-width: 600px; pointer-events: auto;']) {
+  --max-width: 370px !important;
+}

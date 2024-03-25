@@ -1,13 +1,9 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { CSSProperties, FC } from 'react'
-
-const contentStyle: CSSProperties = {
-  padding: '22px'
-}
+import type { FC } from 'react'
 
 export const DefaultErrorAlert: FC<Props> = ({ open, onClose, title, description, closeText }) => (
   <AlertDialog.Root open={open} defaultOpen={false}>
-    <AlertDialog.Content size='3' maxWidth='370px' style={contentStyle} onEscapeKeyDown={onClose}>
+    <AlertDialog.Content size='3' onEscapeKeyDown={onClose}>
       <AlertDialog.Title>{title ?? 'Something went wrong'}</AlertDialog.Title>
 
       <AlertDialog.Description>{description ?? 'Please try again later.'}</AlertDialog.Description>
