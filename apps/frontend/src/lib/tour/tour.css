@@ -5,7 +5,7 @@
 html.dark {
   .driver-popover {
     background-color: var(--gray-4);
-    color: var(--accent-9-contrast);
+    color: var(--accent-contrast);
   }
 }
 

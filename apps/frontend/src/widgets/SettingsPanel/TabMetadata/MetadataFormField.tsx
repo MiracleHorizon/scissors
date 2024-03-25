@@ -17,7 +17,7 @@ export const MetadataFormField: FC<Props> = ({
   <Form.Field name={name}>
     <Form.Label className={clsx(styles.label, 'truncate')}>{label}</Form.Label>
     <Form.Control disabled={disabled} asChild>
-      <TextField.Input value={value} placeholder={placeholder} onChange={onChange} {...register} />
+      <TextField.Root value={value} placeholder={placeholder} onChange={onChange} {...register} />
     </Form.Control>
   </Form.Field>
 )

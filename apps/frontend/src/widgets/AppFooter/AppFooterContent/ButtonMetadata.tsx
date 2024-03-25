@@ -12,7 +12,7 @@ export function ButtonMetadata() {
   const setLoading = useRequestStore(state => state.setLoading)
   const metadataSettings = useMetadataStore(state => state.getMetadataSettings())
 
-  const { mutate, error, isPending, reset } = useMetadataMutation()
+  const { mutate, error, isPending: isLoading, reset } = useMetadataMutation()
 
   const handleSubmit = useCallback(() => {
     if (!file) return
@@ -26,19 +26,19 @@ export function ButtonMetadata() {
   }, [file, fileName, mutate, metadataSettings, setLoading])
 
   const handleRetry = useCallback(() => {
-    if (isPending) return
+    if (isLoading) return
 
     handleSubmit()
-  }, [isPending, handleSubmit])
+  }, [isLoading, handleSubmit])
 
   return (
     <ButtonRequest
       label='Submit'
-      isPending={isPending}
-      error={error}
       makeRequest={handleSubmit}
       retry={handleRetry}
       reset={reset}
+      error={error}
+      isLoading={isLoading}
     />
   )
 }

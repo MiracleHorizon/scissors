@@ -1,4 +1,5 @@
-import { Flex, type PaddingProps } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ToolbarTabMenu } from './ToolbarTabMenu'
 import { ToolbarContent } from './ToolbarContent'
@@ -10,7 +11,7 @@ const padding: PaddingProps = {
     initial: '4',
     md: '3'
   }
-}
+} as const
 
 export const Toolbar = () => (
   <Flex {...padding} align='center' justify='between' className={styles.root}>

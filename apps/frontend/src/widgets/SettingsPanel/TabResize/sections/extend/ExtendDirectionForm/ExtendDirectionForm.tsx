@@ -1,14 +1,15 @@
 import dynamic from 'next/dynamic'
-import { Grid } from '@radix-ui/themes'
+import { Grid, Skeleton } from '@radix-ui/themes'
 
-import { ExtendDirectionFormInputSkeleton } from './skeletons'
 import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'
+
+const InputSkeleton = () => <Skeleton height='32px' width='100%' />
 
 const ExtendDirectionFormNumber = dynamic(
   () => import('./ExtendDirectionFormNumber').then(mod => mod.ExtendDirectionFormNumber),
   {
     ssr: false,
-    loading: () => <ExtendDirectionFormInputSkeleton />
+    loading: () => <InputSkeleton />
   }
 )
 const ExtendDirectionFormAxis = dynamic(
@@ -17,8 +18,8 @@ const ExtendDirectionFormAxis = dynamic(
     ssr: false,
     loading: () => (
       <>
-        <ExtendDirectionFormInputSkeleton />
-        <ExtendDirectionFormInputSkeleton />
+        <InputSkeleton />
+        <InputSkeleton />
       </>
     )
   }
@@ -29,10 +30,10 @@ const ExtendDirectionFormSeparated = dynamic(
     ssr: false,
     loading: () => (
       <>
-        <ExtendDirectionFormInputSkeleton />
-        <ExtendDirectionFormInputSkeleton />
-        <ExtendDirectionFormInputSkeleton />
-        <ExtendDirectionFormInputSkeleton />
+        <InputSkeleton />
+        <InputSkeleton />
+        <InputSkeleton />
+        <InputSkeleton />
       </>
     )
   }

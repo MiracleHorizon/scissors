@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+
 import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
@@ -8,7 +9,7 @@ const data: OptionSelectData<ResizeKernel> = [
   {
     value: Object.values(RESIZE_KERNEL)
   }
-]
+] as const
 
 export function SelectResizeKernel() {
   const kernel = useResizeStore(state => state.kernel)

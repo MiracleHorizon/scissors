@@ -4,9 +4,8 @@ import type { CSSProperties } from 'react'
 import { ButtonInfo } from '@ui/ButtonInfo'
 
 const contentStyle: CSSProperties = {
-  maxWidth: '300px',
-  padding: 'var(--space-2)'
-}
+  padding: '10px'
+} as const
 
 export const TrimBackgroundInfoPopover = () => (
   <Popover.Root>
@@ -15,7 +14,7 @@ export const TrimBackgroundInfoPopover = () => (
     </Popover.Trigger>
 
     <Popover.Content size='1' style={contentStyle} align='center' side='top'>
-      <Box>
+      <Box maxWidth='300px'>
         <Text as='p' size='2'>
           The default background (trim color) value is set as <Code variant='ghost'>top-left</Code>{' '}
           pixel

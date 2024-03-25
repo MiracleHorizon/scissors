@@ -1,4 +1,4 @@
-import type { PaddingProps } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 export const tabResizePadding: PaddingProps = {
   pt: '3',
@@ -8,4 +8,4 @@ export const tabResizePadding: PaddingProps = {
     md: '2'
   },
   pr: '3'
-}
+} as const

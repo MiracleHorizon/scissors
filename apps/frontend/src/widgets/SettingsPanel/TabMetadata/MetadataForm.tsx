@@ -8,7 +8,7 @@ import styles from './MetadataForm.module.css'
 const gridColumns: GridColumns = {
   initial: '2',
   xs: '3'
-}
+} as const
 
 export const MetadataForm: FC<Props> = ({ title, headerContent, content }) => (
   <Flex direction='column' gap='2'>

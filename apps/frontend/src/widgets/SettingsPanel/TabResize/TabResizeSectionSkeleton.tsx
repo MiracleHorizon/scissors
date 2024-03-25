@@ -1,13 +1,12 @@
-import { Flex } from '@radix-ui/themes'
-import Skeleton from 'react-loading-skeleton'
+import { Flex, Skeleton } from '@radix-ui/themes'
 import type { FC } from 'react'
 
 export const TabResizeSectionSkeleton: FC<Props> = ({ height }) => (
   <Flex width='100%' pr='3'>
-    <Skeleton height={height} containerClassName='w-full' />
+    <Skeleton width='100%' height={height} />
   </Flex>
 )
 
 interface Props {
-  height: number
+  height: string
 }

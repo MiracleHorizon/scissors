@@ -9,7 +9,7 @@ const width: Size = {
   initial: '100%',
   xs: 'auto',
   md: '100%'
-}
+} as const
 
 export const labelTestId = 'option-switch-label'
 

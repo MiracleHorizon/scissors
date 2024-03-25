@@ -1,0 +1,10 @@
+.trigger {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    cursor: help;
+  }
+}

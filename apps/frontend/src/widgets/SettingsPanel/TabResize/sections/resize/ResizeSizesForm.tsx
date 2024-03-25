@@ -1,4 +1,5 @@
 import { Flex } from '@radix-ui/themes'
+
 import {
   MAX_RESIZE_HEIGHT,
   MAX_RESIZE_WIDTH,
@@ -14,7 +15,7 @@ import { useResizeStore } from '@stores/resize'
 const defaultInputProps = {
   min: MIN_RESIZE_SIZE,
   step: RESIZE_SIZE_STEP
-}
+} as const
 
 export function ResizeSizesForm() {
   const width = useResizeStore(state => state.width)

@@ -1,11 +1,13 @@
 'use client'
 
 import { type ChangeEvent, type FC, type KeyboardEvent, useCallback, useId, useRef } from 'react'
-import { Box, Flex, Text, TextField } from '@radix-ui/themes'
+import { Flex, Text, TextField } from '@radix-ui/themes'
+import { clsx } from 'clsx'
 
 import { NOT_ALLOWED_KEYS, parseValue } from './utils'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import type { LabelProps, Props } from './OptionNumberInput.types'
+import styles from './OptionNumberInput.module.css'
 
 export const labelTestId = 'option-number-input-label'
 
@@ -18,7 +20,6 @@ const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
   </Flex>
 )
 
-export const fieldRootTestId = 'option-number-input-root'
 export const fieldTestId = 'option-number-input-field'
 export const slotTestId = 'option-number-input-slot'
 
@@ -31,6 +32,7 @@ export function OptionNumberInput({
   label,
   allowFloat,
   maxFractionDigits,
+  className,
   ...inputAttributes
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -101,25 +103,23 @@ export function OptionNumberInput({
   })
 
   const textFieldJSX = (
-    <Box asChild width='100%'>
-      <TextField.Root data-testid={fieldRootTestId}>
-        {icon && <TextField.Slot data-testid={slotTestId}>{icon}</TextField.Slot>}
-        <TextField.Input
-          {...inputAttributes}
-          data-testid={fieldTestId}
-          ref={inputRef}
-          id={inputId}
-          value={value ?? ''}
-          type='number'
-          inputMode='numeric'
-          pattern='\d*'
-          min={min}
-          max={max}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-      </TextField.Root>
-    </Box>
+    <TextField.Root
+      {...inputAttributes}
+      data-testid={fieldTestId}
+      ref={inputRef}
+      id={inputId}
+      value={value ?? ''}
+      type='number'
+      inputMode='numeric'
+      pattern='\d*'
+      min={min}
+      max={max}
+      className={clsx(styles.field, className)}
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+    >
+      {icon && <TextField.Slot data-testid={slotTestId}>{icon}</TextField.Slot>}
+    </TextField.Root>
   )
 
   if (label) {

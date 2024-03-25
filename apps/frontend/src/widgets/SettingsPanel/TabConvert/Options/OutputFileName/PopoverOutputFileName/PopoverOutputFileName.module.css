@@ -1,5 +1,4 @@
 .content {
-  max-width: 370px;
   padding: var(--space-2);
 }
 
@@ -22,10 +21,6 @@
 }
 
 @media screen and (max-width: 519px) {
-  .content {
-    max-width: 80dvw;
-  }
-
   .content li {
     list-style: none;
     padding: 0;

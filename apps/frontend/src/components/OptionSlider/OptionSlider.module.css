@@ -1,12 +1,13 @@
-.content :global(.rt-TextFieldRoot) {
+.content {
   --action-button-width: var(--space-6);
   --actions-buttons-gap: var(--space-1);
   --action-buttons-count: 2;
+}
 
+.content :global(.rt-TextFieldRoot) {
   width: calc(
     var(--action-button-width) * var(--action-buttons-count) + var(--actions-buttons-gap)
   );
-  height: 100%;
 }
 
 .content :global(.rt-TextFieldInput::placeholder) {

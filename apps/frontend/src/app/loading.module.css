@@ -1,3 +1,6 @@
-.root {
-  height: var(--layout-content-height);
+.spinner {
+  --size: var(--space-8);
+
+  width: var(--size);
+  height: var(--size);
 }

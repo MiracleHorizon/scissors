@@ -22,7 +22,7 @@ export function ColorPickerContent({ color, setColor }: Props) {
   const handleRandomize = () => setColor(getRandomHexColor())
 
   return (
-    <Popover.Content size='1' className={styles.root}>
+    <Popover.Content size='1' width='210px' className={styles.root}>
       <Flex gap='3' direction='column'>
         <HexColorPicker
           color={color}

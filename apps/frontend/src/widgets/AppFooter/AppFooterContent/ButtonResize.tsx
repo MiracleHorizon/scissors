@@ -12,7 +12,7 @@ export function ButtonResize() {
   const setLoading = useRequestStore(state => state.setLoading)
   const resizeSettings = useResizeSettings()
 
-  const { mutate: resize, isPending, error, reset } = useResizeMutation()
+  const { mutate: resize, isPending: isLoading, error, reset } = useResizeMutation()
 
   const handleResize = useCallback(() => {
     if (!file) return
@@ -26,19 +26,19 @@ export function ButtonResize() {
   }, [file, fileName, resize, resizeSettings, setLoading])
 
   const handleRetry = useCallback(() => {
-    if (isPending) return
+    if (isLoading) return
 
     handleResize()
-  }, [isPending, handleResize])
+  }, [isLoading, handleResize])
 
   return (
     <ButtonRequest
       label='Resize'
-      isPending={isPending}
-      error={error}
       makeRequest={handleResize}
       retry={handleRetry}
       reset={reset}
+      error={error}
+      isLoading={isLoading}
       isDisabled={resizeSettings.queue.length === 0}
     />
   )

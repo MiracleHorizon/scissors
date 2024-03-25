@@ -1,5 +1,4 @@
-import { Flex } from '@radix-ui/themes'
-import Skeleton from 'react-loading-skeleton'
+import { Flex, Skeleton } from '@radix-ui/themes'
 
 import styles from './GallerySlideSkeleton.module.css'
 
@@ -10,7 +9,7 @@ export const SliderSkeleton = () => (
 )
 
 export const AsideSkeleton = () => (
-  <Flex shrink='0' className={styles.sliderAside}>
+  <Flex flexShrink='0' className={styles.sliderAside}>
     <Skeleton />
   </Flex>
 )

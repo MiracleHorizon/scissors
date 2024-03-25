@@ -8,7 +8,7 @@ const direction: FlexDirection = {
   initial: 'column',
   xs: 'row',
   md: 'column'
-}
+} as const
 
 export const Negate = () => (
   <Flex asChild direction={direction} gap='2'>

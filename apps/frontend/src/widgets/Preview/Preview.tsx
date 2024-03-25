@@ -1,8 +1,9 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { Flex, type PaddingProps } from '@radix-ui/themes'
 import { clsx } from 'clsx'
+import { Flex } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
 import { ImageUploaderLoading } from '@components/ImageUploader/ImageUploaderLoading'
@@ -26,7 +27,7 @@ const padding: PaddingProps = {
     initial: '4',
     md: '0'
   }
-}
+} as const
 
 export function Preview() {
   const file = useOutputStore(state => state.file)

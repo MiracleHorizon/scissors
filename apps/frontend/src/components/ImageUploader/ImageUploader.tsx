@@ -14,7 +14,7 @@ import styles from './ImageUploader.module.css'
 const fileUploadZoneHTMLAttributes = {
   className: styles.dropzone,
   'data-tourstep': TOUR_STEP.FILE_UPLOAD
-} as HTMLAttributes<HTMLDivElement>
+} as const as HTMLAttributes<HTMLDivElement>
 
 export function ImageUploader() {
   const setFile = useOutputStore(state => state.setFile)
@@ -42,7 +42,7 @@ export function ImageUploader() {
           xs: 'column'
         }}
         justify='start'
-        className={styles.buttons}
+        gap='var(--buttons-gap)'
       >
         <ButtonUpload
           accept={allowedImageFormats}

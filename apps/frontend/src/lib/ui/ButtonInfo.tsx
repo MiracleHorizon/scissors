@@ -1,7 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { IconButton, type MarginProps } from '@radix-ui/themes'
+import { IconButton } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
 import type { Radius } from '@lib/theme'

@@ -62,19 +62,3 @@ input[type='number'] {
 .hidden {
   display: none;
 }
-
-/* react-loading-skeleton */
-span[aria-live='polite'] {
-  height: inherit;
-  display: flex;
-  align-items: center;
-}
-
-span[aria-live='polite'] br {
-  display: none;
-}
-
-.dark .react-loading-skeleton {
-  --base-color: #333333;
-  --highlight-color: #444444;
-}

@@ -23,7 +23,7 @@ const ConfirmImportAlert: FC<{
     title='Import settings'
     description='All your selected settings will be overwritten. Are you sure you want to proceed?'
     confirmLabel='Import'
-    maxWidth={390}
+    maxWidth='390px'
   />
 )
 

@@ -2,8 +2,8 @@ import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
 import type { ComponentPropsWithoutRef, FC, HTMLAttributes } from 'react'
 
+import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import styles from './Accordion.module.css'
-import { ChevronDownIcon } from '../icons/ChevronDownIcon'
 
 const AccordionRoot: FC<ComponentPropsWithoutRef<typeof Accordion.Root>> = ({
   children,

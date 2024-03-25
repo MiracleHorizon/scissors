@@ -5,12 +5,10 @@ import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Layout } from '@layouts/default'
 import { getThemeAppearance } from '@lib/theme'
 import {
-  isDevelopment,
   pathForSocial,
   SITE_DESCRIPTION,
   SITE_DOMAIN,
@@ -107,10 +105,10 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const { theme, themeColor } = await getThemeAppearance()
 
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' className={theme}>
       <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
-          {isDevelopment && <ThemePanel defaultOpen={false} />}
+          <ThemePanel defaultOpen={false} />
 
           <CookieConsentBanner />
 

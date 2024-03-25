@@ -20,11 +20,11 @@ export const OptionSliderHeader: FC<Props> = ({ title, titleIcon, disabled, info
           <Flex asChild align='center' justify='center'>
             <span>{titleIcon}</span>
           </Flex>
-          <Separator orientation='vertical' className={styles.separator} />
+          <Separator orientation='vertical' mx='6px' my='0' />
         </>
       )}
 
-      <Heading weight='medium' className={styles.heading}>
+      <Heading as='h5' weight='medium' className={styles.heading}>
         {title}
       </Heading>
 

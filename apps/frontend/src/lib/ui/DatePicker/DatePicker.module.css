@@ -11,7 +11,7 @@
   --rdp-background-color-dark: var(--accent-4);
   --rdp-outline: 2px solid var(--accent-9);
   --rdp-outline-selected: 3px solid var(--accent-9);
-  --rdp-selected-color: var(--accent-9-contrast);
+  --rdp-selected-color: var(--accent-contrast);
 
   margin: 0;
 }

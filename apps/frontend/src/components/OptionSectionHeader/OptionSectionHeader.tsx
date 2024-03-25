@@ -32,7 +32,7 @@ export const OptionSectionHeader: FC<Props> = ({
               <Flex asChild align='center' justify='center'>
                 <span>{icon}</span>
               </Flex>
-              <Separator orientation='vertical' className={styles.separator} />
+              <Separator orientation='vertical' mx='6px' my='0' />
             </>
           )}
 

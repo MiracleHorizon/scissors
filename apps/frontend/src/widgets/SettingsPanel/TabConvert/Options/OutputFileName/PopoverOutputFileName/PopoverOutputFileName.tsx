@@ -15,7 +15,16 @@ export const PopoverOutputFileName = () => (
       <ButtonInfo />
     </Popover.Trigger>
 
-    <Popover.Content size='1' side='bottom' align='center' className={styles.content}>
+    <Popover.Content
+      size='1'
+      side='bottom'
+      align='center'
+      maxWidth={{
+        initial: '80dvw',
+        xs: '370px'
+      }}
+      className={styles.content}
+    >
       <Text as='p' size='2' className={styles.contentText}>
         The{' '}
         <Text as='span' className={styles.spanOptional}>

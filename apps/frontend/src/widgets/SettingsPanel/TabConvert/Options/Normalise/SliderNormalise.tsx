@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+
 import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 
 import { OptionSlider } from '@components/OptionSlider'

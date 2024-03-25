@@ -47,7 +47,7 @@ const fieldList: {
     label: 'Aperture',
     placeholder: '4.57'
   }
-]
+] as const
 
 export function Ifd2OptionsForm() {
   const {
@@ -68,7 +68,7 @@ export function Ifd2OptionsForm() {
 
   const onChange = useCallback(() => {
     set(getValues())
-  }, [set])
+  }, [getValues, set])
 
   const fields = useMemo(
     () =>
@@ -79,7 +79,7 @@ export function Ifd2OptionsForm() {
         }),
         ...field
       })),
-    []
+    [onChange, register]
   )
 
   return (

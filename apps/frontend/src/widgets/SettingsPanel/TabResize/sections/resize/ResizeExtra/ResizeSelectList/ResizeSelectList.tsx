@@ -9,7 +9,7 @@ import type { FlexDirection } from '@lib/theme'
 const direction: FlexDirection = {
   initial: 'column',
   xs: 'row'
-}
+} as const
 
 export function ResizeSelectList() {
   const fit = useResizeStore(state => state.fit)

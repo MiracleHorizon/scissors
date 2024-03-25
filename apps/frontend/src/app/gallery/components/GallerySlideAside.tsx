@@ -5,7 +5,7 @@ import { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlideAside.module.css'
 
 export const GallerySlideAside: FC<Props> = props => (
-  <Flex asChild direction='column' shrink='0' pl='2' pb='2' className={styles.root}>
+  <Flex asChild direction='column' flexShrink='0' width='var(--slide-aside-w)' pl='2' pb='2'>
     <aside>
       <GallerySlideInfo {...props} className={styles.info} />
     </aside>

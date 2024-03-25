@@ -1,4 +1,5 @@
-import { Flex, type PaddingProps, ScrollArea } from '@radix-ui/themes'
+import { Flex, ScrollArea } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { Preview } from '@widgets/Preview'
 import { SettingsPanel } from '@widgets/SettingsPanel'
@@ -9,13 +10,13 @@ import styles from './page.module.css'
 const mainDirection: FlexDirection = {
   initial: 'column',
   md: 'row'
-}
+} as const
 const mainPadding: PaddingProps = {
   pl: {
     initial: '0',
     md: '4'
   }
-}
+} as const
 
 const HomePage = () => (
   <Flex width='100%' align='center' direction='column' className={styles.root}>

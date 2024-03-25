@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { Flex, type MarginProps } from '@radix-ui/themes'
 import { clsx } from 'clsx'
+import { Flex } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { PATH_ROOT } from '@site/paths'
 import type { StyleProps } from '@app-types/StyleProps'

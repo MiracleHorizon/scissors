@@ -1,7 +1,8 @@
 'use client'
 
 import { memo, type ReactNode } from 'react'
-import { Button, type MarginProps } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 export const ButtonAddOption = memo(
   ({ label, onClick, leadIcon, endIcon, disabled, ...props }: Props) => (

@@ -1,41 +1,39 @@
-import { Flex, type PaddingProps, Separator } from '@radix-ui/themes'
-import Skeleton from 'react-loading-skeleton'
-import { clsx } from 'clsx'
+import { Flex, Separator, Skeleton } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import styles from './TabConvertSkeleton.module.css'
 
-const SwitchSkeleton = () => (
-  <Flex align='center' width='100%'>
-    <Skeleton inline count={1} height={24} containerClassName='w-full' />
-    <Skeleton inline count={1} height={24} width={42} className={styles.switch} />
+const SwitchSkeleton = ({ text }: { text?: string }) => (
+  <Flex align='center' justify='between' width='100%'>
+    <Skeleton height='24px'>{text}</Skeleton>
+    <Skeleton height='24px' width='42px' ml='2' className={styles.switch} />
   </Flex>
 )
 
-const ButtonSkeleton = () => (
-  <Skeleton inline count={1} height={32} borderRadius='6px' width='145px' />
-)
+const ButtonSkeleton = () => <Skeleton height='32px' width='140px' />
 
 const optionsPadding: PaddingProps = {
-  px: '3',
+  pl: '3',
+  pr: '4',
   pb: '2',
   pt: '3'
-}
+} as const
 
 const OptionsSkeleton = () => (
   <>
-    <Skeleton inline count={1} height={30} containerClassName={clsx(styles.input, 'w-full')} />
-    <Flex direction='column' gap='2'>
-      <SwitchSkeleton />
-      <SwitchSkeleton />
-      <SwitchSkeleton />
+    <Skeleton height='32px' width='100%' mb='10px' />
+    <Flex direction='column' gap='2' width='100%'>
+      <SwitchSkeleton text='Flip Flip Flip' />
+      <SwitchSkeleton text='Flop Flop Flop' />
+      <SwitchSkeleton text='Grayscale Grayscale' />
     </Flex>
     <Separator my='1' size='4' />
-    <Flex direction='column' gap='2'>
-      <SwitchSkeleton />
-      <SwitchSkeleton />
+    <Flex direction='column' gap='2' width='100%'>
+      <SwitchSkeleton text='Negate Negate' />
+      <SwitchSkeleton text='Negate Alpha Negate' />
     </Flex>
     <Separator my='1' size='4' />
-    <SwitchSkeleton />
+    <SwitchSkeleton text='Blur Blur Blur' />
     <ButtonSkeleton />
     <Separator my='1' size='4' />
     <ButtonSkeleton />

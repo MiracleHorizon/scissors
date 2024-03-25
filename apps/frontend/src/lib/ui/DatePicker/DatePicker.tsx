@@ -7,12 +7,10 @@ import dayjs from 'dayjs'
 import { CalendarIcon } from '@ui/icons/CalendarIcon'
 import styles from './DatePicker.module.css'
 
-// TODO: Checkout
-const currentDate = new Date()
-
 export function DatePicker({ value, disabled, onValueChange }: Props) {
-  const [time, setTime] = useState(`${currentDate.getHours()}:${currentDate.getMinutes()}`)
+  const currentDate = new Date()
   const formattedDate = getFormattedDate()
+  const [time, setTime] = useState(`${currentDate.getHours()}:${currentDate.getMinutes()}`)
 
   function handleTimeChange(ev: ChangeEvent<HTMLInputElement>) {
     const time = ev.target.value
@@ -58,9 +56,12 @@ export function DatePicker({ value, disabled, onValueChange }: Props) {
             showOutsideDays
           />
 
-          <TextField.Root className={styles.timeInput}>
-            <TextField.Input type='time' value={time} onChange={handleTimeChange} />
-          </TextField.Root>
+          <TextField.Root
+            type='time'
+            value={time}
+            className={styles.timeInput}
+            onChange={handleTimeChange}
+          />
         </Flex>
       </Popover.Content>
     </Popover.Root>

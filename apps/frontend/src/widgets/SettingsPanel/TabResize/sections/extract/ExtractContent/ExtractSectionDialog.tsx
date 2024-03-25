@@ -4,7 +4,7 @@ import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
-import { SelectExtractAspectRatio } from './SelectExtractAspectRatio'
+import { RadioGroupExtractRatio } from './RadioGroupExtractRatio'
 import { ExtractCallout } from './ExtractCallout'
 import { BadgeBeta } from '@ui/badges/BadgeBeta'
 import { useExtractStore } from '@stores/extract'
@@ -138,12 +138,14 @@ export const ExtractSectionDialog = ({ file }: Props) => {
             />
 
             <Flex align='end' justify='end' width='100%'>
-              <SelectExtractAspectRatio
+              <RadioGroupExtractRatio
                 aspectRatio={aspectRatio}
                 setAspectRatio={handleChangeAspectRatio}
               />
               <Dialog.Close>
-                <Button onClick={handleSetRegion}>Confirm</Button>
+                <Button size='3' onClick={handleSetRegion}>
+                  Confirm
+                </Button>
               </Dialog.Close>
             </Flex>
           </Flex>

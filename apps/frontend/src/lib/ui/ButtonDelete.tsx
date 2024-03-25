@@ -1,7 +1,8 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { IconButton, type MarginProps, Tooltip } from '@radix-ui/themes'
+import { IconButton, Tooltip } from '@radix-ui/themes'
+import type { MarginProps } from '@radix-ui/themes/props'
 
 import { TrashIcon } from '@ui/icons/TrashIcon'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'

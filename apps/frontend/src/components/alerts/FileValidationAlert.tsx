@@ -6,8 +6,7 @@ import type { ComponentPropsWithoutRef, CSSProperties, FC, ReactNode } from 'rea
 import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 
 const contentStyle: CSSProperties = {
-  padding: '22px',
-  maxWidth: 370
+  padding: '22px'
 }
 
 export const FileValidationAlert: FC<Props> = ({
@@ -18,7 +17,7 @@ export const FileValidationAlert: FC<Props> = ({
   onOpenChange
 }) => (
   <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
-    <AlertDialog.Content size='3' style={contentStyle} onEscapeKeyDown={onClose}>
+    <AlertDialog.Content size='3' maxWidth='370px' style={contentStyle} onEscapeKeyDown={onClose}>
       <TitleWithExclamation mb='3'>
         <AlertDialog.Title mb='0'>{title}</AlertDialog.Title>
       </TitleWithExclamation>

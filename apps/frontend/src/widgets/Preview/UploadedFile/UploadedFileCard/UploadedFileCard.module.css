@@ -5,10 +5,6 @@
   --buttons-offset: var(--space-4);
 
   width: 100%;
-}
-
-.card :global(.rt-CardInner) {
-  width: 100%;
   padding: 0;
 }
 
@@ -38,8 +34,9 @@
   width: 100%;
 }
 
-.loadingSpinner {
-  margin-right: var(--space-4);
+.spinner {
+  width: var(--space-6);
+  height: var(--space-6);
 }
 
 @media screen and (max-width: 1023px) {
@@ -56,10 +53,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .card :global(.rt-CardInner) {
-    padding: var(--card-padding);
-  }
-
   .root {
     flex-direction: column;
     align-items: flex-start;
@@ -80,12 +73,12 @@
     padding: 0;
   }
 
-  .loadingSpinner {
+  .spinner {
     margin-right: 0;
   }
 
   .buttonsContainer,
-  .loadingSpinner {
+  .spinner {
     align-self: flex-end;
   }
 }

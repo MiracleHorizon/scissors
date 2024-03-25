@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+
 import {
   DEFAULT_RESIZE_POSITION,
   RESIZE_GRAVITY,
@@ -19,7 +20,7 @@ const data: OptionSelectData<ResizePosition | ResizeGravity> = [
     label: 'Gravity',
     value: Object.values(RESIZE_GRAVITY)
   }
-]
+] as const
 
 export function SelectResizePosition() {
   const position = useResizeStore(state => state.position)

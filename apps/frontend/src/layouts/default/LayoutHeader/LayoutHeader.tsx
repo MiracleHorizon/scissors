@@ -4,14 +4,14 @@ import type { FC } from 'react'
 
 import { AppLogo } from '@ui/AppLogo'
 import { NavigationDesktop } from './navigation/NavigationDesktop'
-import { AppearancePopoverSkeleton } from './AppearancePopover'
+import { AppearancePopoverSkeleton } from '@components/AppearancePopover'
 import { ButtonGithub } from './ButtonGithub'
 import { ButtonToggleTheme } from '@components/theme/ButtonToggleTheme'
 import { ThemeColorMenu } from '@components/theme/ThemeColorMenu'
 import type { ThemeProps } from '@lib/theme'
 import styles from './LayoutHeader.module.css'
 
-const AppearancePopover = dynamic(() => import('./AppearancePopover'), {
+const AppearancePopover = dynamic(() => import('@components/AppearancePopover'), {
   ssr: false,
   loading: () => <AppearancePopoverSkeleton />
 })

@@ -9,7 +9,7 @@ const data: OptionSelectData<ImageFileFormat> = [
     label: 'Output format',
     value: Object.values(IMAGE_FILE_FORMAT)
   }
-]
+] as const
 
 export function SelectOutputFormat() {
   const outputFormat = useOutputStore(state => state.outputFormat)

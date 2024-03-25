@@ -1,8 +1,9 @@
 'use client'
 
-import { Flex, type PaddingProps, Text } from '@radix-ui/themes'
+import { Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ImageIcon } from '@ui/icons/ImageIcon'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
@@ -15,7 +16,7 @@ const padding: PaddingProps = {
     initial: '4',
     xs: '6'
   }
-}
+} as const
 
 const ImageDropzone: FC<ComponentProps> = ({
   children: fileInput,
@@ -31,6 +32,7 @@ const ImageDropzone: FC<ComponentProps> = ({
     justify='center'
     width='100%'
     gap='3'
+    maxHeight='140px'
     className={clsx(
       styles.root,
       {
