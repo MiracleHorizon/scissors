@@ -19,7 +19,7 @@ function getThemeIcon(theme: Theme) {
 const style: CSSProperties = {
   width: '20px',
   height: '20px'
-}
+} as const
 
 export function ButtonToggleTheme({ theme, className }: Props) {
   const toggleTheme = () => {

@@ -1,23 +1,28 @@
 'use client'
 
-import { Flex, IconButton, Popover, Separator } from '@radix-ui/themes'
-import type { FC } from 'react'
+import dynamic from 'next/dynamic'
+import { type FC, useState } from 'react'
+import { IconButton, Popover, Skeleton } from '@radix-ui/themes'
 
-import { ThemeColorGrid } from '@components/theme/ThemeColorGrid'
-import { AppearancePopoverTitle } from './AppearancePopoverTitle'
-import { ButtonToggleTheme } from '@components/theme/ButtonToggleTheme'
 import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
 import { useSyncThemeAppearance } from '@hooks/useSyncThemeAppearance'
 import type { ThemeProps } from '@lib/theme'
 
-const AppearancePopover: FC<ThemeProps> = ({ theme, themeColor }) => {
-  useSyncThemeAppearance({
-    theme,
-    themeColor
-  })
+const AppearancePopoverContent = dynamic(
+  () => import('./AppearancePopoverContent').then(mod => mod.AppearancePopoverContent),
+  {
+    ssr: false,
+    loading: () => <Skeleton width='170px' height='217px' />
+  }
+)
+
+const AppearancePopover: FC<ThemeProps> = props => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  useSyncThemeAppearance(props)
 
   return (
-    <Popover.Root>
+    <Popover.Root open={isOpen} defaultOpen={false} onOpenChange={setIsOpen}>
       <Popover.Trigger>
         <IconButton size='3' color='gray' variant='ghost'>
           <MixerHorizontalIcon
@@ -30,19 +35,7 @@ const AppearancePopover: FC<ThemeProps> = ({ theme, themeColor }) => {
       </Popover.Trigger>
 
       <Popover.Content sideOffset={3}>
-        <Flex direction='column' align='start' gap='3' width='170px'>
-          <Flex align='center' justify='between' width='100%'>
-            <AppearancePopoverTitle title='Theme' />
-            <ButtonToggleTheme theme={theme} />
-          </Flex>
-
-          <Separator size='4' />
-
-          <Flex direction='column' width='100%'>
-            <AppearancePopoverTitle title='Theme Color' mb='3' />
-            <ThemeColorGrid themeColor={themeColor} />
-          </Flex>
-        </Flex>
+        {isOpen && <AppearancePopoverContent {...props} />}
       </Popover.Content>
     </Popover.Root>
   )

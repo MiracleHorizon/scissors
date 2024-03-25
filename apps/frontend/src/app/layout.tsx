@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Flex, Theme as RadixTheme, ThemePanel } from '@radix-ui/themes'
+import { Flex, Theme as RadixTheme } from '@radix-ui/themes'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
@@ -108,8 +108,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html lang='en' className={theme}>
       <body className={geistSans.variable}>
         <RadixTheme accentColor={themeColor} appearance={theme}>
-          <ThemePanel defaultOpen={false} />
-
           <CookieConsentBanner />
 
           <Flex align='center' justify='start' direction='column'>
