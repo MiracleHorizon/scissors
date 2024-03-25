@@ -44,7 +44,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           <UploadedFileProperties file={file} />
         </Flex>
 
-        {!isRequestLoading ? (
+        {isRequestLoading ? (
           <Spinner mr='4' className={styles.spinner} />
         ) : (
           <Flex
