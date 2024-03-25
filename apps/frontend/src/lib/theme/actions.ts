@@ -8,6 +8,7 @@ import {
   THEME_COLOR_COOKIE_NAME,
   THEME_COOKIE_NAME
 } from './constants'
+import { validateTheme, validateThemeColor } from './helpers'
 import type { Theme, ThemeColor } from './types'
 
 export async function setThemeCookie(value: Theme): Promise<void> {
@@ -17,9 +18,14 @@ export async function setThemeCookie(value: Theme): Promise<void> {
 
 export async function getThemeCookie(): Promise<Theme | null> {
   const cookieStore = cookies()
-  const theme = cookieStore.get(THEME_COOKIE_NAME)
 
+  const theme = cookieStore.get(THEME_COOKIE_NAME)
   if (!theme) {
+    return null
+  }
+
+  const isThemeValid = validateTheme(theme.value as Theme)
+  if (!isThemeValid) {
     return null
   }
 
@@ -33,9 +39,14 @@ export async function setThemeColorCookie(value: ThemeColor): Promise<void> {
 
 export async function getThemeColorCookie(): Promise<ThemeColor | null> {
   const cookieStore = cookies()
-  const themeColor = cookieStore.get(THEME_COLOR_COOKIE_NAME)
 
+  const themeColor = cookieStore.get(THEME_COLOR_COOKIE_NAME)
   if (!themeColor) {
+    return null
+  }
+
+  const isThemeColorValid = validateThemeColor(themeColor.value as ThemeColor)
+  if (!isThemeColorValid) {
     return null
   }
 
