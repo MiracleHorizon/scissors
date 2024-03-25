@@ -1,4 +1,5 @@
 .driver-popover {
+  /*noinspection CssUnresolvedCustomProperty*/
   font-family: var(--font-geist-sans);
 }
 

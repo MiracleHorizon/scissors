@@ -1,5 +1,13 @@
 .radix-themes {
+  /*noinspection CssUnresolvedCustomProperty*/
   --default-font-family: var(--font-geist-sans);
+
+  --cursor-button: pointer;
+  --cursor-checkbox: pointer;
+  --cursor-link: pointer;
+  --cursor-menu-item: pointer;
+  --cursor-radio: pointer;
+  --cursor-switch: pointer;
 }
 
 .rt-Code:where(.rt-variant-ghost) {
