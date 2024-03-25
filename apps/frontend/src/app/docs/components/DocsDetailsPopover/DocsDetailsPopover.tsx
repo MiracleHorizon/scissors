@@ -11,7 +11,7 @@ export const DocsDetailsPopover: FC<Props> = ({ children, title, moreInfoLink })
       <Strong className={styles.trigger}>{title}</Strong>
     </Popover.Trigger>
 
-    <Popover.Content align='center' size='1' className={styles.content}>
+    <Popover.Content size='1' align='center' minWidth='200px' maxWidth='424px'>
       <Flex direction='column'>
         {children}
 
@@ -22,7 +22,8 @@ export const DocsDetailsPopover: FC<Props> = ({ children, title, moreInfoLink })
             underline='always'
             weight='medium'
             href={moreInfoLink}
-            className={styles.moreInfo}
+            ml='auto'
+            mt='2px'
           >
             More info
           </Link>

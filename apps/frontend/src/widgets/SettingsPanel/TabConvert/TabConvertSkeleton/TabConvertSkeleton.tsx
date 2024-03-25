@@ -6,7 +6,7 @@ import styles from './TabConvertSkeleton.module.css'
 const SwitchSkeleton = ({ text }: { text?: string }) => (
   <Flex align='center' justify='between' width='100%'>
     <Skeleton height='24px'>{text}</Skeleton>
-    <Skeleton height='24px' width='42px' className={styles.switch} />
+    <Skeleton height='24px' width='42px' ml='2' className={styles.switch} />
   </Flex>
 )
 
@@ -17,11 +17,11 @@ const optionsPadding: PaddingProps = {
   pr: '4',
   pb: '2',
   pt: '3'
-}
+} as const
 
 const OptionsSkeleton = () => (
   <>
-    <Skeleton height='32px' width='100%' className={styles.input} />
+    <Skeleton height='32px' width='100%' mb='10px' />
     <Flex direction='column' gap='2' width='100%'>
       <SwitchSkeleton text='Flip Flip Flip' />
       <SwitchSkeleton text='Flop Flop Flop' />

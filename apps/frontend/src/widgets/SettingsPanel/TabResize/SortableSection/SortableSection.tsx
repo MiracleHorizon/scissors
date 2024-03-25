@@ -17,7 +17,7 @@ import styles from './SortableSection.module.css'
 const direction: FlexDirection = {
   initial: 'row-reverse',
   sm: 'row'
-}
+} as const
 const padding: PaddingProps = {
   pl: '3',
   pr: {
@@ -26,7 +26,7 @@ const padding: PaddingProps = {
   },
   pt: '3',
   pb: '3'
-}
+} as const
 
 export function SortableSection({
   children,
@@ -64,7 +64,7 @@ export function SortableSection({
     transition,
     transform: getTransformCSS(),
     zIndex: isDragging ? 2 : 1
-  }
+  } as const
 
   const onMoveUp = () => handleMoveUp(id)
   const onMoveDown = () => handleMoveDown(id)

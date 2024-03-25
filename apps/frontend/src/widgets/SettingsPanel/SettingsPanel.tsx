@@ -36,7 +36,7 @@ const margin: MarginProps = {
     initial: '0',
     md: '4'
   }
-}
+} as const
 
 export function SettingsPanel() {
   const selectedTab = useTabsStore(state => state.selectedTab)

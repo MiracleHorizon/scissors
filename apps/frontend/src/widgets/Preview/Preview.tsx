@@ -27,7 +27,7 @@ const padding: PaddingProps = {
     initial: '4',
     md: '0'
   }
-}
+} as const
 
 export function Preview() {
   const file = useOutputStore(state => state.file)

@@ -8,4 +8,4 @@ export const tabResizePadding: PaddingProps = {
     md: '2'
   },
   pr: '3'
-}
+} as const

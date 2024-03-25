@@ -1,5 +1,5 @@
 .swatch {
-  --size: 24px;
+  --size: 22px;
 
   cursor: pointer;
   width: var(--size);

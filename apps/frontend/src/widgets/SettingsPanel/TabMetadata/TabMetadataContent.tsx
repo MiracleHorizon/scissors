@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
+
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { Ifd0OptionsForm } from './ifd0-form'
@@ -11,18 +12,18 @@ import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import type { ExifrReturn } from './types'
 
-const allowedFileTypes: string[] = [
-  IMAGE_FILE_FORMAT.JPEG,
-  IMAGE_FILE_FORMAT.JPG,
-  IMAGE_FILE_FORMAT.PNG
-]
-
 const MetadataTablesAccordion = dynamic(
   () => import('./MetadataTablesAccordion').then(mod => mod.MetadataTablesAccordion),
   {
     ssr: false
   }
 )
+
+const allowedFileTypes: string[] = [
+  IMAGE_FILE_FORMAT.JPEG,
+  IMAGE_FILE_FORMAT.JPG,
+  IMAGE_FILE_FORMAT.PNG
+] as const
 
 export function TabMetadataContent() {
   const [parsedMetadata, setParsedMetadata] = useState<ExifrReturn | null>(null)

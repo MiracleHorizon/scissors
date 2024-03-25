@@ -23,14 +23,14 @@ const options = [
   { key: 'gamma', Component: Gamma },
   { key: 'tint', Component: Tint },
   { key: 'normalise', Component: Normalise }
-]
+] as const
 
 const padding: PaddingProps = {
   pl: '3',
   pr: '4',
   pt: '3',
   pb: '4'
-}
+} as const
 
 export function Options() {
   const isFileUploaded = useOutputStore(state => state.isFileUploaded())

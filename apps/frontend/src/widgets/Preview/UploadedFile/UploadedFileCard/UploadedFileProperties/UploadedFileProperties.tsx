@@ -56,7 +56,7 @@ export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
 
   const rootStyle = {
     '--grid-item-count': properties.length
-  } as CSSProperties
+  } as const as CSSProperties
 
   useEffect(() => {
     getImageDimension(file).then(setDimension).catch(setDimension)

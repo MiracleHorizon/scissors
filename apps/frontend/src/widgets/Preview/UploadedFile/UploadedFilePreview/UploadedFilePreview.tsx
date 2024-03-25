@@ -9,13 +9,13 @@ import styles from './UploadedFilePreview.module.css'
 
 const rootStyle: CSSProperties = {
   backgroundImage: `url(${pathForAssets('image-fill-tiles.png')})`
-}
+} as const
 
 export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => {
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   return (
-    <Box style={rootStyle} className={styles.root}>
+    <Box width='100%' style={rootStyle} className={styles.root}>
       <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
       {/* eslint-disable-next-line @next/next/no-img-element */}

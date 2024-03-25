@@ -11,7 +11,7 @@ const options = [
   { key: 'brightness', Component: SliderBrightness },
   { key: 'saturation', Component: SliderSaturation },
   { key: 'hue', Component: SliderHue }
-]
+] as const
 
 export const ModulateList = () =>
   options.map(({ key, Component }, index) => (

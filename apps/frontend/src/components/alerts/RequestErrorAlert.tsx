@@ -7,8 +7,7 @@ import { TitleWithExclamation } from '@ui/TitleWithExclamation'
 import { handleRequestError } from '@api/helpers/handleRequestError'
 
 const contentStyle: CSSProperties = {
-  padding: '22px',
-  maxWidth: 390
+  padding: '22px'
 }
 
 export function RequestErrorAlert({ open, error, reset, retry }: Props) {
@@ -17,7 +16,7 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
 
   return (
     <AlertDialog.Root open={open}>
-      <AlertDialog.Content size='3' style={contentStyle}>
+      <AlertDialog.Content size='3' maxWidth='390px' style={contentStyle}>
         <TitleWithExclamation mb='3'>
           <AlertDialog.Title mb='0'>
             {isMessageEmpty ? 'Something went wrong' : 'Error'}

@@ -1,4 +1,5 @@
 import { Flex } from '@radix-ui/themes'
+
 import { OptionSectionHeaderSkeleton } from '@components/OptionSectionHeader/OptionSectionHeaderSkeleton'
 import { OptionSliderSkeleton } from '@components/OptionSlider/OptionSliderSkeleton'
 

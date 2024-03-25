@@ -9,7 +9,7 @@ const padding: PaddingProps = {
     initial: '0',
     sm: '3'
   }
-}
+} as const
 
 export const TabResizeSection: FC<PropsWithChildren> = ({ children }) => (
   <Flex

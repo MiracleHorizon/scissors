@@ -11,7 +11,7 @@ import type { ClassNameProps } from '@app-types/ClassNameProps'
 export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
   ({ tooltipContent, disabled, variant = 'outline', color = 'red', ...props }, ref) => (
     <Tooltip
-      delayDuration={800}
+      delayDuration={500}
       open={isTooltipOpen({
         content: tooltipContent,
         isParentDisabled: disabled

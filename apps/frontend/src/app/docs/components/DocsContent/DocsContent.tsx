@@ -7,7 +7,6 @@ import { ModulateSection } from './sections/ModulateSection'
 import { ResizeSection } from './sections/ResizeSection'
 import { ExtendSection } from './sections/ExtendSection'
 import { TrimSection } from './sections/TrimSection'
-import styles from './DocsContent.module.css'
 
 export const DocsContent = () => (
   <Flex
@@ -17,7 +16,7 @@ export const DocsContent = () => (
     direction='column'
     gap='6'
     width='100%'
-    className={styles.root}
+    maxWidth='1920px'
   >
     <main>
       <MainSection />

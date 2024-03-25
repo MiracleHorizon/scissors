@@ -25,7 +25,7 @@ const padding: PaddingProps = {
     initial: '6',
     sm: '7'
   }
-}
+} as const
 
 const DocsPage = () => (
   <>

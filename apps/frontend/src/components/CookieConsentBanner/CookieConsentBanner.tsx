@@ -5,6 +5,8 @@ import { Button, Card, Flex, Text } from '@radix-ui/themes'
 
 import { CookieIcon } from '@ui/icons/CookieIcon'
 import { isTourCompleted as isTourCompletedCheck, TOUR_LS_KEY } from '@lib/tour'
+import { useSelectedPath } from '@hooks/useSelectedPath'
+import { PATH_ROOT } from '@site/paths'
 import styles from './CookieConsentBanner.module.css'
 
 const KEY = 'scissors-cookie-consent'
@@ -30,6 +32,7 @@ function isVisibleCheck(): boolean {
 }
 
 export default function CookieConsentBanner() {
+  const isHomePage = useSelectedPath(PATH_ROOT)
   const [isVisible, setVisible] = useState(isVisibleCheck())
 
   const handleCookiesAccept = () => {
@@ -68,7 +71,13 @@ export default function CookieConsentBanner() {
   }
 
   return (
-    <Card size='2' className={styles.root}>
+    <Card
+      size='2'
+      style={{
+        bottom: isHomePage ? 'calc(var(--app-footer-height) + 20px)' : '20px'
+      }}
+      className={styles.root}
+    >
       <Flex
         align='center'
         direction={{

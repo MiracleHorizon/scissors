@@ -19,7 +19,7 @@ const AppearancePopover: FC<ThemeProps> = ({ theme, themeColor }) => {
   return (
     <Popover.Root>
       <Popover.Trigger>
-        <IconButton size='3' color='gray' variant='ghost' radius='large'>
+        <IconButton size='3' color='gray' variant='ghost'>
           <MixerHorizontalIcon
             color='gray'
             width='16px'

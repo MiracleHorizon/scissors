@@ -52,7 +52,7 @@ const examples: Example[] = [
     height: 264,
     label: 'Outside'
   }
-]
+] as const
 
 function pathForExampleImage(fileName: string): string {
   const EXAMPLES_PUBLIC_PATH = 'resize-fit-examples'
@@ -104,7 +104,7 @@ const exampleListStyle = {
       xs: '2'
     }
   } as PaddingProps)
-}
+} as const
 
 export const ResizeFitExamplesPopover = () => (
   <Popover.Root>
@@ -112,7 +112,7 @@ export const ResizeFitExamplesPopover = () => (
       <ButtonInfo radius='full' className={styles.buttonInfo} />
     </Popover.Trigger>
 
-    <Popover.Content size='1' side='top' align='center' className={styles.content}>
+    <Popover.Content size='1' side='top' align='center' height='100%' className={styles.content}>
       <ScrollArea type='scroll' scrollbars='both'>
         <Flex {...exampleListStyle} width='100%' className={styles.exampleList}>
           {examples.map(({ label, ...imageProps }) => (

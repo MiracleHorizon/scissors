@@ -10,13 +10,13 @@ import styles from './page.module.css'
 const mainDirection: FlexDirection = {
   initial: 'column',
   md: 'row'
-}
+} as const
 const mainPadding: PaddingProps = {
   pl: {
     initial: '0',
     md: '4'
   }
-}
+} as const
 
 const HomePage = () => (
   <Flex width='100%' align='center' direction='column' className={styles.root}>

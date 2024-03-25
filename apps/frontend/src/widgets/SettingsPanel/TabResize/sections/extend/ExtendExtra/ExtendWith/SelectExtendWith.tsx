@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react'
+
 import {
   DEFAULT_EXTEND_WITH,
   EXTEND_WITH,
@@ -14,7 +15,7 @@ const defaultData: OptionSelectData<ExtendWith> = [
   {
     value: Object.values(EXTEND_WITH)
   }
-]
+] as const
 // ExtendWith.REPEAT and ExtendWith.MIRROR throws "pngload_buffer: out of order read at line ..." error
 // Bug or feature? sharp version: 0.32.5(6) - 0.33.1; libvips version: 8.15.0
 const unsupportedPNGExtendWith: string[] = [EXTEND_WITH.REPEAT, EXTEND_WITH.MIRROR]
@@ -22,7 +23,7 @@ const dataForPNG: OptionSelectData<ExtendWith> = [
   {
     value: [EXTEND_WITH.BACKGROUND, EXTEND_WITH.COPY]
   }
-]
+] as const
 
 export function SelectExtendWith() {
   const outputFormat = useOutputStore(state => state.outputFormat)

@@ -5,7 +5,7 @@ import { ButtonInfo } from '@ui/ButtonInfo'
 
 const contentStyle: CSSProperties = {
   padding: '10px'
-}
+} as const
 
 export const TrimBackgroundInfoPopover = () => (
   <Popover.Root>

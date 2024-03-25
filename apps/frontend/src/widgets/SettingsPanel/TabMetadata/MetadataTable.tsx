@@ -3,7 +3,6 @@ import { Table } from '@radix-ui/themes'
 
 import { formatLabel, formatValue } from './utils'
 import type { ExifrData, TableItemValue } from './types'
-import styles from './MetadataTable.module.css'
 
 export function MetadataTable({ data }: Props) {
   const items: [string, string][] = useMemo(() => {
@@ -25,9 +24,7 @@ export function MetadataTable({ data }: Props) {
     <Table.Root size='2'>
       <Table.Header>
         <Table.Row>
-          <Table.ColumnHeaderCell className={styles.nameColumnHeaderCell}>
-            Name
-          </Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell width='100px'>Name</Table.ColumnHeaderCell>
           <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
         </Table.Row>
       </Table.Header>
@@ -35,10 +32,10 @@ export function MetadataTable({ data }: Props) {
       <Table.Body>
         {items.map(([label, value]) => (
           <Table.Row key={label}>
-            <Table.RowHeaderCell title={label} className={styles.rowHeaderCell}>
+            <Table.RowHeaderCell title={label} width='200px' maxWidth='200px'>
               {label}
             </Table.RowHeaderCell>
-            <Table.Cell className={styles.cell}>{value}</Table.Cell>
+            <Table.Cell maxWidth='300px'>{value}</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>

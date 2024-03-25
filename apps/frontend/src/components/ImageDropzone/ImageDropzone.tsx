@@ -16,7 +16,7 @@ const padding: PaddingProps = {
     initial: '4',
     xs: '6'
   }
-}
+} as const
 
 const ImageDropzone: FC<ComponentProps> = ({
   children: fileInput,

@@ -9,7 +9,7 @@ const direction: FlexDirection = {
   initial: 'column',
   xs: 'row',
   md: 'column'
-}
+} as const
 
 export const BasicOptions = () => (
   <Flex asChild gap='2' direction={direction}>

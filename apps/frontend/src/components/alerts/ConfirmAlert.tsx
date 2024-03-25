@@ -1,9 +1,13 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { FC, PropsWithChildren } from 'react'
+import type { CSSProperties, FC, PropsWithChildren } from 'react'
 
 import { TitleWithExclamation } from '@ui/TitleWithExclamation'
+
+const contentStyle: CSSProperties = {
+  padding: '22px'
+}
 
 export const ConfirmAlert: FC<Props> = ({
   children,
@@ -23,10 +27,8 @@ export const ConfirmAlert: FC<Props> = ({
 
     <AlertDialog.Content
       size='3'
-      style={{
-        padding: '22px',
-        maxWidth: maxWidth ?? 370
-      }}
+      maxWidth={maxWidth ?? '370px'}
+      style={contentStyle}
       className={contentClassName}
     >
       <Flex direction='column'>
@@ -66,7 +68,7 @@ export type Props = PropsWithChildren<{
   open?: boolean
   contentClassName?: string
   withTitleExclamation?: boolean
-  maxWidth?: number | string
+  maxWidth?: string
 }> &
   (WithConfirm | WithCansel | WithBothActions)
 

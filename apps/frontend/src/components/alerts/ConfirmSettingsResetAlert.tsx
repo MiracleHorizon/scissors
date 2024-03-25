@@ -12,8 +12,7 @@ import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import { OptionCheckbox } from '@components/OptionCheckbox'
 
 const contentStyle: CSSProperties = {
-  padding: '22px',
-  maxWidth: 370
+  padding: '22px'
 }
 const contentActionsProps = {
   gap: {
@@ -37,7 +36,7 @@ export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCa
     <AlertDialog.Root>
       <AlertDialog.Trigger>{children}</AlertDialog.Trigger>
 
-      <AlertDialog.Content size='3' style={contentStyle}>
+      <AlertDialog.Content size='3' maxWidth='370px' style={contentStyle}>
         <Flex direction='column' width='100%'>
           <AlertDialog.Title>Reset all settings</AlertDialog.Title>
           <AlertDialog.Description>

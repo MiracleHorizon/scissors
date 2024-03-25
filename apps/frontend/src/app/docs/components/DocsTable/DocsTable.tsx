@@ -8,7 +8,7 @@ import styles from './DocsTable.module.css'
 const size: TableSize = {
   initial: '2',
   xs: '3'
-}
+} as const
 
 export const DocsTable: FC<PropsWithChildren> = ({ children }) => (
   <Table.Root size={size} variant='surface' className={styles.root}>

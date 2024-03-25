@@ -21,9 +21,11 @@ const colors = [
   '#fd7e14'
 ]
 
-const ROWS = 2
+const rows = 2
+const columns = Math.floor(colors.length / rows).toString()
+
 export const ColorPickerSwatches: FC<Props> = ({ setColor }) => (
-  <Grid columns={Math.floor(colors.length / ROWS).toString()} gap='1'>
+  <Grid columns={columns} gap='1'>
     {colors.map(color => (
       <ColorPickerSwatch key={color} color={color} setColor={setColor} />
     ))}

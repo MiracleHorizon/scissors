@@ -31,10 +31,8 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
             gap='4'
             width='100%'
             pb='8'
-            style={{
-              height: '100dvh',
-              paddingTop: '30dvh'
-            }}
+            height='100dvh'
+            pt='30dvh'
           >
             <Flex asChild align='center' direction='column' gap='2'>
               <article>

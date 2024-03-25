@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 import { ColorInput } from './ColorInput'
 import type { TextFieldProps } from '@lib/theme'
 
@@ -9,6 +11,10 @@ export const validHex = (value: string, alpha?: boolean): boolean => {
   return length === 3 || length === 6 || (!!alpha && length === 4) || (!!alpha && length === 8)
 }
 
+const style: CSSProperties = {
+  flex: '1 1 auto'
+} as const
+
 export function HexColorInput(props: Props) {
   const escape = (value: string) => value.replace(/([^0-9A-F]+)/gi, '').substring(0, 6)
   const validate = (value: string) => validHex(value, false)
@@ -16,7 +22,7 @@ export function HexColorInput(props: Props) {
   return (
     <ColorInput
       {...props}
-      style={{ flex: '1 1 auto' }}
+      style={style}
       placeholder='Input color'
       escape={escape}
       validate={validate}

@@ -11,7 +11,7 @@ const padding: PaddingProps = {
     initial: '4',
     md: '3'
   }
-}
+} as const
 
 export const Toolbar = () => (
   <Flex {...padding} align='center' justify='between' className={styles.root}>

@@ -1,11 +1,10 @@
+import { type FC, useState } from 'react'
 import { Button, DropdownMenu, Tabs } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import MediaQuery from 'react-responsive'
-import { type FC, useState } from 'react'
 
 import { SymbolIcon } from '@ui/icons/SymbolIcon'
 import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
-// import { MetadataIcon } from '@ui/icons/MetadataIcon'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { TOUR_STEP } from '@lib/tour'
 import { TOOLBAR_TAB } from '@stores/tabs'
@@ -29,7 +28,7 @@ const tabs = [
   //   value: TOOLBAR_TAB.METADATA,
   //   icon: <MetadataIcon width='17px' height='17px' />
   // }
-]
+] as const
 
 export const ToolbarTabMenu = () => (
   <>

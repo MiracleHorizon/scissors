@@ -23,11 +23,6 @@
   background-color: color-mix(in srgb, var(--background-color), #000 8%);
 }
 
-.content {
-  max-width: 170px;
-  min-width: 120px;
-}
-
 .content h4 {
   font-size: var(--font-size-3);
 }

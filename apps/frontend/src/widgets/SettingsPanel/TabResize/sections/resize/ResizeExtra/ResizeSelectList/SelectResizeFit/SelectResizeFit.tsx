@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+
 import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
@@ -9,7 +10,7 @@ const data: OptionSelectData<ResizeFit> = [
   {
     value: Object.values(RESIZE_FIT)
   }
-]
+] as const
 
 export function SelectResizeFit() {
   const fit = useResizeStore(state => state.fit)
