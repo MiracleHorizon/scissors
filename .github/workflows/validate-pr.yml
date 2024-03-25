@@ -36,8 +36,8 @@ jobs:
       - name: Build apps / libs
         run: pnpm build
 
-      - name: Test Frontend
-        run: pnpm fe:test
+      - name: Check Frontend
+        run: pnpm fe:check
 
       - name: Test Backend
         run: pnpm be:test
