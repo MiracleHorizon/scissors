@@ -1,3 +1,4 @@
+import { isServer } from '@helpers/isServer'
 import { themeColorSchema, themeSchema } from './schemas'
 import { DEFAULT_THEME, DEFAULT_THEME_COLOR, THEME_COLOR_LS_KEY, THEME_LS_KEY } from './constants'
 import type { Theme, ThemeColor } from './types'
@@ -7,6 +8,10 @@ export const validateThemeColor = (themeColor: ThemeColor) =>
   themeColorSchema.isValidSync(themeColor)
 
 export function getLocalStorageTheme(): Theme | null {
+  if (isServer()) {
+    return null
+  }
+
   const theme = localStorage.getItem(THEME_LS_KEY) as Theme | null
   if (!theme) {
     return null
@@ -21,6 +26,10 @@ export function getLocalStorageTheme(): Theme | null {
 }
 
 export function getLocalStorageThemeColor(): ThemeColor | null {
+  if (isServer()) {
+    return null
+  }
+
   const themeColor = localStorage.getItem(THEME_COLOR_LS_KEY) as ThemeColor | null
   if (!themeColor) {
     return null

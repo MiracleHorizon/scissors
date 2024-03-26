@@ -1,7 +1,7 @@
 import type { Theme, ThemeColor } from './types'
 
 // Defaults
-export const DEFAULT_THEME: Theme = 'light'
+export const DEFAULT_THEME: Theme = 'system'
 export const DEFAULT_THEME_COLOR: ThemeColor = 'indigo'
 
 // Storages
