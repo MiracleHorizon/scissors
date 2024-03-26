@@ -1,6 +1,6 @@
 .root {
   width: var(--settings-panel-width);
-  box-shadow: -1px 0 var(--gray-a4);
+  box-shadow: -1px 0 var(--gray-a5);
 }
 
 .root :global(.rt-TabsContent:focus) {

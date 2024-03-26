@@ -1,7 +1,7 @@
 .root {
   border-radius: 10px;
   background-color: var(--color-background);
-  box-shadow: inset 0 0 0 1px var(--gray-a4);
+  box-shadow: inset 0 0 0 1px var(--gray-a5);
 }
 
 .actions {
