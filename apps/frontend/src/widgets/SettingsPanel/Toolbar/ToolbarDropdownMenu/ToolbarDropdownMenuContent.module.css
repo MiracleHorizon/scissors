@@ -1,3 +1,7 @@
 .root svg {
-  margin-left: 16px;
+  margin-left: 14px;
+}
+
+.root :global(.rt-DropdownMenuItem) {
+  justify-content: space-between;
 }

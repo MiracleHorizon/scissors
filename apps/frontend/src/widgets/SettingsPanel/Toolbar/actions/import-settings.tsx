@@ -82,7 +82,7 @@ function DropdownItemWithImport({
     <DropdownMenu.Item onSelect={handleClick}>
       {children}
       Import
-      <UploadIcon width='16px' height='16px' label='import settings' />
+      <UploadIcon width='18px' height='18px' label='import settings' />
     </DropdownMenu.Item>
   )
 }

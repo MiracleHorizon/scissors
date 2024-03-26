@@ -28,7 +28,7 @@ export function DropdownItemExportSettings({ onClose }: DropdownItemProps) {
 
   return (
     <DropdownMenu.Item onSelect={handleClick}>
-      Export <DownloadIcon width='16px' height='16px' label='export settings' />
+      Export <DownloadIcon width='18px' height='18px' label='export settings' />
     </DropdownMenu.Item>
   )
 }

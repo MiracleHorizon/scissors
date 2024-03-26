@@ -4,6 +4,7 @@ import { Button, DropdownMenu } from '@radix-ui/themes'
 import { ToolbarDropdownMenuContent } from './ToolbarDropdownMenuContent'
 import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import { TOUR_STEP } from '@lib/tour'
+import { BREAKPOINTS_MAX_WIDTH } from '@lib/theme'
 
 const ToolbarDropdownMenuTrigger: FC<TriggerProps> = props => (
   <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS} {...props}>
@@ -28,7 +29,7 @@ export function ToolbarDropdownMenu() {
     const handleWindowResize = () => {
       if (!open) return
 
-      const breakpoint = 519
+      const breakpoint = BREAKPOINTS_MAX_WIDTH.xs
       const isMobile = matchMedia(`(max-width: ${breakpoint}px)`).matches
 
       if (!isMobile) {
