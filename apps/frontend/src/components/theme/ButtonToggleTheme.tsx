@@ -5,47 +5,49 @@ import type { CSSProperties } from 'react'
 
 import { MoonIcon } from '@ui/icons/MoonIcon'
 import { SunIcon } from '@ui/icons/SunIcon'
-import { setThemeCookie, type Theme, THEME_LS_KEY, type ThemeProps } from '@lib/theme'
+import { useTheme } from '@hooks/useTheme'
+import type { Theme } from '@lib/theme'
 import type { StyleProps } from '@app-types/StyleProps'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 function getThemeIcon(theme: Theme) {
-  const Icon = theme === 'dark' ? MoonIcon : SunIcon
-  const iconLabel = theme === 'dark' ? 'dark theme' : 'light theme'
+  let Icon
+  let iconLabel
+
+  if (theme === 'system') {
+    const isPreferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    Icon = isPreferredDark ? MoonIcon : SunIcon
+    iconLabel = isPreferredDark ? 'set light theme' : 'set dark theme'
+  } else {
+    Icon = theme === 'dark' ? MoonIcon : SunIcon
+    iconLabel = theme === 'dark' ? 'set light theme' : 'set dark theme'
+  }
 
   return <Icon width='18px' height='18px' label={iconLabel} />
 }
 
-const style: CSSProperties = {
+const basicStyle: CSSProperties = {
   width: '20px',
   height: '20px'
 } as const
 
-export function ButtonToggleTheme({ theme, className }: Props) {
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-
-    localStorage.setItem(THEME_LS_KEY, newTheme)
-    const event = new StorageEvent('storage', {
-      key: THEME_LS_KEY,
-      newValue: newTheme
-    })
-    window.dispatchEvent(event)
-
-    void setThemeCookie(newTheme)
-  }
+export default function ButtonToggleTheme({ className, style }: ClassNameProps & StyleProps) {
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <IconButton
       variant='ghost'
+      radius='large'
       color='gray'
-      style={style}
+      style={{
+        ...basicStyle,
+        ...style
+      }}
       className={className}
       onClick={toggleTheme}
     >
-      {getThemeIcon(theme)}
+      {getThemeIcon(theme as Theme)}
     </IconButton>
   )
 }
-
-type Props = Pick<ThemeProps, 'theme'> & ClassNameProps & StyleProps

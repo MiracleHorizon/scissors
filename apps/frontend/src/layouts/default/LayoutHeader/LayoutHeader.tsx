@@ -1,31 +1,32 @@
 import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
-import type { FC } from 'react'
 
 import { AppLogo } from '@ui/AppLogo'
-import { NavigationDesktop } from './navigation/NavigationDesktop'
-import { AppearancePopoverSkeleton } from '@components/AppearancePopover'
 import { ButtonGithub } from './ButtonGithub'
-import { ButtonToggleTheme } from '@components/theme/ButtonToggleTheme'
+import { NavigationDesktop } from './navigation/NavigationDesktop'
 import { ThemeColorMenu } from '@components/theme/ThemeColorMenu'
-import type { ThemeProps } from '@lib/theme'
+import { IconButtonGhostSkeleton } from '@ui/skeletons/IconButtonGhostSkeleton'
 import styles from './LayoutHeader.module.css'
 
 const AppearancePopover = dynamic(() => import('@components/AppearancePopover'), {
   ssr: false,
-  loading: () => <AppearancePopoverSkeleton />
+  loading: () => <IconButtonGhostSkeleton />
 })
 const NavigationDrawer = dynamic(() => import('./navigation/NavigationDrawer'), {
   ssr: false
 })
+const ButtonToggleTheme = dynamic(() => import('@components/theme/ButtonToggleTheme'), {
+  ssr: false,
+  loading: () => <IconButtonGhostSkeleton />
+})
 
 // TODO: Optimize components imports and rendering
-export const LayoutHeader: FC<ThemeProps> = themeProps => (
+export const LayoutHeader = () => (
   <Flex asChild align='center' justify='between' width='100%' px='4' py='2' className={styles.root}>
     <header>
       <div className={styles.themeMobileActions}>
-        <ButtonToggleTheme {...themeProps} />
-        <ThemeColorMenu themeColor={themeProps.themeColor} />
+        <ButtonToggleTheme />
+        <ThemeColorMenu />
       </div>
 
       <AppLogo className={styles.logo} />
@@ -35,7 +36,7 @@ export const LayoutHeader: FC<ThemeProps> = themeProps => (
 
         <Flex align='center' gap='4'>
           <ButtonGithub />
-          <AppearancePopover {...themeProps} />
+          <AppearancePopover />
         </Flex>
       </div>
 

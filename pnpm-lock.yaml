@@ -213,6 +213,9 @@ importers:
       next:
         specifier: 14.1.0
         version: 14.1.0(@babel/core@7.24.1)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: 0.3.0
+        version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18
         version: 18.2.0
@@ -319,6 +322,18 @@ importers:
       vitest:
         specifier: 1.1.3
         version: 1.1.3(@types/node@20.11.29)(@vitest/ui@1.2.1)(jsdom@23.2.0)
+
+  libs/react-icons:
+    dependencies:
+      '@radix-ui/react-accessible-icon':
+        specifier: 1.0.3
+        version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react':
+        specifier: ^18
+        version: 18.2.67
+      react:
+        specifier: ^18
+        version: 18.2.0
 
   libs/sharp: {}
 
@@ -7993,6 +8008,16 @@ packages:
       next: 14.1.0(@babel/core@7.24.1)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: true
+
+  /next-themes@0.3.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /next@14.1.0(@babel/core@7.24.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}

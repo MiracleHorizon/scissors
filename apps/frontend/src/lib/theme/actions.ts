@@ -2,35 +2,9 @@
 
 import { cookies } from 'next/headers'
 
-import {
-  DEFAULT_THEME,
-  DEFAULT_THEME_COLOR,
-  THEME_COLOR_COOKIE_NAME,
-  THEME_COOKIE_NAME
-} from './constants'
-import { validateTheme, validateThemeColor } from './helpers'
-import type { Theme, ThemeColor } from './types'
-
-export async function setThemeCookie(value: Theme): Promise<void> {
-  const cookieStore = cookies()
-  cookieStore.set(THEME_COOKIE_NAME, value)
-}
-
-export async function getThemeCookie(): Promise<Theme | null> {
-  const cookieStore = cookies()
-
-  const theme = cookieStore.get(THEME_COOKIE_NAME)
-  if (!theme) {
-    return null
-  }
-
-  const isThemeValid = validateTheme(theme.value as Theme)
-  if (!isThemeValid) {
-    return null
-  }
-
-  return theme.value as Theme
-}
+import { validateThemeColor } from './helpers'
+import { THEME_COLOR_COOKIE_NAME } from './constants'
+import type { ThemeColor } from './types'
 
 export async function setThemeColorCookie(value: ThemeColor): Promise<void> {
   const cookieStore = cookies()
@@ -51,14 +25,4 @@ export async function getThemeColorCookie(): Promise<ThemeColor | null> {
   }
 
   return themeColor.value as ThemeColor
-}
-
-export async function getThemeAppearance() {
-  const theme = await getThemeCookie()
-  const themeColor = await getThemeColorCookie()
-
-  return {
-    theme: theme ?? DEFAULT_THEME,
-    themeColor: themeColor ?? DEFAULT_THEME_COLOR
-  }
 }

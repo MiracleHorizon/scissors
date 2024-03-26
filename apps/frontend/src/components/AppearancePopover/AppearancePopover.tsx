@@ -1,12 +1,11 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { type FC, useState } from 'react'
+import { type CSSProperties, useState } from 'react'
 import { IconButton, Popover, Skeleton } from '@radix-ui/themes'
 
 import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
 import { useSyncThemeAppearance } from '@hooks/useSyncThemeAppearance'
-import type { ThemeProps } from '@lib/theme'
 
 const AppearancePopoverContent = dynamic(
   () => import('./AppearancePopoverContent').then(mod => mod.AppearancePopoverContent),
@@ -16,15 +15,20 @@ const AppearancePopoverContent = dynamic(
   }
 )
 
-const AppearancePopover: FC<ThemeProps> = props => {
+const triggerStyle: CSSProperties = {
+  width: '20px',
+  height: '20px'
+} as const
+
+const AppearancePopover = () => {
   const [isOpen, setIsOpen] = useState(false)
 
-  useSyncThemeAppearance(props)
+  useSyncThemeAppearance()
 
   return (
     <Popover.Root open={isOpen} defaultOpen={false} onOpenChange={setIsOpen}>
       <Popover.Trigger>
-        <IconButton size='3' color='gray' variant='ghost'>
+        <IconButton color='gray' radius='large' variant='ghost' style={triggerStyle}>
           <MixerHorizontalIcon
             color='gray'
             width='16px'
@@ -34,9 +38,7 @@ const AppearancePopover: FC<ThemeProps> = props => {
         </IconButton>
       </Popover.Trigger>
 
-      <Popover.Content sideOffset={3}>
-        {isOpen && <AppearancePopoverContent {...props} />}
-      </Popover.Content>
+      <Popover.Content sideOffset={3}>{isOpen && <AppearancePopoverContent />}</Popover.Content>
     </Popover.Root>
   )
 }

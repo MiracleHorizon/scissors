@@ -1,13 +1,13 @@
 import dynamic from 'next/dynamic'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Flex, Theme as RadixTheme } from '@radix-ui/themes'
+import { Theme } from '@radix-ui/themes'
+import { ThemeProvider } from 'next-themes'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
 
 import { Layout } from '@layouts/default'
-import { getThemeAppearance } from '@lib/theme'
 import {
   pathForSocial,
   SITE_DESCRIPTION,
@@ -15,6 +15,7 @@ import {
   SITE_KEYWORDS,
   SITE_TITLE
 } from '@site/config'
+import { DEFAULT_THEME, DEFAULT_THEME_COLOR, getThemeColorCookie, THEME_LS_KEY } from '@lib/theme'
 import { geistSans } from './fonts'
 import './globals.css'
 
@@ -102,20 +103,23 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: PropsWithChildren) {
-  const { theme, themeColor } = await getThemeAppearance()
+  const themeColor = await getThemeColorCookie()
 
   return (
-    <html lang='en' className={theme}>
+    <html lang='en' suppressHydrationWarning>
       <body className={geistSans.variable}>
-        <RadixTheme accentColor={themeColor} appearance={theme}>
-          <CookieConsentBanner />
+        <ThemeProvider
+          attribute='class'
+          defaultTheme={DEFAULT_THEME}
+          storageKey={THEME_LS_KEY}
+          disableTransitionOnChange
+        >
+          <Theme accentColor={themeColor ?? DEFAULT_THEME_COLOR}>
+            <CookieConsentBanner />
 
-          <Flex align='center' justify='start' direction='column'>
-            <Layout theme={theme} themeColor={themeColor}>
-              {children}
-            </Layout>
-          </Flex>
-        </RadixTheme>
+            <Layout>{children}</Layout>
+          </Theme>
+        </ThemeProvider>
 
         <Analytics debug={false} />
         <SpeedInsights debug={false} />
