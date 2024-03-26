@@ -39,6 +39,8 @@ export function Options() {
     <Flex direction='column' gap='2' {...padding}>
       <InputOutputFileName />
 
+      <Separator mt='8px' mb='1' size='4' />
+
       {options.map(({ key, Component }, index) => (
         <Fragment key={key}>
           <Component />

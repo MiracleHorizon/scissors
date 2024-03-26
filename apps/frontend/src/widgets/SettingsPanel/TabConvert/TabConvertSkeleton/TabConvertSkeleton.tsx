@@ -21,18 +21,25 @@ const optionsPadding: PaddingProps = {
 
 const OptionsSkeleton = () => (
   <>
-    <Skeleton height='32px' width='100%' mb='10px' />
+    <Skeleton height='32px' width='100%' />
+
+    <Separator mt='8px' mb='1' size='4' />
+
     <Flex direction='column' gap='2' width='100%'>
       <SwitchSkeleton text='Flip Flip Flip' />
       <SwitchSkeleton text='Flop Flop Flop' />
       <SwitchSkeleton text='Grayscale Grayscale' />
     </Flex>
+
     <Separator my='1' size='4' />
+
     <Flex direction='column' gap='2' width='100%'>
       <SwitchSkeleton text='Negate Negate' />
       <SwitchSkeleton text='Negate Alpha Negate' />
     </Flex>
+
     <Separator my='1' size='4' />
+
     <SwitchSkeleton text='Blur Blur Blur' />
     <ButtonSkeleton />
     <Separator my='1' size='4' />

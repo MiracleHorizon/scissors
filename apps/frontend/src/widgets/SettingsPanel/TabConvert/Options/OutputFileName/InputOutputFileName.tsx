@@ -63,7 +63,7 @@ function InputOutputFileName() {
   })
 
   return (
-    <Flex gap='2' align='center' width='100%' mb='2' className={styles.root}>
+    <Flex gap='2' align='center' width='100%' className={styles.root}>
       <TextField.Root
         {...inputProps}
         ref={inputRef}
