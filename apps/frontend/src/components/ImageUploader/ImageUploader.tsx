@@ -5,6 +5,7 @@ import type { HTMLAttributes } from 'react'
 
 import { ImageDropzone } from '@components/ImageDropzone'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
+import { ImageCameraUpload } from '@components/ImageCameraUpload'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { allowedImageFormats } from '@site/config'
@@ -50,6 +51,7 @@ export function ImageUploader() {
           tooltipContent='Upload an image from device'
         />
         <ImageUploadPopover />
+        <ImageCameraUpload />
       </Flex>
     </Flex>
   )

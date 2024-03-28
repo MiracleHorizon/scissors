@@ -11,6 +11,7 @@ import { isValidFileType } from '@helpers/file/isValidFileType'
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import { createFileFromBlob } from '@helpers/file/createFileFromBlob'
+import { INVALID_FILE_SIZE_MESSAGE, INVALID_FILE_TYPE_MESSAGE } from '@helpers/file/constants'
 
 const FileSizeAlert = dynamic(
   () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
@@ -31,8 +32,6 @@ const DefaultErrorAlert = dynamic(
   }
 )
 
-const INVALID_FILE_SIZE_MESSAGE = 'Invalid file size'
-const INVALID_FILE_TYPE_MESSAGE = 'Invalid file type'
 const SOMETHING_WENT_WRONG_MESSAGE = 'Something went wrong. Please try again later'
 type ErrorMessage =
   | typeof INVALID_FILE_SIZE_MESSAGE
@@ -104,7 +103,7 @@ export function ImageUploadPopover() {
         <Tooltip content='Upload an image using a link'>
           <Popover.Trigger>
             <IconButton color='gray' variant='outline'>
-              <Link2Icon width='18px' height='18px' />
+              <Link2Icon width='20px' height='20px' />
             </IconButton>
           </Popover.Trigger>
         </Tooltip>

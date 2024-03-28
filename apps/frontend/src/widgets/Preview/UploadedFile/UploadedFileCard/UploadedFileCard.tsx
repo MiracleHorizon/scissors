@@ -5,6 +5,7 @@ import MediaQuery from 'react-responsive'
 
 import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
+import { ImageCameraUpload } from '@components/ImageCameraUpload'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { FileImageIcon } from '@ui/icons/FileImageIcon'
 import { ButtonDelete } from '@ui/ButtonDelete'
@@ -57,6 +58,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             className={styles.buttonsContainer}
           >
             <Flex gap='1'>
+              <ImageCameraUpload />
               <ImageUploadPopover />
               <ButtonUpload
                 accept={allowedImageFormats}

@@ -8,3 +8,6 @@ export const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * BYTES_IN_MB
 export const MIN_FILE_NAME_LENGTH = 1
 export const MAX_FILE_NAME_LENGTH = 255
 export const notAllowedChars = ['/', '\\', '<', '>', ':', '|', '"', '?', '*']
+
+export const INVALID_FILE_SIZE_MESSAGE = 'Invalid file size'
+export const INVALID_FILE_TYPE_MESSAGE = 'Invalid file type'
