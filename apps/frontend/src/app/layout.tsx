@@ -23,8 +23,9 @@ const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanne
   ssr: false
 })
 
+const domainURL = new URL(SITE_DOMAIN)
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_DOMAIN),
+  metadataBase: domainURL,
   title: {
     default: SITE_TITLE,
     template: `%s | ${SITE_TITLE}`
@@ -43,6 +44,7 @@ export const metadata: Metadata = {
         type: 'image/png'
       }
     ],
+    url: domainURL,
     type: 'website'
   },
   twitter: {
