@@ -7,11 +7,28 @@ import type { FC } from 'react'
 import { ColorSwatch } from '@ui/ColorSwatch'
 import { PaletteIcon } from '@ui/icons/PaletteIcon'
 import { useTheme } from '@hooks/useTheme'
-import { getRadixColorVar, setThemeColorCookie, themeColorItems } from '@lib/theme'
+import {
+  getRadixColorVar,
+  setThemeColorCookie,
+  THEME_COLOR_LS_KEY,
+  type ThemeColor,
+  themeColorItems
+} from '@lib/theme'
 import styles from './ThemeColorMenu.module.css'
 
 export const ThemeColorMenu: FC<Props> = ({ triggerClassName, contentClassName }) => {
   const { themeColor } = useTheme()
+
+  const onValueChange = (value: ThemeColor) => {
+    localStorage.setItem(THEME_COLOR_LS_KEY, value)
+    const event = new StorageEvent('storage', {
+      key: THEME_COLOR_LS_KEY,
+      newValue: value
+    })
+    window.dispatchEvent(event)
+
+    void setThemeColorCookie(value)
+  }
 
   return (
     <DropdownMenu.Root>
@@ -30,7 +47,7 @@ export const ThemeColorMenu: FC<Props> = ({ triggerClassName, contentClassName }
         <DropdownMenu.Label>Theme Color</DropdownMenu.Label>
         {/* @typescript-eslint/ban-ts-comment
           @ts-ignore */}
-        <DropdownMenu.RadioGroup value={themeColor} onValueChange={setThemeColorCookie}>
+        <DropdownMenu.RadioGroup value={themeColor} onValueChange={onValueChange}>
           {themeColorItems.map(({ key, color }) => (
             <DropdownMenu.RadioItem key={key} value={color}>
               <Text className={styles.itemText}>{color}</Text>
