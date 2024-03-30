@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
 
-import { CookieIcon } from '@ui/icons/CookieIcon'
+import { CookieIcon } from '@scissors/react-icons/CookieIcon'
+
 import { isTourCompleted as isTourCompletedCheck, TOUR_LS_KEY } from '@lib/tour'
 import { useSelectedPath } from '@hooks/useSelectedPath'
 import { PATH_ROOT } from '@site/paths'

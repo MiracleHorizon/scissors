@@ -1,6 +1,7 @@
 import { Callout } from '@radix-ui/themes'
 
-import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
+import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
+
 import styles from './TabResizeCallout.module.css'
 
 export const TabResizeCallout = () => (

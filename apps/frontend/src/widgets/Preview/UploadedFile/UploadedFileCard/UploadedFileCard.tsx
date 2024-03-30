@@ -3,10 +3,11 @@ import { Card, Flex, Spinner, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import MediaQuery from 'react-responsive'
 
+import { FileImageIcon } from '@scissors/react-icons/FileImageIcon'
+
 import { UploadedFileProperties } from './UploadedFileProperties'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
-import { FileImageIcon } from '@ui/icons/FileImageIcon'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'

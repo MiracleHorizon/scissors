@@ -1,5 +1,6 @@
+import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
-import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
 import { useTabResizeStore } from '../store'
 
 export function ButtonAddResize() {

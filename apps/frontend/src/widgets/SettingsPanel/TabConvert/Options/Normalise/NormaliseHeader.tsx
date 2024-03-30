@@ -1,4 +1,5 @@
-import { Half2Icon } from '@ui/icons/Half2Icon'
+import { Half2Icon } from '@scissors/react-icons/Half2Icon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetNormalise } from './ButtonResetNormalise'
 import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'

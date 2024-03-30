@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 
-import { PaintbrushIcon } from '@ui/icons/PaintbrushIcon'
+import { PaintbrushIcon } from '@scissors/react-icons/PaintbrushIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useTintStore } from '@stores/tint'
 import { useConvertStore } from '@stores/convert'

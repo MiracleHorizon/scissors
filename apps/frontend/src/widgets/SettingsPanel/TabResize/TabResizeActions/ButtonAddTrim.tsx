@@ -1,5 +1,6 @@
+import { ScissorsIcon } from '@scissors/react-icons/ScissorsIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
-import { ScissorsIcon } from '@ui/icons/ScissorsIcon'
 import { useTabResizeStore } from '../store'
 
 export function ButtonAddTrim() {

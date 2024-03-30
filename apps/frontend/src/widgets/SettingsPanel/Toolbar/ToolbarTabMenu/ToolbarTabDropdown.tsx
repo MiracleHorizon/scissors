@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Button, DropdownMenu } from '@radix-ui/themes'
 
+import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
+
 import { ToolbarTabList } from './ToolbarTabList'
-import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
 import styles from './ToolbarTabDropdown.module.css'
 
 export function ToolbarTabDropdown() {

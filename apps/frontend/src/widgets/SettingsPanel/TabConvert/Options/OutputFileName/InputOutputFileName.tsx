@@ -1,8 +1,9 @@
 import { type ChangeEvent, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Flex, TextField } from '@radix-ui/themes'
 
+import { FileTextIcon } from '@scissors/react-icons/FileTextIcon'
+
 import { ButtonClear } from '@ui/ButtonClear'
-import { FileTextIcon } from '@ui/icons/FileTextIcon'
 import { PopoverOutputFileName } from './PopoverOutputFileName'
 import { useOutputStore } from '@stores/output'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'

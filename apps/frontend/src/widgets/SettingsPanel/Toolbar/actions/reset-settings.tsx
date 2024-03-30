@@ -1,8 +1,9 @@
 import { type ComponentPropsWithoutRef, type FC, useCallback } from 'react'
 
+import { ResetIcon } from '@scissors/react-icons/ResetIcon'
+
 import { ConfirmSettingsResetAlert } from '@components/alerts/ConfirmSettingsResetAlert'
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
-import { ResetIcon } from '@ui/icons/ResetIcon'
 import { ButtonReset } from '@ui/ButtonReset'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
 import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'

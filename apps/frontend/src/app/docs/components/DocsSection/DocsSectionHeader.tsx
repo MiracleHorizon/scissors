@@ -5,7 +5,8 @@ import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
 import { useParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
-import { Link2Icon } from '@ui/icons/Link2Icon'
+import { Link2Icon } from '@scissors/react-icons/Link2Icon'
+
 import styles from './DocsSectionHeader.module.css'
 
 export function DocsSectionHeader({ title, hash }: Props) {

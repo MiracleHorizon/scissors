@@ -4,7 +4,8 @@ import { forwardRef } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { TrashIcon } from '@ui/icons/TrashIcon'
+import { TrashIcon } from '@scissors/react-icons/TrashIcon'
+
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 

@@ -2,7 +2,8 @@ import { useRef } from 'react'
 import { Button, Link, Text } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
-import { DownloadIcon } from '@ui/icons/DownloadIcon'
+import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
+
 import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 

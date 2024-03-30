@@ -4,7 +4,8 @@ import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/dist/style.css'
 import dayjs from 'dayjs'
 
-import { CalendarIcon } from '@ui/icons/CalendarIcon'
+import { CalendarIcon } from '@scissors/react-icons/CalendarIcon'
+
 import styles from './DatePicker.module.css'
 
 export function DatePicker({ value, disabled, onValueChange }: Props) {

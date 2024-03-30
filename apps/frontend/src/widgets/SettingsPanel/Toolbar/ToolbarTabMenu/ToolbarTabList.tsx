@@ -2,9 +2,10 @@ import { Tabs } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
 
+import { SymbolIcon } from '@scissors/react-icons/SymbolIcon'
+import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+
 import { ToolbarTabItem } from './ToolbarTabItem'
-import { SymbolIcon } from '@ui/icons/SymbolIcon'
-import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
 import { TOUR_STEP } from '@lib/tour'
 import { TOOLBAR_TAB } from '@stores/tabs'
 import type { ClassNameProps } from '@app-types/ClassNameProps'

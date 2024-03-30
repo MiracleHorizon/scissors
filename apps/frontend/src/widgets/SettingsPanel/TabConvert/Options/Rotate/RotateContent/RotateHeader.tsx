@@ -1,6 +1,7 @@
 import { DEFAULT_ROTATE_ANGLE } from '@scissors/sharp'
 
-import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
+import { RotateCounterClockwiseIcon } from '@scissors/react-icons/RotateCounterClockwiseIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetRotate } from './ButtonResetRotate'
 import { ButtonRemoveRotate } from './ButtonRemoveRotate'

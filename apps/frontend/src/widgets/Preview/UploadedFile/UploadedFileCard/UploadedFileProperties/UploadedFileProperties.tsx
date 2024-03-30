@@ -11,9 +11,10 @@ import {
 import { Flex, Separator, Text } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
-import { FileIcon } from '@ui/icons/FileIcon'
-import { RatioIcon } from '@ui/icons/RatioIcon'
-import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
+import { FileIcon } from '@scissors/react-icons/FileIcon'
+import { RatioIcon } from '@scissors/react-icons/RatioIcon'
+import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+
 import { getAspectRatio, getFileSize, getImageDimension, isCorrectAspectRatio } from './utils'
 import type { Dimension } from './types'
 import styles from './UploadedFileProperties.module.css'

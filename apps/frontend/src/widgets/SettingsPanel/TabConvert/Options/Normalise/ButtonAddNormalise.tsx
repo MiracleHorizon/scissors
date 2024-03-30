@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 
-import { Half2Icon } from '@ui/icons/Half2Icon'
+import { Half2Icon } from '@scissors/react-icons/Half2Icon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useNormaliseStore } from '@stores/normalise'
 

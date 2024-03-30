@@ -6,9 +6,9 @@ import {
   MIN_RESIZE_SIZE,
   RESIZE_SIZE_STEP
 } from '@scissors/sharp'
+import { WidthIcon } from '@scissors/react-icons/WidthIcon'
+import { HeightIcon } from '@scissors/react-icons/HeightIcon'
 
-import { WidthIcon } from '@ui/icons/WidthIcon'
-import { HeightIcon } from '@ui/icons/HeightIcon'
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useResizeStore } from '@stores/resize'
 

@@ -6,9 +6,10 @@ import { Flex, Heading, IconButton, Separator } from '@radix-ui/themes'
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 
+import { GithubLogoIcon } from '@scissors/react-icons/GithubLogoIcon'
+import { HamburgerMenuIcon } from '@scissors/react-icons/HamburgerMenuIcon'
+
 import { NavigationMobile, NavigationMobileItem } from './NavigationMobile'
-import { GithubLogoIcon } from '@ui/icons/GithubLogoIcon'
-import { HamburgerMenuIcon } from '@ui/icons/HamburgerMenuIcon'
 import { useEscapeAction } from '@hooks/useEscapeAction'
 import { GITHUB_REPO_PATH } from '@site/config'
 import styles from './NavigationDrawer.module.css'

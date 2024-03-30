@@ -4,7 +4,7 @@ import { type FC, memo } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { DownloadIcon } from '@ui/icons/DownloadIcon'
+import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
 
 export const ButtonDownload: FC<Props> = memo(({ tooltipContent, onClick, ...props }) => {
   const Button = (

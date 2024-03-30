@@ -3,8 +3,9 @@ import dynamic from 'next/dynamic'
 import MediaQuery from 'react-responsive'
 import { Button, Spinner, Text } from '@radix-ui/themes'
 
-import { SymbolIcon } from '@ui/icons/SymbolIcon'
-import { LockClosedIcon } from '@ui/icons/LockClosedIcon'
+import { SymbolIcon } from '@scissors/react-icons/SymbolIcon'
+import { LockClosedIcon } from '@scissors/react-icons/LockClosedIcon'
+
 import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 

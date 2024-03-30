@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic'
 import { type CSSProperties, useState } from 'react'
 import { IconButton, Popover, Skeleton } from '@radix-ui/themes'
 
-import { MixerHorizontalIcon } from '@ui/icons/MixerHorizontalIcon'
+import { MixerHorizontalIcon } from '@scissors/react-icons/MixerHorizontalIcon'
+
 import { useSyncThemeAppearance } from '@hooks/useSyncThemeAppearance'
 
 const AppearancePopoverContent = dynamic(

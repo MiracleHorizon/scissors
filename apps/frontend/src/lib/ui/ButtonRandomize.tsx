@@ -4,7 +4,8 @@ import { forwardRef } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { ShuffleIcon } from './icons/ShuffleIcon'
+import { ShuffleIcon } from '@scissors/react-icons/ShuffleIcon'
+
 import type { ButtonProps } from '@lib/theme'
 
 export const ButtonRandomize = forwardRef<HTMLButtonElement, Props>(

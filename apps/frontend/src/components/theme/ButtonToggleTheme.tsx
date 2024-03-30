@@ -3,8 +3,9 @@
 import { IconButton } from '@radix-ui/themes'
 import type { CSSProperties } from 'react'
 
-import { MoonIcon } from '@ui/icons/MoonIcon'
-import { SunIcon } from '@ui/icons/SunIcon'
+import { MoonIcon } from '@scissors/react-icons/MoonIcon'
+import { SunIcon } from '@scissors/react-icons/SunIcon'
+
 import { useTheme } from '@hooks/useTheme'
 import type { Theme } from '@lib/theme'
 import type { StyleProps } from '@app-types/StyleProps'

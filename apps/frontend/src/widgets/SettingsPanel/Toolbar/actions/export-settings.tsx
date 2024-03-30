@@ -1,5 +1,6 @@
+import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
+
 import { ButtonDownload } from '@ui/ButtonDownload'
-import { DownloadIcon } from '@ui/icons/DownloadIcon'
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { useExportSettings } from '@stores/hooks/useExportSettings'
 import { useTabsStore } from '@stores/tabs'

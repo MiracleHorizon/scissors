@@ -1,5 +1,6 @@
-import { RowSpacingIcon } from '@ui/icons/RowSpacingIcon'
-import { ColumnSpacingIcon } from '@ui/icons/ColumnSpacingIcon'
+import { RowSpacingIcon } from '@scissors/react-icons/RowSpacingIcon'
+import { ColumnSpacingIcon } from '@scissors/react-icons/ColumnSpacingIcon'
+
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'

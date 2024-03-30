@@ -1,4 +1,5 @@
-import { ShadowIcon } from '@ui/icons/ShadowIcon'
+import { ShadowIcon } from '@scissors/react-icons/ShadowIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'

@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic'
 import { Button, Flex, IconButton, Popover, TextField, Tooltip } from '@radix-ui/themes'
 import { type ChangeEvent, useMemo, useState } from 'react'
 
-import { Link2Icon } from '@ui/icons/Link2Icon'
+import { Link2Icon } from '@scissors/react-icons/Link2Icon'
+
 import { useOutputStore } from '@stores/output'
 import { isURL } from '@helpers/isURL'
 import { isValidFileType } from '@helpers/file/isValidFileType'

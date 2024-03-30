@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 
-import { CopyIcon } from '@ui/icons/CopyIcon'
-import { CheckIcon } from '@ui/icons/CheckIcon'
+import { CopyIcon } from '@scissors/react-icons/CopyIcon'
+import { CheckIcon } from '@scissors/react-icons/CheckIcon'
+
 import { copyToClipboard } from '@helpers/copyToClipboard'
 import type { ButtonProps } from '@lib/theme'
 

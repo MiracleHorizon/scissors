@@ -1,4 +1,5 @@
-import { PaintbrushIcon } from '@ui/icons/PaintbrushIcon'
+import { PaintbrushIcon } from '@scissors/react-icons/PaintbrushIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResetTint } from './ButtonResetTint'
 import { ButtonRemoveTint } from './ButtonRemoveTint'
