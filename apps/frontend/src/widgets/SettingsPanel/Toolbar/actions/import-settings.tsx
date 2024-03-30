@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
-import { DropdownMenu } from '@radix-ui/themes'
 import type { FC } from 'react'
 
+import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { UploadIcon } from '@ui/icons/UploadIcon'
 import { ButtonUpload } from '@ui/ButtonUpload'
@@ -10,7 +10,9 @@ import { useImportSettings } from '@stores/hooks/useImportSettings'
 
 const ConfirmAlert = dynamic(
   () => import('@components/alerts/ConfirmAlert').then(mod => mod.ConfirmAlert),
-  { ssr: false }
+  {
+    ssr: false
+  }
 )
 
 const ConfirmImportAlert: FC<{
@@ -65,32 +67,25 @@ export function ButtonImportSettings() {
   )
 }
 
-function DropdownItemWithImport({
+const ItemWithImport: FC<ComponentProps> = ({
   children,
-  onClick
-}: Pick<ComponentProps, 'children' | 'onClick'>) {
-  const handleClick = (ev: Event) => {
-    /*
-     * Prevent the DropdownMenu from closing after clicking on the item.
-     */
-    ev.preventDefault()
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  isDragOver: _isDragOver,
+  ...props
+}) => (
+  <ToolbarMobileMenuItem
+    label='Import'
+    icon={<UploadIcon width='20px' height='20px' label='import settings' />}
+    {...props}
+  >
+    {children}
+  </ToolbarMobileMenuItem>
+)
 
-    onClick()
-  }
+ItemWithImport.displayName = 'ItemWithImport'
+const MobileItem = withFileUploader(ItemWithImport)
 
-  return (
-    <DropdownMenu.Item onSelect={handleClick}>
-      {children}
-      Import
-      <UploadIcon width='18px' height='18px' label='import settings' />
-    </DropdownMenu.Item>
-  )
-}
-
-DropdownItemWithImport.displayName = 'DropdownItemWithImport'
-const DropdownItem = withFileUploader(DropdownItemWithImport)
-
-export const DropdownItemImportSettings = ({ onClose }: DropdownItemProps) => {
+export const ItemImportSettings = ({ onClick }: ItemProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   const {
@@ -104,22 +99,22 @@ export const DropdownItemImportSettings = ({ onClose }: DropdownItemProps) => {
 
   const handleConfirm = () => {
     handleConfirmImport()
-    onClose()
+    onClick?.()
   }
 
   const handleCancel = () => {
     handleCancelImport()
-    onClose()
+    onClick?.()
   }
 
   const handleCloseValidation = () => {
     handleCloseValidationAlert()
-    onClose()
+    onClick?.()
   }
 
   return (
     <>
-      <DropdownItem accept='.json' setFile={handleImport} />
+      <MobileItem accept='.json' setFile={handleImport} />
 
       {isConfirmAlertOpen && (
         <ConfirmImportAlert open onConfirm={handleConfirm} onCancel={handleCancel} />
@@ -130,6 +125,6 @@ export const DropdownItemImportSettings = ({ onClose }: DropdownItemProps) => {
   )
 }
 
-interface DropdownItemProps {
-  onClose: VoidFunction
+interface ItemProps {
+  onClick?: VoidFunction
 }

@@ -62,3 +62,9 @@ input[type='number'] {
 .hidden {
   display: none;
 }
+
+/* Drawer */
+.EZDrawer__container {
+  height: auto !important;
+  background: var(--color-background) !important;
+}

@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
-import { ContextMenu, DropdownMenu } from '@radix-ui/themes'
+import { ContextMenu } from '@radix-ui/themes'
 
 import { ShuffleIcon } from '@ui/icons/ShuffleIcon'
 import { ButtonRandomize } from '@ui/ButtonRandomize'
+import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
+import { ToolbarRandomizeMenu } from '../ToolbarRandomizeMenu'
 import { useRandomizeSettings } from '@stores/hooks/useRandomizeSettings'
 import { useRandomizeStore } from '../ToolbarRandomizeMenu/store'
 
@@ -22,29 +24,39 @@ export function ButtonRandomizeSettings() {
   const { handleRandomize } = useRandomize()
 
   return (
-    <ContextMenu.Trigger>
-      <ButtonRandomize color='gray' tooltipContent='Randomize Settings' onClick={handleRandomize} />
-    </ContextMenu.Trigger>
+    <ToolbarRandomizeMenu>
+      <ContextMenu.Trigger>
+        <ButtonRandomize
+          color='gray'
+          tooltipContent='Randomize Settings'
+          onClick={handleRandomize}
+        />
+      </ContextMenu.Trigger>
+    </ToolbarRandomizeMenu>
   )
 }
 
-export function DropdownItemRandomizeSettings({ onClose }: DropdownItemProps) {
+export function ItemRandomizeSettings({ onClick }: ItemProps) {
   const { handleRandomize } = useRandomize()
 
   const handleClick = () => {
     handleRandomize()
-    onClose()
+    onClick?.()
   }
 
   return (
-    <ContextMenu.Trigger>
-      <DropdownMenu.Item onSelect={handleClick}>
-        Randomize <ShuffleIcon width='16px' height='16px' />
-      </DropdownMenu.Item>
-    </ContextMenu.Trigger>
+    <ToolbarRandomizeMenu>
+      <ContextMenu.Trigger>
+        <ToolbarMobileMenuItem
+          label='Randomize'
+          icon={<ShuffleIcon width='20px' height='20px' label='randomize settings' />}
+          onClick={handleClick}
+        />
+      </ContextMenu.Trigger>
+    </ToolbarRandomizeMenu>
   )
 }
 
-interface DropdownItemProps {
-  onClose: VoidFunction
+interface ItemProps {
+  onClick?: VoidFunction
 }

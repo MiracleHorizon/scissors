@@ -1,9 +1,10 @@
-import { Flex, Separator, Skeleton } from '@radix-ui/themes'
+import { Flex, IconButton, Separator, Skeleton } from '@radix-ui/themes'
+import type { FC } from 'react'
 
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ToolbarSkeleton.module.css'
 
-export const ToolbarContentSkeleton = (props: ClassNameProps) => (
+export const ToolbarContentSkeleton: FC<ClassNameProps> = props => (
   <Flex {...props} align='center' justify='end' gap='1'>
     <Skeleton height='32px' width='32px' />
     <Skeleton height='32px' width='32px' />
@@ -15,10 +16,10 @@ export const ToolbarContentSkeleton = (props: ClassNameProps) => (
   </Flex>
 )
 
-export const ToolbarDropdownMenuSkeleton = (props: ClassNameProps) => (
-  <Flex {...props} align='center'>
-    <Skeleton height='32px' width='86.5px' />
-  </Flex>
+export const ToolbarMobileMenuSkeleton: FC<ClassNameProps> = props => (
+  <Skeleton width='32px' height='32px' {...props}>
+    <IconButton radius='large' />
+  </Skeleton>
 )
 
 const ToolbarTabMenuSkeleton = () => (
@@ -39,6 +40,6 @@ export const ToolbarSkeleton = () => (
   <Flex align='center' justify='between' py='2' px='3' className={styles.root}>
     <ToolbarTabMenuSkeleton />
     <ToolbarContentSkeleton className={styles.toolbarContent} />
-    <ToolbarDropdownMenuSkeleton className={styles.toolbarDropdownMenu} />
+    <ToolbarMobileMenuSkeleton className={styles.toolbarMobileMenu} />
   </Flex>
 )

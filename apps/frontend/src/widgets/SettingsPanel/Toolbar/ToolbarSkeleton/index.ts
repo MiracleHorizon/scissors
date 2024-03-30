@@ -1,5 +1,5 @@
 export {
   ToolbarSkeleton,
-  ToolbarDropdownMenuSkeleton,
+  ToolbarMobileMenuSkeleton,
   ToolbarContentSkeleton
 } from './ToolbarSkeleton'

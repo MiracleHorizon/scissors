@@ -1,7 +1,5 @@
 .root {
   min-height: 30dvh !important;
-  height: max-content !important;
-  background: var(--color-background) !important;
   box-shadow: none !important;
   transition: none !important;
 }

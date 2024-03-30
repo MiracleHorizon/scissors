@@ -12,12 +12,13 @@ export type ComponentProps = PropsWithChildren<
   {
     isDragOver: boolean
     onClick: VoidFunction
-    onDrop: (ev: DragEvent<HTMLDivElement>) => void
-    onDragOver: (ev: DragEvent<HTMLDivElement>) => void
+    onDrop: (ev: DragEvent<any>) => void
+    onDragOver: (ev: DragEvent<any>) => void
     onDragLeave: VoidFunction
+
     // Prevent html tag warning
     tooltipcontent?: string
   } & ComponentHTMLAttributes
 >
 
-type ComponentHTMLAttributes = Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
+type ComponentHTMLAttributes = Omit<HTMLAttributes<any>, 'onClick'>

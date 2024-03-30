@@ -1,9 +1,8 @@
-import { DropdownMenu } from '@radix-ui/themes'
-
 import { ButtonDownload } from '@ui/ButtonDownload'
 import { DownloadIcon } from '@ui/icons/DownloadIcon'
-import { useTabsStore } from '@stores/tabs'
+import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { useExportSettings } from '@stores/hooks/useExportSettings'
+import { useTabsStore } from '@stores/tabs'
 
 export function ButtonExportSettings() {
   const selectedTab = useTabsStore(state => state.selectedTab)
@@ -12,27 +11,24 @@ export function ButtonExportSettings() {
   return <ButtonDownload tooltipContent='Export Settings' onClick={exportSettings} />
 }
 
-export function DropdownItemExportSettings({ onClose }: DropdownItemProps) {
+export function ItemExportSettings({ onClick }: ItemProps) {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const { exportSettings } = useExportSettings(selectedTab)
 
-  const handleClick = (ev: Event) => {
-    /*
-     * Prevent the DropdownMenu from closing after clicking on the item.
-     */
-    ev.preventDefault()
-
+  const handleClick = () => {
     exportSettings()
-    onClose()
+    onClick?.()
   }
 
   return (
-    <DropdownMenu.Item onSelect={handleClick}>
-      Export <DownloadIcon width='18px' height='18px' label='export settings' />
-    </DropdownMenu.Item>
+    <ToolbarMobileMenuItem
+      label='Export'
+      icon={<DownloadIcon width='20px' height='20px' label='export settings' />}
+      onClick={handleClick}
+    />
   )
 }
 
-interface DropdownItemProps {
-  onClose: VoidFunction
+interface ItemProps {
+  onClick?: VoidFunction
 }

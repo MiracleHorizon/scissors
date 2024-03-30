@@ -1,7 +1,7 @@
-import { type ComponentPropsWithoutRef, useCallback } from 'react'
-import { DropdownMenu } from '@radix-ui/themes'
+import { type ComponentPropsWithoutRef, type FC, useCallback } from 'react'
 
 import { ConfirmSettingsResetAlert } from '@components/alerts/ConfirmSettingsResetAlert'
+import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { ResetIcon } from '@ui/icons/ResetIcon'
 import { ButtonReset } from '@ui/ButtonReset'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
@@ -40,23 +40,12 @@ export const ButtonSettingsReset = () => (
   </WithConfirmAlert>
 )
 
-export function DropdownItemResetSettings({ onClose }: DropdownItemProps) {
-  const handleClick = (ev: Event) => {
-    /*
-     * Prevent the DropdownMenu from closing after clicking on the item.
-     */
-    ev.preventDefault()
-  }
+export const ItemResetSettings: FC<ItemProps> = ({ onClick }) => (
+  <WithConfirmAlert onConfirm={onClick}>
+    <ToolbarMobileMenuItem label='Reset' icon={<ResetIcon width='20px' height='20px' />} />
+  </WithConfirmAlert>
+)
 
-  return (
-    <WithConfirmAlert onConfirm={onClose} onCancel={onClose}>
-      <DropdownMenu.Item color='red' onSelect={handleClick}>
-        Reset <ResetIcon width='18px' height='18px' />
-      </DropdownMenu.Item>
-    </WithConfirmAlert>
-  )
-}
-
-interface DropdownItemProps {
-  onClose: VoidFunction
+interface ItemProps {
+  onClick?: VoidFunction
 }
