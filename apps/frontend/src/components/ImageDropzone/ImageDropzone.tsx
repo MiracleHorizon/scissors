@@ -5,7 +5,8 @@ import { clsx } from 'clsx'
 import type { FC } from 'react'
 import type { PaddingProps } from '@radix-ui/themes/props'
 
-import { ImageIcon } from '@ui/icons/ImageIcon'
+import { ImageIcon } from '@scissors/react-icons/ImageIcon'
+
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { MAX_FILE_SIZE_MB } from '@site/config'
 import styles from './ImageDropzone.module.css'

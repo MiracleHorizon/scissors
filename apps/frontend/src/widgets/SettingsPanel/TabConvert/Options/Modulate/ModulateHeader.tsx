@@ -1,4 +1,5 @@
-import { TokensIcon } from '@ui/icons/TokensIcon'
+import { TokensIcon } from '@scissors/react-icons/TokensIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonRemoveModulate } from './ButtonRemoveModulate'
 import { ButtonResetModulate } from './ButtonResetModulate'

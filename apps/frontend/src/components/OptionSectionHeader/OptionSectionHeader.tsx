@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic'
 import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
 import type { FC } from 'react'
 
-import { Link2Icon } from '@ui/icons/Link2Icon'
+import { Link2Icon } from '@scissors/react-icons/Link2Icon'
+
 import type { Props } from './OptionSectionHeader.types'
 import styles from './OptionSectionHeader.module.css'
 

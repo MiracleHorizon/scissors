@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 
-import { TokensIcon } from '@ui/icons/TokensIcon'
+import { TokensIcon } from '@scissors/react-icons/TokensIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useModulateStore } from '@stores/modulate'
 

@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 
-import { RotateCounterClockwiseIcon } from '@ui/icons/RotateCounterClockwiseIcon'
+import { RotateCounterClockwiseIcon } from '@scissors/react-icons/RotateCounterClockwiseIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useRotateStore } from '@stores/rotate'
 

@@ -1,9 +1,10 @@
 import { useCallback } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
 
-import { AllSidesIcon } from '@ui/icons/AllSidesIcon'
-import { ChevronUpIcon } from '@ui/icons/ChevronUpIcon'
-import { ChevronDownIcon } from '@ui/icons/ChevronDownIcon'
+import { AllSidesIcon } from '@scissors/react-icons/AllSidesIcon'
+import { ChevronUpIcon } from '@scissors/react-icons/ChevronUpIcon'
+import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
+
 import { ButtonExtendReset } from './ButtonExtendReset'
 import { ExtendToolbarButton } from './ExtendToolbarButton'
 import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'

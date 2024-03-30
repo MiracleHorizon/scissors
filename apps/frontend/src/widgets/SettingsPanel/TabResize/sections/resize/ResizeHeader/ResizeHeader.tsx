@@ -1,4 +1,5 @@
-import { DimensionsIcon } from '@ui/icons/DimensionsIcon'
+import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonResizeReset } from './ButtonResizeReset'
 import { DOCS_ANCHOR_RESIZE, PATH_DOCS } from '@site/paths'

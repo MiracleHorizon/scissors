@@ -1,7 +1,8 @@
 import { useCallback } from 'react'
 import { ContextMenu } from '@radix-ui/themes'
 
-import { ShuffleIcon } from '@ui/icons/ShuffleIcon'
+import { ShuffleIcon } from '@scissors/react-icons/ShuffleIcon'
+
 import { ButtonRandomize } from '@ui/ButtonRandomize'
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { ToolbarRandomizeMenu } from '../ToolbarRandomizeMenu'

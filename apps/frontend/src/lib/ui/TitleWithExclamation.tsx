@@ -2,7 +2,8 @@ import { Flex } from '@radix-ui/themes'
 import type { PaddingProps, MarginProps } from '@radix-ui/themes/props'
 import type { CSSProperties, FC, PropsWithChildren } from 'react'
 
-import { ExclamationTriangleIcon } from './icons/ExclamationTriangleIcon'
+import { ExclamationTriangleIcon } from '@scissors/react-icons/ExclamationTriangleIcon'
+
 import { getRadixSpaceVar } from '@lib/theme'
 
 export const testId = 'title-with-exclamation'

@@ -3,7 +3,8 @@ import Drawer from 'react-modern-drawer'
 import { Flex, IconButton, Portal, Separator } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { DotsHorizontalIcon } from '@ui/icons/DotsHorizontalIcon'
+import { DotsHorizontalIcon } from '@scissors/react-icons/DotsHorizontalIcon'
+
 import { ItemImportSettings } from '../actions/import-settings'
 import { ItemRandomizeSettings } from '../actions/randomize-settings'
 import { ItemExportSettings } from '../actions/export-settings'

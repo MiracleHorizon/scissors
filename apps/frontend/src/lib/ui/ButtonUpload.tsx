@@ -2,7 +2,8 @@
 
 import { IconButton, Tooltip } from '@radix-ui/themes'
 
-import { UploadIcon } from '@ui/icons/UploadIcon'
+import { UploadIcon } from '@scissors/react-icons/UploadIcon'
+
 import { withFileUploader } from '@hoc/withFileUploader'
 
 export const ButtonUpload = withFileUploader(({ children, tooltipcontent, onClick }) => {

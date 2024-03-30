@@ -1,7 +1,8 @@
 import { Callout } from '@radix-ui/themes'
 import type { ComponentPropsWithoutRef, FC } from 'react'
 
-import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
+import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
+
 import type { StyleProps } from '@app-types/StyleProps'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 

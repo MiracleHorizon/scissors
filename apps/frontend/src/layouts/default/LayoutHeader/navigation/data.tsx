@@ -1,9 +1,9 @@
-import type { NavigationItemModel } from './types'
+import { ReaderIcon } from '@scissors/react-icons/ReaderIcon'
+import { ImageIcon } from '@scissors/react-icons/ImageIcon'
 
-import { ReaderIcon } from '@ui/icons/ReaderIcon'
-import { ImageIcon } from '@ui/icons/ImageIcon'
 import { PATH_DOCS, PATH_GALLERY } from '@site/paths'
 import { TOUR_STEP } from '@lib/tour'
+import type { NavigationItemModel } from './types'
 
 export const navigationItems: NavigationItemModel[] = [
   {

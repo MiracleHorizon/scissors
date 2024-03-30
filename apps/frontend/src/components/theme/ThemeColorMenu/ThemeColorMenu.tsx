@@ -4,8 +4,9 @@ import { DropdownMenu, IconButton, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { FC } from 'react'
 
+import { PaletteIcon } from '@scissors/react-icons/PaletteIcon'
+
 import { ColorSwatch } from '@ui/ColorSwatch'
-import { PaletteIcon } from '@ui/icons/PaletteIcon'
 import { useTheme } from '@hooks/useTheme'
 import {
   getRadixColorVar,

@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic'
 import type { FC } from 'react'
 
+import { UploadIcon } from '@scissors/react-icons/UploadIcon'
+
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
-import { UploadIcon } from '@ui/icons/UploadIcon'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useTabsStore } from '@stores/tabs'
 import { useImportSettings } from '@stores/hooks/useImportSettings'

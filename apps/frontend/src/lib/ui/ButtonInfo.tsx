@@ -4,7 +4,8 @@ import { forwardRef } from 'react'
 import { IconButton } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
+import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
+
 import type { Radius } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 

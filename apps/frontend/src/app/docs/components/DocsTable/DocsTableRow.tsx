@@ -1,7 +1,7 @@
 import { Code, Table } from '@radix-ui/themes'
 import type { FC, ReactNode } from 'react'
 
-import { MinusIcon } from '@ui/icons/MinusIcon'
+import { MinusIcon } from '@scissors/react-icons/MinusIcon'
 
 export const DocsTableRow: FC<Props> = ({ label, description, defaultValue }) => (
   <Table.Row>

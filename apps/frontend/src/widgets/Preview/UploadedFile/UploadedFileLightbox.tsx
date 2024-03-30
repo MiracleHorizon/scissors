@@ -8,7 +8,8 @@ import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import Download from 'yet-another-react-lightbox/plugins/download'
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 
-import { Cross1Icon } from '@ui/icons/Cross1Icon'
+import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
+
 import { type DownloadPayload, useOutputStore } from '@stores/output'
 
 function getLightboxProps({

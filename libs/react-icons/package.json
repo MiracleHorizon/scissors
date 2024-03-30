@@ -1,0 +1,15 @@
+{
+  "name": "@scissors/react-icons",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.tsx"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "@types/react": "^18"
+  },
+  "dependencies": {
+    "@radix-ui/react-accessible-icon": "1.0.3"
+  }
+}

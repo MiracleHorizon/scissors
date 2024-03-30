@@ -3,7 +3,8 @@
 import { useCallback } from 'react'
 import { IconButton } from '@radix-ui/themes'
 
-import { PipetteIcon } from '@ui/icons/PipetteIcon'
+import { PipetteIcon } from '@scissors/react-icons/PipetteIcon'
+
 import { useEyeDropper } from '@hooks/useEyeDropper'
 import { hexValidationRegex } from '@helpers/colors'
 import type { ButtonProps } from '@lib/theme'

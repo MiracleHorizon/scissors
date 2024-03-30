@@ -1,8 +1,9 @@
 import { IconButton, Popover } from '@radix-ui/themes'
 import type { ComponentPropsWithoutRef, FC } from 'react'
 
+import { DotsHorizontalIcon } from '@scissors/react-icons/DotsHorizontalIcon'
+
 import { GallerySlideInfo } from './GallerySlideInfo'
-import { DotsHorizontalIcon } from '@ui/icons/DotsHorizontalIcon'
 import styles from './GallerySlidePopover.module.css'
 
 const GallerySlidePopoverTrigger = () => (

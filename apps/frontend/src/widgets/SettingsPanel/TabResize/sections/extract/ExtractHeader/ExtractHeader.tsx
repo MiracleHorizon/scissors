@@ -1,4 +1,5 @@
-import { CropIcon } from '@ui/icons/CropIcon'
+import { CropIcon } from '@scissors/react-icons/CropIcon'
+
 import { OptionSectionHeader } from '@components/OptionSectionHeader'
 import { ButtonExtractReset } from './ButtonExtractReset'
 

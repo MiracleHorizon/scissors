@@ -2,7 +2,8 @@ import { Box } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import type { CSSProperties, FC } from 'react'
 
-import { EnterFullScreenIcon } from '@ui/icons/EnterFullScreenIcon'
+import { EnterFullScreenIcon } from '@scissors/react-icons/EnterFullScreenIcon'
+
 import { pathForAssets } from '@site/config'
 import { useOutputStore } from '@stores/output'
 import styles from './UploadedFilePreview.module.css'

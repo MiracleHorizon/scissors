@@ -1,7 +1,8 @@
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import type { CSSProperties } from 'react'
 
-import { GithubLogoIcon } from '@ui/icons/GithubLogoIcon'
+import { GithubLogoIcon } from '@scissors/react-icons/GithubLogoIcon'
+
 import { GITHUB_REPO_PATH } from '@site/config'
 
 const style: CSSProperties = {

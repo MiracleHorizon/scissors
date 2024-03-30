@@ -1,6 +1,7 @@
 import { Callout, Strong } from '@radix-ui/themes'
 
-import { InfoCircledIcon } from '@ui/icons/InfoCircledIcon'
+import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
+
 import { useOutputStore } from '@stores/output'
 
 export function ExtractCallout() {

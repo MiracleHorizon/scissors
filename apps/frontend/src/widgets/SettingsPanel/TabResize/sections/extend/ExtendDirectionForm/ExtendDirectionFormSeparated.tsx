@@ -1,7 +1,8 @@
-import { ArrowUpIcon } from '@ui/icons/ArrowUpIcon'
-import { ArrowDownIcon } from '@ui/icons/ArrowDownIcon'
-import { ArrowLeftIcon } from '@ui/icons/ArrowLeftIcon'
-import { ArrowRightIcon } from '@ui/icons/ArrowRightIcon'
+import { ArrowUpIcon } from '@scissors/react-icons/ArrowUpIcon'
+import { ArrowDownIcon } from '@scissors/react-icons/ArrowDownIcon'
+import { ArrowLeftIcon } from '@scissors/react-icons/ArrowLeftIcon'
+import { ArrowRightIcon } from '@scissors/react-icons/ArrowRightIcon'
+
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'

@@ -1,5 +1,6 @@
+import { MoveIcon } from '@scissors/react-icons/MoveIcon'
+
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
-import { MoveIcon } from '@ui/icons/MoveIcon'
 import { useTabResizeStore } from '../store'
 
 export function ButtonAddExtend() {
