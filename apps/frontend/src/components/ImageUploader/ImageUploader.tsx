@@ -1,7 +1,6 @@
 'use client'
 
 import { Flex } from '@radix-ui/themes'
-import type { HTMLAttributes } from 'react'
 
 import { ImageDropzone } from '@components/ImageDropzone'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
@@ -9,41 +8,27 @@ import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { allowedImageFormats } from '@site/config'
 import { TOUR_STEP } from '@lib/tour'
-import styles from './ImageUploader.module.css'
-
-const fileUploadZoneHTMLAttributes = {
-  className: styles.dropzone,
-  'data-tourstep': TOUR_STEP.FILE_UPLOAD
-} as const as HTMLAttributes<HTMLDivElement>
 
 export function ImageUploader() {
   const setFile = useOutputStore(state => state.setFile)
 
   return (
     <Flex
-      direction={{
-        initial: 'column',
-        xs: 'row'
-      }}
       gap='2'
+      flexShrink='0'
+      height='130px'
       width='100%'
+      maxWidth={{
+        initial: '100%',
+        xs: '80dvw',
+        sm: '470px'
+      }}
       m='auto'
-      className={styles.root}
+      data-tourstep={TOUR_STEP.FILE_UPLOAD}
     >
-      <ImageDropzone
-        accept={allowedImageFormats}
-        setFile={setFile}
-        htmlAttributes={fileUploadZoneHTMLAttributes}
-      />
+      <ImageDropzone accept={allowedImageFormats} setFile={setFile} />
 
-      <Flex
-        direction={{
-          initial: 'row-reverse',
-          xs: 'column'
-        }}
-        justify='start'
-        gap='var(--buttons-gap)'
-      >
+      <Flex direction='column' gap='1'>
         <ButtonUpload
           accept={allowedImageFormats}
           setFile={setFile}

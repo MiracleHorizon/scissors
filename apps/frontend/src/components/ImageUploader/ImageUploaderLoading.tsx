@@ -1,9 +1,17 @@
-import { Flex, Skeleton } from '@radix-ui/themes'
-
-import styles from './ImageUploader.module.css'
+import { Skeleton } from '@radix-ui/themes'
 
 export const ImageUploaderLoading = () => (
-  <Flex direction='column' gap='3' m='auto' width='100%' className={styles.root}>
-    <Skeleton height='104px' width='100%' />
-  </Flex>
+  <Skeleton
+    m='auto'
+    style={{
+      borderRadius: '12px'
+    }}
+    height='130px'
+    width='100%'
+    maxWidth={{
+      initial: '100%',
+      xs: '80dvw',
+      sm: '470px'
+    }}
+  />
 )

@@ -37,7 +37,7 @@ const ToolbarTabMenuSkeleton = () => (
 )
 
 export const ToolbarSkeleton = () => (
-  <Flex align='center' justify='between' py='2' px='3' className={styles.root}>
+  <Flex align='center' justify='between' py='2' pl='3' pr='4' className={styles.root}>
     <ToolbarTabMenuSkeleton />
     <ToolbarContentSkeleton className={styles.toolbarContent} />
     <ToolbarMobileMenuSkeleton className={styles.toolbarMobileMenu} />

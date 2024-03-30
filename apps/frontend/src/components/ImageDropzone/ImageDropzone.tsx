@@ -5,10 +5,9 @@ import { clsx } from 'clsx'
 import type { FC } from 'react'
 import type { PaddingProps } from '@radix-ui/themes/props'
 
-import { ImageIcon } from '@scissors/react-icons/ImageIcon'
+import { ImagePlusIcon } from '@scissors/react-icons/ImagePlusIcon'
 
 import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
-import { MAX_FILE_SIZE_MB } from '@site/config'
 import styles from './ImageDropzone.module.css'
 
 const padding: PaddingProps = {
@@ -31,9 +30,8 @@ const ImageDropzone: FC<ComponentProps> = ({
     title='File is not uploaded'
     align='center'
     justify='center'
-    width='100%'
+    width='calc(100% - 40px)'
     gap='3'
-    maxHeight='140px'
     className={clsx(
       styles.root,
       {
@@ -42,10 +40,27 @@ const ImageDropzone: FC<ComponentProps> = ({
       className
     )}
   >
-    <ImageIcon width='44px' height='44px' />
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      stroke='var(--gray-a9)'
+      className={styles.borderSvg}
+    >
+      <rect
+        height='100%'
+        width='100%'
+        strokeWidth='3'
+        strokeDasharray='4 8'
+        rx='12'
+        ry='12'
+        strokeLinecap='square'
+      />
+    </svg>
 
-    <Flex asChild justify='center' direction='column' className={styles.article}>
+    <Flex asChild align='center' justify='center' direction='column' className={styles.article}>
       <article>
+        <ImagePlusIcon width='30px' height='30px' className={styles.icon} />
+
         <Text as='p' weight='medium' size='3' className={styles.title}>
           Drag image here or click to upload
         </Text>
@@ -54,8 +69,8 @@ const ImageDropzone: FC<ComponentProps> = ({
           Tap here for upload file
         </Text>
 
-        <Text as='p' size='2' className={styles.maxFileSize}>
-          The maximum file size per file is {MAX_FILE_SIZE_MB}mb
+        <Text as='p' size='2' className={styles.extensions}>
+          Format - JPG, PNG or WebP
         </Text>
       </article>
     </Flex>
