@@ -9,14 +9,14 @@
   "license": "MIT",
   "workspaces": [
     "apps/*",
-    "libs/*"
+    "packages/*"
   ],
   "engines": {
     "node": ">= 20"
   },
   "scripts": {
     "build": "turbo build",
-    "build:libs": "turbo build --filter='./libs/*'",
+    "build:packages": "turbo build --filter='./packages/*'",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "fe:dev": "cd apps/frontend && pnpm dev",

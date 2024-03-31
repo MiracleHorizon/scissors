@@ -63,9 +63,9 @@ Currently, the following image formats are supported:
    pnpm install --frozen-lockfile
    ```
 
-* Build project workspace libs
+* Build packages
    ```sh
-   pnpm build:libs
+   pnpm build:packages
    ```
 
 * Run the project

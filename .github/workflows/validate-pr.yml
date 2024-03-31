@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build apps / libs
+      - name: Build
         run: pnpm build
 
       - name: Check Frontend

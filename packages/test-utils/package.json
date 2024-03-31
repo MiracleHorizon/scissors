@@ -1,5 +1,6 @@
 {
   "name": "@scissors/test-utils",
+  "private": true,
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
