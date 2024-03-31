@@ -44,7 +44,6 @@ Currently, the following image formats are supported:
 * Next.js (App Router)
 * Zustand
 * Radix UI
-* @tanstack/react-query
 * [Sharp](https://sharp.pixelplumbing.com/)
 * Nest.js
 

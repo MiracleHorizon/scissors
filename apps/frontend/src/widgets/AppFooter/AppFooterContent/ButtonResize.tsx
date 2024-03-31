@@ -9,21 +9,22 @@ import { useRequestStore } from '@stores/request'
 export function ButtonResize() {
   const file = useOutputStore(state => state.file)
   const fileName = useOutputStore(state => state.getFullFileName())
+  const isLoading = useRequestStore(state => state.isLoading)
   const setLoading = useRequestStore(state => state.setLoading)
   const resizeSettings = useResizeSettings()
 
-  const { mutate: resize, isPending: isLoading, error, reset } = useResizeMutation()
+  const { mutate: resize, error, reset } = useResizeMutation()
 
   const handleResize = useCallback(() => {
     if (!file) return
 
     setLoading(true)
-    resize({
+    void resize({
       file,
       fileName,
       settings: resizeSettings
     })
-  }, [file, fileName, resize, resizeSettings, setLoading])
+  }, [file, fileName, resizeSettings, setLoading, resize])
 
   const handleRetry = useCallback(() => {
     if (isLoading) return

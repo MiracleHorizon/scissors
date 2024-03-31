@@ -9,21 +9,22 @@ import { useRequestStore } from '@stores/request'
 export function ButtonConvert() {
   const file = useOutputStore(state => state.file)
   const fileName = useOutputStore(state => state.getFullFileName())
+  const isLoading = useRequestStore(state => state.isLoading)
   const setLoading = useRequestStore(state => state.setLoading)
   const convertSettings = useConvertSettings()
 
-  const { mutate: convert, error, isPending: isLoading, reset } = useConvertMutation()
+  const { mutate: convert, error, reset } = useConvertMutation()
 
   const handleConvert = useCallback(() => {
     if (!file) return
 
     setLoading(true)
-    convert({
+    void convert({
       file,
       fileName,
       settings: convertSettings
     })
-  }, [file, fileName, convert, convertSettings, setLoading])
+  }, [file, fileName, convertSettings, setLoading, convert])
 
   const handleRetry = useCallback(() => {
     if (isLoading) return

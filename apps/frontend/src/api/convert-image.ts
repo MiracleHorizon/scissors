@@ -1,4 +1,5 @@
-import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+
 import type { ConvertSettings } from '@scissors/sharp'
 
 import { type DownloadPayload, useOutputStore } from '@stores/output'
@@ -62,13 +63,32 @@ async function convertImageMutation({
 }
 
 export function useConvertMutation() {
-  const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
-  const setLoading = useRequestStore(state => state.setLoading)
+  const [error, setError] = useState<unknown>(null)
 
-  return useMutation({
-    mutationKey: ['convert'],
-    mutationFn: convertImageMutation,
-    onSuccess: downloadPayload => setDownloadPayload(downloadPayload),
-    onSettled: () => setLoading(false)
-  })
+  const setLoading = useRequestStore(state => state.setLoading)
+  const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
+
+  async function mutate(payload: MutationPayload<ConvertSettings>) {
+    try {
+      if (error) setError(null)
+
+      setLoading(true)
+      const downloadPayload = await convertImageMutation(payload)
+      setDownloadPayload(downloadPayload)
+    } catch (err) {
+      setError(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  function reset() {
+    setError(null)
+  }
+
+  return {
+    mutate,
+    error,
+    reset
+  }
 }

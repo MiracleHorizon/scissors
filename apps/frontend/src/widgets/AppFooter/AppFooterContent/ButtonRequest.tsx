@@ -47,7 +47,9 @@ export const ButtonRequest: FC<Props> = memo(
           </Spinner>
         </Button>
 
-        {error && <RequestErrorAlert open={!!error} error={error} reset={reset} retry={retry} />}
+        {error && error instanceof Error && (
+          <RequestErrorAlert open={!!error} error={error} reset={reset} retry={retry} />
+        )}
       </>
     )
   }
@@ -58,7 +60,7 @@ ButtonRequest.displayName = 'ButtonRequest'
 interface Props {
   label: string
   isLoading: boolean
-  error: Error | null
+  error: unknown
   makeRequest: VoidFunction
   retry: VoidFunction
   reset: VoidFunction

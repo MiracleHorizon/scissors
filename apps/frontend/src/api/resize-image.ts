@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
 
 import type { ResizeSettings } from '@scissors/sharp'
 
@@ -75,13 +75,32 @@ async function resizeImageMutation({
 }
 
 export function useResizeMutation() {
-  const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
-  const setLoading = useRequestStore(state => state.setLoading)
+  const [error, setError] = useState<unknown>(null)
 
-  return useMutation({
-    mutationKey: ['resize'],
-    mutationFn: resizeImageMutation,
-    onSuccess: downloadPayload => setDownloadPayload(downloadPayload),
-    onSettled: () => setLoading(false)
-  })
+  const setLoading = useRequestStore(state => state.setLoading)
+  const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
+
+  async function mutate(payload: MutationPayload<ResizeSettings>) {
+    try {
+      if (error) setError(null)
+
+      setLoading(true)
+      const downloadPayload = await resizeImageMutation(payload)
+      setDownloadPayload(downloadPayload)
+    } catch (err) {
+      setError(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  function reset() {
+    setError(null)
+  }
+
+  return {
+    mutate,
+    error,
+    reset
+  }
 }
