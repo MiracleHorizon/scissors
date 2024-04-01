@@ -3,7 +3,7 @@ import pick from 'lodash.pick'
 
 import { type BlurOptions, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
-import { defaultState, createBlurStore } from '@stores/blur'
+import { createBlurStore, defaultState } from '@stores/blur'
 
 describe('@stores/blur', () => {
   it('should correctly set / reset state', () => {
@@ -83,7 +83,7 @@ describe('@stores/blur', () => {
     expect(store.getState().isSigmaAdded).toBe(true)
   })
 
-  it('should correctly return BlurOptions or null', () => {
+  it('should correctly return blur options or null', () => {
     const store = createBlurStore()
 
     expect(store.getState().value).toBe(false)
