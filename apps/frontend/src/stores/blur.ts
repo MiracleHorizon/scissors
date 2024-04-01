@@ -61,7 +61,7 @@ const blurStoreCreator: StateCreator<Store> = (set, get) => ({
   // Actions
   set: options => {
     if (!options) {
-      return get().reset()
+      return set(defaultState)
     }
 
     const { value, sigma } = options
