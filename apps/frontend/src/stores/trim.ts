@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { DEFAULT_TRIM_LINE_ART, DEFAULT_TRIM_THRESHOLD, type TrimOptions } from '@scissors/sharp'
 
@@ -13,13 +13,13 @@ interface Store extends TrimOptions {
   toggleLineArt: VoidFunction
 }
 
-const defaultState: TrimOptions = {
+export const defaultState: TrimOptions = {
   background: null,
   threshold: DEFAULT_TRIM_THRESHOLD,
   lineArt: DEFAULT_TRIM_LINE_ART
 } as const
 
-export const useTrimStore = create<Store>((set, get) => ({
+const trimStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -32,7 +32,9 @@ export const useTrimStore = create<Store>((set, get) => ({
 
   // Actions
   set: options => {
-    if (!options) return
+    if (!options) {
+      return set(defaultState)
+    }
 
     set(options)
   },
@@ -41,4 +43,8 @@ export const useTrimStore = create<Store>((set, get) => ({
   setBackground: background => set({ background }),
   setThreshold: threshold => set({ threshold }),
   toggleLineArt: () => set(state => ({ lineArt: !state.lineArt }))
-}))
+})
+
+export const createTrimStore = () => create<Store>()(trimStoreCreator)
+
+export const useTrimStore = createTrimStore()
