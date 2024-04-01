@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { type BlurOptions, DEFAULT_BLUR, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
@@ -11,7 +11,7 @@ interface Store extends State {
   toggle: VoidFunction
   addSigma: VoidFunction
   removeSigma: VoidFunction
-  setSigma: (sigma: number | null) => void
+  setSigma: (sigma: BlurOptions['sigma']) => void
   resetSigma: VoidFunction
 }
 
@@ -19,12 +19,12 @@ interface State extends BlurOptions {
   isSigmaAdded: boolean
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   ...DEFAULT_BLUR,
   isSigmaAdded: false
 } as const
 
-export const useBlurStore = create<Store>((set, get) => ({
+const blurStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -117,4 +117,8 @@ export const useBlurStore = create<Store>((set, get) => ({
       isSigmaAdded: true,
       sigma: MIN_BLUR_SIGMA
     })
-}))
+})
+
+export const createBlurStore = () => create<Store>()(blurStoreCreator)
+
+export const useBlurStore = createBlurStore()
