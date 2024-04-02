@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
-import type { MarginProps } from '@radix-ui/themes/props'
 import 'driver.js/dist/driver.css'
 
 import { ToolbarSkeleton } from './Toolbar/ToolbarSkeleton'
@@ -30,14 +29,6 @@ const TabMetadata = dynamic(() => import('./TabMetadata').then(mod => mod.TabMet
   ssr: false
 })
 
-const margin: MarginProps = {
-  mt: '0',
-  ml: {
-    initial: '0',
-    md: '4'
-  }
-} as const
-
 export function SettingsPanel() {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const selectTab = useTabsStore(state => state.selectTab)
@@ -55,11 +46,10 @@ export function SettingsPanel() {
 
   return (
     <ScrollArea
-      {...margin}
-      data-tourstep={TOUR_STEP.SETTINGS_PANEL}
       type='scroll'
       scrollbars='vertical'
       className={styles.root}
+      data-tourstep={TOUR_STEP.SETTINGS_PANEL}
     >
       <Flex direction='column' height='100%'>
         {/* eslint-disable no-unused-vars */}

@@ -1,19 +1,24 @@
 .root {
-  width: calc(100% - var(--settings-panel-width) - var(--space-4));
+  position: relative;
+  width: calc(100% - var(--settings-panel-width));
 }
 
 .root:has(> .driver-active-element) {
   overflow: auto !important;
 }
 
-@media screen and (max-width: 1200px) {
-  .root {
-    width: calc(100% - var(--settings-panel-width-1200) - var(--space-4));
-  }
+.withFile {
+  padding-top: var(--space-4);
 }
 
-.withFile {
-  padding-top: var(--space-5);
+.withFile .backgroundGrid {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .root {
+    width: calc(100% - var(--settings-panel-width-1200));
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -22,4 +27,12 @@
     padding-top: var(--space-4);
     padding-bottom: var(--space-2);
   }
+
+  .backgroundGrid {
+    display: none;
+  }
+}
+
+.content {
+  z-index: 10;
 }

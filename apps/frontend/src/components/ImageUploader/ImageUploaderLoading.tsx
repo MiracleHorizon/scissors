@@ -1,11 +1,9 @@
 import { Skeleton } from '@radix-ui/themes'
 
+import styles from './ImageUploaderLoading.module.css'
+
 export const ImageUploaderLoading = () => (
   <Skeleton
-    m='auto'
-    style={{
-      borderRadius: '12px'
-    }}
     height='130px'
     width='100%'
     maxWidth={{
@@ -13,5 +11,7 @@ export const ImageUploaderLoading = () => (
       xs: '80dvw',
       sm: '470px'
     }}
+    m='auto'
+    className={styles.root}
   />
 )

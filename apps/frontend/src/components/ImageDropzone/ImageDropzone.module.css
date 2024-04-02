@@ -4,7 +4,7 @@
   cursor: pointer;
   position: relative;
   border-radius: var(--border-radius);
-  background-color: var(--gray-a2);
+  background-color: var(--gray-2);
   transition: background-color 50ms ease-in;
   text-align: center;
 }
@@ -20,7 +20,7 @@
 }
 
 .dragOver {
-  background-color: var(--gray-a4);
+  background-color: var(--gray-4);
 }
 
 .uploadText {

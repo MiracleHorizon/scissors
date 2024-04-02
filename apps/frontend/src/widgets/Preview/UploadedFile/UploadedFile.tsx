@@ -12,7 +12,7 @@ export function UploadedFile({ file }: Props) {
   const closeLightbox = () => setLightboxOpen(false)
 
   return (
-    <Flex direction='column' align='center' gap='3'>
+    <Flex direction='column' align='center' width='100%' height='100%' gap='3'>
       <UploadedFileCard file={file} />
       <UploadedFileLightbox file={file} isOpen={lightboxOpen} onClose={closeLightbox} />
       <UploadedFilePreview file={file} handleOpenLightbox={openLightbox} />
