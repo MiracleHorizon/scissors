@@ -3,12 +3,11 @@
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Flex, Heading, IconButton, Separator } from '@radix-ui/themes'
-import Drawer from 'react-modern-drawer'
-import 'react-modern-drawer/dist/index.css'
 
 import { GithubLogoIcon } from '@scissors/react-icons/GithubLogoIcon'
 import { HamburgerMenuIcon } from '@scissors/react-icons/HamburgerMenuIcon'
 
+import { Drawer } from '@ui/Drawer'
 import { NavigationMobile, NavigationMobileItem } from './NavigationMobile'
 import { useEscapeAction } from '@hooks/useEscapeAction'
 import { GITHUB_REPO_PATH } from '@site/config'
@@ -18,7 +17,6 @@ export default function NavigationDrawer() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
-  const handleToggle = () => setIsOpen(prevState => !prevState)
   const handleClose = () => setIsOpen(false)
 
   useEscapeAction(handleClose)
@@ -28,39 +26,38 @@ export default function NavigationDrawer() {
   }, [pathname])
 
   return (
-    <>
-      <IconButton variant='ghost' color='gray' className={styles.trigger} onClick={handleToggle}>
-        <HamburgerMenuIcon width='20px' height='20px' />
-      </IconButton>
+    <Drawer
+      open={isOpen}
+      direction='top'
+      contentClassName={styles.content}
+      overlayClassName={styles.overlay}
+      onOpenChange={setIsOpen}
+      onClose={handleClose}
+      trigger={
+        <IconButton variant='ghost' color='gray' className={styles.trigger}>
+          <HamburgerMenuIcon width='20px' height='20px' />
+        </IconButton>
+      }
+    >
+      <Flex direction='column' gap='3' p='4' width='100%'>
+        <NavigationMobile />
 
-      <Drawer
-        open={isOpen}
-        direction='top'
-        zIndex={1001}
-        className={styles.root}
-        overlayClassName={styles.overlay}
-        onClose={handleToggle}
-      >
-        <Flex direction='column' gap='3' p='4' width='100%'>
-          <NavigationMobile />
+        <Separator size='4' />
 
-          <Separator size='4' />
+        <Flex direction='column' width='100%'>
+          <Heading mb='2' as='h4' size='4' className={styles.heading}>
+            Resources
+          </Heading>
 
-          <Flex direction='column' width='100%'>
-            <Heading mb='2' as='h4' size='4' className={styles.heading}>
-              Resources
-            </Heading>
-
-            <NavigationMobileItem
-              label='GitHub'
-              target='_blank'
-              rel='noreferrer'
-              icon={<GithubLogoIcon width='18px' height='18px' label='go to github' />}
-              href={GITHUB_REPO_PATH}
-            />
-          </Flex>
+          <NavigationMobileItem
+            label='GitHub'
+            target='_blank'
+            rel='noreferrer'
+            icon={<GithubLogoIcon width='18px' height='18px' label='go to github' />}
+            href={GITHUB_REPO_PATH}
+          />
         </Flex>
-      </Drawer>
-    </>
+      </Flex>
+    </Drawer>
   )
 }

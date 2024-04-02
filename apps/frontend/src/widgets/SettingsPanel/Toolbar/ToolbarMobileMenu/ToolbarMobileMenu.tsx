@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import Drawer from 'react-modern-drawer'
-import { Flex, IconButton, Portal, Separator } from '@radix-ui/themes'
+import { Flex, IconButton, Separator } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
 import { DotsHorizontalIcon } from '@scissors/react-icons/DotsHorizontalIcon'
 
+import { Drawer, DrawerCloseLine } from '@ui/Drawer'
 import { ItemImportSettings } from '../actions/import-settings'
 import { ItemRandomizeSettings } from '../actions/randomize-settings'
 import { ItemExportSettings } from '../actions/export-settings'
@@ -41,42 +41,43 @@ export function ToolbarMobileMenu(props: MarginProps) {
 
   return (
     <>
-      <IconButton {...props} color='gray' radius='large' variant='soft' onClick={handleOpen}>
-        <DotsHorizontalIcon width='20px' height='20px' />
-      </IconButton>
+      <Drawer
+        open={isOpen}
+        direction='bottom'
+        contentClassName={styles.drawerContent}
+        overlayClassName={styles.drawerOverlay}
+        onClose={handleClose}
+        trigger={
+          <IconButton {...props} color='gray' radius='large' variant='soft' onClick={handleOpen}>
+            <DotsHorizontalIcon width='20px' height='20px' />
+          </IconButton>
+        }
+      >
+        <Flex direction='column' width='100%' pt='4' pb='3'>
+          <DrawerCloseLine />
 
-      <Portal container={document.querySelector('[data-is-root-theme="true"]') as HTMLElement}>
-        <Drawer
-          open={isOpen}
-          zIndex={1001}
-          direction='bottom'
-          className={styles.drawer}
-          onClose={handleClose}
-        >
-          <Flex direction='column' width='100%' py='3'>
-            <Flex asChild direction='column' gapY='2px' width='100%' px='3'>
-              <ul>
-                <ItemImportSettings />
-                <ItemExportSettings />
+          <Flex asChild direction='column' gapY='2px' width='100%' px='3' mt='2'>
+            <ul>
+              <ItemImportSettings />
+              <ItemExportSettings />
 
-                {selectedTab === TOOLBAR_TAB.CONVERT && <ItemRandomizeSettings />}
-              </ul>
-            </Flex>
-
-            {selectedTab === TOOLBAR_TAB.CONVERT && (
-              <>
-                <Separator size='4' my='3' />
-
-                <Flex asChild direction='column' gapY='2px' width='100%' px='3'>
-                  <ul>
-                    <ItemResetSettings />
-                  </ul>
-                </Flex>
-              </>
-            )}
+              {selectedTab === TOOLBAR_TAB.CONVERT && <ItemRandomizeSettings />}
+            </ul>
           </Flex>
-        </Drawer>
-      </Portal>
+
+          {selectedTab === TOOLBAR_TAB.CONVERT && (
+            <>
+              <Separator size='4' my='3' />
+
+              <Flex asChild direction='column' gapY='2px' width='100%' px='3'>
+                <ul>
+                  <ItemResetSettings />
+                </ul>
+              </Flex>
+            </>
+          )}
+        </Flex>
+      </Drawer>
     </>
   )
 }

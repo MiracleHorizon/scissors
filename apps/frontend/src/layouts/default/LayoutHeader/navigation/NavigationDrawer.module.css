@@ -1,15 +1,19 @@
-.root {
-  min-height: 30dvh !important;
-  box-shadow: none !important;
-  transition: none !important;
-}
-
-.root,
 .overlay {
   top: var(--layout-header-height) !important;
 }
 
-.root,
+.content {
+  top: var(--layout-header-height);
+  left: 0;
+  right: 0;
+  max-height: 80dvh;
+  min-height: 5dvh;
+}
+
+.content::after {
+  display: none;
+}
+
 .trigger {
   display: none !important;
 }
@@ -20,10 +24,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .root {
-    display: flex !important;
-  }
-
   .trigger {
     display: inline-flex !important;
   }

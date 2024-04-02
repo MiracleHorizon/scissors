@@ -4,7 +4,7 @@
   left: 0;
   top: 0;
   height: var(--layout-header-height);
-  z-index: 10;
+  z-index: 1003;
   background-color: var(--color-background);
   border-bottom: 1px solid var(--gray-a5);
 }
