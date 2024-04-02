@@ -1,10 +1,11 @@
 import { useCallback } from 'react'
+
 import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useOutputStore } from '@stores/output'
 
-const data: OptionSelectData<ImageFileFormat> = [
+const data: OptionSelectData = [
   {
     label: 'Output format',
     value: Object.values(IMAGE_FILE_FORMAT)
@@ -27,8 +28,7 @@ export function SelectOutputFormat() {
   return (
     <OptionSelect
       label='Output Format'
-      withItemValueCapitalize={false}
-      triggerLabelSize='3'
+      valueCapitalize={false}
       value={outputFormat}
       data={data}
       onValueChange={handleChangeOutputFormat}

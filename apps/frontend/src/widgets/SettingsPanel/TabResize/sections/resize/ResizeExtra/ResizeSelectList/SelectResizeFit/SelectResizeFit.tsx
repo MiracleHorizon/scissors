@@ -6,7 +6,7 @@ import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { ResizeFitExamplesPopover } from './ResizeFitExamplesPopover'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData<ResizeFit> = [
+const data: OptionSelectData = [
   {
     value: Object.values(RESIZE_FIT)
   }

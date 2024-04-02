@@ -1,1 +1,2 @@
-export { OptionSelect, type OptionSelectData } from './OptionSelect'
+export { OptionSelect } from './OptionSelect'
+export type { OptionSelectData } from './OptionSelect.types'

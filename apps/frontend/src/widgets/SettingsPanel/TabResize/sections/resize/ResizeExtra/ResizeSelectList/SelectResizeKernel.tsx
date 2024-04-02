@@ -5,7 +5,7 @@ import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@scisso
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData<ResizeKernel> = [
+const data: OptionSelectData = [
   {
     value: Object.values(RESIZE_KERNEL)
   }

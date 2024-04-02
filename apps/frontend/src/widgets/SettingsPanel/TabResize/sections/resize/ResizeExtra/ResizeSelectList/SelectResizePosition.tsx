@@ -4,14 +4,13 @@ import {
   DEFAULT_RESIZE_POSITION,
   RESIZE_GRAVITY,
   RESIZE_POSITION,
-  type ResizeGravity,
   type ResizePosition
 } from '@scissors/sharp'
 
 import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData<ResizePosition | ResizeGravity> = [
+const data: OptionSelectData = [
   {
     label: 'Position',
     value: Object.values(RESIZE_POSITION)
