@@ -1,11 +1,10 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import type { ExtractRegion } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
   getExtractRegion: () => ExtractRegion
-  getExtractOptions: () => ExtractRegion
 
   setRegion: (region: ExtractRegion) => void
   setPreviewFile: (file: File | null) => void
@@ -20,18 +19,21 @@ interface State extends ExtractRegion {
   cropperAspectRatio: number
 }
 
-const defaultState: State = {
-  previewFile: null,
-  previewAspectRatio: -1,
-  cropperAspectRatio: -1,
-
+export const defaultRegion: ExtractRegion = {
   left: 1,
   top: 1,
   width: 100,
   height: 100
 } as const
+export const defaultState: State = {
+  previewFile: null,
+  previewAspectRatio: -1,
+  cropperAspectRatio: -1,
 
-export const useExtractStore = create<Store>((set, get) => ({
+  ...defaultRegion
+} as const
+
+const extractStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -45,12 +47,15 @@ export const useExtractStore = create<Store>((set, get) => ({
       height
     }
   },
-  getExtractOptions: () => get().getExtractRegion(),
 
   // Actions
   setRegion: region => set({ ...region }),
-  setPreviewFile: file => set({ previewFile: file }),
-  setPreviewAspectRatio: aspectRatio => set({ previewAspectRatio: aspectRatio }),
-  setCropperAspectRatio: aspectRatio => set({ cropperAspectRatio: aspectRatio }),
+  setPreviewFile: previewFile => set({ previewFile }),
+  setPreviewAspectRatio: previewAspectRatio => set({ previewAspectRatio }),
+  setCropperAspectRatio: cropperAspectRatio => set({ cropperAspectRatio }),
   reset: () => set(defaultState)
-}))
+})
+
+export const createExtractStore = () => create<Store>()(extractStoreCreator)
+
+export const useExtractStore = createExtractStore()
