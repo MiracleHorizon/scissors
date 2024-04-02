@@ -11,11 +11,31 @@ import {
   type ResizeOptions
 } from '@scissors/sharp'
 
-import { createResizeStore, defaultState } from '@stores/resize'
+import { createResizeStore, defaultState, type Store } from '@stores/resize'
+
+function pickState(store: Store) {
+  return pick(store, [
+    'width',
+    'height',
+    'fit',
+    'position',
+    'kernel',
+    'withoutEnlargement',
+    'withoutReduction',
+    'fastShrinkOnLoad',
+    'withDominantBackground',
+    'background'
+  ])
+}
 
 describe('@stores/resize', () => {
+  const store = createResizeStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly set / reset state', () => {
-    const store = createResizeStore()
     const testState: ResizeOptions = {
       width: 1920,
       height: 1080,
@@ -29,20 +49,7 @@ describe('@stores/resize', () => {
       background: '#000000'
     }
 
-    expect(
-      pick(store.getState(), [
-        'width',
-        'height',
-        'fit',
-        'position',
-        'kernel',
-        'withoutEnlargement',
-        'withoutReduction',
-        'fastShrinkOnLoad',
-        'withDominantBackground',
-        'background'
-      ])
-    ).toStrictEqual(defaultState)
+    expect(pickState(store.getState())).toStrictEqual(defaultState)
 
     store.getState().set(testState)
     expect(store.getState().getResizeOptions()).toStrictEqual(testState)
@@ -52,25 +59,10 @@ describe('@stores/resize', () => {
 
     store.getState().set(testState)
     store.getState().set(null)
-    expect(
-      pick(store.getState(), [
-        'width',
-        'height',
-        'fit',
-        'position',
-        'kernel',
-        'withoutEnlargement',
-        'withoutReduction',
-        'fastShrinkOnLoad',
-        'withDominantBackground',
-        'background'
-      ])
-    ).toStrictEqual(defaultState)
+    expect(pickState(store.getState())).toStrictEqual(defaultState)
   })
 
   it('should correctly set sizes', () => {
-    const store = createResizeStore()
-
     expect(store.getState().width).toBe(defaultState.width)
     store.getState().setWidth(1920)
     expect(store.getState().width).toBe(1920)
@@ -94,8 +86,6 @@ describe('@stores/resize', () => {
   })
 
   it('should correctly set fit value', () => {
-    const store = createResizeStore()
-
     expect(store.getState().fit).toBe(defaultState.fit)
     expect(store.getState().position).toBe(defaultState.position)
 
@@ -108,56 +98,42 @@ describe('@stores/resize', () => {
   })
 
   it('should correctly set background', () => {
-    const store = createResizeStore()
-
     expect(store.getState().background).toBe(defaultState.background)
     store.getState().setBackground('#f8f6f2')
     expect(store.getState().background).toBe('#f8f6f2')
   })
 
   it('should correctly set position', () => {
-    const store = createResizeStore()
-
     expect(store.getState().position).toBe(defaultState.position)
     store.getState().setPosition(RESIZE_POSITION.RIGHT_BOTTOM)
     expect(store.getState().position).toBe(RESIZE_POSITION.RIGHT_BOTTOM)
   })
 
   it('should correctly set kernel', () => {
-    const store = createResizeStore()
-
     expect(store.getState().kernel).toBe(defaultState.kernel)
     store.getState().setKernel(RESIZE_KERNEL.MITCHELL)
     expect(store.getState().kernel).toBe(RESIZE_KERNEL.MITCHELL)
   })
 
   it('should correctly toggle enlargement value', () => {
-    const store = createResizeStore()
-
     expect(store.getState().withoutEnlargement).toBe(defaultState.withoutEnlargement)
     store.getState().toggleEnlargement()
     expect(store.getState().withoutEnlargement).toBe(!defaultState.withoutEnlargement)
   })
 
   it('should correctly toggle reduction value', () => {
-    const store = createResizeStore()
-
     expect(store.getState().withoutReduction).toBe(defaultState.withoutReduction)
     store.getState().toggleReduction()
     expect(store.getState().withoutReduction).toBe(!defaultState.withoutReduction)
   })
 
   it('should correctly toggle fast shrink value', () => {
-    const store = createResizeStore()
-
     expect(store.getState().fastShrinkOnLoad).toBe(defaultState.fastShrinkOnLoad)
     store.getState().toggleFastShrink()
     expect(store.getState().fastShrinkOnLoad).toBe(!defaultState.fastShrinkOnLoad)
   })
 
   it('should correctly toggle dominant background value', () => {
-    const store = createResizeStore()
-
     expect(store.getState().withDominantBackground).toBe(defaultState.withDominantBackground)
     store.getState().toggleDominantBackground()
     expect(store.getState().withDominantBackground).toBe(!defaultState.withDominantBackground)

@@ -11,9 +11,13 @@ import {
 import { createModulateStore, defaultState } from '@stores/modulate'
 
 describe('@stores/modulate', () => {
-  it('should correctly add / remove modulate', () => {
-    const store = createModulateStore()
+  const store = createModulateStore()
 
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
+  it('should correctly add / remove modulate', () => {
     expect(store.getState().isAdded).toBe(false)
 
     store.getState().add()
@@ -29,7 +33,6 @@ describe('@stores/modulate', () => {
   })
 
   it('should correctly set / reset state', () => {
-    const store = createModulateStore()
     const testState: ModulateOptions = {
       lightness: MAX_LIGHTNESS,
       brightness: MIN_BRIGHTNESS,
@@ -67,8 +70,6 @@ describe('@stores/modulate', () => {
   })
 
   it('should correctly set options values', () => {
-    const store = createModulateStore()
-
     expect(store.getState().lightness).toBe(defaultState.lightness)
     store.getState().setLightness(MAX_LIGHTNESS)
     expect(store.getState().lightness).toBe(MAX_LIGHTNESS)

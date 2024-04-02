@@ -5,8 +5,13 @@ import type { NegateOptions } from '@scissors/sharp'
 import { createNegateStore, defaultState } from '@stores/negate'
 
 describe('@stores/negate', () => {
+  const store = createNegateStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly set / reset state', () => {
-    const store = createNegateStore()
     const testState: NegateOptions = {
       value: true,
       alpha: true
@@ -33,8 +38,6 @@ describe('@stores/negate', () => {
   })
 
   it('should correctly toggle value', () => {
-    const store = createNegateStore()
-
     expect(store.getState().value).toBe(defaultState.value)
     store.getState().toggleValue()
     expect(store.getState().value).toBe(!defaultState.value)
@@ -49,8 +52,6 @@ describe('@stores/negate', () => {
   })
 
   it('should correctly toggle alpha', () => {
-    const store = createNegateStore()
-
     expect(store.getState().value).toBe(defaultState.value)
     expect(store.getState().alpha).toBe(defaultState.alpha)
 

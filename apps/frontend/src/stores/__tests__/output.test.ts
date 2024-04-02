@@ -5,8 +5,13 @@ import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 import { createOutputStore, defaultState, type DownloadPayload } from '@stores/output'
 
 describe('@stores/output', () => {
+  const store = createOutputStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly set / remove file', () => {
-    const store = createOutputStore()
     const file = new File([], 'foo.png', {
       type: 'image/png'
     })
@@ -28,8 +33,6 @@ describe('@stores/output', () => {
   })
 
   it('should correctly set / reset output file name', () => {
-    const store = createOutputStore()
-
     expect(store.getState().outputFileName).toBe(defaultState.outputFileName)
 
     store.getState().setOutputFileName('foo-bar-baz')
@@ -40,7 +43,6 @@ describe('@stores/output', () => {
   })
 
   it('should correctly set download payload', () => {
-    const store = createOutputStore()
     const testValue: DownloadPayload = {
       blob: new Blob(),
       fileName: 'foo-bar-baz',
@@ -54,8 +56,6 @@ describe('@stores/output', () => {
   })
 
   suite('should correctly set output file format', () => {
-    const store = createOutputStore()
-
     expect(store.getState().outputFormat).toBe(defaultState.outputFormat)
 
     it.each(Object.values(IMAGE_FILE_FORMAT))(
@@ -68,7 +68,6 @@ describe('@stores/output', () => {
   })
 
   it('should return correct full file name', () => {
-    const store = createOutputStore()
     const file = new File([], 'foo.webp', {
       type: 'image/webp'
     })
@@ -88,7 +87,6 @@ describe('@stores/output', () => {
   })
 
   it('should return correct output file format', () => {
-    const store = createOutputStore()
     const file = new File([], `foo.${IMAGE_FILE_FORMAT.WEBP}`, {
       type: `image/${IMAGE_FILE_FORMAT.WEBP}`
     })

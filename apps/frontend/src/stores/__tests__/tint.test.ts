@@ -2,11 +2,16 @@
 
 import { DEFAULT_TINT_COLOR } from '@scissors/sharp'
 
-import { createTintStore } from '@stores/tint'
+import { createTintStore, defaultState } from '@stores/tint'
 
 describe('@stores/tint', () => {
+  const store = createTintStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly add / remove tint', () => {
-    const store = createTintStore()
     expect(store.getState().isAdded).toBe(false)
     store.getState().add()
     expect(store.getState().isAdded).toBe(true)
@@ -15,8 +20,6 @@ describe('@stores/tint', () => {
   })
 
   it('should correctly set / reset state', () => {
-    const store = createTintStore()
-
     expect(store.getState().isAdded).toBe(false)
 
     store.getState().set('#0f883f')
@@ -36,8 +39,6 @@ describe('@stores/tint', () => {
   })
 
   it('should correctly set color value', () => {
-    const store = createTintStore()
-
     store.getState().setColor('#f77333')
     expect(store.getState().color).toBe('#f77333')
 

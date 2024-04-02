@@ -6,8 +6,13 @@ import { type BlurOptions, MIN_BLUR_SIGMA } from '@scissors/sharp'
 import { createBlurStore, defaultState } from '@stores/blur'
 
 describe('@stores/blur', () => {
+  const store = createBlurStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly set / reset state', () => {
-    const store = createBlurStore()
     const testState: BlurOptions = {
       value: true,
       sigma: 10
@@ -39,16 +44,12 @@ describe('@stores/blur', () => {
   })
 
   it('should correctly toggle value', () => {
-    const store = createBlurStore()
-
     expect(store.getState().value).toBe(defaultState.value)
     expect(store.getState().toggle())
     expect(store.getState().value).toBe(!defaultState.value)
   })
 
   it('should correctly add / remove sigma', () => {
-    const store = createBlurStore()
-
     expect(store.getState().value).toBe(false)
     expect(store.getState().isSigmaAdded).toBe(false)
     expect(store.getState().addSigma())
@@ -65,7 +66,6 @@ describe('@stores/blur', () => {
   })
 
   it('should correctly set / reset sigma', () => {
-    const store = createBlurStore()
     const testSigmaValue = 5.3
 
     expect(store.getState().value).toBe(false)
@@ -84,8 +84,6 @@ describe('@stores/blur', () => {
   })
 
   it('should correctly return blur options or null', () => {
-    const store = createBlurStore()
-
     expect(store.getState().value).toBe(false)
     expect(store.getState().getBlurOptions()).toBe(null)
 

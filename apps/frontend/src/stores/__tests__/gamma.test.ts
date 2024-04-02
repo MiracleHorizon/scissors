@@ -2,12 +2,16 @@
 
 import { DEFAULT_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
-import { createGammaStore } from '@stores/gamma'
+import { createGammaStore, defaultState } from '@stores/gamma'
 
 describe('@stores/gamma', () => {
-  it('should correctly add / remove gamma', () => {
-    const store = createGammaStore()
+  const store = createGammaStore()
 
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
+  it('should correctly add / remove gamma', () => {
     expect(store.getState().isAdded).toBe(false)
     expect(store.getState().gamma).toBe(null)
 
@@ -23,7 +27,6 @@ describe('@stores/gamma', () => {
   })
 
   it('should correctly set / reset state', () => {
-    const store = createGammaStore()
     const testValue = 1.59
 
     expect(store.getState().gamma).toBe(null)
@@ -47,7 +50,6 @@ describe('@stores/gamma', () => {
   })
 
   it('should correctly set value', () => {
-    const store = createGammaStore()
     const testValue = 2.24
 
     expect(store.getState().gamma).toBe(null)
@@ -64,8 +66,6 @@ describe('@stores/gamma', () => {
   })
 
   it('should correctly return gamma value or null', () => {
-    const store = createGammaStore()
-
     expect(store.getState().gamma).toBe(null)
     expect(store.getState().isAdded).toBe(false)
     expect(store.getState().getGammaValue()).toBe(null)

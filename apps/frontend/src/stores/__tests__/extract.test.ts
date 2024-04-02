@@ -7,8 +7,13 @@ import type { ExtractRegion } from '@scissors/sharp'
 import { createExtractStore, defaultRegion, defaultState } from '@stores/extract'
 
 describe('@stores/extract', () => {
+  const store = createExtractStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly set extract region', () => {
-    const store = createExtractStore()
     const testRegion: ExtractRegion = {
       left: 1,
       top: 1,
@@ -22,7 +27,6 @@ describe('@stores/extract', () => {
   })
 
   it('should correctly set preview file', () => {
-    const store = createExtractStore()
     const testFile = new File([], 'foo.png', {
       type: 'image/png'
     })
@@ -33,24 +37,18 @@ describe('@stores/extract', () => {
   })
 
   it('should correctly set preview aspect ratio', () => {
-    const store = createExtractStore()
-
     expect(store.getState().previewAspectRatio).toBe(defaultState.previewAspectRatio)
     store.getState().setPreviewAspectRatio(4 / 3)
     expect(store.getState().previewAspectRatio).toBe(4 / 3)
   })
 
   it('should correctly set cropper aspect ratio', () => {
-    const store = createExtractStore()
-
     expect(store.getState().cropperAspectRatio).toBe(defaultState.cropperAspectRatio)
     store.getState().setCropperAspectRatio(16 / 9)
     expect(store.getState().cropperAspectRatio).toBe(16 / 9)
   })
 
   it('should correctly reset state', () => {
-    const store = createExtractStore()
-
     store.setState({
       left: 1,
       top: 1,

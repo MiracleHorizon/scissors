@@ -2,11 +2,16 @@
 
 import type { RotateOptions } from '@scissors/sharp'
 
-import { createRotateStore, defaultRotation } from '@stores/rotate'
+import { createRotateStore, defaultRotation, defaultState } from '@stores/rotate'
 
 describe('@stores/rotate', () => {
+  const store = createRotateStore()
+
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
   it('should correctly add / remove rotate', () => {
-    const store = createRotateStore()
     expect(store.getState().isAdded).toBe(false)
     store.getState().add()
     expect(store.getState().isAdded).toBe(true)
@@ -22,7 +27,6 @@ describe('@stores/rotate', () => {
   })
 
   it('should correctly set / reset state', () => {
-    const store = createRotateStore()
     const testState: RotateOptions = {
       angle: 90,
       background: '#8f8913',
@@ -61,8 +65,6 @@ describe('@stores/rotate', () => {
   })
 
   it('should correctly set angle', () => {
-    const store = createRotateStore()
-
     expect(store.getState().isAdded).toBe(false)
     expect(store.getState().angle).toBe(defaultRotation.angle)
 
@@ -77,8 +79,6 @@ describe('@stores/rotate', () => {
   })
 
   it('should correctly set background', () => {
-    const store = createRotateStore()
-
     expect(store.getState().isAdded).toBe(false)
     expect(store.getState().background).toBe(defaultRotation.background)
 
@@ -93,8 +93,6 @@ describe('@stores/rotate', () => {
   })
 
   it('should correctly toggle dominant background value', () => {
-    const store = createRotateStore()
-
     expect(store.getState().isAdded).toBe(false)
     expect(store.getState().withDominantBackground).toBe(defaultRotation.withDominantBackground)
 

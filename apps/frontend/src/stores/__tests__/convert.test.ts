@@ -3,9 +3,13 @@
 import { createConvertStore, defaultState } from '@stores/convert'
 
 describe('@stores/convert', () => {
-  it('should correctly set options values', () => {
-    const store = createConvertStore()
+  const store = createConvertStore()
 
+  afterEach(() => {
+    store.setState(defaultState)
+  })
+
+  it('should correctly set options values', () => {
     expect(store.getState().flip).toBe(defaultState.flip)
     store.getState().setFlip(!defaultState.flip)
     expect(store.getState().flip).toBe(!defaultState.flip)
@@ -22,8 +26,6 @@ describe('@stores/convert', () => {
   })
 
   it('should correctly toggle options values', () => {
-    const store = createConvertStore()
-
     expect(store.getState().flip).toBe(defaultState.flip)
     store.getState().toggleFlip()
     expect(store.getState().flip).toBe(!defaultState.flip)
@@ -38,8 +40,6 @@ describe('@stores/convert', () => {
   })
 
   it('should correctly reset state', () => {
-    const store = createConvertStore()
-
     store.getState().setFlip(true)
     store.getState().setFlop(false)
     store.getState().setGrayscale(true)

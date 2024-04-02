@@ -16,7 +16,7 @@ import {
 } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
-type Store = ResizeOptions & {
+export type Store = ResizeOptions & {
   getResizeOptions: () => ResizeOptions | null
 
   set: (options: ResizeOptions | null) => void
