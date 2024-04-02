@@ -1,12 +1,12 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { DEFAULT_GAMMA, type GammaValue, MIN_GAMMA } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
-  getGammaOptions: () => GammaValue
+  getGammaValue: () => GammaValue
 
-  set: (options: GammaValue) => void
+  set: (gamma: GammaValue) => void
   reset: VoidFunction
   add: VoidFunction
   remove: VoidFunction
@@ -18,17 +18,17 @@ interface State {
   gamma: number | null
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   isAdded: false,
   gamma: null
 } as const
 
-export const useGammaStore = create<Store>((set, get) => ({
+const gammaStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
   // Computed
-  getGammaOptions: () => {
+  getGammaValue: () => {
     const { gamma, isAdded } = get()
 
     if (!isAdded) {
@@ -44,12 +44,18 @@ export const useGammaStore = create<Store>((set, get) => ({
 
   // Actions
   set: gamma => {
-    if (!gamma) return
-
     /*
      * This method is only used for external import of settings. By default - the option is disabled.
      * Therefore, if the imported options are not equal to null, you need to set the 'isAdded' flag to true.
      */
+
+    if (gamma === null) {
+      return set({
+        isAdded: false,
+        gamma: null
+      })
+    }
+
     set({
       isAdded: true,
       gamma
@@ -87,4 +93,8 @@ export const useGammaStore = create<Store>((set, get) => ({
         gamma
       }
     })
-}))
+})
+
+export const createGammaStore = () => create<Store>()(gammaStoreCreator)
+
+export const useGammaStore = createGammaStore()

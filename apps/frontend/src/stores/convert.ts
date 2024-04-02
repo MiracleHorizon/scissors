@@ -1,5 +1,4 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create, type StateCreator } from 'zustand'
 
 import {
   type ConvertSettings,
@@ -8,11 +7,11 @@ import {
   DEFAULT_GRAYSCALE
 } from '@scissors/sharp'
 
-type Settings = Pick<ConvertSettings, 'flip' | 'flop' | 'grayscale'>
+export type State = Pick<ConvertSettings, 'flip' | 'flop' | 'grayscale'>
 
 /* eslint no-unused-vars: 0 */
-interface Store extends Settings {
-  getConvertSettings: () => Settings
+interface Store extends State {
+  getConvertSettings: () => State
 
   reset: VoidFunction
   setFlip: (flip: boolean) => void
@@ -23,33 +22,35 @@ interface Store extends Settings {
   toggleGrayscale: VoidFunction
 }
 
-const defaultState: Settings = {
+export const defaultState: State = {
   flip: DEFAULT_FLIP,
   flop: DEFAULT_FLOP,
   grayscale: DEFAULT_GRAYSCALE
 } as const
 
-export const useConvertStore = create(
-  devtools<Store>((set, get) => ({
-    // State
-    ...defaultState,
+const convertStoreCreator: StateCreator<Store> = (set, get) => ({
+  // State
+  ...defaultState,
 
-    // Computed
-    getConvertSettings: () => ({
-      flip: get().flip,
-      flop: get().flop,
-      grayscale: get().grayscale
-    }),
+  // Computed
+  getConvertSettings: () => ({
+    flip: get().flip,
+    flop: get().flop,
+    grayscale: get().grayscale
+  }),
 
-    // Actions
-    reset: () => set(defaultState),
+  // Actions
+  reset: () => set(defaultState),
 
-    setFlip: flip => set({ flip }),
-    setFlop: flop => set({ flop }),
-    setGrayscale: grayscale => set({ grayscale }),
+  setFlip: flip => set({ flip }),
+  setFlop: flop => set({ flop }),
+  setGrayscale: grayscale => set({ grayscale }),
 
-    toggleFlip: () => set(state => ({ flip: !state.flip })),
-    toggleFlop: () => set(state => ({ flop: !state.flop })),
-    toggleGrayscale: () => set(state => ({ grayscale: !state.grayscale }))
-  }))
-)
+  toggleFlip: () => set(state => ({ flip: !state.flip })),
+  toggleFlop: () => set(state => ({ flop: !state.flop })),
+  toggleGrayscale: () => set(state => ({ grayscale: !state.grayscale }))
+})
+
+export const createConvertStore = () => create<Store>()(convertStoreCreator)
+
+export const useConvertStore = createConvertStore()

@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { DEFAULT_TINT_COLOR } from '@scissors/sharp'
 
@@ -16,12 +16,12 @@ interface State {
   color: string | null
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   isAdded: false,
   color: null
 } as const
 
-export const useTintStore = create<Store>(set => ({
+const tintStoreCreator: StateCreator<Store> = set => ({
   // State
   ...defaultState,
 
@@ -52,4 +52,8 @@ export const useTintStore = create<Store>(set => ({
   remove: () => set({ isAdded: false, color: null }),
 
   setColor: color => set({ color })
-}))
+})
+
+export const createTintStore = () => create<Store>()(tintStoreCreator)
+
+export const useTintStore = createTintStore()

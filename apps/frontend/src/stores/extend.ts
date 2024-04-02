@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import {
   DEFAULT_EXTEND_BACKGROUND,
@@ -48,14 +48,14 @@ export const DIRECTION_MODEL = {
 } as const
 type DirectionModel = (typeof DIRECTION_MODEL)[keyof typeof DIRECTION_MODEL]
 
-const defaultExtendValues: ExtendValues = {
+export const defaultExtendValues: ExtendValues = {
   extendValue: null,
   left: null,
   top: null,
   right: null,
   bottom: null
 } as const
-const defaultState: State = {
+export const defaultState: State = {
   ...defaultExtendValues,
   directionModel: DIRECTION_MODEL.NUMBER,
   extendWith: DEFAULT_EXTEND_WITH,
@@ -63,8 +63,9 @@ const defaultState: State = {
   withDominantBackground: false
 } as const
 
-// TODO: Rework? :)
-export const useExtendStore = create<Store>((set, get) => ({
+// TODO: Rework?
+// TODO: Tests
+const extendStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -335,4 +336,8 @@ export const useExtendStore = create<Store>((set, get) => ({
     }),
   setBackground: background => set({ background }),
   toggleDominantBackground: () => set({ withDominantBackground: !get().withDominantBackground })
-}))
+})
+
+export const createExtendStore = () => create<Store>()(extendStoreCreator)
+
+export const useExtendStore = createExtendStore()

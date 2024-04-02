@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import {
   DEFAULT_FAST_SHRINK,
@@ -16,7 +16,7 @@ import {
 } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
-type Store = ResizeOptions & {
+export type Store = ResizeOptions & {
   getResizeOptions: () => ResizeOptions | null
 
   set: (options: ResizeOptions | null) => void
@@ -33,7 +33,7 @@ type Store = ResizeOptions & {
   toggleDominantBackground: VoidFunction
 }
 
-const defaultState: ResizeOptions = {
+export const defaultState: ResizeOptions = {
   width: null,
   height: null,
 
@@ -47,7 +47,7 @@ const defaultState: ResizeOptions = {
   withDominantBackground: false
 } as const
 
-export const useResizeStore = create<Store>((set, get) => ({
+const resizeStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -74,7 +74,13 @@ export const useResizeStore = create<Store>((set, get) => ({
   },
 
   // Actions
-  set: options => set({ ...defaultState, ...options }),
+  set: options => {
+    if (!options) {
+      return set(defaultState)
+    }
+
+    set(options)
+  },
   reset: () => set(defaultState),
 
   setWidth: width => {
@@ -114,4 +120,8 @@ export const useResizeStore = create<Store>((set, get) => ({
   toggleReduction: () => set({ withoutReduction: !get().withoutReduction }),
   toggleFastShrink: () => set({ fastShrinkOnLoad: !get().fastShrinkOnLoad }),
   toggleDominantBackground: () => set({ withDominantBackground: !get().withDominantBackground })
-}))
+})
+
+export const createResizeStore = () => create<Store>()(resizeStoreCreator)
+
+export const useResizeStore = createResizeStore()

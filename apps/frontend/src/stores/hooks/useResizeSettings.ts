@@ -9,7 +9,7 @@ export function useResizeSettings(): ResizeSettings {
   const queue = useTabResizeStore(state => state.getQueue())
   const resize = useResizeStore(state => state.getResizeOptions())
   const extend = useExtendStore(state => state.getExtendOptions())
-  const extract = useExtractStore(state => state.getExtractOptions())
+  const extract = useExtractStore(state => state.getExtractRegion())
   const trim = useTrimStore(state => state.getTrimOptions())
 
   return {

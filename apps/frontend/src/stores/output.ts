@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
@@ -33,14 +33,14 @@ interface State {
   downloadPayload: DownloadPayload | null
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   file: null,
   outputFileName: '',
   outputFormat: null,
   downloadPayload: null
 } as const
 
-export const useOutputStore = create<Store>((set, get) => ({
+const outputStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -52,8 +52,8 @@ export const useOutputStore = create<Store>((set, get) => ({
       return ''
     }
 
-    const type = get().outputFormat ?? cropImageFileType(file.type)
     const name = !get().isValidOutputFileName() ? cropFileName(file.name) : get().outputFileName
+    const type = get().outputFormat ?? cropImageFileType(file.type)
 
     return `${name}.${type}`
   },
@@ -118,4 +118,8 @@ export const useOutputStore = create<Store>((set, get) => ({
 
   setOutputFormat: outputFormat => set({ outputFormat }),
   setDownloadPayload: downloadPayload => set({ downloadPayload })
-}))
+})
+
+export const createOutputStore = () => create<Store>()(outputStoreCreator)
+
+export const useOutputStore = createOutputStore()

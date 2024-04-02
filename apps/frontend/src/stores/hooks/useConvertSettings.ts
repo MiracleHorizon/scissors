@@ -14,7 +14,7 @@ export function useConvertSettings(): ConvertSettings {
   const rotate = useRotateStore(state => state.getRotateOptions())
   const blur = useBlurStore(state => state.getBlurOptions())
   const negate = useNegateStore(state => state.getNegateOptions())
-  const gamma = useGammaStore(state => state.getGammaOptions())
+  const gamma = useGammaStore(state => state.getGammaValue())
   const normalise = useNormaliseStore(state => state.getNormaliseOptions())
   const outputFormat = useOutputStore(state => state.getOutputFormat())
   const modulate = useModulateStore(state => {

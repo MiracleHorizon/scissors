@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { DEFAULT_NORMALISE, type NormaliseOptions } from '@scissors/sharp'
 
@@ -18,12 +18,12 @@ interface State extends NormaliseOptions {
   isAdded: boolean
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   isAdded: false,
   ...DEFAULT_NORMALISE
 } as const
 
-export const useNormaliseStore = create<Store>((set, get) => ({
+const normaliseStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -56,13 +56,11 @@ export const useNormaliseStore = create<Store>((set, get) => ({
         return state
       }
 
-      return {
-        ...DEFAULT_NORMALISE
-      }
+      return DEFAULT_NORMALISE
     }),
 
   add: () => set({ isAdded: true }),
-  remove: () => set({ isAdded: false, ...DEFAULT_NORMALISE }),
+  remove: () => set(defaultState),
 
   setLower: lower =>
     set(state => {
@@ -84,4 +82,8 @@ export const useNormaliseStore = create<Store>((set, get) => ({
         upper
       }
     })
-}))
+})
+
+export const createNormaliseStore = () => create<Store>()(normaliseStoreCreator)
+
+export const useNormaliseStore = createNormaliseStore()

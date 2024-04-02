@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import type { ModulateOptions } from '@scissors/sharp'
 
@@ -10,17 +10,17 @@ interface Store extends State {
   reset: VoidFunction
   add: VoidFunction
   remove: VoidFunction
-  setLightness: (value: number | null) => void
-  setBrightness: (value: number | null) => void
-  setSaturation: (value: number | null) => void
-  setHue: (value: number | null) => void
+  setLightness: (value: ModulateOptions['lightness']) => void
+  setBrightness: (value: ModulateOptions['brightness']) => void
+  setSaturation: (value: ModulateOptions['saturation']) => void
+  setHue: (value: ModulateOptions['hue']) => void
 }
 
 interface State extends ModulateOptions {
   isAdded: boolean
 }
 
-const defaultState: State = {
+export const defaultState: State = {
   isAdded: false,
   lightness: null,
   brightness: null,
@@ -28,7 +28,7 @@ const defaultState: State = {
   hue: null
 } as const
 
-export const useModulateStore = create<Store>((set, get) => ({
+const modulateStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -83,10 +83,14 @@ export const useModulateStore = create<Store>((set, get) => ({
     }),
 
   add: () => set({ isAdded: true }),
-  remove: () => set({ ...defaultState }),
+  remove: () => set(defaultState),
 
   setLightness: value => set({ lightness: value }),
   setBrightness: value => set({ brightness: value }),
   setSaturation: value => set({ saturation: value }),
   setHue: value => set({ hue: value })
-}))
+})
+
+export const createModulateStore = () => create<Store>()(modulateStoreCreator)
+
+export const useModulateStore = createModulateStore()

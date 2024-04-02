@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import type { RotateOptions } from '@scissors/sharp'
 
@@ -22,17 +22,17 @@ interface State {
   withDominantBackground: boolean
 }
 
-const defaultRotation: Omit<State, 'isAdded'> = {
+export const defaultRotation: Omit<State, 'isAdded'> = {
   angle: null,
   background: null,
   withDominantBackground: false
 } as const
-const defaultState: State = {
+export const defaultState: State = {
   isAdded: false,
   ...defaultRotation
 } as const
 
-export const useRotateStore = create<Store>((set, get) => ({
+const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
   ...defaultState,
 
@@ -119,4 +119,8 @@ export const useRotateStore = create<Store>((set, get) => ({
         withDominantBackground: !state.withDominantBackground
       }
     })
-}))
+})
+
+export const createRotateStore = () => create<Store>()(rotateStoreCreator)
+
+export const useRotateStore = createRotateStore()

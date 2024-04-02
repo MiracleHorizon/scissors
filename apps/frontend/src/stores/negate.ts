@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { create, type StateCreator } from 'zustand'
 
 import { DEFAULT_NEGATE, type NegateOptions } from '@scissors/sharp'
 
@@ -12,9 +12,11 @@ interface Store extends NegateOptions {
   toggleAlpha: VoidFunction
 }
 
-export const useNegateStore = create<Store>((set, get) => ({
+export const defaultState = DEFAULT_NEGATE
+
+const negateStoreCreator: StateCreator<Store> = (set, get) => ({
   // State
-  ...DEFAULT_NEGATE,
+  ...defaultState,
 
   // Computed
   getNegateOptions: () => {
@@ -31,12 +33,13 @@ export const useNegateStore = create<Store>((set, get) => ({
   // Actions
   set: options => {
     if (!options) {
-      return get().reset()
+      return set(defaultState)
     }
 
     set(options)
   },
-  reset: () => set(DEFAULT_NEGATE),
+  reset: () => set(defaultState),
+
   toggleValue: () =>
     set(state => {
       const updatedValue = !state.value
@@ -45,7 +48,7 @@ export const useNegateStore = create<Store>((set, get) => ({
       if (!updatedValue) {
         return {
           value: updatedValue,
-          alpha: DEFAULT_NEGATE.alpha
+          alpha: defaultState.alpha
         }
       }
 
@@ -63,4 +66,8 @@ export const useNegateStore = create<Store>((set, get) => ({
         alpha: !state.alpha
       }
     })
-}))
+})
+
+export const createNegateStore = () => create<Store>()(negateStoreCreator)
+
+export const useNegateStore = createNegateStore()
