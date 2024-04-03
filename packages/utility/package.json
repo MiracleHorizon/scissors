@@ -4,7 +4,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/utility.js",
+      "import": "./dist/utility.mjs",
       "require": "./dist/utility.umd.cjs"
     }
   },

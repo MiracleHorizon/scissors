@@ -11,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       name: 'sharp',
-      fileName: 'index'
+      fileName: 'sharp'
     },
     rollupOptions: {
       output: {
