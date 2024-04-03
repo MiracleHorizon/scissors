@@ -1,4 +1,4 @@
-import { MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '@scissors/sharp'
+import { DEFAULT_TRIM_THRESHOLD, MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '@scissors/sharp'
 
 import { OptionNumberInput } from '@components/OptionNumberInput'
 import { useTrimStore } from '@stores/trim'
@@ -14,7 +14,7 @@ export function TrimThresholdInput() {
       value={threshold}
       setValue={handleSetThreshold}
       label='Threshold'
-      placeholder='Threshold'
+      placeholder={DEFAULT_TRIM_THRESHOLD.toString()}
       min={MIN_TRIM_THRESHOLD}
       max={MAX_TRIM_THRESHOLD}
       step={1}

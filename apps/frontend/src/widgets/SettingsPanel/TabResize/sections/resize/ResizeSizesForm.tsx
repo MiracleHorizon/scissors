@@ -29,18 +29,20 @@ export function ResizeSizesForm() {
       <form>
         <OptionNumberInput
           {...defaultInputProps}
+          label='Width'
           value={width}
           setValue={setWidth}
           max={MAX_RESIZE_WIDTH}
-          placeholder='Width'
+          placeholder='1920'
           icon={<WidthIcon />}
         />
         <OptionNumberInput
           {...defaultInputProps}
+          label='Height'
           value={height}
           setValue={setHeight}
           max={MAX_RESIZE_HEIGHT}
-          placeholder='Height'
+          placeholder='1080'
           icon={<HeightIcon />}
         />
       </form>

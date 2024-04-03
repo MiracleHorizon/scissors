@@ -13,7 +13,7 @@ export const labelTestId = 'option-number-input-label'
 
 const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
   <Flex data-testid={labelTestId} direction='column' gap='1' width='100%'>
-    <Text as='label' size='2' htmlFor={id}>
+    <Text as='label' size='2' color='gray' htmlFor={id}>
       {label}
     </Text>
     {children}
