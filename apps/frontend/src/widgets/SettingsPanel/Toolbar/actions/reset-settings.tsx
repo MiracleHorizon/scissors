@@ -7,14 +7,17 @@ import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
 import { ButtonReset } from '@ui/ButtonReset'
 import { useResetSettings } from '@stores/hooks/useResetSettings'
 import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'
+import { useTabsStore } from '@stores/tabs'
 
 function WithConfirmAlert({ children, onCancel, onConfirm }: WithConfirmAlertProps) {
-  const { handleReset } = useResetSettings()
-  const { handleRemove } = useRemoveSettings()
+  const selectedTab = useTabsStore(state => state.selectedTab)
+
+  const { handleReset } = useResetSettings(selectedTab)
+  const { handleRemove } = useRemoveSettings(selectedTab)
 
   const handleConfirm = useCallback(
     (removeAll: boolean) => {
-      if (onConfirm) onConfirm()
+      onConfirm?.()
       handleReset()
       if (removeAll) handleRemove()
     },

@@ -31,7 +31,7 @@ export function ToolbarMenu(props: ClassNameProps) {
         {selectedTab === TOOLBAR_TAB.CONVERT && <ButtonRandomizeSettings />}
       </Flex>
 
-      {selectedTab === TOOLBAR_TAB.CONVERT && (
+      {selectedTab !== TOOLBAR_TAB.METADATA && (
         <>
           <Separator orientation='vertical' mx='1' />
 

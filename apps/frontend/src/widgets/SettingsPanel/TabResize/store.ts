@@ -13,6 +13,7 @@ interface Store extends State {
   setOperations: (operation: Operation[]) => void
   addOperation: (operationId: UniqueIdentifier) => void
   removeOperation: (operationId: UniqueIdentifier) => void
+  removeAllOperations: VoidFunction
   sortOperations: (activeId: UniqueIdentifier, overId: UniqueIdentifier) => void
 
   moveUpOperation: (operationId: UniqueIdentifier) => void
@@ -112,6 +113,7 @@ export const useTabResizeStore = create<Store>((set, get) => ({
     set(state => ({
       operations: state.operations.filter(operation => operation.id !== operationId)
     })),
+  removeAllOperations: () => set({ operations: [] }),
   sortOperations: (activeId, overId) =>
     set(state => {
       const operationsIds = get().getOperationsIds()

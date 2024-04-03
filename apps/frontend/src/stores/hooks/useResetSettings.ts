@@ -1,5 +1,8 @@
+'use client'
+
 import { useCallback } from 'react'
 
+import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 import { useConvertStore } from '@stores/convert'
 import { useOutputStore } from '@stores/output'
 import { useRotateStore } from '@stores/rotate'
@@ -9,8 +12,12 @@ import { useNegateStore } from '@stores/negate'
 import { useGammaStore } from '@stores/gamma'
 import { useNormaliseStore } from '@stores/normalise'
 import { useTintStore } from '@stores/tint'
+import { useResizeStore } from '@stores/resize'
+import { useExtendStore } from '@stores/extend'
+import { useExtractStore } from '@stores/extract'
+import { useTrimStore } from '@stores/trim'
 
-export function useResetSettings() {
+export function useResetConvertSettings() {
   const resetBasic = useConvertStore(state => state.reset)
   const resetOutputFileName = useOutputStore(state => state.resetOutputFileName)
   const resetRotate = useRotateStore(state => state.reset)
@@ -42,6 +49,42 @@ export function useResetSettings() {
     resetNormalise,
     resetTint
   ])
+
+  return { handleReset }
+}
+
+export function useResetResizeSettings() {
+  const resetResize = useResizeStore(state => state.reset)
+  const resetExtend = useExtendStore(state => state.reset)
+  const resetExtract = useExtractStore(state => state.reset)
+  const resetTrim = useTrimStore(state => state.reset)
+
+  const handleReset = useCallback(() => {
+    resetResize()
+    resetExtend()
+    resetExtract()
+    resetTrim()
+  }, [resetResize, resetExtend, resetExtract, resetTrim])
+
+  return { handleReset }
+}
+
+export function useResetSettings(selectedTab: ToolbarTab) {
+  const { handleReset: resetConvertSettings } = useResetConvertSettings()
+  const { handleReset: resetResizeSettings } = useResetResizeSettings()
+
+  const handleReset = useCallback(() => {
+    switch (selectedTab) {
+      case TOOLBAR_TAB.CONVERT:
+        resetConvertSettings()
+        break
+      case TOOLBAR_TAB.RESIZE:
+        resetResizeSettings()
+        break
+      default:
+        break
+    }
+  }, [resetConvertSettings, resetResizeSettings, selectedTab])
 
   return { handleReset }
 }
