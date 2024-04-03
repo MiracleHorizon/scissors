@@ -1,5 +1,5 @@
 {
-  "name": "scissors-backend",
+  "name": "backend",
   "private": true,
   "scripts": {
     "prebuild": "rimraf dist",

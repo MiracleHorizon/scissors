@@ -24,6 +24,7 @@ https://github.com/MiracleHorizon/scissors/assets/90560240/03827004-62aa-4c57-bb
 <p align="center" style="margin-top: -10px;">Also, you can use "resize", "extend" and other options</p>
 
 The "Scissors" supports:
+
 * 🌓 Dark mode
 * 🎨 Theme color
 * 💾 Export / import settings
@@ -31,18 +32,22 @@ The "Scissors" supports:
 * 🖼️ Gallery
 
 ### 🧨 Features
+
 Some of the features available are:
+
 * Rotation
 * Resizing, Extending, Trimming
 * Quality control
 * Grayscale, Gammaize, Tint and other
 
 Currently, the following image formats are supported:
+
 * PNG
 * JPEG / JPG
 * WEBP
 
 ### 🔧 Technologies
+
 * Next.js (App Router)
 * Zustand
 * Radix UI
@@ -54,7 +59,8 @@ Currently, the following image formats are supported:
 * Node.js v20+
 * pnpm
 
-### 💻 Run the project locally
+### 💻 Run locally
+
 * Clone repository
    ```sh
    git clone https://github.com/MiracleHorizon/scissors.git
@@ -74,6 +80,20 @@ Currently, the following image formats are supported:
    pnpm dev
    ```
 
+### 🐳 Run with Docker
+
+* Fill out the `.env` files for production mode
+
+* Build
+   ```sh
+   docker-compose -f docker-compose.yaml build
+   ```
+
+* Run
+   ```sh
+   docker-compose -f docker-compose.yaml up
+   ```
+
 ### License
 
 Licensed under the MIT License, Copyright © 2023 - present [MiracleHorizon](https://github.com/MiracleHorizon).
@@ -81,5 +101,7 @@ Licensed under the MIT License, Copyright © 2023 - present [MiracleHorizon](htt
 See [LICENSE](https://github.com/MiracleHorizon/scissors/blob/main/LICENSE) for more information.
 
 [project-github]: https://github.com/MiracleHorizon/scissors
+
 [preview-screenshot-1]: social/og-image-share-light.png
+
 [preview-screenshot-2]: social/og-image-share-dark.png
