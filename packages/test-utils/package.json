@@ -4,8 +4,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/test-utils.mjs",
-      "require": "./dist/test-utils.umd.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
     }
   },
   "typesVersions": {

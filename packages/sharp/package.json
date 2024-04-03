@@ -5,7 +5,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/sharp.mjs",
-      "require": "./dist/sharp.umd.cjs"
+      "require": "./dist/sharp.umd.js"
     }
   },
   "main": "./dist/sharp.mjs",

@@ -10,8 +10,8 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: './src/index.ts',
-      name: 'test-utils',
-      fileName: 'test-utils'
+      name: 'index',
+      fileName: 'index'
     },
     rollupOptions: {
       output: {
