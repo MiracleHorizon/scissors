@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { isAllObjectValuesEmpty } from '@scissors/utility'
 
 import {
   DEFAULT_IFD0_OPTIONS,
@@ -8,6 +7,7 @@ import {
   type IFD2Options,
   type MetadataSettings
 } from '@scissors/sharp'
+import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
 
 interface State extends Omit<MetadataSettings, 'ifd0' | 'ifd2'> {
   ifd0: IFD0Options
@@ -61,14 +61,14 @@ export const useMetadataStore = create<Store>((set, get) => ({
   }),
   getIfd0: () => {
     const ifd0 = get().ifd0
-    if (isAllObjectValuesEmpty(ifd0)) {
+    if (isAllObjectValuesEmptyOrFalse(ifd0)) {
       return null
     }
     return ifd0
   },
   getIfd2: () => {
     const ifd2 = get().ifd2
-    if (isAllObjectValuesEmpty(ifd2)) {
+    if (isAllObjectValuesEmptyOrFalse(ifd2)) {
       return null
     }
     return ifd2

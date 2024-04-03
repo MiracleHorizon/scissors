@@ -3,26 +3,29 @@
   "private": true,
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
     }
   },
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/types/*.d.ts"
+        "./dist/index.d.ts"
       ]
     }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "type-check": "tsc"
   },
   "dependencies": {
     "@scissors/sharp": "workspace:*"
   },
-  "scripts": {
-    "build": "pnpm build:esm && pnpm build:cjs && pnpm build:types && pnpm postbuild",
-    "postbuild": "node postbuild.js",
-    "build:esm": "tsc --module ESNext --outDir dist/esm --declaration false --declarationMap false",
-    "build:cjs": "tsc --module CommonJS --declaration false --declarationMap false --outDir dist/cjs",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist/types"
+  "devDependencies": {
+    "vite-plugin-dts": "3.8.1"
   }
 }
