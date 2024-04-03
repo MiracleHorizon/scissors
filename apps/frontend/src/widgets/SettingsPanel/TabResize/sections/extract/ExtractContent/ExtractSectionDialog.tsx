@@ -121,7 +121,7 @@ export const ExtractSectionDialog = ({ file }: Props) => {
         <Dialog.Content>
           <Flex direction='column' gap='3' width='100%'>
             <Flex asChild align='center' wrap='wrap' gap='2'>
-              <Dialog.Title mb='1' className='truncate'>
+              <Dialog.Title mb='1' truncate>
                 Extract
                 <BadgeBeta />
               </Dialog.Title>

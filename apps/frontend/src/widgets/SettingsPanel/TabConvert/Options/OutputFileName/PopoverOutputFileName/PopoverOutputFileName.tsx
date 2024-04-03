@@ -26,15 +26,8 @@ export const PopoverOutputFileName = () => (
       className={styles.content}
     >
       <Text as='p' size='2' className={styles.contentText}>
-        The{' '}
-        <Text as='span' className={styles.spanOptional}>
-          optional
-        </Text>{' '}
-        name of the output file{' '}
-        <Text as='span' weight='medium'>
-          (without extension)
-        </Text>
-        .
+        The <Text className={styles.spanOptional}>optional</Text> name of the output file{' '}
+        <Text weight='medium'>(without extension)</Text>.
       </Text>
 
       <Separator orientation='horizontal' size='4' mt='2' mb='1' />

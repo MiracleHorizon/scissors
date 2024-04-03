@@ -14,8 +14,8 @@ export const OptionCheckbox: FC<Props> = memo(({ title, ...props }) => (
       <Checkbox size='3' {...props} />
       <Text
         title={title}
-        as='span'
-        className={clsx('truncate', {
+        truncate
+        className={clsx({
           [styles.textDisabled]: props?.disabled
         })}
       >

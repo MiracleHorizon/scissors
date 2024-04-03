@@ -29,7 +29,7 @@ export const ButtonRequest: FC<Props> = memo(
           onClick={makeRequest}
         >
           <MediaQuery minWidth={401}>
-            <Text as='span'>{label}</Text>
+            <Text>{label}</Text>
           </MediaQuery>
 
           <Spinner size='2' loading={isLoading}>

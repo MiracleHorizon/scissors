@@ -31,7 +31,6 @@ describe('@components/OptionSwitch', () => {
     expect(titleElement).toHaveTextContent(defaultProps.title)
     expect(titleElement).toHaveAttribute('title', defaultProps.title)
     expect(titleElement.tagName).toBe('SPAN')
-    expect(titleElement.className).toContain('truncate')
   })
 
   it('should change switch value with click', async () => {

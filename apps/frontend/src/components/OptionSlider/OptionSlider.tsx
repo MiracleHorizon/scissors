@@ -79,11 +79,11 @@ export function OptionSlider({
             className={sliderClassName}
           />
           <Flex mt='2' justify='between'>
-            <Text size='3' weight='medium'>
+            <Text weight='medium'>
               {min}
               {valueSign}
             </Text>
-            <Text size='3' weight='medium'>
+            <Text weight='medium'>
               {max}
               {valueSign}
             </Text>

@@ -28,10 +28,6 @@ a {
   text-decoration: none;
 }
 
-.cursor-col-resize {
-  cursor: col-resize;
-}
-
 .w-full {
   width: 100%;
 }
@@ -53,18 +49,6 @@ input[type='number'] {
   pointer-events: none;
 }
 
-.truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .hidden {
   display: none;
-}
-
-/* Drawer */
-.EZDrawer__container {
-  height: auto !important;
-  background: var(--color-background) !important;
 }

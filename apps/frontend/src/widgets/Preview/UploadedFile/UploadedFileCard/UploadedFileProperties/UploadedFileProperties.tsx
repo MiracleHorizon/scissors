@@ -88,7 +88,7 @@ interface Props {
 const PropertyItem: FC<PropertyItemModel> = ({ label, icon, value }) => (
   <Flex align='center' gap='3' title={`${label}: ${value}`} className={styles.propertyItem}>
     <Flex asChild align='center' wrap='nowrap' gap='1'>
-      <Text as='span'>
+      <Text>
         {icon}
         {label}
       </Text>

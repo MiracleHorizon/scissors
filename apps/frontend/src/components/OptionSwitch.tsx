@@ -15,8 +15,8 @@ export const labelTestId = 'option-switch-label'
 
 export const OptionSwitch: FC<Props> = memo(({ title, ...switchProps }) => (
   <Flex asChild justify='between' gap='2' width={width}>
-    <Text data-testid={labelTestId} as='label' size='3'>
-      <Text title={title} as='span' className='truncate'>
+    <Text data-testid={labelTestId} as='label'>
+      <Text title={title} truncate>
         {title}
       </Text>
       <Switch size='3' {...switchProps} />

@@ -11,9 +11,7 @@ export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
       <Accordion.Item key={name} value={name} defaultChecked>
         <Accordion.Header>
           <Accordion.Trigger>
-            <Text size='3' weight='medium'>
-              {name.toUpperCase()}
-            </Text>
+            <Text weight='medium'>{name.toUpperCase()}</Text>
 
             <Accordion.Chevron />
           </Accordion.Trigger>

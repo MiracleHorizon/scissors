@@ -61,11 +61,11 @@ const ImageDropzone: FC<ComponentProps> = ({
       <article>
         <ImagePlusIcon width='30px' height='30px' className={styles.icon} />
 
-        <Text as='p' weight='medium' size='3' className={styles.title}>
+        <Text as='p' weight='medium' className={styles.title}>
           Drag image here or click to upload
         </Text>
 
-        <Text as='p' weight='medium' size='3' className={styles.titleTouch}>
+        <Text as='p' weight='medium' className={styles.titleTouch}>
           Tap here for upload file
         </Text>
 

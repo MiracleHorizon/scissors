@@ -118,7 +118,7 @@ export const ResizeFitExamplesPopover = () => (
           {examples.map(({ label, ...imageProps }) => (
             <Flex key={label} direction='column' align='center' className={styles.exampleItem}>
               <ResizeFitExampleImage label={label} {...imageProps} />
-              <Text as='span' size='2' weight='bold'>
+              <Text size='2' weight='bold'>
                 {label}
               </Text>
             </Flex>

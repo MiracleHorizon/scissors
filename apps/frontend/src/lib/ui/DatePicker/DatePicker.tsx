@@ -38,7 +38,7 @@ export function DatePicker({ value, disabled, onValueChange }: Props) {
     <Popover.Root>
       <Popover.Trigger disabled={disabled}>
         <Button title={formattedDate} variant='outline' color='gray' className={styles.trigger}>
-          <Text className='truncate'>{formattedDate}</Text>
+          <Text truncate>{formattedDate}</Text>
 
           <CalendarIcon />
         </Button>

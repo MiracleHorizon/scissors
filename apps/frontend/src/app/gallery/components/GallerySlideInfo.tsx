@@ -9,11 +9,8 @@ import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './GallerySlideInfo.module.css'
 
 const DetailsItem: FC<SlideDetail> = ({ label, value }) => (
-  <Text size='3' as='div'>
-    {label}:{' '}
-    <Text weight='medium' as='span'>
-      {value}
-    </Text>
+  <Text as='div'>
+    {label}: <Text weight='medium'>{value}</Text>
   </Text>
 )
 

@@ -1,6 +1,5 @@
 import { type FC, useCallback } from 'react'
 import { Card, Flex, Spinner, Text } from '@radix-ui/themes'
-import { clsx } from 'clsx'
 import MediaQuery from 'react-responsive'
 
 import { FileImageIcon } from '@scissors/react-icons/FileImageIcon'
@@ -39,7 +38,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
         </MediaQuery>
 
         <Flex direction='column' gap='1' mr='auto' className={styles.content}>
-          <Text as='span' title={file.name} className={clsx(styles.fileName, 'truncate')}>
+          <Text title={file.name} truncate className={styles.fileName}>
             {file.name}
           </Text>
           <UploadedFileProperties file={file} />

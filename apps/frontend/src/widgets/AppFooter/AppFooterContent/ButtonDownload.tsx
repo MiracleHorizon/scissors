@@ -31,7 +31,7 @@ export function ButtonDownload() {
         <DownloadIcon width='20px' height='20px' />
 
         <MediaQuery minWidth={401}>
-          <Text as='span'>Download</Text>
+          <Text>Download</Text>
         </MediaQuery>
       </Button>
 
