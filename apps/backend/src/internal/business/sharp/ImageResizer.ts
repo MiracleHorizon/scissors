@@ -1,5 +1,6 @@
 import sharp from 'sharp'
-import { isAllObjectValuesEmpty } from '@scissors/utility'
+
+import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
 import { RESIZE_OPERATION } from '@scissors/sharp'
 
 import { ImageSharp } from './ImageSharp'
@@ -95,7 +96,7 @@ export class ImageResizer extends ImageSharp {
     background: bg,
     ...sizes
   }: ExtendOptionsDto): Promise<void> {
-    if (isAllObjectValuesEmpty(sizes)) return
+    if (isAllObjectValuesEmptyOrFalse(sizes)) return
 
     let background
     if (bg) {

@@ -1,4 +1,4 @@
-import { isAllObjectValuesEmpty } from '@scissors/utility'
+import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
 import type { ImageFileFormat } from '@scissors/sharp'
 
 import { ImageSharp } from './ImageSharp'
@@ -124,7 +124,7 @@ export class ImageConverter extends ImageSharp {
   }
 
   private modulate(modulateOptions: ModulateDto): void {
-    if (isAllObjectValuesEmpty(modulateOptions)) return
+    if (isAllObjectValuesEmptyOrFalse(modulateOptions)) return
 
     const options: Record<string, number> = {}
     for (const [key, value] of Object.entries(modulateOptions)) {
@@ -133,7 +133,7 @@ export class ImageConverter extends ImageSharp {
       options[key] = value
     }
 
-    if (isAllObjectValuesEmpty(options)) return
+    if (isAllObjectValuesEmptyOrFalse(options)) return
 
     this.sharp.modulate(options)
   }

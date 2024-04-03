@@ -1,5 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common'
-import { isAllObjectValuesEmpty } from '@scissors/utility'
+
+import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
 
 import { ImageConverter } from '@internal/business/sharp'
 import type { ConvertParams, ConvertServiceAbstraction } from './convert.types'
@@ -7,7 +8,7 @@ import type { ConvertParams, ConvertServiceAbstraction } from './convert.types'
 @Injectable()
 export class ConvertService implements ConvertServiceAbstraction {
   public async convert({ settings, file }: ConvertParams): Promise<Buffer> {
-    if (isAllObjectValuesEmpty(settings)) {
+    if (isAllObjectValuesEmptyOrFalse(settings)) {
       return file.buffer
     }
 
