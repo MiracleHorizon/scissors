@@ -15,6 +15,8 @@
 
 <h2 align="center" style="font-size: 24px;">About The Project</h2>
 
+https://github.com/MiracleHorizon/scissors/assets/90560240/03827004-62aa-4c57-bb31-2da913fa01f9
+
 [![Project screenshot 1][preview-screenshot-1]][project-github]
 <p align="center" style="margin-top: -10px;">You can convert images with a large number of options</p>
 
