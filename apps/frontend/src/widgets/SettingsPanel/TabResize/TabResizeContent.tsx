@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import {
   closestCenter,
   DndContext,
+  type DragEndEvent,
   PointerSensor,
   TouchSensor,
   useSensor,
@@ -11,7 +12,10 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Flex } from '@radix-ui/themes'
 
+import { RESIZE_OPERATION } from '@scissors/sharp'
+
 import { SortableSection } from './SortableSection'
+import { TabResizeEmpty } from './TabResizeEmpty'
 import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
 import { useTabResizeStore } from './store'
 
@@ -33,42 +37,52 @@ const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.Trim
 })
 
 export function TabResizeContent() {
-  const sections = useTabResizeStore(state => state.sections)
+  const operations = useTabResizeStore(state => state.operations)
   const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor))
 
-  const handleDragEnd = useTabResizeStore(state => state.handleDragEnd)
-  const handleMoveUp = useTabResizeStore(state => state.handleMoveUp)
-  const handleMoveDown = useTabResizeStore(state => state.handleMoveDown)
-  const handleRemove = useTabResizeStore(state => state.handleRemove)
+  const sortOperations = useTabResizeStore(state => state.sortOperations)
+  const moveUpOperation = useTabResizeStore(state => state.moveUpOperation)
+  const moveDownOperation = useTabResizeStore(state => state.moveDownOperation)
+  const removeOperation = useTabResizeStore(state => state.removeOperation)
+
+  const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    if (!over || active.id === over.id) return
+
+    sortOperations(active.id, over.id)
+  }
 
   return (
     <Flex direction='column' gap='2'>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext items={sections} strategy={verticalListSortingStrategy}>
-          {sections.map(({ id }, index) => (
-            <SortableSection
-              key={id}
-              id={id}
-              isDragDisabled={sections.length <= 1}
-              isUpMovable={index > 0 && sections.length > 1}
-              isDownMovable={index < sections.length - 1 && sections.length > 1}
-              handleMoveUp={handleMoveUp}
-              handleMoveDown={handleMoveDown}
-              handleRemove={handleRemove}
-            >
-              {id === 'resize' && <ResizeSection />}
-              {id === 'extend' && <ExtendSection />}
-              {id === 'extract' && <ExtractSection />}
-              {id === 'trim' && <TrimSection />}
-            </SortableSection>
-          ))}
-        </SortableContext>
-      </DndContext>
+      {operations.length > 0 ? (
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext items={operations} strategy={verticalListSortingStrategy}>
+            {operations.map(({ id }, index) => (
+              <SortableSection
+                key={id}
+                id={id}
+                isDragDisabled={operations.length <= 1}
+                isUpMovable={index > 0 && operations.length > 1}
+                isDownMovable={index < operations.length - 1 && operations.length > 1}
+                handleMoveUp={moveUpOperation}
+                handleMoveDown={moveDownOperation}
+                handleRemove={removeOperation}
+              >
+                {id === RESIZE_OPERATION.RESIZE && <ResizeSection />}
+                {id === RESIZE_OPERATION.EXTEND && <ExtendSection />}
+                {id === RESIZE_OPERATION.EXTRACT && <ExtractSection />}
+                {id === RESIZE_OPERATION.TRIM && <TrimSection />}
+              </SortableSection>
+            ))}
+          </SortableContext>
+        </DndContext>
+      ) : (
+        <TabResizeEmpty />
+      )}
     </Flex>
   )
 }

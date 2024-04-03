@@ -1,8 +1,10 @@
 import { type FC, memo, type ReactNode } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
+import { clsx } from 'clsx'
 
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
+import styles from './SortableSectionButton.module.css'
 
 export const SortableSectionButton: FC<Props> = memo(
   ({
@@ -31,6 +33,7 @@ export const SortableSectionButton: FC<Props> = memo(
         size={size}
         radius={radius}
         onClick={onClick}
+        className={clsx(isDisabled && styles.disabled)}
         {...listeners}
       >
         {icon}

@@ -8,6 +8,6 @@
   touch-action: none;
 }
 
-.sectionDragging section[data-id='tab-resize-section'] {
+.dragging section[data-id='tab-resize-section'] {
   pointer-events: none;
 }

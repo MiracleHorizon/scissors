@@ -1,40 +1,34 @@
 import { create } from 'zustand'
 import { arrayMove } from '@dnd-kit/sortable'
-import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core'
+import type { UniqueIdentifier } from '@dnd-kit/core'
 
 import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
 
 /* eslint-disable no-unused-vars */
 interface Store extends State {
   isEmpty: () => boolean
-  isAllSettled: () => boolean
-  isResizeAdded: () => boolean
-  isExtendAdded: () => boolean
-  isExtractAdded: () => boolean
-  isTrimAdded: () => boolean
   getQueue: () => ResizeQueue
+  getOperationsIds: () => UniqueIdentifier[]
 
-  setSections: (sections: Section[]) => void
-  addResizeSection: VoidFunction
-  addExtendSection: VoidFunction
-  addExtractSection: VoidFunction
-  addTrimSection: VoidFunction
-  handleDragEnd: (event: DragEndEvent) => void
-  handleMoveUp: (itemId: UniqueIdentifier) => void
-  handleMoveDown: (itemId: UniqueIdentifier) => void
-  handleRemove: (itemId: UniqueIdentifier) => void
+  setOperations: (operation: Operation[]) => void
+  addOperation: (operationId: UniqueIdentifier) => void
+  removeOperation: (operationId: UniqueIdentifier) => void
+  sortOperations: (activeId: UniqueIdentifier, overId: UniqueIdentifier) => void
+
+  moveUpOperation: (operationId: UniqueIdentifier) => void
+  moveDownOperation: (operationId: UniqueIdentifier) => void
 }
 
-interface Section {
+interface Operation {
   id: UniqueIdentifier
 }
 
 interface State {
-  sections: Section[]
+  operations: Operation[]
 }
 
 const defaultState: State = {
-  sections: [
+  operations: [
     {
       id: RESIZE_OPERATION.RESIZE
     }
@@ -46,22 +40,16 @@ export const useTabResizeStore = create<Store>((set, get) => ({
   ...defaultState,
 
   // Computed
-  isEmpty: () => get().sections.length === 0,
-  isAllSettled: () =>
-    get().isResizeAdded() && get().isExtendAdded() && get().isExtractAdded() && get().isTrimAdded(),
-  isResizeAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.RESIZE),
-  isExtendAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.EXTEND),
-  isExtractAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.EXTRACT),
-  isTrimAdded: () => get().sections.some(section => section.id === RESIZE_OPERATION.TRIM),
+  isEmpty: () => get().operations.length === 0,
   getQueue: () => {
     // TODO: Rework to use Map
-    const sections = get().sections
-    const sectionsIdentifiers = sections.map(section => section.id)
+    const operations = get().operations
+    const operationsIds = operations.map(operation => operation.id)
 
-    const resizeIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.RESIZE)
-    const extendIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.EXTEND)
-    const extractIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.EXTRACT)
-    const trimIndex = sectionsIdentifiers.indexOf(RESIZE_OPERATION.TRIM)
+    const resizeIndex = operationsIds.indexOf(RESIZE_OPERATION.RESIZE)
+    const extendIndex = operationsIds.indexOf(RESIZE_OPERATION.EXTEND)
+    const extractIndex = operationsIds.indexOf(RESIZE_OPERATION.EXTRACT)
+    const trimIndex = operationsIds.indexOf(RESIZE_OPERATION.TRIM)
 
     const values: ResizeQueue = []
 
@@ -102,79 +90,65 @@ export const useTabResizeStore = create<Store>((set, get) => ({
 
     return values
   },
+  getOperationsIds: () => get().operations.map(operation => operation.id),
 
   // Actions
-  setSections: sections => set({ sections }),
-
-  addResizeSection: () =>
-    set(state => ({
-      sections: [...state.sections, { id: RESIZE_OPERATION.RESIZE }]
-    })),
-  addExtendSection: () =>
-    set(state => ({
-      sections: [...state.sections, { id: RESIZE_OPERATION.EXTEND }]
-    })),
-  addExtractSection: () =>
-    set(state => ({
-      sections: [...state.sections, { id: RESIZE_OPERATION.EXTRACT }]
-    })),
-  addTrimSection: () =>
-    set(state => ({
-      sections: [...state.sections, { id: RESIZE_OPERATION.TRIM }]
-    })),
-
-  handleDragEnd: event => {
-    const { active, over } = event
-
-    if (!over || active.id === over.id) return
-
+  setOperations: operations => set({ operations }),
+  addOperation: operationId => {
     set(state => {
-      const sectionsIdentifiers = state.sections.map(section => section.id)
+      const operations = state.operations
+      const operationsIds = get().getOperationsIds()
 
-      const oldIndex = sectionsIdentifiers.indexOf(active.id)
-      const newIndex = sectionsIdentifiers.indexOf(over.id)
+      if (operationsIds.includes(operationId)) {
+        return { operations }
+      }
 
       return {
-        sections: arrayMove(state.sections, oldIndex, newIndex)
+        operations: [...operations, { id: operationId }]
       }
     })
   },
-  handleMoveUp: sectionId => {
+  removeOperation: operationId =>
+    set(state => ({
+      operations: state.operations.filter(operation => operation.id !== operationId)
+    })),
+  sortOperations: (activeId, overId) =>
     set(state => {
-      const sections = state.sections
-      const sectionIndex = sections.findIndex(section => section.id === sectionId)
+      const operationsIds = get().getOperationsIds()
 
-      const isFirstSection = sectionIndex === 0
-      if (isFirstSection) {
-        return {
-          sections
-        }
-      }
+      const oldIndex = operationsIds.indexOf(activeId)
+      const newIndex = operationsIds.indexOf(overId)
 
       return {
-        sections: arrayMove(state.sections, sectionIndex, sectionIndex - 1)
-      }
-    })
-  },
-
-  handleMoveDown: sectionId =>
-    set(state => {
-      const sections = state.sections
-      const sectionIndex = sections.findIndex(section => section.id === sectionId)
-
-      const isLastSection = sectionIndex === sections.length - 1
-      if (isLastSection) {
-        return {
-          sections
-        }
-      }
-
-      return {
-        sections: arrayMove(state.sections, sectionIndex, sectionIndex + 1)
+        operations: arrayMove(state.operations, oldIndex, newIndex)
       }
     }),
-  handleRemove: sectionId =>
-    set(state => ({
-      sections: state.sections.filter(section => section.id !== sectionId)
-    }))
+  moveUpOperation: operationId => {
+    set(state => {
+      const operations = state.operations
+      const operationIndex = operations.findIndex(operation => operation.id === operationId)
+
+      if (operationIndex === 0) {
+        return { operations }
+      }
+
+      return {
+        operations: arrayMove(operations, operationIndex, operationIndex - 1)
+      }
+    })
+  },
+
+  moveDownOperation: operationId =>
+    set(state => {
+      const operations = state.operations
+      const operationIndex = operations.findIndex(operation => operation.id === operationId)
+
+      if (operationIndex === operations.length - 1) {
+        return { operations }
+      }
+
+      return {
+        operations: arrayMove(operations, operationIndex, operationIndex + 1)
+      }
+    })
 }))

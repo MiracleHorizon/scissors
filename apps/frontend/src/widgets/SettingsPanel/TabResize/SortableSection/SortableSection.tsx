@@ -83,7 +83,7 @@ export function SortableSection({
       width='100%'
       style={style}
       className={clsx(styles.root, {
-        [styles.sectionDragging]: isDragging
+        [styles.dragging]: isDragging
       })}
     >
       <section>
