@@ -10,7 +10,11 @@ import { useEscapeBlur } from '@hooks/useEscapeBlur'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH } from '@helpers/file/constants'
 import type { TextFieldProps } from '@lib/theme'
-import styles from './InputOutputFileName.module.css'
+
+const rootMaxWidth = {
+  initial: '500px',
+  md: '100%'
+} as const
 
 function InputOutputFileName() {
   const [isError, setIsError] = useState(false)
@@ -64,7 +68,7 @@ function InputOutputFileName() {
   })
 
   return (
-    <Flex gap='2' align='center' width='100%' className={styles.root}>
+    <Flex gap='2' align='center' width='100%' maxWidth={rootMaxWidth}>
       <TextField.Root
         {...inputProps}
         ref={inputRef}

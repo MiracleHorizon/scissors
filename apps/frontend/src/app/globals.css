@@ -4,6 +4,7 @@
 :root {
   --settings-panel-width: 520px;
   --settings-panel-width-1200: 440px;
+  --settings-panel-width-2400: 680px;
   --settings-panel-width-md: 100%;
   --settings-panel-toobar-height: 48px; /* var(--space-8) */
 
