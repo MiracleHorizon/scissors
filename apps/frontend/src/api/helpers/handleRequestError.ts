@@ -21,7 +21,7 @@ export function handleRequestError(payload: RequestError | FetchException): stri
 
   const { status, statusText } = payload
 
-  if (status < 400 || statusText === internalServerErrorMessage) {
+  if (status < 400 || status === 400 || statusText === internalServerErrorMessage) {
     return defaultErrorMessage
   }
 

@@ -13,7 +13,7 @@ const iconStyle: CSSProperties = {
 } as const
 
 export const TitleWithExclamation: FC<Props> = ({ children, ...props }) => (
-  <Flex data-testid={testId} {...props}>
+  <Flex align='center' width='100%' data-testid={testId} {...props}>
     <ExclamationTriangleIcon color='tomato' width='0.95rem' height='0.95rem' style={iconStyle} />
     {children}
   </Flex>
