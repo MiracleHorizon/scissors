@@ -1,16 +1,30 @@
 'use client'
 
+import { useEffect } from 'react'
 import { Flex } from '@radix-ui/themes'
+import 'driver.js/dist/driver.css'
 
 import { ImageDropzone } from '@components/ImageDropzone'
 import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { allowedImageFormats } from '@site/config'
-import { TOUR_STEP } from '@lib/tour'
+import { createTour, isTourCompleted, TOUR_STEP } from '@lib/tour'
+import '@lib/tour/tour.css'
 
 export function ImageUploader() {
   const setFile = useOutputStore(state => state.setFile)
+
+  useEffect(() => {
+    if (isTourCompleted()) return
+
+    /*
+     * Start user tour.
+     */
+    createTour().then(driver => {
+      driver.drive()
+    })
+  }, [])
 
   return (
     <Flex

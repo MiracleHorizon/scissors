@@ -4,6 +4,7 @@ import { Button, DropdownMenu } from '@radix-ui/themes'
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
 
 import { ToolbarTabList } from './ToolbarTabList'
+import { TOUR_STEP } from '@lib/tour'
 import styles from './ToolbarTabDropdown.module.css'
 
 export function ToolbarTabDropdown() {
@@ -14,7 +15,7 @@ export function ToolbarTabDropdown() {
 
   return (
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenu.Trigger>
+      <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_TAB_LIST}>
         <Button radius='large' variant='soft' color='gray' onClick={handleOpen}>
           Tabs
           <ChevronDownIcon width='18px' height='18px' color='var(--gray-a11)' />

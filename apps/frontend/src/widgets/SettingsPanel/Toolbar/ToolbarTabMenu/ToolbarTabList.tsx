@@ -25,7 +25,7 @@ const tabs: Tab[] = [
   }
   // {
   //   label: 'Metadata',
-  //   value: TAB_METADATA,
+  //   value: TOOLBAR_TAB.METADATA,
   //   icon: <MetadataIcon width='17px' height='17px' />
   // }
 ] as const

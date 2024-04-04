@@ -13,7 +13,7 @@ export function ToolbarMenu(props: ClassNameProps) {
 
   return (
     <Flex
-      data-tourstep={TOUR_STEP.TOOLBAR_ACTIONS}
+      data-tourstep={TOUR_STEP.TOOLBAR_MENU}
       align='center'
       justify='end'
       gap='1'

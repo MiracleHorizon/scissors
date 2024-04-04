@@ -1,48 +1,47 @@
-import { clsx } from 'clsx/lite'
-
 import { completeTour } from './actions'
 import { TOUR_STEP } from './constants'
 import type { PopoverDOM } from './types'
 
+const createTourElementSelector = (step: number) => `[data-tourstep='${step}']`
+
 export async function createTour() {
   const { driver } = await import('driver.js')
-  const { geistSans } = await import('@app/fonts')
   const { isPrefersReduceMotion } = await import('@helpers/isPrefersReduceMotion')
 
-  const steps = [
+  const steps: ReturnType<(typeof driver.arguments)['steps']> = [
     {
-      element: `[data-tourstep='${TOUR_STEP.FILE_UPLOAD}']`,
+      element: createTourElementSelector(TOUR_STEP.FILE_UPLOAD),
       popover: {
         title: 'File upload zone',
-        description:
-          'Here you can upload an image from your computer. You can also use Drag-n-Drop to upload it.'
-      }
+        description: 'Here you can upload an image from your computer or from the web.'
+      },
+      showButtons: ['next']
     },
     {
-      element: `[data-tourstep='${TOUR_STEP.TOOLBAR_TAB_LIST}']`,
+      element: createTourElementSelector(TOUR_STEP.TOOLBAR_TAB_LIST),
       popover: {
-        title: 'Processing tabs',
+        title: 'Tabs',
         description: 'You can choose between options tabs to process the image.'
       }
     },
     {
-      element: `[data-tourstep='${TOUR_STEP.TOOLBAR_ACTIONS}']`,
+      element: createTourElementSelector(TOUR_STEP.TOOLBAR_MENU),
       popover: {
-        title: 'Toolbar actions',
+        title: 'Toolbar Menu',
         description:
-          'You can export and import settings, configure their randomization, and reset and delete them.'
+          'You can export and import settings, configure their randomization, and reset and remove them.'
       }
     },
     {
-      element: `[data-tourstep='${TOUR_STEP.SETTINGS_PANEL}']`,
+      element: createTourElementSelector(TOUR_STEP.SETTINGS_PANEL),
       popover: {
-        title: 'Settings panel',
+        title: 'Settings Panel',
         description:
-          'Here you can select a large number of different options for processing and formatting your uploaded images.'
+          'Here you can select a large number of different options for processing and formatting your images.'
       }
     },
     {
-      element: `[data-tourstep='${TOUR_STEP.REQUEST_BUTTON}']`,
+      element: createTourElementSelector(TOUR_STEP.REQUEST_BUTTON),
       popover: {
         title: 'Request button',
         description:
@@ -50,39 +49,14 @@ export async function createTour() {
       }
     },
     {
-      element: `[data-tourstep='${TOUR_STEP.DOWNLOAD_BUTTON}']`,
+      element: createTourElementSelector(TOUR_STEP.DOWNLOAD_BUTTON),
       popover: {
         title: 'Download button',
         description:
           'After processing the image, you can download it to your device by clicking this button'
       }
-    },
-    {
-      element: `[data-tourstep='${TOUR_STEP.DOCUMENTATION_LINK}']`,
-      popover: {
-        title: 'Documentation page',
-        description:
-          'Here you can read more about a particular option, what it does and how its various parameters work.'
-      }
     }
   ]
-
-  const tourDriver = driver({
-    allowClose: false,
-    showProgress: true,
-    animate: !isPrefersReduceMotion(),
-    showButtons: ['previous', 'next'],
-    onDestroyed: completeTour,
-    steps: steps.map(({ element, popover }) => ({
-      element,
-      popover: {
-        ...popover,
-        popoverClass: clsx('tour-popover', geistSans.variable)
-      }
-    })),
-    prevBtnText: '&#8592; Prev',
-    onPopoverRender: popover => onPopoverRender(popover)
-  })
 
   function createSkipButton() {
     const skipButton = document.createElement('span')
@@ -102,6 +76,17 @@ export async function createTour() {
       completeTour()
     })
   }
+
+  const tourDriver = driver({
+    allowClose: false,
+    showProgress: true,
+    animate: !isPrefersReduceMotion(),
+    showButtons: ['previous', 'next'],
+    steps,
+    prevBtnText: '&#8592; Prev',
+    onDestroyed: completeTour,
+    onPopoverRender
+  })
 
   return tourDriver
 }

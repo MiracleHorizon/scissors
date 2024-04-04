@@ -5,44 +5,18 @@ import { Button, Card, Flex, Text } from '@radix-ui/themes'
 
 import { CookieIcon } from '@scissors/react-icons/CookieIcon'
 
-import { isTourCompleted as isTourCompletedCheck, TOUR_LS_KEY } from '@lib/tour'
+import { TOUR_LS_KEY } from '@lib/tour'
 import { useSelectedPath } from '@hooks/useSelectedPath'
 import { PATH_ROOT } from '@site/paths'
+import { acceptCookies, isAccepted, isVisibleCheck } from './utils'
 import styles from './CookieConsentBanner.module.css'
-
-const KEY = 'scissors-cookie-consent'
-
-function isVisibleCheck(): boolean {
-  /*
-   * Check if already accepted.
-   */
-  const isAccepted = !!localStorage.getItem(KEY)
-  if (isAccepted) {
-    return false
-  }
-
-  /*
-   * Banner can be shown only once and only if user tour is completed.
-   */
-  const isTourCompleted = isTourCompletedCheck()
-  if (!isTourCompleted) {
-    return false
-  }
-
-  return isTourCompleted && !isAccepted
-}
 
 export default function CookieConsentBanner() {
   const isHomePage = useSelectedPath(PATH_ROOT)
   const [isVisible, setVisible] = useState(isVisibleCheck())
 
   const handleCookiesAccept = () => {
-    localStorage.setItem(
-      KEY,
-      JSON.stringify({
-        accepted: true
-      })
-    )
+    acceptCookies()
     setVisible(false)
   }
 
@@ -53,8 +27,12 @@ export default function CookieConsentBanner() {
     function handleCompleteTour(ev: StorageEvent) {
       if (ev.key !== TOUR_LS_KEY) return
 
-      const isCompleted = ev.newValue !== null
+      /*
+       * If cookies already accepted - do nothing.
+       */
+      if (isAccepted()) return
 
+      const isCompleted = ev.newValue !== null
       if (isCompleted) {
         setVisible(true)
       }

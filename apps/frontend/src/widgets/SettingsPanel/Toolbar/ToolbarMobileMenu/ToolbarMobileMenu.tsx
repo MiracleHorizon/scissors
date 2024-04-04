@@ -11,6 +11,7 @@ import { ItemExportSettings } from '../actions/export-settings'
 import { ItemResetSettings } from '../actions/reset-settings'
 import { BREAKPOINTS_MAX_WIDTH } from '@lib/theme'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
+import { TOUR_STEP } from '@lib/tour'
 import styles from './ToolbarMobileMenu.module.css'
 
 export function ToolbarMobileMenu(props: MarginProps) {
@@ -48,7 +49,14 @@ export function ToolbarMobileMenu(props: MarginProps) {
         overlayClassName={styles.drawerOverlay}
         onClose={handleClose}
         trigger={
-          <IconButton {...props} color='gray' radius='large' variant='soft' onClick={handleOpen}>
+          <IconButton
+            {...props}
+            color='gray'
+            radius='large'
+            variant='soft'
+            data-tourstep={TOUR_STEP.TOOLBAR_MENU}
+            onClick={handleOpen}
+          >
             <DotsHorizontalIcon width='20px' height='20px' />
           </IconButton>
         }

@@ -4,9 +4,27 @@
 }
 
 html.dark {
+  --bg-color: var(--gray-3);
+
   .driver-popover {
-    background-color: var(--gray-4);
+    background-color: var(--bg-color);
     color: var(--accent-contrast);
+  }
+
+  .driver-popover-arrow-side-top {
+    border-top-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-bottom {
+    border-bottom-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-left {
+    border-left-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-right {
+    border-right-color: var(--bg-color);
   }
 }
 
@@ -19,11 +37,14 @@ html.dark {
   display: flex !important;
   justify-content: space-between;
   font-weight: 500 !important;
+  font-size: 17px;
 }
 
 .driver-popover-description {
+  margin-top: 6px !important;
   font-weight: 400 !important;
-  font-size: 15px;
+  font-size: 14px;
+  color: #9a99a1;
 }
 
 .driver-popover-title,
@@ -62,7 +83,7 @@ html.dark {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 5px 8px;
+  padding: 6px 12px 5px 12px;
   margin: 0;
 }
 
@@ -76,7 +97,7 @@ html.dark {
   pointer-events: none !important;
 }
 
-/* Enable overflow for FileUploadZone component */
+/* Enable overflow for ImageDropzone component */
 :not(body):has(> [title='File is not uploaded'].driver-active-element) {
   overflow: initial !important;
 }

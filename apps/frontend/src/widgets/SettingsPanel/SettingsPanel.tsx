@@ -1,16 +1,13 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
 import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
-import 'driver.js/dist/driver.css'
 
 import { ToolbarSkeleton } from './Toolbar/ToolbarSkeleton'
 import { TabConvertSkeleton } from './TabConvert/TabConvertSkeleton'
 import { TabResizeSkeleton } from './TabResize/TabResizeSkeleton'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
-import { createTour, isTourCompleted, TOUR_STEP } from '@lib/tour'
-import '@lib/tour/tour.css'
+import { TOUR_STEP } from '@lib/tour'
 import styles from './SettingsPanel.module.css'
 
 const Toolbar = dynamic(() => import('./Toolbar').then(mod => mod.Toolbar), {
@@ -32,17 +29,6 @@ const TabMetadata = dynamic(() => import('./TabMetadata').then(mod => mod.TabMet
 export function SettingsPanel() {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const selectTab = useTabsStore(state => state.selectTab)
-
-  useEffect(() => {
-    if (isTourCompleted()) return
-
-    /*
-     * Start user tour.
-     */
-    createTour().then(driver => {
-      driver.drive()
-    })
-  }, [])
 
   return (
     <ScrollArea
