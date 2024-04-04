@@ -7,7 +7,7 @@ import type { ComponentPropsWithoutRef, FC } from 'react'
 
 import { CompareSlider } from './CompareSlider'
 import { AsideSkeleton } from './GallerySlideSkeleton'
-import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme'
+import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme/constants'
 import type { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlide.module.css'
 

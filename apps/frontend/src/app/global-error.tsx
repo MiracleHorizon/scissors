@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 import { SITE_TITLE } from '@site/config'
 import { getLocalStorageThemeColor } from '@lib/theme/helpers'
-import { DEFAULT_THEME_COLOR, THEME_LS_KEY } from '@lib/theme'
+import { DEFAULT_THEME_COLOR, THEME_LS_KEY } from '@lib/theme/constants'
 import { geistSans } from './fonts'
 import type { ErrorPageProps } from '@app-types/next'
 
