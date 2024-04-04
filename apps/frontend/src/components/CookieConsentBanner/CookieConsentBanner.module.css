@@ -5,7 +5,7 @@
   max-width: 440px;
   position: fixed !important;
   left: 20px;
-  z-index: 10;
+  z-index: 1000;
   margin: 0 var(--margin-x);
   background-color: var(--gray-2) !important;
   box-shadow: 0 14px 42px 0 rgba(8 15 52 / 0.15);
