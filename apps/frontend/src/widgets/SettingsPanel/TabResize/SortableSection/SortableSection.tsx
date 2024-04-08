@@ -67,9 +67,9 @@ export function SortableSection({
     zIndex: isDragging ? 2 : 1
   } as const
 
-  const onMoveUp = () => handleMoveUp(id)
-  const onMoveDown = () => handleMoveDown(id)
-  const onRemove = () => handleRemove(id)
+  const onMoveUp = () => handleMoveUp?.(id)
+  const onMoveDown = () => handleMoveDown?.(id)
+  const onRemove = () => handleRemove?.(id)
 
   return (
     <Flex
@@ -95,28 +95,37 @@ export function SortableSection({
             isDisabled={isDragDisabled}
             listeners={listeners}
           />
-          <SortableSectionButton
-            icon={<ChevronUpIcon width='17px' height='17px' label='move up' />}
-            tooltipContent='Move Up'
-            isDisabled={isDragging || !isUpMovable}
-            onClick={onMoveUp}
-          />
-          <SortableSectionButton
-            icon={<ChevronDownIcon width='17px' height='17px' label='move down' />}
-            tooltipContent='Move Down'
-            isDisabled={isDragging || !isDownMovable}
-            onClick={onMoveDown}
-          />
 
-          <Separator orientation='horizontal' size='4' my='1' />
+          {handleMoveUp && (
+            <SortableSectionButton
+              icon={<ChevronUpIcon width='17px' height='17px' label='move up' />}
+              tooltipContent='Move Up'
+              isDisabled={isDragging || !isUpMovable}
+              onClick={onMoveUp}
+            />
+          )}
+          {handleMoveDown && (
+            <SortableSectionButton
+              icon={<ChevronDownIcon width='17px' height='17px' label='move down' />}
+              tooltipContent='Move Down'
+              isDisabled={isDragging || !isDownMovable}
+              onClick={onMoveDown}
+            />
+          )}
 
-          <SortableSectionButton
-            icon={<TrashIcon width='18px' height='18px' label='remove section' />}
-            tooltipContent='Remove Section'
-            isDisabled={isDragging}
-            color='red'
-            onClick={onRemove}
-          />
+          {handleRemove && (
+            <>
+              <Separator orientation='horizontal' size='4' my='1' />
+
+              <SortableSectionButton
+                icon={<TrashIcon width='18px' height='18px' label='remove section' />}
+                tooltipContent='Remove Section'
+                isDisabled={isDragging}
+                color='red'
+                onClick={onRemove}
+              />
+            </>
+          )}
         </Flex>
 
         {children}
@@ -131,7 +140,7 @@ type Props = PropsWithChildren<{
   isDragDisabled: boolean
   isUpMovable: boolean
   isDownMovable: boolean
-  handleMoveUp: (id: UniqueIdentifier) => void
-  handleMoveDown: (id: UniqueIdentifier) => void
-  handleRemove: (id: UniqueIdentifier) => void
+  handleMoveUp?: (id: UniqueIdentifier) => void
+  handleMoveDown?: (id: UniqueIdentifier) => void
+  handleRemove?: (id: UniqueIdentifier) => void
 }>

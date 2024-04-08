@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
-import { Flex, Separator } from '@radix-ui/themes'
-import type { PaddingProps } from '@radix-ui/themes/props'
+import { Card, Flex, Separator } from '@radix-ui/themes'
 
 import { BasicOptions } from './Basic'
 import { Negate } from './Negate'
@@ -13,6 +12,7 @@ import { Normalise } from './Normalise'
 import { OutputFormat } from './OutputFormat'
 import { InputOutputFileName } from './OutputFileName'
 import { useOutputStore } from '@stores/output'
+import styles from './Options.module.css'
 
 const options = [
   { key: 'basic', Component: BasicOptions },
@@ -25,27 +25,17 @@ const options = [
   { key: 'normalise', Component: Normalise }
 ] as const
 
-const padding: PaddingProps = {
-  pl: '3',
-  pr: '4',
-  pt: '3',
-  pb: '4'
-} as const
-
 export function Options() {
   const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
   return (
-    <Flex direction='column' gap='2' {...padding}>
+    <Flex width='100%' direction='column' gap='2'>
       <InputOutputFileName />
 
-      <Separator mt='8px' mb='1' size='4' />
-
-      {options.map(({ key, Component }, index) => (
-        <Fragment key={key}>
+      {options.map(({ key, Component }) => (
+        <Card key={key} className={styles.card}>
           <Component />
-          {index < options.length - 1 && <Separator my='1' size='4' />}
-        </Fragment>
+        </Card>
       ))}
 
       {isFileUploaded && (

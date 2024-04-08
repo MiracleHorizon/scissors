@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
+import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ToolbarSkeleton } from './Toolbar/ToolbarSkeleton'
 import { TabConvertSkeleton } from './TabConvert/TabConvertSkeleton'
@@ -26,6 +27,15 @@ const TabMetadata = dynamic(() => import('./TabMetadata').then(mod => mod.TabMet
   ssr: false
 })
 
+export const contentPadding: PaddingProps = {
+  pl: {
+    initial: '3',
+    md: '2'
+  },
+  pr: '14px',
+  py: '3'
+} as const
+
 export function SettingsPanel() {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const selectTab = useTabsStore(state => state.selectTab)
@@ -41,9 +51,12 @@ export function SettingsPanel() {
         {/* eslint-disable no-unused-vars */}
         <Tabs.Root defaultValue={selectedTab} onValueChange={selectTab as (value: string) => void}>
           <Toolbar />
-          {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
-          {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
-          {selectedTab === TOOLBAR_TAB.METADATA && <TabMetadata />}
+
+          <Flex {...contentPadding} direction='column'>
+            {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
+            {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
+            {selectedTab === TOOLBAR_TAB.METADATA && <TabMetadata />}
+          </Flex>
         </Tabs.Root>
       </Flex>
     </ScrollArea>

@@ -1,5 +1,4 @@
 import { Flex, Separator, Skeleton } from '@radix-ui/themes'
-import type { PaddingProps } from '@radix-ui/themes/props'
 
 import styles from './TabConvertSkeleton.module.css'
 
@@ -11,13 +10,6 @@ const SwitchSkeleton = ({ text }: { text?: string }) => (
 )
 
 const ButtonSkeleton = () => <Skeleton height='32px' width='140px' />
-
-const optionsPadding: PaddingProps = {
-  pl: '3',
-  pr: '4',
-  pb: '2',
-  pt: '3'
-} as const
 
 const OptionsSkeleton = () => (
   <>
@@ -56,7 +48,7 @@ const OptionsSkeleton = () => (
 )
 
 export const TabConvertSkeleton = () => (
-  <Flex direction='column' width='100%' {...optionsPadding} gap='2'>
+  <Flex direction='column' width='100%' gap='2'>
     <OptionsSkeleton />
   </Flex>
 )
