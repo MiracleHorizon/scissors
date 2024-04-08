@@ -7,7 +7,7 @@ import { ButtonResetBlurSigma } from './ButtonResetBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 
 export const BlurSigmaHeader: FC<Props> = ({ disabled }) => (
-  <OptionSectionHeader title='Blur Sigma' icon={<BlurIcon width={18} height={18} />}>
+  <OptionSectionHeader title='Sigma' icon={<BlurIcon width={18} height={18} />}>
     <>
       <ButtonResetBlurSigma disabled={disabled} />
       <ButtonRemoveBlurSigma disabled={disabled} />

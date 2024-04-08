@@ -6,12 +6,11 @@ import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'
 import { useNormaliseStore } from '@stores/normalise'
 
 export function NormaliseHeader() {
-  const lower = useNormaliseStore(state => state.lower)
-  const upper = useNormaliseStore(state => state.upper)
+  const [lower, upper] = useNormaliseStore(state => [state.lower, state.upper])
 
   return (
     <OptionSectionHeader
-      title={`Normalise: ${lower} - ${upper}%`}
+      title={`Normalisation: ${lower} - ${upper}%`}
       icon={<Half2Icon width='18px' height='18px' label='normalisation' />}
     >
       <>
