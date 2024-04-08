@@ -42,8 +42,8 @@ describe('@api/helpers/handleRequestError', () => {
 
   it('should return correct error status text', () => {
     const statusText1 = 'File is not found'
-    const statusText2 = 'Invalid convert settings'
-    const statusText3 = 'Invalid resize settings'
+    const statusText2 = defaultErrorMessage
+    const statusText3 = defaultErrorMessage
 
     const error1 = new RequestError({
       status: 404,
