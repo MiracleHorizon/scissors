@@ -20,7 +20,10 @@ const createUncurried = <T>(stateCreator: zustand.StateCreator<T>) => {
   return store
 }
 
-export const create = (<T>(stateCreator: zustand.StateCreator<T>) => typeof stateCreator === 'function' ? createUncurried(stateCreator) : createUncurried) as typeof zustand.create
+export const create = (<T>(stateCreator: zustand.StateCreator<T>) =>
+  typeof stateCreator === 'function'
+    ? createUncurried(stateCreator)
+    : createUncurried) as typeof zustand.create
 
 const createStoreUncurried = <T>(stateCreator: zustand.StateCreator<T>) => {
   const store = actualCreateStore(stateCreator)
@@ -33,9 +36,10 @@ const createStoreUncurried = <T>(stateCreator: zustand.StateCreator<T>) => {
   return store
 }
 
-export const createStore = (<T>(stateCreator: zustand.StateCreator<T>) => typeof stateCreator === 'function'
-  ? createStoreUncurried(stateCreator)
-  : createStoreUncurried) as typeof zustand.createStore
+export const createStore = (<T>(stateCreator: zustand.StateCreator<T>) =>
+  typeof stateCreator === 'function'
+    ? createStoreUncurried(stateCreator)
+    : createStoreUncurried) as typeof zustand.createStore
 
 afterEach(() => {
   act(() => {

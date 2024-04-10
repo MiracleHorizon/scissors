@@ -5,7 +5,9 @@ import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 import { createOutputStore, defaultState, type DownloadPayload } from '@stores/output'
 
 describe('@stores/output', () => {
-  const store = createOutputStore()
+  const store = createOutputStore({
+    withPersist: false
+  })
 
   afterEach(() => {
     store.setState(defaultState)
@@ -44,7 +46,7 @@ describe('@stores/output', () => {
 
   it('should correctly set download payload', () => {
     const testValue: DownloadPayload = {
-      blob: new Blob(),
+      file: new File([], '', {}),
       fileName: 'foo-bar-baz',
       link: 'blob:foo-bar-baz'
     }

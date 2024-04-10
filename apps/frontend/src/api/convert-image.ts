@@ -55,10 +55,14 @@ async function convertImageMutation({
   const imageBlob = await convertImage(formData)
   const link = URL.createObjectURL(imageBlob)
 
+  const newFile = new File([imageBlob], fileName, {
+    type: settings.outputFormat ? `image/${settings.outputFormat}` : file.type
+  })
+
   return {
     link,
     fileName,
-    blob: imageBlob
+    file: newFile
   }
 }
 

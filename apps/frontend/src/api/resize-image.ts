@@ -67,10 +67,14 @@ async function resizeImageMutation({
     })
   }
 
+  const newFile = new File([imageBlob], outputFileName, {
+    type: file.type
+  })
+
   return {
     link,
     fileName: outputFileName,
-    blob: imageBlob
+    file: newFile
   }
 }
 
