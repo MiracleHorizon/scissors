@@ -6,5 +6,5 @@ export function CheckboxTrimLineArt() {
   const toggleLineArt = useTrimStore(state => state.toggleLineArt)
   const handleToggleLineArt = () => toggleLineArt()
 
-  return <OptionCheckbox title='Line Art' onClick={handleToggleLineArt} checked={lineArt} />
+  return <OptionCheckbox label='Line Art' onClick={handleToggleLineArt} checked={lineArt} />
 }

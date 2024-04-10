@@ -27,6 +27,6 @@ export function CheckboxFastShrink() {
   }
 
   return (
-    <OptionCheckbox title='Fast Shrink' checked={fastShrink} onClick={handleToggleFastShrink} />
+    <OptionCheckbox label='Fast Shrink' checked={fastShrink} onClick={handleToggleFastShrink} />
   )
 }

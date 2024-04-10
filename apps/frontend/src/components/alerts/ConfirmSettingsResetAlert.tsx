@@ -41,7 +41,7 @@ export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCa
             {...(contentActionsProps as ComponentPropsWithoutRef<typeof Flex>)}
           >
             <OptionCheckbox
-              title='Remove all'
+              label='Remove all'
               checked={removeAll}
               onClick={handleToggleRemoveAll}
             />

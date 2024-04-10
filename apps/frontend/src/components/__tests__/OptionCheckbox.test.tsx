@@ -2,12 +2,12 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { labelTestId, OptionCheckbox, type Props } from '@components/OptionCheckbox'
+import { rootTestId, OptionCheckbox, type Props } from '@components/OptionCheckbox'
 import { setup } from '@testing/test-utils'
 
 describe('@components/OptionCheckbox', () => {
   const defaultProps: Props = {
-    title: 'test',
+    label: 'test label',
     checked: false,
     onClick: vi.fn()
   }
@@ -19,8 +19,8 @@ describe('@components/OptionCheckbox', () => {
   it('should render the checkbox', () => {
     const { getByRole, getByTestId } = render(<OptionCheckbox {...defaultProps} />)
 
-    const label = getByTestId(labelTestId)
-    expect(label).toBeInTheDocument()
+    const root = getByTestId(rootTestId)
+    expect(root).toBeInTheDocument()
 
     const checkbox = getByRole('checkbox')
     expect(checkbox).toBeInTheDocument()
@@ -28,12 +28,12 @@ describe('@components/OptionCheckbox', () => {
 
   it('should render the checkbox title', () => {
     const { getByText } = render(<OptionCheckbox {...defaultProps} />)
-    const titleElement = getByText(defaultProps.title)
+    const labelEl = getByText(defaultProps.label!)
 
-    expect(titleElement).toBeInTheDocument()
-    expect(titleElement).toHaveTextContent(defaultProps.title)
-    expect(titleElement).toHaveAttribute('title', defaultProps.title)
-    expect(titleElement.tagName).toBe('SPAN')
+    expect(labelEl).toBeInTheDocument()
+    expect(labelEl).toHaveTextContent(defaultProps.label!)
+    expect(labelEl).toHaveAttribute('title', defaultProps.label!)
+    expect(labelEl.tagName).toBe('LABEL')
   })
 
   it('should change checkbox value with click', async () => {

@@ -11,7 +11,7 @@ export function CheckboxReduction() {
 
   return (
     <OptionCheckbox
-      title='Without Reduction'
+      label='Without Reduction'
       checked={withoutReduction}
       onClick={handleToggleWithoutReduction}
     />

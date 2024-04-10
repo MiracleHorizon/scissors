@@ -1,1 +1,1 @@
-export { OptionCheckbox, type Props, labelTestId } from './OptionCheckbox'
+export { OptionCheckbox, type Props, rootTestId } from './OptionCheckbox'

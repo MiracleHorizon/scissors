@@ -11,7 +11,7 @@ export function CheckboxEnlargement() {
 
   return (
     <OptionCheckbox
-      title='Without Enlarging'
+      label='Without Enlarging'
       checked={withoutEnlargement}
       onClick={handleToggleWithoutEnlargement}
     />

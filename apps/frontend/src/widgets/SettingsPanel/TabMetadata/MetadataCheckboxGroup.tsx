@@ -19,16 +19,16 @@ export function MetadataCheckboxGroup({ hasExif, hasICC }: Props) {
   return (
     <Flex direction='column' gap='2'>
       <OptionCheckbox
-        title='Keep Metadata'
+        label='Keep Metadata'
         checked={keepMetadata}
         onClick={handleToggleKeepMetadata}
       />
       {hasExif && (
-        <OptionCheckbox title='Keep Exif' checked={keepExif} onClick={handleToggleKeepExif} />
+        <OptionCheckbox label='Keep Exif' checked={keepExif} onClick={handleToggleKeepExif} />
       )}
       {hasICC && (
         <OptionCheckbox
-          title='Keep ICC Profile'
+          label='Keep ICC Profile'
           checked={keepICCProfile}
           onClick={handleToggleKeepICCProfile}
         />

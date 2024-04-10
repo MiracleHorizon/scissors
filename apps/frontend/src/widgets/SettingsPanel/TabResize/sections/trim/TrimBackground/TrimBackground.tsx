@@ -16,7 +16,7 @@ export function TrimBackground() {
     <Flex direction='column' gap='2'>
       <Flex gap='2'>
         <OptionCheckbox
-          title='Use custom background'
+          label='Use custom background'
           onClick={handleToggleBackground}
           checked={!!background}
         />
