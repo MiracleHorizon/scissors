@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, Link } from '@radix-ui/themes'
+import { Button, Link as RadixLink } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
 import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
@@ -34,12 +34,14 @@ export function ButtonDownload() {
         <MediaQuery minWidth={401}>Download</MediaQuery>
       </Button>
 
-      <Link
-        ref={linkRef}
-        href={downloadPayload?.link}
-        download={downloadPayload?.fileName}
-        className='hidden'
-      />
+      {downloadPayload && (
+        <RadixLink
+          ref={linkRef}
+          href={downloadPayload.link}
+          download={downloadPayload.fileName}
+          className='hidden'
+        />
+      )}
     </>
   )
 }

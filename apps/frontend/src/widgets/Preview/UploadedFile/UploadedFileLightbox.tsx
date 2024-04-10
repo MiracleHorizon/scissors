@@ -13,11 +13,11 @@ import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
 import { type DownloadPayload, useOutputStore } from '@stores/output'
 
 function getLightboxProps({
-  downloadPayload,
-  file
+  file,
+  downloadPayload
 }: {
-  downloadPayload: DownloadPayload | null
   file: File
+  downloadPayload: Omit<DownloadPayload, 'file'> | null
 }): LightboxExternalProps {
   const plugins: Plugin[] = [Zoom, Fullscreen]
   const slides: Slide[] = []
