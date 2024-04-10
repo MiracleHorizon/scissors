@@ -49,6 +49,12 @@
   transform: translate3d(-50%, -50%, 0);
 }
 
+@media screen and (max-width: 767px) {
+  .root {
+    height: 30dvh;
+  }
+}
+
 @media screen and (max-width: 519px) {
   .fullscreenIcon {
     width: 34px;

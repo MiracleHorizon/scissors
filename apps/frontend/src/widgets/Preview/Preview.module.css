@@ -1,6 +1,6 @@
 .root {
   position: relative;
-  width: calc(100% - var(--settings-panel-width));
+  width: calc(100dvw - var(--settings-panel-width));
 }
 
 .root:has(> .driver-active-element) {
@@ -17,13 +17,13 @@
 
 @media screen and (min-width: 2400px) {
   .root {
-    width: calc(100% - var(--settings-panel-width-2400));
+    width: calc(100dvw - var(--settings-panel-width-2400));
   }
 }
 
 @media screen and (max-width: 1200px) {
   .root {
-    width: calc(100% - var(--settings-panel-width-1200));
+    width: calc(100dvw - var(--settings-panel-width-1200));
   }
 }
 

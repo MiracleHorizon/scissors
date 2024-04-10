@@ -37,7 +37,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
           </Flex>
         </MediaQuery>
 
-        <Flex direction='column' gap='1' mr='auto' className={styles.content}>
+        <Flex width='100%' direction='column' gap='1' mr='auto' className={styles.content}>
           <Text title={file.name} truncate className={styles.fileName}>
             {file.name}
           </Text>
