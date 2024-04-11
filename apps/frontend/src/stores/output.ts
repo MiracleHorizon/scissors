@@ -1,18 +1,21 @@
-import { create, type StateCreator } from 'zustand'
+import { create, type StateCreator, type StoreApi, type UseBoundStore } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+import type { ImageFileFormat } from '@scissors/sharp'
 
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
-import type { ImageFileFormat } from '@scissors/sharp'
 
 export interface DownloadPayload {
   link: string
   fileName: string
-  blob: Blob
+  file: File
 }
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
+  getFileForProcessing: () => File | null
   getOutputFormat: () => ImageFileFormat | null
   getFullFileName: () => string
   isFileUploaded: () => boolean
@@ -24,20 +27,25 @@ interface Store extends State {
   resetOutputFileName: VoidFunction
   setOutputFormat: (outputFormat: ImageFileFormat | null) => void
   setDownloadPayload: (downloadPayload: DownloadPayload) => void
+  toggleKeepChanges: VoidFunction
 }
 
 interface State {
   file: File | null
+  originalFile: File | null
   outputFileName: string
   outputFormat: ImageFileFormat | null
-  downloadPayload: DownloadPayload | null
+  downloadPayload: Omit<DownloadPayload, 'file'> | null
+  keepChanges: boolean
 }
 
 export const defaultState: State = {
   file: null,
+  originalFile: null,
   outputFileName: '',
   outputFormat: null,
-  downloadPayload: null
+  downloadPayload: null,
+  keepChanges: false
 } as const
 
 const outputStoreCreator: StateCreator<Store> = (set, get) => ({
@@ -45,6 +53,11 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
   ...defaultState,
 
   // Computed
+  getFileForProcessing: () => {
+    const { file, originalFile, keepChanges } = get()
+
+    return keepChanges ? file : originalFile
+  },
   getFullFileName: () => {
     const file = get().file
 
@@ -102,6 +115,7 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
 
     set({
       file,
+      originalFile: file,
       outputFormat,
       downloadPayload: null
     })
@@ -109,17 +123,65 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
   removeFile: () =>
     set({
       file: null,
+      originalFile: null,
       outputFormat: null,
       downloadPayload: null
     }),
 
-  setOutputFileName: (outputFileName: string) => set({ outputFileName }),
-  resetOutputFileName: () => set({ outputFileName: defaultState.outputFileName }),
+  setOutputFileName: outputFileName =>
+    set({
+      outputFileName
+    }),
+  resetOutputFileName: () =>
+    set({
+      outputFileName: defaultState.outputFileName
+    }),
 
   setOutputFormat: outputFormat => set({ outputFormat }),
-  setDownloadPayload: downloadPayload => set({ downloadPayload })
+  setDownloadPayload: ({ file, ...downloadPayload }) =>
+    set({
+      file,
+      downloadPayload
+    }),
+
+  toggleKeepChanges: () =>
+    set({
+      keepChanges: !get().keepChanges
+    })
 })
 
-export const createOutputStore = () => create<Store>()(outputStoreCreator)
+export const createOutputStore = ({
+  withPersist
+}: CreateStoreParams): UseBoundStore<StoreApi<Store>> => {
+  if (withPersist) {
+    return create(
+      persist<Store>(outputStoreCreator, {
+        name: 'scissors-output-store',
+        merge: <State>(persistedState: unknown, currentState: State): State => {
+          if (!persistedState || typeof persistedState !== 'object') {
+            return currentState
+          }
 
-export const useOutputStore = createOutputStore()
+          if ('keepChanges' in persistedState && typeof persistedState.keepChanges === 'boolean') {
+            return {
+              ...currentState,
+              keepChanges: persistedState.keepChanges
+            }
+          }
+
+          return currentState
+        }
+      })
+    )
+  }
+
+  return create<Store>()(outputStoreCreator)
+}
+
+interface CreateStoreParams {
+  withPersist: boolean
+}
+
+export const useOutputStore = createOutputStore({
+  withPersist: true
+})

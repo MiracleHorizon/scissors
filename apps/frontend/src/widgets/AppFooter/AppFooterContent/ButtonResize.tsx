@@ -7,7 +7,7 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 
 export function ButtonResize() {
-  const file = useOutputStore(state => state.file)
+  const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)
   const setLoading = useRequestStore(state => state.setLoading)

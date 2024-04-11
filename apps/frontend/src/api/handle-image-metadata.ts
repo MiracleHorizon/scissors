@@ -55,10 +55,14 @@ async function handleImageMetadataMutation({
   const imageBlob = await handleImageMetadata(formData)
   const link = URL.createObjectURL(imageBlob)
 
+  const newFile = new File([imageBlob], fileName, {
+    type: file.type
+  })
+
   return {
     link,
     fileName,
-    blob: imageBlob
+    file: newFile
   }
 }
 

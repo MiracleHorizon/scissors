@@ -3,9 +3,12 @@
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { createOutputStore, defaultState, type DownloadPayload } from '@stores/output'
+import pick from 'lodash.pick'
 
 describe('@stores/output', () => {
-  const store = createOutputStore()
+  const store = createOutputStore({
+    withPersist: false
+  })
 
   afterEach(() => {
     store.setState(defaultState)
@@ -17,9 +20,11 @@ describe('@stores/output', () => {
     })
 
     expect(store.getState().file).toBe(null)
+    expect(store.getState().originalFile).toBe(null)
     expect(store.getState().isFileUploaded()).toBeFalsy()
     store.getState().setFile(file)
     expect(store.getState().file).toStrictEqual(file)
+    expect(store.getState().originalFile).toStrictEqual(file)
     expect(store.getState().isFileUploaded()).toBeTruthy()
 
     store.getState().removeFile()
@@ -43,16 +48,30 @@ describe('@stores/output', () => {
   })
 
   it('should correctly set download payload', () => {
+    const file1 = new File([], 'foo.png', { type: 'image/png' })
+    const file2 = new File([], 'bar.webp', { type: 'image/webp' })
     const testValue: DownloadPayload = {
-      blob: new Blob(),
-      fileName: 'foo-bar-baz',
-      link: 'blob:foo-bar-baz'
+      file: file2,
+      fileName: 'foo.png',
+      link: 'blob:foo.png'
     }
 
     expect(store.getState().downloadPayload).toBe(defaultState.downloadPayload)
+    expect(store.getState().originalFile).toBe(null)
+
+    store.setState({
+      file: file1,
+      originalFile: file1,
+      keepChanges: true
+    })
+
+    expect(store.getState().getFileForProcessing()).toStrictEqual(file1)
 
     store.getState().setDownloadPayload(testValue)
-    expect(store.getState().downloadPayload).toStrictEqual(testValue)
+    expect(store.getState().downloadPayload).toStrictEqual(pick(testValue, ['fileName', 'link']))
+    expect(store.getState().file).toStrictEqual(file2)
+    expect(store.getState().originalFile).toStrictEqual(file1)
+    expect(store.getState().getFileForProcessing()).toStrictEqual(file2)
   })
 
   suite('should correctly set output file format', () => {

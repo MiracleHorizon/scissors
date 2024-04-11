@@ -9,7 +9,6 @@ import { FetchException } from './exceptions/FetchException'
 import { createApiURL } from '@site/config'
 import { PATH_API_RESIZE } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
-import { addImageSizesToFileName } from '@helpers/file/addImageSizesToFileName'
 import type { MutationPayload } from './types'
 
 async function resizeImage(formData: FormData): Promise<Blob> {
@@ -56,21 +55,26 @@ async function resizeImageMutation({
   const imageBlob = await resizeImage(formData)
   const link = URL.createObjectURL(imageBlob)
 
-  let outputFileName = fileName
+  const outputFileName = fileName
 
-  const { resize } = settings
-  if (resize && resize.width && resize.height) {
-    outputFileName = addImageSizesToFileName({
-      fullFileName: outputFileName,
-      width: resize.width,
-      height: resize.height
-    })
-  }
+  // TODO: rework
+  // const { resize } = settings
+  // if (resize && resize.width && resize.height) {
+  //   outputFileName = addImageSizesToFileName({
+  //     fullFileName: outputFileName,
+  //     width: resize.width,
+  //     height: resize.height
+  //   })
+  // }
+
+  const newFile = new File([imageBlob], outputFileName, {
+    type: file.type
+  })
 
   return {
     link,
     fileName: outputFileName,
-    blob: imageBlob
+    file: newFile
   }
 }
 

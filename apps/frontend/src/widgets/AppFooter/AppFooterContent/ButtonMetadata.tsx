@@ -7,7 +7,7 @@ import { useMetadataStore } from '@stores/metadata'
 import { useMetadataMutation } from '@api/handle-image-metadata'
 
 export function ButtonMetadata() {
-  const file = useOutputStore(state => state.file)
+  const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)
   const setLoading = useRequestStore(state => state.setLoading)

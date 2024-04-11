@@ -35,10 +35,8 @@ export function TabMetadataContent() {
     if (!file) return
 
     import('exifr').then(({ default: exifr }) => {
-      const data: File | Blob = downloadPayload ? downloadPayload.blob : file
-
       exifr
-        .parse(data, {
+        .parse(file, {
           mergeOutput: false
         })
         .then(result => setParsedMetadata(result ?? null))
