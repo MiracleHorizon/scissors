@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Button, Dialog, Flex } from '@radix-ui/themes'
+import { Button, Dialog, Flex, Separator } from '@radix-ui/themes'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
+
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { ExtractRatioControl } from './ExtractRatioControl'
@@ -11,13 +12,6 @@ import { useExtractStore } from '@stores/extract'
 import { cropperDataToExtractRegion, extractRegionToCropperData } from './utils'
 import { aspectRatioList } from './data'
 import styles from './ExtractSectionDialog.module.css'
-
-Cropper.setDefaults({
-  rotatable: false,
-  scalable: false,
-  zoomable: false,
-  movable: false
-})
 
 export const ExtractSectionDialog = ({ file }: Props) => {
   const imageRef = useRef<HTMLImageElement>(null)
@@ -31,7 +25,6 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   const setPreviewFile = useExtractStore(state => state.setPreviewFile)
   const setPreviewAspectRatio = useExtractStore(state => state.setPreviewAspectRatio)
   const setCropperAspectRatio = useExtractStore(state => state.setCropperAspectRatio)
-  const reset = useExtractStore(state => state.reset)
 
   function handleChangeAspectRatio(displayValue: string) {
     const value = aspectRatioList.find(v => v.displayValue === displayValue)?.value ?? -1
@@ -104,13 +97,6 @@ export const ExtractSectionDialog = ({ file }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  useEffect(() => {
-    if (!cropper) return
-
-    cropper.reset()
-    reset()
-  }, [cropper, file, reset])
-
   return (
     <Dialog.Root defaultOpen={false} open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className={styles.trigger}>
@@ -137,7 +123,10 @@ export const ExtractSectionDialog = ({ file }: Props) => {
               className={styles.image}
             />
 
+            <Separator size='4' />
+
             <Flex
+              asChild
               align='end'
               justify='end'
               direction={{
@@ -147,13 +136,15 @@ export const ExtractSectionDialog = ({ file }: Props) => {
               gap='2'
               width='100%'
             >
-              <ExtractRatioControl
-                aspectRatio={aspectRatio}
-                setAspectRatio={handleChangeAspectRatio}
-              />
-              <Dialog.Close>
-                <Button onClick={handleSetRegion}>Confirm</Button>
-              </Dialog.Close>
+              <footer>
+                <ExtractRatioControl
+                  aspectRatio={aspectRatio}
+                  setAspectRatio={handleChangeAspectRatio}
+                />
+                <Dialog.Close>
+                  <Button onClick={handleSetRegion}>Confirm</Button>
+                </Dialog.Close>
+              </footer>
             </Flex>
           </Flex>
         </Dialog.Content>
