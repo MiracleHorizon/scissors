@@ -2,12 +2,12 @@
   "name": "scissors",
   "private": true,
   "type": "module",
-  "author": "MiracleHorizon <alexeenkodenis.jobs@gmail.com>",
   "description": "Your awesome application for versatile image formatting and processing!",
-  "repository": "https://github.com/MiracleHorizon/scissors",
+  "author": "MiracleHorizon <alexeenkodenis.jobs@gmail.com>",
   "authorGithub": "https://github.com/MiracleHorizon",
+  "repository": "https://github.com/MiracleHorizon/scissors",
   "license": "MIT",
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -33,13 +33,13 @@
     "be:test": "cd apps/backend && pnpm test"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.18.0",
-    "@typescript-eslint/parser": "6.18.0",
-    "eslint": "8.56.0",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "eslint": "8.57.0",
     "prettier": "3.2.5",
-    "turbo": "1.12.5",
-    "typescript": "5.4.2",
-    "vite": "5.2.7"
+    "turbo": "1.13.2",
+    "typescript": "5.4.5",
+    "vite": "5.2.8"
   },
   "keywords": [
     "image",
