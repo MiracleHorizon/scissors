@@ -7,6 +7,6 @@
 }
 
 .selected {
-  outline: 1px dashed var(--gray-a12);
-  outline-offset: 2px;
+  outline: 1px solid var(--gray-a11);
+  outline-offset: 1.5px;
 }

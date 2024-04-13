@@ -12,7 +12,7 @@ export const ThemeColorGrid: FC<Props> = ({ rows = 4, ...props }) => {
     <Grid
       columns={Math.floor(themeColorItems.length / rows).toString()}
       justify='center'
-      gap='2'
+      gapY='6px'
       width='100%'
       {...props}
     >
