@@ -53,3 +53,11 @@ input[type='number'] {
 .hidden {
   display: none;
 }
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}

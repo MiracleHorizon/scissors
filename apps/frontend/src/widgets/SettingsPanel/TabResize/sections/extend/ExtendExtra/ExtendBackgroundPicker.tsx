@@ -1,6 +1,6 @@
 import { EXTEND_WITH } from '@scissors/sharp'
 
-import { ColorPicker } from '@ui/ColorPicker'
+import { ColorField } from '@ui/ColorField'
 import { useExtendStore } from '@stores/extend'
 
 export function ExtendBackgroundPicker() {
@@ -15,12 +15,11 @@ export function ExtendBackgroundPicker() {
   }
 
   return (
-    <ColorPicker
-      color={extendBackground}
-      setColor={setExtendBackground}
+    <ColorField
+      label='Background'
+      value={extendBackground}
       disabled={withDominantBackground}
-      triggerLabel='Background'
-      triggerLabelSize='2'
+      onValueChange={setExtendBackground}
     />
   )
 }

@@ -1,4 +1,4 @@
-import { ColorPicker } from '@ui/ColorPicker'
+import { ColorField } from '@ui/ColorField'
 import { useResizeStore } from '@stores/resize'
 
 export function ResizeBackgroundPicker({ background }: Props) {
@@ -6,12 +6,11 @@ export function ResizeBackgroundPicker({ background }: Props) {
   const setBackground = useResizeStore(state => state.setBackground)
 
   return (
-    <ColorPicker
-      color={background}
-      setColor={setBackground}
+    <ColorField
+      label='Background'
+      value={background}
       disabled={withDominantBackground}
-      triggerLabel='Background'
-      triggerLabelSize='2'
+      onValueChange={setBackground}
     />
   )
 }

@@ -1,17 +1,10 @@
-import { ColorPicker } from '@ui/ColorPicker'
+import { ColorField } from '@ui/ColorField'
 import { useTrimStore } from '@stores/trim'
 
 export function TrimBackgroundPicker({ background }: Props) {
   const setBackground = useTrimStore(state => state.setBackground)
 
-  return (
-    <ColorPicker
-      color={background}
-      setColor={setBackground}
-      triggerLabel='Background'
-      triggerLabelSize='2'
-    />
-  )
+  return <ColorField label='Background' value={background} onValueChange={setBackground} />
 }
 
 interface Props {

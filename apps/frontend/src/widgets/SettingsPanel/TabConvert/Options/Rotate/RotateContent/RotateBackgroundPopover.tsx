@@ -1,6 +1,6 @@
 import { DEFAULT_ROTATE_BACKGROUND } from '@scissors/sharp'
 
-import { ColorPicker } from '@ui/ColorPicker'
+import { ColorField } from '@ui/ColorField'
 import { useRotateStore } from '@stores/rotate'
 
 export function RotateBackgroundPopover() {
@@ -10,11 +10,11 @@ export function RotateBackgroundPopover() {
   const setRotateBackground = useRotateStore(state => state.setBackground)
 
   return (
-    <ColorPicker
-      color={rotateBackground ?? DEFAULT_ROTATE_BACKGROUND}
-      setColor={setRotateBackground}
+    <ColorField
+      label='Background'
+      value={rotateBackground ?? DEFAULT_ROTATE_BACKGROUND}
       disabled={withDominantBackground}
-      triggerLabel='Background'
+      onValueChange={setRotateBackground}
     />
   )
 }
