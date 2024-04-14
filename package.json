@@ -23,6 +23,7 @@
     "fe:dev": "cd apps/frontend && pnpm dev",
     "fe:build": "cd apps/frontend && pnpm build",
     "fe:start": "cd apps/frontend && pnpm start",
+    "fe:lint": "cd apps/frontend && pnpm lint && pnpm lint:styles",
     "fe:check": "cd apps/frontend && pnpm check",
     "fe:test": "cd apps/frontend && pnpm test",
     "be:dev": "cd apps/backend && pnpm dev",
@@ -30,12 +31,14 @@
     "be:start": "cd apps/backend && pnpm start",
     "be:prod": "cd apps/backend && pnpm prod",
     "be:lint": "cd apps/backend && pnpm lint",
-    "be:test": "cd apps/backend && pnpm test"
+    "be:test": "cd apps/backend && pnpm test",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "eslint": "8.57.0",
+    "husky": "9.0.11",
     "prettier": "3.2.5",
     "turbo": "1.13.2",
     "typescript": "5.4.5",
