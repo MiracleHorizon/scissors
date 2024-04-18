@@ -5,19 +5,16 @@ import MediaQuery from 'react-responsive'
 import { FileImageIcon } from '@scissors/react-icons/FileImageIcon'
 
 import { UploadedFileProperties } from './UploadedFileProperties'
+import { ImageUploadDialog } from '@components/ImageUploadDialog'
 import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
-import { ImageUploadPopover } from '@components/ImageUploadPopover'
 import { ButtonDelete } from '@ui/ButtonDelete'
-import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
-import { allowedImageFormats } from '@site/config'
 import styles from './UploadedFileCard.module.css'
 
 export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
 
-  const setFile = useOutputStore(state => state.setFile)
   const removeFile = useOutputStore(state => state.removeFile)
 
   const handleRemoveFile = useCallback(() => removeFile(), [removeFile])
@@ -56,14 +53,7 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
             pr='4'
             className={styles.buttonsContainer}
           >
-            <Flex gap='1'>
-              <ImageUploadPopover />
-              <ButtonUpload
-                accept={allowedImageFormats}
-                setFile={setFile}
-                tooltipContent='Upload New File'
-              />
-            </Flex>
+            <ImageUploadDialog />
             <ConfirmAlert
               title='Confirm deletion'
               description='Are you sure you want to continue?'

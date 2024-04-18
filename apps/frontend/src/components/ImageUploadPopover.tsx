@@ -1,164 +1,45 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { Button, Flex, IconButton, Popover, TextField, Tooltip } from '@radix-ui/themes'
-import { type ChangeEvent, useMemo, useState } from 'react'
+import { useState } from 'react'
+import { IconButton, Popover, Tooltip } from '@radix-ui/themes'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 
+import { ImageUploadForm } from './ImageUploadForm'
 import { useOutputStore } from '@stores/output'
-import { isURL } from '@helpers/isURL'
-import { isValidFileType } from '@helpers/file/isValidFileType'
-import { isValidFileSize } from '@helpers/file/isValidFileSize'
-import { cropImageFileType } from '@helpers/file/cropImageFileType'
-import { createFileFromBlob } from '@helpers/file/createFileFromBlob'
 
-const FileSizeAlert = dynamic(
-  () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
-  {
-    ssr: false
-  }
-)
-const FileTypeAlert = dynamic(
-  () => import('@components/alerts/FileTypeAlert').then(mod => mod.FileTypeAlert),
-  {
-    ssr: false
-  }
-)
-const DefaultErrorAlert = dynamic(
-  () => import('@components/alerts/DefaultErrorAlert').then(mod => mod.DefaultErrorAlert),
-  {
-    ssr: false
-  }
-)
-
-const INVALID_FILE_SIZE_MESSAGE = 'Invalid file size'
-const INVALID_FILE_TYPE_MESSAGE = 'Invalid file type'
-const SOMETHING_WENT_WRONG_MESSAGE = 'Something went wrong. Please try again later'
-type ErrorMessage =
-  | typeof INVALID_FILE_SIZE_MESSAGE
-  | typeof INVALID_FILE_TYPE_MESSAGE
-  | typeof SOMETHING_WENT_WRONG_MESSAGE
-
-export function ImageUploadPopover() {
+function UploadForm({ onClose }: { onClose: VoidFunction }) {
   const [value, setValue] = useState('')
-  const [error, setError] = useState<Error | null>(null)
-  const [isValidURL, setIsValidURL] = useState(true)
   const setFile = useOutputStore(state => state.setFile)
 
-  function onValueChange(ev: ChangeEvent<HTMLInputElement>) {
-    const value = ev.target.value
-
-    if (value.length === 0) {
-      setIsValidURL(true)
-    } else {
-      setIsValidURL(isURL(value))
-    }
-
-    setValue(value)
+  const handleUpload = (file: File) => {
+    setFile(file)
+    onClose()
   }
 
-  async function handleUpload() {
-    try {
-      const response = await fetch(value)
-      if (!response.ok) {
-        return setError(new Error(SOMETHING_WENT_WRONG_MESSAGE))
-      }
+  return <ImageUploadForm value={value} setValue={setValue} onUpload={handleUpload} />
+}
 
-      const blob = await response.blob()
+export function ImageUploadPopover() {
+  const [isOpen, setIsOpen] = useState(false)
 
-      if (!isValidFileType(blob.type)) {
-        return setError(new Error(INVALID_FILE_TYPE_MESSAGE))
-      }
-
-      if (!isValidFileSize(blob.size)) {
-        return setError(new Error(INVALID_FILE_SIZE_MESSAGE))
-      }
-
-      const fileType = cropImageFileType(blob.type)
-      const fileName = `image.${fileType}`
-      const file = createFileFromBlob(blob, fileName)
-
-      setFile(file)
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err)
-      setError(new Error(SOMETHING_WENT_WRONG_MESSAGE))
-    }
-  }
-
-  function handleResetState() {
-    setValue('')
-    setError(null)
-    setIsValidURL(true)
-  }
-
-  const onOpenChange = (value: boolean) => {
-    if (!value) {
-      handleResetState()
-    }
-  }
+  const handleClose = () => setIsOpen(false)
 
   return (
-    <>
-      <Popover.Root onOpenChange={onOpenChange}>
-        <Tooltip content='Upload an image using a link'>
-          <Popover.Trigger>
-            <IconButton color='gray' variant='outline'>
-              <Link2Icon width='18px' height='18px' />
-            </IconButton>
-          </Popover.Trigger>
-        </Tooltip>
+    <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
+      <Tooltip content='Upload an image using a link'>
+        <Popover.Trigger>
+          <IconButton color='gray' variant='outline'>
+            <Link2Icon width='18px' height='18px' label='upload an image using a link' />
+          </IconButton>
+        </Popover.Trigger>
+      </Tooltip>
 
-        <Popover.Content align='center'>
-          <Flex gap='2' width='340px'>
-            <form className='w-full' onSubmit={ev => ev.preventDefault()}>
-              <TextField.Root
-                color={!isValidURL || error !== null ? 'red' : undefined}
-                value={value}
-                placeholder='Paste link to an image...'
-                onChange={onValueChange}
-              />
-            </form>
-
-            <Popover.Close>
-              <Button
-                disabled={value.length === 0 || !isValidURL || error !== null}
-                onClick={handleUpload}
-              >
-                Upload
-              </Button>
-            </Popover.Close>
-          </Flex>
+      {isOpen && (
+        <Popover.Content align='center' width='370px'>
+          <UploadForm onClose={handleClose} />
         </Popover.Content>
-      </Popover.Root>
-
-      {error !== null && (
-        <ErrorAlert message={error.message as ErrorMessage} onClose={handleResetState} />
       )}
-    </>
+    </Popover.Root>
   )
-}
-
-function ErrorAlert({ message, onClose }: ErrorAlertProps) {
-  const props = useMemo(() => ({ open: true, onClose }), [onClose])
-
-  // TODO: Проверить динамические импорты
-  const Component = useMemo(() => {
-    switch (message) {
-      case INVALID_FILE_SIZE_MESSAGE:
-        return FileSizeAlert
-      case INVALID_FILE_TYPE_MESSAGE:
-        return FileTypeAlert
-      case SOMETHING_WENT_WRONG_MESSAGE:
-        return DefaultErrorAlert
-    }
-  }, [message])
-
-  return <Component {...props} />
-}
-
-interface ErrorAlertProps {
-  message: ErrorMessage
-  onClose: VoidFunction
 }

@@ -10,6 +10,7 @@ import { ButtonUpload } from '@ui/ButtonUpload'
 import { useOutputStore } from '@stores/output'
 import { allowedImageFormats } from '@site/config'
 import { createTour, isTourCompleted, TOUR_STEP } from '@lib/tour'
+import styles from './ImageUploader.module.css'
 import '@lib/tour/tour.css'
 
 export function ImageUploader() {
@@ -39,6 +40,7 @@ export function ImageUploader() {
       }}
       m='auto'
       data-tourstep={TOUR_STEP.FILE_UPLOAD}
+      className={styles.root}
     >
       <ImageDropzone accept={allowedImageFormats} setFile={setFile} />
 

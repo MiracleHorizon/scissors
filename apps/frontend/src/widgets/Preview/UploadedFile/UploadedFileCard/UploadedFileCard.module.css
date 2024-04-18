@@ -1,7 +1,7 @@
 .card {
   --card-inset-width: 54px;
   --card-content-offset: var(--space-4);
-  --buttons-width: 84px;
+  --buttons-width: var(--base-button-height);
   --buttons-offset: var(--space-4);
 
   width: 100%;

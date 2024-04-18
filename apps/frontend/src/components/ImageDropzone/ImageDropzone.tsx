@@ -11,7 +11,7 @@ import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import styles from './ImageDropzone.module.css'
 
 const padding: PaddingProps = {
-  py: '2',
+  py: '4',
   px: {
     initial: '4',
     xs: '6'
@@ -27,10 +27,11 @@ const ImageDropzone: FC<ComponentProps> = ({
   <Flex
     {...padding}
     {...props}
+    data-id='image-dropzone'
     title='File is not uploaded'
     align='center'
     justify='center'
-    width='calc(100% - 40px)'
+    height='130px'
     gap='3'
     className={clsx(
       styles.root,

@@ -14,6 +14,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
     setFile,
     tooltipContent,
     htmlAttributes,
+    onUpload,
     ...inputAttributes
   }: T) {
     const [isDragOver, setIsDragOver] = useState(false)
@@ -41,6 +42,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
 
       if (isValidFileSize(file.size)) {
         setFile(file)
+        onUpload?.()
       } else {
         handleOpenAlert()
       }
@@ -58,6 +60,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
 
       if (isValidFileSize(firstFile.size)) {
         setFile(firstFile)
+        onUpload?.()
       } else {
         handleOpenAlert()
       }

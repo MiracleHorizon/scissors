@@ -6,6 +6,7 @@ export interface Props {
   setFile: (file: File | null) => void
   tooltipContent?: string
   htmlAttributes?: ComponentHTMLAttributes
+  onUpload?: VoidFunction
 }
 
 export type ComponentProps = PropsWithChildren<
