@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 
 import { MAX_HUE, MIN_HUE } from '@scissors/sharp'
 
-import { OptionSlider } from '@components/OptionSlider'
+import { Slider } from '@design-system/slider'
 import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
 import styles from './SliderHue.module.css'
@@ -25,7 +25,7 @@ export function SliderHue() {
   } as CSSProperties
 
   return (
-    <OptionSlider
+    <Slider
       title='Hue angle'
       valueSign='°'
       value={[hue]}

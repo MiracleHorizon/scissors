@@ -1,6 +1,6 @@
 import { ScissorsIcon } from '@scissors/react-icons/ScissorsIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonTrimReset } from './ButtonTrimReset'
 import { DOCS_ANCHOR_TRIM, PATH_DOCS } from '@site/paths'
 

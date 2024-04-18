@@ -1,6 +1,6 @@
 import { ShadowIcon } from '@scissors/react-icons/ShadowIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'
 import { useGammaStore } from '@stores/gamma'

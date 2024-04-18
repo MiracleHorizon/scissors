@@ -28,4 +28,4 @@ interface Value {
   label?: string
 }
 
-export type OptionSelectData = Props['data']
+export type SelectData = Props['data']

@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
-import { OptionSectionHeaderSkeleton } from '@components/OptionSectionHeader/OptionSectionHeaderSkeleton'
+import { OptionSectionHeaderSkeleton } from '@widgets/SettingsPanel/OptionSectionHeader/OptionSectionHeaderSkeleton'
 import { ColorFieldSkeleton } from '@ui/ColorField/ColorFieldSkeleton'
 
 export const TintContentSkeleton = () => (

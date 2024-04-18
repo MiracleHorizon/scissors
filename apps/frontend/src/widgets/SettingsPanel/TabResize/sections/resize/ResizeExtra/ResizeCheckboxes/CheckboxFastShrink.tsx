@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
@@ -26,7 +26,5 @@ export function CheckboxFastShrink() {
     return null
   }
 
-  return (
-    <OptionCheckbox label='Fast Shrink' checked={fastShrink} onClick={handleToggleFastShrink} />
-  )
+  return <Checkbox label='Fast Shrink' checked={fastShrink} onClick={handleToggleFastShrink} />
 }

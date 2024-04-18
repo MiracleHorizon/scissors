@@ -3,7 +3,7 @@ import { ArrowDownIcon } from '@scissors/react-icons/ArrowDownIcon'
 import { ArrowLeftIcon } from '@scissors/react-icons/ArrowLeftIcon'
 import { ArrowRightIcon } from '@scissors/react-icons/ArrowRightIcon'
 
-import { OptionNumberInput } from '@components/OptionNumberInput'
+import { NumberInput } from 'src/components/NumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 
@@ -20,28 +20,28 @@ export function ExtendDirectionFormSeparated() {
 
   return (
     <>
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={left}
         setValue={setLeft}
         placeholder='Left'
         icon={<ArrowLeftIcon label='extend left' />}
       />
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={right}
         setValue={setRight}
         placeholder='Right'
         icon={<ArrowRightIcon label='extend right' />}
       />
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={top}
         setValue={setTop}
         placeholder='Top'
         icon={<ArrowUpIcon label='extend top' />}
       />
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={bottom}
         setValue={setBottom}

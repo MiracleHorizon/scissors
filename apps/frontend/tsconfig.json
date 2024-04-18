@@ -78,6 +78,9 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@design-system/*": [
+        "./src/design-system/*"
+      ],
       "@hoc/*": [
         "./src/hoc/*"
       ],

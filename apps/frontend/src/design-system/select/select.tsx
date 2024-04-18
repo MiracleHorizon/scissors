@@ -1,14 +1,14 @@
 'use client'
 
 import { useId } from 'react'
-import { Flex, Select, Text } from '@radix-ui/themes'
+import { Flex, Select as RadixSelect, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 import capitalize from 'lodash.capitalize'
 
-import type { Props } from './OptionSelect.types'
-import styles from './OptionSelect.module.css'
+import type { Props } from './types'
+import styles from './select.module.css'
 
-export function OptionSelect({
+export function Select({
   data,
   label,
   size = '2',
@@ -26,7 +26,7 @@ export function OptionSelect({
   const triggerId = useId()
 
   return (
-    <Select.Root size={size} {...props}>
+    <RadixSelect.Root size={size} {...props}>
       <Flex direction='column' align='start' width='100%'>
         <Flex
           align='center'
@@ -43,14 +43,14 @@ export function OptionSelect({
           {DetailsComponent}
         </Flex>
 
-        <Select.Trigger
+        <RadixSelect.Trigger
           id={triggerId}
           style={triggerStyle}
           className={clsx('w-full', triggerClassName)}
         />
       </Flex>
 
-      <Select.Content
+      <RadixSelect.Content
         position='popper'
         side='bottom'
         sideOffset={5}
@@ -58,19 +58,19 @@ export function OptionSelect({
         className={clsx(styles.content, contentClassName)}
       >
         {data.map(({ label: groupLabel, value }, index) => (
-          <Select.Group key={index + value.slice(0, 3).join(', ')}>
-            {groupLabel && <Select.Label>{groupLabel}</Select.Label>}
+          <RadixSelect.Group key={index + value.slice(0, 3).join(', ')}>
+            {groupLabel && <RadixSelect.Label>{groupLabel}</RadixSelect.Label>}
 
             {value.map(value => (
-              <Select.Item key={value} value={value}>
+              <RadixSelect.Item key={value} value={value}>
                 {valueCapitalize ? capitalize(value) : value}
-              </Select.Item>
+              </RadixSelect.Item>
             ))}
 
-            {index < data.length - 1 && <Select.Separator />}
-          </Select.Group>
+            {index < data.length - 1 && <RadixSelect.Separator />}
+          </RadixSelect.Group>
         ))}
-      </Select.Content>
-    </Select.Root>
+      </RadixSelect.Content>
+    </RadixSelect.Root>
   )
 }

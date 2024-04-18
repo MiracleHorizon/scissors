@@ -1,7 +1,7 @@
 import { RowSpacingIcon } from '@scissors/react-icons/RowSpacingIcon'
 import { ColumnSpacingIcon } from '@scissors/react-icons/ColumnSpacingIcon'
 
-import { OptionNumberInput } from '@components/OptionNumberInput'
+import { NumberInput } from 'src/components/NumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 
@@ -14,14 +14,14 @@ export function ExtendDirectionFormAxis() {
 
   return (
     <>
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={axisX}
         setValue={setAxisX}
         placeholder='X'
         icon={<ColumnSpacingIcon label='extend x axis' />}
       />
-      <OptionNumberInput
+      <NumberInput
         {...DEFAULT_EXTEND_INPUT_PROPS}
         value={axisY}
         setValue={setAxisY}

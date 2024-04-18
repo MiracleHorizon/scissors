@@ -6,10 +6,10 @@ import { clsx } from 'clsx'
 
 import { NOT_ALLOWED_KEYS, parseValue } from './utils'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
-import type { LabelProps, Props } from './OptionNumberInput.types'
-import styles from './OptionNumberInput.module.css'
+import type { LabelProps, Props } from './NumberInput.types'
+import styles from './NumberInput.module.css'
 
-export const labelTestId = 'option-number-input-label'
+export const labelTestId = 'number-input-label'
 
 const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
   <Flex data-testid={labelTestId} direction='column' gap='1' width='100%'>
@@ -20,10 +20,10 @@ const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
   </Flex>
 )
 
-export const fieldTestId = 'option-number-input-field'
-export const slotTestId = 'option-number-input-slot'
+export const fieldTestId = 'number-input-field'
+export const slotTestId = 'number-input-slot'
 
-export function OptionNumberInput({
+export function NumberInput({
   icon,
   min,
   max,

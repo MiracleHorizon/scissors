@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
 
-export const OptionSliderPopover: FC<Props> = ({ content, disabled }) => (
+export const SliderPopover: FC<Props> = ({ content, disabled }) => (
   <Popover.Root open={disabled ? false : undefined}>
     <Popover.Trigger>
       <ButtonInfo ml='3' />

@@ -1,6 +1,6 @@
 import { MoveIcon } from '@scissors/react-icons/MoveIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ExtendToolbar } from './ExtendToolbar'
 import { DOCS_ANCHOR_EXTEND, PATH_DOCS } from '@site/paths'
 

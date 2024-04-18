@@ -1,4 +1,4 @@
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useOutputStore } from '@stores/output'
 
 export const CheckboxKeepChanges = () => {
@@ -7,5 +7,5 @@ export const CheckboxKeepChanges = () => {
 
   const handleToggle = () => toggleKeepChanges()
 
-  return <OptionCheckbox label='Keep Changes' checked={checked} onClick={handleToggle} />
+  return <Checkbox label='Keep Changes' checked={checked} onClick={handleToggle} />
 }

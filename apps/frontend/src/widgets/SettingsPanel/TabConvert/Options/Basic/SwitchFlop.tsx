@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@components/OptionSwitch'
+import { Switch } from '@design-system/switch'
 import { useConvertStore } from '@stores/convert'
 
 export function SwitchFlop() {
@@ -9,5 +9,5 @@ export function SwitchFlop() {
 
   const handleToggleFlop = useCallback(() => toggleFlop(), [toggleFlop])
 
-  return <OptionSwitch title='Flop' checked={flop} onClick={handleToggleFlop} />
+  return <Switch title='Flop' checked={flop} onClick={handleToggleFlop} />
 }

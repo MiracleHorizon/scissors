@@ -1,7 +1,7 @@
 'use client'
 
 import { type FC, memo } from 'react'
-import { Flex, Switch, Text } from '@radix-ui/themes'
+import { Flex, Switch as RadixSwitch, Text } from '@radix-ui/themes'
 
 import type { Size } from '@lib/theme'
 
@@ -11,20 +11,20 @@ const width: Size = {
   md: '100%'
 } as const
 
-export const labelTestId = 'option-switch-label'
+export const labelTestId = 'switch-label'
 
-export const OptionSwitch: FC<Props> = memo(({ title, ...switchProps }) => (
+export const Switch: FC<Props> = memo(({ title, ...switchProps }) => (
   <Flex asChild justify='between' gap='2' width={width}>
     <Text data-testid={labelTestId} as='label'>
       <Text title={title} truncate>
         {title}
       </Text>
-      <Switch size='3' {...switchProps} />
+      <RadixSwitch size='3' {...switchProps} />
     </Text>
   </Flex>
 ))
 
-OptionSwitch.displayName = 'OptionSwitch'
+Switch.displayName = 'Switch'
 
 export interface Props {
   title: string

@@ -1,20 +1,20 @@
 'use client'
 
 import { type FC, memo, useId } from 'react'
-import { Checkbox, Flex, Text } from '@radix-ui/themes'
+import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import styles from './OptionCheckbox.module.css'
+import styles from './checkbox.module.css'
 
-export const rootTestId = 'option-checkbox-root'
+export const rootTestId = 'checkbox-root'
 
-export const OptionCheckbox: FC<Props> = memo(({ label, ...props }) => {
+export const Checkbox: FC<Props> = memo(({ label, ...props }) => {
   const id = useId()
 
   return (
     <Text data-testid={rootTestId} as='div' size='2'>
       <Flex align='center' gap='2'>
-        <Checkbox size='3' id={id} {...props} />
+        <RadixCheckbox size='3' id={id} {...props} />
 
         {label && (
           <Text
@@ -34,7 +34,7 @@ export const OptionCheckbox: FC<Props> = memo(({ label, ...props }) => {
   )
 })
 
-OptionCheckbox.displayName = 'OptionCheckbox'
+Checkbox.displayName = 'Checkbox'
 
 export interface Props {
   label?: string

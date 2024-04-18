@@ -1,6 +1,6 @@
 import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@scissors/sharp'
 
-import { OptionSlider } from '@components/OptionSlider'
+import { Slider } from '@design-system/slider'
 import { useModulateStore } from '@stores/modulate'
 
 export function SliderLightness() {
@@ -16,7 +16,7 @@ export function SliderLightness() {
   }
 
   return (
-    <OptionSlider
+    <Slider
       title='Lightness'
       valueSign='%'
       value={[lightness]}

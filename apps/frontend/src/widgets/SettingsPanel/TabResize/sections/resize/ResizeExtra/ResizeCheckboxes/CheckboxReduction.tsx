@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useResizeStore } from '@stores/resize'
 
 export function CheckboxReduction() {
@@ -10,7 +10,7 @@ export function CheckboxReduction() {
   const handleToggleWithoutReduction = useCallback(() => toggleReduction(), [toggleReduction])
 
   return (
-    <OptionCheckbox
+    <Checkbox
       label='Without Reduction'
       checked={withoutReduction}
       onClick={handleToggleWithoutReduction}

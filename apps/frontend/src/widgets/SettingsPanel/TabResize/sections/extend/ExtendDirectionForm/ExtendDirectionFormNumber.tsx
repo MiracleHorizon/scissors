@@ -1,6 +1,6 @@
 import { MoveIcon } from '@scissors/react-icons/MoveIcon'
 
-import { OptionNumberInput } from '@components/OptionNumberInput'
+import { NumberInput } from 'src/components/NumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 
@@ -9,7 +9,7 @@ export function ExtendDirectionFormNumber() {
   const setValue = useExtendStore(state => state.setExtendValue)
 
   return (
-    <OptionNumberInput
+    <NumberInput
       {...DEFAULT_EXTEND_INPUT_PROPS}
       value={value}
       setValue={setValue}

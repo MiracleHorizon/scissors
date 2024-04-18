@@ -2,16 +2,11 @@
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
-import {
-  fieldTestId,
-  labelTestId,
-  NOT_ALLOWED_KEYS,
-  OptionNumberInput,
-  type Props,
-  slotTestId
-} from '@components/OptionNumberInput'
+import { fieldTestId, labelTestId, NumberInput, slotTestId } from './NumberInput'
+import { NOT_ALLOWED_KEYS } from './utils'
+import type { Props } from './NumberInput.types'
 
-describe('@components/OptionNumberInput - rendering', () => {
+describe('@components/NumberInput - rendering', () => {
   afterEach(() => {
     cleanup()
   })
@@ -35,7 +30,7 @@ describe('@components/OptionNumberInput - rendering', () => {
       ),
       setValue() {}
     }
-    const { getByTestId } = render(<OptionNumberInput {...props} />)
+    const { getByTestId } = render(<NumberInput {...props} />)
 
     const labelElement = getByTestId(labelTestId)
     expect(labelElement).toBeInTheDocument()
@@ -60,7 +55,7 @@ describe('@components/OptionNumberInput - rendering', () => {
       max: 100,
       setValue() {}
     }
-    const { container } = render(<OptionNumberInput {...props} />)
+    const { container } = render(<NumberInput {...props} />)
 
     const field = container.querySelector('input')
     expect(field).toBeInTheDocument()
@@ -78,7 +73,7 @@ describe('@components/OptionNumberInput - rendering', () => {
   })
 })
 
-describe('@components/OptionNumberInput - value change', () => {
+describe('@components/NumberInput - value change', () => {
   const defaultValue = 0
   const min = -10
   const max = 10
@@ -104,7 +99,7 @@ describe('@components/OptionNumberInput - value change', () => {
     })
   }
   const renderField = () => {
-    const utils = render(<OptionNumberInput {...props} />)
+    const utils = render(<NumberInput {...props} />)
     const field = screen.getByTestId(fieldTestId) as HTMLInputElement
 
     return { field, ...utils }
@@ -124,7 +119,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(testValue)
     expect(value).toBe(testValue)
 
-    rerender(<OptionNumberInput {...updatePropsValue(testValue)} />)
+    rerender(<NumberInput {...updatePropsValue(testValue)} />)
     expect(field.value).toBe(testValue.toString())
   })
 
@@ -137,7 +132,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(testValue)
     expect(value).toBe(testValue)
 
-    rerender(<OptionNumberInput {...updatePropsValue(testValue)} />)
+    rerender(<NumberInput {...updatePropsValue(testValue)} />)
     expect(field.value).toBe(testValue.toString())
   })
 
@@ -155,7 +150,7 @@ describe('@components/OptionNumberInput - value change', () => {
       expect(props.setValue).toHaveBeenCalledWith(expectedOutput)
       expect(value).toBe(expectedOutput)
 
-      rerender(<OptionNumberInput {...updatePropsValue(expectedOutput)} />)
+      rerender(<NumberInput {...updatePropsValue(expectedOutput)} />)
       expect(field.value).toBe('')
     }
   })
@@ -170,7 +165,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(expectedOutput)
     expect(value).toBe(expectedOutput)
 
-    rerender(<OptionNumberInput {...updatePropsValue(expectedOutput)} />)
+    rerender(<NumberInput {...updatePropsValue(expectedOutput)} />)
     expect(field.value).toBe(expectedOutput.toString())
   })
 
@@ -184,7 +179,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(expectedOutput)
     expect(value).toBe(expectedOutput)
 
-    rerender(<OptionNumberInput {...updatePropsValue(expectedOutput)} />)
+    rerender(<NumberInput {...updatePropsValue(expectedOutput)} />)
     expect(field.value).toBe(expectedOutput.toString())
   })
 
@@ -198,7 +193,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(expectedOutput)
     expect(value).toBe(expectedOutput)
 
-    rerender(<OptionNumberInput {...updatePropsValue(expectedOutput)} />)
+    rerender(<NumberInput {...updatePropsValue(expectedOutput)} />)
     expect(field.value).toBe('')
   })
 
@@ -212,7 +207,7 @@ describe('@components/OptionNumberInput - value change', () => {
     expect(props.setValue).toHaveBeenCalledWith(expectedOutput)
     expect(value).toBe(expectedOutput)
 
-    rerender(<OptionNumberInput {...updatePropsValue(expectedOutput)} />)
+    rerender(<NumberInput {...updatePropsValue(expectedOutput)} />)
     expect(field.value).toBe('')
   })
 })

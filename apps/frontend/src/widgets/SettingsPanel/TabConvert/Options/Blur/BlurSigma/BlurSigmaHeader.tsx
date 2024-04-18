@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { BlurIcon } from '@scissors/react-icons/BlurIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonResetBlurSigma } from './ButtonResetBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 
