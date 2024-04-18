@@ -2,7 +2,7 @@ import { Flex } from '@radix-ui/themes'
 
 import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
-import { OptionSlider } from '@components/OptionSlider'
+import { Slider } from '@design-system/slider'
 import { BlurSigmaHeader } from './BlurSigmaHeader'
 import { useBlurStore } from '@stores/blur'
 
@@ -21,7 +21,7 @@ export function BlurSigma({ disabled }: Props) {
   return (
     <Flex direction='column' align='center' gap='2' width='100%'>
       <BlurSigmaHeader disabled={disabled} />
-      <OptionSlider
+      <Slider
         value={[sigma]}
         defaultValue={[MIN_BLUR_SIGMA]}
         step={BLUR_SIGMA_STEP}

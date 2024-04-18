@@ -1,4 +1,4 @@
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useTrimStore } from '@stores/trim'
 
 export function CheckboxTrimLineArt() {
@@ -6,5 +6,5 @@ export function CheckboxTrimLineArt() {
   const toggleLineArt = useTrimStore(state => state.toggleLineArt)
   const handleToggleLineArt = () => toggleLineArt()
 
-  return <OptionCheckbox label='Line Art' onClick={handleToggleLineArt} checked={lineArt} />
+  return <Checkbox label='Line Art' onClick={handleToggleLineArt} checked={lineArt} />
 }

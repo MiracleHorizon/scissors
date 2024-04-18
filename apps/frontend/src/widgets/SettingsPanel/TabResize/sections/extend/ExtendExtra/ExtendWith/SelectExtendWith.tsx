@@ -7,11 +7,11 @@ import {
   IMAGE_FILE_FORMAT
 } from '@scissors/sharp'
 
-import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
+import { Select, type SelectData } from '@design-system/select'
 import { useExtendStore } from '@stores/extend'
 import { useOutputStore } from '@stores/output'
 
-const defaultData: OptionSelectData = [
+const defaultData: SelectData = [
   {
     value: Object.values(EXTEND_WITH)
   }
@@ -19,7 +19,7 @@ const defaultData: OptionSelectData = [
 // ExtendWith.REPEAT and ExtendWith.MIRROR throws "pngload_buffer: out of order read at line ..." error
 // Bug or feature? sharp version: 0.32.5(6) - 0.33.1; libvips version: 8.15.0
 const unsupportedPNGExtendWith: string[] = [EXTEND_WITH.REPEAT, EXTEND_WITH.MIRROR]
-const dataForPNG: OptionSelectData = [
+const dataForPNG: SelectData = [
   {
     value: [EXTEND_WITH.BACKGROUND, EXTEND_WITH.COPY]
   }
@@ -45,7 +45,7 @@ export function SelectExtendWith() {
   }, [outputFormat, extendWith, setExtendWith])
 
   return (
-    <OptionSelect
+    <Select
       label='Extend with'
       value={extendWith ?? DEFAULT_EXTEND_WITH}
       defaultValue={DEFAULT_EXTEND_WITH}

@@ -1,4 +1,4 @@
-import { OptionSlider } from '@components/OptionSlider'
+import { Slider } from '@design-system/slider'
 import { useModulateStore } from '@stores/modulate'
 import { BRIGHTNESS_STEP, MAX_BRIGHTNESS, MIN_BRIGHTNESS } from '@scissors/sharp'
 
@@ -15,7 +15,7 @@ export function SliderBrightness() {
   }
 
   return (
-    <OptionSlider
+    <Slider
       title='Brightness'
       value={[brightness]}
       defaultValue={[MIN_BRIGHTNESS]}

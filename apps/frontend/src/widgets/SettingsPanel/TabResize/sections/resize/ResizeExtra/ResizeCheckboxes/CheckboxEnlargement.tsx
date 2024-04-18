@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useResizeStore } from '@stores/resize'
 
 export function CheckboxEnlargement() {
@@ -10,7 +10,7 @@ export function CheckboxEnlargement() {
   const handleToggleWithoutEnlargement = useCallback(() => toggleEnlargement(), [toggleEnlargement])
 
   return (
-    <OptionCheckbox
+    <Checkbox
       label='Without Enlarging'
       checked={withoutEnlargement}
       onClick={handleToggleWithoutEnlargement}

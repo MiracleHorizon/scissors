@@ -2,10 +2,10 @@ import { useCallback } from 'react'
 
 import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@scissors/sharp'
 
-import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
+import { Select, type SelectData } from '@design-system/select'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData = [
+const data: SelectData = [
   {
     value: Object.values(RESIZE_KERNEL)
   }
@@ -18,7 +18,7 @@ export function SelectResizeKernel() {
   const handleSetKernel = useCallback((value: ResizeKernel) => setKernel(value), [setKernel])
 
   return (
-    <OptionSelect
+    <Select
       label='Kernel'
       value={kernel ?? DEFAULT_RESIZE_KERNEL}
       defaultValue={DEFAULT_RESIZE_KERNEL}

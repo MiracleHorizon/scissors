@@ -9,7 +9,7 @@ import {
 import { WidthIcon } from '@scissors/react-icons/WidthIcon'
 import { HeightIcon } from '@scissors/react-icons/HeightIcon'
 
-import { OptionNumberInput } from '@components/OptionNumberInput'
+import { NumberInput } from 'src/components/NumberInput'
 import { useResizeStore } from '@stores/resize'
 
 const defaultInputProps = {
@@ -27,7 +27,7 @@ export function ResizeSizesForm() {
   return (
     <Flex asChild align='center' gap='2' width='100%'>
       <form>
-        <OptionNumberInput
+        <NumberInput
           {...defaultInputProps}
           label='Width'
           value={width}
@@ -36,7 +36,7 @@ export function ResizeSizesForm() {
           placeholder='1920'
           icon={<WidthIcon />}
         />
-        <OptionNumberInput
+        <NumberInput
           {...defaultInputProps}
           label='Height'
           value={height}

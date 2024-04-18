@@ -2,10 +2,10 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { OptionSwitch, type Props } from '@components/OptionSwitch'
+import { Switch, type Props } from './switch'
 import { setup } from '@testing/test-utils'
 
-describe('@components/OptionSwitch', () => {
+describe('@design-system/Switch', () => {
   const defaultProps: Props = {
     title: 'test',
     checked: false,
@@ -17,14 +17,14 @@ describe('@components/OptionSwitch', () => {
   })
 
   it('should render the switch', () => {
-    const { getByRole } = render(<OptionSwitch {...defaultProps} />)
+    const { getByRole } = render(<Switch {...defaultProps} />)
 
     const switchElement = getByRole('switch')
     expect(switchElement).toBeInTheDocument()
   })
 
   it('should render the switch title', () => {
-    const { getByText } = render(<OptionSwitch {...defaultProps} />)
+    const { getByText } = render(<Switch {...defaultProps} />)
     const titleElement = getByText(defaultProps.title)
 
     expect(titleElement).toBeInTheDocument()
@@ -38,7 +38,7 @@ describe('@components/OptionSwitch', () => {
       ...defaultProps,
       checked: undefined // Input should be uncontrolled
     }
-    const { getByRole, user } = setup(<OptionSwitch {...props} />)
+    const { getByRole, user } = setup(<Switch {...props} />)
 
     const switchElement = getByRole('switch')
     expect(switchElement).toBeInTheDocument()

@@ -2,11 +2,11 @@ import { useCallback } from 'react'
 
 import { DEFAULT_RESIZE_FIT, RESIZE_FIT, type ResizeFit } from '@scissors/sharp'
 
-import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
+import { Select, type SelectData } from '@design-system/select'
 import { ResizeFitExamplesPopover } from './ResizeFitExamplesPopover'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData = [
+const data: SelectData = [
   {
     value: Object.values(RESIZE_FIT)
   }
@@ -19,7 +19,7 @@ export function SelectResizeFit() {
   const handleSetFit = useCallback((value: ResizeFit) => setFit(value), [setFit])
 
   return (
-    <OptionSelect
+    <Select
       label='Fit'
       value={fit ?? DEFAULT_RESIZE_FIT}
       defaultValue={DEFAULT_RESIZE_FIT}

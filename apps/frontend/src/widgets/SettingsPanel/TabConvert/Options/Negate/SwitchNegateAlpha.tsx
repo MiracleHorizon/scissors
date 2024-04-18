@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@components/OptionSwitch'
+import { Switch } from '@design-system/switch'
 import { useNegateStore } from '@stores/negate'
 
 export function SwitchNegateAlpha() {
@@ -11,11 +11,6 @@ export function SwitchNegateAlpha() {
   const handleToggleAlpha = useCallback(() => toggleAlpha(), [toggleAlpha])
 
   return (
-    <OptionSwitch
-      title='Negate alpha'
-      disabled={!negate}
-      checked={alpha}
-      onClick={handleToggleAlpha}
-    />
+    <Switch title='Negate alpha' disabled={!negate} checked={alpha} onClick={handleToggleAlpha} />
   )
 }

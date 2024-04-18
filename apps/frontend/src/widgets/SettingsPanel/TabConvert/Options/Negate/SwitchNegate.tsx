@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { OptionSwitch } from '@components/OptionSwitch'
+import { Switch } from '@design-system/switch'
 import { useNegateStore } from '@stores/negate'
 
 export function SwitchNegate() {
@@ -9,5 +9,5 @@ export function SwitchNegate() {
   const toggle = useNegateStore(state => state.toggleValue)
   const handleToggle = useCallback(() => toggle(), [toggle])
 
-  return <OptionSwitch title='Negate' checked={negate} onClick={handleToggle} />
+  return <Switch title='Negate' checked={negate} onClick={handleToggle} />
 }

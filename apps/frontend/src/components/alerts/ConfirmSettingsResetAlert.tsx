@@ -3,7 +3,7 @@
 import { type ComponentPropsWithoutRef, type FC, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 
 const contentActionsProps = {
   gap: {
@@ -40,11 +40,7 @@ export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCa
             wrap='wrap'
             {...(contentActionsProps as ComponentPropsWithoutRef<typeof Flex>)}
           >
-            <OptionCheckbox
-              label='Remove all'
-              checked={removeAll}
-              onClick={handleToggleRemoveAll}
-            />
+            <Checkbox label='Remove all' checked={removeAll} onClick={handleToggleRemoveAll} />
 
             <Flex align='center' justify='end' wrap='wrap-reverse' gap='3'>
               <AlertDialog.Cancel>

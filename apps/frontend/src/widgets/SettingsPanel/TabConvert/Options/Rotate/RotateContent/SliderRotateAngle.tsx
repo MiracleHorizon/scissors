@@ -1,6 +1,6 @@
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@scissors/sharp'
 
-import { OptionSlider } from '@components/OptionSlider'
+import { Slider } from '@design-system/slider'
 import { useRotateStore } from '@stores/rotate'
 
 export function SliderRotateAngle() {
@@ -16,7 +16,7 @@ export function SliderRotateAngle() {
   }
 
   return (
-    <OptionSlider
+    <Slider
       valueSign='°'
       value={[angle]}
       defaultValue={[DEFAULT_ROTATE_ANGLE]}

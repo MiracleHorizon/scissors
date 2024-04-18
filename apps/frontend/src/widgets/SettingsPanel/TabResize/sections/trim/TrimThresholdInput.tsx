@@ -1,6 +1,6 @@
 import { DEFAULT_TRIM_THRESHOLD, MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '@scissors/sharp'
 
-import { OptionNumberInput } from '@components/OptionNumberInput'
+import { NumberInput } from 'src/components/NumberInput'
 import { useTrimStore } from '@stores/trim'
 
 export function TrimThresholdInput() {
@@ -10,7 +10,7 @@ export function TrimThresholdInput() {
   const handleSetThreshold = (value: number | null) => setThreshold(value)
 
   return (
-    <OptionNumberInput
+    <NumberInput
       value={threshold}
       setValue={handleSetThreshold}
       label='Threshold'

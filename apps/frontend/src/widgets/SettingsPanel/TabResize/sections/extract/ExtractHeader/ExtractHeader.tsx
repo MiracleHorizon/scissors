@@ -1,6 +1,6 @@
 import { CropIcon } from '@scissors/react-icons/CropIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonExtractReset } from './ButtonExtractReset'
 
 export const ExtractHeader = () => (

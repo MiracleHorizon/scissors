@@ -2,10 +2,10 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { rootTestId, OptionCheckbox, type Props } from '@components/OptionCheckbox'
+import { rootTestId, Checkbox, type Props } from './checkbox'
 import { setup } from '@testing/test-utils'
 
-describe('@components/OptionCheckbox', () => {
+describe('@design-system/Checkbox', () => {
   const defaultProps: Props = {
     label: 'test label',
     checked: false,
@@ -17,7 +17,7 @@ describe('@components/OptionCheckbox', () => {
   })
 
   it('should render the checkbox', () => {
-    const { getByRole, getByTestId } = render(<OptionCheckbox {...defaultProps} />)
+    const { getByRole, getByTestId } = render(<Checkbox {...defaultProps} />)
 
     const root = getByTestId(rootTestId)
     expect(root).toBeInTheDocument()
@@ -27,7 +27,7 @@ describe('@components/OptionCheckbox', () => {
   })
 
   it('should render the checkbox title', () => {
-    const { getByText } = render(<OptionCheckbox {...defaultProps} />)
+    const { getByText } = render(<Checkbox {...defaultProps} />)
     const labelEl = getByText(defaultProps.label!)
 
     expect(labelEl).toBeInTheDocument()
@@ -41,7 +41,7 @@ describe('@components/OptionCheckbox', () => {
       ...defaultProps,
       checked: undefined // Input should be uncontrolled
     }
-    const { user, getByRole } = setup(<OptionCheckbox {...props} />)
+    const { user, getByRole } = setup(<Checkbox {...props} />)
 
     const checkbox = getByRole('checkbox')
     expect(checkbox).toBeInTheDocument()

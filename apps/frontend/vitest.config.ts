@@ -7,6 +7,8 @@ import { getAliases } from './src/__setup__/test-aliases'
 const setupPath = path.resolve(__dirname, 'src/__setup__')
 
 export default defineConfig({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   plugins: [react()],
   test: {
     globals: true,
@@ -19,7 +21,8 @@ export default defineConfig({
       reporter: ['html'],
       reportsDirectory: path.resolve(setupPath, 'coverage'),
       reportOnFailure: true,
-      clean: true
+      clean: true,
+      all: false
     },
     alias: getAliases(__dirname)
   }

@@ -1,6 +1,6 @@
 import { TokensIcon } from '@scissors/react-icons/TokensIcon'
 
-import { OptionSectionHeader } from '@components/OptionSectionHeader'
+import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonRemoveModulate } from './ButtonRemoveModulate'
 import { ButtonResetModulate } from './ButtonResetModulate'
 import { DOCS_ANCHOR_MODULATE, PATH_DOCS } from '@site/paths'

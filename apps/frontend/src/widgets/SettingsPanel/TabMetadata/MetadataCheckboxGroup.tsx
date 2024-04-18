@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { useMetadataStore } from '@stores/metadata'
 
 export function MetadataCheckboxGroup({ hasExif, hasICC }: Props) {
@@ -18,16 +18,10 @@ export function MetadataCheckboxGroup({ hasExif, hasICC }: Props) {
 
   return (
     <Flex direction='column' gap='2'>
-      <OptionCheckbox
-        label='Keep Metadata'
-        checked={keepMetadata}
-        onClick={handleToggleKeepMetadata}
-      />
-      {hasExif && (
-        <OptionCheckbox label='Keep Exif' checked={keepExif} onClick={handleToggleKeepExif} />
-      )}
+      <Checkbox label='Keep Metadata' checked={keepMetadata} onClick={handleToggleKeepMetadata} />
+      {hasExif && <Checkbox label='Keep Exif' checked={keepExif} onClick={handleToggleKeepExif} />}
       {hasICC && (
-        <OptionCheckbox
+        <Checkbox
           label='Keep ICC Profile'
           checked={keepICCProfile}
           onClick={handleToggleKeepICCProfile}

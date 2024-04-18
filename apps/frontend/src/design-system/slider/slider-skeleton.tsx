@@ -1,7 +1,7 @@
 import { Flex, Skeleton } from '@radix-ui/themes'
 import type { FC } from 'react'
 
-export const OptionSliderSkeleton: FC<Props> = ({ withLabel = false, withInput = false }) => (
+export const SliderSkeleton: FC<Props> = ({ withLabel = false, withInput = false }) => (
   <Flex direction='column' width='100%' gap='1'>
     {withLabel && <Skeleton height='18px' width='100px' mb='1' />}
 

@@ -7,10 +7,10 @@ import {
   type ResizePosition
 } from '@scissors/sharp'
 
-import { OptionSelect, type OptionSelectData } from '@components/OptionSelect'
+import { Select, type SelectData } from '@design-system/select'
 import { useResizeStore } from '@stores/resize'
 
-const data: OptionSelectData = [
+const data: SelectData = [
   {
     label: 'Position',
     value: Object.values(RESIZE_POSITION)
@@ -31,7 +31,7 @@ export function SelectResizePosition() {
   )
 
   return (
-    <OptionSelect
+    <Select
       label='Position'
       value={position ?? DEFAULT_RESIZE_POSITION}
       defaultValue={DEFAULT_RESIZE_POSITION}

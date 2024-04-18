@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 import { DEFAULT_TRIM_BACKGROUND } from '@scissors/sharp'
 
-import { OptionCheckbox } from '@components/OptionCheckbox'
+import { Checkbox } from '@design-system/checkbox'
 import { TrimBackgroundPicker } from './TrimBackgroundPicker'
 import { TrimBackgroundInfoPopover } from './TrimBackgroundInfoPopover'
 import { useTrimStore } from '@stores/trim'
@@ -15,7 +15,7 @@ export function TrimBackground() {
   return (
     <Flex direction='column' gap='2'>
       <Flex gap='2'>
-        <OptionCheckbox
+        <Checkbox
           label='Use custom background'
           onClick={handleToggleBackground}
           checked={!!background}

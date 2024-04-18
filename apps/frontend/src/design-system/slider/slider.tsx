@@ -1,16 +1,16 @@
 'use client'
 
 import { useCallback } from 'react'
-import { Flex, Slider, Text } from '@radix-ui/themes'
+import { Flex, Slider as RadixSlider, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import { OptionNumberInput } from '../OptionNumberInput'
-import { OptionSliderHeader } from './OptionSliderHeader'
+import { NumberInput } from 'src/components/NumberInput'
+import { SliderHeader } from './slider-header'
 import { getSliderTitleValue, getSliderValue } from './utils'
-import type { Props } from './OptionSlider.types'
-import styles from './OptionSlider.module.css'
+import type { Props } from './types'
+import styles from './slider.module.css'
 
-export function OptionSlider({
+export function Slider({
   value,
   valueSign = '',
   title,
@@ -53,7 +53,7 @@ export function OptionSlider({
       })}
     >
       {title && (
-        <OptionSliderHeader
+        <SliderHeader
           title={getSliderTitleValue({
             title,
             value,
@@ -67,7 +67,7 @@ export function OptionSlider({
 
       <Flex align='start' gap='3' width='100%' className={styles.content}>
         <Flex direction='column' className={styles.sliderContainer}>
-          <Slider
+          <RadixSlider
             {...sliderProps}
             value={getSliderValue({
               value,
@@ -94,7 +94,7 @@ export function OptionSlider({
           Value input allows only for single value slider.
         */}
         {isSingle && (
-          <OptionNumberInput
+          <NumberInput
             value={value[0]}
             min={min}
             max={max}
