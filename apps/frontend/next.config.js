@@ -2,6 +2,9 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    ppr: true
+  },
   env: {
     SITE_DOMAIN: process.env.SITE_DOMAIN,
     SERVER_API: process.env.SERVER_API
