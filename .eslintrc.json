@@ -27,6 +27,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
     "for-direction": "warn",
     "no-unmodified-loop-condition": "error",
     "no-unreachable-loop": "error",

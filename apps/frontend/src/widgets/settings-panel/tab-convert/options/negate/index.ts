@@ -1,0 +1,1 @@
+export { Negate } from './negate'

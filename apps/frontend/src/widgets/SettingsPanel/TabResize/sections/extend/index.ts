@@ -1,1 +1,0 @@
-export { ExtendSection } from './ExtendSection'

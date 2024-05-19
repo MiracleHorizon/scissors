@@ -1,7 +1,7 @@
 import { Popover } from '@radix-ui/themes'
 import type { FC, ReactNode } from 'react'
 
-import { ButtonInfo } from '@ui/ButtonInfo'
+import { ButtonInfo } from '@ui/button-info'
 
 export const SliderPopover: FC<Props> = ({ content, disabled }) => (
   <Popover.Root open={disabled ? false : undefined}>

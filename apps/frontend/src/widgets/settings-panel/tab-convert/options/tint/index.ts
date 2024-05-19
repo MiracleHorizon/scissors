@@ -1,0 +1,1 @@
+export { Tint } from './tint'

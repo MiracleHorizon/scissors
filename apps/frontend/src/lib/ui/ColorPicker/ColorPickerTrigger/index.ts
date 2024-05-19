@@ -1,1 +1,0 @@
-export { ColorPickerTrigger } from './ColorPickerTrigger'

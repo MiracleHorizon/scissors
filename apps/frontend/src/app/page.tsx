@@ -1,8 +1,8 @@
 import { Flex, ScrollArea } from '@radix-ui/themes'
 
-import { Preview } from '@widgets/Preview'
-import { SettingsPanel } from '@widgets/SettingsPanel'
-import { AppFooter } from '@widgets/AppFooter'
+import { Preview } from '@widgets/preview'
+import { SettingsPanel } from '@widgets/settings-panel'
+import { AppFooter } from '@widgets/app-footer'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 

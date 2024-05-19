@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
 import 'yet-another-react-lightbox/styles.css'
 
-import { Layout } from '@layouts/default'
+import { Layout } from '@components/layout'
 import {
   pathForSocial,
   SITE_DESCRIPTION,
@@ -19,7 +19,7 @@ import { DEFAULT_THEME, DEFAULT_THEME_COLOR, getThemeColorCookie, THEME_LS_KEY }
 import { geistSans } from './fonts'
 import './globals.css'
 
-const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), {
+const CookieConsentBanner = dynamic(() => import('@components/cookie-consent-banner'), {
   ssr: false
 })
 

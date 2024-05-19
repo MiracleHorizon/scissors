@@ -1,0 +1,12 @@
+.item {
+  --size: 20px;
+
+  cursor: pointer;
+  width: var(--size) !important;
+  height: var(--size) !important;
+}
+
+.itemSelected {
+  outline: 1px solid var(--gray-a11);
+  outline-offset: 1.5px;
+}

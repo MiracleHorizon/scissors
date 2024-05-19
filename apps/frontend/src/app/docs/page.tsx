@@ -3,7 +3,7 @@ import { Flex } from '@radix-ui/themes'
 import type { PaddingProps } from '@radix-ui/themes/props'
 import type { Metadata } from 'next'
 
-import { ButtonBackTop } from '@ui/ButtonBackTop'
+import { ButtonBackTop } from '@ui/button-back-top'
 import { DocsContent } from './components/DocsContent'
 
 const DocsNavigation = dynamic(() => import('./components/DocsNavigation'), {

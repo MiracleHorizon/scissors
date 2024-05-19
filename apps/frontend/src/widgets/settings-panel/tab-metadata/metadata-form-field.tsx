@@ -1,0 +1,39 @@
+import { Text, TextField } from '@radix-ui/themes'
+import * as Form from '@radix-ui/react-form'
+import type { ChangeEvent, FC, HTMLInputTypeAttribute } from 'react'
+
+import styles from './metadata-form-field.module.css'
+
+export const MetadataFormField: FC<Props> = ({
+  name,
+  label,
+  value,
+  register,
+  disabled,
+  placeholder,
+  onChange
+}) => (
+  <Form.Field name={name}>
+    <Text asChild truncate size='2' mb='4px' color='gray'>
+      <Form.Label className={styles.label}>{label}</Form.Label>
+    </Text>
+    <Form.Control disabled={disabled} asChild>
+      <TextField.Root value={value} placeholder={placeholder} onChange={onChange} {...register} />
+    </Form.Control>
+  </Form.Field>
+)
+
+/* eslint no-unused-vars: 0 */
+interface Props extends WithReactHookForm {
+  name: string
+  label: string
+  value?: string
+  placeholder?: string
+  type?: HTMLInputTypeAttribute
+  disabled?: boolean
+  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
+}
+
+interface WithReactHookForm {
+  register?: any
+}

@@ -1,0 +1,30 @@
+import { Text } from '@radix-ui/themes'
+import type { FC } from 'react'
+
+import * as Accordion from '@ui/accordion'
+import { MetadataTable } from './metadata-table'
+import type { ExifrReturn } from './types'
+
+export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
+  <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
+    {Object.entries(metadata).map(([name, data]) => (
+      <Accordion.Item key={name} value={name} defaultChecked>
+        <Accordion.Header>
+          <Accordion.Trigger>
+            <Text weight='medium'>{name.toUpperCase()}</Text>
+
+            <Accordion.Chevron />
+          </Accordion.Trigger>
+        </Accordion.Header>
+
+        <Accordion.Content>
+          <MetadataTable data={data} />
+        </Accordion.Content>
+      </Accordion.Item>
+    ))}
+  </Accordion.Root>
+)
+
+interface Props {
+  metadata: ExifrReturn
+}

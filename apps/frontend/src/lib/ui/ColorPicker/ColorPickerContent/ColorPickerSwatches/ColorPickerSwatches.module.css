@@ -1,8 +1,0 @@
-.swatch {
-  --size: 22px;
-
-  cursor: pointer;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 4px;
-}

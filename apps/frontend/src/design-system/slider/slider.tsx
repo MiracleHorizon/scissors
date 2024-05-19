@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { Flex, Slider as RadixSlider, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import { NumberInput } from 'src/components/NumberInput'
+import { NumberInput } from '@components/number-input'
 import { SliderHeader } from './slider-header'
 import { getSliderTitleValue, getSliderValue } from './utils'
 import type { Props } from './types'

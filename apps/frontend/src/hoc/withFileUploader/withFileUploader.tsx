@@ -5,8 +5,10 @@ import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import type { ComponentProps, Props } from './withFileUploader.types'
 
 const FileSizeAlert = dynamic(
-  () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
-  { ssr: false }
+  () => import('@components/alerts/alert-file-size').then(mod => mod.AlertFileSize),
+  {
+    ssr: false
+  }
 )
 
 export function withFileUploader(Component: ComponentType<ComponentProps>) {
@@ -84,15 +86,14 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleStopDrag}
-        >
-          <input
-            {...inputAttributes}
-            ref={inputRef}
-            type='file'
-            className='hidden'
-            onChange={handleChange}
-          />
-        </Component>
+        />
+        <input
+          {...inputAttributes}
+          ref={inputRef}
+          type='file'
+          className='hidden'
+          onChange={handleChange}
+        />
 
         {isAlertOpen && <FileSizeAlert open={isAlertOpen} onClose={handleCloseAlert} />}
       </>

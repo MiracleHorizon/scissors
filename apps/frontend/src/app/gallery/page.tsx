@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic'
 import { Flex, ScrollArea } from '@radix-ui/themes'
 
-import { GallerySlideSkeleton } from './components/GallerySlideSkeleton'
+import { GallerySlideSkeleton } from './components/gallery-slide-skeleton'
 import { slides } from './slides'
 import styles from './page.module.css'
 
-const GallerySlide = dynamic(() => import('./components/GallerySlide'), {
+const GallerySlide = dynamic(() => import('./components/gallery-slide'), {
   ssr: false,
   loading: () => <GallerySlideSkeleton />
 })

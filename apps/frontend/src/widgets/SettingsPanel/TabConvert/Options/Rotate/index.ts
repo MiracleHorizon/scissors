@@ -1,1 +1,0 @@
-export { Rotate } from './Rotate'

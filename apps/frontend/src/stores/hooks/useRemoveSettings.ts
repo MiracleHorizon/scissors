@@ -8,7 +8,7 @@ import { useModulateStore } from '@stores/modulate'
 import { useGammaStore } from '@stores/gamma'
 import { useTintStore } from '@stores/tint'
 import { useNormaliseStore } from '@stores/normalise'
-import { useTabResizeStore } from '@widgets/SettingsPanel/TabResize'
+import { useTabResizeStore } from 'src/widgets/settings-panel/tab-resize'
 
 export function useRemoveConvertSettings() {
   const removeRotate = useRotateStore(state => state.remove)

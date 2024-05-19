@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
 import { pathForAssets } from '@site/config'
-import type GallerySlide from './components/GallerySlide'
+import type GallerySlide from './components/gallery-slide'
 
 function pathForGallerySlide(slideName: string): string {
   const GALLERY_SLIDES_PATH = 'slides'
