@@ -1,3 +1,5 @@
+import { downloadFile } from '@utility/export'
+
 /**
  * @param file - JSON file to read
  * @returns parsed JSON object or rejects with error
@@ -32,5 +34,24 @@ export function createJSONBlob<T>(payload: T): Blob {
 
   return new Blob([json], {
     type: 'application/json'
+  })
+}
+
+/**
+ * @param payload - any value to convert to JSON
+ * @param fileName - name of the file without extension
+ */
+export const createAndDownloadJSON = ({
+  payload,
+  fileName
+}: {
+  payload: Record<string, any>
+  fileName: string
+}) => {
+  const blob = createJSONBlob(payload)
+
+  downloadFile({
+    blob,
+    download: `${fileName}.json`
   })
 }

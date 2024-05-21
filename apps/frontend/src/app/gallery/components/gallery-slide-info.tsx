@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import type { ConvertSettings } from '@scissors/sharp'
 
 import { ButtonDownload } from '@ui/button-download'
-import { useExportJSON } from '@hooks/useExportJSON'
+import { createAndDownloadJSON } from '@utility/json-file'
 import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './gallery-slide-info.module.css'
@@ -15,10 +15,8 @@ const DetailsItem: FC<SlideDetail> = ({ label, value }) => (
 )
 
 const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) => {
-  const { handleExportJSON } = useExportJSON()
-
   const handleExport = () =>
-    handleExportJSON({
+    createAndDownloadJSON({
       fileName: `scissors-slide-${index + 1}-settings`,
       payload: settings
     })
