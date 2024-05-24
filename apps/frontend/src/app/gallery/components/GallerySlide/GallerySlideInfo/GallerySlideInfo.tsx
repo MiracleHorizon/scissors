@@ -4,8 +4,9 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 import { ButtonDownload } from '@ui/ButtonDownload'
 import { GallerySlideDetailItem } from './GallerySlideDetailItem'
-import { useExportJSON } from '@hooks/useExportJSON'
+import { createAndDownloadJSONFile } from '@utility/json-file'
 import { geistMono } from '@app/fonts'
+import { SITE_TITLE } from '@site/config'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './GallerySlideInfo.module.css'
 
@@ -35,11 +36,9 @@ export const GallerySlideInfo = ({ index, label, settings, details, className }:
 )
 
 const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) => {
-  const { handleExportJSON } = useExportJSON()
-
   const handleExport = () =>
-    handleExportJSON({
-      fileName: `scissors-slide-${index + 1}-settings`,
+    createAndDownloadJSONFile({
+      fileName: `${SITE_TITLE.toLowerCase()}-slide-${index + 1}-settings`,
       payload: settings
     })
 
