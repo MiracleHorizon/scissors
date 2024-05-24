@@ -2,7 +2,7 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { Switch, type Props } from './switch'
+import { Switch, type Props } from './Switch'
 import { setup } from '@testing/test-utils'
 
 describe('@design-system/Switch', () => {

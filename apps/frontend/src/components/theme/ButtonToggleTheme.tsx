@@ -35,4 +35,7 @@ const ButtonToggleTheme = ({ className, style }: ClassNameProps & StyleProps) =>
   )
 }
 
+/*
+ * Default export is required to import a client component inside a server component using next/dynamic.
+ */
 export default ButtonToggleTheme

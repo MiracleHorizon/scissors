@@ -65,4 +65,7 @@ const DocsNavigation = () => (
   </MediaQuery>
 )
 
+/*
+ * Default export is required to import a client component inside a server component using next/dynamic.
+ */
 export default DocsNavigation
