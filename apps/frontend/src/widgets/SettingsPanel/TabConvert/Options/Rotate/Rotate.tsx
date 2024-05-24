@@ -10,7 +10,7 @@ const RotateContent = dynamic(() => import('./RotateContent').then(mod => mod.Ro
   loading: () => <RotateContentSkeleton />
 })
 
-export const Rotate=()=> {
+export const Rotate = () => {
   const isAdded = useRotateStore(state => state.isAdded)
 
   return (

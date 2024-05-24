@@ -5,6 +5,13 @@ import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import { ExclamationTitle } from '@ui/ExclamationTitle'
 import { handleRequestError } from '@api/helpers/handleRequestError'
 
+interface Props {
+  open: boolean
+  error: Error
+  reset: VoidFunction
+  retry?: VoidFunction
+}
+
 export const RequestErrorAlert = ({ open, error, reset, retry }: Props) => {
   const message = handleRequestError(error)
   const isMessageEmpty = message.length === 0
@@ -40,11 +47,4 @@ export const RequestErrorAlert = ({ open, error, reset, retry }: Props) => {
       </AlertDialog.Content>
     </AlertDialog.Root>
   )
-}
-
-interface Props {
-  open: boolean
-  error: Error
-  reset: VoidFunction
-  retry?: VoidFunction
 }

@@ -17,6 +17,11 @@ import {
 } from '@lib/theme'
 import styles from './ThemeColorMenu.module.css'
 
+interface Props {
+  triggerClassName?: string
+  contentClassName?: string
+}
+
 export const ThemeColorMenu: FC<Props> = ({ triggerClassName, contentClassName }) => {
   const { themeColor } = useTheme()
 
@@ -60,9 +65,4 @@ export const ThemeColorMenu: FC<Props> = ({ triggerClassName, contentClassName }
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   )
-}
-
-interface Props {
-  triggerClassName?: string
-  contentClassName?: string
 }

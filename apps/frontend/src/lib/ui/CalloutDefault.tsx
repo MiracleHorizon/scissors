@@ -6,6 +6,10 @@ import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
 import type { StyleProps } from '@app-types/StyleProps'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
+interface Props extends ClassNameProps, StyleProps, ComponentPropsWithoutRef<typeof Callout.Root> {
+  text: string
+}
+
 export const CalloutDefault: FC<Props> = ({ text, style, ...props }) => (
   <Callout.Root
     style={{
@@ -22,7 +26,3 @@ export const CalloutDefault: FC<Props> = ({ text, style, ...props }) => (
     <Callout.Text>{text}</Callout.Text>
   </Callout.Root>
 )
-
-interface Props extends ClassNameProps, StyleProps, ComponentPropsWithoutRef<typeof Callout.Root> {
-  text: string
-}

@@ -8,6 +8,11 @@ import { ShuffleIcon } from '@scissors/react-icons/ShuffleIcon'
 
 import type { ButtonProps } from '@lib/theme'
 
+interface Props extends ButtonProps, MarginProps {
+  onClick: VoidFunction
+  tooltipContent?: string
+}
+
 export const ButtonRandomize = forwardRef<HTMLButtonElement, Props>(
   ({ tooltipContent, onClick, size = '2', variant = 'outline', ...props }, ref) => {
     const buttonJSX = (
@@ -25,8 +30,3 @@ export const ButtonRandomize = forwardRef<HTMLButtonElement, Props>(
 )
 
 ButtonRandomize.displayName = 'ButtonRandomize'
-
-interface Props extends ButtonProps, MarginProps {
-  onClick: VoidFunction
-  tooltipContent?: string
-}

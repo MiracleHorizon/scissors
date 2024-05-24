@@ -21,7 +21,7 @@ const data: SelectData = [
   }
 ] as const
 
-export const SelectResizePosition=()=> {
+export const SelectResizePosition = () => {
   const position = useResizeStore(state => state.position)
   const setPosition = useResizeStore(state => state.setPosition)
 

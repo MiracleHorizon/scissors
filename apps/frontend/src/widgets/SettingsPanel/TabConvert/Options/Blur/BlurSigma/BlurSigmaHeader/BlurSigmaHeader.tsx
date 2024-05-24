@@ -6,6 +6,10 @@ import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
 import { ButtonResetBlurSigma } from './ButtonResetBlurSigma'
 import { ButtonRemoveBlurSigma } from './ButtonRemoveBlurSigma'
 
+interface Props {
+  disabled: boolean
+}
+
 export const BlurSigmaHeader: FC<Props> = ({ disabled }) => (
   <OptionSectionHeader title='Sigma' icon={<BlurIcon width={18} height={18} />}>
     <>
@@ -14,7 +18,3 @@ export const BlurSigmaHeader: FC<Props> = ({ disabled }) => (
     </>
   </OptionSectionHeader>
 )
-
-interface Props {
-  disabled: boolean
-}

@@ -2,7 +2,8 @@
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
-import { fieldTestId, labelTestId, NumberInput, slotTestId } from './NumberInput'
+import { fieldTestId, NumberInput, slotTestId } from './NumberInput'
+import { labelTestId } from './NumbeInputLabel'
 import { NOT_ALLOWED_KEYS } from './utils'
 import type { Props } from './types'
 

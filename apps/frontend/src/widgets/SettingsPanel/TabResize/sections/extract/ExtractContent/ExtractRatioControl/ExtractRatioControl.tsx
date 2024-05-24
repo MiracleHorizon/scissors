@@ -1,9 +1,15 @@
 import { Flex, Heading, SegmentedControl, Text } from '@radix-ui/themes'
 
-import { aspectRatioList } from './data'
+import { aspectRatioList } from '../data'
 import styles from './ExtractRatioControl.module.css'
 
-export const ExtractRatioControl=({ aspectRatio, setAspectRatio }: Props) =>{
+/* eslint no-unused-vars: 0 */
+interface Props {
+  aspectRatio: number
+  setAspectRatio: (value: string) => void
+}
+
+export const ExtractRatioControl = ({ aspectRatio, setAspectRatio }: Props) => {
   const value = aspectRatioList.find(v => v.value === aspectRatio)?.displayValue ?? 'No value'
 
   return (
@@ -21,10 +27,4 @@ export const ExtractRatioControl=({ aspectRatio, setAspectRatio }: Props) =>{
       </SegmentedControl.Root>
     </Flex>
   )
-}
-
-/* eslint no-unused-vars: 0 */
-interface Props {
-  aspectRatio: number
-  setAspectRatio: (value: string) => void
 }

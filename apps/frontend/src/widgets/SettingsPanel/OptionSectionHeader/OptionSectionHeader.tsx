@@ -5,7 +5,7 @@ import type { FC } from 'react'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 
-import type { Props } from './OptionSectionHeader.types'
+import type { Props } from './types'
 import styles from './OptionSectionHeader.module.css'
 
 const BadgeNew = dynamic(() => import('@ui/badges/BadgeNew').then(mod => mod.BadgeNew), {

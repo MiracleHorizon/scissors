@@ -13,6 +13,26 @@ import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
 
 import { type DownloadPayload, useOutputStore } from '@stores/output'
 
+interface Props {
+  file: File
+  isOpen: boolean
+  onClose: VoidFunction
+}
+
+export const UploadedFileLightbox = ({ file, isOpen, onClose }: Props) => {
+  const downloadPayload = useOutputStore(state => state.downloadPayload)
+  const lightboxProps = useMemo(
+    () =>
+      getLightboxProps({
+        file,
+        downloadPayload
+      }),
+    [file, downloadPayload]
+  )
+
+  return <Lightbox open={isOpen} close={onClose} {...lightboxProps} />
+}
+
 const getLightboxProps = ({
   file,
   downloadPayload
@@ -60,24 +80,4 @@ const getLightboxProps = ({
     plugins,
     slides
   }
-}
-
-export const UploadedFileLightbox = ({ file, isOpen, onClose }: Props) => {
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
-  const lightboxProps = useMemo(
-    () =>
-      getLightboxProps({
-        file,
-        downloadPayload
-      }),
-    [file, downloadPayload]
-  )
-
-  return <Lightbox open={isOpen} close={onClose} {...lightboxProps} />
-}
-
-interface Props {
-  file: File
-  isOpen: boolean
-  onClose: VoidFunction
 }

@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { ButtonReset } from '@ui/ButtonReset'
 import { useGammaStore } from '@stores/gamma'
 
-export const ButtonResetGamma=()=> {
+export const ButtonResetGamma = () => {
   const resetGamma = useGammaStore(state => state.reset)
 
   const handleResetGamma = useCallback(() => resetGamma(), [resetGamma])

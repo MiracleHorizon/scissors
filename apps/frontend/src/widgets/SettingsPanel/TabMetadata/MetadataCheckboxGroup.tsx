@@ -3,6 +3,11 @@ import { Flex } from '@radix-ui/themes'
 import { Checkbox } from '@design-system/Checkbox'
 import { useMetadataStore } from '@stores/metadata'
 
+interface Props {
+  hasExif: boolean
+  hasICC: boolean
+}
+
 export const MetadataCheckboxGroup = ({ hasExif, hasICC }: Props) => {
   const keepMetadata = useMetadataStore(state => state.keepMetadata)
   const keepExif = useMetadataStore(state => state.keepExif)
@@ -29,9 +34,4 @@ export const MetadataCheckboxGroup = ({ hasExif, hasICC }: Props) => {
       )}
     </Flex>
   )
-}
-
-interface Props {
-  hasExif: boolean
-  hasICC: boolean
 }

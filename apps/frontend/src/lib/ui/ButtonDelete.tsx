@@ -9,6 +9,13 @@ import { TrashIcon } from '@scissors/react-icons/TrashIcon'
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
+interface Props extends ButtonProps, MarginProps {
+  tooltipDelay?: number
+  tooltipContent?: string
+  disabled?: boolean
+  onClick?: VoidFunction
+}
+
 export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
   (
     { tooltipDelay, tooltipContent, disabled, variant = 'outline', color = 'red', ...props },
@@ -40,10 +47,3 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
 )
 
 ButtonDelete.displayName = 'ButtonDelete'
-
-interface Props extends ButtonProps, MarginProps {
-  tooltipDelay?: number
-  tooltipContent?: string
-  disabled?: boolean
-  onClick?: VoidFunction
-}

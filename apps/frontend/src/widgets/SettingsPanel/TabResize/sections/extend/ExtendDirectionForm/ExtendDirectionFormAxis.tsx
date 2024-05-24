@@ -5,7 +5,7 @@ import { NumberInput } from '@components/NumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 
-export const ExtendDirectionFormAxis=()=> {
+export const ExtendDirectionFormAxis = () => {
   const axisX = useExtendStore(state => state.getXAxis())
   const axisY = useExtendStore(state => state.getYAxis())
 

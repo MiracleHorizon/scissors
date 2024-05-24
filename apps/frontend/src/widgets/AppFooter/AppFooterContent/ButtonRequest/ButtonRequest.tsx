@@ -15,6 +15,16 @@ const RequestErrorAlert = dynamic(
   }
 )
 
+interface Props {
+  label: string
+  isLoading: boolean
+  error: unknown
+  makeRequest: VoidFunction
+  retry: VoidFunction
+  reset: VoidFunction
+  isDisabled?: boolean
+}
+
 export const ButtonRequest: FC<Props> = memo(
   ({ label, isLoading, error, makeRequest, retry, reset, isDisabled }) => {
     const isFileUploaded = useOutputStore(state => state.isFileUploaded())
@@ -63,13 +73,3 @@ export const ButtonRequest: FC<Props> = memo(
 )
 
 ButtonRequest.displayName = 'ButtonRequest'
-
-interface Props {
-  label: string
-  isLoading: boolean
-  error: unknown
-  makeRequest: VoidFunction
-  retry: VoidFunction
-  reset: VoidFunction
-  isDisabled?: boolean
-}

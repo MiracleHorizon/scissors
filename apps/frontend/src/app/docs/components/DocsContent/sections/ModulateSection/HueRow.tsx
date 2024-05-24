@@ -9,7 +9,7 @@ export const HueRow = () => (
     label='hue'
     description={
       <Text as='p'>
-          The angle for the hue rotation of the image. The value ranges from{' '}
+        The angle for the hue rotation of the image. The value ranges from{' '}
         <Code variant='ghost'>{MIN_HUE}°</Code> to <Code variant='ghost'>{MAX_HUE}°</Code>.
       </Text>
     }

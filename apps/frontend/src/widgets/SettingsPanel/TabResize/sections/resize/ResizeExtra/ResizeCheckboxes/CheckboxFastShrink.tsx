@@ -9,7 +9,7 @@ import { cropImageFileType } from '@helpers/file/cropImageFileType'
 
 const ALLOWED_FILE_TYPES: string[] = [IMAGE_FILE_FORMAT.JPEG, IMAGE_FILE_FORMAT.WEBP] as const
 
-export const CheckboxFastShrink=()=> {
+export const CheckboxFastShrink = () => {
   const file = useOutputStore(state => state.file)
   const fastShrink = useResizeStore(state => state.fastShrinkOnLoad)
   const toggleFastShrink = useResizeStore(state => state.toggleFastShrink)

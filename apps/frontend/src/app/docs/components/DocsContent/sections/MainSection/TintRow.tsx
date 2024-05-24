@@ -7,9 +7,9 @@ export const TintRow = () => (
     label='tint'
     description={
       <Text as='p'>
-          Tint the image using the provided chroma while preserving the image luminance.
+        Tint the image using the provided chroma while preserving the image luminance.
         <br />
-          An alpha channel may be present and will be unchanged by the operation.
+        An alpha channel may be present and will be unchanged by the operation.
       </Text>
     }
   />

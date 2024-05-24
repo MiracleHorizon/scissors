@@ -7,6 +7,11 @@ import { useParams } from 'next/navigation'
 
 import styles from './DocsNavigationItem.module.css'
 
+interface Props {
+  title: string
+  hash: string
+}
+
 export const DocsNavigationItem = ({ title, hash }: Props) => {
   const [isSelected, setSelected] = useState(false)
   const params = useParams()
@@ -26,9 +31,4 @@ export const DocsNavigationItem = ({ title, hash }: Props) => {
       </li>
     </Box>
   )
-}
-
-interface Props {
-  title: string
-  hash: string
 }

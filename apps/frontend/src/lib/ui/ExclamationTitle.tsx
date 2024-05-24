@@ -12,11 +12,11 @@ const iconStyle: CSSProperties = {
   marginRight: getRadixSpaceVar(2)
 } as const
 
+export type Props = PropsWithChildren & MarginProps & PaddingProps
+
 export const ExclamationTitle: FC<Props> = ({ children, ...props }) => (
   <Flex align='center' width='100%' data-testid={testId} {...props}>
     <ExclamationTriangleIcon color='tomato' width='0.95rem' height='0.95rem' style={iconStyle} />
     {children}
   </Flex>
 )
-
-export type Props = PropsWithChildren & MarginProps & PaddingProps

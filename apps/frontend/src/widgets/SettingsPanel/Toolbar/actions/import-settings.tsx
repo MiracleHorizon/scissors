@@ -86,6 +86,10 @@ const ItemWithImport: FC<ComponentProps> = ({
 ItemWithImport.displayName = 'ItemWithImport'
 const MobileItem = withFileUploader(ItemWithImport)
 
+interface ItemProps {
+  onClick?: VoidFunction
+}
+
 export const ItemImportSettings = ({ onClick }: ItemProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
@@ -124,8 +128,4 @@ export const ItemImportSettings = ({ onClick }: ItemProps) => {
       {isValidationAlertOpen && <ValidationAlert open onCancel={handleCloseValidation} />}
     </>
   )
-}
-
-interface ItemProps {
-  onClick?: VoidFunction
 }

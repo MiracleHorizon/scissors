@@ -16,6 +16,12 @@ const contentActionsProps = {
   }
 } as const
 
+/* eslint no-unused-vars: 0 */
+type Props = PropsWithChildren<{
+  onConfirm: (removeAll: boolean) => void
+  onCancel?: VoidFunction
+}>
+
 export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCancel }) => {
   const [removeAll, setRemoveAll] = useState(false)
 
@@ -61,9 +67,3 @@ export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCa
     </AlertDialog.Root>
   )
 }
-
-/* eslint no-unused-vars: 0 */
-type Props = PropsWithChildren<{
-  onConfirm: (removeAll: boolean) => void
-  onCancel?: VoidFunction
-}>

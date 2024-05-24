@@ -9,7 +9,7 @@ export const LightnessRow = () => (
     label='lightness'
     description={
       <Text as='p'>
-          The lightness of the image. The value ranges from{' '}
+        The lightness of the image. The value ranges from{' '}
         <Code variant='ghost'>{MIN_LIGHTNESS}%</Code> to{' '}
         <Code variant='ghost'>{MAX_LIGHTNESS}%</Code>.
       </Text>

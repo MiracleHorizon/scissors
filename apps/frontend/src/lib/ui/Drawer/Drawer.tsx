@@ -6,6 +6,16 @@ import type { ComponentPropsWithoutRef, FC, PropsWithChildren, ReactNode } from 
 
 import styles from './Drawer.module.css'
 
+type Props = PropsWithChildren<
+  {
+    trigger: ReactNode
+    withOverlay?: boolean
+    contentClassName?: string
+    overlayClassName?: string
+    portalContainer?: HTMLElement
+  } & ComponentPropsWithoutRef<typeof Drawer.Root>
+>
+
 const DrawerComponent: FC<Props> = ({
   children,
   withOverlay = true,
@@ -31,13 +41,3 @@ const DrawerComponent: FC<Props> = ({
 )
 
 export { DrawerComponent as Drawer }
-
-type Props = PropsWithChildren<
-  {
-    trigger: ReactNode
-    withOverlay?: boolean
-    contentClassName?: string
-    overlayClassName?: string
-    portalContainer?: HTMLElement
-  } & ComponentPropsWithoutRef<typeof Drawer.Root>
->

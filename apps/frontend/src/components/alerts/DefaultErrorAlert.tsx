@@ -1,6 +1,14 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { FC } from 'react'
 
+interface Props {
+  open: boolean
+  onClose: VoidFunction
+  title?: string
+  description?: string
+  closeText?: string
+}
+
 export const DefaultErrorAlert: FC<Props> = ({ open, onClose, title, description, closeText }) => (
   <AlertDialog.Root open={open} defaultOpen={false}>
     <AlertDialog.Content size='3' onEscapeKeyDown={onClose}>
@@ -18,11 +26,3 @@ export const DefaultErrorAlert: FC<Props> = ({ open, onClose, title, description
     </AlertDialog.Content>
   </AlertDialog.Root>
 )
-
-interface Props {
-  open: boolean
-  onClose: VoidFunction
-  title?: string
-  description?: string
-  closeText?: string
-}

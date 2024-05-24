@@ -1,3 +1,8 @@
+interface Parameters {
+  content: string | undefined
+  isParentDisabled: boolean | undefined
+}
+
 /**
  * Checks if the tooltip is open.
  * The function only handles cases where the tooltip should be closed.
@@ -14,9 +19,4 @@ export const isTooltipOpen = ({ content, isParentDisabled }: Parameters) => {
   if (!isParentDisabled) return
 
   return false
-}
-
-interface Parameters {
-  content: string | undefined
-  isParentDisabled: boolean | undefined
 }

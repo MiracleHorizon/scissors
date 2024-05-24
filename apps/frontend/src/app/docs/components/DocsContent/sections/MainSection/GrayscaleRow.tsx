@@ -7,10 +7,10 @@ export const GrayscaleRow = () => (
     label='grayscale'
     description={
       <Text as='p'>
-          Convert to <Code variant='ghost'>8-bit</Code> grayscale; <Code variant='ghost'>256</Code>{' '}
-          shades of gray.
+        Convert to <Code variant='ghost'>8-bit</Code> grayscale; <Code variant='ghost'>256</Code>{' '}
+        shades of gray.
         <br />
-          An alpha channel may be present, and will be unchanged by the operation.
+        An alpha channel may be present, and will be unchanged by the operation.
       </Text>
     }
     defaultValue='disabled'

@@ -37,6 +37,10 @@ export const ButtonRandomizeSettings = () => {
   )
 }
 
+interface ItemProps {
+  onClick?: VoidFunction
+}
+
 export const ItemRandomizeSettings = ({ onClick }: ItemProps) => {
   const { handleRandomize } = useRandomize()
 
@@ -56,8 +60,4 @@ export const ItemRandomizeSettings = ({ onClick }: ItemProps) => {
       </ContextMenu.Trigger>
     </ToolbarRandomizeMenu>
   )
-}
-
-interface ItemProps {
-  onClick?: VoidFunction
 }

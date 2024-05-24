@@ -5,6 +5,12 @@ import { clsx } from 'clsx'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ColorSwatch.module.css'
 
+interface Props extends ClassNameProps {
+  color: string
+  tooltipContent?: string
+  onClick?: VoidFunction
+}
+
 export const ColorSwatch: FC<Props> = memo(({ color, className, tooltipContent, onClick }) => {
   const swatchJSX = (
     <div
@@ -22,9 +28,3 @@ export const ColorSwatch: FC<Props> = memo(({ color, className, tooltipContent, 
 })
 
 ColorSwatch.displayName = 'ColorSwatch'
-
-interface Props extends ClassNameProps {
-  color: string
-  tooltipContent?: string
-  onClick?: VoidFunction
-}

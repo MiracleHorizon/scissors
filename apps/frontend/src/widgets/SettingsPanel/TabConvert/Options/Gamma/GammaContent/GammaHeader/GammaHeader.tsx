@@ -5,7 +5,7 @@ import { ButtonResetGamma } from './ButtonResetGamma'
 import { ButtonRemoveGamma } from './ButtonRemoveGamma'
 import { useGammaStore } from '@stores/gamma'
 
-export const GammaHeader=()=> {
+export const GammaHeader = () => {
   const gamma = useGammaStore(state => state.gamma)
 
   return (

@@ -5,7 +5,7 @@ import { TokensIcon } from '@scissors/react-icons/TokensIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useModulateStore } from '@stores/modulate'
 
-export const ButtonAddModulate=()=> {
+export const ButtonAddModulate = () => {
   const addModulate = useModulateStore(state => state.add)
 
   const handleAddModulate = useCallback(() => addModulate(), [addModulate])

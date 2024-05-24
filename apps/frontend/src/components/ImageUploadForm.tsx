@@ -34,6 +34,14 @@ const DefaultErrorAlert = dynamic(
   }
 )
 
+/* eslint no-unused-vars: 0 */
+interface Props {
+  onUpload: (file: File) => void
+  value?: string
+  setValue?: (value: string) => void
+  shouldFocusOnRender?: boolean
+}
+
 export const ImageUploadForm = ({
   value,
   setValue,
@@ -125,12 +133,9 @@ export const ImageUploadForm = ({
   )
 }
 
-/* eslint no-unused-vars: 0 */
-interface Props {
-  onUpload: (file: File) => void
-  value?: string
-  setValue?: (value: string) => void
-  shouldFocusOnRender?: boolean
+interface ErrorAlertProps {
+  message: string
+  onClose: VoidFunction
 }
 
 const ErrorAlert = ({ message, onClose }: ErrorAlertProps) => {
@@ -149,9 +154,4 @@ const ErrorAlert = ({ message, onClose }: ErrorAlertProps) => {
   }, [message])
 
   return <Component {...props} />
-}
-
-interface ErrorAlertProps {
-  message: string
-  onClose: VoidFunction
 }

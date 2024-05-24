@@ -29,6 +29,17 @@ const padding: PaddingProps = {
   pb: '3'
 } as const
 
+/* eslint-disable no-unused-vars */
+type Props = PropsWithChildren<{
+  id: UniqueIdentifier
+  isDragDisabled: boolean
+  isUpMovable: boolean
+  isDownMovable: boolean
+  handleMoveUp?: (id: UniqueIdentifier) => void
+  handleMoveDown?: (id: UniqueIdentifier) => void
+  handleRemove?: (id: UniqueIdentifier) => void
+}>
+
 export const SortableSection = ({
   children,
   id,
@@ -133,14 +144,3 @@ export const SortableSection = ({
     </Flex>
   )
 }
-
-/* eslint-disable no-unused-vars */
-type Props = PropsWithChildren<{
-  id: UniqueIdentifier
-  isDragDisabled: boolean
-  isUpMovable: boolean
-  isDownMovable: boolean
-  handleMoveUp?: (id: UniqueIdentifier) => void
-  handleMoveDown?: (id: UniqueIdentifier) => void
-  handleRemove?: (id: UniqueIdentifier) => void
-}>

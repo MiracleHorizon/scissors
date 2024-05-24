@@ -45,7 +45,7 @@ const variants = {
   [DIRECTION_MODEL.SEPARATED]: ExtendDirectionFormSeparated
 }
 
-export const ExtendDirectionForm=()=> {
+export const ExtendDirectionForm = () => {
   const directionModel = useExtendStore(state => state.directionModel)
   const Component = variants[directionModel]
 

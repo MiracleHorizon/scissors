@@ -16,7 +16,7 @@ const rootMaxWidth = {
   md: '100%'
 } as const
 
-const InputOutputFileName=()=> {
+const InputOutputFileName = () => {
   const [isError, setIsError] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 

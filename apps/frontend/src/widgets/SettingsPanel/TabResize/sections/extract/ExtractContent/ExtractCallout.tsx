@@ -4,7 +4,7 @@ import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
 
 import { useOutputStore } from '@stores/output'
 
-export const ExtractCallout=()=> {
+export const ExtractCallout = () => {
   const isFileUploaded = useOutputStore(state => !!state.file)
 
   return (

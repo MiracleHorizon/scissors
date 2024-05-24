@@ -78,7 +78,7 @@ const resizeImageMutation = async ({
   }
 }
 
-export const useResizeMutation = async () => {
+export const useResizeMutation = () => {
   const [error, setError] = useState<unknown>(null)
 
   const setLoading = useRequestStore(state => state.setLoading)

@@ -1,34 +1,13 @@
 import { ContextMenu, Separator } from '@radix-ui/themes'
-import capitalize from 'lodash.capitalize'
 import type { ReactNode } from 'react'
 
+import { ToolbarRandomizeMenuCheckbox } from './ToolbarRandomizeMenuCheckbox'
 import { useRandomizeStore } from './store'
 import { MAX_OPERATIONS } from './constants'
-import type { Setting } from './types'
 import styles from './ToolbarRandomizeMenu.module.css'
 
-const ToolbarRandomizeMenuCheckbox = ({ label, checked }: Setting) => {
-  const isMaxOperations = useRandomizeStore(state => state.isMaxOperations())
-
-  const toggleChecked = useRandomizeStore(state => state.toggleSettingChecked)
-  const handleToggle = (ev: Event) => {
-    /*
-     * Prevent the ContextMenu from closing after clicking on the checkbox.
-     */
-    ev.preventDefault()
-
-    toggleChecked(label)
-  }
-
-  return (
-    <ContextMenu.CheckboxItem
-      checked={checked}
-      disabled={isMaxOperations && !checked}
-      onSelect={handleToggle}
-    >
-      {capitalize(label)}
-    </ContextMenu.CheckboxItem>
-  )
+interface Props {
+  children: ReactNode
 }
 
 export const ToolbarRandomizeMenu = ({ children }: Props) => {
@@ -52,8 +31,4 @@ export const ToolbarRandomizeMenu = ({ children }: Props) => {
       </ContextMenu.Content>
     </ContextMenu.Root>
   )
-}
-
-interface Props {
-  children: ReactNode
 }

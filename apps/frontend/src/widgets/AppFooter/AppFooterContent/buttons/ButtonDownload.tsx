@@ -7,7 +7,7 @@ import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
 import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 
-export const ButtonDownload=()=> {
+export const ButtonDownload = () => {
   const linkRef = useRef<HTMLAnchorElement>(null)
 
   const downloadPayload = useOutputStore(state => state.downloadPayload)

@@ -1,14 +1,14 @@
 import {
+  type ComponentPropsWithoutRef,
   type CSSProperties,
   type FC,
   Fragment,
   memo,
-  type ReactNode,
   useEffect,
   useMemo,
   useState
 } from 'react'
-import { Flex, Separator, Text } from '@radix-ui/themes'
+import { Separator } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
 import { FileIcon } from '@scissors/react-icons/FileIcon'
@@ -16,14 +16,21 @@ import { RatioIcon } from '@scissors/react-icons/RatioIcon'
 import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
 
 import { getAspectRatio, getFileSize, getImageDimension, isCorrectAspectRatio } from './utils'
+import { PropertyItem } from './PropertyItem'
 import type { Dimension } from './types'
 import styles from './UploadedFileProperties.module.css'
+
+interface Props {
+  file: File
+}
+
+type PropertyItemProps = ComponentPropsWithoutRef<typeof PropertyItem>
 
 export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
   const [dimension, setDimension] = useState<Dimension | null>(null)
 
   const properties = useMemo(() => {
-    const items: PropertyItemModel[] = [
+    const items: PropertyItemProps[] = [
       {
         label: 'Size',
         value: getFileSize(file.size),
@@ -80,27 +87,3 @@ export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
 })
 
 UploadedFileProperties.displayName = 'UploadedFileProperties'
-
-interface Props {
-  file: File
-}
-
-const PropertyItem: FC<PropertyItemModel> = ({ label, icon, value }) => (
-  <Flex align='center' gap='3' title={`${label}: ${value}`} className={styles.propertyItem}>
-    <Flex asChild align='center' wrap='nowrap' gap='1'>
-      <Text>
-        {icon}
-        {label}
-      </Text>
-    </Flex>
-    <Text as='span' weight='medium'>
-      {value}
-    </Text>
-  </Flex>
-)
-
-interface PropertyItemModel {
-  label: string
-  value: string
-  icon: ReactNode
-}

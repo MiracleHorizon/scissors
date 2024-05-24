@@ -25,6 +25,9 @@ const GallerySlidePopover = dynamic(
   }
 )
 
+type Props = ComponentPropsWithoutRef<typeof CompareSlider> &
+  ComponentPropsWithoutRef<typeof GallerySlideInfo>
+
 const GallerySlide: FC<Props> = ({
   index,
   afterSrc,
@@ -69,6 +72,3 @@ const GallerySlide: FC<Props> = ({
 }
 
 export default GallerySlide
-
-type Props = ComponentPropsWithoutRef<typeof CompareSlider> &
-  ComponentPropsWithoutRef<typeof GallerySlideInfo>

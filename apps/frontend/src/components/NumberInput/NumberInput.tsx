@@ -1,24 +1,14 @@
 'use client'
 
-import { type ChangeEvent, type FC, type KeyboardEvent, useCallback, useId, useRef } from 'react'
-import { Flex, Text, TextField } from '@radix-ui/themes'
+import { type ChangeEvent, type KeyboardEvent, useCallback, useId, useRef } from 'react'
+import { TextField } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
+import { NumberInputLabel } from './NumbeInputLabel'
 import { NOT_ALLOWED_KEYS, parseValue } from './utils'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
-import type { LabelProps, Props } from './types'
+import type { Props } from './types'
 import styles from './NumberInput.module.css'
-
-export const labelTestId = 'number-input-label'
-
-const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
-  <Flex data-testid={labelTestId} direction='column' gap='1' width='100%'>
-    <Text as='label' size='2' color='gray' htmlFor={id}>
-      {label}
-    </Text>
-    {children}
-  </Flex>
-)
 
 export const fieldTestId = 'number-input-field'
 export const slotTestId = 'number-input-slot'
@@ -124,9 +114,9 @@ export const NumberInput = ({
 
   if (label) {
     return (
-      <WithLabel id={inputId} label={label}>
+      <NumberInputLabel id={inputId} label={label}>
         {textFieldJSX}
-      </WithLabel>
+      </NumberInputLabel>
     )
   }
 

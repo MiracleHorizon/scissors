@@ -6,7 +6,7 @@ import { useConvertSettings } from '@stores/hooks/useConvertSettings'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 
-export const ButtonConvert=()=> {
+export const ButtonConvert = () => {
   const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)

@@ -6,6 +6,11 @@ import type { MarginProps } from '@radix-ui/themes/props'
 
 import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
 
+interface Props extends MarginProps {
+  onClick: VoidFunction
+  tooltipContent?: string
+}
+
 export const ButtonDownload: FC<Props> = memo(({ tooltipContent, onClick, ...props }) => {
   const Button = (
     <IconButton {...props} size='2' color='gray' variant='outline' onClick={onClick}>
@@ -21,8 +26,3 @@ export const ButtonDownload: FC<Props> = memo(({ tooltipContent, onClick, ...pro
 })
 
 ButtonDownload.displayName = 'ButtonDownload'
-
-interface Props extends MarginProps {
-  onClick: VoidFunction
-  tooltipContent?: string
-}

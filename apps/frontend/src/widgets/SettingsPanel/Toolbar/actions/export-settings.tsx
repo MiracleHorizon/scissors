@@ -12,6 +12,10 @@ export const ButtonExportSettings = () => {
   return <ButtonDownload tooltipContent='Export Settings' onClick={exportSettings} />
 }
 
+interface ItemProps {
+  onClick?: VoidFunction
+}
+
 export const ItemExportSettings = ({ onClick }: ItemProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const { exportSettings } = useExportSettings(selectedTab)
@@ -28,8 +32,4 @@ export const ItemExportSettings = ({ onClick }: ItemProps) => {
       onClick={handleClick}
     />
   )
-}
-
-interface ItemProps {
-  onClick?: VoidFunction
 }

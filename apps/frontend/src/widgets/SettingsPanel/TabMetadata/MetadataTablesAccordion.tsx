@@ -5,6 +5,10 @@ import * as Accordion from '@ui/Accordion'
 import { MetadataTable } from './MetadataTable'
 import type { ExifrReturn } from './types'
 
+interface Props {
+  metadata: ExifrReturn
+}
+
 export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
   <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
     {Object.entries(metadata).map(([name, data]) => (
@@ -24,7 +28,3 @@ export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
     ))}
   </Accordion.Root>
 )
-
-interface Props {
-  metadata: ExifrReturn
-}

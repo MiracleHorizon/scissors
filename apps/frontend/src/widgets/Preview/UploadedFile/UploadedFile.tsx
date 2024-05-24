@@ -5,6 +5,10 @@ import { UploadedFileCard } from './UploadedFileCard'
 import { UploadedFilePreview } from './UploadedFilePreview'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
 
+interface Props {
+  file: File
+}
+
 export const UploadedFile = ({ file }: Props) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
@@ -18,8 +22,4 @@ export const UploadedFile = ({ file }: Props) => {
       <UploadedFilePreview file={file} handleOpenLightbox={openLightbox} />
     </Flex>
   )
-}
-
-interface Props {
-  file: File
 }

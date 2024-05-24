@@ -14,6 +14,13 @@ const getFormattedDate = (value: Date) => {
   return dayjs(value).format(template)
 }
 
+/* eslint no-unused-vars: 0 */
+interface Props {
+  value: Date
+  onValueChange: (value: Date) => void
+  disabled?: boolean
+}
+
 export const DatePicker = ({ value, disabled, onValueChange }: Props) => {
   const currentDate = new Date()
   const formattedDate = getFormattedDate(value)
@@ -68,11 +75,4 @@ export const DatePicker = ({ value, disabled, onValueChange }: Props) => {
       </Popover.Content>
     </Popover.Root>
   )
-}
-
-/* eslint no-unused-vars: 0 */
-interface Props {
-  value: Date
-  onValueChange: (value: Date) => void
-  disabled?: boolean
 }

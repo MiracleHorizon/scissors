@@ -3,11 +3,11 @@ import { Button, DropdownMenu } from '@radix-ui/themes'
 
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
 
-import { ToolbarTabList } from './ToolbarTabList'
+import { ToolbarTabList } from '../ToolbarTabList'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ToolbarTabDropdown.module.css'
 
-export const ToolbarTabDropdown=()=> {
+export const ToolbarTabDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleOpen = () => setIsOpen(true)

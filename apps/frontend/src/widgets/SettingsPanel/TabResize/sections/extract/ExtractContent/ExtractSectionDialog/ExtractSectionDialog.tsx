@@ -5,13 +5,17 @@ import 'cropperjs/dist/cropper.css'
 
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
-import { ExtractRatioControl } from './ExtractRatioControl'
-import { ExtractCallout } from './ExtractCallout'
+import { ExtractRatioControl } from '../ExtractRatioControl'
+import { ExtractCallout } from '../ExtractCallout'
 import { BadgeBeta } from '@ui/badges/BadgeBeta'
 import { useExtractStore } from '@stores/extract'
-import { cropperDataToExtractRegion, extractRegionToCropperData } from './utils'
-import { aspectRatioList } from './data'
+import { cropperDataToExtractRegion, extractRegionToCropperData } from '../utils'
+import { aspectRatioList } from '../data'
 import styles from './ExtractSectionDialog.module.css'
+
+interface Props {
+  file: File
+}
 
 export const ExtractSectionDialog = ({ file }: Props) => {
   const imageRef = useRef<HTMLImageElement>(null)
@@ -151,8 +155,4 @@ export const ExtractSectionDialog = ({ file }: Props) => {
       )}
     </Dialog.Root>
   )
-}
-
-interface Props {
-  file: File
 }

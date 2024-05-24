@@ -10,6 +10,7 @@ const pathForGallerySlide = (slideName: string): string => {
 }
 
 type SlideProps = Omit<ComponentPropsWithoutRef<typeof GallerySlide>, 'index'>
+
 export const slides: SlideProps[] = [
   {
     label: 'Volkswagen Käfer',

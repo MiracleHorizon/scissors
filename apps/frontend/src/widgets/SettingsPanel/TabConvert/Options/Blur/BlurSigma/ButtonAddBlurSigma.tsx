@@ -6,7 +6,11 @@ import { LockClosedIcon } from '@scissors/react-icons/LockClosedIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useBlurStore } from '@stores/blur'
 
-export const ButtonAddBlurSigma=(props: Props) =>{
+interface Props {
+  disabled: boolean
+}
+
+export const ButtonAddBlurSigma = (props: Props) => {
   const add = useBlurStore(state => state.addSigma)
   const handleAddSigma = useCallback(() => add(), [add])
 
@@ -19,8 +23,4 @@ export const ButtonAddBlurSigma=(props: Props) =>{
       {...props}
     />
   )
-}
-
-interface Props {
-  disabled: boolean
 }

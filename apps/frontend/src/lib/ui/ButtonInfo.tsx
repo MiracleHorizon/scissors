@@ -9,6 +9,11 @@ import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
 import type { Radius } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
+interface Props extends MarginProps, ClassNameProps {
+  radius?: Radius
+  onClick?: VoidFunction
+}
+
 export const ButtonInfo = forwardRef<HTMLButtonElement, Props>(
   ({ radius = 'large', ...props }, ref) => (
     <IconButton
@@ -26,8 +31,3 @@ export const ButtonInfo = forwardRef<HTMLButtonElement, Props>(
 )
 
 ButtonInfo.displayName = 'ButtonInfo'
-
-interface Props extends MarginProps, ClassNameProps {
-  radius?: Radius
-  onClick?: VoidFunction
-}

@@ -4,6 +4,11 @@ import type { UseThemeProps } from 'next-themes/dist/types'
 
 import { getLocalStorageThemeColor, type ThemeColor } from '@lib/theme'
 
+interface Returns extends UseThemeProps {
+  themeColor: ThemeColor | null
+  toggleTheme: VoidFunction
+}
+
 export const useTheme = (): Returns => {
   const { theme, setTheme, ...themeRest } = useNextTheme()
   const themeColor = getLocalStorageThemeColor()
@@ -21,9 +26,4 @@ export const useTheme = (): Returns => {
     setTheme,
     toggleTheme
   }
-}
-
-interface Returns extends UseThemeProps {
-  themeColor: ThemeColor | null
-  toggleTheme: VoidFunction
 }

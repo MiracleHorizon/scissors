@@ -2,6 +2,11 @@ import type { FC } from 'react'
 
 import styles from './ExtractRegionPreview.module.css'
 
+interface Props {
+  file: File
+  aspectRatio: number
+}
+
 export const ExtractRegionPreview: FC<Props> = ({ file, aspectRatio }) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
@@ -12,8 +17,3 @@ export const ExtractRegionPreview: FC<Props> = ({ file, aspectRatio }) => (
     className={styles.image}
   />
 )
-
-interface Props {
-  file: File
-  aspectRatio: number
-}

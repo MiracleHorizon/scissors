@@ -10,6 +10,12 @@ const gridColumns: GridColumns = {
   xs: '3'
 } as const
 
+interface Props {
+  title: string
+  headerContent: ReactNode
+  content: ReactNode
+}
+
 export const MetadataForm: FC<Props> = ({ title, headerContent, content }) => (
   <Flex direction='column' gap='2'>
     <Flex asChild justify='between'>
@@ -27,9 +33,3 @@ export const MetadataForm: FC<Props> = ({ title, headerContent, content }) => (
     </Grid>
   </Flex>
 )
-
-interface Props {
-  title: string
-  headerContent: ReactNode
-  content: ReactNode
-}

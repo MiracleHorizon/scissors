@@ -3,7 +3,7 @@ import { EXTEND_WITH } from '@scissors/sharp'
 import { ColorField } from '@ui/ColorField'
 import { useExtendStore } from '@stores/extend'
 
-export const ExtendBackgroundPicker=()=> {
+export const ExtendBackgroundPicker = () => {
   const extendBackground = useExtendStore(state => state.background)
   const withDominantBackground = useExtendStore(state => state.withDominantBackground)
   const extendWith = useExtendStore(state => state.extendWith)

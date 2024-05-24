@@ -11,7 +11,7 @@ const direction: FlexDirection = {
   xs: 'row'
 } as const
 
-export const ResizeSelectList=()=> {
+export const ResizeSelectList = () => {
   const fit = useResizeStore(state => state.fit)
   const kernel = useResizeStore(state => state.kernel)
   const position = useResizeStore(state => state.position)

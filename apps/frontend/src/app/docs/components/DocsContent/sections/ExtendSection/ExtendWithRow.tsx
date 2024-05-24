@@ -12,14 +12,14 @@ export const ExtendWithRow = () => (
     label='extend with'
     description={
       <Text as='p'>
-          Populate new pixels using one of variants:{' '}
+        Populate new pixels using one of variants:{' '}
         {values.map((value, index) => (
           <Fragment key={value}>
             <Code>&quot;{value}&quot;</Code>
             {index < values.length - 1 && ', '}
           </Fragment>
         ))}
-          .
+        .
       </Text>
     }
     defaultValue={`"${DEFAULT_EXTEND_WITH}"`}

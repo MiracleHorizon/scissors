@@ -1,5 +1,11 @@
 import { cropFileName } from './cropFileName'
 
+interface Parameters {
+  fullFileName: string
+  width: number
+  height: number
+}
+
 /**
  * @param fileName - file name with extension (example: 'logo.png')
  * @param width - image width in pixels
@@ -16,10 +22,4 @@ export const addImageSizesToFileName = ({ fullFileName, width, height }: Paramet
   const fileExtension = fullFileName.replace(fileName, '')
 
   return fileNameWithSizes + fileExtension
-}
-
-interface Parameters {
-  fullFileName: string
-  width: number
-  height: number
 }

@@ -1,18 +1,11 @@
-import { IconButton, Popover } from '@radix-ui/themes'
+import { Popover } from '@radix-ui/themes'
 import type { ComponentPropsWithoutRef, FC } from 'react'
 
-import { DotsHorizontalIcon } from '@scissors/react-icons/DotsHorizontalIcon'
-
 import { GallerySlideInfo } from '../GallerySlideInfo'
+import { GallerySlidePopoverTrigger } from './GallerySlidePopoverTrigger'
 import styles from './GallerySlidePopover.module.css'
 
-const GallerySlidePopoverTrigger = () => (
-  <Popover.Trigger className={styles.trigger}>
-    <IconButton color='gray' radius='large' variant='surface'>
-      <DotsHorizontalIcon width='22px' height='22px' label='show slide information' />
-    </IconButton>
-  </Popover.Trigger>
-)
+type Props = ComponentPropsWithoutRef<typeof GallerySlideInfo>
 
 export const GallerySlidePopover: FC<Props> = props => (
   <Popover.Root modal>
@@ -23,5 +16,3 @@ export const GallerySlidePopover: FC<Props> = props => (
     </Popover.Content>
   </Popover.Root>
 )
-
-type Props = ComponentPropsWithoutRef<typeof GallerySlideInfo>

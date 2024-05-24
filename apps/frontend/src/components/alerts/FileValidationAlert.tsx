@@ -5,6 +5,15 @@ import type { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
 import { ExclamationTitle } from '@ui/ExclamationTitle'
 
+interface Props extends Pick<ComponentPropsWithoutRef<typeof AlertDialog.Root>, 'onOpenChange'> {
+  open: boolean
+  title: string | ReactNode
+  description: string | ReactNode
+  onClose: VoidFunction
+}
+
+export type FileValidationAlertExternalProps = Pick<Props, 'open' | 'onClose' | 'onOpenChange'>
+
 export const FileValidationAlert: FC<Props> = ({
   open,
   title,
@@ -30,12 +39,3 @@ export const FileValidationAlert: FC<Props> = ({
     </AlertDialog.Content>
   </AlertDialog.Root>
 )
-
-interface Props extends Pick<ComponentPropsWithoutRef<typeof AlertDialog.Root>, 'onOpenChange'> {
-  open: boolean
-  title: string | ReactNode
-  description: string | ReactNode
-  onClose: VoidFunction
-}
-
-export type FileValidationAlertExternalProps = Pick<Props, 'open' | 'onClose' | 'onOpenChange'>

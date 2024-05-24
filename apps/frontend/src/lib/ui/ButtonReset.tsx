@@ -9,6 +9,12 @@ import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
+interface Props extends ButtonProps, ClassNameProps {
+  tooltipContent: string
+  onClick?: VoidFunction
+  disabled?: boolean
+}
+
 export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
   ({ tooltipContent, disabled, variant = 'outline', color = 'red', ...props }, ref) => (
     <Tooltip
@@ -34,9 +40,3 @@ export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
 )
 
 ButtonReset.displayName = 'ButtonReset'
-
-interface Props extends ButtonProps, ClassNameProps {
-  tooltipContent: string
-  onClick?: VoidFunction
-  disabled?: boolean
-}

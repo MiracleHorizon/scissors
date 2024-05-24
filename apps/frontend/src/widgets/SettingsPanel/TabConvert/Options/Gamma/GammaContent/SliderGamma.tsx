@@ -3,7 +3,7 @@ import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 import { Slider } from '@design-system/Slider'
 import { useGammaStore } from '@stores/gamma'
 
-export const SliderGamma=()=> {
+export const SliderGamma = () => {
   const gamma = useGammaStore(state => state.gamma)
 
   const setGamma = useGammaStore(state => state.setValue)

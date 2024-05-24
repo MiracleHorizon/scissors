@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { Checkbox } from '@design-system/Checkbox'
 import { useResizeStore } from '@stores/resize'
 
-export const CheckboxEnlargement=()=> {
+export const CheckboxEnlargement = () => {
   const withoutEnlargement = useResizeStore(state => state.withoutEnlargement)
   const toggleEnlargement = useResizeStore(state => state.toggleEnlargement)
 

@@ -12,6 +12,11 @@ const rootStyle: CSSProperties = {
   backgroundImage: `url(${pathForAssets('image-fill-tiles.png')})`
 } as const
 
+interface Props {
+  file: File
+  handleOpenLightbox: VoidFunction
+}
+
 export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => {
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
@@ -28,9 +33,4 @@ export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => 
       />
     </Box>
   )
-}
-
-interface Props {
-  file: File
-  handleOpenLightbox: VoidFunction
 }

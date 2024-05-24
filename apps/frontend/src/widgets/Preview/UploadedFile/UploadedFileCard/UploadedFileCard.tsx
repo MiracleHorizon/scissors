@@ -12,6 +12,10 @@ import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import styles from './UploadedFileCard.module.css'
 
+interface Props {
+  file: File
+}
+
 export const UploadedFileCard: FC<Props> = ({ file }) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
 
@@ -67,8 +71,4 @@ export const UploadedFileCard: FC<Props> = ({ file }) => {
       </Flex>
     </Card>
   )
-}
-
-interface Props {
-  file: File
 }

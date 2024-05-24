@@ -9,6 +9,10 @@ import { CheckIcon } from '@scissors/react-icons/CheckIcon'
 import { copyToClipboard } from '@helpers/copyToClipboard'
 import type { ButtonProps } from '@lib/theme'
 
+interface Props extends ButtonProps {
+  copyValue: string
+}
+
 export const ButtonClipboardCopy = ({
   copyValue,
   size,
@@ -52,8 +56,4 @@ export const ButtonClipboardCopy = ({
       </IconButton>
     </Tooltip>
   )
-}
-
-interface Props extends ButtonProps {
-  copyValue: string
 }

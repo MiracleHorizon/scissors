@@ -14,10 +14,10 @@ export const BlurRow = () => (
     description={
       <Text as='div'>
         <Text as='p'>
-            When used without <Code variant='ghost'>sigma</Code>, performs a fast 3x3 box blur.
+          When used without <Code variant='ghost'>sigma</Code>, performs a fast 3x3 box blur.
         </Text>
         <Text as='div'>
-            When a sigma is provided, performs a slower, more accurate <GaussianBlurPopover /> blur.
+          When a sigma is provided, performs a slower, more accurate <GaussianBlurPopover /> blur.
         </Text>
       </Text>
     }

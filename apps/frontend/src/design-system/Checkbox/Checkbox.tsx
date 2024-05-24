@@ -8,6 +8,13 @@ import styles from './Checkbox.module.css'
 
 export const rootTestId = 'checkbox-root'
 
+export interface Props {
+  label?: string
+  checked?: boolean
+  onClick?: VoidFunction
+  disabled?: boolean
+}
+
 export const Checkbox: FC<Props> = memo(({ label, ...props }) => {
   const id = useId()
 
@@ -35,10 +42,3 @@ export const Checkbox: FC<Props> = memo(({ label, ...props }) => {
 })
 
 Checkbox.displayName = 'Checkbox'
-
-export interface Props {
-  label?: string
-  checked?: boolean
-  onClick?: VoidFunction
-  disabled?: boolean
-}

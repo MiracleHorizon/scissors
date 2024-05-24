@@ -5,7 +5,7 @@ import { RotateCounterClockwiseIcon } from '@scissors/react-icons/RotateCounterC
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useRotateStore } from '@stores/rotate'
 
-export const ButtonAddRotate=()=> {
+export const ButtonAddRotate = () => {
   const addRotate = useRotateStore(state => state.add)
 
   const handleAddRotate = useCallback(() => addRotate(), [addRotate])

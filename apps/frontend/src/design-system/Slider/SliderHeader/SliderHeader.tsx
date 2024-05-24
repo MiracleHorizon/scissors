@@ -9,6 +9,8 @@ const SliderPopover = dynamic(() => import('./SliderPopover').then(mod => mod.Sl
   ssr: false
 })
 
+type Props = Pick<SliderProps, 'title' | 'titleIcon' | 'infoContent' | 'disabled'>
+
 export const SliderHeader: FC<Props> = ({ title, titleIcon, disabled, infoContent }) => (
   <Flex asChild mb='3' px='0' align='center'>
     <article>
@@ -29,5 +31,3 @@ export const SliderHeader: FC<Props> = ({ title, titleIcon, disabled, infoConten
     </article>
   </Flex>
 )
-
-type Props = Pick<SliderProps, 'title' | 'titleIcon' | 'infoContent' | 'disabled'>

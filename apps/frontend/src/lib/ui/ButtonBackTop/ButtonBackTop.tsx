@@ -13,6 +13,12 @@ import styles from './ButtonBackTop.module.css'
 export const testId = 'button-back-top'
 export const accessibleIconLabel = 'back scroll top'
 
+interface Props<T extends HTMLElement> extends ClassNameProps {
+  visibilityOffset?: number
+  container?: MutableRefObject<T | null>
+  size?: ButtonSize
+}
+
 export const ButtonBackTop = <T extends HTMLElement>({
   container,
   visibilityOffset = 0,
@@ -81,10 +87,4 @@ export const ButtonBackTop = <T extends HTMLElement>({
       <ChevronUpIcon width='22px' height='22px' label={accessibleIconLabel} />
     </IconButton>
   )
-}
-
-interface Props<T extends HTMLElement> extends ClassNameProps {
-  visibilityOffset?: number
-  container?: MutableRefObject<T | null>
-  size?: ButtonSize
 }

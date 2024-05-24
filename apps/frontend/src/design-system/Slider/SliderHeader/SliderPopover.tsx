@@ -3,6 +3,11 @@ import type { FC, ReactNode } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
 
+interface Props {
+  content: ReactNode
+  disabled?: boolean
+}
+
 export const SliderPopover: FC<Props> = ({ content, disabled }) => (
   <Popover.Root open={disabled ? false : undefined}>
     <Popover.Trigger>
@@ -14,8 +19,3 @@ export const SliderPopover: FC<Props> = ({ content, disabled }) => (
     </Popover.Content>
   </Popover.Root>
 )
-
-interface Props {
-  content: ReactNode
-  disabled?: boolean
-}

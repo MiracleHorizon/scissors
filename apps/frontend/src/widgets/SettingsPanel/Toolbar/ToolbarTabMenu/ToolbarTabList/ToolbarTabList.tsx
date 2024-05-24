@@ -9,7 +9,7 @@ import { ToolbarTabItem } from './ToolbarTabItem'
 import { TOUR_STEP } from '@lib/tour'
 import { TOOLBAR_TAB } from '@stores/tabs'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
-import type { Tab } from './types'
+import type { Tab } from '../types'
 import styles from './ToolbarTabList.module.css'
 
 const tabs: Tab[] = [
@@ -30,6 +30,10 @@ const tabs: Tab[] = [
   // }
 ] as const
 
+interface Props extends ClassNameProps {
+  onClick?: VoidFunction
+}
+
 export const ToolbarTabList: FC<Props> = ({ className, onClick }) => (
   <Tabs.List data-tourstep={TOUR_STEP.TOOLBAR_TAB_LIST} className={clsx(styles.root, className)}>
     {tabs.map(props => (
@@ -37,7 +41,3 @@ export const ToolbarTabList: FC<Props> = ({ className, onClick }) => (
     ))}
   </Tabs.List>
 )
-
-interface Props extends ClassNameProps {
-  onClick?: VoidFunction
-}

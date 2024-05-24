@@ -9,6 +9,13 @@ import { useResetSettings } from '@stores/hooks/useResetSettings'
 import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'
 import { useTabsStore } from '@stores/tabs'
 
+type WithConfirmAlertProps = Pick<
+  ComponentPropsWithoutRef<typeof ConfirmSettingsResetAlert>,
+  'children' | 'onCancel'
+> & {
+  onConfirm?: VoidFunction
+}
+
 const WithConfirmAlert = ({ children, onCancel, onConfirm }: WithConfirmAlertProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
@@ -31,25 +38,18 @@ const WithConfirmAlert = ({ children, onCancel, onConfirm }: WithConfirmAlertPro
   )
 }
 
-type WithConfirmAlertProps = Pick<
-  ComponentPropsWithoutRef<typeof ConfirmSettingsResetAlert>,
-  'children' | 'onCancel'
-> & {
-  onConfirm?: VoidFunction
-}
-
 export const ButtonSettingsReset = () => (
   <WithConfirmAlert>
     <ButtonReset tooltipContent='Reset All Settings' />
   </WithConfirmAlert>
 )
 
+interface ItemProps {
+  onClick?: VoidFunction
+}
+
 export const ItemResetSettings: FC<ItemProps> = ({ onClick }) => (
   <WithConfirmAlert onConfirm={onClick}>
     <ToolbarMobileMenuItem label='Reset' icon={<ResetIcon width='20px' height='20px' />} />
   </WithConfirmAlert>
 )
-
-interface ItemProps {
-  onClick?: VoidFunction
-}

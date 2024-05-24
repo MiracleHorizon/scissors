@@ -11,14 +11,14 @@ export const FitRow = () => (
     label='fit'
     description={
       <Text as='p'>
-          How the image should be resized / cropped to fit the target dimension, one of{' '}
+        How the image should be resized / cropped to fit the target dimension, one of{' '}
         {values.map((value, index) => (
           <Fragment key={value}>
             <Code>&quot;{value}&quot;</Code>
             {index < values.length - 1 && ', '}
           </Fragment>
         ))}
-          .
+        .
       </Text>
     }
     defaultValue={`"${DEFAULT_RESIZE_FIT}"`}

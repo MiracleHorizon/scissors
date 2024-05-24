@@ -12,6 +12,10 @@ import {
 } from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
+interface Props extends Pick<ThemeColorItem, 'color'> {
+  isSelected: boolean
+}
+
 export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
   const handleSetThemeColor = () => {
     localStorage.setItem(THEME_COLOR_LS_KEY, color)
@@ -34,8 +38,4 @@ export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
       onClick={handleSetThemeColor}
     />
   )
-}
-
-interface Props extends Pick<ThemeColorItem, 'color'> {
-  isSelected: boolean
 }

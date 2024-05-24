@@ -9,6 +9,11 @@ import { useEyeDropper } from '@hooks/useEyeDropper'
 import { hexValidationRegex } from '@helpers/colors'
 import type { ButtonProps } from '@lib/theme'
 
+/* eslint no-unused-vars: 0  */
+interface Props extends ButtonProps {
+  setColor: (color: string) => void
+}
+
 const EyeDropperComponent = ({
   setColor,
   radius = 'large',
@@ -43,11 +48,6 @@ const EyeDropperComponent = ({
       <PipetteIcon width='20px' height='20px' label='pick color with eye dropper' />
     </IconButton>
   )
-}
-
-/* eslint no-unused-vars: 0  */
-interface Props extends ButtonProps {
-  setColor: (color: string) => void
 }
 
 export { EyeDropperComponent as EyeDropper }

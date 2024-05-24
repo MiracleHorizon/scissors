@@ -5,6 +5,37 @@ import type { FC, PropsWithChildren } from 'react'
 
 import { ExclamationTitle } from '@ui/ExclamationTitle'
 
+export type Props = PropsWithChildren<{
+  title: string
+  description: string
+  open?: boolean
+  contentClassName?: string
+  withTitleExclamation?: boolean
+  maxWidth?: string
+}> &
+  (WithConfirm | WithCansel | WithBothActions)
+
+interface WithConfirm {
+  onConfirm: VoidFunction
+  confirmLabel?: string
+  canselLabel?: never
+  onCancel?: never
+}
+
+interface WithCansel {
+  onCancel: VoidFunction
+  canselLabel?: string
+  confirmLabel?: never
+  onConfirm?: never
+}
+
+interface WithBothActions {
+  onConfirm?: VoidFunction
+  onCancel?: VoidFunction
+  confirmLabel?: string
+  canselLabel?: string
+}
+
 export const ConfirmAlert: FC<Props> = ({
   children,
   title,
@@ -52,34 +83,3 @@ export const ConfirmAlert: FC<Props> = ({
     </AlertDialog.Content>
   </AlertDialog.Root>
 )
-
-export type Props = PropsWithChildren<{
-  title: string
-  description: string
-  open?: boolean
-  contentClassName?: string
-  withTitleExclamation?: boolean
-  maxWidth?: string
-}> &
-  (WithConfirm | WithCansel | WithBothActions)
-
-interface WithConfirm {
-  onConfirm: VoidFunction
-  confirmLabel?: string
-  canselLabel?: never
-  onCancel?: never
-}
-
-interface WithCansel {
-  onCancel: VoidFunction
-  canselLabel?: string
-  confirmLabel?: never
-  onConfirm?: never
-}
-
-interface WithBothActions {
-  onConfirm?: VoidFunction
-  onCancel?: VoidFunction
-  confirmLabel?: string
-  canselLabel?: string
-}

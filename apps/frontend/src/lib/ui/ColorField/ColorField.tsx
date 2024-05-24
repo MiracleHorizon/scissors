@@ -21,6 +21,14 @@ import styles from './ColorField.module.css'
 
 const DEFAULT_COLOR = '000000'
 
+/* eslint no-unused-vars: 0 */
+interface Props extends ComponentPropsWithoutRef<typeof TextField.Root> {
+  label?: string
+  value?: string
+  defaultValue?: string
+  onValueChange?: (value: string) => void
+}
+
 export const ColorField = ({
   id,
   label,
@@ -185,11 +193,3 @@ export const ColorField = ({
 }
 
 ColorField.displayName = 'ColorField'
-
-/* eslint no-unused-vars: 0 */
-interface Props extends ComponentPropsWithoutRef<typeof TextField.Root> {
-  label?: string
-  value?: string
-  defaultValue?: string
-  onValueChange?: (value: string) => void
-}

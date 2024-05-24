@@ -4,6 +4,21 @@ import type { ChangeEvent, FC, HTMLInputTypeAttribute } from 'react'
 
 import styles from './MetadataFormField.module.css'
 
+/* eslint no-unused-vars: 0 */
+interface Props extends WithReactHookForm {
+  name: string
+  label: string
+  value?: string
+  placeholder?: string
+  type?: HTMLInputTypeAttribute
+  disabled?: boolean
+  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
+}
+
+interface WithReactHookForm {
+  register?: any
+}
+
 export const MetadataFormField: FC<Props> = ({
   name,
   label,
@@ -22,18 +37,3 @@ export const MetadataFormField: FC<Props> = ({
     </Form.Control>
   </Form.Field>
 )
-
-/* eslint no-unused-vars: 0 */
-interface Props extends WithReactHookForm {
-  name: string
-  label: string
-  value?: string
-  placeholder?: string
-  type?: HTMLInputTypeAttribute
-  disabled?: boolean
-  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void
-}
-
-interface WithReactHookForm {
-  register?: any
-}

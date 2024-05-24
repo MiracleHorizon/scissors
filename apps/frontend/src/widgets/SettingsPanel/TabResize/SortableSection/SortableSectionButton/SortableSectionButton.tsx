@@ -6,6 +6,29 @@ import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 import styles from './SortableSectionButton.module.css'
 
+type Props = ButtonProps &
+  Actions & {
+    icon: ReactNode
+    tooltipContent: string
+    isDisabled?: boolean
+    isTooltipDisabled?: boolean
+  }
+
+type Actions = WithClick | WithListeners
+
+interface WithClick {
+  onClick: VoidFunction
+  listeners?: never
+}
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+type Listeners = Record<string, Function>
+
+interface WithListeners {
+  listeners: Listeners | undefined
+  onClick?: never
+}
+
 export const SortableSectionButton: FC<Props> = memo(
   ({
     icon,
@@ -43,26 +66,3 @@ export const SortableSectionButton: FC<Props> = memo(
 )
 
 SortableSectionButton.displayName = 'SortableSectionButton'
-
-type Props = ButtonProps &
-  Actions & {
-    icon: ReactNode
-    tooltipContent: string
-    isDisabled?: boolean
-    isTooltipDisabled?: boolean
-  }
-
-type Actions = WithClick | WithListeners
-
-interface WithClick {
-  onClick: VoidFunction
-  listeners?: never
-}
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Listeners = Record<string, Function>
-
-interface WithListeners {
-  listeners: Listeners | undefined
-  onClick?: never
-}

@@ -3,6 +3,12 @@ import type { FC, ReactNode } from 'react'
 
 import { MinusIcon } from '@scissors/react-icons/MinusIcon'
 
+interface Props {
+  label: string
+  description: ReactNode
+  defaultValue?: string | number | ReactNode
+}
+
 export const DocsTableRow: FC<Props> = ({ label, description, defaultValue }) => (
   <Table.Row>
     <Table.RowHeaderCell>
@@ -39,9 +45,3 @@ export const DocsTableRow: FC<Props> = ({ label, description, defaultValue }) =>
     )}
   </Table.Row>
 )
-
-interface Props {
-  label: string
-  description: ReactNode
-  defaultValue?: string | number | ReactNode
-}

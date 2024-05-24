@@ -6,7 +6,7 @@ import { ResizeCheckboxes } from './ResizeCheckboxes'
 import { ResizeSelectList } from './ResizeSelectList'
 import { useResizeStore } from '@stores/resize'
 
-export const ResizeExtra=()=> {
+export const ResizeExtra = () => {
   const background = useResizeStore(state => state.background)
 
   return (

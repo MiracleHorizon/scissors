@@ -8,26 +8,25 @@ import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './GallerySlideInfo.module.css'
 
+/*
+ * Representative expression of image processing settings.
+ */
+interface SlideDetail {
+  label: string
+  value: string | number
+}
+
 const DetailsItem: FC<SlideDetail> = ({ label, value }) => (
   <Text as='div'>
     {label}: <Text weight='medium'>{value}</Text>
   </Text>
 )
 
-const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) => {
-  const { handleExportJSON } = useExportJSON()
-
-  const handleExport = () =>
-    handleExportJSON({
-      fileName: `scissors-slide-${index + 1}-settings`,
-      payload: settings
-    })
-
-  return (
-    <Flex mt='2' className={styles.export}>
-      <ButtonDownload onClick={handleExport} />
-    </Flex>
-  )
+interface Props extends ClassNameProps {
+  index: number
+  label: string
+  details: SlideDetail[]
+  settings: Partial<ConvertSettings>
 }
 
 export const GallerySlideInfo: FC<Props> = ({ index, label, settings, details, className }) => (
@@ -48,17 +47,18 @@ export const GallerySlideInfo: FC<Props> = ({ index, label, settings, details, c
   </Flex>
 )
 
-interface Props extends ClassNameProps {
-  index: number
-  label: string
-  details: SlideDetail[]
-  settings: Partial<ConvertSettings>
-}
+const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) => {
+  const { handleExportJSON } = useExportJSON()
 
-/*
- * Representative expression of image processing settings.
- */
-interface SlideDetail {
-  label: string
-  value: string | number
+  const handleExport = () =>
+    handleExportJSON({
+      fileName: `scissors-slide-${index + 1}-settings`,
+      payload: settings
+    })
+
+  return (
+    <Flex mt='2' className={styles.export}>
+      <ButtonDownload onClick={handleExport} />
+    </Flex>
+  )
 }

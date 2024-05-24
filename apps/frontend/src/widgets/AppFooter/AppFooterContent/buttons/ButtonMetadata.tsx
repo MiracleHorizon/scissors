@@ -6,7 +6,7 @@ import { useRequestStore } from '@stores/request'
 import { useMetadataStore } from '@stores/metadata'
 import { useMetadataMutation } from '@api/handle-image-metadata'
 
-export const ButtonMetadata=()=> {
+export const ButtonMetadata = () => {
   const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)

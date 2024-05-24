@@ -5,7 +5,7 @@ import { ButtonResetNormalise } from './ButtonResetNormalise'
 import { ButtonRemoveNormalise } from './ButtonRemoveNormalise'
 import { useNormaliseStore } from '@stores/normalise'
 
-export const NormaliseHeader=()=> {
+export const NormaliseHeader = () => {
   const [lower, upper] = useNormaliseStore(state => [state.lower, state.upper])
 
   return (

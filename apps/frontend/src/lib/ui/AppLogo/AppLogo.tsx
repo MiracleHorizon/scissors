@@ -13,6 +13,8 @@ import styles from './AppLogo.module.css'
 
 export const testId = 'app-logo'
 
+type Props = ClassNameProps & StyleProps & MarginProps
+
 export const AppLogo = ({ style, className, ...props }: Props) => {
   const router = useRouter()
 
@@ -39,5 +41,3 @@ export const AppLogo = ({ style, className, ...props }: Props) => {
     </Flex>
   )
 }
-
-type Props = ClassNameProps & StyleProps & MarginProps

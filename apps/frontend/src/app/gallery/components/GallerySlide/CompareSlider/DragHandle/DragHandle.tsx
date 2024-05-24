@@ -8,6 +8,10 @@ import styles from './DragHandle.module.css'
 
 const DragHandleGutter = () => <Flex flexGrow='1' className={styles.gutter} />
 
+interface Props {
+  isPortrait: boolean
+}
+
 export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
   <Flex
     height='100%'
@@ -24,7 +28,3 @@ export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
 ))
 
 DragHandle.displayName = 'DragHandle'
-
-interface Props {
-  isPortrait: boolean
-}

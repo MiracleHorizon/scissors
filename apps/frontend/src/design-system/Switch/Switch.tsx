@@ -13,6 +13,13 @@ const width: Size = {
 
 export const labelTestId = 'switch-label'
 
+export interface Props {
+  title: string
+  checked: boolean | undefined
+  onClick: VoidFunction
+  disabled?: boolean
+}
+
 export const Switch: FC<Props> = memo(({ title, ...switchProps }) => (
   <Flex asChild justify='between' gap='2' width={width}>
     <Text data-testid={labelTestId} as='label'>
@@ -25,10 +32,3 @@ export const Switch: FC<Props> = memo(({ title, ...switchProps }) => (
 ))
 
 Switch.displayName = 'Switch'
-
-export interface Props {
-  title: string
-  checked: boolean | undefined
-  onClick: VoidFunction
-  disabled?: boolean
-}

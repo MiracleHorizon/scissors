@@ -11,6 +11,14 @@ import { DragHandle } from './DragHandle'
 import { getRandomValueFromRange } from '@helpers/getRandomValueFromRange'
 import styles from './CompareSlider.module.css'
 
+interface Props {
+  index: number
+  label: string
+  beforeSrc: string
+  afterSrc: string
+  orientation?: 'landscape' | 'portrait'
+}
+
 const totalImages = 2
 
 const getRandomPosition = (index: number): number => {
@@ -119,12 +127,4 @@ export const CompareSlider = ({ index, label, beforeSrc, afterSrc, orientation }
       className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
     />
   )
-}
-
-interface Props {
-  index: number
-  label: string
-  beforeSrc: string
-  afterSrc: string
-  orientation?: 'landscape' | 'portrait'
 }

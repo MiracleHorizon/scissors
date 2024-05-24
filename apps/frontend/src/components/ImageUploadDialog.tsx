@@ -10,11 +10,11 @@ import { ImageUploadForm } from '@components/ImageUploadForm'
 import { useOutputStore } from '@stores/output'
 import { allowedImageFormats } from '@site/config'
 
-interface Props {
+interface FormProps {
   onClose: VoidFunction
 }
 
-const UploadForm = ({ onClose }: Props) => {
+const UploadForm = ({ onClose }: FormProps) => {
   const [value, setValue] = useState('')
   const setFile = useOutputStore(state => state.setFile)
 

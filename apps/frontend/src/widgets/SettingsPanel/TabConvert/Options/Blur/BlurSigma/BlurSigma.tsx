@@ -6,6 +6,10 @@ import { Slider } from '@design-system/Slider'
 import { BlurSigmaHeader } from './BlurSigmaHeader'
 import { useBlurStore } from '@stores/blur'
 
+interface Props {
+  disabled: boolean
+}
+
 export const BlurSigma = ({ disabled }: Props) => {
   const sigma = useBlurStore(state => state.sigma)
   const setSigma = useBlurStore(state => state.setSigma)
@@ -33,8 +37,4 @@ export const BlurSigma = ({ disabled }: Props) => {
       />
     </Flex>
   )
-}
-
-interface Props {
-  disabled: boolean
 }

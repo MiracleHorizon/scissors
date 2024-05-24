@@ -5,6 +5,10 @@ import { ThemeColorGridItem } from './ThemeColorGridItem'
 import { type GridProps, themeColorItems } from '@lib/theme'
 import { useTheme } from '@hooks/useTheme'
 
+interface Props extends Omit<GridProps, 'rows'> {
+  rows?: number
+}
+
 export const ThemeColorGrid: FC<Props> = ({ rows = 4, ...props }) => {
   const { themeColor } = useTheme()
 
@@ -21,8 +25,4 @@ export const ThemeColorGrid: FC<Props> = ({ rows = 4, ...props }) => {
       ))}
     </Grid>
   )
-}
-
-interface Props extends Omit<GridProps, 'rows'> {
-  rows?: number
 }

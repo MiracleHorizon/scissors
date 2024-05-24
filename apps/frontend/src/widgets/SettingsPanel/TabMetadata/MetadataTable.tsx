@@ -4,6 +4,10 @@ import { Table } from '@radix-ui/themes'
 import { formatLabel, formatValue } from './utils'
 import type { ExifrData, TableItemValue } from './types'
 
+interface Props {
+  data: ExifrData
+}
+
 export const MetadataTable = ({ data }: Props) => {
   const items: [string, string][] = useMemo(() => {
     const entries = Object.entries(data)
@@ -41,8 +45,4 @@ export const MetadataTable = ({ data }: Props) => {
       </Table.Body>
     </Table.Root>
   )
-}
-
-interface Props {
-  data: ExifrData
 }

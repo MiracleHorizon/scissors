@@ -5,7 +5,7 @@ import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 import { Slider } from '@design-system/Slider'
 import { useNormaliseStore } from '@stores/normalise'
 
-export const SliderNormalise=()=> {
+export const SliderNormalise = () => {
   const lower = useNormaliseStore(state => state.lower)
   const upper = useNormaliseStore(state => state.upper)
 
