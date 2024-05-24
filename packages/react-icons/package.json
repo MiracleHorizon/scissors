@@ -6,8 +6,9 @@
     "./*": "./src/*.tsx"
   },
   "peerDependencies": {
-    "react": "^18",
-    "@types/react": "^18"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@types/react": "18.2.0"
   },
   "dependencies": {
     "@radix-ui/react-accessible-icon": "1.0.3"
