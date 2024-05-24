@@ -1,0 +1,1 @@
+export { TintHeader } from './TintHeader'

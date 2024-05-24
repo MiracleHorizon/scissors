@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
-import { Checkbox } from '@design-system/checkbox'
+import { Checkbox } from '@design-system/Checkbox'
 import { useResizeStore } from '@stores/resize'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'

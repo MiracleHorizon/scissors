@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
-import { Checkbox } from '@design-system/checkbox'
+import { Checkbox } from '@design-system/Checkbox'
 import { useMetadataStore } from '@stores/metadata'
 
 export function MetadataCheckboxGroup({ hasExif, hasICC }: Props) {

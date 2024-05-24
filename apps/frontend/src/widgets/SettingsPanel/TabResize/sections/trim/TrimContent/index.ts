@@ -1,0 +1,1 @@
+export { TrimContent } from './TrimContent'

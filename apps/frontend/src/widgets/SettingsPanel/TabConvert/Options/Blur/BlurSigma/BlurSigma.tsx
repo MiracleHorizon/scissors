@@ -2,7 +2,7 @@ import { Flex } from '@radix-ui/themes'
 
 import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
-import { Slider } from '@design-system/slider'
+import { Slider } from '@design-system/Slider'
 import { BlurSigmaHeader } from './BlurSigmaHeader'
 import { useBlurStore } from '@stores/blur'
 

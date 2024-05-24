@@ -7,7 +7,7 @@ import {
   type ResizePosition
 } from '@scissors/sharp'
 
-import { Select, type SelectData } from '@design-system/select'
+import { Select, type SelectData } from '@design-system/Select'
 import { useResizeStore } from '@stores/resize'
 
 const data: SelectData = [

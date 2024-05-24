@@ -1,6 +1,6 @@
 import { MoveIcon } from '@scissors/react-icons/MoveIcon'
 
-import { NumberInput } from 'src/components/NumberInput'
+import { NumberInput } from '@components/NumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 

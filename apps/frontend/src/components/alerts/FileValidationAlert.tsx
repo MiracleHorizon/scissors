@@ -3,7 +3,7 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
 
-import { TitleWithExclamation } from '@ui/TitleWithExclamation'
+import { ExclamationTitle } from '@ui/ExclamationTitle'
 
 export const FileValidationAlert: FC<Props> = ({
   open,
@@ -14,9 +14,9 @@ export const FileValidationAlert: FC<Props> = ({
 }) => (
   <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
     <AlertDialog.Content size='3' onEscapeKeyDown={onClose}>
-      <TitleWithExclamation mb='3'>
+      <ExclamationTitle mb='3'>
         <AlertDialog.Title mb='0'>{title}</AlertDialog.Title>
-      </TitleWithExclamation>
+      </ExclamationTitle>
 
       <AlertDialog.Description>{description}</AlertDialog.Description>
 

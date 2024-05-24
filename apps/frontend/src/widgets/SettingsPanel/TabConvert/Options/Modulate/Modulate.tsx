@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
 import { ButtonAddModulate } from './ButtonAddModulate'
-import { ModulateContentSkeleton } from './ModulateContentSkeleton'
+import { ModulateContentSkeleton } from './ModulateContent/ModulateContentSkeleton'
 import { useModulateStore } from '@stores/modulate'
 
 const ModulateContent = dynamic(

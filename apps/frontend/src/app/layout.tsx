@@ -5,9 +5,8 @@ import { Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
 import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
-import 'yet-another-react-lightbox/styles.css'
 
-import { Layout } from '@layouts/default'
+import { Layout } from '@components/Layout'
 import {
   pathForSocial,
   SITE_DESCRIPTION,

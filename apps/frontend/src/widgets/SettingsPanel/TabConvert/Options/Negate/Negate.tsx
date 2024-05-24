@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 
-import { SwitchNegate } from './SwitchNegate'
-import { SwitchNegateAlpha } from './SwitchNegateAlpha'
+import { SwitchNegate } from './switches/SwitchNegate'
+import { SwitchNegateAlpha } from './switches/SwitchNegateAlpha'
 import type { FlexDirection } from '@lib/theme'
 
 const direction: FlexDirection = {

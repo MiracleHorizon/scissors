@@ -1,1 +1,0 @@
-export { ColorPickerContent } from './ColorPickerContent'

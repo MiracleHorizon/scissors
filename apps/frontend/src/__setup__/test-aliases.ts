@@ -24,10 +24,6 @@ const aliases: Alias[] = [
   },
   /* Components */
   {
-    find: '@layouts',
-    replacementPath: './src/layouts'
-  },
-  {
     find: '@widgets',
     replacementPath: './src/widgets'
   },

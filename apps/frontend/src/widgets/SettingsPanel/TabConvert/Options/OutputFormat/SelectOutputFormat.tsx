@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@scissors/sharp'
 
-import { Select, type SelectData } from '@design-system/select'
+import { Select, type SelectData } from '@design-system/Select'
 import { useOutputStore } from '@stores/output'
 
 const data: SelectData = [

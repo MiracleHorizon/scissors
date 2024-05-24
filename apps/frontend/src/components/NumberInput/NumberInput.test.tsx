@@ -4,7 +4,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 
 import { fieldTestId, labelTestId, NumberInput, slotTestId } from './NumberInput'
 import { NOT_ALLOWED_KEYS } from './utils'
-import type { Props } from './NumberInput.types'
+import type { Props } from './types'
 
 describe('@components/NumberInput - rendering', () => {
   afterEach(() => {

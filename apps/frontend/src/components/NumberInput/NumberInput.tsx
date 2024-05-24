@@ -6,7 +6,7 @@ import { clsx } from 'clsx'
 
 import { NOT_ALLOWED_KEYS, parseValue } from './utils'
 import { useEscapeBlur } from '@hooks/useEscapeBlur'
-import type { LabelProps, Props } from './NumberInput.types'
+import type { LabelProps, Props } from './types'
 import styles from './NumberInput.module.css'
 
 export const labelTestId = 'number-input-label'

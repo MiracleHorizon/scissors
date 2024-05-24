@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { useMemo } from 'react'
 import { Flex } from '@radix-ui/themes'
 
-import { Switch } from '@design-system/switch'
+import { Switch } from '@design-system/Switch'
 import { BlurSigmaSkeleton } from './BlurSigma/BlurSigmaSkeleton'
 import { ButtonAddBlurSigma } from './BlurSigma/ButtonAddBlurSigma'
 import { useBlurStore } from '@stores/blur'

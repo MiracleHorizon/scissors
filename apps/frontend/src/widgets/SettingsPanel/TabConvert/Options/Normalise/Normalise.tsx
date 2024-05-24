@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
 import { ButtonAddNormalise } from './ButtonAddNormalise'
-import { NormaliseContentSkeleton } from './NormaliseContentSkeleton'
+import { NormaliseContentSkeleton } from './NormaliseContent/NormaliseContentSkeleton'
 import { useNormaliseStore } from '@stores/normalise'
 
 const NormaliseContent = dynamic(

@@ -3,7 +3,7 @@
 import { type ComponentPropsWithoutRef, type FC, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
-import { Checkbox } from '@design-system/checkbox'
+import { Checkbox } from '@design-system/Checkbox'
 
 const contentActionsProps = {
   gap: {

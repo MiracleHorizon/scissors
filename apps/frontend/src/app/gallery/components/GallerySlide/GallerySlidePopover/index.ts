@@ -1,0 +1,1 @@
+export { GallerySlidePopover } from './GallerySlidePopover'

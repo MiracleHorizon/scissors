@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
 import { ButtonAddRotate } from './ButtonAddRotate'
-import { RotateContentSkeleton } from './RotateContentSkeleton'
+import { RotateContentSkeleton } from './RotateContent/RotateContentSkeleton'
 import { useRotateStore } from '@stores/rotate'
 
 const RotateContent = dynamic(() => import('./RotateContent').then(mod => mod.RotateContent), {

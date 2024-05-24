@@ -4,8 +4,8 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
-import { Ifd0OptionsForm } from './ifd0-form'
-import { Ifd2OptionsForm } from './ifd2-form'
+import { Ifd0OptionsForm } from './forms/ifd0-form'
+import { Ifd2OptionsForm } from './forms/ifd2-form'
 import { MetadataCheckboxGroup } from './MetadataCheckboxGroup'
 import { CalloutDefault } from '@ui/CalloutDefault'
 import { useOutputStore } from '@stores/output'

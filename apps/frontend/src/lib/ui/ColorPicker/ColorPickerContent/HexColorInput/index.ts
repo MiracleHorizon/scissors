@@ -1,1 +1,0 @@
-export { HexColorInput } from './HexColorInput'

@@ -6,22 +6,31 @@ import { Flex, Separator } from '@radix-ui/themes'
 import { ButtonDownloadSkeleton, ButtonRequestSkeleton } from '../AppFooterContentSkeleton'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
-const ButtonDownload = dynamic(() => import('./ButtonDownload').then(mod => mod.ButtonDownload), {
-  ssr: false,
-  loading: () => <ButtonDownloadSkeleton />
-})
-const ButtonConvert = dynamic(() => import('./ButtonConvert').then(mod => mod.ButtonConvert), {
+const ButtonDownload = dynamic(
+  () => import('./buttons/ButtonDownload').then(mod => mod.ButtonDownload),
+  {
+    ssr: false,
+    loading: () => <ButtonDownloadSkeleton />
+  }
+)
+const ButtonConvert = dynamic(
+  () => import('./buttons/ButtonConvert').then(mod => mod.ButtonConvert),
+  {
+    ssr: false,
+    loading: () => <ButtonRequestSkeleton />
+  }
+)
+const ButtonResize = dynamic(() => import('./buttons/ButtonResize').then(mod => mod.ButtonResize), {
   ssr: false,
   loading: () => <ButtonRequestSkeleton />
 })
-const ButtonResize = dynamic(() => import('./ButtonResize').then(mod => mod.ButtonResize), {
-  ssr: false,
-  loading: () => <ButtonRequestSkeleton />
-})
-const ButtonMetadata = dynamic(() => import('./ButtonMetadata').then(mod => mod.ButtonMetadata), {
-  ssr: false,
-  loading: () => <ButtonRequestSkeleton />
-})
+const ButtonMetadata = dynamic(
+  () => import('./buttons/ButtonMetadata').then(mod => mod.ButtonMetadata),
+  {
+    ssr: false,
+    loading: () => <ButtonRequestSkeleton />
+  }
+)
 
 export default function AppFooterContent() {
   const selectedTab = useTabsStore(state => state.selectedTab)

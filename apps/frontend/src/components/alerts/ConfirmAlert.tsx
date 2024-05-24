@@ -3,7 +3,7 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { FC, PropsWithChildren } from 'react'
 
-import { TitleWithExclamation } from '@ui/TitleWithExclamation'
+import { ExclamationTitle } from '@ui/ExclamationTitle'
 
 export const ConfirmAlert: FC<Props> = ({
   children,
@@ -24,9 +24,9 @@ export const ConfirmAlert: FC<Props> = ({
     <AlertDialog.Content size='3' maxWidth={maxWidth} className={contentClassName}>
       <Flex direction='column'>
         {withTitleExclamation ? (
-          <TitleWithExclamation mb='3'>
+          <ExclamationTitle mb='3'>
             <AlertDialog.Title mb='0'>{title}</AlertDialog.Title>
-          </TitleWithExclamation>
+          </ExclamationTitle>
         ) : (
           <AlertDialog.Title>{title}</AlertDialog.Title>
         )}

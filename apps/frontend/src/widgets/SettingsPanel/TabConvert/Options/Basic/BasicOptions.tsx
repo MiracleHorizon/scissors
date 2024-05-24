@@ -1,8 +1,8 @@
 import { Flex } from '@radix-ui/themes'
 
-import { SwitchFlip } from './SwitchFlip'
-import { SwitchFlop } from './SwitchFlop'
-import { SwitchGrayscale } from './SwitchGrayscale'
+import { SwitchFlip } from './switches/SwitchFlip'
+import { SwitchFlop } from './switches/SwitchFlop'
+import { SwitchGrayscale } from './switches/SwitchGrayscale'
 import type { FlexDirection } from '@lib/theme'
 
 const direction: FlexDirection = {

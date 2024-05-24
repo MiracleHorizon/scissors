@@ -9,7 +9,7 @@ import {
 import { WidthIcon } from '@scissors/react-icons/WidthIcon'
 import { HeightIcon } from '@scissors/react-icons/HeightIcon'
 
-import { NumberInput } from 'src/components/NumberInput'
+import { NumberInput } from '@components/NumberInput'
 import { useResizeStore } from '@stores/resize'
 
 const defaultInputProps = {

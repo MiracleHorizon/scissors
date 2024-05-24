@@ -2,7 +2,7 @@
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
-import { TitleWithExclamation } from '@ui/TitleWithExclamation'
+import { ExclamationTitle } from '@ui/ExclamationTitle'
 import { handleRequestError } from '@api/helpers/handleRequestError'
 
 export function RequestErrorAlert({ open, error, reset, retry }: Props) {
@@ -12,11 +12,11 @@ export function RequestErrorAlert({ open, error, reset, retry }: Props) {
   return (
     <AlertDialog.Root open={open}>
       <AlertDialog.Content size='3' maxWidth='390px'>
-        <TitleWithExclamation mb='3'>
+        <ExclamationTitle mb='3'>
           <AlertDialog.Title mb='0'>
             {isMessageEmpty ? 'Something went wrong' : 'Error'}
           </AlertDialog.Title>
-        </TitleWithExclamation>
+        </ExclamationTitle>
 
         <AlertDialog.Description size='3'>
           {isMessageEmpty ? 'Please try again later' : message}

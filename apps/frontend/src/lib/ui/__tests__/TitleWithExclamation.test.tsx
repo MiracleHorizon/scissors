@@ -2,10 +2,10 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { type Props, testId, TitleWithExclamation } from '@ui/TitleWithExclamation'
+import { type Props, testId, ExclamationTitle } from '../ExclamationTitle'
 import { getRadixSpaceVar } from '@lib/theme'
 
-describe('@ui/TitleWithExclamation', () => {
+describe('@ui/ExclamationTitle', () => {
   const testLabel = 'Lorem ipsum dolor sit amet.'
   const testTag = 'H1'
   const testJSX = <h1 title={testLabel}>{testLabel}</h1>
@@ -23,7 +23,7 @@ describe('@ui/TitleWithExclamation', () => {
     } as Props
 
     const { getByTestId, getByText, container } = render(
-      <TitleWithExclamation {...props}>{testJSX}</TitleWithExclamation>
+      <ExclamationTitle {...props}>{testJSX}</ExclamationTitle>
     )
 
     const rootElement = getByTestId(testId)

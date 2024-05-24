@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 
 import { ButtonAddGamma } from './ButtonAddGamma'
-import { GammaContentSkeleton } from './GammaContentSkeleton'
+import { GammaContentSkeleton } from './GammaContent/GammaContentSkeleton'
 import { useGammaStore } from '@stores/gamma'
 
 const GammaContent = dynamic(() => import('./GammaContent').then(mod => mod.GammaContent), {

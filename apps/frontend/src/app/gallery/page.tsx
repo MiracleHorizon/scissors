@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { Flex, ScrollArea } from '@radix-ui/themes'
 
-import { GallerySlideSkeleton } from './components/GallerySlideSkeleton'
+import { GallerySlideSkeleton } from './components/GallerySlide/GallerySlideSkeleton'
 import { slides } from './slides'
 import styles from './page.module.css'
 

@@ -1,7 +1,7 @@
 import { RowSpacingIcon } from '@scissors/react-icons/RowSpacingIcon'
 import { ColumnSpacingIcon } from '@scissors/react-icons/ColumnSpacingIcon'
 
-import { NumberInput } from 'src/components/NumberInput'
+import { NumberInput } from '@components/NumberInput'
 import { useExtendStore } from '@stores/extend'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 
