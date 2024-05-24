@@ -7,7 +7,7 @@ import { NumberInput } from '@components/NumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 
-export function ExtendDirectionFormSeparated() {
+export const ExtendDirectionFormSeparated=()=> {
   const top = useExtendStore(state => state.top)
   const bottom = useExtendStore(state => state.bottom)
   const left = useExtendStore(state => state.left)

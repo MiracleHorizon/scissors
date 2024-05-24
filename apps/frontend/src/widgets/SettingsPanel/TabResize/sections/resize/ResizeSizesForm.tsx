@@ -17,7 +17,7 @@ const defaultInputProps = {
   step: RESIZE_SIZE_STEP
 } as const
 
-export function ResizeSizesForm() {
+export const ResizeSizesForm=()=> {
   const width = useResizeStore(state => state.width)
   const height = useResizeStore(state => state.height)
 

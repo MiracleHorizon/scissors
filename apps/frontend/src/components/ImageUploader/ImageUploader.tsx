@@ -13,7 +13,7 @@ import { createTour, isTourCompleted, TOUR_STEP } from '@lib/tour'
 import styles from './ImageUploader.module.css'
 import '@lib/tour/tour.css'
 
-export function ImageUploader() {
+export const ImageUploader = () => {
   const setFile = useOutputStore(state => state.setFile)
 
   useEffect(() => {

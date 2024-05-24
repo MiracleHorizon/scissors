@@ -17,7 +17,7 @@ import { useExtendStore } from '@stores/extend'
 import { useExtractStore } from '@stores/extract'
 import { useTrimStore } from '@stores/trim'
 
-export function useResetConvertSettings() {
+export const useResetConvertSettings = () => {
   const resetBasic = useConvertStore(state => state.reset)
   const resetOutputFileName = useOutputStore(state => state.resetOutputFileName)
   const resetRotate = useRotateStore(state => state.reset)
@@ -53,7 +53,7 @@ export function useResetConvertSettings() {
   return { handleReset }
 }
 
-export function useResetResizeSettings() {
+export const useResetResizeSettings = () => {
   const resetResize = useResizeStore(state => state.reset)
   const resetExtend = useExtendStore(state => state.reset)
   const resetExtract = useExtractStore(state => state.reset)
@@ -69,7 +69,7 @@ export function useResetResizeSettings() {
   return { handleReset }
 }
 
-export function useResetSettings(selectedTab: ToolbarTab) {
+export const useResetSettings = (selectedTab: ToolbarTab) => {
   const { handleReset: resetConvertSettings } = useResetConvertSettings()
   const { handleReset: resetResizeSettings } = useResetResizeSettings()
 

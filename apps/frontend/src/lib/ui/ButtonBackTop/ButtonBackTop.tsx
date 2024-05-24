@@ -13,12 +13,12 @@ import styles from './ButtonBackTop.module.css'
 export const testId = 'button-back-top'
 export const accessibleIconLabel = 'back scroll top'
 
-export function ButtonBackTop<T extends HTMLElement>({
+export const ButtonBackTop = <T extends HTMLElement>({
   container,
   visibilityOffset = 0,
   size = '2',
   className
-}: Props<T>) {
+}: Props<T>) => {
   const [isVisible, setVisible] = useState(visibilityOffset <= 0)
 
   const handleScrollToTop = () => {

@@ -6,7 +6,7 @@
  * @param content - tooltip content (title).
  * @param isParentDisabled - whether actions are disabled on the parent of the tooltip.
  */
-export function isTooltipOpen({ content, isParentDisabled }: Parameters) {
+export const isTooltipOpen = ({ content, isParentDisabled }: Parameters) => {
   if (!content) {
     return false
   }

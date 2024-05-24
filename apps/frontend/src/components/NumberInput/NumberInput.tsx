@@ -23,7 +23,7 @@ const WithLabel: FC<LabelProps> = ({ children, id, label }) => (
 export const fieldTestId = 'number-input-field'
 export const slotTestId = 'number-input-slot'
 
-export function NumberInput({
+export const NumberInput = ({
   icon,
   min,
   max,
@@ -34,7 +34,7 @@ export function NumberInput({
   maxFractionDigits,
   className,
   ...inputAttributes
-}: Props) {
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const inputId = useId()
 

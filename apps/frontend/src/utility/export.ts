@@ -2,7 +2,7 @@
  * @param blob - file to download
  * @param download - name of the downloaded file
  */
-export function downloadFile({ blob, download }: Params): void {
+export const downloadFile = ({ blob, download }: Params): void => {
   const link = document.createElement('a')
   link.href = URL.createObjectURL(blob)
   link.download = download

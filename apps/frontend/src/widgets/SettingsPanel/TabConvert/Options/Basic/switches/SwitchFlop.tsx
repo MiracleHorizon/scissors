@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { Switch } from '@design-system/Switch'
 import { useConvertStore } from '@stores/convert'
 
-export function SwitchFlop() {
+export const SwitchFlop = () => {
   const flop = useConvertStore(state => state.flop)
   const toggleFlop = useConvertStore(state => state.toggleFlop)
 

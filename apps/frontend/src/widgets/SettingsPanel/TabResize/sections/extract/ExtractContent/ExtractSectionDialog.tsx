@@ -26,7 +26,7 @@ export const ExtractSectionDialog = ({ file }: Props) => {
   const setPreviewAspectRatio = useExtractStore(state => state.setPreviewAspectRatio)
   const setCropperAspectRatio = useExtractStore(state => state.setCropperAspectRatio)
 
-  function handleChangeAspectRatio(displayValue: string) {
+  const handleChangeAspectRatio = (displayValue: string) => {
     const value = aspectRatioList.find(v => v.displayValue === displayValue)?.value ?? -1
     setCropperAspectRatio(value)
 

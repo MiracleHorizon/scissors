@@ -3,7 +3,7 @@ import { DEFAULT_ROTATE_BACKGROUND } from '@scissors/sharp'
 import { ColorField } from '@ui/ColorField'
 import { useRotateStore } from '@stores/rotate'
 
-export function RotateBackgroundPopover() {
+export const RotateBackgroundPopover=()=> {
   const rotateBackground = useRotateStore(state => state.background)
   const withDominantBackground = useRotateStore(state => state.withDominantBackground)
 

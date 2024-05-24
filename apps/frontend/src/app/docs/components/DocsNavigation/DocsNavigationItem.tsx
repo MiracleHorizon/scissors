@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation'
 
 import styles from './DocsNavigationItem.module.css'
 
-export function DocsNavigationItem({ title, hash }: Props) {
+export const DocsNavigationItem = ({ title, hash }: Props) => {
   const [isSelected, setSelected] = useState(false)
   const params = useParams()
 

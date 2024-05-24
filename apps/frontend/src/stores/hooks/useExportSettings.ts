@@ -5,7 +5,7 @@ import { useResizeSettings } from './useResizeSettings'
 import { useExportJSON } from '@hooks/useExportJSON'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 
-export function useExportSettings(selectedTab: ToolbarTab) {
+export const useExportSettings = (selectedTab: ToolbarTab) => {
   const { handleExportJSON } = useExportJSON()
 
   const convertSettings = useConvertSettings()

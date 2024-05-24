@@ -3,7 +3,7 @@ import { DEFAULT_TRIM_THRESHOLD, MAX_TRIM_THRESHOLD, MIN_TRIM_THRESHOLD } from '
 import { NumberInput } from '@components/NumberInput'
 import { useTrimStore } from '@stores/trim'
 
-export function TrimThresholdInput() {
+export const TrimThresholdInput=()=> {
   const threshold = useTrimStore(state => state.threshold)
   const setThreshold = useTrimStore(state => state.setThreshold)
 

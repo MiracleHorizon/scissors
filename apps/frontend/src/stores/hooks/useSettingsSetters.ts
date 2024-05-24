@@ -13,7 +13,7 @@ import { useNormaliseStore } from '@stores/normalise'
 import { useTintStore } from '@stores/tint'
 import { useOutputStore } from '@stores/output'
 
-export function useSettingsSetters() {
+export const useSettingsSetters = () => {
   const setFlip = useConvertStore(state => state.setFlip)
   const setFlop = useConvertStore(state => state.setFlop)
   const setGrayscale = useConvertStore(state => state.setGrayscale)

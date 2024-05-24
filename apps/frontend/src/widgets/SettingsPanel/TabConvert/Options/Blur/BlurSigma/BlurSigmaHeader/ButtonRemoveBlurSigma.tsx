@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { useBlurStore } from '@stores/blur'
 
-export function ButtonRemoveBlurSigma(props: Props) {
+export const ButtonRemoveBlurSigma=(props: Props) =>{
   const remove = useBlurStore(state => state.removeSigma)
   const handleRemove = useCallback(() => remove(), [remove])
 

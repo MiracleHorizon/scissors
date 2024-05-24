@@ -4,7 +4,7 @@ import type { UseThemeProps } from 'next-themes/dist/types'
 
 import { getLocalStorageThemeColor, type ThemeColor } from '@lib/theme'
 
-export function useTheme(): Returns {
+export const useTheme = (): Returns => {
   const { theme, setTheme, ...themeRest } = useNextTheme()
   const themeColor = getLocalStorageThemeColor()
 

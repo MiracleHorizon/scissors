@@ -71,9 +71,8 @@ const aliases: Alias[] = [
   }
 ]
 
-export function getAliases(rootDir: string) {
-  return aliases.map(({ find, replacementPath }) => ({
+export const getAliases = (rootDir: string) =>
+  aliases.map(({ find, replacementPath }) => ({
     find,
     replacement: path.resolve(rootDir, replacementPath)
   }))
-}

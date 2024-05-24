@@ -14,7 +14,7 @@ import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ToolbarMobileMenu.module.css'
 
-export function ToolbarMobileMenu(props: MarginProps) {
+export const ToolbarMobileMenu = (props: MarginProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const [isOpen, setIsOpen] = useState(false)
 

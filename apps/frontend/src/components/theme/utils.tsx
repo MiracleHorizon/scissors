@@ -3,7 +3,7 @@ import { SunIcon } from '@scissors/react-icons/SunIcon'
 
 import type { Theme } from '@lib/theme'
 
-export function getThemeIcon(theme?: Theme) {
+export const getThemeIcon = (theme?: Theme) => {
   let Component
   let label
 

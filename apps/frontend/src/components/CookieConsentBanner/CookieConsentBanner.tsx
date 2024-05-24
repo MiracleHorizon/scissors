@@ -11,7 +11,7 @@ import { PATH_ROOT } from '@site/paths'
 import { acceptCookies, isAccepted, isVisibleCheck } from './utils'
 import styles from './CookieConsentBanner.module.css'
 
-export default function CookieConsentBanner() {
+const CookieConsentBanner = () => {
   const isHomePage = useSelectedPath(PATH_ROOT)
   const [isVisible, setVisible] = useState(isVisibleCheck())
 
@@ -24,7 +24,7 @@ export default function CookieConsentBanner() {
     /*
      * Listen for storage event to check if tour is completed.
      */
-    function handleCompleteTour(ev: StorageEvent) {
+    const handleCompleteTour = (ev: StorageEvent) => {
       if (ev.key !== TOUR_LS_KEY) return
 
       /*
@@ -101,3 +101,5 @@ export default function CookieConsentBanner() {
     </Card>
   )
 }
+
+export default CookieConsentBanner

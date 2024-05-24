@@ -14,7 +14,7 @@ const ExtractSectionDialog = dynamic(
   }
 )
 
-export function ExtractContent() {
+export const ExtractContent=()=> {
   const file = useOutputStore(state => state.getFileForProcessing())
   const previewFile = useExtractStore(state => state.previewFile)
   const previewAspectRatio = useExtractStore(state => state.previewAspectRatio)

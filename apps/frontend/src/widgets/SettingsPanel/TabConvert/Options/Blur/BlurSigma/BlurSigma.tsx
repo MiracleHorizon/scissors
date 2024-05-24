@@ -6,7 +6,7 @@ import { Slider } from '@design-system/Slider'
 import { BlurSigmaHeader } from './BlurSigmaHeader'
 import { useBlurStore } from '@stores/blur'
 
-export function BlurSigma({ disabled }: Props) {
+export const BlurSigma = ({ disabled }: Props) => {
   const sigma = useBlurStore(state => state.sigma)
   const setSigma = useBlurStore(state => state.setSigma)
 

@@ -5,7 +5,7 @@ import { UploadedFileCard } from './UploadedFileCard'
 import { UploadedFilePreview } from './UploadedFilePreview'
 import { UploadedFileLightbox } from './UploadedFileLightbox'
 
-export function UploadedFile({ file }: Props) {
+export const UploadedFile = ({ file }: Props) => {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const openLightbox = () => setLightboxOpen(true)

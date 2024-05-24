@@ -12,7 +12,7 @@ export const acceptCookies = () =>
 
 export const isAccepted = () => !!localStorage.getItem(COOKIE_CONSENT_LS_KEY)
 
-export function isVisibleCheck(): boolean {
+export const isVisibleCheck = (): boolean => {
   /*
    * Check if already accepted.
    */

@@ -9,7 +9,7 @@ import { ButtonExtendReset } from './ButtonExtendReset'
 import { ExtendToolbarButton } from './ExtendToolbarButton'
 import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'
 
-export function ExtendToolbar() {
+export const ExtendToolbar=()=> {
   const directionModel = useExtendStore(state => state.directionModel)
   const setDirectionModel = useExtendStore(state => state.setDirectionModel)
 

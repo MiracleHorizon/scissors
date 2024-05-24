@@ -1,4 +1,4 @@
-export function getRandomHexColor(): string {
+export const getRandomHexColor = (): string => {
   const WHITE_COLOR_NUMBER = 16777215
   const MAX_HEX_COLOR_LENGTH = 6
 

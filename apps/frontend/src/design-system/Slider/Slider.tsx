@@ -10,7 +10,7 @@ import { getSliderTitleValue, getSliderValue } from './utils'
 import type { Props } from './types'
 import styles from './slider.module.css'
 
-export function Slider({
+export const Slider = ({
   value,
   valueSign = '',
   title,
@@ -22,7 +22,7 @@ export function Slider({
   sliderStyle,
   sliderClassName,
   ...sliderProps
-}: Props) {
+}: Props) => {
   const { defaultValue, min, max, step, onValueChange } = sliderProps
 
   const isSingle = value.length === 1

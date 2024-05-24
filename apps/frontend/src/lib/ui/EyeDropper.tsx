@@ -9,7 +9,12 @@ import { useEyeDropper } from '@hooks/useEyeDropper'
 import { hexValidationRegex } from '@helpers/colors'
 import type { ButtonProps } from '@lib/theme'
 
-function EyeDropperComponent({ setColor, radius = 'large', variant = 'outline', ...props }: Props) {
+const EyeDropperComponent = ({
+  setColor,
+  radius = 'large',
+  variant = 'outline',
+  ...props
+}: Props) => {
   const { isSupported, openEyeDropper } = useEyeDropper()
 
   const handleClick = useCallback(async () => {

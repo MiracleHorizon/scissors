@@ -13,7 +13,7 @@ const ModulateContent = dynamic(
   }
 )
 
-export function Modulate() {
+export const Modulate=()=> {
   const isAdded = useModulateStore(state => state.isAdded)
 
   return (

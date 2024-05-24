@@ -18,7 +18,7 @@ const columns = {
   xs: operationListLength.toString()
 } as const
 
-export function TabResizeControl() {
+export const TabResizeControl = () => {
   const operations = useTabResizeStore(state => state.operations.map(operation => operation.id))
 
   const addOperation = useTabResizeStore(state => state.addOperation)

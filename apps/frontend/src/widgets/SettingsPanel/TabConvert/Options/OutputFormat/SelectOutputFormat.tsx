@@ -12,7 +12,7 @@ const data: SelectData = [
   }
 ] as const
 
-export function SelectOutputFormat() {
+export const SelectOutputFormat=()=> {
   const outputFormat = useOutputStore(state => state.outputFormat)
   const setOutputFormat = useOutputStore(state => state.setOutputFormat)
 

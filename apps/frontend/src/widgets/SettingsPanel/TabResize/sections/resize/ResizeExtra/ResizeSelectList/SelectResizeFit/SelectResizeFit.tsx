@@ -12,7 +12,7 @@ const data: SelectData = [
   }
 ] as const
 
-export function SelectResizeFit() {
+export const SelectResizeFit=()=> {
   const fit = useResizeStore(state => state.fit)
   const setFit = useResizeStore(state => state.setFit)
 

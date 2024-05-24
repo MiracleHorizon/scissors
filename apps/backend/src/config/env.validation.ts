@@ -36,7 +36,7 @@ class EnvironmentVariables {
   readonly CLIENT_API: string
 }
 
-export function validate(config: Record<string, unknown>) {
+export const validate = (config: Record<string, unknown>) => {
   const validatedConfig = plainToInstance(EnvironmentVariables, config, {
     enableImplicitConversion: true
   })

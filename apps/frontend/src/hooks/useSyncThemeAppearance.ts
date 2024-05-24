@@ -10,11 +10,11 @@ import {
   themeColorItems
 } from '@lib/theme'
 
-export function useSyncThemeAppearance() {
+export const useSyncThemeAppearance = () => {
   const { theme, themeColor } = useTheme()
 
   useEffect(() => {
-    function handleChangeThemeColor(ev: StorageEvent) {
+    const handleChangeThemeColor = (ev: StorageEvent) => {
       if (ev.key !== THEME_COLOR_LS_KEY) return
 
       const newThemeColor = ev.newValue

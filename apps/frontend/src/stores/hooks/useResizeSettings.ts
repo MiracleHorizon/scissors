@@ -5,7 +5,7 @@ import { useTrimStore } from '@stores/trim'
 import { useTabResizeStore } from '@widgets/SettingsPanel/TabResize'
 import type { ResizeSettings } from '@scissors/sharp'
 
-export function useResizeSettings(): ResizeSettings {
+export const useResizeSettings = (): ResizeSettings => {
   const queue = useTabResizeStore(state => state.getQueue())
   const resize = useResizeStore(state => state.getResizeOptions())
   const extend = useExtendStore(state => state.getExtendOptions())

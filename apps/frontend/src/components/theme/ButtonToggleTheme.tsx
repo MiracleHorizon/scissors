@@ -14,7 +14,7 @@ const basicStyle: CSSProperties = {
   height: '20px'
 } as const
 
-export default function ButtonToggleTheme({ className, style }: ClassNameProps & StyleProps) {
+const ButtonToggleTheme = ({ className, style }: ClassNameProps & StyleProps) => {
   const { theme, toggleTheme } = useTheme()
   const { Component: Icon, props: iconProps } = getThemeIcon(theme as Theme)
 
@@ -34,3 +34,5 @@ export default function ButtonToggleTheme({ className, style }: ClassNameProps &
     </IconButton>
   )
 }
+
+export default ButtonToggleTheme

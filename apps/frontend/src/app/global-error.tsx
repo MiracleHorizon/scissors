@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE
 }
 
-export default function GlobalError({ error, reset }: ErrorPageProps) {
+const GlobalError = ({ error, reset }: ErrorPageProps) => {
   const themeColor = getLocalStorageThemeColor()
 
   // eslint-disable-next-line no-console
@@ -64,3 +64,5 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
     </html>
   )
 }
+
+export default GlobalError

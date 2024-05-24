@@ -12,7 +12,7 @@ import {
 } from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
-export function ThemeColorGridItem({ color, isSelected }: Props) {
+export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
   const handleSetThemeColor = () => {
     localStorage.setItem(THEME_COLOR_LS_KEY, color)
     const event = new StorageEvent('storage', {

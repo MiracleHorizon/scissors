@@ -7,7 +7,7 @@ import { ButtonRemoveRotate } from './ButtonRemoveRotate'
 import { useRotateStore } from '@stores/rotate'
 import { DOCS_ANCHOR_ROTATE, PATH_DOCS } from '@site/paths'
 
-export function RotateHeader() {
+export const RotateHeader=()=> {
   const angle = useRotateStore(state => state.angle) ?? DEFAULT_ROTATE_ANGLE
 
   return (

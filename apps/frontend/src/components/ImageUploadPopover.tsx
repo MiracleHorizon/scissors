@@ -8,7 +8,11 @@ import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 import { ImageUploadForm } from './ImageUploadForm'
 import { useOutputStore } from '@stores/output'
 
-function UploadForm({ onClose }: { onClose: VoidFunction }) {
+interface Props {
+  onClose: VoidFunction
+}
+
+const UploadForm = ({ onClose }: Props) => {
   const [value, setValue] = useState('')
   const setFile = useOutputStore(state => state.setFile)
 
@@ -20,7 +24,7 @@ function UploadForm({ onClose }: { onClose: VoidFunction }) {
   return <ImageUploadForm value={value} setValue={setValue} onUpload={handleUpload} />
 }
 
-export function ImageUploadPopover() {
+export const ImageUploadPopover = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClose = () => setIsOpen(false)

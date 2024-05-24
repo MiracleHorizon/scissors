@@ -32,7 +32,7 @@ const ButtonMetadata = dynamic(
   }
 )
 
-export default function AppFooterContent() {
+const AppFooterContent = () => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   return (
@@ -47,3 +47,5 @@ export default function AppFooterContent() {
     </Flex>
   )
 }
+
+export default AppFooterContent

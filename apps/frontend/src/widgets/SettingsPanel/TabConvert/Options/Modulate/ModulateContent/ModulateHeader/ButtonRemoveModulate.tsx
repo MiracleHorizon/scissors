@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { useModulateStore } from '@stores/modulate'
 
-export function ButtonRemoveModulate() {
+export const ButtonRemoveModulate=()=> {
   const removeModulate = useModulateStore(state => state.remove)
 
   const handleRemoveModulate = useCallback(() => removeModulate(), [removeModulate])

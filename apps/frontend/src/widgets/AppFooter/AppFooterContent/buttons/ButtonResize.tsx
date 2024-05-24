@@ -6,7 +6,7 @@ import { useResizeSettings } from '@stores/hooks/useResizeSettings'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 
-export function ButtonResize() {
+export const ButtonResize = () => {
   const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)

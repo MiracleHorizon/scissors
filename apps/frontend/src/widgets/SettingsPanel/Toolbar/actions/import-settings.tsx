@@ -43,7 +43,7 @@ const ValidationAlert: FC<{
   />
 )
 
-export function ButtonImportSettings() {
+export const ButtonImportSettings = () => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   const {

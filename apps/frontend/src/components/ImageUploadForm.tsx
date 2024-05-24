@@ -34,11 +34,16 @@ const DefaultErrorAlert = dynamic(
   }
 )
 
-export function ImageUploadForm({ value, setValue, onUpload, shouldFocusOnRender = true }: Props) {
+export const ImageUploadForm = ({
+  value,
+  setValue,
+  onUpload,
+  shouldFocusOnRender = true
+}: Props) => {
   const [error, setError] = useState<Error | null>(null)
   const [isValidURL, setIsValidURL] = useState(true)
 
-  function onValueChange(ev: ChangeEvent<HTMLInputElement>) {
+  const onValueChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const v = ev.target.value
 
     if (v.length === 0) {
@@ -50,7 +55,7 @@ export function ImageUploadForm({ value, setValue, onUpload, shouldFocusOnRender
     setValue?.(v)
   }
 
-  async function handleUpload() {
+  const handleUpload = async () => {
     if (!value) return
 
     try {
@@ -128,7 +133,7 @@ interface Props {
   shouldFocusOnRender?: boolean
 }
 
-function ErrorAlert({ message, onClose }: ErrorAlertProps) {
+const ErrorAlert = ({ message, onClose }: ErrorAlertProps) => {
   const props = useMemo(() => ({ open: true, onClose }), [onClose])
 
   // TODO: Проверить динамические импорты

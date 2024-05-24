@@ -6,7 +6,7 @@ import { readJSONFile } from '@utility/json-file'
 import { NULL_CONVERT_SETTINGS } from '@scissors/sharp'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 
-export function useImportSettings(selectedTab: ToolbarTab) {
+export const useImportSettings = (selectedTab: ToolbarTab) => {
   const [data, setData] = useState<unknown>(null)
   const { setters } = useSettingsSetters()
 
@@ -19,7 +19,7 @@ export function useImportSettings(selectedTab: ToolbarTab) {
   const handleOpenValidationAlert = () => setIsValidationAlertOpen(true)
   const handleCloseValidationAlert = () => setIsValidationAlertOpen(false)
 
-  function parseSettings(settingsJSON: string): string | null {
+  const parseSettings = (settingsJSON: string): string | null => {
     try {
       return JSON.parse(settingsJSON)
     } catch (err) {
@@ -44,7 +44,7 @@ export function useImportSettings(selectedTab: ToolbarTab) {
     [selectedTab]
   )
 
-  async function handleImport(file: File | null): Promise<void> {
+  const handleImport = async (file: File | null): Promise<void> => {
     if (!file) return
 
     try {
@@ -79,7 +79,7 @@ export function useImportSettings(selectedTab: ToolbarTab) {
     }
   }
 
-  function applySettings() {
+  const applySettings = () => {
     if (!data) return
 
     for (const [key, value] of Object.entries(data)) {
@@ -91,12 +91,12 @@ export function useImportSettings(selectedTab: ToolbarTab) {
     }
   }
 
-  function handleConfirmImport() {
+  const handleConfirmImport = () => {
     handleCloseConfirmAlert()
     applySettings()
   }
 
-  function handleCancelImport() {
+  const handleCancelImport = () => {
     handleCloseConfirmAlert()
     setData(null)
   }

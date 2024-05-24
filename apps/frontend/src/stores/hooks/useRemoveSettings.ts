@@ -10,7 +10,7 @@ import { useTintStore } from '@stores/tint'
 import { useNormaliseStore } from '@stores/normalise'
 import { useTabResizeStore } from '@widgets/SettingsPanel/TabResize'
 
-export function useRemoveConvertSettings() {
+export const useRemoveConvertSettings = () => {
   const removeRotate = useRotateStore(state => state.remove)
   const removeModulate = useModulateStore(state => state.remove)
   const removeGamma = useGammaStore(state => state.remove)
@@ -28,7 +28,7 @@ export function useRemoveConvertSettings() {
   return { handleRemove }
 }
 
-export function useRemoveResizeSettings() {
+export const useRemoveResizeSettings = () => {
   const removeAllOperations = useTabResizeStore(state => state.removeAllOperations)
 
   const handleRemove = () => removeAllOperations()
@@ -36,7 +36,7 @@ export function useRemoveResizeSettings() {
   return { handleRemove }
 }
 
-export function useRemoveSettings(selectedTab: ToolbarTab) {
+export const useRemoveSettings = (selectedTab: ToolbarTab) => {
   const { handleRemove: removeConvertSettings } = useRemoveConvertSettings()
   const { handleRemove: removeResizeSettings } = useRemoveResizeSettings()
 

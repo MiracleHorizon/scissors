@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
-export function useEscapeAction(
+export const useEscapeAction = (
   callback: VoidFunction,
   options?: boolean | AddEventListenerOptions
-) {
+) => {
   useEffect(() => {
     const handleEscapeKeydown = (ev: KeyboardEvent) => {
       if (ev.key !== 'Escape') return

@@ -13,7 +13,7 @@ import {
 
 import { createResizeStore, defaultState, type Store } from '@stores/resize'
 
-function pickState(store: Store) {
+const pickState = (store: Store) => {
   return pick(store, [
     'width',
     'height',

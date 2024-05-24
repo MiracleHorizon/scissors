@@ -7,7 +7,7 @@ import { ToolbarTabList } from './ToolbarTabList'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ToolbarTabDropdown.module.css'
 
-export function ToolbarTabDropdown() {
+export const ToolbarTabDropdown=()=> {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleOpen = () => setIsOpen(true)

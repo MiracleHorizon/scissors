@@ -17,7 +17,7 @@ const ToolbarMobileMenu = dynamic(
   }
 )
 
-export function ToolbarContent() {
+export const ToolbarContent = () => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   return (

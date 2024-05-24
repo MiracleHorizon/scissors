@@ -13,7 +13,7 @@ import styles from './CompareSlider.module.css'
 
 const totalImages = 2
 
-function getRandomPosition(index: number): number {
+const getRandomPosition = (index: number): number => {
   /*
    * Make the default position values for "handle" random for a more interesting UI.
    */
@@ -23,7 +23,7 @@ function getRandomPosition(index: number): number {
   return Math.floor(getRandomValueFromRange(...range))
 }
 
-function getImageFallback({ orientation }: Pick<Props, 'orientation'>): string {
+const getImageFallback = ({ orientation }: Pick<Props, 'orientation'>): string => {
   const landscapeFallback = '/slide-landscape-fallback.jpeg'
   const portraitFallback = '/slide-portrait-fallback.jpeg'
 
@@ -34,7 +34,7 @@ function getImageFallback({ orientation }: Pick<Props, 'orientation'>): string {
   return portraitFallback
 }
 
-export function CompareSlider({ index, label, beforeSrc, afterSrc, orientation }: Props) {
+export const CompareSlider = ({ index, label, beforeSrc, afterSrc, orientation }: Props) => {
   /*
    * Prevent scrolling to element when clicking on the handle container.
    * https://github.com/nerdyman/react-compare-slider/blob/main/lib/src/ReactCompareSlider.tsx#L192-L195

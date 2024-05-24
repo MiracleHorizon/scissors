@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { ButtonDelete } from '@ui/ButtonDelete'
 import { useGammaStore } from '@stores/gamma'
 
-export function ButtonRemoveGamma() {
+export const ButtonRemoveGamma = () => {
   const removeGamma = useGammaStore(state => state.remove)
 
   const handleRemoveGamma = useCallback(() => removeGamma(), [removeGamma])

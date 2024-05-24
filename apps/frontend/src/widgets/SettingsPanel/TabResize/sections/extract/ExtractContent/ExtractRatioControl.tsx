@@ -3,7 +3,7 @@ import { Flex, Heading, SegmentedControl, Text } from '@radix-ui/themes'
 import { aspectRatioList } from './data'
 import styles from './ExtractRatioControl.module.css'
 
-export function ExtractRatioControl({ aspectRatio, setAspectRatio }: Props) {
+export const ExtractRatioControl=({ aspectRatio, setAspectRatio }: Props) =>{
   const value = aspectRatioList.find(v => v.value === aspectRatio)?.displayValue ?? 'No value'
 
   return (

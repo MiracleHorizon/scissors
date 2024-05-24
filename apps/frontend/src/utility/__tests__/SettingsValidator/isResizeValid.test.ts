@@ -18,9 +18,9 @@ describe('@utility/SettingsValidator.isResizeValid', () => {
     withDominantBackground: true
   }
 
-  function testBoolean(
+  const testBoolean = (
     key: 'withoutEnlargement' | 'withoutReduction' | 'fastShrinkOnLoad' | 'withDominantBackground'
-  ) {
+  ) => {
     expect(
       isResizeValid({
         ...validOptions,

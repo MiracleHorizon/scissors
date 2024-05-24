@@ -13,7 +13,7 @@ const NormaliseContent = dynamic(
   }
 )
 
-export function Normalise() {
+export const Normalise = () => {
   const isAdded = useNormaliseStore(state => state.isAdded)
 
   return (

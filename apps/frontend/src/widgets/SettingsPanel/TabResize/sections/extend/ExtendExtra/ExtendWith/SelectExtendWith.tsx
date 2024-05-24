@@ -25,7 +25,7 @@ const dataForPNG: SelectData = [
   }
 ] as const
 
-export function SelectExtendWith() {
+export const SelectExtendWith=()=> {
   const outputFormat = useOutputStore(state => state.outputFormat)
   const extendWith = useExtendStore(state => state.extendWith)
 

@@ -9,8 +9,8 @@ const FileSizeAlert = dynamic(
   { ssr: false }
 )
 
-export function withFileUploader(Component: ComponentType<ComponentProps>) {
-  return function FileUploaderHOC<T extends Props>({
+export const withFileUploader = (Component: ComponentType<ComponentProps>) =>
+  function FileUploaderHOC<T extends Props>({
     setFile,
     tooltipContent,
     htmlAttributes,
@@ -27,13 +27,13 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
     const handleStartDrag = () => setIsDragOver(true)
     const handleStopDrag = () => setIsDragOver(false)
 
-    function triggerInputClick() {
+    const triggerInputClick = () => {
       if (!inputRef.current) return
 
       inputRef.current.click()
     }
 
-    function handleChange(ev: ChangeEvent<HTMLInputElement>) {
+    const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
       const fileList = ev.target.files
       if (!fileList) return
 
@@ -50,7 +50,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       ev.target.value = ''
     }
 
-    function handleDrop(ev: DragEvent<HTMLDivElement>) {
+    const handleDrop = (ev: DragEvent<HTMLDivElement>) => {
       ev.preventDefault()
 
       const fileList = ev.dataTransfer.files
@@ -68,7 +68,7 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       handleStopDrag()
     }
 
-    function handleDragOver(ev: DragEvent<HTMLDivElement>) {
+    const handleDragOver = (ev: DragEvent<HTMLDivElement>) => {
       ev.preventDefault()
 
       handleStartDrag()
@@ -98,4 +98,3 @@ export function withFileUploader(Component: ComponentType<ComponentProps>) {
       </>
     )
   }
-}

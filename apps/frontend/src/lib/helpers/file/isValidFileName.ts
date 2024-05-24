@@ -4,7 +4,7 @@ import { MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH, notAllowedChars } from './c
  * @param fileName - file name to be checked
  * @returns boolean indicating whether the file name is valid
  */
-export function isValidFileName(fileName: string): boolean {
+export const isValidFileName = (fileName: string): boolean => {
   if (fileName.length < MIN_FILE_NAME_LENGTH || fileName.length > MAX_FILE_NAME_LENGTH) {
     return false
   }

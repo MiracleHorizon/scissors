@@ -9,7 +9,12 @@ import { CheckIcon } from '@scissors/react-icons/CheckIcon'
 import { copyToClipboard } from '@helpers/copyToClipboard'
 import type { ButtonProps } from '@lib/theme'
 
-export function ButtonClipboardCopy({ copyValue, size, variant = 'ghost', color = 'gray' }: Props) {
+export const ButtonClipboardCopy = ({
+  copyValue,
+  size,
+  variant = 'ghost',
+  color = 'gray'
+}: Props) => {
   const [isCopied, setIsCopied] = useState(false)
 
   const handleCopy = () => {

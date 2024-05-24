@@ -103,7 +103,7 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function RootLayout({ children }: PropsWithChildren) {
+const RootLayout = async ({ children }: PropsWithChildren) => {
   const themeColor = await getThemeColorCookie()
 
   return (
@@ -128,3 +128,5 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     </html>
   )
 }
+
+export default RootLayout

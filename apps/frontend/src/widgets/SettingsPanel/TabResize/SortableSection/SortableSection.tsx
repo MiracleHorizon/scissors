@@ -29,7 +29,7 @@ const padding: PaddingProps = {
   pb: '3'
 } as const
 
-export function SortableSection({
+export const SortableSection = ({
   children,
   id,
   isDragDisabled,
@@ -38,7 +38,7 @@ export function SortableSection({
   handleMoveUp,
   handleMoveDown,
   handleRemove
-}: Props) {
+}: Props) => {
   const { isDragging, attributes, listeners, setNodeRef, transition, transform } = useSortable({
     id
   })

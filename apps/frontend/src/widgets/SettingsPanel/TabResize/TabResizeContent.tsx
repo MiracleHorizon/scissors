@@ -36,7 +36,7 @@ const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.Trim
   loading: () => <TabResizeSectionSkeleton height='120px' />
 })
 
-export function TabResizeContent() {
+export const TabResizeContent = () => {
   const operations = useTabResizeStore(state => state.operations)
   const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor))
 

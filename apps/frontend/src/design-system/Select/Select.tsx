@@ -8,7 +8,7 @@ import capitalize from 'lodash.capitalize'
 import type { Props } from './types'
 import styles from './Select.module.css'
 
-export function Select({
+export const Select = ({
   data,
   label,
   size = '2',
@@ -22,7 +22,7 @@ export function Select({
   valueCapitalize = true,
   DetailsComponent,
   ...props
-}: Props) {
+}: Props) => {
   const triggerId = useId()
 
   return (

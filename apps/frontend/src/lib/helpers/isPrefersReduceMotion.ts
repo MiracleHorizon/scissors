@@ -1,6 +1,6 @@
 const MEDIA_QUERY_SELECTOR = '(prefers-reduced-motion: reduce)'
 
-export function isPrefersReduceMotion(): boolean {
+export const isPrefersReduceMotion = (): boolean => {
   if (typeof window === 'undefined') {
     return false
   }

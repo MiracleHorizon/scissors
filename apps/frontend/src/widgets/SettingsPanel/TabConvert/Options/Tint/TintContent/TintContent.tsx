@@ -5,7 +5,7 @@ import { ColorField } from '@ui/ColorField'
 import { useTintStore } from '@stores/tint'
 import { useConvertStore } from '@stores/convert'
 
-export function TintContent() {
+export const TintContent=()=> {
   const color = useTintStore(state => state.color)
   const isGrayscaleEnabled = useConvertStore(state => state.grayscale)
 

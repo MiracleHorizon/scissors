@@ -22,7 +22,7 @@ const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.Uplo
   loading: () => <UploadedFileLoading />
 })
 
-export function Preview() {
+export const Preview = () => {
   const file = useOutputStore(state => state.file)
 
   return (

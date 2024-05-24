@@ -11,7 +11,7 @@ import { PATH_API_METADATA } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
 import type { MutationPayload } from './types'
 
-async function handleImageMetadata(formData: FormData): Promise<Blob> {
+const handleImageMetadata = async (formData: FormData): Promise<Blob> => {
   const abortController = new AbortController()
 
   try {
@@ -43,11 +43,11 @@ async function handleImageMetadata(formData: FormData): Promise<Blob> {
   }
 }
 
-async function handleImageMetadataMutation({
+const handleImageMetadataMutation = async ({
   file,
   fileName,
   settings
-}: MutationPayload<MetadataSettings>): Promise<DownloadPayload> {
+}: MutationPayload<MetadataSettings>): Promise<DownloadPayload> => {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('settings', JSON.stringify(settings))
@@ -66,13 +66,15 @@ async function handleImageMetadataMutation({
   }
 }
 
-export function useMetadataMutation() {
+export const useMetadataMutation = () => {
   const [error, setError] = useState<unknown>(null)
 
   const setLoading = useRequestStore(state => state.setLoading)
   const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
 
-  async function mutate(payload: MutationPayload<MetadataSettings>) {
+  const reset = () => setError(null)
+
+  const mutate = async (payload: MutationPayload<MetadataSettings>) => {
     try {
       if (error) setError(null)
 
@@ -84,10 +86,6 @@ export function useMetadataMutation() {
     } finally {
       setLoading(false)
     }
-  }
-
-  function reset() {
-    setError(null)
   }
 
   return {

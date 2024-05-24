@@ -7,7 +7,7 @@ export const validateTheme = (theme: Theme) => themeSchema.isValidSync(theme)
 export const validateThemeColor = (themeColor: ThemeColor) =>
   themeColorSchema.isValidSync(themeColor)
 
-export function getLocalStorageTheme(): Theme | null {
+export const getLocalStorageTheme = (): Theme | null => {
   if (isServer()) {
     return null
   }
@@ -25,7 +25,7 @@ export function getLocalStorageTheme(): Theme | null {
   return theme
 }
 
-export function getLocalStorageThemeColor(): ThemeColor | null {
+export const getLocalStorageThemeColor = (): ThemeColor | null => {
   if (isServer()) {
     return null
   }
@@ -43,7 +43,7 @@ export function getLocalStorageThemeColor(): ThemeColor | null {
   return themeColor
 }
 
-export function getClientThemeAppearance() {
+export const getClientThemeAppearance = () => {
   const theme = getLocalStorageTheme()
   const themeColor = getLocalStorageThemeColor()
 

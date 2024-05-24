@@ -6,7 +6,7 @@ import { LockClosedIcon } from '@scissors/react-icons/LockClosedIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useBlurStore } from '@stores/blur'
 
-export function ButtonAddBlurSigma(props: Props) {
+export const ButtonAddBlurSigma=(props: Props) =>{
   const add = useBlurStore(state => state.addSigma)
   const handleAddSigma = useCallback(() => add(), [add])
 

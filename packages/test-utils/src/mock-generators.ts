@@ -9,8 +9,8 @@ import {
 import { validConvertSettings, validResizeSettings } from './constants'
 
 // TODO: REWORK
-export function generateInvalidConvertSettings(): ConvertSettings {
-  return {
+export const generateInvalidConvertSettings = (): ConvertSettings =>
+  ({
     ...validConvertSettings,
     outputFormat: '.foo',
     normalise: {
@@ -21,11 +21,10 @@ export function generateInvalidConvertSettings(): ConvertSettings {
       ...validConvertSettings.rotate,
       angle: MAX_ROTATE_ANGLE + 1
     }
-  } as unknown as ConvertSettings
-}
+  }) as unknown as ConvertSettings
 
-export function generateInvalidResizeSettings(): ResizeSettings {
-  return {
+export const generateInvalidResizeSettings = (): ResizeSettings =>
+  ({
     ...validResizeSettings,
     extend: {
       ...validResizeSettings.extend!,
@@ -40,5 +39,4 @@ export function generateInvalidResizeSettings(): ResizeSettings {
         a: 0
       }
     }
-  } as unknown as ResizeSettings
-}
+  }) as unknown as ResizeSettings

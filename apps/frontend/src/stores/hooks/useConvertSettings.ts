@@ -9,7 +9,7 @@ import { useTintStore } from '@stores/tint'
 import { useOutputStore } from '@stores/output'
 import type { ConvertSettings } from '@scissors/sharp'
 
-export function useConvertSettings(): ConvertSettings {
+export const useConvertSettings=(): ConvertSettings =>{
   const convertSettings = useConvertStore(state => state.getConvertSettings())
   const rotate = useRotateStore(state => state.getRotateOptions())
   const blur = useBlurStore(state => state.getBlurOptions())

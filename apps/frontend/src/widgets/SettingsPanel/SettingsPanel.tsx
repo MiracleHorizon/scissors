@@ -36,7 +36,7 @@ export const contentPadding: PaddingProps = {
   py: '3'
 } as const
 
-export function SettingsPanel() {
+export const SettingsPanel = () => {
   const selectedTab = useTabsStore(state => state.selectedTab)
   const selectTab = useTabsStore(state => state.selectTab)
 

@@ -3,7 +3,7 @@ import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@sciss
 import { Slider } from '@design-system/Slider'
 import { useRotateStore } from '@stores/rotate'
 
-export function SliderRotateAngle() {
+export const SliderRotateAngle=()=> {
   const angle = useRotateStore(state => state.angle)
 
   const setAngle = useRotateStore(state => state.setAngle)

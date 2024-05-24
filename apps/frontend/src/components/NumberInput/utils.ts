@@ -6,11 +6,11 @@ interface Params {
   maxFractionDigits: number | undefined
 }
 
-export function parseValue({
+export const parseValue = ({
   value,
   allowFloat = false,
   maxFractionDigits = 2
-}: Params): number | null {
+}: Params): number | null => {
   const parseMethod = allowFloat ? parseFloat : parseInt
 
   const parsedValue = parseMethod(value)

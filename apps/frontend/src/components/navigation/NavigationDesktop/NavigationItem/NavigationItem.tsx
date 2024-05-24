@@ -8,13 +8,13 @@ import { useSelectedPath } from '@hooks/useSelectedPath'
 import type { NavigationItemModel } from '@components/navigation/types'
 import styles from './NavigationItem.module.css'
 
-export function NavigationItem({
+export const NavigationItem = ({
   label,
   href,
   tooltipContent,
   icon,
   ...attributes
-}: NavigationItemModel) {
+}: NavigationItemModel) => {
   const isSelected = useSelectedPath(href)
 
   const itemJSX = (

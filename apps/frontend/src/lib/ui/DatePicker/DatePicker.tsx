@@ -8,12 +8,18 @@ import { CalendarIcon } from '@scissors/react-icons/CalendarIcon'
 
 import styles from './DatePicker.module.css'
 
-export function DatePicker({ value, disabled, onValueChange }: Props) {
+const getFormattedDate = (value: Date) => {
+  const template = 'DD/MM/YYYY HH:mm'
+
+  return dayjs(value).format(template)
+}
+
+export const DatePicker = ({ value, disabled, onValueChange }: Props) => {
   const currentDate = new Date()
-  const formattedDate = getFormattedDate()
+  const formattedDate = getFormattedDate(value)
   const [time, setTime] = useState(`${currentDate.getHours()}:${currentDate.getMinutes()}`)
 
-  function handleTimeChange(ev: ChangeEvent<HTMLInputElement>) {
+  const handleTimeChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const time = ev.target.value
 
     const [hours, minutes] = time.split(':').map(str => parseInt(str, 10))
@@ -23,15 +29,10 @@ export function DatePicker({ value, disabled, onValueChange }: Props) {
     handleChangeDate(newDate)
   }
 
-  function handleChangeDate(value?: Date) {
+  const handleChangeDate = (value?: Date) => {
     if (!value) return
 
     onValueChange(value)
-  }
-
-  function getFormattedDate() {
-    const template = 'DD/MM/YYYY HH:mm'
-    return dayjs(value).format(template)
   }
 
   return (

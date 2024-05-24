@@ -11,7 +11,7 @@ import { PATH_API_RESIZE } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
 import type { MutationPayload } from './types'
 
-async function resizeImage(formData: FormData): Promise<Blob> {
+const resizeImage = async (formData: FormData): Promise<Blob> => {
   const abortController = new AbortController()
 
   try {
@@ -43,11 +43,11 @@ async function resizeImage(formData: FormData): Promise<Blob> {
   }
 }
 
-async function resizeImageMutation({
+const resizeImageMutation = async ({
   file,
   fileName,
   settings
-}: MutationPayload<ResizeSettings>): Promise<DownloadPayload> {
+}: MutationPayload<ResizeSettings>): Promise<DownloadPayload> => {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('settings', JSON.stringify(settings))
@@ -78,13 +78,15 @@ async function resizeImageMutation({
   }
 }
 
-export function useResizeMutation() {
+export const useResizeMutation = async () => {
   const [error, setError] = useState<unknown>(null)
 
   const setLoading = useRequestStore(state => state.setLoading)
   const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
 
-  async function mutate(payload: MutationPayload<ResizeSettings>) {
+  const reset = () => setError(null)
+
+  const mutate = async (payload: MutationPayload<ResizeSettings>) => {
     try {
       if (error) setError(null)
 
@@ -96,10 +98,6 @@ export function useResizeMutation() {
     } finally {
       setLoading(false)
     }
-  }
-
-  function reset() {
-    setError(null)
   }
 
   return {

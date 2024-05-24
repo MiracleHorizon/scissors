@@ -4,7 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
 type OpenResult = Promise<EyeDropperSelectionResult | null>
 
-export function useEyeDropper() {
+export const useEyeDropper = () => {
   const [isSupported, setIsSupported] = useState(false)
 
   const openEyeDropper = useCallback(

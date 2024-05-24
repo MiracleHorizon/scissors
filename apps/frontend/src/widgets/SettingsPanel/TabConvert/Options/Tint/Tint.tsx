@@ -10,7 +10,7 @@ const TintContent = dynamic(() => import('./TintContent').then(mod => mod.TintCo
   loading: () => <TintContentSkeleton />
 })
 
-export function Tint() {
+export const Tint=()=> {
   const isAdded = useTintStore(state => state.isAdded)
 
   return (

@@ -9,7 +9,7 @@ import { ToolbarRandomizeMenu } from '../ToolbarRandomizeMenu'
 import { useRandomizeSettings } from '@stores/hooks/useRandomizeSettings'
 import { useRandomizeStore } from '../ToolbarRandomizeMenu/store'
 
-function useRandomize() {
+const useRandomize = () => {
   const checkedSettings = useRandomizeStore(state => state.getCheckedSettings())
   const { handleRandomize } = useRandomizeSettings()
 
@@ -21,7 +21,7 @@ function useRandomize() {
   return { handleRandomize: handleRandomizeSettings }
 }
 
-export function ButtonRandomizeSettings() {
+export const ButtonRandomizeSettings = () => {
   const { handleRandomize } = useRandomize()
 
   return (
@@ -37,7 +37,7 @@ export function ButtonRandomizeSettings() {
   )
 }
 
-export function ItemRandomizeSettings({ onClick }: ItemProps) {
+export const ItemRandomizeSettings = ({ onClick }: ItemProps) => {
   const { handleRandomize } = useRandomize()
 
   const handleClick = () => {

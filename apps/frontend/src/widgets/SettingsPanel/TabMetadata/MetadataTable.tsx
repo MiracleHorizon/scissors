@@ -4,7 +4,7 @@ import { Table } from '@radix-ui/themes'
 import { formatLabel, formatValue } from './utils'
 import type { ExifrData, TableItemValue } from './types'
 
-export function MetadataTable({ data }: Props) {
+export const MetadataTable = ({ data }: Props) => {
   const items: [string, string][] = useMemo(() => {
     const entries = Object.entries(data)
     const filteredEntries: [string, TableItemValue][] = entries.filter(([, value]) => {

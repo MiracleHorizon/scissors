@@ -4,7 +4,7 @@ import type { RefObject } from 'react'
 
 import { useEscapeAction } from './useEscapeAction'
 
-export function useEscapeBlur<T extends HTMLElement>({ ref, options }: Params<T>) {
+export const useEscapeBlur = <T extends HTMLElement>({ ref, options }: Params<T>) => {
   useEscapeAction(() => {
     if (!ref.current) return
 

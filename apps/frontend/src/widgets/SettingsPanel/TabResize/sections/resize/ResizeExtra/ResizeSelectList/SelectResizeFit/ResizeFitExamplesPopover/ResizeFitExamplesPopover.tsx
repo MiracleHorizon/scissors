@@ -54,7 +54,7 @@ const examples: Example[] = [
   }
 ] as const
 
-function pathForExampleImage(fileName: string): string {
+const pathForExampleImage = (fileName: string): string => {
   const EXAMPLES_PUBLIC_PATH = 'resize-fit-examples'
 
   return pathForAssets(`${EXAMPLES_PUBLIC_PATH}/${fileName}`)

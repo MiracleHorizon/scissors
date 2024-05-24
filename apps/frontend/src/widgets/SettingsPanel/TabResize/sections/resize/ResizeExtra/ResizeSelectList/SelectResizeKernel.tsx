@@ -11,7 +11,7 @@ const data: SelectData = [
   }
 ] as const
 
-export function SelectResizeKernel() {
+export const SelectResizeKernel=()=> {
   const kernel = useResizeStore(state => state.kernel)
   const setKernel = useResizeStore(state => state.setKernel)
 

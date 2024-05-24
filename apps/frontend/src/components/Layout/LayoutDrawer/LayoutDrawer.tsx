@@ -13,7 +13,7 @@ import { useEscapeAction } from '@hooks/useEscapeAction'
 import { GITHUB_REPO_PATH } from '@site/config'
 import styles from './LayoutDrawer.module.css'
 
-export default function LayoutDrawer() {
+const LayoutDrawer = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
@@ -61,3 +61,5 @@ export default function LayoutDrawer() {
     </Drawer>
   )
 }
+
+export default LayoutDrawer

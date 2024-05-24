@@ -4,7 +4,7 @@ import { NumberInput } from '@components/NumberInput'
 import { DEFAULT_EXTEND_INPUT_PROPS } from './constants'
 import { useExtendStore } from '@stores/extend'
 
-export function ExtendDirectionFormNumber() {
+export const ExtendDirectionFormNumber=()=> {
   const value = useExtendStore(state => state.extendValue)
   const setValue = useExtendStore(state => state.setExtendValue)
 

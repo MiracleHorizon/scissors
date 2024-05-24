@@ -9,7 +9,7 @@ import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 
 import styles from './DocsSectionHeader.module.css'
 
-export function DocsSectionHeader({ title, hash }: Props) {
+export const DocsSectionHeader = ({ title, hash }: Props) => {
   const rootRef = useRef<HTMLDivElement>(null)
   const params = useParams()
 

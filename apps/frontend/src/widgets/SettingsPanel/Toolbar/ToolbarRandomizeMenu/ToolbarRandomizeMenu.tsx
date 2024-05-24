@@ -7,7 +7,7 @@ import { MAX_OPERATIONS } from './constants'
 import type { Setting } from './types'
 import styles from './ToolbarRandomizeMenu.module.css'
 
-function ToolbarRandomizeMenuCheckbox({ label, checked }: Setting) {
+const ToolbarRandomizeMenuCheckbox = ({ label, checked }: Setting) => {
   const isMaxOperations = useRandomizeStore(state => state.isMaxOperations())
 
   const toggleChecked = useRandomizeStore(state => state.toggleSettingChecked)
@@ -31,7 +31,7 @@ function ToolbarRandomizeMenuCheckbox({ label, checked }: Setting) {
   )
 }
 
-export function ToolbarRandomizeMenu({ children }: Props) {
+export const ToolbarRandomizeMenu = ({ children }: Props) => {
   const settings = useRandomizeStore(state => state.settings)
   const totalChecked = useRandomizeStore(state => state.getTotalChecked())
 

@@ -4,7 +4,7 @@ import type { PopoverDOM } from './types'
 
 const createTourElementSelector = (step: number) => `[data-tourstep='${step}']`
 
-export async function createTour() {
+export const createTour = async () => {
   const { driver } = await import('driver.js')
   const { isPrefersReduceMotion } = await import('@helpers/isPrefersReduceMotion')
 
@@ -58,7 +58,7 @@ export async function createTour() {
     }
   ]
 
-  function createSkipButton() {
+  const createSkipButton = () => {
     const skipButton = document.createElement('span')
 
     skipButton.innerHTML = '&#10005;'
@@ -67,6 +67,7 @@ export async function createTour() {
     return skipButton
   }
 
+  // eslint-disable-next-line func-style
   function onPopoverRender(popover: PopoverDOM) {
     const skipButton = createSkipButton()
     popover.title.appendChild(skipButton)

@@ -49,7 +49,7 @@ const fieldList: {
   }
 ] as const
 
-export function Ifd2OptionsForm() {
+export const Ifd2OptionsForm = () => {
   const {
     register,
     getValues,

@@ -25,7 +25,7 @@ const options = [
   { key: 'normalise', Component: Normalise }
 ] as const
 
-export function Options() {
+export const Options=()=> {
   const isFileUploaded = useOutputStore(state => state.isFileUploaded())
 
   return (

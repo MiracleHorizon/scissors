@@ -5,7 +5,7 @@ import { Half2Icon } from '@scissors/react-icons/Half2Icon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useNormaliseStore } from '@stores/normalise'
 
-export function ButtonAddNormalise() {
+export const ButtonAddNormalise = () => {
   const addNormalise = useNormaliseStore(state => state.add)
 
   const handleAddNormalise = useCallback(() => addNormalise(), [addNormalise])

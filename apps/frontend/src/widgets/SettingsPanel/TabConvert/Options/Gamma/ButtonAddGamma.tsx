@@ -5,7 +5,7 @@ import { ShadowIcon } from '@scissors/react-icons/ShadowIcon'
 import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useGammaStore } from '@stores/gamma'
 
-export function ButtonAddGamma() {
+export const ButtonAddGamma=() =>{
   const addGamma = useGammaStore(state => state.add)
 
   const handleAddGamma = useCallback(() => addGamma(), [addGamma])

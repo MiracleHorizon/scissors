@@ -6,7 +6,7 @@ import { ButtonAddOption } from '@widgets/SettingsPanel/ButtonAddOption'
 import { useTintStore } from '@stores/tint'
 import { useConvertStore } from '@stores/convert'
 
-export function ButtonAddTint() {
+export const ButtonAddTint = () => {
   const isGrayscaleEnabled = useConvertStore(state => state.grayscale)
 
   const addTint = useTintStore(state => state.add)

@@ -13,7 +13,7 @@ import styles from './AppLogo.module.css'
 
 export const testId = 'app-logo'
 
-export function AppLogo({ style, className, ...props }: Props) {
+export const AppLogo = ({ style, className, ...props }: Props) => {
   const router = useRouter()
 
   const navigateToHome = () => router.push(PATH_ROOT)

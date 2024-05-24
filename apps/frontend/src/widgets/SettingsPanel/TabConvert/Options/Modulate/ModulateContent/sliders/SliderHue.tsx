@@ -7,7 +7,7 @@ import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
 import styles from './SliderHue.module.css'
 
-export function SliderHue() {
+export const SliderHue=()=> {
   const hue = useModulateStore(state => state.hue)
   const isGrayscaleEnabled = useConvertStore(state => state.grayscale)
 

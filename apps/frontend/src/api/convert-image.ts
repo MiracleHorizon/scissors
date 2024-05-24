@@ -11,7 +11,7 @@ import { PATH_API_CONVERT } from '@site/paths'
 import { ABORT_TIMEOUT } from './config'
 import type { MutationPayload } from './types'
 
-async function convertImage(formData: FormData): Promise<Blob> {
+const convertImage = async (formData: FormData): Promise<Blob> => {
   const abortController = new AbortController()
 
   try {
@@ -43,11 +43,11 @@ async function convertImage(formData: FormData): Promise<Blob> {
   }
 }
 
-async function convertImageMutation({
+const convertImageMutation = async ({
   file,
   fileName,
   settings
-}: MutationPayload<ConvertSettings>): Promise<DownloadPayload> {
+}: MutationPayload<ConvertSettings>): Promise<DownloadPayload> => {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('settings', JSON.stringify(settings))
@@ -66,13 +66,15 @@ async function convertImageMutation({
   }
 }
 
-export function useConvertMutation() {
+export const useConvertMutation = () => {
   const [error, setError] = useState<unknown>(null)
 
   const setLoading = useRequestStore(state => state.setLoading)
   const setDownloadPayload = useOutputStore(state => state.setDownloadPayload)
 
-  async function mutate(payload: MutationPayload<ConvertSettings>) {
+  const reset = () => setError(null)
+
+  const mutate = async (payload: MutationPayload<ConvertSettings>) => {
     try {
       if (error) setError(null)
 
@@ -84,10 +86,6 @@ export function useConvertMutation() {
     } finally {
       setLoading(false)
     }
-  }
-
-  function reset() {
-    setError(null)
   }
 
   return {

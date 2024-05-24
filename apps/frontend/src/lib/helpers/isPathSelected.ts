@@ -1,6 +1,6 @@
 import { PATH_ROOT } from '@site/paths'
 
-export function isPathSelected(pathname: string, href: string) {
+export const isPathSelected = (pathname: string, href: string) => {
   if (href === PATH_ROOT) {
     return pathname === href
   }

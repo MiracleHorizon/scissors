@@ -6,7 +6,7 @@ import { TrimBackgroundPicker } from './TrimBackgroundPicker'
 import { TrimBackgroundInfoPopover } from './TrimBackgroundInfoPopover'
 import { useTrimStore } from '@stores/trim'
 
-export function TrimBackground() {
+export const TrimBackground=()=> {
   const background = useTrimStore(state => state.background)
   const setBackground = useTrimStore(state => state.setBackground)
 

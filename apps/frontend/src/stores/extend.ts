@@ -181,7 +181,7 @@ const extendStoreCreator: StateCreator<Store> = (set, get) => ({
         }
       }
 
-      function handleAxisValue(axis: 'x' | 'y'): void {
+      const handleAxisValue = (axis: 'x' | 'y'): void => {
         const { left, right, top, bottom } = state
 
         switch (axis) {

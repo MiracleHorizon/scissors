@@ -10,7 +10,7 @@ const GammaContent = dynamic(() => import('./GammaContent').then(mod => mod.Gamm
   loading: () => <GammaContentSkeleton />
 })
 
-export function Gamma() {
+export const Gamma=()=> {
   const isAdded = useGammaStore(state => state.isAdded)
 
   return (

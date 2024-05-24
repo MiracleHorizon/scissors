@@ -1,7 +1,7 @@
 import { ColorField } from '@ui/ColorField'
 import { useResizeStore } from '@stores/resize'
 
-export function ResizeBackgroundPicker({ background }: Props) {
+export const ResizeBackgroundPicker=({ background }: Props) =>{
   const withDominantBackground = useResizeStore(state => state.withDominantBackground)
   const setBackground = useResizeStore(state => state.setBackground)
 

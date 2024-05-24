@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { Switch } from '@design-system/Switch'
 import { useConvertStore } from '@stores/convert'
 
-export function SwitchGrayscale() {
+export const SwitchGrayscale = () => {
   const grayscale = useConvertStore(state => state.grayscale)
   const toggleGrayscale = useConvertStore(state => state.toggleGrayscale)
 

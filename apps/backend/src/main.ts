@@ -5,7 +5,7 @@ import { AppModule } from './app.module'
 import { corsOptions } from './cors/options'
 import { DEFAULT_PORT } from '@config/constants'
 
-async function bootstrap() {
+const bootstrap = async () => {
   const PORT = process.env.PORT ?? DEFAULT_PORT
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 

@@ -25,7 +25,7 @@ const allowedFileTypes: string[] = [
   IMAGE_FILE_FORMAT.PNG
 ] as const
 
-export function TabMetadataContent() {
+export const TabMetadataContent = () => {
   const [parsedMetadata, setParsedMetadata] = useState<ExifrReturn | null>(null)
   const file = useOutputStore(state => state.file)
   const downloadPayload = useOutputStore(state => state.downloadPayload)

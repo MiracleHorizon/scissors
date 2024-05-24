@@ -4,12 +4,13 @@ import capitalize from 'lodash.capitalize'
 import { splitStringByUppercase } from '@helpers/splitStringByUppercase'
 import type { TableItemValue } from './types'
 
-export function formatDate(date: string | Date): string {
+export const formatDate = (date: string | Date): string => {
   const template = 'D MMM YYYY, hh:mm A'
+
   return dayjs(date).format(template)
 }
 
-export function formatValue(value: TableItemValue, label: string): string {
+export const formatValue = (value: TableItemValue, label: string): string => {
   if (value instanceof Date) {
     return formatDate(value)
   }
@@ -29,7 +30,7 @@ export function formatValue(value: TableItemValue, label: string): string {
   return value.toString()
 }
 
-export function formatLabel(label: string): string {
+export const formatLabel = (label: string): string => {
   if (label === 'YCbCrPositioning') {
     return 'YCbCr Positioning'
   }

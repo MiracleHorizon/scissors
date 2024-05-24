@@ -1,7 +1,7 @@
 import { bytesToMegabytes } from '@helpers/file/bytesToMegabytes'
 import type { Dimension } from './types'
 
-export function getAspectRatio(width: number, height: number): [number, number] {
+export const getAspectRatio = (width: number, height: number): [number, number] => {
   const gcd = (a: number, b: number): number => {
     if (!b) {
       return a
@@ -18,11 +18,11 @@ export function getAspectRatio(width: number, height: number): [number, number] 
   return [width, height]
 }
 
-export function isCorrectAspectRatio(
+export const isCorrectAspectRatio = (
   [widthRatio, heightRatio]: [number, number],
   width: number,
   height: number
-): boolean {
+): boolean => {
   const ULTRAWIDE_MONITOR_WIDTH_RATIO = 21
 
   return (
@@ -30,7 +30,7 @@ export function isCorrectAspectRatio(
   )
 }
 
-export function getFileSize(fileSize: number): string {
+export const getFileSize = (fileSize: number): string => {
   const formatFileSize = (size: number) => size.toFixed(1).replace('.0', '')
 
   if (fileSize < 1000) {
@@ -42,7 +42,7 @@ export function getFileSize(fileSize: number): string {
   return formatFileSize(bytesToMegabytes(fileSize)) + ' MB'
 }
 
-async function readImageFile(file: File): Promise<HTMLImageElement> {
+const readImageFile = async (file: File): Promise<HTMLImageElement> => {
   const fileReader = new FileReader()
   const fileReaderPromise = new Promise<HTMLImageElement>((resolve, reject) => {
     fileReader.onload = (ev: ProgressEvent<FileReader>) => {
@@ -70,7 +70,7 @@ async function readImageFile(file: File): Promise<HTMLImageElement> {
   return fileReaderPromise
 }
 
-export async function getImageDimension(file: File): Promise<Dimension | null> {
+export const getImageDimension = async (file: File): Promise<Dimension | null> => {
   try {
     const { width, height } = await readImageFile(file)
 

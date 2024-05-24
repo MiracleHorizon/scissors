@@ -3,7 +3,7 @@ import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@scissors/sharp'
 import { Slider } from '@design-system/Slider'
 import { useModulateStore } from '@stores/modulate'
 
-export function SliderLightness() {
+export const SliderLightness = () => {
   const lightness = useModulateStore(state => state.lightness)
 
   const setLightness = useModulateStore(state => state.setLightness)

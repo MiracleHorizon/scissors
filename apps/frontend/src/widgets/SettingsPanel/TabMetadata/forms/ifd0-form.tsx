@@ -7,7 +7,7 @@ import { ButtonReset } from '@ui/ButtonReset'
 import { MetadataForm, MetadataFormField } from '../MetadataForm'
 import { useMetadataStore } from '@stores/metadata'
 
-export function Ifd0OptionsForm() {
+export const Ifd0OptionsForm = () => {
   const { keepMetadata, model, artist, copyright, dateTime, imageDescription, make, software } =
     useMetadataStore(state => ({
       ...state.ifd0,

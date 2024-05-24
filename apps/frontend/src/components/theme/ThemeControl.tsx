@@ -19,7 +19,7 @@ const getThemeValue = (theme: Theme): Theme => {
   return theme
 }
 
-export function ThemeControl() {
+export const ThemeControl = () => {
   const { theme, setTheme } = useTheme()
 
   return (

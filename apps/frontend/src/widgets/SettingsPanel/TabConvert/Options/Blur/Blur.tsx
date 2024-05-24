@@ -13,7 +13,7 @@ const BlurSigma = dynamic(() => import('./BlurSigma').then(mod => mod.BlurSigma)
   loading: () => <BlurSigmaSkeleton />
 })
 
-export function Blur() {
+export const Blur = () => {
   const blur = useBlurStore(state => state.value)
   const isSigmaAdded = useBlurStore(state => state.isSigmaAdded)
   const isBlurDisabled = !blur

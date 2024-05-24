@@ -102,11 +102,8 @@
       "always"
     ],
     "func-style": [
-      "warn",
-      "declaration",
-      {
-        "allowArrowFunctions": true
-      }
+      "error",
+      "expression"
     ],
     "no-constant-condition": "error",
     "no-compare-neg-zero": "error",

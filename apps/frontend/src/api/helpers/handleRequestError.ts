@@ -10,7 +10,7 @@ export const timeoutErrorMessage =
  * @param payload - error from the request
  * @returns error message for display to the user
  */
-export function handleRequestError(payload: RequestError | FetchException): string {
+export const handleRequestError = (payload: RequestError | FetchException): string => {
   if (payload instanceof FetchException) {
     if (payload.cause instanceof DOMException && payload.cause.name === 'AbortError') {
       return timeoutErrorMessage

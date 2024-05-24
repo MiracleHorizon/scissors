@@ -2,7 +2,7 @@ import type { ExtractRegion } from '@scissors/sharp'
 
 import type { CropperData, CropperImageData } from './types'
 
-export function extractRegionToCropperData(extractRegion: ExtractRegion): CropperData {
+export const extractRegionToCropperData = (extractRegion: ExtractRegion): CropperData => {
   const { left: x, top: y, width, height } = extractRegion
 
   return {
@@ -13,24 +13,17 @@ export function extractRegionToCropperData(extractRegion: ExtractRegion): Croppe
   }
 }
 
-export function cropperDataToExtractRegion({
+export const cropperDataToExtractRegion = ({
   data: { x, y, width, height },
   imageData: { naturalWidth, naturalHeight }
 }: {
   data: CropperData
   imageData: CropperImageData
-}): ExtractRegion {
+}): ExtractRegion => {
   const isXNegative = x < 0
   const isYNegative = y < 0
 
-  const extractRegion = {
-    left: calcLeft(),
-    top: calcTop(),
-    width: calcWidth(),
-    height: calcHeight()
-  }
-
-  function calcLeft() {
+  const calcLeft = () => {
     if (isXNegative || x > naturalWidth) {
       return 0
     }
@@ -38,7 +31,7 @@ export function cropperDataToExtractRegion({
     return x
   }
 
-  function calcTop() {
+  const calcTop = () => {
     if (isYNegative || y > naturalHeight) {
       return 0
     }
@@ -46,7 +39,7 @@ export function cropperDataToExtractRegion({
     return y
   }
 
-  function calcWidth() {
+  const calcWidth = () => {
     if (isXNegative) {
       return width + x
     }
@@ -59,7 +52,7 @@ export function cropperDataToExtractRegion({
     return width
   }
 
-  function calcHeight() {
+  const calcHeight = () => {
     if (isYNegative) {
       return height + y
     }
@@ -70,6 +63,13 @@ export function cropperDataToExtractRegion({
       return naturalHeight - y
     }
     return height
+  }
+
+  const extractRegion = {
+    left: calcLeft(),
+    top: calcTop(),
+    width: calcWidth(),
+    height: calcHeight()
   }
 
   const extractRegionEntries = Object.entries(extractRegion)

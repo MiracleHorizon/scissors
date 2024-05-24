@@ -9,7 +9,7 @@ import { useResetSettings } from '@stores/hooks/useResetSettings'
 import { useRemoveSettings } from '@stores/hooks/useRemoveSettings'
 import { useTabsStore } from '@stores/tabs'
 
-function WithConfirmAlert({ children, onCancel, onConfirm }: WithConfirmAlertProps) {
+const WithConfirmAlert = ({ children, onCancel, onConfirm }: WithConfirmAlertProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   const { handleReset } = useResetSettings(selectedTab)

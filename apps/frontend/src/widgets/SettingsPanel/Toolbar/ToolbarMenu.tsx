@@ -8,7 +8,7 @@ import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 import { TOUR_STEP } from '@lib/tour'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
-export function ToolbarMenu(props: ClassNameProps) {
+export const ToolbarMenu = (props: ClassNameProps) => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   return (

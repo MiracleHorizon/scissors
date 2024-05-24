@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { Switch } from '@design-system/Switch'
 import { useNegateStore } from '@stores/negate'
 
-export function SwitchNegate() {
+export const SwitchNegate = () => {
   const negate = useNegateStore(state => state.value)
 
   const toggle = useNegateStore(state => state.toggleValue)

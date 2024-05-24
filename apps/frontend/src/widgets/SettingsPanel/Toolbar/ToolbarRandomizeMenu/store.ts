@@ -108,6 +108,7 @@ export const useRandomizeStore = create(
   )
 )
 
+// eslint-disable-next-line func-style
 export function mergeState<State>(persistedState: unknown, currentState: State): State {
   if (!persistedState) {
     return currentState
@@ -143,7 +144,7 @@ export function mergeState<State>(persistedState: unknown, currentState: State):
   }
 }
 
-export function isSettingsValid(settings: unknown): boolean {
+export const isSettingsValid = (settings: unknown): boolean => {
   const optionSchema = object({
     label: string()
       .oneOf(defaultSettings.map(s => s.label))
