@@ -8,7 +8,7 @@ import { NumberInput } from '@components/NumberInput'
 import { SliderHeader } from './SliderHeader'
 import { getSliderTitleValue, getSliderValue } from './utils'
 import type { Props } from './types'
-import styles from './slider.module.css'
+import styles from './Slider.module.css'
 
 export const Slider = ({
   value,
