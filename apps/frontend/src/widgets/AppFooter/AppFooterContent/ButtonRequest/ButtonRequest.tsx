@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { memo } from 'react'
-import { Button, IconButton, DropdownMenu, Flex, Spinner } from '@radix-ui/themes'
+import { Button, Flex } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import { CheckboxKeepChanges } from './CheckboxKeepChanges'
+import { DropdownRequestOptions } from './DropdownRequestOptions'
 import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ButtonRequest.module.css'
@@ -44,24 +44,7 @@ export const ButtonRequest = memo(
             {label}
           </Button>
 
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger disabled={disabled}>
-              <IconButton size='3' className={styles.dropdownTrigger}>
-                <Spinner size='3' loading={isLoading}>
-                  <DropdownMenu.TriggerIcon width='13px' height='13px' />
-                </Spinner>
-              </IconButton>
-            </DropdownMenu.Trigger>
-
-            <DropdownMenu.Content
-              side='top'
-              align='end'
-              sideOffset={6}
-              className={styles.dropdownContent}
-            >
-              <CheckboxKeepChanges />
-            </DropdownMenu.Content>
-          </DropdownMenu.Root>
+          <DropdownRequestOptions isLoading={isLoading} disabled={disabled} />
         </Flex>
 
         {error && error instanceof Error && (

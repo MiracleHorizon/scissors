@@ -1,0 +1,13 @@
+.trigger {
+  width: 34px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.content {
+  width: 200px;
+  border-radius: var(--radius-2);
+}
+
+.content :global(.rt-DropdownMenuViewport) {
+  padding: var(--space-3);
+}

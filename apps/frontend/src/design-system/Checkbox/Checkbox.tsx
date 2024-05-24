@@ -5,6 +5,7 @@ import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
 import styles from './Checkbox.module.css'
+import type { JustifyContent } from '@lib/theme'
 
 export const rootTestId = 'checkbox-root'
 
@@ -13,14 +14,16 @@ export interface Props {
   checked?: boolean
   onClick?: VoidFunction
   disabled?: boolean
+  direction?: 'row' | 'row-reverse'
+  justify?: JustifyContent
 }
 
-export const Checkbox = memo(({ label, ...props }: Props) => {
+export const Checkbox = memo(({ label, direction = 'row', justify, ...props }: Props) => {
   const id = useId()
 
   return (
     <Text data-testid={rootTestId} as='div' size='2'>
-      <Flex align='center' gap='2'>
+      <Flex align='center' direction={direction} justify={justify} gap='2'>
         <RadixCheckbox size='3' id={id} {...props} />
 
         {label && (

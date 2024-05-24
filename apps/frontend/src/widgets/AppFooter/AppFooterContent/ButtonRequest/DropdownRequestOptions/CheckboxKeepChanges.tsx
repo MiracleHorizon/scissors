@@ -7,5 +7,13 @@ export const CheckboxKeepChanges = () => {
 
   const handleToggle = () => toggleKeepChanges()
 
-  return <Checkbox label='Keep Changes' checked={checked} onClick={handleToggle} />
+  return (
+    <Checkbox
+      label='Keep Changes'
+      direction='row-reverse'
+      justify='between'
+      checked={checked}
+      onClick={handleToggle}
+    />
+  )
 }

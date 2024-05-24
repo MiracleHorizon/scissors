@@ -15,16 +15,3 @@
 .button {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
-
-.dropdownTrigger {
-  width: 34px;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-}
-
-.dropdownContent {
-  border-radius: var(--radius-2);
-}
-
-.dropdownContent :global(.rt-DropdownMenuViewport) {
-  padding: var(--space-3);
-}
