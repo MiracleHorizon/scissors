@@ -1,12 +1,11 @@
 import { Flex } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
-import type { FC } from 'react'
 
 import { NavigationItem } from './NavigationItem'
 import { navigationItems } from '../data'
 import styles from './NavigationDesktop.module.css'
 
-export const NavigationDesktop: FC<MarginProps> = props => (
+export const NavigationDesktop = (props: MarginProps) => (
   <Flex {...props} asChild align='center' gap='4' className={styles.root}>
     <nav>
       {navigationItems.map(item => (

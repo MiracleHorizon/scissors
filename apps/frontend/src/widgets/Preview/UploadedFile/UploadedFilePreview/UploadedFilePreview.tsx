@@ -1,6 +1,6 @@
 import { Box } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { CSSProperties, FC } from 'react'
+import type { CSSProperties } from 'react'
 
 import { EnterFullScreenIcon } from '@scissors/react-icons/EnterFullScreenIcon'
 
@@ -17,7 +17,7 @@ interface Props {
   handleOpenLightbox: VoidFunction
 }
 
-export const UploadedFilePreview: FC<Props> = ({ file, handleOpenLightbox }) => {
+export const UploadedFilePreview = ({ file, handleOpenLightbox }: Props) => {
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   return (

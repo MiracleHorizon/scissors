@@ -2,7 +2,6 @@
 
 import { DropdownMenu, IconButton, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { FC } from 'react'
 
 import { PaletteIcon } from '@scissors/react-icons/PaletteIcon'
 
@@ -22,7 +21,7 @@ interface Props {
   contentClassName?: string
 }
 
-export const ThemeColorMenu: FC<Props> = ({ triggerClassName, contentClassName }) => {
+export const ThemeColorMenu = ({ triggerClassName, contentClassName }: Props) => {
   const { themeColor } = useTheme()
 
   const onValueChange = (value: ThemeColor) => {

@@ -1,35 +1,22 @@
-import { Flex, Heading, Text } from '@radix-ui/themes'
-import type { FC } from 'react'
+import { Flex, Heading } from '@radix-ui/themes'
 import type { ConvertSettings } from '@scissors/sharp'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { ButtonDownload } from '@ui/ButtonDownload'
+import { GallerySlideDetailItem } from './GallerySlideDetailItem'
 import { useExportJSON } from '@hooks/useExportJSON'
 import { geistMono } from '@app/fonts'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './GallerySlideInfo.module.css'
 
-/*
- * Representative expression of image processing settings.
- */
-interface SlideDetail {
-  label: string
-  value: string | number
-}
-
-const DetailsItem: FC<SlideDetail> = ({ label, value }) => (
-  <Text as='div'>
-    {label}: <Text weight='medium'>{value}</Text>
-  </Text>
-)
-
 interface Props extends ClassNameProps {
   index: number
   label: string
-  details: SlideDetail[]
+  details: ComponentPropsWithoutRef<typeof GallerySlideDetailItem>[]
   settings: Partial<ConvertSettings>
 }
 
-export const GallerySlideInfo: FC<Props> = ({ index, label, settings, details, className }) => (
+export const GallerySlideInfo = ({ index, label, settings, details, className }: Props) => (
   <Flex direction='column' width='100%' style={geistMono.style} className={className}>
     <Heading size='4' as='h4'>
       {label}
@@ -38,7 +25,7 @@ export const GallerySlideInfo: FC<Props> = ({ index, label, settings, details, c
     <Flex asChild direction='column' mt='1'>
       <article>
         {details.map(detail => (
-          <DetailsItem key={detail.label} {...detail} />
+          <GallerySlideDetailItem key={detail.label} {...detail} />
         ))}
       </article>
     </Flex>

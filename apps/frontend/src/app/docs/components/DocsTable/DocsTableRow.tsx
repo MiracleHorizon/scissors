@@ -1,5 +1,5 @@
 import { Code, Table } from '@radix-ui/themes'
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import { MinusIcon } from '@scissors/react-icons/MinusIcon'
 
@@ -9,7 +9,7 @@ interface Props {
   defaultValue?: string | number | ReactNode
 }
 
-export const DocsTableRow: FC<Props> = ({ label, description, defaultValue }) => (
+export const DocsTableRow = ({ label, description, defaultValue }: Props) => (
   <Table.Row>
     <Table.RowHeaderCell>
       <Code

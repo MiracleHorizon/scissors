@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import styles from './ExtractRegionPreview.module.css'
 
 interface Props {
@@ -7,7 +5,7 @@ interface Props {
   aspectRatio: number
 }
 
-export const ExtractRegionPreview: FC<Props> = ({ file, aspectRatio }) => (
+export const ExtractRegionPreview = ({ file, aspectRatio }: Props) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
     src={URL.createObjectURL(file)}

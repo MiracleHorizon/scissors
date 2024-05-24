@@ -1,5 +1,4 @@
 import { clsx } from 'clsx'
-import type { FC } from 'react'
 
 import styles from './DrawerCloseLine.module.css'
 
@@ -8,7 +7,7 @@ interface Props {
   orientation?: 'horizontal' | 'vertical'
 }
 
-export const DrawerCloseLine: FC<Props> = ({ className, orientation = 'horizontal' }) => (
+export const DrawerCloseLine = ({ className, orientation = 'horizontal' }: Props) => (
   <div
     className={clsx(
       styles.root,

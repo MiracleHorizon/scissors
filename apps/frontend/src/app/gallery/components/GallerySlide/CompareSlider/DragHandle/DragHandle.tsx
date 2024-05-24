@@ -1,4 +1,4 @@
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 import { Flex } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -12,7 +12,7 @@ interface Props {
   isPortrait: boolean
 }
 
-export const DragHandle: FC<Props> = memo(({ isPortrait }) => (
+export const DragHandle = memo(({ isPortrait }: Props) => (
   <Flex
     height='100%'
     align='center'

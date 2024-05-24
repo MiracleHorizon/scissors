@@ -1,4 +1,4 @@
-import { type ComponentPropsWithoutRef, type FC, useCallback } from 'react'
+import { type ComponentPropsWithoutRef, useCallback } from 'react'
 
 import { ResetIcon } from '@scissors/react-icons/ResetIcon'
 
@@ -48,7 +48,7 @@ interface ItemProps {
   onClick?: VoidFunction
 }
 
-export const ItemResetSettings: FC<ItemProps> = ({ onClick }) => (
+export const ItemResetSettings = ({ onClick }: ItemProps) => (
   <WithConfirmAlert onConfirm={onClick}>
     <ToolbarMobileMenuItem label='Reset' icon={<ResetIcon width='20px' height='20px' />} />
   </WithConfirmAlert>

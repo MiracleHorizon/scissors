@@ -1,11 +1,10 @@
 'use client'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import type { FC } from 'react'
 
 import type { IconProps } from './types'
 
-export const ArrowLeftIcon: FC<IconProps> = ({ label = 'arrow left', ...props }) => (
+export const ArrowLeftIcon = ({ label = 'arrow left', ...props }: IconProps) => (
   <AccessibleIcon label={label}>
     <svg
       width='15'

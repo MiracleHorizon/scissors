@@ -1,5 +1,3 @@
-import type { FC } from 'react'
-
 import { BlurIcon } from '@scissors/react-icons/BlurIcon'
 
 import { OptionSectionHeader } from '@widgets/SettingsPanel/OptionSectionHeader'
@@ -10,7 +8,7 @@ interface Props {
   disabled: boolean
 }
 
-export const BlurSigmaHeader: FC<Props> = ({ disabled }) => (
+export const BlurSigmaHeader = ({ disabled }: Props) => (
   <OptionSectionHeader title='Sigma' icon={<BlurIcon width={18} height={18} />}>
     <>
       <ButtonResetBlurSigma disabled={disabled} />

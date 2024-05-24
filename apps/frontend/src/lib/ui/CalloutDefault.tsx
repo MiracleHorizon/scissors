@@ -1,5 +1,5 @@
 import { Callout } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef, FC } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
 
@@ -10,7 +10,7 @@ interface Props extends ClassNameProps, StyleProps, ComponentPropsWithoutRef<typ
   text: string
 }
 
-export const CalloutDefault: FC<Props> = ({ text, style, ...props }) => (
+export const CalloutDefault = ({ text, style, ...props }: Props) => (
   <Callout.Root
     style={{
       maxWidth: 'max-content',

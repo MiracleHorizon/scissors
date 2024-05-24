@@ -1,6 +1,5 @@
 import { Tabs } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { FC } from 'react'
 
 import { SymbolIcon } from '@scissors/react-icons/SymbolIcon'
 import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
@@ -34,7 +33,7 @@ interface Props extends ClassNameProps {
   onClick?: VoidFunction
 }
 
-export const ToolbarTabList: FC<Props> = ({ className, onClick }) => (
+export const ToolbarTabList = ({ className, onClick }: Props) => (
   <Tabs.List data-tourstep={TOUR_STEP.TOOLBAR_TAB_LIST} className={clsx(styles.root, className)}>
     {tabs.map(props => (
       <ToolbarTabItem key={props.value} {...props} onClick={onClick} />

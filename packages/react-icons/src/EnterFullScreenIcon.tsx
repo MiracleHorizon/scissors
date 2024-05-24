@@ -1,11 +1,10 @@
 'use client'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import type { FC } from 'react'
 
 import type { IconProps } from './types'
 
-export const EnterFullScreenIcon: FC<IconProps> = ({ label = 'enter full screen', ...props }) => (
+export const EnterFullScreenIcon= ({ label = 'enter full screen', ...props }: IconProps) => (
   <AccessibleIcon label={label}>
     <svg
       width='15'

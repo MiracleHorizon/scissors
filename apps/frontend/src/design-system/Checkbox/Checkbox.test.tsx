@@ -2,7 +2,7 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { rootTestId, Checkbox, type Props } from './checkbox'
+import { rootTestId, Checkbox, type Props } from './Checkbox'
 import { setup } from '@testing/test-utils'
 
 describe('@design-system/Checkbox', () => {

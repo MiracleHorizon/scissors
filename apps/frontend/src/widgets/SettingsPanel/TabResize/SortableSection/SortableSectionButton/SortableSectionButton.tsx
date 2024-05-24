@@ -1,4 +1,4 @@
-import { type FC, memo, type ReactNode } from 'react'
+import { memo, type ReactNode } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -29,7 +29,7 @@ interface WithListeners {
   onClick?: never
 }
 
-export const SortableSectionButton: FC<Props> = memo(
+export const SortableSectionButton = memo(
   ({
     icon,
     isDisabled,
@@ -41,7 +41,7 @@ export const SortableSectionButton: FC<Props> = memo(
     variant = 'surface',
     onClick,
     listeners
-  }) => (
+  }: Props) => (
     <Tooltip
       content={tooltipContent}
       open={isTooltipOpen({

@@ -1,5 +1,5 @@
 import { Popover } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef, FC } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { GallerySlideInfo } from '../GallerySlideInfo'
 import { GallerySlidePopoverTrigger } from './GallerySlidePopoverTrigger'
@@ -7,7 +7,7 @@ import styles from './GallerySlidePopover.module.css'
 
 type Props = ComponentPropsWithoutRef<typeof GallerySlideInfo>
 
-export const GallerySlidePopover: FC<Props> = props => (
+export const GallerySlidePopover = (props: Props) => (
   <Popover.Root modal>
     <GallerySlidePopoverTrigger />
 

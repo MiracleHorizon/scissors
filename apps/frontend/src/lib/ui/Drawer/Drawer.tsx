@@ -2,7 +2,7 @@
 
 import { Drawer } from 'vaul'
 import { clsx } from 'clsx'
-import type { ComponentPropsWithoutRef, FC, PropsWithChildren, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, PropsWithChildren, ReactNode } from 'react'
 
 import styles from './Drawer.module.css'
 
@@ -16,7 +16,7 @@ type Props = PropsWithChildren<
   } & ComponentPropsWithoutRef<typeof Drawer.Root>
 >
 
-const DrawerComponent: FC<Props> = ({
+const DrawerComponent = ({
   children,
   withOverlay = true,
   contentClassName,
@@ -24,7 +24,7 @@ const DrawerComponent: FC<Props> = ({
   portalContainer,
   trigger,
   ...props
-}) => (
+}: Props) => (
   <Drawer.Root {...props}>
     <Drawer.Trigger asChild>{trigger}</Drawer.Trigger>
 

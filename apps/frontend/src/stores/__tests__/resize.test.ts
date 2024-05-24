@@ -13,8 +13,8 @@ import {
 
 import { createResizeStore, defaultState, type Store } from '@stores/resize'
 
-const pickState = (store: Store) => {
-  return pick(store, [
+const pickState = (store: Store) =>
+  pick(store, [
     'width',
     'height',
     'fit',
@@ -26,7 +26,6 @@ const pickState = (store: Store) => {
     'withDominantBackground',
     'background'
   ])
-}
 
 describe('@stores/resize', () => {
   const store = createResizeStore()

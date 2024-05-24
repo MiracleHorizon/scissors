@@ -1,10 +1,10 @@
 import { clsx } from 'clsx'
-import type { FC, SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 import styles from './BackgroundGrid.module.css'
 
 const patternId = '83fd4e5a-9d52-42fc-97b6-718e5d7ee527'
-export const BackgroundGrid: FC<SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+export const BackgroundGrid = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
   <svg aria-hidden='true' className={clsx(styles.root, className)} {...props}>
     <defs>
       <pattern id={patternId} width='180' height='180' x='50%' y='-1' patternUnits='userSpaceOnUse'>

@@ -1,4 +1,4 @@
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 import { Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -11,7 +11,7 @@ interface Props extends ClassNameProps {
   onClick?: VoidFunction
 }
 
-export const ColorSwatch: FC<Props> = memo(({ color, className, tooltipContent, onClick }) => {
+export const ColorSwatch = memo(({ color, className, tooltipContent, onClick }: Props) => {
   const swatchJSX = (
     <div
       style={{ backgroundColor: color }}

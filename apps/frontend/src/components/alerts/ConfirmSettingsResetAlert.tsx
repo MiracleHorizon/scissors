@@ -1,6 +1,6 @@
 'use client'
 
-import { type ComponentPropsWithoutRef, type FC, type PropsWithChildren, useState } from 'react'
+import { type ComponentPropsWithoutRef, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
 import { Checkbox } from '@design-system/Checkbox'
@@ -22,7 +22,7 @@ type Props = PropsWithChildren<{
   onCancel?: VoidFunction
 }>
 
-export const ConfirmSettingsResetAlert: FC<Props> = ({ children, onConfirm, onCancel }) => {
+export const ConfirmSettingsResetAlert = ({ children, onConfirm, onCancel }: Props) => {
   const [removeAll, setRemoveAll] = useState(false)
 
   const handleToggleRemoveAll = () => setRemoveAll(prev => !prev)

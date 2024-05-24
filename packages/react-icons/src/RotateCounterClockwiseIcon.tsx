@@ -1,14 +1,13 @@
 'use client'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import type { FC } from 'react'
 
 import type { IconProps } from './types'
 
-export const RotateCounterClockwiseIcon: FC<IconProps> = ({
+export const RotateCounterClockwiseIcon = ({
   label = 'clock counter',
   ...props
-}) => (
+}: IconProps) => (
   <AccessibleIcon label={label}>
     <svg
       width='15'

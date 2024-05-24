@@ -1,7 +1,5 @@
-import type { FC } from 'react'
-
 import { Checkbox, type Props as CheckboxProps } from '@design-system/Checkbox'
 
-export const CheckboxDominantBackground: FC<Omit<CheckboxProps, 'label'>> = props => (
+export const CheckboxDominantBackground = (props: Omit<CheckboxProps, 'label'>) => (
   <Checkbox label='Use Dominant Background' {...props} />
 )

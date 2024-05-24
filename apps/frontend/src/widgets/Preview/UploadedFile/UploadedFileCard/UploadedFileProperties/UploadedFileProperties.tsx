@@ -1,7 +1,6 @@
 import {
   type ComponentPropsWithoutRef,
   type CSSProperties,
-  type FC,
   Fragment,
   memo,
   useEffect,
@@ -26,7 +25,7 @@ interface Props {
 
 type PropertyItemProps = ComponentPropsWithoutRef<typeof PropertyItem>
 
-export const UploadedFileProperties: FC<Props> = memo(({ file }) => {
+export const UploadedFileProperties = memo(({ file }: Props) => {
   const [dimension, setDimension] = useState<Dimension | null>(null)
 
   const properties = useMemo(() => {

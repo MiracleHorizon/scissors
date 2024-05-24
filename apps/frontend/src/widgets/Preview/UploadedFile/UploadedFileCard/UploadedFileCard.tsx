@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react'
+import { useCallback } from 'react'
 import { Card, Flex, Spinner, Text } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
@@ -16,7 +16,7 @@ interface Props {
   file: File
 }
 
-export const UploadedFileCard: FC<Props> = ({ file }) => {
+export const UploadedFileCard = ({ file }: Props) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
 
   const removeFile = useOutputStore(state => state.removeFile)

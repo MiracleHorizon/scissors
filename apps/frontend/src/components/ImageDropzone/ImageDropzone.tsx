@@ -2,7 +2,6 @@
 
 import { Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
-import type { FC } from 'react'
 import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ImagePlusIcon } from '@scissors/react-icons/ImagePlusIcon'
@@ -18,12 +17,12 @@ const padding: PaddingProps = {
   }
 } as const
 
-const ImageDropzone: FC<ComponentProps> = ({
+const ImageDropzone = ({
   children: fileInput,
   isDragOver,
   className,
   ...props
-}) => (
+}: ComponentProps) => (
   <Flex
     {...padding}
     {...props}

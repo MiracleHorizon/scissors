@@ -1,7 +1,7 @@
 'use client'
 
 import { Flex, Link, Popover, Strong } from '@radix-ui/themes'
-import type { FC, PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import styles from './DocsDetailsPopover.module.css'
 
@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
   moreInfoLink?: string
 }>
 
-export const DocsDetailsPopover: FC<Props> = ({ children, title, moreInfoLink }) => (
+export const DocsDetailsPopover = ({ children, title, moreInfoLink }: Props) => (
   <Popover.Root>
     <Popover.Trigger>
       <Strong className={styles.trigger}>{title}</Strong>

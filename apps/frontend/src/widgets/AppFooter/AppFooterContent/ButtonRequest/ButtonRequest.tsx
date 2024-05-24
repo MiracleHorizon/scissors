@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 import { Button, IconButton, DropdownMenu, Flex, Spinner } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -25,8 +25,8 @@ interface Props {
   isDisabled?: boolean
 }
 
-export const ButtonRequest: FC<Props> = memo(
-  ({ label, isLoading, error, makeRequest, retry, reset, isDisabled }) => {
+export const ButtonRequest = memo(
+  ({ label, isLoading, error, makeRequest, retry, reset, isDisabled }: Props) => {
     const isFileUploaded = useOutputStore(state => state.isFileUploaded())
     const disabled = isDisabled || isLoading || !isFileUploaded
 

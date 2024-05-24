@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
-import type { ComponentPropsWithoutRef, FC } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import { CompareSlider } from './CompareSlider'
 import { AsideSkeleton } from './GallerySlideSkeleton'
@@ -28,13 +28,13 @@ const GallerySlidePopover = dynamic(
 type Props = ComponentPropsWithoutRef<typeof CompareSlider> &
   ComponentPropsWithoutRef<typeof GallerySlideInfo>
 
-const GallerySlide: FC<Props> = ({
+const GallerySlide = ({
   index,
   afterSrc,
   beforeSrc,
   orientation = 'landscape',
   ...info
-}) => {
+}: Props) => {
   const isPortrait = orientation === 'portrait'
   const isLandscape = orientation === 'landscape'
 

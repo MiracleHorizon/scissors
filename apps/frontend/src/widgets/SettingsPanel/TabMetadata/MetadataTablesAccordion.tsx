@@ -1,5 +1,4 @@
 import { Text } from '@radix-ui/themes'
-import type { FC } from 'react'
 
 import * as Accordion from '@ui/Accordion'
 import { MetadataTable } from './MetadataTable'
@@ -9,7 +8,7 @@ interface Props {
   metadata: ExifrReturn
 }
 
-export const MetadataTablesAccordion: FC<Props> = ({ metadata }) => (
+export const MetadataTablesAccordion = ({ metadata }: Props) => (
   <Accordion.Root type='multiple' defaultValue={Object.keys(metadata)}>
     {Object.entries(metadata).map(([name, data]) => (
       <Accordion.Item key={name} value={name} defaultChecked>

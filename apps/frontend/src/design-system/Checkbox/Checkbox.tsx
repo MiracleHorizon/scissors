@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC, memo, useId } from 'react'
+import { memo, useId } from 'react'
 import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -15,7 +15,7 @@ export interface Props {
   disabled?: boolean
 }
 
-export const Checkbox: FC<Props> = memo(({ label, ...props }) => {
+export const Checkbox = memo(({ label, ...props }: Props) => {
   const id = useId()
 
   return (

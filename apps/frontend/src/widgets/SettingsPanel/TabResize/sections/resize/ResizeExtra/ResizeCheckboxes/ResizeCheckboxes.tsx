@@ -1,6 +1,5 @@
 import { Grid } from '@radix-ui/themes'
 import type { MarginProps, Responsive } from '@radix-ui/themes/props'
-import type { FC } from 'react'
 
 import { CheckboxEnlargement } from './CheckboxEnlargement'
 import { CheckboxReduction } from './CheckboxReduction'
@@ -18,7 +17,7 @@ const gapX: Gap = {
   md: '2'
 } as const
 
-export const ResizeCheckboxes: FC<MarginProps> = props => (
+export const ResizeCheckboxes = (props: MarginProps) => (
   <Grid {...props} columns={columns} gapX={gapX} gapY='3' width='100%'>
     <CheckboxEnlargement />
     <CheckboxReduction />

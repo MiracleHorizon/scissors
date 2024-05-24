@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { Flex, Popover, ScrollArea, Text } from '@radix-ui/themes'
 import type { PaddingProps } from '@radix-ui/themes/props'
-import type { FC } from 'react'
 
 import { ButtonInfo } from '@ui/ButtonInfo'
 import { pathForAssets } from '@site/config'
@@ -62,7 +61,7 @@ const pathForExampleImage = (fileName: string): string => {
 
 const ASPECT_RATION_REDUCTION = 4.4
 
-const ResizeFitExampleImage: FC<Example> = ({ srcLight, srcDark, width, height, label }) => {
+const ResizeFitExampleImage = ({ srcLight, srcDark, width, height, label }: Example) => {
   const common = {
     alt: label,
     width: width / ASPECT_RATION_REDUCTION,

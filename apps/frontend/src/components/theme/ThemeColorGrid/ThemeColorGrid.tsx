@@ -1,5 +1,4 @@
 import { Grid } from '@radix-ui/themes'
-import type { FC } from 'react'
 
 import { ThemeColorGridItem } from './ThemeColorGridItem'
 import { type GridProps, themeColorItems } from '@lib/theme'
@@ -9,7 +8,7 @@ interface Props extends Omit<GridProps, 'rows'> {
   rows?: number
 }
 
-export const ThemeColorGrid: FC<Props> = ({ rows = 4, ...props }) => {
+export const ThemeColorGrid = ({ rows = 4, ...props }: Props) => {
   const { themeColor } = useTheme()
 
   return (

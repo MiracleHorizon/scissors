@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import type { FC } from 'react'
 
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'
 
@@ -16,11 +15,11 @@ const ConfirmAlert = dynamic(
   }
 )
 
-const ConfirmImportAlert: FC<{
+const ConfirmImportAlert = (props: {
   open: boolean
   onConfirm: VoidFunction
   onCancel: VoidFunction
-}> = props => (
+}) => (
   <ConfirmAlert
     {...props}
     title='Import settings'
@@ -30,10 +29,7 @@ const ConfirmImportAlert: FC<{
   />
 )
 
-const ValidationAlert: FC<{
-  open: boolean
-  onCancel: VoidFunction
-}> = props => (
+const ValidationAlert = (props: { open: boolean; onCancel: VoidFunction }) => (
   <ConfirmAlert
     {...props}
     title='Invalid settings'
@@ -68,12 +64,12 @@ export const ButtonImportSettings = () => {
   )
 }
 
-const ItemWithImport: FC<ComponentProps> = ({
+const ItemWithImport = ({
   children,
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   isDragOver: _isDragOver,
   ...props
-}) => (
+}: ComponentProps) => (
   <ToolbarMobileMenuItem
     label='Import'
     icon={<UploadIcon width='20px' height='20px' label='import settings' />}

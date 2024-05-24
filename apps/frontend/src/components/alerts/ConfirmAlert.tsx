@@ -1,7 +1,7 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { FC, PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import { ExclamationTitle } from '@ui/ExclamationTitle'
 
@@ -36,7 +36,7 @@ interface WithBothActions {
   canselLabel?: string
 }
 
-export const ConfirmAlert: FC<Props> = ({
+export const ConfirmAlert = ({
   children,
   title,
   description,
@@ -48,7 +48,7 @@ export const ConfirmAlert: FC<Props> = ({
   contentClassName,
   withTitleExclamation,
   maxWidth
-}) => (
+}: Props) => (
   <AlertDialog.Root open={open}>
     {typeof open !== 'boolean' && <AlertDialog.Trigger>{children}</AlertDialog.Trigger>}
 

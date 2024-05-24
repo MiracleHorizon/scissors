@@ -1,67 +1,67 @@
 import * as Accordion from '@radix-ui/react-accordion'
 import { clsx } from 'clsx'
-import type { ComponentPropsWithoutRef, FC, HTMLAttributes } from 'react'
+import type { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
 
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
 
 import styles from './Accordion.module.css'
 
-const AccordionRoot: FC<ComponentPropsWithoutRef<typeof Accordion.Root>> = ({
+const AccordionRoot = ({
   children,
   className,
   ...props
-}) => (
+}: ComponentPropsWithoutRef<typeof Accordion.Root>) => (
   <Accordion.Root className={clsx(styles.root, className)} {...props}>
     {children}
   </Accordion.Root>
 )
 AccordionRoot.displayName = 'AccordionRoot'
 
-const AccordionHeader: FC<ComponentPropsWithoutRef<typeof Accordion.Header>> = ({
+const AccordionHeader = ({
   children,
   className,
   ...props
-}) => (
+}: ComponentPropsWithoutRef<typeof Accordion.Header>) => (
   <Accordion.Header className={clsx(styles.header, className)} {...props}>
     {children}
   </Accordion.Header>
 )
 AccordionHeader.displayName = 'AccordionHeader'
 
-const AccordionItem: FC<ComponentPropsWithoutRef<typeof Accordion.Item>> = ({
+const AccordionItem = ({
   children,
   className,
   ...props
-}) => (
+}: ComponentPropsWithoutRef<typeof Accordion.Item>) => (
   <Accordion.Item className={clsx(styles.item, className)} {...props}>
     {children}
   </Accordion.Item>
 )
 AccordionItem.displayName = 'AccordionItem'
 
-const AccordionTrigger: FC<ComponentPropsWithoutRef<typeof Accordion.Trigger>> = ({
+const AccordionTrigger = ({
   children,
   className,
   ...props
-}) => (
+}: ComponentPropsWithoutRef<typeof Accordion.Trigger>) => (
   <Accordion.Trigger className={clsx(styles.trigger, className)} {...props}>
     {children}
   </Accordion.Trigger>
 )
 AccordionTrigger.displayName = 'AccordionTrigger'
 
-const AccordionContent: FC<ComponentPropsWithoutRef<typeof Accordion.Content>> = ({
+const AccordionContent = ({
   children,
   className,
   ...props
-}) => (
+}: ComponentPropsWithoutRef<typeof Accordion.Content>) => (
   <Accordion.Content className={clsx(styles.content, className)} {...props}>
     {children}
   </Accordion.Content>
 )
 AccordionContent.displayName = 'AccordionContent'
 
-const AccordionChevron: FC<HTMLAttributes<HTMLOrSVGElement>> = ({ className, ...props }) => (
+const AccordionChevron = ({ className, ...props }: HTMLAttributes<HTMLOrSVGElement>) => (
   <ChevronDownIcon width={22} height={22} className={clsx(styles.chevron, className)} {...props} />
 )
 

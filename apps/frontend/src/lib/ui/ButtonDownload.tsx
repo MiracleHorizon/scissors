@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
@@ -11,7 +11,7 @@ interface Props extends MarginProps {
   tooltipContent?: string
 }
 
-export const ButtonDownload: FC<Props> = memo(({ tooltipContent, onClick, ...props }) => {
+export const ButtonDownload = memo(({ tooltipContent, onClick, ...props }: Props) => {
   const Button = (
     <IconButton {...props} size='2' color='gray' variant='outline' onClick={onClick}>
       <DownloadIcon width='20px' height='20px' />

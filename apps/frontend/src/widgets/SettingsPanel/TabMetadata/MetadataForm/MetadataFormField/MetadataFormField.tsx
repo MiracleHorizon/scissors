@@ -1,6 +1,6 @@
 import { Text, TextField } from '@radix-ui/themes'
 import * as Form from '@radix-ui/react-form'
-import type { ChangeEvent, FC, HTMLInputTypeAttribute } from 'react'
+import type { ChangeEvent, HTMLInputTypeAttribute } from 'react'
 
 import styles from './MetadataFormField.module.css'
 
@@ -19,7 +19,7 @@ interface WithReactHookForm {
   register?: any
 }
 
-export const MetadataFormField: FC<Props> = ({
+export const MetadataFormField = ({
   name,
   label,
   value,
@@ -27,7 +27,7 @@ export const MetadataFormField: FC<Props> = ({
   disabled,
   placeholder,
   onChange
-}) => (
+}: Props) => (
   <Form.Field name={name}>
     <Text asChild truncate>
       <Form.Label className={styles.label}>{label}</Form.Label>

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
-import type { FC } from 'react'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 
@@ -15,7 +14,7 @@ const BadgeBeta = dynamic(() => import('@ui/badges/BadgeBeta').then(mod => mod.B
   ssr: false
 })
 
-export const OptionSectionHeader: FC<Props> = ({
+export const OptionSectionHeader = ({
   children,
   title,
   href,
@@ -23,7 +22,7 @@ export const OptionSectionHeader: FC<Props> = ({
   isBeta,
   isNew,
   ...props
-}) => (
+}: Props) => (
   <Flex asChild align='center' justify='between' width='100%' {...props}>
     <header>
       <Flex asChild align='center'>

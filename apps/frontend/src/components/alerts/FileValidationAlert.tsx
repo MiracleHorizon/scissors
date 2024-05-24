@@ -1,7 +1,7 @@
 'use client'
 
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
-import type { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 import { ExclamationTitle } from '@ui/ExclamationTitle'
 
@@ -14,13 +14,7 @@ interface Props extends Pick<ComponentPropsWithoutRef<typeof AlertDialog.Root>, 
 
 export type FileValidationAlertExternalProps = Pick<Props, 'open' | 'onClose' | 'onOpenChange'>
 
-export const FileValidationAlert: FC<Props> = ({
-  open,
-  title,
-  description,
-  onClose,
-  onOpenChange
-}) => (
+export const FileValidationAlert = ({ open, title, description, onClose, onOpenChange }: Props) => (
   <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
     <AlertDialog.Content size='3' onEscapeKeyDown={onClose}>
       <ExclamationTitle mb='3'>
