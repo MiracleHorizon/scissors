@@ -20,7 +20,7 @@
 
 .heading {
   padding-left: var(--space-3);
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 @media screen and (max-width: 767px) {

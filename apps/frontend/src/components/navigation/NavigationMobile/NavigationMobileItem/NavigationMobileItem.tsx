@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Text, Link as RadixLink } from '@radix-ui/themes'
+import { Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
 import { useSelectedPath } from '@hooks/useSelectedPath'
@@ -17,16 +17,14 @@ export const NavigationMobileItem = ({
   const isSelected = useSelectedPath(href)
 
   return (
-    <RadixLink
-      asChild
-      size='3'
+    <Link
+      {...attributes}
+      href={href}
       className={clsx(styles.root, {
         [styles.selected]: isSelected
       })}
     >
-      <Link {...attributes} href={href}>
-        {icon} <Text ml={icon ? '2' : '0'}>{label}</Text>
-      </Link>
-    </RadixLink>
+      {icon} <Text ml={icon ? '2' : '0'}>{label}</Text>
+    </Link>
   )
 }
