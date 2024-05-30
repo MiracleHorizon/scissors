@@ -25,7 +25,7 @@
     "fe:start": "cd apps/frontend && pnpm start",
     "fe:lint": "cd apps/frontend && pnpm lint && pnpm lint:styles",
     "fe:check": "cd apps/frontend && pnpm check",
-    "fe:test": "cd apps/frontend && pnpm test",
+    "fe:test": "cd apps/frontend && pnpm test:unit && pnpm test:e2e",
     "be:dev": "cd apps/backend && pnpm dev",
     "be:build": "cd apps/backend && pnpm build",
     "be:start": "cd apps/backend && pnpm start",

@@ -28,13 +28,14 @@ export const ThemeControl = () => {
       onValueChange={setTheme}
       className='w-full'
     >
-      <SegmentedControl.Item value='light'>
+      <SegmentedControl.Item value='light' data-cy='theme-control-light'>
         <Flex align='center' gap='2'>
           <SunIcon width='16px' height='16px' />
           Light
         </Flex>
       </SegmentedControl.Item>
-      <SegmentedControl.Item value='dark'>
+
+      <SegmentedControl.Item value='dark' data-cy='theme-control-dark'>
         <Flex align='center' gap='2'>
           <MoonIcon width='16px' height='16px' />
           Dark

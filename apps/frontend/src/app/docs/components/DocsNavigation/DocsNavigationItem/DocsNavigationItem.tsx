@@ -24,7 +24,7 @@ export const DocsNavigationItem = ({ title, hash }: Props) => {
     <Box asChild width='100%'>
       <li>
         <Link asChild color='gray' weight={isSelected ? 'bold' : 'regular'} className={styles.link}>
-          <NextLink href={hash} scroll={false}>
+          <NextLink href={hash} scroll={false} data-cy={`docs-navigation-link-${hash}`}>
             {title}
           </NextLink>
         </Link>

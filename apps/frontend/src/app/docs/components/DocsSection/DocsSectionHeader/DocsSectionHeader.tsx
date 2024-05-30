@@ -27,11 +27,16 @@ export const DocsSectionHeader = ({ title, hash }: Props) => {
 
   return (
     <Box asChild pt='3' pl='1' ref={rootRef} className={styles.root}>
-      <header>
+      <header data-cy={`docs-section-header-${title.toLowerCase()}`}>
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5' weight='bold'>
             <Link href={hash} scroll={false}>
-              <Link2Icon width='18px' height='18px' label='go to section' />
+              <Link2Icon
+                width='18px'
+                height='18px'
+                label={`go to "${title.toLowerCase()}" section`}
+              />
+
               {title}
             </Link>
           </RadixLink>
