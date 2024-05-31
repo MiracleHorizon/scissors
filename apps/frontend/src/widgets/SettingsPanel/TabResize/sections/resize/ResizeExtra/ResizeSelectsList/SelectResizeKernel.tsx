@@ -20,9 +20,11 @@ export const SelectResizeKernel = () => {
   return (
     <Select
       label='Kernel'
+      data={data}
       value={kernel ?? DEFAULT_RESIZE_KERNEL}
       defaultValue={DEFAULT_RESIZE_KERNEL}
-      data={data}
+      triggerCySelector='sl-resize-kernel-trigger'
+      contentCySelector='sl-resize-kernel-content'
       onValueChange={handleSetKernel}
     />
   )

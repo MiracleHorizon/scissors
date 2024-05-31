@@ -1,0 +1,6 @@
+.root {
+  --size: 20px;
+
+  width: var(--size) !important;
+  height: var(--size) !important;
+}

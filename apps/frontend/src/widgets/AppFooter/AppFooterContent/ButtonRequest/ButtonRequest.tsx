@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { memo } from 'react'
+import { type HTMLAttributes, memo } from 'react'
 import { Button, Flex } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -15,7 +15,7 @@ const RequestErrorAlert = dynamic(
   }
 )
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onClick' | 'className'> {
   label: string
   isLoading: boolean
   error: unknown
@@ -26,7 +26,7 @@ interface Props {
 }
 
 export const ButtonRequest = memo(
-  ({ label, isLoading, error, makeRequest, retry, reset, isDisabled }: Props) => {
+  ({ label, isLoading, error, makeRequest, retry, reset, isDisabled, ...buttonProps }: Props) => {
     const isFileUploaded = useOutputStore(state => state.isFileUploaded())
     const disabled = isDisabled || isLoading || !isFileUploaded
 
@@ -40,7 +40,13 @@ export const ButtonRequest = memo(
             [styles.disabled]: disabled
           })}
         >
-          <Button size='3' className={styles.button} disabled={disabled} onClick={makeRequest}>
+          <Button
+            size='3'
+            disabled={disabled}
+            className={styles.button}
+            onClick={makeRequest}
+            {...buttonProps}
+          >
             {label}
           </Button>
 

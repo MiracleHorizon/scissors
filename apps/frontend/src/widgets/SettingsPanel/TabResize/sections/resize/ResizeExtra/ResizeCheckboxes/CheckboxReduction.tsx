@@ -13,6 +13,7 @@ export const CheckboxReduction = () => {
     <Checkbox
       label='Without Reduction'
       checked={withoutReduction}
+      data-cy='cbox-resize-reduction'
       onClick={handleToggleWithoutReduction}
     />
   )

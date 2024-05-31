@@ -46,7 +46,7 @@ export const TabResizeControl = () => {
       onValueChange={onValueChange}
     >
       {operationList.map(value => (
-        <CheckboxCards.Item key={value} value={value}>
+        <CheckboxCards.Item key={value} value={value} data-cy={`resize-operation-${value}`}>
           {capitalize(value)}
         </CheckboxCards.Item>
       ))}

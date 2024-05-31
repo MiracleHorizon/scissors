@@ -14,6 +14,7 @@ export const ButtonAddModulate = () => {
     <ButtonAddOption
       label='Add Modulation'
       leadIcon={<TokensIcon width='18px' height='18px' label='add modulation' />}
+      data-cy='button-add-modulate'
       onClick={handleAddModulate}
     />
   )

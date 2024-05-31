@@ -33,9 +33,11 @@ export const SelectResizePosition = () => {
   return (
     <Select
       label='Position'
+      data={data}
       value={position ?? DEFAULT_RESIZE_POSITION}
       defaultValue={DEFAULT_RESIZE_POSITION}
-      data={data}
+      triggerCySelector='sl-resize-position-trigger'
+      contentCySelector='sl-resize-position-content'
       onValueChange={handleSetPosition}
     />
   )

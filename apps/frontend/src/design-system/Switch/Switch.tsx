@@ -1,6 +1,6 @@
 'use client'
 
-import { memo } from 'react'
+import { type HTMLAttributes, memo } from 'react'
 import { Flex, Switch as RadixSwitch, Text } from '@radix-ui/themes'
 
 import type { Size } from '@lib/theme'
@@ -13,20 +13,20 @@ const width: Size = {
 
 export const labelTestId = 'switch-label'
 
-export interface Props {
-  title: string
-  checked: boolean | undefined
-  onClick: VoidFunction
+export interface SwitchExternalProps extends Omit<HTMLAttributes<HTMLButtonElement>, 'color'> {
+  label: string
+  checked?: boolean
   disabled?: boolean
 }
 
-export const Switch = memo(({ title, ...switchProps }: Props) => (
+export const Switch = memo(({ label, ...switchProps }: SwitchExternalProps) => (
   <Flex asChild justify='between' gap='2' width={width}>
     <Text data-testid={labelTestId} as='label'>
-      <Text title={title} truncate>
-        {title}
+      <Text title={label} truncate>
+        {label}
       </Text>
-      <RadixSwitch size='3' {...switchProps} />
+
+      <RadixSwitch size='3' data-cy={`switch-${label.toLowerCase()}`} {...switchProps} />
     </Text>
   </Flex>
 ))

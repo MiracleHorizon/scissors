@@ -21,6 +21,7 @@ export const Slider = ({
   disabled,
   sliderStyle,
   sliderClassName,
+  cySelector,
   ...sliderProps
 }: Props) => {
   const { defaultValue, min, max, step, onValueChange } = sliderProps
@@ -73,11 +74,12 @@ export const Slider = ({
               value,
               defaultValue
             })}
+            data-cy={cySelector || 'slider'}
             disabled={disabled}
-            size='2'
             style={sliderStyle}
             className={sliderClassName}
           />
+
           <Flex mt='2' justify='between'>
             <Text weight='medium'>
               {min}

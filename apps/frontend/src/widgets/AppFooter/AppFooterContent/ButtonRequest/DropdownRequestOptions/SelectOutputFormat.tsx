@@ -26,6 +26,8 @@ export const SelectOutputFormat = () => {
       valueCapitalize={false}
       value={outputFormat}
       data={data}
+      triggerCySelector='select-output-format-trigger'
+      contentCySelector='select-output-format-content'
       onValueChange={handleChangeOutputFormat}
     />
   )

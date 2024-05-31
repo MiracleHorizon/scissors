@@ -1,22 +1,24 @@
-import { memo } from 'react'
+import { type HTMLAttributes, memo } from 'react'
 import { Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 import styles from './ColorSwatch.module.css'
 
-interface Props extends ClassNameProps {
+interface Props extends ClassNameProps, Omit<HTMLAttributes<HTMLDivElement>, 'color'> {
   color: string
   tooltipContent?: string
-  onClick?: VoidFunction
 }
 
-export const ColorSwatch = memo(({ color, className, tooltipContent, onClick }: Props) => {
+export const ColorSwatch = memo(({ color, style, className, tooltipContent, ...props }: Props) => {
   const swatchJSX = (
     <div
-      style={{ backgroundColor: color }}
+      {...props}
+      style={{
+        ...style,
+        backgroundColor: color
+      }}
       className={clsx(styles.root, className)}
-      onClick={onClick}
     />
   )
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useId } from 'react'
+import { type HTMLAttributes, memo, useId } from 'react'
 import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -9,10 +9,9 @@ import type { JustifyContent } from '@lib/theme'
 
 export const rootTestId = 'checkbox-root'
 
-export interface Props {
+export interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, 'color'> {
   label?: string
   checked?: boolean
-  onClick?: VoidFunction
   disabled?: boolean
   direction?: 'row' | 'row-reverse'
   justify?: JustifyContent

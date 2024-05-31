@@ -75,11 +75,12 @@ const InputOutputFileName = () => {
         mr='1'
         type='text'
         placeholder='Output file name'
+        className='w-full'
         minLength={MIN_FILE_NAME_LENGTH}
         maxLength={MAX_FILE_NAME_LENGTH}
         value={outputFileName}
+        data-cy='input-output-file-name'
         onChange={handleChange}
-        className='w-full'
       >
         <TextField.Slot>
           <FileTextIcon label='output file name' />

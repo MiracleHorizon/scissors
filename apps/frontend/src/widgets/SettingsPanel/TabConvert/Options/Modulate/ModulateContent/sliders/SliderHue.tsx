@@ -35,6 +35,7 @@ export const SliderHue = () => {
       disabled={isGrayscaleEnabled}
       sliderStyle={sliderThumbStyle}
       sliderClassName={styles.slider}
+      cySelector='slider-hue'
       onValueChange={handleChangeHue}
     />
   )

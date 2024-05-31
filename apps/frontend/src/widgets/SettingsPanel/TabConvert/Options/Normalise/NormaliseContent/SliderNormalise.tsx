@@ -28,6 +28,7 @@ export const SliderNormalise = () => {
       min={MIN_NORMALISE}
       max={MAX_NORMALISE}
       minStepsBetweenThumbs={1}
+      cySelector='slider-normalise'
       onValueChange={onValueChange}
     />
   )

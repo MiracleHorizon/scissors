@@ -11,6 +11,8 @@ export interface Props extends StylesProps, ComponentPropsWithoutRef<typeof Sele
   data: Value[]
   valueCapitalize?: boolean
   DetailsComponent?: ReactNode
+  triggerCySelector?: string
+  contentCySelector?: string
 }
 
 interface StylesProps extends ClassNameProps, StyleProps {

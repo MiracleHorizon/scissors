@@ -23,6 +23,7 @@ export const ButtonDownload = () => {
     <>
       <Button
         data-tourstep={TOUR_STEP.DOWNLOAD_BUTTON}
+        data-cy='button-download'
         size='3'
         variant={disabled ? 'solid' : 'surface'}
         radius='large'

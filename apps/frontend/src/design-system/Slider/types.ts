@@ -32,4 +32,5 @@ interface SliderProps {
   onValueChange: (value: number[]) => void
   step?: number
   minStepsBetweenThumbs?: number
+  cySelector?: string
 }

@@ -35,6 +35,7 @@ export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
       className={clsx(styles.root, {
         [styles.selected]: isSelected
       })}
+      data-cy={`theme-color-grid-item-${color}`}
       onClick={handleSetThemeColor}
     />
   )

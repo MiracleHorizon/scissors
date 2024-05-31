@@ -17,6 +17,7 @@ export const ButtonAddTint = () => {
       label='Add Tint'
       leadIcon={<PaintbrushIcon width='18px' height='18px' label='add tint' />}
       disabled={isGrayscaleEnabled}
+      data-cy='button-add-tint'
       onClick={handleAddTint}
     />
   )

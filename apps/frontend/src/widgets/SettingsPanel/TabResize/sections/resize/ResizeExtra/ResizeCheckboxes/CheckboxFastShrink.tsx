@@ -26,5 +26,12 @@ export const CheckboxFastShrink = () => {
     return null
   }
 
-  return <Checkbox label='Fast Shrink' checked={fastShrink} onClick={handleToggleFastShrink} />
+  return (
+    <Checkbox
+      label='Fast Shrink'
+      checked={fastShrink}
+      data-cy='cbox-resize-fast-shrink'
+      onClick={handleToggleFastShrink}
+    />
+  )
 }

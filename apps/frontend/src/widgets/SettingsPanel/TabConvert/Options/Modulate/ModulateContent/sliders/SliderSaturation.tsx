@@ -24,6 +24,7 @@ export const SliderSaturation = () => {
       max={MAX_SATURATION}
       step={SATURATION_STEP}
       allowFloat
+      cySelector='slider-saturation'
       onValueChange={handleChangeSaturation}
     />
   )

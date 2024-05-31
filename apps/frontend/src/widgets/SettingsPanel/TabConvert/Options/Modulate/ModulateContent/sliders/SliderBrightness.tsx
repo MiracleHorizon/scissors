@@ -24,6 +24,7 @@ export const SliderBrightness = () => {
       max={MAX_BRIGHTNESS}
       step={BRIGHTNESS_STEP}
       allowFloat
+      cySelector='slider-brightness'
       onValueChange={handleChangeBrightness}
     />
   )

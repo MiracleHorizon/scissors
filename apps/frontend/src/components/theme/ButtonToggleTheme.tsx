@@ -27,6 +27,7 @@ const ButtonToggleTheme = ({ className, style }: ClassNameProps & StyleProps) =>
         ...basicStyle,
         ...style
       }}
+      data-cy='button-toggle-theme'
       className={className}
       onClick={toggleTheme}
     >

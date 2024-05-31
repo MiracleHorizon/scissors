@@ -9,5 +9,5 @@ export const SwitchNegate = () => {
   const toggle = useNegateStore(state => state.toggleValue)
   const handleToggle = useCallback(() => toggle(), [toggle])
 
-  return <Switch title='Negate' checked={negate} onClick={handleToggle} />
+  return <Switch label='Negate' checked={negate} onClick={handleToggle} />
 }

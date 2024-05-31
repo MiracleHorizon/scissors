@@ -23,6 +23,7 @@ export const SliderGamma = () => {
       min={MIN_GAMMA}
       max={MAX_GAMMA}
       allowFloat
+      cySelector='slider-gamma'
       onValueChange={handleChangeGamma}
     />
   )

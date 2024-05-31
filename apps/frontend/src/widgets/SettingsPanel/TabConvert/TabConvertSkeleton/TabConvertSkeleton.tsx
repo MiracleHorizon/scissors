@@ -2,9 +2,9 @@ import { Flex, Separator, Skeleton } from '@radix-ui/themes'
 
 import styles from './TabConvertSkeleton.module.css'
 
-const SwitchSkeleton = ({ text }: { text?: string }) => (
+const SwitchSkeleton = ({ label }: { label?: string }) => (
   <Flex align='center' justify='between' width='100%'>
-    <Skeleton height='24px'>{text}</Skeleton>
+    <Skeleton height='24px'>{label}</Skeleton>
     <Skeleton height='24px' width='42px' ml='2' className={styles.switch} />
   </Flex>
 )
@@ -18,21 +18,21 @@ const OptionsSkeleton = () => (
     <Separator mt='8px' mb='1' size='4' />
 
     <Flex direction='column' gap='2' width='100%'>
-      <SwitchSkeleton text='Flip Flip Flip' />
-      <SwitchSkeleton text='Flop Flop Flop' />
-      <SwitchSkeleton text='Grayscale Grayscale' />
+      <SwitchSkeleton label='Flip Flip Flip' />
+      <SwitchSkeleton label='Flop Flop Flop' />
+      <SwitchSkeleton label='Grayscale Grayscale' />
     </Flex>
 
     <Separator my='1' size='4' />
 
     <Flex direction='column' gap='2' width='100%'>
-      <SwitchSkeleton text='Negate Negate' />
-      <SwitchSkeleton text='Negate Alpha Negate' />
+      <SwitchSkeleton label='Negate Negate' />
+      <SwitchSkeleton label='Negate Alpha Negate' />
     </Flex>
 
     <Separator my='1' size='4' />
 
-    <SwitchSkeleton text='Blur Blur Blur' />
+    <SwitchSkeleton label='Blur Blur Blur' />
     <ButtonSkeleton />
     <Separator my='1' size='4' />
     <ButtonSkeleton />

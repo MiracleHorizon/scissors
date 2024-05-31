@@ -14,6 +14,7 @@ export const ButtonAddGamma = () => {
     <ButtonAddOption
       label='Add Gamma'
       leadIcon={<ShadowIcon width='18px' height='18px' label='add gamma' />}
+      data-cy='button-add-gamma'
       onClick={handleAddGamma}
     />
   )

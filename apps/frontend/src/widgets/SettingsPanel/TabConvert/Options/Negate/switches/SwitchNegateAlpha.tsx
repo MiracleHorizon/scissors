@@ -11,6 +11,6 @@ export const SwitchNegateAlpha = () => {
   const handleToggleAlpha = useCallback(() => toggleAlpha(), [toggleAlpha])
 
   return (
-    <Switch title='Negate alpha' disabled={!negate} checked={alpha} onClick={handleToggleAlpha} />
+    <Switch label='Negate alpha' disabled={!negate} checked={alpha} onClick={handleToggleAlpha} />
   )
 }

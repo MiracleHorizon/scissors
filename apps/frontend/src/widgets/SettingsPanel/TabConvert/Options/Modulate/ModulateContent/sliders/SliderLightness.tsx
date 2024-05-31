@@ -24,6 +24,7 @@ export const SliderLightness = () => {
       min={MIN_LIGHTNESS}
       max={MAX_LIGHTNESS}
       allowFloat
+      cySelector='slider-lightness'
       onValueChange={handleChangeLightness}
     />
   )

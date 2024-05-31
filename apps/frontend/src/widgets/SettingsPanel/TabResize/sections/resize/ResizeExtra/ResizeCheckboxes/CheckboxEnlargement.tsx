@@ -13,6 +13,7 @@ export const CheckboxEnlargement = () => {
     <Checkbox
       label='Without Enlarging'
       checked={withoutEnlargement}
+      data-cy='cbox-resize-enlargement'
       onClick={handleToggleWithoutEnlargement}
     />
   )
