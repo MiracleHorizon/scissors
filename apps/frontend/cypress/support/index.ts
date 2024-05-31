@@ -11,6 +11,7 @@ declare global {
       setDesktopViewport: VoidFunction
       setTabletViewport: VoidFunction
       setMobileViewport: VoidFunction
+      clickOutside: (options?: Partial<Cypress.ClickOptions>) => void
     }
   }
 }

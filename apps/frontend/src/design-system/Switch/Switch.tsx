@@ -26,7 +26,7 @@ export const Switch = memo(({ label, ...switchProps }: SwitchExternalProps) => (
         {label}
       </Text>
 
-      <RadixSwitch size='3' data-cy={`switch-${label}`} {...switchProps} />
+      <RadixSwitch size='3' data-cy={`switch-${label.toLowerCase()}`} {...switchProps} />
     </Text>
   </Flex>
 ))

@@ -17,8 +17,10 @@ export const Select = ({
   labelStyle,
   triggerClassName,
   triggerStyle,
+  triggerCySelector,
   contentClassName,
   contentStyle,
+  contentCySelector,
   valueCapitalize = true,
   DetailsComponent,
   ...props
@@ -45,6 +47,7 @@ export const Select = ({
 
         <RadixSelect.Trigger
           id={triggerId}
+          data-cy={triggerCySelector || 'select-trigger'}
           style={triggerStyle}
           className={clsx('w-full', triggerClassName)}
         />
@@ -55,6 +58,7 @@ export const Select = ({
         side='bottom'
         sideOffset={5}
         style={contentStyle}
+        data-cy={contentCySelector || 'select-content'}
         className={clsx(styles.content, contentClassName)}
       >
         {data.map(({ label: groupLabel, value }, index) => (
@@ -62,7 +66,7 @@ export const Select = ({
             {groupLabel && <RadixSelect.Label>{groupLabel}</RadixSelect.Label>}
 
             {value.map(value => (
-              <RadixSelect.Item key={value} value={value}>
+              <RadixSelect.Item data-cy='select-item' key={value} value={value}>
                 {valueCapitalize ? capitalize(value) : value}
               </RadixSelect.Item>
             ))}

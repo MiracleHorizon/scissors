@@ -90,6 +90,7 @@ export const withFileUploader = (Component: ComponentType<ComponentProps>) =>
             ref={inputRef}
             type='file'
             className='hidden'
+            data-cy='file-upload-input'
             onChange={handleChange}
           />
         </Component>

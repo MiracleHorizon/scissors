@@ -23,6 +23,7 @@ export const SliderRotateAngle = () => {
       min={MIN_ROTATE_ANGLE}
       max={MAX_ROTATE_ANGLE}
       allowFloat
+      cySelector='slider-rotate-angle'
       onValueChange={handleChangeAngle}
     />
   )

@@ -27,6 +27,7 @@ const ImageDropzone = ({
     {...padding}
     {...props}
     data-id='image-dropzone'
+    data-cy='image-dropzone'
     title='File is not uploaded'
     align='center'
     justify='center'

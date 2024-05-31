@@ -40,6 +40,7 @@ export const ButtonConvert = () => {
       reset={reset}
       error={error}
       isLoading={isLoading}
+      data-cy='button-convert'
     />
   )
 }
