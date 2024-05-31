@@ -8,7 +8,7 @@ import {
   DOCS_ANCHOR_TRIM
 } from '../../src/site/paths'
 
-export const docsNavigationItems = [
+const docsNavigationItems = [
   {
     title: 'Main',
     hash: DOCS_ANCHOR_MAIN

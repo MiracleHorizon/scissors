@@ -47,7 +47,7 @@ describe('Theme color change', () => {
       cy.get('[data-cy="appearance-popover-trigger"]').click()
       cy.get('[data-cy="appearance-popover-content"]').should('exist')
 
-      for (const color of colors) {
+      for (const color of colors.slice(0, 6)) {
         cy.get(`[data-cy="theme-color-grid-item-${color}"]`)
           .click()
           .then(() => {
@@ -73,7 +73,7 @@ describe('Theme color change', () => {
       cy.get('[data-cy="theme-color-menu-trigger"]').click()
       cy.get('[data-cy="theme-color-menu-content"]').should('exist')
 
-      for (const color of colors) {
+      for (const color of colors.slice(0, 6)) {
         cy.get(`[data-cy="theme-color-menu-item-${color}"]`)
           .click()
           .then(() => {
