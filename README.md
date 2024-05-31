@@ -54,6 +54,7 @@ Currently, the following image formats are supported:
 - Radix UI
 - [Sharp](https://sharp.pixelplumbing.com/)
 - Nest.js
+- Cypress, RTL, Vitest / Jest
 
 ### 📋 Requirements
 
