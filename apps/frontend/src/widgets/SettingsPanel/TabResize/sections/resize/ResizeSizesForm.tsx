@@ -34,6 +34,7 @@ export const ResizeSizesForm = () => {
           setValue={setWidth}
           max={MAX_RESIZE_WIDTH}
           placeholder='1920'
+          data-cy='input-resize-width'
           icon={<WidthIcon />}
         />
         <NumberInput
@@ -43,6 +44,7 @@ export const ResizeSizesForm = () => {
           setValue={setHeight}
           max={MAX_RESIZE_HEIGHT}
           placeholder='1080'
+          data-cy='input-resize-height'
           icon={<HeightIcon />}
         />
       </form>

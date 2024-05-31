@@ -18,6 +18,7 @@ export const TrimThresholdInput = () => {
       min={MIN_TRIM_THRESHOLD}
       max={MAX_TRIM_THRESHOLD}
       step={1}
+      data-cy='input-trim-threshold'
     />
   )
 }

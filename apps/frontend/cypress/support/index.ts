@@ -12,6 +12,7 @@ declare global {
       setTabletViewport: VoidFunction
       setMobileViewport: VoidFunction
       clickOutside: (options?: Partial<Cypress.ClickOptions>) => void
+      selectTab: (params: { tabName: string; isMobile?: boolean }) => void
     }
   }
 }

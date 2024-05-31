@@ -1,7 +1,7 @@
 import * as path from 'path'
 
 // NOTE: Backend server should be running
-describe('Convert Image', () => {
+describe('Convert image', () => {
   before(() => {
     cy.setDesktopViewport()
     cy.skipTourAndAcceptCookies()

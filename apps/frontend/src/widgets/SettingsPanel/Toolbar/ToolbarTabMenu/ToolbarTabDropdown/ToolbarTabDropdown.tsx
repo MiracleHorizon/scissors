@@ -15,14 +15,17 @@ export const ToolbarTabDropdown = () => {
 
   return (
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenu.Trigger data-tourstep={TOUR_STEP.TOOLBAR_TAB_LIST}>
+      <DropdownMenu.Trigger
+        data-tourstep={TOUR_STEP.TOOLBAR_TAB_LIST}
+        data-cy='toolbar-tab-dropdown-trigger'
+      >
         <Button radius='large' variant='soft' color='gray' onClick={handleOpen}>
           Tabs
           <ChevronDownIcon width='18px' height='18px' color='var(--gray-a11)' />
         </Button>
       </DropdownMenu.Trigger>
 
-      <DropdownMenu.Content size='1'>
+      <DropdownMenu.Content size='1' data-cy='toolbar-tab-dropdown-content'>
         <ToolbarTabList className={styles.tabs} onClick={handleClose} />
       </DropdownMenu.Content>
     </DropdownMenu.Root>

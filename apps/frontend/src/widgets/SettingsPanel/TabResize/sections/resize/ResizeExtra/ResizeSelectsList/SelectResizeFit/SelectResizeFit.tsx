@@ -25,6 +25,8 @@ export const SelectResizeFit = () => {
       defaultValue={DEFAULT_RESIZE_FIT}
       data={data}
       DetailsComponent={<ResizeFitExamplesPopover />}
+      triggerCySelector='sl-resize-fit-trigger'
+      contentCySelector='sl-resize-fit-content'
       onValueChange={handleSetFit}
     />
   )

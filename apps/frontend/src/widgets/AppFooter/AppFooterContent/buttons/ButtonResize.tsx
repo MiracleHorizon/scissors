@@ -41,6 +41,7 @@ export const ButtonResize = () => {
       error={error}
       isLoading={isLoading}
       isDisabled={resizeSettings.queue.length === 0}
+      data-cy='button-resize'
     />
   )
 }

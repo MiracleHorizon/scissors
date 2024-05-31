@@ -8,8 +8,8 @@ interface Props extends Tab {
   onClick?: VoidFunction
 }
 
-export const ToolbarTabItem = ({ value, label, icon, onClick }: Props) => (
-  <Tabs.Trigger key={value} value={value} onClick={onClick}>
+export const ToolbarTabItem = ({ label, icon, ...props }: Props) => (
+  <Tabs.Trigger {...props} data-cy={`tab-trigger-${label.toLowerCase()}`}>
     <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.xs}>{icon}</MediaQuery>
 
     {label}
