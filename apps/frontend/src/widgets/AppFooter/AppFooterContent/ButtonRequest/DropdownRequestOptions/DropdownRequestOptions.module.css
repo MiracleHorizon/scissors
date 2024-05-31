@@ -1,6 +1,6 @@
 .trigger {
-  width: 34px;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  width: 34px !important;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
 }
 
 .content {
