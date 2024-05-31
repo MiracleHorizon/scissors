@@ -48,7 +48,7 @@ export const Blur = () => {
   return (
     <Flex asChild {...flexProps} width='100%'>
       <section>
-        <Switch title='Blur' checked={blur} onClick={handleToggle} />
+        <Switch label='Blur' checked={blur} onClick={handleToggle} />
 
         {isSigmaAdded ? (
           <BlurSigma disabled={isBlurDisabled} />

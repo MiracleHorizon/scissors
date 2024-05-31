@@ -14,6 +14,7 @@ export const ButtonAddNormalise = () => {
     <ButtonAddOption
       label='Add Normalisation'
       leadIcon={<Half2Icon width='18px' height='18px' label='add normalisation' />}
+      data-cy='button-add-normalise'
       onClick={handleAddNormalise}
     />
   )

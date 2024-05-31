@@ -19,6 +19,7 @@ export const ButtonAddBlurSigma = (props: Props) => {
       label='Add Sigma'
       leadIcon={!props.disabled && <BlurIcon width={18} height={18} label='add blur sigma' />}
       onClick={handleAddSigma}
+      data-cy='button-add-blur-sigma'
       endIcon={props.disabled && <LockClosedIcon label='blur sigma locked' />}
       {...props}
     />

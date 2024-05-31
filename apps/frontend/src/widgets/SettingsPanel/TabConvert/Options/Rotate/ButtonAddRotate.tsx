@@ -14,6 +14,7 @@ export const ButtonAddRotate = () => {
     <ButtonAddOption
       label='Add Rotation'
       leadIcon={<RotateCounterClockwiseIcon width='18px' height='18px' label='add rotation' />}
+      data-cy='button-add-rotate'
       onClick={handleAddRotate}
     />
   )
