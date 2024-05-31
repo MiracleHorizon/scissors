@@ -5,10 +5,10 @@ import { pathForSocial, SITE_DESCRIPTION, SITE_DOMAIN, SITE_KEYWORDS, SITE_TITLE
 const domainURL = new URL(SITE_DOMAIN)
 
 const icons: Metadata['icons'] = [
-  {
-    url: '/favicon.svg',
-    type: 'image/svg+xml'
-  },
+  // {
+  //   url: '/favicon.svg',
+  //   type: 'image/svg+xml'
+  // },
   {
     url: '/favicons/dark.png',
     type: 'image/png',

@@ -6,7 +6,7 @@
       <stop offset="100%" style="stop-color:#ed9ffe;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="180" height="180" fill="url(#grad1)"/>
+  <rect width="180" height="180" fill="url(#grad1)" rx="42" ry="42"/>
 
   <g transform="translate(0,180) scale(0.1,-0.1)"
      fill="#000000" stroke="none">
