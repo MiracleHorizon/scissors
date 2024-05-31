@@ -9,5 +9,5 @@ export const SwitchGrayscale = () => {
 
   const handleToggleGrayscale = useCallback(() => toggleGrayscale(), [toggleGrayscale])
 
-  return <Switch title='Grayscale' checked={grayscale} onClick={handleToggleGrayscale} />
+  return <Switch label='Grayscale' checked={grayscale} onClick={handleToggleGrayscale} />
 }

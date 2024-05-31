@@ -9,5 +9,5 @@ export const SwitchFlop = () => {
 
   const handleToggleFlop = useCallback(() => toggleFlop(), [toggleFlop])
 
-  return <Switch title='Flop' checked={flop} onClick={handleToggleFlop} />
+  return <Switch label='Flop' checked={flop} onClick={handleToggleFlop} />
 }

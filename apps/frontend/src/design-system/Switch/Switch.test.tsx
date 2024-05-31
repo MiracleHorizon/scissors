@@ -2,12 +2,12 @@
 
 import { cleanup, render } from '@testing-library/react'
 
-import { Switch, type Props } from './Switch'
+import { Switch, type SwitchExternalProps } from './Switch'
 import { setup } from '@testing/test-utils'
 
 describe('@design-system/Switch', () => {
-  const defaultProps: Props = {
-    title: 'test',
+  const defaultProps: SwitchExternalProps = {
+    label: 'test',
     checked: false,
     onClick: vi.fn()
   }
@@ -23,18 +23,18 @@ describe('@design-system/Switch', () => {
     expect(switchElement).toBeInTheDocument()
   })
 
-  it('should render the switch title', () => {
+  it('should render the switch label', () => {
     const { getByText } = render(<Switch {...defaultProps} />)
-    const titleElement = getByText(defaultProps.title)
+    const labelElement = getByText(defaultProps.label)
 
-    expect(titleElement).toBeInTheDocument()
-    expect(titleElement).toHaveTextContent(defaultProps.title)
-    expect(titleElement).toHaveAttribute('title', defaultProps.title)
-    expect(titleElement.tagName).toBe('SPAN')
+    expect(labelElement).toBeInTheDocument()
+    expect(labelElement).toHaveTextContent(defaultProps.label)
+    expect(labelElement).toHaveAttribute('title', defaultProps.label)
+    expect(labelElement.tagName).toBe('SPAN')
   })
 
   it('should change switch value with click', async () => {
-    const props: Props = {
+    const props: SwitchExternalProps = {
       ...defaultProps,
       checked: undefined // Input should be uncontrolled
     }
