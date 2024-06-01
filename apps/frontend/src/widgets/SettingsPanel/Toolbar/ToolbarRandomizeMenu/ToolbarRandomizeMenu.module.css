@@ -8,7 +8,7 @@
 
 .label {
   justify-content: flex-end;
-  padding-left: 4px;
-  padding-right: 8px;
-  font-size: 13px;
+  height: 28px !important;
+  padding: 2px 8px 0 4px !important;
+  font-size: 13px !important;
 }

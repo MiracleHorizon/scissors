@@ -1,8 +1,8 @@
 .card {
   --card-inset-width: 54px;
   --card-content-offset: var(--space-4);
-  --buttons-width: var(--base-button-height);
-  --buttons-offset: var(--space-4);
+  --buttons-width: var(--space-6);
+  --buttons-offset: var(--space-6);
 
   width: 100%;
   padding: 0;

@@ -42,6 +42,7 @@ export const UploadedFileCard = ({ file }: Props) => {
           <Text title={file.name} truncate className={styles.fileName}>
             {file.name}
           </Text>
+
           <UploadedFileProperties file={file} />
         </Flex>
 
