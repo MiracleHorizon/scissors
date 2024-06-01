@@ -1,15 +1,5 @@
 import type { BlurOptions, ConvertSettings, NegateOptions, NormaliseOptions } from './types'
 
-export const IMAGE_FILE_FORMAT = {
-  JPEG: 'jpeg',
-  JPG: 'jpg',
-  PNG: 'png',
-  WEBP: 'webp'
-} as const
-export const ALLOWED_IMAGE_FORMATS = Object.values(IMAGE_FILE_FORMAT)
-  .map(format => `image/${format}`)
-  .join(', ')
-
 export const DEFAULT_FLIP = false
 export const DEFAULT_FLOP = false
 export const DEFAULT_GRAYSCALE = false

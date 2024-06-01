@@ -91,7 +91,8 @@ const VALID_RESIZE_SETTINGS: ResizeSettings = {
     top: 10,
     width: 100,
     height: 100
-  }
+  },
+  outputFormat: null
 } as const
 
 export {

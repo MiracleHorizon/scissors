@@ -20,6 +20,7 @@ export class ImageResizer extends ImageSharp {
 
   /* eslint-disable no-await-in-loop */
   public async resizeImage({
+    outputFormat,
     queue,
     resize,
     extend,
@@ -50,6 +51,10 @@ export class ImageResizer extends ImageSharp {
       if (name === RESIZE_OPERATION.TRIM && trim) {
         await this.trim(trim)
       }
+    }
+
+    if (outputFormat) {
+      this.toFormat(outputFormat)
     }
 
     return this.toBuffer()

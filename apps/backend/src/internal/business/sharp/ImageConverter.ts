@@ -1,5 +1,4 @@
 import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
-import type { ImageFileFormat } from '@scissors/sharp'
 
 import { ImageSharp } from './ImageSharp'
 import { SharpErrorsChecker } from './SharpErrorsChecker'
@@ -160,18 +159,6 @@ export class ImageConverter extends ImageSharp {
       }
 
       throw new Error('Failed to rotate the image', {
-        cause: err
-      })
-    }
-  }
-
-  private toFormat(format: ImageFileFormat): void {
-    try {
-      this.sharp.toFormat(format)
-    } catch (err) {
-      console.error(err)
-
-      throw new Error(`Failed to convert the image to the .${format} format`, {
         cause: err
       })
     }

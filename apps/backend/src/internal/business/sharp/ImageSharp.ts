@@ -1,5 +1,7 @@
 import sharp, { type Color } from 'sharp'
 
+import type { ImageFileFormat } from '@scissors/sharp'
+
 export abstract class ImageSharp {
   /*
    * Not readonly because it is may be overridden / overloaded in subclasses
@@ -40,6 +42,18 @@ export abstract class ImageSharp {
     }
 
     return this.stats.dominant
+  }
+
+  protected toFormat(format: ImageFileFormat): void {
+    try {
+      this.sharp.toFormat(format)
+    } catch (err) {
+      console.error(err)
+
+      throw new Error(`Failed to convert the image to the .${format} format`, {
+        cause: err
+      })
+    }
   }
 
   protected async toBuffer(): Promise<Buffer> {

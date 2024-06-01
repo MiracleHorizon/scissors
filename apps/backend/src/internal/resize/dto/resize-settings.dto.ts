@@ -1,7 +1,19 @@
-import { ArrayMaxSize, ArrayMinSize, IsArray, IsDefined, ValidateNested } from 'class-validator'
+import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsArray,
+  IsDefined,
+  IsIn,
+  ValidateNested
+} from 'class-validator'
 import { Type } from 'class-transformer'
 
-import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
+import {
+  IMAGE_FILE_FORMAT,
+  type ImageFileFormat,
+  RESIZE_OPERATION,
+  type ResizeQueue
+} from '@scissors/sharp'
 
 import { IsNullable } from '@lib/validation'
 import { ResizeOptionsDto } from './resize-options.dto'
@@ -38,4 +50,9 @@ export class ResizeSettingsDto {
   @Type(() => TrimOptionsDto)
   @IsDefined()
   readonly trim: TrimOptionsDto | null
+
+  @IsIn(Object.values(IMAGE_FILE_FORMAT))
+  @IsNullable()
+  @IsDefined()
+  readonly outputFormat: ImageFileFormat | null
 }

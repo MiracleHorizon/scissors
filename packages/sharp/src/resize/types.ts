@@ -6,6 +6,7 @@ import type {
   RESIZE_OPERATION,
   RESIZE_POSITION
 } from './constants'
+import type { ImageFileFormat } from '../common'
 
 export interface ResizeSettings {
   queue: ResizeQueue
@@ -13,6 +14,7 @@ export interface ResizeSettings {
   extend: ExtendOptions | null
   extract: ExtractOptions | null
   trim: TrimOptions | null
+  outputFormat: ImageFileFormat | null
 }
 
 export type ResizeQueue = ResizeQueueOperation[]

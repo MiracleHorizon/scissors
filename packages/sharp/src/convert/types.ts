@@ -1,4 +1,4 @@
-import type { IMAGE_FILE_FORMAT } from './constants'
+import type { ImageFileFormat } from '../common'
 
 export interface ConvertSettings {
   flip: boolean
@@ -43,5 +43,3 @@ export interface NormaliseOptions {
   lower: number
   upper: number
 }
-
-export type ImageFileFormat = (typeof IMAGE_FILE_FORMAT)[keyof typeof IMAGE_FILE_FORMAT]
