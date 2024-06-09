@@ -32,6 +32,7 @@ import {
   RESIZE_OPERATION,
   RESIZE_POSITION
 } from '@scissors/sharp'
+
 import { hexValidationRegex } from '@helpers/colors'
 
 export const booleanSchema = boolean().defined()

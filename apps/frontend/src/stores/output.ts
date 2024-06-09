@@ -6,6 +6,7 @@ import type { ImageFileFormat } from '@scissors/sharp'
 import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
+import { SITE_TITLE } from '@site/config'
 
 export interface DownloadPayload {
   link: string
@@ -151,12 +152,12 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
 })
 
 export const createOutputStore = ({
-  withPersist
-}: CreateStoreParams): UseBoundStore<StoreApi<Store>> => {
+  withPersist = true
+}: CreateStoreParams | undefined = {}): UseBoundStore<StoreApi<Store>> => {
   if (withPersist) {
     return create(
       persist<Store>(outputStoreCreator, {
-        name: 'scissors-output-store',
+        name: `${SITE_TITLE}-output-store`,
         merge: <State>(persistedState: unknown, currentState: State): State => {
           if (!persistedState || typeof persistedState !== 'object') {
             return currentState
@@ -179,9 +180,7 @@ export const createOutputStore = ({
 }
 
 interface CreateStoreParams {
-  withPersist: boolean
+  withPersist?: boolean
 }
 
-export const useOutputStore = createOutputStore({
-  withPersist: true
-})
+export const useOutputStore = createOutputStore()

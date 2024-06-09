@@ -53,7 +53,7 @@ const CookieConsentBanner = () => {
     <Card
       size='2'
       style={{
-        bottom: isHomePage ? 'calc(var(--app-footer-height) + 20px)' : '20px'
+        bottom: isHomePage ? 'calc(var(--ProcessingFooter-height) + 20px)' : '20px'
       }}
       className={styles.root}
     >

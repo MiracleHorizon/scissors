@@ -1,3 +1,5 @@
+'use client'
+
 // https://github.com/radix-ui/website/blob/67f9736819e5a03f863e8e56f366fa51637845f7/components/ColorField.tsx
 
 import {

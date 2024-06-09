@@ -1,6 +1,6 @@
 .root {
   position: relative;
-  height: calc(var(--layout-content-height) - var(--app-footer-height) - 200px);
+  height: calc(var(--layout-content-height) - var(--processing-footer-height) - 200px);
 }
 
 .image {

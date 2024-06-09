@@ -4,8 +4,8 @@ import { type HTMLAttributes, memo, useId } from 'react'
 import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import styles from './Checkbox.module.css'
 import type { JustifyContent } from '@lib/theme'
+import styles from './Checkbox.module.css'
 
 export const rootTestId = 'checkbox-root'
 

@@ -1,4 +1,8 @@
+'use client'
+
 import { useEffect } from 'react'
+
+const ESCAPE_KEY = 'Escape'
 
 export const useEscapeAction = (
   callback: VoidFunction,
@@ -6,15 +10,15 @@ export const useEscapeAction = (
 ) => {
   useEffect(() => {
     const handleEscapeKeydown = (ev: KeyboardEvent) => {
-      if (ev.key !== 'Escape') return
+      if (ev.key !== ESCAPE_KEY) return
 
       callback()
     }
 
-    window.addEventListener('keydown', handleEscapeKeydown, options)
+    document.addEventListener('keydown', handleEscapeKeydown, options)
 
     return () => {
-      window.removeEventListener('keydown', handleEscapeKeydown, options)
+      document.removeEventListener('keydown', handleEscapeKeydown, options)
     }
   }, [callback, options])
 }

@@ -1,9 +1,10 @@
 // vitest-environment jsdom
 
+import pick from 'lodash.pick'
+
 import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 
 import { createOutputStore, defaultState, type DownloadPayload } from '@stores/output'
-import pick from 'lodash.pick'
 
 describe('@stores/output', () => {
   const store = createOutputStore({

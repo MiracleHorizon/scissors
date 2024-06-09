@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, Link as RadixLink } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
 import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
@@ -7,7 +7,7 @@ import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
 import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 
-export const ButtonDownload = () => {
+export const ButtonDownloadImage = () => {
   const linkRef = useRef<HTMLAnchorElement>(null)
 
   const downloadPayload = useOutputStore(state => state.downloadPayload)
@@ -36,7 +36,7 @@ export const ButtonDownload = () => {
       </Button>
 
       {downloadPayload && (
-        <RadixLink
+        <a
           ref={linkRef}
           href={downloadPayload.link}
           download={downloadPayload.fileName}

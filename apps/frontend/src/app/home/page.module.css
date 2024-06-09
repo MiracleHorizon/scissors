@@ -1,5 +1,5 @@
 .root {
-  --content-height: calc(var(--layout-content-height) - var(--app-footer-height));
+  --content-height: calc(var(--layout-content-height) - var(--processing-footer-height));
 
   height: var(--layout-content-height);
 }

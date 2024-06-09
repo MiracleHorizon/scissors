@@ -8,7 +8,7 @@ import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
 import { ImageUploaderLoading } from '@components/ImageUploader/ImageUploaderLoading'
 import { BackgroundGrid } from '@ui/BackgroundGrid'
 import { useOutputStore } from '@stores/output'
-import styles from './Preview.module.css'
+import styles from './ImagePreview.module.css'
 
 const ImageUploader = dynamic(
   () => import('@components/ImageUploader').then(mod => mod.ImageUploader),
@@ -22,7 +22,7 @@ const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.Uplo
   loading: () => <UploadedFileLoading />
 })
 
-export const Preview = () => {
+export const ImagePreview = () => {
   const file = useOutputStore(state => state.file)
 
   return (

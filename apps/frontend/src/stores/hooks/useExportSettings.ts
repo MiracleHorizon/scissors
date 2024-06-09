@@ -4,6 +4,9 @@ import { useConvertSettings } from './useConvertSettings'
 import { useResizeSettings } from './useResizeSettings'
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'
 import { createAndDownloadJSONFile } from '@utility/json-file'
+import { SITE_TITLE } from '@site/config'
+
+const FILE_NAME_PREFIX = `${SITE_TITLE}-settings`
 
 export const useExportSettings = (selectedTab: ToolbarTab) => {
   const convertSettings = useConvertSettings()
@@ -13,12 +16,12 @@ export const useExportSettings = (selectedTab: ToolbarTab) => {
     switch (selectedTab) {
       case TOOLBAR_TAB.CONVERT:
         return {
-          fileName: 'scissors-settings-convert',
+          fileName: `${FILE_NAME_PREFIX}-convert`,
           settings: convertSettings
         }
       case TOOLBAR_TAB.RESIZE:
         return {
-          fileName: 'scissors-settings-resize',
+          fileName: `${FILE_NAME_PREFIX}-resize`,
           settings: resizeSettings
         }
       default:

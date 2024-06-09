@@ -11,8 +11,8 @@ interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, 'color'>, Margin
   endIcon?: ReactNode
 }
 
-export const ButtonAddOption = memo(({ label, leadIcon, endIcon, disabled, ...props }: Props) => (
-  <Button {...props} disabled={disabled} radius='large'>
+export const ButtonAddOption = memo(({ label, leadIcon, endIcon, ...props }: Props) => (
+  <Button {...props} radius='large'>
     {leadIcon}
     {label}
     {endIcon}

@@ -3,14 +3,14 @@
 import dynamic from 'next/dynamic'
 import { Flex, Separator } from '@radix-ui/themes'
 
-import { ButtonDownloadSkeleton, ButtonRequestSkeleton } from '../AppFooterContentSkeleton'
+import { ButtonDownloadImageSkeleton, ButtonRequestSkeleton } from '../ProcessingFooterContentSkeleton'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
-const ButtonDownload = dynamic(
-  () => import('./buttons/ButtonDownload').then(mod => mod.ButtonDownload),
+const ButtonDownloadImage = dynamic(
+  () => import('./buttons/ButtonDownloadImage').then(mod => mod.ButtonDownloadImage),
   {
     ssr: false,
-    loading: () => <ButtonDownloadSkeleton />
+    loading: () => <ButtonDownloadImageSkeleton />
   }
 )
 const ButtonConvert = dynamic(
@@ -32,12 +32,12 @@ const ButtonMetadata = dynamic(
   }
 )
 
-const AppFooterContent = () => {
+const ProcessingFooterContent = () => {
   const selectedTab = useTabsStore(state => state.selectedTab)
 
   return (
     <Flex align='center' justify='end' gap='3' height='100%' width='100%'>
-      <ButtonDownload />
+      <ButtonDownloadImage />
 
       <Separator orientation='vertical' size='2' />
 
@@ -51,4 +51,4 @@ const AppFooterContent = () => {
 /*
  * Default export is required to import a client component inside a server component using next/dynamic.
  */
-export default AppFooterContent
+export default ProcessingFooterContent
