@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { Card, Flex, Spinner, Text } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
@@ -20,8 +19,7 @@ export const UploadedFileCard = ({ file }: Props) => {
   const isRequestLoading = useRequestStore(state => state.isLoading)
 
   const removeFile = useOutputStore(state => state.removeFile)
-
-  const handleRemoveFile = useCallback(() => removeFile(), [removeFile])
+  const handleRemoveFile = () => removeFile()
 
   return (
     <Card size='2' className={styles.card}>
@@ -59,6 +57,7 @@ export const UploadedFileCard = ({ file }: Props) => {
             className={styles.buttonsContainer}
           >
             <ImageUploadDialog />
+
             <ConfirmAlert
               title='Confirm deletion'
               description='Are you sure you want to continue?'

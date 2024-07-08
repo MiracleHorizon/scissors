@@ -14,10 +14,10 @@ const rootStyle: CSSProperties = {
 
 interface Props {
   file: File
-  handleOpenLightbox: VoidFunction
+  onClick: VoidFunction
 }
 
-export const UploadedFilePreview = ({ file, handleOpenLightbox }: Props) => {
+export const UploadedFilePreview = ({ file, onClick }: Props) => {
   const downloadPayload = useOutputStore(state => state.downloadPayload)
 
   return (
@@ -29,7 +29,7 @@ export const UploadedFilePreview = ({ file, handleOpenLightbox }: Props) => {
         src={downloadPayload?.link ?? URL.createObjectURL(file)}
         alt={file.name}
         className={styles.image}
-        onClick={handleOpenLightbox}
+        onClick={onClick}
       />
     </Box>
   )

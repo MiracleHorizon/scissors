@@ -1,12 +1,4 @@
-import {
-  type ComponentPropsWithoutRef,
-  type CSSProperties,
-  Fragment,
-  memo,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
+import { type ComponentPropsWithoutRef, type CSSProperties, Fragment, memo, useMemo } from 'react'
 import { Separator } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
@@ -14,9 +6,11 @@ import { FileIcon } from '@scissors/react-icons/FileIcon'
 import { RatioIcon } from '@scissors/react-icons/RatioIcon'
 import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
 
-import { getAspectRatio, getFileSize, getImageDimension, isCorrectAspectRatio } from './utils'
 import { PropertyItem } from './PropertyItem'
-import type { Dimension } from './types'
+import { useImageStore } from '@stores/image'
+import { bytesToMegabytes } from '@helpers/file/bytesToMegabytes'
+import { isCorrectAspectRatio } from '@helpers/image/isCorrectAspectRatio'
+import type { ImageAspectRatio, ImageDimension } from '@app-types/image'
 import styles from './UploadedFileProperties.module.css'
 
 interface Props {
@@ -25,14 +19,30 @@ interface Props {
 
 type PropertyItemProps = ComponentPropsWithoutRef<typeof PropertyItem>
 
+const getFormattedFileSize = (fileSize: number): string => {
+  const formatFileSize = (size: number) => size.toFixed(1).replace('.0', '')
+
+  if (fileSize < 1000) {
+    return `${fileSize} B`
+  } else if (fileSize < 1000 * 1000) {
+    return `${formatFileSize(fileSize / 1000)} KB`
+  }
+
+  return formatFileSize(bytesToMegabytes(fileSize)) + ' MB'
+}
+const getFormattedDimension = ({ width, height }: ImageDimension): string => `${width} x ${height}`
+const getFormattedAspectRatio = (aspectRatio: ImageAspectRatio): string =>
+  `${aspectRatio[0]}:${aspectRatio[1]}`
+
 export const UploadedFileProperties = memo(({ file }: Props) => {
-  const [dimension, setDimension] = useState<Dimension | null>(null)
+  const dimension = useImageStore(state => state.getDimension())
+  const aspectRatio = useImageStore(state => state.getAspectRatio())
 
   const properties = useMemo(() => {
     const items: PropertyItemProps[] = [
       {
         label: 'Size',
-        value: getFileSize(file.size),
+        value: getFormattedFileSize(file.size),
         icon: <FileIcon width='15px' height='15px' />
       }
     ]
@@ -45,29 +55,24 @@ export const UploadedFileProperties = memo(({ file }: Props) => {
 
     items.push({
       label: 'Dimension',
-      value: `${width} x ${height}`,
+      value: getFormattedDimension(dimension),
       icon: <DimensionsIcon />
     })
 
-    const ratio = getAspectRatio(width, height)
-    if (isCorrectAspectRatio(ratio, width, height)) {
+    if (isCorrectAspectRatio(aspectRatio, width, height)) {
       items.push({
         label: 'Aspect',
-        value: `${ratio[0]}:${ratio[1]}`,
+        value: getFormattedAspectRatio(aspectRatio),
         icon: <RatioIcon width='16px' height='16px' />
       })
     }
 
     return items
-  }, [dimension, file.size])
+  }, [dimension, aspectRatio, file.size])
 
   const rootStyle = {
     '--grid-item-count': properties.length
   } as const as CSSProperties
-
-  useEffect(() => {
-    getImageDimension(file).then(setDimension).catch(setDimension)
-  }, [file])
 
   return (
     <div style={rootStyle} className={styles.root}>
