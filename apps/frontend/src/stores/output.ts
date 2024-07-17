@@ -154,29 +154,33 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
 export const createOutputStore = ({
   withPersist = true
 }: CreateStoreParams | undefined = {}): UseBoundStore<StoreApi<Store>> => {
-  if (withPersist) {
-    return create(
-      persist<Store>(outputStoreCreator, {
-        name: `${SITE_TITLE}-output-store`,
-        merge: <State>(persistedState: unknown, currentState: State): State => {
-          if (!persistedState || typeof persistedState !== 'object') {
-            return currentState
-          }
-
-          if ('keepChanges' in persistedState && typeof persistedState.keepChanges === 'boolean') {
-            return {
-              ...currentState,
-              keepChanges: persistedState.keepChanges
-            }
-          }
-
-          return currentState
-        }
-      })
-    )
+  if (!withPersist) {
+    return create<Store>()(outputStoreCreator)
   }
 
-  return create<Store>()(outputStoreCreator)
+  return create(
+    persist<Store>(outputStoreCreator, {
+      name: `${SITE_TITLE}-output-store`,
+      merge: <State>(persistedState: unknown, currentState: State): State => {
+        if (
+          !persistedState ||
+          typeof persistedState !== 'object' ||
+          Array.isArray(persistedState)
+        ) {
+          return currentState
+        }
+
+        if ('keepChanges' in persistedState && typeof persistedState.keepChanges === 'boolean') {
+          return {
+            ...currentState,
+            keepChanges: persistedState.keepChanges
+          }
+        }
+
+        return currentState
+      }
+    })
+  )
 }
 
 interface CreateStoreParams {
