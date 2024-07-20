@@ -14,9 +14,9 @@ export const DocsContent = () => (
     align='center'
     justify='center'
     direction='column'
-    gap='6'
-    width='100%'
     maxWidth='1920px'
+    width='100%'
+    gap='2'
   >
     <main>
       <MainSection />

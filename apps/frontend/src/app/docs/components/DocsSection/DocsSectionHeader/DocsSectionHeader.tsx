@@ -26,7 +26,7 @@ export const DocsSectionHeader = ({ title, hash }: Props) => {
   }, [params, hash])
 
   return (
-    <Box asChild pt='3' pl='1' ref={rootRef} className={styles.root}>
+    <Box asChild pt='5' pl='1' ref={rootRef} className={styles.root}>
       <header data-cy={`docs-section-header-${title.toLowerCase()}`}>
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5' weight='bold'>
