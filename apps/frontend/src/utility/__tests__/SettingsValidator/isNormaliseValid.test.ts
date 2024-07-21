@@ -2,7 +2,7 @@ import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.isNormaliseValid', () => {
+describe('utility - SettingsValidator.isNormaliseValid', () => {
   const isNormaliseValid = SettingsValidator.isNormaliseValid
 
   it('should return true for null', () => {
@@ -14,18 +14,20 @@ describe('@utility/SettingsValidator.isNormaliseValid', () => {
     expect(isNormaliseValid({ lower: MIN_NORMALISE, upper: MAX_NORMALISE })).toBe(true)
   })
 
-  it('should return false for invalid normalise options object', () => {
-    expect(isNormaliseValid(undefined)).toBe(false)
-    expect(isNormaliseValid({})).toBe(false)
-    expect(isNormaliseValid([])).toBe(false)
-    expect(isNormaliseValid(new Map())).toBe(false)
-    expect(isNormaliseValid({ lower: MIN_NORMALISE - 1 })).toBe(false)
-    expect(isNormaliseValid({ lower: 2 })).toBe(false)
-    expect(isNormaliseValid({ lower: '-1' })).toBe(false)
-    expect(isNormaliseValid({ lower: 1, upper: 'foo' })).toBe(false)
-    expect(isNormaliseValid({ upper: MAX_NORMALISE + 0.001 })).toBe(false)
-    expect(isNormaliseValid({ upper: MAX_NORMALISE + 1, lower: MIN_NORMALISE - 1 })).toBe(false)
-    expect(isNormaliseValid({ upper: 6, lower: 'bar' })).toBe(false)
-    expect(isNormaliseValid({ upper: 'baz' })).toBe(false)
+  it.each([
+    NaN,
+    {},
+    [],
+    new Map(),
+    { lower: MIN_NORMALISE - 1 },
+    { lower: 2 },
+    { lower: '-1' },
+    { lower: 1, upper: 'foo' },
+    { upper: MAX_NORMALISE + 0.001 },
+    { upper: MAX_NORMALISE + 1, lower: MIN_NORMALISE - 1 },
+    { upper: 6, lower: 'bar' },
+    { upper: 'baz' }
+  ])('should return false for invalid normalise options object (%s)', payload => {
+    expect(isNormaliseValid(payload)).toBe(false)
   })
 })

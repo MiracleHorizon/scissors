@@ -9,7 +9,7 @@ import {
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.validateResize', () => {
+describe('utility - SettingsValidator.validateResize', () => {
   const validate = SettingsValidator.validateResize
 
   const validSettings: ResizeSettings = {
@@ -58,16 +58,17 @@ describe('@utility/SettingsValidator.validateResize', () => {
       top: 10,
       width: 100,
       height: 100
-    }
+    },
+    outputFormat: 'webp'
   }
 
-  it('should return false for invalid settings object', () => {
-    expect(validate(undefined)).toBe(false)
-    expect(validate(null)).toBe(false)
-    expect(validate([])).toBe(false)
-    expect(validate({})).toBe(false)
-    expect(validate(new Map())).toBe(false)
-  })
+  it.each([undefined, null, [], {}])(
+    'should return false for invalid settings object (%s)',
+    payload => {
+      expect(validate(payload)).toBe(false)
+    }
+  )
+
   const invalidSettings = {
     queue: [],
     resize: {

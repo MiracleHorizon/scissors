@@ -2,7 +2,7 @@ import { MAX_TRIM_THRESHOLD, type TrimOptions } from '@scissors/sharp'
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.isTrimValid', () => {
+describe('utility - SettingsValidator.isTrimValid', () => {
   const isTrimValid = SettingsValidator.isTrimValid
 
   const validOptions: TrimOptions = {
@@ -20,23 +20,24 @@ describe('@utility/SettingsValidator.isTrimValid', () => {
     expect(isTrimValid({ ...validOptions, background: null })).toBe(true)
   })
 
-  it('should return false for invalid trim options object', () => {
-    expect(isTrimValid({})).toBe(false)
-    expect(isTrimValid([])).toBe(false)
-    expect(isTrimValid({ ...validOptions, lineArt: null })).toBe(false)
-    expect(
-      isTrimValid({
-        ...validOptions,
-        background: {
-          r: 1,
-          g: 1,
-          b: 1,
-          a: 1
-        }
-      })
-    ).toBe(false)
-    expect(isTrimValid({ ...validOptions, background: '' })).toBe(false)
+  it.each([
+    NaN,
+    {},
+    [],
+    { ...validOptions, lineArt: null },
+    {
+      ...validOptions,
+      background: {
+        r: 1,
+        g: 1,
+        b: 1,
+        a: 1
+      }
+    },
+    { ...validOptions, background: '' }
     // FIXME: should return false
-    // expect(isTrimValid({ ...validOptions, threshold: '10' })).toBe(false)
+    // { ...validOptions, threshold: '10' }
+  ])('should return false for invalid trim options object (%s)', payload => {
+    expect(isTrimValid(payload)).toBe(false)
   })
 })
