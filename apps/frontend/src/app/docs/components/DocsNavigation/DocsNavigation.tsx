@@ -1,7 +1,6 @@
 'use client'
 
-import { Fragment } from 'react'
-import { Flex, Separator } from '@radix-ui/themes'
+import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 
 import { DocsNavigationItem } from './DocsNavigationItem'
@@ -46,18 +45,15 @@ const items = [
     title: 'Trim',
     hash: DOCS_ANCHOR_TRIM
   }
-]
+] as const
 
 const DocsNavigation = () => (
   <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>
     <nav className={styles.root}>
-      <Flex asChild align='start' justify='center' direction='column' width='100%'>
+      <Flex asChild align='start' justify='center' direction='column' width='100%' gapY='2'>
         <ul>
-          {items.map((item, index) => (
-            <Fragment key={item.hash}>
-              <DocsNavigationItem {...item} />
-              {index < items.length - 1 && <Separator my='2' size='4' orientation='horizontal' />}
-            </Fragment>
+          {items.map(item => (
+            <DocsNavigationItem {...item} key={item.hash} />
           ))}
         </ul>
       </Flex>

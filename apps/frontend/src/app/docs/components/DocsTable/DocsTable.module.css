@@ -5,5 +5,10 @@
 /* First child (div) of the .rt-ScrollAreaViewport (Radix UI) has not any selectors */
 .root :global(.rt-ScrollAreaViewport) > :first-child {
   width: 100%;
-  min-width: 650px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .root :global(.rt-ScrollAreaViewport) > :first-child {
+    min-width: 650px !important;
+  }
 }

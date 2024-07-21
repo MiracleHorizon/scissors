@@ -5,9 +5,11 @@ import type { Metadata } from 'next'
 
 import { ButtonBackTop } from '@ui/ButtonBackTop'
 import { DocsContent } from './components/DocsContent'
+import { DocsNavigationSkeleton } from './components/DocsNavigation/DocsNavigationSkeleton'
 
 const DocsNavigation = dynamic(() => import('./components/DocsNavigation'), {
-  ssr: false
+  ssr: false,
+  loading: () => <DocsNavigationSkeleton />
 })
 
 export const metadata: Metadata = {
@@ -31,14 +33,7 @@ const DocsPage = () => (
   <>
     <ButtonBackTop visibilityOffset={400} />
 
-    <Flex
-      {...padding}
-      align='start'
-      justify='center'
-      direction='row-reverse'
-      width='100%'
-      height='100%'
-    >
+    <Flex {...padding} align='start' justify='center' width='100%' height='100%'>
       <DocsNavigation />
       <DocsContent />
     </Flex>
