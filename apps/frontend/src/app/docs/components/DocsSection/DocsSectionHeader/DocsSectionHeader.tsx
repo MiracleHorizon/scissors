@@ -9,6 +9,11 @@ import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 
 import styles from './DocsSectionHeader.module.css'
 
+interface Props {
+  title: string
+  hash: string
+}
+
 export const DocsSectionHeader = ({ title, hash }: Props) => {
   const rootRef = useRef<HTMLDivElement>(null)
   const params = useParams()
@@ -44,9 +49,4 @@ export const DocsSectionHeader = ({ title, hash }: Props) => {
       </header>
     </Box>
   )
-}
-
-interface Props {
-  title: string
-  hash: string
 }
