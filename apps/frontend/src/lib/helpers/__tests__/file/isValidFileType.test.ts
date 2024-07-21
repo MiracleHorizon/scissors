@@ -1,7 +1,7 @@
 import { isValidFileType } from '@helpers/file/isValidFileType'
 import { allowedImageFormats } from '@site/config'
 
-describe('@lib/helpers/file/isValidFileType', () => {
+describe('helpers/file - isValidFileType', () => {
   it.each(allowedImageFormats.split(', '))('should return true if file type is valid (%s)', type =>
     expect(isValidFileType(type)).toBe(true)
   )

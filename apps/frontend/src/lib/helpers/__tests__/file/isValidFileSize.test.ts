@@ -2,9 +2,9 @@ import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { BYTES_IN_MB, MAX_FILE_SIZE } from '@helpers/file/constants'
 import { MAX_FILE_SIZE_MB } from '@site/config'
 
-describe('@lib/helpers/file/isValidFileSize', () => {
+describe('helpers/file - isValidFileSize', () => {
   it(`should return true if file size is less than ${MAX_FILE_SIZE_MB} MB`, () => {
-    expect(isValidFileSize(1.92 * BYTES_IN_MB)).toBe(true)
+    expect(isValidFileSize((MAX_FILE_SIZE_MB - 0.01) * BYTES_IN_MB)).toBe(true)
   })
 
   it(`should return true if file size is equal to ${MAX_FILE_SIZE_MB} MB`, () => {

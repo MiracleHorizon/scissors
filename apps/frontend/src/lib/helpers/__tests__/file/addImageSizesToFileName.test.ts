@@ -1,6 +1,6 @@
 import { addImageSizesToFileName } from '@helpers/file/addImageSizesToFileName'
 
-describe('@lib/helpers/file/addImageSizesToFileName', () => {
+describe('helpers/file - addImageSizesToFileName', () => {
   it('should add image sizes to the file name', () => {
     expect(
       addImageSizesToFileName({

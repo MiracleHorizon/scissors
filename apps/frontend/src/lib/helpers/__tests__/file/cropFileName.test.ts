@@ -1,13 +1,18 @@
 import { cropFileName } from '@helpers/file/cropFileName'
 
-describe('@lib/helpers/file/cropFileName', () => {
-  it('should crop the file name correctly', () => {
-    expect(cropFileName('hello-world.png')).toBe('hello-world')
-    expect(cropFileName('foo.jpeg')).toBe('foo')
-    expect(cropFileName('bar.jpg')).toBe('bar')
-    expect(cropFileName('baz.webp')).toBe('baz')
-    expect(cropFileName('my-file-name.jpeg.webp')).toBe('my-file-name.jpeg')
-    expect(cropFileName('my-file-name-1.webp.webp')).toBe('my-file-name-1.webp')
+describe('helpers/file - cropFileName', () => {
+  it.each([
+    ['hello-world', 'png'],
+    ['foo', 'jpeg'],
+    ['bar', 'jpg'],
+    ['baz', 'webp'],
+    ['my-file-name.jpeg', 'webp'],
+    ['my-file-name-1', 'webp']
+  ])('should crop the file name correctly (%s)', ([name, type]) =>
+    expect(cropFileName(`${name}.${type}`)).toBe(name)
+  )
+
+  test('the incoming string must not be changed', () => {
     expect(cropFileName('jpeg')).toBe('jpeg')
     expect(cropFileName('.png')).toBe('.png')
     expect(cropFileName('.')).toBe('.')
