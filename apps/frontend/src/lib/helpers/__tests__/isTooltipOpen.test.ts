@@ -1,6 +1,6 @@
 import { isTooltipOpen } from '@helpers/isTooltipOpen'
 
-describe('@lib/helpers/isTooltipOpen', () => {
+describe('helpers - isTooltipOpen', () => {
   it('should return {false} when content is not defined', () => {
     expect(
       isTooltipOpen({

@@ -1,6 +1,6 @@
 import { isFloat } from '@helpers/isFloat'
 
-describe('@lib/helpers/isFloat', () => {
+describe('helpers - isFloat', () => {
   it('should return true if the value is a float', () => {
     expect(isFloat(0.5)).toBe(true)
     expect(isFloat(1.5)).toBe(true)

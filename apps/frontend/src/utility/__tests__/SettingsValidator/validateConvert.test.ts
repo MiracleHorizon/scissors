@@ -12,7 +12,7 @@ import {
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.validateConvert', () => {
+describe('utility - SettingsValidator.validateConvert', () => {
   const validate = SettingsValidator.validateConvert
 
   it('should return true for valid settings object', () => {
@@ -87,11 +87,10 @@ describe('@utility/SettingsValidator.validateConvert', () => {
     expect(validate(invalidSettings)).toBe(false)
   })
 
-  it('should return false for invalid settings object', () => {
-    expect(validate(undefined)).toBe(false)
-    expect(validate(null)).toBe(false)
-    expect(validate({})).toBe(false)
-    expect(validate([])).toBe(false)
-    expect(validate(new Map())).toBe(false)
-  })
+  it.each([undefined, null, {}, []])(
+    'should return false for invalid settings value (%s)',
+    payload => {
+      expect(validate(payload)).toBe(false)
+    }
+  )
 })

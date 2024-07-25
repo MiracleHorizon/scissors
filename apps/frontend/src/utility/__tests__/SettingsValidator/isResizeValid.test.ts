@@ -2,7 +2,7 @@ import { RESIZE_FIT, RESIZE_KERNEL, RESIZE_POSITION, type ResizeOptions } from '
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.isResizeValid', () => {
+describe('utility - SettingsValidator.isResizeValid', () => {
   const isResizeValid = SettingsValidator.isResizeValid
 
   const validOptions: ResizeOptions = {

@@ -8,7 +8,7 @@ import {
 
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.isExtendValid', () => {
+describe('utility - SettingsValidator.isExtendValid', () => {
   const isExtendValid = SettingsValidator.isExtendValid
 
   const validOptions: ExtendOptions = {
@@ -54,78 +54,69 @@ describe('@utility/SettingsValidator.isExtendValid', () => {
     expect(isExtendValid({})).toBe(false)
   })
 
-  it('should return false for invalid extendWith property', () => {
-    expect(isExtendValid({ top: 1 })).toBe(false)
-    expect(isExtendValid({ left: 4 })).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        top: 'bar',
-        bottom: 'qux',
-        left: 'foo',
-        right: 'baz'
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        top: 1,
-        bottom: null,
-        left: MAX_EXTEND_DIRECTION_SIZE + 1,
-        right: null
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        top: MIN_EXTEND_DIRECTION_SIZE - 0.01,
-        bottom: null,
-        left: 6,
-        right: null
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        extendWith: 'invalid value'
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        extendWith: EXTEND_WITH.COPY + 'foo'
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        extendWith: 'bar' + EXTEND_WITH.MIRROR
-      })
-    ).toBe(false)
+  it.each([
+    { top: 1 },
+    { left: 4 },
+    {
+      ...validOptions,
+      top: 'bar',
+      bottom: 'qux',
+      left: 'foo',
+      right: 'baz'
+    },
+    {
+      ...validOptions,
+      top: 1,
+      bottom: null,
+      left: MAX_EXTEND_DIRECTION_SIZE + 1,
+      right: null
+    },
+    {
+      ...validOptions,
+      top: MIN_EXTEND_DIRECTION_SIZE - 0.01,
+      bottom: null,
+      left: 6,
+      right: null
+    }
+  ])('should return false for invalid positions properties (%s)', payload => {
+    expect(isExtendValid(payload)).toBe(false)
   })
 
-  it('should return false for invalid background property', () => {
-    expect(
-      isExtendValid({
-        ...validOptions,
-        background: 1
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        background: true
-      })
-    ).toBe(false)
-    expect(
-      isExtendValid({
-        ...validOptions,
-        background: {
-          r: 1,
-          b: 1,
-          a: 1
-        }
-      })
-    ).toBe(false)
+  it.each([
+    {
+      ...validOptions,
+      extendWith: 'invalid value'
+    },
+    {
+      ...validOptions,
+      extendWith: EXTEND_WITH.COPY + 'foo'
+    },
+    {
+      ...validOptions,
+      extendWith: 'bar' + EXTEND_WITH.MIRROR
+    }
+  ])('should return false for invalid extendWith property (%s)', payload => {
+    expect(isExtendValid(payload)).toBe(false)
+  })
+
+  it.each([
+    {
+      ...validOptions,
+      background: 1
+    },
+    {
+      ...validOptions,
+      background: true
+    },
+    {
+      ...validOptions,
+      background: {
+        r: 1,
+        b: 1,
+        a: 1
+      }
+    }
+  ])('should return false for invalid background property (%s)', payload => {
+    expect(isExtendValid(payload)).toBe(false)
   })
 })

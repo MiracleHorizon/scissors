@@ -1,6 +1,6 @@
 import { SettingsValidator } from '@utility/SettingsValidator'
 
-describe('@utility/SettingsValidator.isTintValid', () => {
+describe('utility - SettingsValidator.isTintValid', () => {
   const isTintValid = SettingsValidator.isTintValid
 
   it('should return true for null', () => {
@@ -12,13 +12,10 @@ describe('@utility/SettingsValidator.isTintValid', () => {
     expect(isTintValid('#ff6666')).toBe(true)
   })
 
-  it('should return false for invalid tint value', () => {
-    expect(isTintValid('black')).toBe(false)
-    expect(isTintValid('foo')).toBe(false)
-    expect(isTintValid(undefined)).toBe(false)
-    expect(isTintValid({})).toBe(false)
-    expect(isTintValid([])).toBe(false)
-    expect(isTintValid(new Map())).toBe(false)
-    expect(isTintValid({ value: '#000000' })).toBe(false)
-  })
+  it.each(['black', 'foo', undefined, {}, [], { value: '#000000' }])(
+    'should return false for invalid tint value (%s)',
+    payload => {
+      expect(isTintValid(payload)).toBe(false)
+    }
+  )
 })

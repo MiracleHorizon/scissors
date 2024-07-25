@@ -8,7 +8,7 @@ import {
 import { clsx } from 'clsx'
 
 import { DragHandle } from './DragHandle'
-import { getRandomValueFromRange } from '@helpers/getRandomValueFromRange'
+import { getRandomNumber } from '@helpers/getRandomNumber'
 import styles from './CompareSlider.module.css'
 
 interface Props {
@@ -28,7 +28,7 @@ const getRandomPosition = (index: number): number => {
   const isEven = index % 2 === 0
   const range: [number, number] = isEven ? [40, 60] : [30, 50]
 
-  return Math.floor(getRandomValueFromRange(...range))
+  return Math.floor(getRandomNumber(...range))
 }
 
 const getImageFallback = ({ orientation }: Pick<Props, 'orientation'>): string => {

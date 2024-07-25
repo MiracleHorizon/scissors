@@ -1,4 +1,3 @@
-import randomNumber from 'lodash.random'
 import capitalize from 'lodash.capitalize'
 
 import {
@@ -28,6 +27,8 @@ import {
 } from '@scissors/sharp'
 
 import { getRandomHexColor } from '@helpers/colors'
+import { getRandomNumber } from '@helpers/getRandomNumber'
+import { getRandomBoolean } from '@helpers/getRandomBoolean'
 
 /*
  * All methods name must start with "getRandom" prefix.
@@ -65,22 +66,12 @@ export class ConvertSettingsRandomizer implements Randomizer {
     return randomSettings
   }
 
-  private getRandomNumber(min: number, max: number, precision?: number): number | null {
-    const withFloat = typeof precision === 'number'
-    let randomValue = randomNumber(min, max, withFloat)
-
-    if (withFloat) {
-      randomValue = parseFloat(randomValue.toPrecision(precision!))
-    }
-    if (isNaN(randomValue)) {
-      return null
-    }
-
-    return randomValue
+  private getRandomNumber(...args: Parameters<typeof getRandomNumber>): number | null {
+    return getRandomNumber(...args)
   }
 
   private getRandomBoolean(): boolean {
-    return Math.random() < 0.5
+    return getRandomBoolean()
   }
 
   private getRandomHexColor(): string {
