@@ -1,6 +1,6 @@
 import { create, type StateCreator } from 'zustand'
 
-import { getAspectRatio } from '@helpers/image/calcAspectRatio'
+import { calcAspectRatio } from '@helpers/image/calcAspectRatio'
 import type { ImageAspectRatio, ImageDimension } from '@app-types/image'
 
 /* eslint no-unused-vars: 0 */
@@ -41,7 +41,7 @@ const imageStoreCreator: StateCreator<Store> = (set, get) => ({
       return [0, 0]
     }
 
-    return getAspectRatio(dimension.width, dimension.height)
+    return calcAspectRatio(dimension.width, dimension.height)
   },
 
   // Actions

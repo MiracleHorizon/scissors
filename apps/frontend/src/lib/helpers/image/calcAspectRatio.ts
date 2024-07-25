@@ -35,4 +35,6 @@ const withCache = (cb: (width: ImageWidth, height: ImageHeight) => ImageAspectRa
 }
 
 const calcWithCache = withCache(calcAspectRatio)
-export { calcWithCache as getAspectRatio }
+
+export { calcWithCache as calcAspectRatio }
+export { calcAspectRatio as calcAspectRatioPure }
