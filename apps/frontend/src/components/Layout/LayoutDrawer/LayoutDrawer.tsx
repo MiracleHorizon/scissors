@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Flex, Heading, IconButton, Separator } from '@radix-ui/themes'
 
@@ -16,6 +16,7 @@ import styles from './LayoutDrawer.module.css'
 const LayoutDrawer = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const params = useParams()
 
   const handleClose = () => setIsOpen(false)
 
@@ -23,7 +24,7 @@ const LayoutDrawer = () => {
 
   useEffect(() => {
     handleClose()
-  }, [pathname])
+  }, [params, pathname])
 
   return (
     <Drawer
