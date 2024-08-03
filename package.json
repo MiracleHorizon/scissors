@@ -7,7 +7,7 @@
   "authorGithub": "https://github.com/MiracleHorizon",
   "repository": "https://github.com/MiracleHorizon/scissors",
   "license": "MIT",
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@9.6.0",
   "workspaces": [
     "apps/*",
     "packages/*"
