@@ -5,7 +5,7 @@ import type { UseThemeProps } from 'next-themes/dist/types'
 import { getLocalStorageThemeColor, type ThemeColor } from '@lib/theme'
 
 interface Returns extends UseThemeProps {
-  themeColor: ThemeColor | null
+  themeColor: ThemeColor
   toggleTheme: VoidFunction
 }
 

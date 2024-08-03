@@ -24,7 +24,6 @@ export const UploadedFilePreview = ({ file, onClick }: Props) => {
     <Box width='100%' style={rootStyle} className={styles.root}>
       <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={downloadPayload?.link ?? URL.createObjectURL(file)}
         alt={file.name}

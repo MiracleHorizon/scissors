@@ -6,7 +6,6 @@ interface Props {
 }
 
 export const ExtractRegionPreview = ({ file, aspectRatio }: Props) => (
-  // eslint-disable-next-line @next/next/no-img-element
   <img
     src={URL.createObjectURL(file)}
     width={200}
