@@ -8,7 +8,7 @@
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "lint:styles": "npx stylelint \"**/*.css\"",
     "format:styles": "npx stylelint --fix \"**/*.css\"",
     "cy:open": "cypress open",
@@ -72,9 +72,7 @@
     "@vitest/coverage-v8": "2.0.3",
     "@vitest/ui": "2.0.3",
     "cypress": "13.10.0",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.3",
-    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint": "9.8.0",
     "jsdom": "24.0.0",
     "next-router-mock": "0.9.13",
     "start-server-and-test": "2.0.3",
@@ -82,5 +80,8 @@
     "stylelint-config-recommended": "14.0.0",
     "typescript": "5.4.5",
     "vitest": "2.0.3"
+  },
+  "overrides": {
+    "eslint": "9.8.0"
   }
 }

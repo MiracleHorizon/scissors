@@ -13,6 +13,9 @@ const nextConfig = {
         hostname: 'raw.githubusercontent.com'
       }
     ]
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 }
 

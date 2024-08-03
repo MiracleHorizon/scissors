@@ -21,7 +21,7 @@ interface WithClick {
   listeners?: never
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 type Listeners = Record<string, Function>
 
 interface WithListeners {

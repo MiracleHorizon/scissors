@@ -25,19 +25,19 @@ export const getLocalStorageTheme = (): Theme | null => {
   return theme
 }
 
-export const getLocalStorageThemeColor = (): ThemeColor | null => {
+export const getLocalStorageThemeColor = (): ThemeColor => {
   if (isServer()) {
-    return null
+    return DEFAULT_THEME_COLOR
   }
 
   const themeColor = localStorage.getItem(THEME_COLOR_LS_KEY) as ThemeColor | null
   if (!themeColor) {
-    return null
+    return DEFAULT_THEME_COLOR
   }
 
   const isThemeColorValid = validateThemeColor(themeColor)
   if (!isThemeColorValid) {
-    return null
+    return DEFAULT_THEME_COLOR
   }
 
   return themeColor

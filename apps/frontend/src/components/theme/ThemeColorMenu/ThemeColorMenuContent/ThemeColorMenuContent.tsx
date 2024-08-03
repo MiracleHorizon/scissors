@@ -10,6 +10,8 @@ import {
 } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
+// eslint-disable-next-line no-unused-vars
+type ChangeValueFunction = (value: string) => void
 export const ThemeColorMenuContent = ({ className }: ClassNameProps) => {
   const { themeColor } = useTheme()
 
@@ -27,9 +29,10 @@ export const ThemeColorMenuContent = ({ className }: ClassNameProps) => {
   return (
     <Flex direction='column' align='start' className={className}>
       <DropdownMenu.Label>Theme Color</DropdownMenu.Label>
-      {/* @typescript-eslint/ban-ts-comment
-          @ts-ignore */}
-      <DropdownMenu.RadioGroup value={themeColor} onValueChange={onValueChange}>
+      <DropdownMenu.RadioGroup
+        value={themeColor}
+        onValueChange={onValueChange as ChangeValueFunction}
+      >
         {themeColorItems.map(({ key, color }) => (
           <ThemeColorMenuItem key={key} color={color} />
         ))}

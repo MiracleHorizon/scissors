@@ -98,7 +98,7 @@ export const ExtractSectionDialog = ({ file }: Props) => {
     /*
      * Should be invoked only once after the first dialog content render.
      */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // react-hooks/exhaustive-deps
   }, [open])
 
   return (
@@ -119,7 +119,6 @@ export const ExtractSectionDialog = ({ file }: Props) => {
 
             <ExtractCallout />
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               ref={imageRef}
               src={file ? URL.createObjectURL(file) : undefined}

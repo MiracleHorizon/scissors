@@ -70,13 +70,11 @@ const ResizeFitExampleImage = ({ srcLight, srcDark, width, height, label }: Exam
 
   return (
     <>
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <Image
         {...common}
         src={pathForExampleImage(srcLight)}
         className='resize-fit-example-image-light'
       />
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <Image
         {...common}
         src={pathForExampleImage(srcDark)}

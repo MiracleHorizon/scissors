@@ -3,7 +3,10 @@
 import dynamic from 'next/dynamic'
 import { Flex, Separator } from '@radix-ui/themes'
 
-import { ButtonDownloadImageSkeleton, ButtonRequestSkeleton } from '../ProcessingFooterContentSkeleton'
+import {
+  ButtonDownloadImageSkeleton,
+  ButtonRequestSkeleton
+} from '../ProcessingFooterContentSkeleton'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
 const ButtonDownloadImage = dynamic(

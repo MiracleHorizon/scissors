@@ -26,7 +26,8 @@
       "dependsOn": [
         "^build",
         "^lint"
-      ]
+      ],
+      "cache": false
     },
     "postbuild": {
       "dependsOn": [
