@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
+import { clsx } from 'clsx'
 
 import { CookieIcon } from '@scissors/react-icons/CookieIcon'
 
@@ -52,10 +53,7 @@ const CookieConsentBanner = () => {
   return (
     <Card
       size='2'
-      style={{
-        bottom: isHomePage ? 'calc(var(--ProcessingFooter-height) + 20px)' : '20px'
-      }}
-      className={styles.root}
+      className={clsx(styles.root, isHomePage ? styles.homePosition : styles.basicPosition)}
     >
       <Flex
         align='center'

@@ -15,6 +15,14 @@
   flex-shrink: 0;
 }
 
+.basicPosition {
+  bottom: calc(var(--processing-footer-height) + 20px);
+}
+
+.homePosition {
+  bottom: 20px;
+}
+
 @media screen and (max-width: 519px) {
   .root {
     max-width: 300px;
