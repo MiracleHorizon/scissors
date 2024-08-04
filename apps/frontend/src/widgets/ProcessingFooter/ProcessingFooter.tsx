@@ -10,7 +10,7 @@ const ProcessingFooterContent = dynamic(() => import('./ProcessingFooterContent'
 })
 
 export const ProcessingFooter = () => (
-  <Box asChild height='var(--processing-footer-height)' width='100%' px='4' className={styles.root}>
+  <Box asChild width='100%' px='4' className={styles.root}>
     <footer>
       <ProcessingFooterContent />
     </footer>
