@@ -1,7 +1,9 @@
+import { isServer } from '@helpers/isServer'
+
 const MEDIA_QUERY_SELECTOR = '(prefers-reduced-motion: reduce)'
 
 export const isPrefersReduceMotion = (): boolean => {
-  if (typeof window === 'undefined') {
+  if (isServer()) {
     return false
   }
 

@@ -4,12 +4,7 @@ import { clsx } from 'clsx'
 import capitalize from 'lodash.capitalize'
 
 import { ColorSwatch } from '@ui/ColorSwatch'
-import {
-  getRadixColorVar,
-  setThemeColorCookie,
-  THEME_COLOR_LS_KEY,
-  type ThemeColorItem
-} from '@lib/theme'
+import { getRadixColorVar, setThemeColorServerCookie, type ThemeColorItem } from '@lib/theme'
 import styles from './ThemeColorGridItem.module.css'
 
 interface Props extends Pick<ThemeColorItem, 'color'> {
@@ -17,16 +12,7 @@ interface Props extends Pick<ThemeColorItem, 'color'> {
 }
 
 export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
-  const handleSetThemeColor = () => {
-    localStorage.setItem(THEME_COLOR_LS_KEY, color)
-    const event = new StorageEvent('storage', {
-      key: THEME_COLOR_LS_KEY,
-      newValue: color
-    })
-    window.dispatchEvent(event)
-
-    void setThemeColorCookie(color)
-  }
+  const handleSetThemeColor = () => setThemeColorServerCookie(color)
 
   return (
     <ColorSwatch

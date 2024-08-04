@@ -6,7 +6,7 @@ const createTourElementSelector = (step: number) => `[data-tourstep='${step}']`
 
 export const createTour = async () => {
   const { driver } = await import('driver.js')
-  const { isPrefersReduceMotion } = await import('@helpers/isPrefersReduceMotion')
+  const { isPrefersReduceMotion } = await import('@helpers/browser/isPrefersReduceMotion')
 
   const steps: ReturnType<(typeof driver.arguments)['steps']> = [
     {

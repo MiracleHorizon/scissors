@@ -1,36 +1,18 @@
 import { isServer } from '@helpers/isServer'
+import { readCookieValue } from '@helpers/browser/readCookieValue'
 import { themeColorSchema, themeSchema } from './schemas'
-import { DEFAULT_THEME, DEFAULT_THEME_COLOR, THEME_COLOR_LS_KEY, THEME_LS_KEY } from './constants'
-import type { Theme, ThemeColor } from './types'
+import { DEFAULT_THEME_COLOR, THEME_COLOR_STORAGE_KEY } from './constants'
+import type { ThemeColor } from './types'
 
-export const validateTheme = (theme: Theme) => themeSchema.isValidSync(theme)
-export const validateThemeColor = (themeColor: ThemeColor) =>
-  themeColorSchema.isValidSync(themeColor)
+export const validateTheme = (value: unknown) => themeSchema.isValidSync(value)
+export const validateThemeColor = (value: unknown) => themeColorSchema.isValidSync(value)
 
-export const getLocalStorageTheme = (): Theme | null => {
-  if (isServer()) {
-    return null
-  }
-
-  const theme = localStorage.getItem(THEME_LS_KEY) as Theme | null
-  if (!theme) {
-    return null
-  }
-
-  const isThemeValid = validateTheme(theme)
-  if (!isThemeValid) {
-    return null
-  }
-
-  return theme
-}
-
-export const getLocalStorageThemeColor = (): ThemeColor => {
+export const getThemeColorClientCookie = (): ThemeColor => {
   if (isServer()) {
     return DEFAULT_THEME_COLOR
   }
 
-  const themeColor = localStorage.getItem(THEME_COLOR_LS_KEY) as ThemeColor | null
+  const themeColor = readCookieValue(THEME_COLOR_STORAGE_KEY)
   if (!themeColor) {
     return DEFAULT_THEME_COLOR
   }
@@ -40,15 +22,5 @@ export const getLocalStorageThemeColor = (): ThemeColor => {
     return DEFAULT_THEME_COLOR
   }
 
-  return themeColor
-}
-
-export const getClientThemeAppearance = () => {
-  const theme = getLocalStorageTheme()
-  const themeColor = getLocalStorageThemeColor()
-
-  return {
-    theme: theme ?? DEFAULT_THEME,
-    themeColor: themeColor ?? DEFAULT_THEME_COLOR
-  }
+  return themeColor as ThemeColor
 }

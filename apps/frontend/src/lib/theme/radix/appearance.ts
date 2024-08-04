@@ -27,4 +27,4 @@ export const themeColorItems: ThemeColorItem[] = [
   { key: 'gold', color: 'gold' },
   { key: 'bronze', color: 'bronze' },
   { key: 'gray', color: 'gray' }
-]
+] as const
