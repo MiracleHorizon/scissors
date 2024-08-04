@@ -20,6 +20,7 @@
     "build:packages": "turbo build --filter='./packages/*'",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "prepare": "husky",
     "fe:dev": "cd apps/frontend && pnpm dev",
     "fe:build": "cd apps/frontend && pnpm build",
     "fe:start": "cd apps/frontend && pnpm start",
@@ -31,8 +32,7 @@
     "be:start": "cd apps/backend && pnpm start",
     "be:prod": "cd apps/backend && pnpm prod",
     "be:lint": "cd apps/backend && pnpm lint",
-    "be:test": "cd apps/backend && pnpm test",
-    "prepare": "husky"
+    "be:test": "cd apps/backend && pnpm test"
   },
   "devDependencies": {
     "@eslint/js": "9.8.0",
@@ -42,7 +42,7 @@
     "globals": "15.9.0",
     "husky": "9.0.11",
     "prettier": "3.2.5",
-    "turbo": "1.13.2",
+    "turbo": "2.0.11",
     "typescript": "5.4.5",
     "typescript-eslint": "8.0.0",
     "vite": "5.2.8"
