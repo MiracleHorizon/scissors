@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Popover, Skeleton } from '@radix-ui/themes'
 
 import { AppearancePopoverTrigger } from './AppearancePopoverTrigger'
-import { useSyncThemeAppearance } from '@hooks/useSyncThemeAppearance'
 
 const AppearancePopoverContent = dynamic(
   () => import('./AppearancePopoverContent').then(mod => mod.AppearancePopoverContent),
@@ -17,8 +16,6 @@ const AppearancePopoverContent = dynamic(
 
 const AppearancePopover = () => {
   const [isOpen, setIsOpen] = useState(false)
-
-  useSyncThemeAppearance()
 
   return (
     <Popover.Root open={isOpen} defaultOpen={false} onOpenChange={setIsOpen}>

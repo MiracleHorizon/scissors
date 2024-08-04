@@ -6,7 +6,7 @@ import { IconButton, Tooltip } from '@radix-ui/themes'
 import { CopyIcon } from '@scissors/react-icons/CopyIcon'
 import { CheckIcon } from '@scissors/react-icons/CheckIcon'
 
-import { copyToClipboard } from '@helpers/copyToClipboard'
+import { copyToClipboard } from '@helpers/browser/copyToClipboard'
 import type { ButtonProps } from '@lib/theme'
 
 interface Props extends ButtonProps {

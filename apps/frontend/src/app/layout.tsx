@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import type { PropsWithChildren } from 'react'
 
 import { Layout } from '@components/Layout'
-import { DEFAULT_THEME, DEFAULT_THEME_COLOR, getThemeColorCookie, THEME_LS_KEY } from '@lib/theme'
+import { DEFAULT_THEME, getThemeColorServerCookie, THEME_STORAGE_KEY } from '@lib/theme'
 import { geistSans } from './fonts'
 import './globals.css'
 
@@ -17,7 +17,7 @@ const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanne
 export { metadata } from '@site/seo'
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
-  const themeColor = await getThemeColorCookie()
+  const themeColor = await getThemeColorServerCookie()
 
   return (
     <html lang='en' suppressHydrationWarning>
@@ -25,10 +25,10 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         <ThemeProvider
           attribute='class'
           defaultTheme={DEFAULT_THEME}
-          storageKey={THEME_LS_KEY}
+          storageKey={THEME_STORAGE_KEY}
           disableTransitionOnChange
         >
-          <Theme accentColor={themeColor ?? DEFAULT_THEME_COLOR}>
+          <Theme accentColor={themeColor}>
             <CookieConsentBanner />
 
             <Layout>{children}</Layout>

@@ -5,8 +5,8 @@ import { ThemeProvider } from 'next-themes'
 import type { Metadata } from 'next'
 
 import { SITE_TITLE } from '@site/config'
-import { getLocalStorageThemeColor } from '@lib/theme/helpers'
-import { DEFAULT_THEME_COLOR, THEME_LS_KEY } from '@lib/theme/constants'
+import { getThemeColorClientCookie } from '@lib/theme/helpers'
+import { THEME_STORAGE_KEY } from '@lib/theme/constants'
 import { geistSans } from './fonts'
 import type { ErrorPageProps } from '@app-types/next'
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const GlobalError = ({ error, reset }: ErrorPageProps) => {
-  const themeColor = getLocalStorageThemeColor()
+  const themeColor = getThemeColorClientCookie()
 
   // eslint-disable-next-line no-console
   console.log(error)
@@ -23,8 +23,8 @@ const GlobalError = ({ error, reset }: ErrorPageProps) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={geistSans.variable}>
-        <ThemeProvider storageKey={THEME_LS_KEY}>
-          <Theme accentColor={themeColor ?? DEFAULT_THEME_COLOR}>
+        <ThemeProvider storageKey={THEME_STORAGE_KEY}>
+          <Theme accentColor={themeColor}>
             <Flex
               align='center'
               justify='start'

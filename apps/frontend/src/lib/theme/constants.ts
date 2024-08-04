@@ -5,10 +5,8 @@ export const DEFAULT_THEME: Theme = 'system'
 export const DEFAULT_THEME_COLOR: ThemeColor = 'indigo'
 
 // Storages
-export const THEME_COOKIE_NAME = 'scissors-theme'
-export const THEME_LS_KEY = THEME_COOKIE_NAME
-export const THEME_COLOR_COOKIE_NAME = 'scissors-theme-color'
-export const THEME_COLOR_LS_KEY = THEME_COLOR_COOKIE_NAME
+export const THEME_STORAGE_KEY = 'scissors-theme'
+export const THEME_COLOR_STORAGE_KEY = 'scissors-theme-color'
 
 /*
  * https://www.radix-ui.com/themes/docs/theme/breakpoints
