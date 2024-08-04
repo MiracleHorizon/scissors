@@ -7,12 +7,7 @@ import { isValidFileName } from '@helpers/file/isValidFileName'
 import { cropFileName } from '@helpers/file/cropFileName'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import { SITE_TITLE } from '@site/config'
-
-export interface DownloadPayload {
-  link: string
-  fileName: string
-  file: File
-}
+import type { DownloadableFile } from '@app-types/DownloadableFile'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
@@ -27,7 +22,7 @@ interface Store extends State {
   setOutputFileName: (outputFileName: string) => void
   resetOutputFileName: VoidFunction
   setOutputFormat: (outputFormat: ImageFileFormat | null) => void
-  setDownloadPayload: (downloadPayload: DownloadPayload) => void
+  setDownloadableFile: (downloadableFile: DownloadableFile) => void
   toggleKeepChanges: VoidFunction
 }
 
@@ -36,7 +31,7 @@ interface State {
   originalFile: File | null
   outputFileName: string
   outputFormat: ImageFileFormat | null
-  downloadPayload: Omit<DownloadPayload, 'file'> | null
+  downloadableFile: Omit<DownloadableFile, 'file'> | null
   keepChanges: boolean
 }
 
@@ -45,7 +40,7 @@ export const defaultState: State = {
   originalFile: null,
   outputFileName: '',
   outputFormat: null,
-  downloadPayload: null,
+  downloadableFile: null,
   keepChanges: false
 } as const
 
@@ -118,7 +113,7 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
       file,
       originalFile: file,
       outputFormat,
-      downloadPayload: null
+      downloadableFile: null
     })
   },
   removeFile: () =>
@@ -126,7 +121,7 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
       file: null,
       originalFile: null,
       outputFormat: null,
-      downloadPayload: null
+      downloadableFile: null
     }),
 
   setOutputFileName: outputFileName =>
@@ -139,10 +134,10 @@ const outputStoreCreator: StateCreator<Store> = (set, get) => ({
     }),
 
   setOutputFormat: outputFormat => set({ outputFormat }),
-  setDownloadPayload: ({ file, ...downloadPayload }) =>
+  setDownloadableFile: ({ file, ...downloadableFile }) =>
     set({
       file,
-      downloadPayload
+      downloadableFile
     }),
 
   toggleKeepChanges: () =>

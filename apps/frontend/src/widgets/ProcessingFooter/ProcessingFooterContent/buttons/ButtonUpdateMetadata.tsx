@@ -4,9 +4,9 @@ import { ButtonRequest } from '../ButtonRequest'
 import { useOutputStore } from '@stores/output'
 import { useRequestStore } from '@stores/request'
 import { useMetadataStore } from '@stores/metadata'
-import { useMetadataMutation } from '@api/handle-image-metadata'
+import { useMetadataMutation } from '@api/update-image-metadata'
 
-export const ButtonMetadata = () => {
+export const ButtonUpdateMetadata = () => {
   const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)

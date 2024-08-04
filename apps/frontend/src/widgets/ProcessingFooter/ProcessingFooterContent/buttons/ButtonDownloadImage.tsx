@@ -10,8 +10,8 @@ import { TOUR_STEP } from '@lib/tour'
 export const ButtonDownloadImage = () => {
   const linkRef = useRef<HTMLAnchorElement>(null)
 
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
-  const disabled = !downloadPayload
+  const downloadableFile = useOutputStore(state => state.downloadableFile)
+  const disabled = !downloadableFile
 
   const handleButtonClick = () => {
     if (!linkRef.current) return
@@ -35,11 +35,11 @@ export const ButtonDownloadImage = () => {
         <MediaQuery minWidth={401}>Download</MediaQuery>
       </Button>
 
-      {downloadPayload && (
+      {downloadableFile && (
         <a
           ref={linkRef}
-          href={downloadPayload.link}
-          download={downloadPayload.fileName}
+          href={downloadableFile.link}
+          download={downloadableFile.fileName}
           className='hidden'
         />
       )}

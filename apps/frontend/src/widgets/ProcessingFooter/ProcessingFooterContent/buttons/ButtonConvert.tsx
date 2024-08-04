@@ -10,33 +10,25 @@ export const ButtonConvert = () => {
   const file = useOutputStore(state => state.getFileForProcessing())
   const fileName = useOutputStore(state => state.getFullFileName())
   const isLoading = useRequestStore(state => state.isLoading)
-  const setLoading = useRequestStore(state => state.setLoading)
   const convertSettings = useConvertSettings()
 
   const { mutate: convert, error, reset } = useConvertMutation()
 
   const handleConvert = useCallback(() => {
-    if (!file) return
+    if (!file || isLoading) return
 
-    setLoading(true)
     void convert({
       file,
       fileName,
       settings: convertSettings
     })
-  }, [file, fileName, convertSettings, setLoading, convert])
-
-  const handleRetry = useCallback(() => {
-    if (isLoading) return
-
-    handleConvert()
-  }, [isLoading, handleConvert])
+  }, [isLoading, file, fileName, convertSettings, convert])
 
   return (
     <ButtonRequest
       label='Convert'
       makeRequest={handleConvert}
-      retry={handleRetry}
+      retry={handleConvert}
       reset={reset}
       error={error}
       isLoading={isLoading}

@@ -18,14 +18,14 @@ interface Props {
 }
 
 export const UploadedFilePreview = ({ file, onClick }: Props) => {
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
+  const downloadableFile = useOutputStore(state => state.downloadableFile)
 
   return (
     <Box width='100%' style={rootStyle} className={styles.root}>
       <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
       <img
-        src={downloadPayload?.link ?? URL.createObjectURL(file)}
+        src={downloadableFile?.link ?? URL.createObjectURL(file)}
         alt={file.name}
         className={styles.image}
         onClick={onClick}

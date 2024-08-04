@@ -1,16 +1,16 @@
-import type { ConvertSettings } from '@scissors/sharp'
+import type { MetadataSettings } from '@scissors/sharp'
 
 import { RequestError } from './errors/RequestError'
 import { FetchException } from './exceptions/FetchException'
 import { ABORT_TIMEOUT, HTTP_METHOD } from './config'
 import { createImageProcessingFormData } from './helpers/createImageProcessingFormData'
-import { PATH_API_CONVERT } from '@site/paths'
+import { PATH_API_METADATA } from '@site/paths'
 import { createApiURL, IS_PRODUCTION } from '@site/config'
 import { useImageMutation } from '@api/hooks/useImageMutation'
 import type { MutationPayload } from './types'
 import type { DownloadableFile } from '@app-types/DownloadableFile'
 
-const convertImage = async (formData: FormData): Promise<Blob> => {
+const updateImageMetadata = async (formData: FormData): Promise<Blob> => {
   const abortController = new AbortController()
 
   try {
@@ -18,7 +18,7 @@ const convertImage = async (formData: FormData): Promise<Blob> => {
       abortController.abort()
     }, ABORT_TIMEOUT)
 
-    const url = createApiURL(PATH_API_CONVERT)
+    const url = createApiURL(PATH_API_METADATA)
     const response = await fetch(url, {
       body: formData,
       method: HTTP_METHOD.POST,
@@ -45,20 +45,20 @@ const convertImage = async (formData: FormData): Promise<Blob> => {
   }
 }
 
-const convertImageMutation = async ({
+const updateImageMetadataMutation = async ({
   file,
   fileName,
   settings
-}: MutationPayload<ConvertSettings>): Promise<DownloadableFile> => {
+}: MutationPayload<MetadataSettings>): Promise<DownloadableFile> => {
   const formData = createImageProcessingFormData({
     file,
     settings
   })
-  const imageBlob = await convertImage(formData)
+  const imageBlob = await updateImageMetadata(formData)
 
   const link = URL.createObjectURL(imageBlob)
   const newFile = new File([imageBlob], fileName, {
-    type: settings.outputFormat ? `image/${settings.outputFormat}` : file.type
+    type: file.type
   })
 
   return {
@@ -68,4 +68,4 @@ const convertImageMutation = async ({
   }
 }
 
-export const useConvertMutation = () => useImageMutation(convertImageMutation)
+export const useMetadataMutation = () => useImageMutation(updateImageMetadataMutation)

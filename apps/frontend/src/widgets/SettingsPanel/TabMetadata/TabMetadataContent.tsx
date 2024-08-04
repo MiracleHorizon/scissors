@@ -28,7 +28,7 @@ const allowedFileTypes: string[] = [
 export const TabMetadataContent = () => {
   const [parsedMetadata, setParsedMetadata] = useState<ExifrReturn | null>(null)
   const file = useOutputStore(state => state.file)
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
+  const downloadableFile = useOutputStore(state => state.downloadableFile)
   const isFileTypeAllowed = file ? allowedFileTypes.includes(cropImageFileType(file.type)) : false
 
   useEffect(() => {
@@ -47,13 +47,13 @@ export const TabMetadataContent = () => {
           setParsedMetadata(null)
         })
     })
-  }, [file, downloadPayload])
+  }, [file, downloadableFile])
 
   useEffect(() => {
-    if (!file && !downloadPayload && parsedMetadata) {
+    if (!file && !downloadableFile && parsedMetadata) {
       setParsedMetadata(null)
     }
-  }, [file, downloadPayload, parsedMetadata])
+  }, [file, downloadableFile, parsedMetadata])
 
   return (
     <Flex direction='column' gap='4' pl='3' pr='4' pt='3' pb='4' width='100%'>

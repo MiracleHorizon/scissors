@@ -1,3 +1,5 @@
+// TODO: Rename module
+// TODO: Add output format (and don`t forget add it to the api request)
 export interface MetadataSettings {
   keepMetadata: boolean
   keepExif: boolean

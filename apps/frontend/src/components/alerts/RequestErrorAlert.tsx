@@ -3,7 +3,7 @@
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
 import { ExclamationTitle } from '@ui/ExclamationTitle'
-import { handleRequestError } from '@api/helpers/handleRequestError'
+import { handleRequestRejection } from '@api/helpers/handleRequestRejection'
 
 interface Props {
   open: boolean
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const RequestErrorAlert = ({ open, error, reset, retry }: Props) => {
-  const message = handleRequestError(error)
+  const message = handleRequestRejection(error)
   const isMessageEmpty = message.length === 0
 
   return (

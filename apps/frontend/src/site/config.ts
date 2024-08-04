@@ -1,5 +1,7 @@
 export { ALLOWED_IMAGE_FORMATS as allowedImageFormats } from '@scissors/sharp'
 
+export const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+
 // METADATA
 export const SITE_TITLE = 'Scissors'
 export const SITE_DESCRIPTION =

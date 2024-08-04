@@ -11,7 +11,8 @@ import 'yet-another-react-lightbox/styles.css'
 
 import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
 
-import { type DownloadPayload, useOutputStore } from '@stores/output'
+import { useOutputStore } from '@stores/output'
+import type { DownloadableFile } from '@app-types/DownloadableFile'
 
 interface Props {
   file: File
@@ -20,14 +21,14 @@ interface Props {
 }
 
 export const UploadedFileLightbox = ({ file, isOpen, onClose }: Props) => {
-  const downloadPayload = useOutputStore(state => state.downloadPayload)
+  const downloadableFile = useOutputStore(state => state.downloadableFile)
   const lightboxProps = useMemo(
     () =>
       getLightboxProps({
         file,
-        downloadPayload
+        downloadablePayloadWithoutFile: downloadableFile
       }),
-    [file, downloadPayload]
+    [file, downloadableFile]
   )
 
   return <Lightbox open={isOpen} close={onClose} {...lightboxProps} />
@@ -35,16 +36,16 @@ export const UploadedFileLightbox = ({ file, isOpen, onClose }: Props) => {
 
 const getLightboxProps = ({
   file,
-  downloadPayload
+  downloadablePayloadWithoutFile
 }: {
   file: File
-  downloadPayload: Omit<DownloadPayload, 'file'> | null
+  downloadablePayloadWithoutFile: Omit<DownloadableFile, 'file'> | null
 }): LightboxExternalProps => {
   const plugins: Plugin[] = [Zoom, Fullscreen]
   const slides: Slide[] = []
 
-  if (downloadPayload) {
-    const { link: url, fileName: filename } = downloadPayload
+  if (downloadablePayloadWithoutFile) {
+    const { link: url, fileName: filename } = downloadablePayloadWithoutFile
 
     plugins.push(Download)
     slides.push({

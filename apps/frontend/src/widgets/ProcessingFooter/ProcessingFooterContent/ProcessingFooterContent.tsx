@@ -27,8 +27,8 @@ const ButtonResize = dynamic(() => import('./buttons/ButtonResize').then(mod => 
   ssr: false,
   loading: () => <ButtonRequestSkeleton />
 })
-const ButtonMetadata = dynamic(
-  () => import('./buttons/ButtonMetadata').then(mod => mod.ButtonMetadata),
+const ButtonUpdateMetadata = dynamic(
+  () => import('./buttons/ButtonUpdateMetadata').then(mod => mod.ButtonUpdateMetadata),
   {
     ssr: false,
     loading: () => <ButtonRequestSkeleton />
@@ -46,7 +46,7 @@ const ProcessingFooterContent = () => {
 
       {selectedTab === TOOLBAR_TAB.CONVERT && <ButtonConvert />}
       {selectedTab === TOOLBAR_TAB.RESIZE && <ButtonResize />}
-      {selectedTab === TOOLBAR_TAB.METADATA && <ButtonMetadata />}
+      {selectedTab === TOOLBAR_TAB.METADATA && <ButtonUpdateMetadata />}
     </Flex>
   )
 }
