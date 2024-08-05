@@ -66,7 +66,7 @@ export class ConvertSettingsRandomizer implements Randomizer {
     return randomSettings
   }
 
-  private getRandomNumber(...args: Parameters<typeof getRandomNumber>): number | null {
+  private getRandomNumber(...args: Parameters<typeof getRandomNumber>): number {
     return getRandomNumber(...args)
   }
 
@@ -116,7 +116,7 @@ export class ConvertSettingsRandomizer implements Randomizer {
       }
     }
 
-    const sigma = this.getRandomNumber(MIN_BLUR_SIGMA, MAX_BLUR_SIGMA, 2)
+    const sigma = this.getRandomNumber(MIN_BLUR_SIGMA, MAX_BLUR_SIGMA, 1)
 
     return {
       value,
@@ -125,7 +125,7 @@ export class ConvertSettingsRandomizer implements Randomizer {
   }
 
   getRandomRotate(): RotateOptions {
-    const angle = this.getRandomNumber(MIN_ROTATE_ANGLE, MAX_ROTATE_ANGLE)!
+    const angle = this.getRandomNumber(MIN_ROTATE_ANGLE, MAX_ROTATE_ANGLE)
     const background = this.getRandomHexColor()
     const withDominantBackground = this.getRandomBoolean()
 
@@ -137,9 +137,9 @@ export class ConvertSettingsRandomizer implements Randomizer {
   }
 
   getRandomModulate(): ModulateOptions {
-    const lightness = this.getRandomNumber(MIN_LIGHTNESS, MAX_LIGHTNESS, 2)
-    const brightness = this.getRandomNumber(MIN_BRIGHTNESS, MAX_BRIGHTNESS, 2)
-    const saturation = this.getRandomNumber(MIN_SATURATION, MAX_SATURATION, 2)
+    const lightness = this.getRandomNumber(MIN_LIGHTNESS, MAX_LIGHTNESS)
+    const brightness = this.getRandomNumber(MIN_BRIGHTNESS, MAX_BRIGHTNESS, 1)
+    const saturation = this.getRandomNumber(MIN_SATURATION, MAX_SATURATION, 1)
     const hue = this.getRandomNumber(MIN_HUE, MAX_HUE)
 
     return {
@@ -159,8 +159,8 @@ export class ConvertSettingsRandomizer implements Randomizer {
   }
 
   getRandomNormalise(): NormaliseOptions {
-    let lower = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)!
-    let upper = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)!
+    let lower = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)
+    let upper = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)
 
     const isUpperGreater = upper > lower
     if (!isUpperGreater) [lower, upper] = [upper, lower]
