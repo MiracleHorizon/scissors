@@ -1,8 +1,9 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { array, boolean, object, string } from 'yup'
 
-import { MAX_OPERATIONS } from './constants'
+import { defaultSettings, MAX_OPERATIONS } from './constants'
+import { SITE_TITLE } from '@site/config'
+import { isSettingsValid } from './utility'
 import type { Label, Setting } from './types'
 
 /* eslint no-unused-vars: 0 */
@@ -15,49 +16,6 @@ interface Store {
 
   toggleSettingChecked: (label: Label) => void
 }
-
-export const defaultSettings: Setting[] = [
-  {
-    label: 'flip',
-    checked: true
-  },
-  {
-    label: 'flop',
-    checked: false
-  },
-  {
-    label: 'grayscale',
-    checked: false
-  },
-  {
-    label: 'negate',
-    checked: false
-  },
-  {
-    label: 'blur',
-    checked: true
-  },
-  {
-    label: 'rotate',
-    checked: true
-  },
-  {
-    label: 'modulate',
-    checked: false
-  },
-  {
-    label: 'gamma',
-    checked: true
-  },
-  {
-    label: 'tint',
-    checked: false
-  },
-  {
-    label: 'normalise',
-    checked: false
-  }
-] as const
 
 export const useRandomizeStore = create(
   persist<Store>(
@@ -102,7 +60,7 @@ export const useRandomizeStore = create(
         })
     }),
     {
-      name: 'scissors-randomize-settings',
+      name: `${SITE_TITLE.toLowerCase()}-randomize-settings`,
       merge: mergeState
     }
   )
@@ -142,17 +100,4 @@ export function mergeState<State>(persistedState: unknown, currentState: State):
     ...currentState,
     settings: defaultSettings
   }
-}
-
-export const isSettingsValid = (settings: unknown): boolean => {
-  const optionSchema = object({
-    label: string()
-      .oneOf(defaultSettings.map(s => s.label))
-      .defined()
-      .required(),
-    checked: boolean().defined().required()
-  })
-  const settingsSchema = array(optionSchema).length(defaultSettings.length).defined().required()
-
-  return settingsSchema.isValidSync(settings)
 }
