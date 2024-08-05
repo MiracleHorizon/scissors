@@ -6,14 +6,12 @@ import type { MarginProps } from '@radix-ui/themes/props'
 
 import { TrashIcon } from '@scissors/react-icons/TrashIcon'
 
-import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 
 interface Props extends ButtonProps, MarginProps {
   tooltipDelay?: number
   tooltipContent?: string
   disabled?: boolean
-  onClick?: VoidFunction
 }
 
 export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
@@ -22,7 +20,7 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
     ref
   ) => {
     const Button = (
-      <IconButton {...props} color={color} variant={variant} disabled={disabled} ref={ref}>
+      <IconButton {...props} ref={ref} color={color} variant={variant} disabled={disabled}>
         <TrashIcon width='24px' height='24px' label='delete' />
       </IconButton>
     )
@@ -33,11 +31,8 @@ export const ButtonDelete = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <Tooltip
+        open={disabled ? false : undefined}
         delayDuration={tooltipDelay}
-        open={isTooltipOpen({
-          content: tooltipContent,
-          isParentDisabled: disabled
-        })}
         content={tooltipContent}
       >
         {Button}

@@ -5,26 +5,20 @@ import { IconButton, Tooltip } from '@radix-ui/themes'
 
 import { ResetIcon } from '@scissors/react-icons/ResetIcon'
 
-import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
-import type { ClassNameProps } from '@app-types/ClassNameProps'
 
-interface Props extends ButtonProps, ClassNameProps {
-  tooltipContent: string
-  onClick?: VoidFunction
+interface Props extends ButtonProps {
+  tooltipDelay?: number
+  tooltipContent?: string
   disabled?: boolean
 }
 
 export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
-  ({ tooltipContent, disabled, variant = 'outline', color = 'red', ...props }, ref) => (
-    <Tooltip
-      delayDuration={500}
-      open={isTooltipOpen({
-        content: tooltipContent,
-        isParentDisabled: disabled
-      })}
-      content={tooltipContent}
-    >
+  (
+    { tooltipDelay, tooltipContent, disabled, variant = 'outline', color = 'red', ...props },
+    ref
+  ) => {
+    const Button = (
       <IconButton
         {...props}
         ref={ref}
@@ -35,8 +29,22 @@ export const ButtonReset = forwardRef<HTMLButtonElement, Props>(
       >
         <ResetIcon width='18px' height='18px' />
       </IconButton>
-    </Tooltip>
-  )
+    )
+
+    if (!tooltipContent) {
+      return Button
+    }
+
+    return (
+      <Tooltip
+        open={disabled ? false : undefined}
+        delayDuration={tooltipDelay}
+        content={tooltipContent}
+      >
+        {Button}
+      </Tooltip>
+    )
+  }
 )
 
 ButtonReset.displayName = 'ButtonReset'
