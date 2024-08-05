@@ -1,5 +1,5 @@
-import { defaultSettings, mergeState } from '../store'
-import { MAX_OPERATIONS } from '../constants'
+import { mergeState } from '../store'
+import { defaultSettings, MAX_OPERATIONS } from '../constants'
 
 describe('ToolbarRandomizeMenu/store/mergeState', () => {
   const defaultPayload = {
