@@ -24,7 +24,8 @@ export const BlurSigma = ({ disabled }: Props) => {
 
   return (
     <Flex direction='column' align='center' gap='2' width='100%'>
-      <BlurSigmaHeader disabled={disabled} />
+      <BlurSigmaHeader value={sigma} disabled={disabled} />
+
       <Slider
         value={[sigma]}
         defaultValue={[MIN_BLUR_SIGMA]}

@@ -36,7 +36,7 @@ export const DEFAULT_NEGATE: NegateOptions = {
 export const MIN_GAMMA = 1
 export const MAX_GAMMA = 3
 export const DEFAULT_GAMMA = 2.2
-export const GAMMA_STEP = 0.1
+export const GAMMA_STEP = 0.01
 
 // Rotate
 export const MIN_ROTATE_ANGLE = -360

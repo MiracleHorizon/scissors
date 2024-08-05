@@ -28,7 +28,7 @@ const getRandomPosition = (index: number): number => {
   const isEven = index % 2 === 0
   const range: [number, number] = isEven ? [40, 60] : [30, 50]
 
-  return Math.floor(getRandomNumber(...range))
+  return getRandomNumber(...range)
 }
 
 const getImageFallback = ({ orientation }: Pick<Props, 'orientation'>): string => {
