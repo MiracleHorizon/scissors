@@ -2,17 +2,16 @@ import { memo, type ReactNode } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-import { isTooltipOpen } from '@helpers/isTooltipOpen'
 import type { ButtonProps } from '@lib/theme'
 import styles from './SortableSectionButton.module.css'
 
-type Props = ButtonProps &
-  Actions & {
-    icon: ReactNode
-    tooltipContent: string
-    isDisabled?: boolean
-    isTooltipDisabled?: boolean
-  }
+type Props = {
+  icon: ReactNode
+  tooltipContent: string
+  isDisabled?: boolean
+  isTooltipDisabled?: boolean
+} & ButtonProps &
+  Actions
 
 type Actions = WithClick | WithListeners
 
@@ -21,6 +20,7 @@ interface WithClick {
   listeners?: never
 }
 
+// TODO: Listeners??
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 type Listeners = Record<string, Function>
 
@@ -41,14 +41,8 @@ export const SortableSectionButton = memo(
     variant = 'surface',
     onClick,
     listeners
-  }: Props) => (
-    <Tooltip
-      content={tooltipContent}
-      open={isTooltipOpen({
-        isParentDisabled: isDisabled || isTooltipDisabled,
-        content: tooltipContent
-      })}
-    >
+  }: Props) => {
+    const Button = (
       <IconButton
         disabled={isDisabled}
         variant={variant}
@@ -61,8 +55,18 @@ export const SortableSectionButton = memo(
       >
         {icon}
       </IconButton>
-    </Tooltip>
-  )
+    )
+
+    if (!tooltipContent) {
+      return Button
+    }
+
+    return (
+      <Tooltip content={tooltipContent} open={isDisabled || isTooltipDisabled ? false : undefined}>
+        {Button}
+      </Tooltip>
+    )
+  }
 )
 
 SortableSectionButton.displayName = 'SortableSectionButton'
