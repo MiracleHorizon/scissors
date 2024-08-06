@@ -46,7 +46,6 @@ const GallerySlide = ({
     >
       <Flex className={styles.sliderContainer}>
         <CompareSlider
-          index={index}
           label={info.label}
           beforeSrc={beforeSrc}
           afterSrc={afterSrc}
