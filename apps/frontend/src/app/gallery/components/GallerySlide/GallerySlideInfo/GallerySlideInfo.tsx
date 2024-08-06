@@ -43,7 +43,7 @@ const ExportSettings = ({ index, settings }: Pick<Props, 'index' | 'settings'>) 
     })
 
   return (
-    <Flex mt='2' className={styles.export}>
+    <Flex mt='2' justify='end' className={styles.export}>
       <ButtonDownload onClick={handleExport} />
     </Flex>
   )
