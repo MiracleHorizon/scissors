@@ -11,6 +11,6 @@ interface Props {
 
 export const GallerySlideDetailItem = ({ label, value }: Props) => (
   <Text as='div'>
-    {label}: <Text weight='medium'>{value}</Text>
+    <Text color='gray'>{label}</Text>: <Text weight='medium'>{value}</Text>
   </Text>
 )
