@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
+  "globalEnv": [
     "**/.env",
     "**/.env.*"
   ],
@@ -13,6 +13,9 @@
         "dist/**",
         ".next/**",
         "!.next/cache/**"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$"
       ]
     },
     "dev": {
