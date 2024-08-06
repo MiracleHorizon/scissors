@@ -32,9 +32,12 @@
     "be:start": "cd apps/backend && pnpm start",
     "be:prod": "cd apps/backend && pnpm prod",
     "be:lint": "cd apps/backend && pnpm lint",
-    "be:test": "cd apps/backend && pnpm test"
+    "be:test": "cd apps/backend && pnpm test",
+    "lint:lastcommit": "commitlint --from=HEAD~1 --to=HEAD"
   },
   "devDependencies": {
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
     "@eslint/js": "9.8.0",
     "eslint": "9.8.0",
     "eslint-config-prettier": "9.1.0",
