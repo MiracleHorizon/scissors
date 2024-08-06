@@ -8,30 +8,20 @@ import {
 import { clsx } from 'clsx'
 
 import { DragHandle } from './DragHandle'
-import { getRandomNumber } from '@helpers/getRandomNumber'
 import styles from './CompareSlider.module.css'
 
+type Orientation = 'landscape' | 'portrait'
+
 interface Props {
-  index: number
   label: string
   beforeSrc: string
   afterSrc: string
-  orientation?: 'landscape' | 'portrait'
+  orientation?: Orientation
 }
 
 const totalImages = 2
 
-const getRandomPosition = (index: number): number => {
-  /*
-   * Make the default position values for "handle" random for a more interesting UI.
-   */
-  const isEven = index % 2 === 0
-  const range: [number, number] = isEven ? [40, 60] : [30, 50]
-
-  return getRandomNumber(...range)
-}
-
-const getImageFallback = ({ orientation }: Pick<Props, 'orientation'>): string => {
+const getImageFallback = (orientation?: Orientation): string => {
   const landscapeFallback = '/slide-landscape-fallback.jpeg'
   const portraitFallback = '/slide-portrait-fallback.jpeg'
 
@@ -42,13 +32,16 @@ const getImageFallback = ({ orientation }: Pick<Props, 'orientation'>): string =
   return portraitFallback
 }
 
-export const CompareSlider = ({ index, label, beforeSrc, afterSrc, orientation }: Props) => {
+export const CompareSlider = ({ label, beforeSrc, afterSrc, orientation }: Props) => {
+  const sliderRef = useReactCompareSliderRef()
+  const imageFallback = getImageFallback(orientation)
+
   /*
+   * TODO: Issue is resolved. Refactor
    * Prevent scrolling to element when clicking on the handle container.
    * https://github.com/nerdyman/react-compare-slider/blob/main/lib/src/ReactCompareSlider.tsx#L192-L195
    * https://github.com/nerdyman/react-compare-slider/issues/128
    */
-  const sliderRef = useReactCompareSliderRef()
   useEffect(() => {
     const rootContainer = sliderRef.current.rootContainer
     if (!rootContainer) return
@@ -100,31 +93,35 @@ export const CompareSlider = ({ index, label, beforeSrc, afterSrc, orientation }
   }
 
   return (
-    <ReactCompareSlider
-      ref={sliderRef}
-      boundsPadding={20}
-      position={getRandomPosition(index)}
-      handle={loaded === totalImages ? <DragHandle isPortrait={isPortrait} /> : null}
-      itemOne={
-        <ReactCompareSliderImage
-          style={imagesStyle}
-          src={errors.includes('before') ? getImageFallback({ orientation }) : beforeSrc}
-          alt={`${label} before`}
-          onLoad={handleLoadImage}
-          onError={setBeforeImageError}
-        />
-      }
-      itemTwo={
-        <ReactCompareSliderImage
-          style={imagesStyle}
-          src={errors.includes('after') ? getImageFallback({ orientation }) : afterSrc}
-          alt={`${label} after`}
-          onLoad={handleLoadImage}
-          onError={setAfterImageError}
-        />
-      }
-      portrait={isPortrait}
-      className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
-    />
+    <>
+      {loaded < totalImages && errors.length === 0 && <div className={styles.loading} />}
+
+      <ReactCompareSlider
+        ref={sliderRef}
+        boundsPadding={20}
+        position={35}
+        handle={<DragHandle isPortrait={isPortrait} />}
+        itemOne={
+          <ReactCompareSliderImage
+            style={imagesStyle}
+            src={errors.includes('before') ? imageFallback : beforeSrc}
+            alt={`${label} before`}
+            onLoad={handleLoadImage}
+            onError={setBeforeImageError}
+          />
+        }
+        itemTwo={
+          <ReactCompareSliderImage
+            style={imagesStyle}
+            src={errors.includes('after') ? imageFallback : afterSrc}
+            alt={`${label} after`}
+            onLoad={handleLoadImage}
+            onError={setAfterImageError}
+          />
+        }
+        portrait={isPortrait}
+        className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
+      />
+    </>
   )
 }

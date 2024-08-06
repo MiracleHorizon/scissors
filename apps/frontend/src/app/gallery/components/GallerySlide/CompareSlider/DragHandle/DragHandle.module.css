@@ -26,7 +26,6 @@
 
 .gutter {
   background-color: var(--color-background);
-  box-shadow: 0 0 4px rgba(0 0 0 / 0.5);
 }
 
 .gutterThumb {

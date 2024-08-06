@@ -20,9 +20,11 @@ export const DragHandle = memo(({ isPortrait }: Props) => (
     className={clsx(styles.root, isPortrait ? styles.portrait : styles.landscape)}
   >
     <DragHandleGutter />
+
     <Flex flexShrink='0' className={styles.gutterThumb}>
       <DragHandleDots2Icon />
     </Flex>
+
     <DragHandleGutter />
   </Flex>
 ))
