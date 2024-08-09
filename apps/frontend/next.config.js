@@ -2,6 +2,12 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compiler: {
+    reactRemoveProperties: {
+      properties: ['^data-testid$', '^data-cy$']
+    },
+    removeConsole: true
+  },
   env: {
     SITE_DOMAIN: process.env.SITE_DOMAIN,
     SERVER_API: process.env.SERVER_API

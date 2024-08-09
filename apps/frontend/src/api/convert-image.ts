@@ -5,7 +5,7 @@ import { FetchException } from './exceptions/FetchException'
 import { ABORT_TIMEOUT, HTTP_METHOD } from './config'
 import { createImageProcessingFormData } from './helpers/createImageProcessingFormData'
 import { PATH_API_CONVERT } from '@site/paths'
-import { createApiURL, IS_PRODUCTION } from '@site/config'
+import { createApiURL } from '@site/config'
 import { useImageMutation } from '@api/hooks/useImageMutation'
 import type { MutationPayload } from './types'
 import type { DownloadableFile } from '@app-types/DownloadableFile'
@@ -35,9 +35,7 @@ const convertImage = async (formData: FormData): Promise<Blob> => {
     })
     return Promise.reject(error)
   } catch (err) {
-    if (!IS_PRODUCTION) {
-      console.log(err)
-    }
+    console.log(err)
 
     throw new FetchException({
       cause: err
