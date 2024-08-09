@@ -23,6 +23,9 @@ const TabResize = dynamic(() => import('./TabResize').then(mod => mod.TabResize)
   ssr: false,
   loading: () => <TabResizeSkeleton />
 })
+const TabDraw = dynamic(() => import('./TabDraw').then(mod => mod.TabDraw), {
+  ssr: false
+})
 const TabMetadata = dynamic(() => import('./TabMetadata').then(mod => mod.TabMetadata), {
   ssr: false
 })
@@ -56,6 +59,7 @@ export const SettingsPanel = () => {
             {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
             {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
             {selectedTab === TOOLBAR_TAB.METADATA && <TabMetadata />}
+            {selectedTab === TOOLBAR_TAB.DRAW && <TabDraw />}
           </Flex>
         </Tabs.Root>
       </Flex>

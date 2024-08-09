@@ -1,4 +1,5 @@
 import type { ThemeColorItem } from '../types'
+import type { RadixThemeColor } from './types'
 
 export const themeColorItems: ThemeColorItem[] = [
   { key: 'tomato', color: 'tomato' },
@@ -27,4 +28,19 @@ export const themeColorItems: ThemeColorItem[] = [
   { key: 'gold', color: 'gold' },
   { key: 'bronze', color: 'bronze' },
   { key: 'gray', color: 'gray' }
+] as const
+
+export const primaryColors: RadixThemeColor[] = [
+  'indigo',
+  'blue',
+  'sky',
+  'red',
+  'tomato',
+  'green',
+  'yellow',
+  'orange',
+  'gray',
+  'brown',
+  'violet',
+  'purple'
 ] as const

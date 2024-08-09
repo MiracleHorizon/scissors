@@ -10,13 +10,14 @@ interface Store {
 export const TOOLBAR_TAB = {
   CONVERT: 'convert',
   RESIZE: 'resize',
-  METADATA: 'metadata'
+  METADATA: 'metadata',
+  DRAW: 'draw'
 } as const
 export type ToolbarTab = (typeof TOOLBAR_TAB)[keyof typeof TOOLBAR_TAB]
 
 export const useTabsStore = create<Store>(set => ({
   // State
-  selectedTab: TOOLBAR_TAB.CONVERT,
+  selectedTab: TOOLBAR_TAB.DRAW,
 
   // Actions
   selectTab: tab => set({ selectedTab: tab })
