@@ -41,7 +41,7 @@ export default tsEslint.config(
       quotes: ['error', 'single'],
       semi: ['error', 'never'],
       eqeqeq: 'error',
-      'no-console': 'warn',
+      'no-console': 'off',
       'no-debugger': 'error',
       'no-unused-vars': 'error',
       'prefer-const': 'error',

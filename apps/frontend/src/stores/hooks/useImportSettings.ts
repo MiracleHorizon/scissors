@@ -23,7 +23,6 @@ export const useImportSettings = (selectedTab: ToolbarTab) => {
     try {
       return JSON.parse(settingsJSON)
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.warn('Failed to parse settings JSON', err)
 
       return null
@@ -72,7 +71,6 @@ export const useImportSettings = (selectedTab: ToolbarTab) => {
       setData(settings)
       handleOpenConfirmAlert()
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.warn('Failed to import settings', err)
 
       handleOpenValidationAlert()

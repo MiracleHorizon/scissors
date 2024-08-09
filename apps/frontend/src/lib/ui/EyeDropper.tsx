@@ -36,7 +36,6 @@ const EyeDropperComponent = ({
 
       setColor(color)
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.warn(err)
     } finally {
       document.body.classList.remove('eye-dropper-active')

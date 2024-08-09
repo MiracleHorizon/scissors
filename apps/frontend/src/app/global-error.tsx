@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 const GlobalError = ({ error, reset }: ErrorPageProps) => {
   const themeColor = getThemeColorClientCookie()
 
-  // eslint-disable-next-line no-console
   console.log(error)
 
   return (

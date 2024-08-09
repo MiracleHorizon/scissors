@@ -41,7 +41,6 @@ export const TabMetadataContent = () => {
         })
         .then(result => setParsedMetadata(result ?? null))
         .catch(err => {
-          // eslint-disable-next-line no-console
           console.log(err)
 
           setParsedMetadata(null)

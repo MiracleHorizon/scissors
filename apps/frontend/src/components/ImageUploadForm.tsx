@@ -88,7 +88,6 @@ export const ImageUploadForm = ({
 
       onUpload(file)
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.log(err)
       setError(new Error(DEFAULT_MESSAGE))
     }
