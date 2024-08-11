@@ -1,4 +1,7 @@
 {
+  "include": [
+    "**/*.ts"
+  ],
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -9,8 +12,11 @@
       "cypress",
       "node"
     ],
-  },
-  "include": [
-    "**/*.ts"
-  ]
+    "baseUrl": "..",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ]
+    }
+  }
 }

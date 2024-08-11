@@ -1,4 +1,5 @@
 import {
+  PATH_DOCS,
   DOCS_ANCHOR_EXTEND,
   DOCS_ANCHOR_MAIN,
   DOCS_ANCHOR_MODULATE,
@@ -6,9 +7,9 @@ import {
   DOCS_ANCHOR_RESIZE,
   DOCS_ANCHOR_ROTATE,
   DOCS_ANCHOR_TRIM
-} from '../../src/site/paths'
+} from '@src/site/paths'
 
-const docsNavigationItems = [
+const DOCS_NAVIGATION_ITEMS = [
   {
     title: 'Main',
     hash: DOCS_ANCHOR_MAIN
@@ -37,9 +38,9 @@ const docsNavigationItems = [
     title: 'Trim',
     hash: DOCS_ANCHOR_TRIM
   }
-]
+] as const
 
-describe('Docs page navigation', () => {
+describe('Documentation page navigation (e2e)', () => {
   context('Desktop', () => {
     before(() => {
       cy.setDesktopViewport()
@@ -48,12 +49,13 @@ describe('Docs page navigation', () => {
     it('should correctly navigate to the docs sections', () => {
       cy.visit('/')
       cy.get('a[href*="docs"]').click()
-      cy.url().should('include', '/docs')
+      cy.url().should('include', PATH_DOCS)
 
-      for (const { title, hash } of docsNavigationItems) {
+      for (const { title, hash } of DOCS_NAVIGATION_ITEMS) {
         cy.get(`[data-cy="docs-navigation-link-${hash}"]`).click()
-        cy.url().should('include', `/docs${hash}`)
+        cy.url().should('include', `${PATH_DOCS}${hash}`)
         cy.get(`[data-cy="docs-section-header-${title.toLowerCase()}"]`).should('be.visible')
+        cy.wait(200)
       }
     })
   })

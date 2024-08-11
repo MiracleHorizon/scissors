@@ -23,8 +23,8 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add('skipTourAndAcceptCookies' as keyof Chainable<any>, () => {
-  window.localStorage.setItem('scissors-tour-completed', 'completed')
-  window.localStorage.setItem(
+  localStorage.setItem('scissors-tour-completed', 'completed')
+  localStorage.setItem(
     'scissors-cookie-consent',
     JSON.stringify({
       accepted: true

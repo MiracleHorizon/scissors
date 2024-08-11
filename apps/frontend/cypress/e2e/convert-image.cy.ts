@@ -1,7 +1,7 @@
 import * as path from 'path'
 
 // NOTE: Backend server should be running
-describe('Convert image', () => {
+describe('Image converting (e2e)', () => {
   before(() => {
     cy.setDesktopViewport()
     cy.skipTourAndAcceptCookies()
@@ -64,4 +64,6 @@ describe('Convert image', () => {
         cy.readFile(outputTestFilePath).should('exist')
       })
   })
+
+  // TODO: Mobile
 })
