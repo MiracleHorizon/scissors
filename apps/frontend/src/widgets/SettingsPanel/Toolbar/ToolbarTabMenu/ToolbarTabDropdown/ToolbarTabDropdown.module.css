@@ -11,6 +11,7 @@
   display: none;
 }
 
+.tabs :global(.rt-TabsTrigger),
 .tabs :global(.rt-TabsTriggerInner) {
-  gap: 6px;
+  width: 100%;
 }

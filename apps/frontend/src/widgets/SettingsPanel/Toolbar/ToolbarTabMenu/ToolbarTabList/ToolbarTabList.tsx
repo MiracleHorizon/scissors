@@ -3,6 +3,7 @@ import { clsx } from 'clsx'
 
 import { SymbolIcon } from '@scissors/react-icons/SymbolIcon'
 import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+import { BrushIcon } from '@scissors/react-icons/BrushIcon'
 
 import { ToolbarTabItem } from './ToolbarTabItem'
 import { TOUR_STEP } from '@lib/tour'
@@ -21,6 +22,11 @@ const tabs: Tab[] = [
     label: 'Resize',
     value: TOOLBAR_TAB.RESIZE,
     icon: <DimensionsIcon width='16px' height='16px' />
+  },
+  {
+    label: 'Draw',
+    value: TOOLBAR_TAB.DRAW,
+    icon: <BrushIcon width='16px' height='16px' />
   }
   // {
   //   label: 'Metadata',

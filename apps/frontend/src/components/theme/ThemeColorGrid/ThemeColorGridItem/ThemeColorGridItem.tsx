@@ -18,9 +18,7 @@ export const ThemeColorGridItem = ({ color, isSelected }: Props) => {
     <ColorSwatch
       color={getRadixColorVar(color, 9)}
       tooltipContent={capitalize(color)}
-      className={clsx(styles.root, {
-        [styles.selected]: isSelected
-      })}
+      className={clsx(isSelected && styles.selected)}
       data-cy={`theme-color-grid-item-${color}`}
       onClick={handleSetThemeColor}
     />

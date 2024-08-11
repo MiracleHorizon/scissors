@@ -11,7 +11,7 @@ interface Props extends ClassNameProps, Omit<HTMLAttributes<HTMLDivElement>, 'co
 }
 
 export const ColorSwatch = memo(({ color, style, className, tooltipContent, ...props }: Props) => {
-  const swatchJSX = (
+  const swatch = (
     <div
       {...props}
       style={{
@@ -23,10 +23,10 @@ export const ColorSwatch = memo(({ color, style, className, tooltipContent, ...p
   )
 
   if (tooltipContent) {
-    return <Tooltip content={tooltipContent}>{swatchJSX}</Tooltip>
+    return <Tooltip content={tooltipContent}>{swatch}</Tooltip>
   }
 
-  return swatchJSX
+  return swatch
 })
 
 ColorSwatch.displayName = 'ColorSwatch'

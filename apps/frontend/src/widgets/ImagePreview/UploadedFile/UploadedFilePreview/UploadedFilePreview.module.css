@@ -15,17 +15,17 @@
   transform: translate3d(-50%, -50%, 0);
 }
 
-@media (hover: hover) {
-  .root:hover .icon {
-    opacity: 1;
-    visibility: visible;
-  }
+/*@media (hover: hover) {*/
+/*  .root:hover .icon {*/
+/*    opacity: 1;*/
+/*    visibility: visible;*/
+/*  }*/
 
-  .image:hover {
-    filter: brightness(70%);
-    transition: filter 0.1s ease-in-out;
-  }
-}
+/*  .image:hover {*/
+/*    filter: brightness(70%);*/
+/*    transition: filter 0.1s ease-in-out;*/
+/*  }*/
+/*}*/
 
 .icon {
   opacity: 0;
