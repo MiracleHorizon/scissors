@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-const testResize = () => {
+const makeTestCase = () => {
   // Upload an image file.
   cy.get('[data-cy="image-dropzone"] input').selectFile('cypress/fixtures/test_image.png', {
     force: true
@@ -37,8 +37,9 @@ const testResize = () => {
 }
 
 // NOTE: Backend server should be running
-describe('Resize image', () => {
+describe('Image resizing (e2e)', () => {
   beforeEach(() => {
+    cy.clearAllLocalStorage()
     cy.skipTourAndAcceptCookies()
   })
 
@@ -51,9 +52,11 @@ describe('Resize image', () => {
       cy.visit('/')
       cy.wait(1500)
 
-      cy.selectTab({ tabName: 'resize' })
+      cy.selectTab({
+        tabName: 'resize'
+      })
 
-      testResize()
+      makeTestCase()
     })
   })
 
@@ -66,9 +69,12 @@ describe('Resize image', () => {
       cy.visit('/')
       cy.wait(1500)
 
-      cy.selectTab({ tabName: 'resize', isMobile: true })
+      cy.selectTab({
+        tabName: 'resize',
+        isMobile: true
+      })
 
-      testResize()
+      makeTestCase()
     })
   })
 })

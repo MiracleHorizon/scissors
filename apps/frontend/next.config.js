@@ -4,7 +4,7 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 const nextConfig = {
   compiler: {
     reactRemoveProperties: {
-      properties: ['^data-testid$', '^data-cy$']
+      properties: []
     },
     removeConsole: true
   },
@@ -23,6 +23,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   }
+}
+
+if (process.env.NODE_ENV !== 'test') {
+  const removeProperties = nextConfig.compiler.reactRemoveProperties
+  removeProperties.properties.push('^data-testid$', '^data-cy$')
 }
 
 if (process.env.BUILD_STANDALONE === 'true') {
