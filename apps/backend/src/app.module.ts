@@ -6,7 +6,6 @@ import { config } from '@config/configuration'
 import { ConvertModule } from '@internal/convert'
 import { ResizeModule } from '@internal/resize'
 import { MetadataModule } from '@internal/metadata'
-import { PermissionsModule } from './permissions/permissions.module'
 
 @Module({
   imports: [
@@ -14,8 +13,7 @@ import { PermissionsModule } from './permissions/permissions.module'
     MulterModule.register(),
     ConvertModule,
     ResizeModule,
-    MetadataModule,
-    PermissionsModule
+    MetadataModule
   ]
 })
 export class AppModule {}
