@@ -41,6 +41,10 @@ const GallerySlide = ({
   return (
     <Flex
       gap='2'
+      pr={{
+        initial: '0',
+        md: '2'
+      }}
       direction={isPortrait ? 'column' : 'row'}
       className={isPortrait ? styles.portrait : styles.landscape}
     >

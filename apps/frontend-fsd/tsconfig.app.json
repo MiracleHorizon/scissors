@@ -1,0 +1,106 @@
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "types": [
+      "vitest/globals"
+    ],
+    "jsx": "react-jsx",
+    "useDefineForClassFields": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "allowJs": false,
+    "strict": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    /* Aliases */
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@site/*": [
+        "./src/site/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@widgets/*": [
+        "./src/widgets/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@design-system/*": [
+        "./src/design-system/*"
+      ],
+      "@hoc/*": [
+        "./src/hoc/*"
+      ],
+      "@stores/*": [
+        "./src/stores/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@ui/*": [
+        "./src/lib/ui/*"
+      ],
+      "@helpers/*": [
+        "./src/lib/helpers/*"
+      ],
+      "@utility/*": [
+        "./src/utility/*"
+      ],
+      "@app-types/*": [
+        "./src/types/*"
+      ],
+      "@testing/*": [
+        "./src/__setup__/*"
+      ]
+    }
+  }
+}

@@ -156,6 +156,16 @@ export const createOutputStore = ({
   return create(
     persist<Store>(outputStoreCreator, {
       name: `${SITE_TITLE.toLowerCase()}-output-store`,
+      migrate: (persistedState, version) => {
+        if (version === 0) {
+          return {
+            ...persistedState as State,
+            keepChanges: true
+          }
+        }
+
+        return persistedState as State
+      },
       merge: <State>(persistedState: unknown, currentState: State): State => {
         if (
           !persistedState ||

@@ -40,6 +40,22 @@ export const slides: SlideProps[] = [
     }
   },
   {
+    // eslint-disable-next-line quotes
+    label: "The lion's leader",
+    beforeSrc: pathForGallerySlide('slide-7-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-7-after.jpeg'),
+    details: [
+      {
+        label: 'Grayscale',
+        value: 'enabled'
+      }
+    ],
+    settings: {
+      grayscale: true
+    },
+    orientation: 'portrait'
+  },
+  {
     label: 'Monstera Deliciosa',
     beforeSrc: pathForGallerySlide('slide-2-before.jpeg'),
     afterSrc: pathForGallerySlide('slide-2-after.jpeg'),
@@ -54,20 +70,6 @@ export const slides: SlideProps[] = [
         value: true,
         sigma: 4.5
       }
-    }
-  },
-  {
-    label: 'Giza, Egypt',
-    beforeSrc: pathForGallerySlide('slide-6-before.jpeg'),
-    afterSrc: pathForGallerySlide('slide-6-after.jpeg'),
-    details: [
-      {
-        label: 'Grayscale',
-        value: 'enabled'
-      }
-    ],
-    settings: {
-      grayscale: true
     }
   },
   {
@@ -87,6 +89,20 @@ export const slides: SlideProps[] = [
       }
     },
     orientation: 'portrait'
+  },
+  {
+    label: 'Giza, Egypt',
+    beforeSrc: pathForGallerySlide('slide-6-before.jpeg'),
+    afterSrc: pathForGallerySlide('slide-6-after.jpeg'),
+    details: [
+      {
+        label: 'Grayscale',
+        value: 'enabled'
+      }
+    ],
+    settings: {
+      grayscale: true
+    }
   },
   {
     label: 'Blueberry',
@@ -139,22 +155,6 @@ export const slides: SlideProps[] = [
     }
   },
   {
-    // eslint-disable-next-line quotes
-    label: "The lion's leader",
-    beforeSrc: pathForGallerySlide('slide-7-before.jpeg'),
-    afterSrc: pathForGallerySlide('slide-7-after.jpeg'),
-    details: [
-      {
-        label: 'Grayscale',
-        value: 'enabled'
-      }
-    ],
-    settings: {
-      grayscale: true
-    },
-    orientation: 'portrait'
-  },
-  {
     label: 'Jellyfish',
     beforeSrc: pathForGallerySlide('slide-9-before.jpeg'),
     afterSrc: pathForGallerySlide('slide-9-after.jpeg'),
@@ -171,5 +171,41 @@ export const slides: SlideProps[] = [
       }
     },
     orientation: 'portrait'
+  }
+]
+
+export const images = [
+  {
+    src: pathForGallerySlide('slide-1-after.jpeg'),
+    caption: 'Volkswagen Käfer'
+  },
+  {
+    // eslint-disable-next-line quotes
+    caption: "The lion's leader",
+    src: pathForGallerySlide('slide-7-after.jpeg')
+  },
+  {
+    caption: 'Monstera Deliciosa',
+    src: pathForGallerySlide('slide-2-after.jpeg')
+  },
+  {
+    caption: 'Abstraction 1',
+    src: pathForGallerySlide('slide-4-after.jpeg')
+  },
+  {
+    caption: 'Giza, Egypt',
+    src: pathForGallerySlide('slide-6-after.jpeg')
+  },
+  {
+    caption: 'Blueberry',
+    src: pathForGallerySlide('slide-5-after.jpeg')
+  },
+  {
+    caption: 'Sahara',
+    src: pathForGallerySlide('slide-3-after.jpeg')
+  },
+  {
+    caption: 'Jellyfish',
+    src: pathForGallerySlide('slide-9-after.jpeg')
   }
 ]

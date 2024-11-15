@@ -1,0 +1,83 @@
+.root {
+  border-radius: 6px;
+}
+
+.root button {
+  border: none;
+}
+
+.header {
+  display: flex;
+}
+
+.item {
+  overflow: hidden;
+  margin-top: 1px;
+}
+
+.item:focus-within {
+  position: relative;
+  z-index: 1;
+}
+
+.trigger {
+  font-family: inherit;
+  height: 45px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font-size: var(--font-size-4);
+  background-color: transparent;
+  box-shadow: 0 1px 0 var(--mauve-6);
+}
+
+.trigger:focus-within {
+  outline: none;
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--mauve-3);
+  }
+}
+
+.content {
+  overflow: hidden;
+}
+
+.content[data-state='open'] {
+  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.content[data-state='closed'] {
+  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.chevron {
+  color: var(--accent-9);
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.trigger[data-state='open'] > .chevron {
+  transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

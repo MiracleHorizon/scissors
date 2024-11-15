@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 import { SITE_TITLE } from '@site/config'
 import { getThemeColorClientCookie } from '@lib/theme/helpers'
-import { THEME_STORAGE_KEY } from '@lib/theme/constants'
+import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@lib/theme/constants'
 import { geistSans } from './fonts'
 import type { ErrorPageProps } from '@app-types/next'
 
@@ -22,7 +22,7 @@ const GlobalError = ({ error, reset }: ErrorPageProps) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={geistSans.variable}>
-        <ThemeProvider storageKey={THEME_STORAGE_KEY}>
+        <ThemeProvider defaultTheme={DEFAULT_THEME} storageKey={THEME_STORAGE_KEY}>
           <Theme accentColor={themeColor}>
             <Flex
               align='center'
