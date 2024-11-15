@@ -1,0 +1,103 @@
+.driver-popover {
+  /*noinspection CssUnresolvedCustomProperty*/
+  font-family: var(--font-geist-sans);
+}
+
+html.dark {
+  --bg-color: var(--gray-3);
+
+  .driver-popover {
+    background-color: var(--bg-color);
+    color: var(--accent-contrast);
+  }
+
+  .driver-popover-arrow-side-top {
+    border-top-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-bottom {
+    border-bottom-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-left {
+    border-left-color: var(--bg-color);
+  }
+
+  .driver-popover-arrow-side-right {
+    border-right-color: var(--bg-color);
+  }
+}
+
+.driver-popover *,
+.driver-popover-footer button {
+  font: inherit;
+}
+
+.driver-popover-title {
+  display: flex !important;
+  justify-content: space-between;
+  font-weight: 500 !important;
+  font-size: 17px;
+}
+
+.driver-popover-description {
+  margin-top: 6px !important;
+  font-weight: 400 !important;
+  font-size: 14px;
+  color: #9a99a1;
+}
+
+.driver-popover-title,
+.driver-popover-description {
+  line-height: 1.5;
+}
+
+.driver-popover-progress-text {
+  font-size: 13px;
+}
+
+.skip-tour-button {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: -2px;
+  opacity: 0.5;
+  transition: opacity 70ms ease-in;
+}
+
+@media (hover: hover) {
+  .skip-tour-button:hover {
+    opacity: 1;
+  }
+}
+
+.driver-popover-footer button {
+  background-color: var(--indigo-9) !important;
+  text-shadow: none !important;
+  line-height: initial !important;
+  font-size: 13px !important;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 5px 12px;
+  margin: 0;
+}
+
+.driver-popover-navigation-btns {
+  gap: 2px;
+}
+
+.driver-active-element,
+.driver-active-element *,
+.driver-active-element > * {
+  pointer-events: none !important;
+}
+
+/* Enable overflow for ImageDropzone component */
+:not(body):has(> [title='File is not uploaded'].driver-active-element) {
+  overflow: initial !important;
+}

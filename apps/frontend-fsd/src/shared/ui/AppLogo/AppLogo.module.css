@@ -1,0 +1,19 @@
+.root {
+  --size: 34px;
+
+  cursor: pointer;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 8px;
+}
+
+.icon {
+  width: inherit;
+  height: inherit;
+}
+
+@media screen and (max-width: 767px) {
+  .root {
+    --size: 32px;
+  }
+}

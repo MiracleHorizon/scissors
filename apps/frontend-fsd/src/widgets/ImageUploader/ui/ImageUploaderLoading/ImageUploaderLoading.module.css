@@ -1,0 +1,13 @@
+.root {
+  border-radius: 12px;
+  animation: pulse 1000ms infinite alternate-reverse !important;
+}
+
+@keyframes pulse {
+  from {
+    background-color: var(--gray-3);
+  }
+  to {
+    background-color: var(--gray-4);
+  }
+}
