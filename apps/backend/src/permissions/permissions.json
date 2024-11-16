@@ -1,0 +1,14 @@
+{
+  "metadata_tab_view_enable": {
+    "enabled_for": {
+      "production": false,
+      "development": true
+    }
+  },
+  "canvas_tab_view_enable": {
+    "enabled_for": {
+      "production": false,
+      "development": true
+    }
+  }
+}
