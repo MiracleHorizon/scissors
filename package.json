@@ -9,8 +9,8 @@
   "license": "MIT",
   "packageManager": "pnpm@9.6.0",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "@apps/*",
+    "@packages/*"
   ],
   "engines": {
     "node": ">= 20"
