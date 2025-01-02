@@ -5,10 +5,10 @@ services:
     container_name: frontend
     build:
       context: .
-      dockerfile: ./apps/frontend/Dockerfile
+      dockerfile: ./@apps/frontend/Dockerfile
     restart: unless-stopped
     env_file:
-      - ./apps/frontend/.env
+      - ./@apps/frontend/.env
     ports:
       - '3000:3000'
 
@@ -16,9 +16,9 @@ services:
     container_name: backend
     build:
       context: .
-      dockerfile: ./apps/backend/Dockerfile
+      dockerfile: ./@apps/backend/Dockerfile
     restart: unless-stopped
     env_file:
-      - ./apps/backend/.env.production
+      - ./@apps/backend/.env.production
     ports:
       - '4200:4200'

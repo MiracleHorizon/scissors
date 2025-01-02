@@ -1,7 +1,7 @@
 <br />
 
 <div align="center">
-   <img src="apps/frontend/public/android-chrome-192x192.png" alt="Logo" width=128 height=128>
+   <img src="@apps/frontend/public/android-chrome-192x192.png" alt="Logo" width=128 height=128>
 
   <h1 style="font-size: 32px; margin-top: 0">️Scissors</h1>
 
