@@ -1,0 +1,6 @@
+.button {
+  --size: 20px;
+
+  width: var(--size);
+  height: var(--size);
+}
