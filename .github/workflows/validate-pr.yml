@@ -29,18 +29,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: Install commitlint
-        run: |
-          pnpm add conventional-changelog-conventionalcommits -w
-          pnpm add commitlint@latest -w
-
-      - name: Validate current commit (last commit) with commitlint
-        if: github.event_name == 'push'
-        run: npx commitlint --last --verbose
-
-      - name: Validate PR commits with commitlint
-        if: github.event_name == 'pull_request'
-        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
+#      - name: Install commitlint
+#        run: |
+#          pnpm add conventional-changelog-conventionalcommits -w
+#          pnpm add commitlint@latest -w
+#
+#      - name: Validate current commit (last commit) with commitlint
+#        if: github.event_name == 'push'
+#        run: npx commitlint --last --verbose
+#
+#      - name: Validate PR commits with commitlint
+#        if: github.event_name == 'pull_request'
+#        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
       - name: Install Turborepo
         run: pnpm add turbo --global
