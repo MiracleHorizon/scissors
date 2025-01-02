@@ -35,11 +35,11 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/apps/frontend/next.config.js .
-COPY --from=installer /app/apps/frontend/package.json .
+COPY --from=installer /app/@apps/frontend/next.config.js .
+COPY --from=installer /app/@apps/frontend/package.json .
 
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/.next/static ./apps/frontend/.next/static
-COPY --from=installer --chown=nextjs:nodejs /app/apps/frontend/public ./apps/frontend/public
+COPY --from=installer --chown=nextjs:nodejs /app/@apps/frontend/.next/standalone ./
+COPY --from=installer --chown=nextjs:nodejs /app/@apps/frontend/.next/static ./@apps/frontend/.next/static
+COPY --from=installer --chown=nextjs:nodejs /app/@apps/frontend/public ./@apps/frontend/public
 
 CMD ["node", "apps/frontend/server.js"]
