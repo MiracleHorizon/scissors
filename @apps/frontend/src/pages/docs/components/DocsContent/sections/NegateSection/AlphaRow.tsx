@@ -1,5 +1,5 @@
 import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
-import { Code, Table, Text } from '@radix-ui/themes'
+import { Text } from '@radix-ui/themes'
 
 export const AlphaRow = () => (
   <DocsTableRow
