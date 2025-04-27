@@ -1,13 +1,12 @@
 import { Flex, Heading, Separator, Text } from '@radix-ui/themes'
 import type { PaddingProps } from '@radix-ui/themes/props'
-import type { Metadata } from 'next'
 
 import { ButtonHome } from '@components/ButtonHome'
 import styles from './not-found.module.css'
 
-export const metadata: Metadata = {
-  title: 'Not Found'
-}
+// export const metadata: Metadata = {
+//   title: 'Not Found'
+// }
 
 const padding: PaddingProps = {
   pt: {
