@@ -1,4 +1,3 @@
-import { DocsSection } from '@app/docs/components/DocsSection'
 import { FlipRow } from './FlipRow'
 import { FlopRow } from './FlopRow'
 import { GrayscaleRow } from './GrayscaleRow'
@@ -7,6 +6,7 @@ import { NormaliseRow } from './NormaliseRow'
 import { TintRow } from './TintRow'
 import { GammaRow } from './GammaRow'
 import { DOCS_ANCHOR_MAIN } from '@site/paths'
+import { DocsSection } from '@pages/docs/components/DocsSection'
 
 export const MainSection = () => (
   <DocsSection title='Main' hash={DOCS_ANCHOR_MAIN}>

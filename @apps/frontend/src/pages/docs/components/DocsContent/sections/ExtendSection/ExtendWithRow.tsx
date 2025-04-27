@@ -3,7 +3,7 @@ import { Code, Text } from '@radix-ui/themes'
 
 import { DEFAULT_EXTEND_WITH, EXTEND_WITH } from '@scissors/sharp'
 
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 const values = Object.values(EXTEND_WITH)
 

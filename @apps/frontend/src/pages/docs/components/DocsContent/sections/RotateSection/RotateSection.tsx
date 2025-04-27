@@ -1,4 +1,4 @@
-import { DocsSection } from '@app/docs/components/DocsSection'
+import { DocsSection } from '@pages/docs/components/DocsSection'
 import { AngleRow } from './AngleRow'
 import { BackgroundRow } from './BackgroundRow'
 import { DOCS_ANCHOR_ROTATE } from '@site/paths'

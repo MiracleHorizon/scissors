@@ -2,7 +2,7 @@ import { Box, Code, Flex, Table, Text } from '@radix-ui/themes'
 
 import { DEFAULT_ROTATE_BACKGROUND } from '@scissors/sharp'
 
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 const previewBoxStyle = {
   backgroundColor: DEFAULT_ROTATE_BACKGROUND

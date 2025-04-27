@@ -2,7 +2,7 @@ import { Code, Text } from '@radix-ui/themes'
 
 import { DEFAULT_GAMMA } from '@scissors/sharp'
 
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 export const GammaRow = () => (
   <DocsTableRow

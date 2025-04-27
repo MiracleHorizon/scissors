@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Code, Strong, Text } from '@radix-ui/themes'
-
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 const GaussianBlurPopover = lazy(() =>
   import('./GaussianBlurPopover').then(mod => ({ default: mod.default }))

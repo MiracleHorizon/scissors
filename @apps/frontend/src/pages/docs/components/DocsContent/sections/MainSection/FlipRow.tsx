@@ -1,6 +1,5 @@
 import { Code, Text } from '@radix-ui/themes'
-
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 export const FlipRow = () => (
   <DocsTableRow

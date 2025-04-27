@@ -2,7 +2,7 @@ import { Code, Text } from '@radix-ui/themes'
 
 import { MAX_HUE, MIN_HUE } from '@scissors/sharp'
 
-import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
+import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 export const HueRow = () => (
   <DocsTableRow
