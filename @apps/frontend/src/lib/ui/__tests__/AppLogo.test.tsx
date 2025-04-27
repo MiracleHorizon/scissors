@@ -2,7 +2,7 @@
 
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { AppLogo, testId } from '@ui/AppLogo'
+import { AppLogo, testId } from '@components/AppLogo'
 import { setup } from '@testing/test-utils'
 
 describe('@ui/AppLogo', () => {

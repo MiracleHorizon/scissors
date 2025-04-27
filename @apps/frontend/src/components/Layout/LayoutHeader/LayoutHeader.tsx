@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 import { lazy, Suspense } from 'react'
 
-import { AppLogo } from '@ui/AppLogo'
+import { AppLogo } from '@components/AppLogo'
 import { ButtonGithub } from '@components/ButtonGithub'
 import { NavigationDesktop } from '@components/navigation/NavigationDesktop'
 import { ThemeColorMenu } from '@components/theme/ThemeColorMenu'
