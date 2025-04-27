@@ -15,10 +15,6 @@ const aliases: Alias[] = [
     replacementPath: __dirname
   },
   {
-    find: '@app',
-    replacementPath: './src/app'
-  },
-  {
     find: '@site',
     replacementPath: './src/site'
   },
@@ -30,10 +26,6 @@ const aliases: Alias[] = [
   {
     find: '@components',
     replacementPath: './src/components'
-  },
-  {
-    find: '@hoc',
-    replacementPath: './src/hoc'
   },
   /* Lib */
   {

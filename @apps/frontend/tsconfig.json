@@ -53,9 +53,6 @@
       "@assets/*": [
         "./src/assets/*"
       ],
-      "@app/*": [
-        "./src/app/*"
-      ],
       "@site/*": [
         "./src/site/*"
       ],
@@ -67,9 +64,6 @@
       ],
       "@components/*": [
         "./src/components/*"
-      ],
-      "@hoc/*": [
-        "./src/hoc/*"
       ],
       "@stores/*": [
         "./src/stores/*"
