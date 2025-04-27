@@ -1,7 +1,7 @@
 import { Code, Text } from '@radix-ui/themes'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
-import { DocsDetailsPopover } from '@app/docs/components/DocsDetailsPopover'
+import { DocsDetailsPopover } from '@pages/docs/components/DocsDetailsPopover'
 
 const INFO_LINK = 'https://en.wikipedia.org/wiki/Gaussian_blur'
 
