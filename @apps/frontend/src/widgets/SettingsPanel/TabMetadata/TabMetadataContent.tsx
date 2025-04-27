@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
 
@@ -7,17 +6,11 @@ import { IMAGE_FILE_FORMAT } from '@scissors/sharp'
 import { Ifd0OptionsForm } from './forms/ifd0-form'
 import { Ifd2OptionsForm } from './forms/ifd2-form'
 import { MetadataCheckboxGroup } from './MetadataCheckboxGroup'
-import { CalloutDefault } from '@ui/CalloutDefault'
+import { MetadataTablesAccordion } from './MetadataTablesAccordion'
+import { CalloutDefault } from '@lib/ui/CalloutDefault'
 import { useOutputStore } from '@stores/output'
 import { cropImageFileType } from '@helpers/file/cropImageFileType'
 import type { ExifrReturn } from './types'
-
-const MetadataTablesAccordion = dynamic(
-  () => import('./MetadataTablesAccordion').then(mod => mod.MetadataTablesAccordion),
-  {
-    ssr: false
-  }
-)
 
 const allowedFileTypes: string[] = [
   IMAGE_FILE_FORMAT.JPEG,

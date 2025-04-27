@@ -1,8 +1,4 @@
 export const readCookieValue = (cookieKey: string): string | null => {
-  if (typeof document === 'undefined') {
-    return null
-  }
-
   const browserCookies = document.cookie
 
   for (const cookie of browserCookies.split(';')) {

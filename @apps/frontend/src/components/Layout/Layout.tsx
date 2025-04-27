@@ -1,13 +1,22 @@
 import { Box, Flex } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import { Outlet } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 
 import { LayoutHeader } from './LayoutHeader'
 
-export const Layout = ({ children }: PropsWithChildren) => (
-  <Flex align='center' direction='column'>
+const CookieConsentBanner = lazy(() => import('@components/CookieConsentBanner'))
+
+export const Layout = () => (
+  <Flex align='center' direction='column' className='geist-font'>
     <Box width='100%' pt='8'>
-      <LayoutHeader />
-      {children}
+      <Suspense>
+        <CookieConsentBanner />
+      </Suspense>
+
+      <Suspense>
+        <LayoutHeader />
+        <Outlet />
+      </Suspense>
     </Box>
   </Flex>
 )

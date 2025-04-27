@@ -1,5 +1,3 @@
-'use client'
-
 import { IconButton } from '@radix-ui/themes'
 import { type MutableRefObject, useEffect, useState } from 'react'
 import { clsx } from 'clsx'

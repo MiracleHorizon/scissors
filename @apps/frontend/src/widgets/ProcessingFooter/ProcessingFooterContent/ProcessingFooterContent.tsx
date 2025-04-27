@@ -1,6 +1,4 @@
-'use client'
-
-import dynamic from 'next/dynamic'
+import { lazy, Suspense } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
 
 import {
@@ -9,30 +7,17 @@ import {
 } from '../ProcessingFooterContentSkeleton'
 import { TOOLBAR_TAB, useTabsStore } from '@stores/tabs'
 
-const ButtonDownloadImage = dynamic(
-  () => import('./buttons/ButtonDownloadImage').then(mod => mod.ButtonDownloadImage),
-  {
-    ssr: false,
-    loading: () => <ButtonDownloadImageSkeleton />
-  }
+const ButtonDownloadImage = lazy(() =>
+  import('./buttons/ButtonDownloadImage').then(mod => ({ default: mod.ButtonDownloadImage }))
 )
-const ButtonConvert = dynamic(
-  () => import('./buttons/ButtonConvert').then(mod => mod.ButtonConvert),
-  {
-    ssr: false,
-    loading: () => <ButtonRequestSkeleton />
-  }
+const ButtonConvert = lazy(() =>
+  import('./buttons/ButtonConvert').then(mod => ({ default: mod.ButtonConvert }))
 )
-const ButtonResize = dynamic(() => import('./buttons/ButtonResize').then(mod => mod.ButtonResize), {
-  ssr: false,
-  loading: () => <ButtonRequestSkeleton />
-})
-const ButtonUpdateMetadata = dynamic(
-  () => import('./buttons/ButtonUpdateMetadata').then(mod => mod.ButtonUpdateMetadata),
-  {
-    ssr: false,
-    loading: () => <ButtonRequestSkeleton />
-  }
+const ButtonResize = lazy(() =>
+  import('./buttons/ButtonResize').then(mod => ({ default: mod.ButtonResize }))
+)
+const ButtonUpdateMetadata = lazy(() =>
+  import('./buttons/ButtonUpdateMetadata').then(mod => ({ default: mod.ButtonUpdateMetadata }))
 )
 
 const ProcessingFooterContent = () => {
@@ -40,13 +25,27 @@ const ProcessingFooterContent = () => {
 
   return (
     <Flex align='center' justify='end' gap='3' height='100%' width='100%'>
-      <ButtonDownloadImage />
+      <Suspense fallback={<ButtonDownloadImageSkeleton />}>
+        <ButtonDownloadImage />
+      </Suspense>
 
       <Separator orientation='vertical' size='2' />
 
-      {selectedTab === TOOLBAR_TAB.CONVERT && <ButtonConvert />}
-      {selectedTab === TOOLBAR_TAB.RESIZE && <ButtonResize />}
-      {selectedTab === TOOLBAR_TAB.METADATA && <ButtonUpdateMetadata />}
+      {selectedTab === TOOLBAR_TAB.CONVERT && (
+        <Suspense fallback={<ButtonRequestSkeleton />}>
+          <ButtonConvert />
+        </Suspense>
+      )}
+      {selectedTab === TOOLBAR_TAB.RESIZE && (
+        <Suspense fallback={<ButtonRequestSkeleton />}>
+          <ButtonResize />
+        </Suspense>
+      )}
+      {selectedTab === TOOLBAR_TAB.METADATA && (
+        <Suspense fallback={<ButtonRequestSkeleton />}>
+          <ButtonUpdateMetadata />
+        </Suspense>
+      )}
     </Flex>
   )
 }

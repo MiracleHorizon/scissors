@@ -3,8 +3,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.d.ts",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
@@ -18,11 +16,6 @@
       "DOM",
       "DOM.Iterable",
       "ESNext"
-    ],
-    "plugins": [
-      {
-        "name": "next"
-      }
     ],
     "types": [
       "vitest/globals"
@@ -60,9 +53,6 @@
       "@assets/*": [
         "./src/assets/*"
       ],
-      "@app/*": [
-        "./src/app/*"
-      ],
       "@site/*": [
         "./src/site/*"
       ],
@@ -74,12 +64,6 @@
       ],
       "@components/*": [
         "./src/components/*"
-      ],
-      "@design-system/*": [
-        "./src/design-system/*"
-      ],
-      "@hoc/*": [
-        "./src/hoc/*"
       ],
       "@stores/*": [
         "./src/stores/*"
@@ -104,6 +88,9 @@
       ],
       "@testing/*": [
         "./src/__setup__/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
       ]
     }
   }

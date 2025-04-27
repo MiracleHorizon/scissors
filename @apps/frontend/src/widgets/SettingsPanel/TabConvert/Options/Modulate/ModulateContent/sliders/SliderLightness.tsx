@@ -1,6 +1,6 @@
 import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useModulateStore } from '@stores/modulate'
 
 export const SliderLightness = () => {

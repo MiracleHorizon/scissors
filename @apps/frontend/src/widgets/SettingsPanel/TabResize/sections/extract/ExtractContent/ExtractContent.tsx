@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { Flex } from '@radix-ui/themes'
 
 import { ExtractCallout } from './ExtractCallout'
@@ -7,11 +6,8 @@ import { ExtractRegionPreview } from './ExtractRegionPreview'
 import { useOutputStore } from '@stores/output'
 import { useExtractStore } from '@stores/extract'
 
-const ExtractSectionDialog = dynamic(
-  () => import('./ExtractSectionDialog').then(mod => mod.ExtractSectionDialog),
-  {
-    ssr: false
-  }
+const ExtractSectionDialog = lazy(() =>
+  import('./ExtractSectionDialog').then(mod => ({ default: mod.ExtractSectionDialog }))
 )
 
 export const ExtractContent = () => {
@@ -30,7 +26,11 @@ export const ExtractContent = () => {
 
       {previewFile && <ExtractRegionPreview file={previewFile} aspectRatio={previewAspectRatio} />}
 
-      {file && <ExtractSectionDialog file={file} />}
+      {file && (
+        <Suspense fallback={null}>
+          <ExtractSectionDialog file={file} />
+        </Suspense>
+      )}
     </Flex>
   )
 }

@@ -49,11 +49,11 @@ export const SITE_KEYWORDS = [
 
 // DOMAINS
 const SITE_DOMAIN_FALLBACK = 'http://localhost:3000'
-export const SITE_DOMAIN = process.env.SITE_DOMAIN ?? SITE_DOMAIN_FALLBACK
+export const SITE_DOMAIN = import.meta.env.SITE_DOMAIN ?? SITE_DOMAIN_FALLBACK
 
 // API
 const SERVER_API_FALLBACK = 'http://localhost:4200'
-const SERVER_API = process.env.SERVER_API ?? SERVER_API_FALLBACK
+const SERVER_API = import.meta.env.SERVER_API ?? SERVER_API_FALLBACK
 export const createApiURL = (path: string) => `${SERVER_API}/${path}`
 
 // REPOSITORY
@@ -61,7 +61,7 @@ const REPO_OWNER = 'MiracleHorizon'
 const REPO_NAME = 'scissors'
 const REPO_BRANCH = 'main'
 const REPO_PATH = `${REPO_OWNER}/${REPO_NAME}`
-const FRONTEND_PATH = 'apps/frontend'
+const FRONTEND_PATH = '@apps/frontend'
 
 const GITHUB_USER_CONTENT_PATH = 'raw.githubusercontent.com'
 const GITHUB_USER_CONTENT_REPO_PATH = `https://${GITHUB_USER_CONTENT_PATH}/${REPO_PATH}/${REPO_BRANCH}`

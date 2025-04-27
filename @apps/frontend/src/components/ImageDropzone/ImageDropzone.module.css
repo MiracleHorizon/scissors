@@ -1,6 +1,7 @@
 .root {
   --border-radius: var(--radius-5);
 
+  width: 100%;
   cursor: pointer;
   position: relative;
   border-radius: var(--border-radius);

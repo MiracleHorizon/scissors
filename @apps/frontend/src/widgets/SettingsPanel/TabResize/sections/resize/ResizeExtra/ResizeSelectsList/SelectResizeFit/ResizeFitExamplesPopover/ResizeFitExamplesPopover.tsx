@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Flex, Popover, ScrollArea, Text } from '@radix-ui/themes'
 import type { PaddingProps } from '@radix-ui/themes/props'
 
@@ -70,15 +69,17 @@ const ResizeFitExampleImage = ({ srcLight, srcDark, width, height, label }: Exam
 
   return (
     <>
-      <Image
+      <img
         {...common}
         src={pathForExampleImage(srcLight)}
         className='resize-fit-example-image-light'
+        loading='lazy'
       />
-      <Image
+      <img
         {...common}
         src={pathForExampleImage(srcDark)}
         className='resize-fit-example-image-dark'
+        loading='lazy'
       />
     </>
   )

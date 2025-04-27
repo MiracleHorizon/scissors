@@ -1,6 +1,6 @@
 import { MAX_SATURATION, MIN_SATURATION, SATURATION_STEP } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useModulateStore } from '@stores/modulate'
 
 export const SliderSaturation = () => {

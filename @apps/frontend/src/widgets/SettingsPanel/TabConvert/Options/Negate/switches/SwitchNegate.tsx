@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { Switch } from '@design-system/Switch'
+import { Switch } from '@lib/ui/Switch'
 import { useNegateStore } from '@stores/negate'
 
 export const SwitchNegate = () => {

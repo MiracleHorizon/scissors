@@ -1,53 +1,54 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense } from 'react'
 import { Grid, Skeleton } from '@radix-ui/themes'
 
 import { DIRECTION_MODEL, useExtendStore } from '@stores/extend'
 
 const InputSkeleton = () => <Skeleton height='32px' width='100%' />
+const AxisSkeleton = () => (
+  <>
+    <InputSkeleton />
+    <InputSkeleton />
+  </>
+)
+const SeparatedSkeleton = () => (
+  <>
+    <InputSkeleton />
+    <InputSkeleton />
+    <InputSkeleton />
+    <InputSkeleton />
+  </>
+)
 
-const ExtendDirectionFormNumber = dynamic(
-  () => import('./ExtendDirectionFormNumber').then(mod => mod.ExtendDirectionFormNumber),
-  {
-    ssr: false,
-    loading: () => <InputSkeleton />
-  }
+const ExtendDirectionFormNumber = lazy(() =>
+  import('./ExtendDirectionFormNumber').then(mod => ({ default: mod.ExtendDirectionFormNumber }))
 )
-const ExtendDirectionFormAxis = dynamic(
-  () => import('./ExtendDirectionFormAxis').then(mod => mod.ExtendDirectionFormAxis),
-  {
-    ssr: false,
-    loading: () => (
-      <>
-        <InputSkeleton />
-        <InputSkeleton />
-      </>
-    )
-  }
+const ExtendDirectionFormAxis = lazy(() =>
+  import('./ExtendDirectionFormAxis').then(mod => ({ default: mod.ExtendDirectionFormAxis }))
 )
-const ExtendDirectionFormSeparated = dynamic(
-  () => import('./ExtendDirectionFormSeparated').then(mod => mod.ExtendDirectionFormSeparated),
-  {
-    ssr: false,
-    loading: () => (
-      <>
-        <InputSkeleton />
-        <InputSkeleton />
-        <InputSkeleton />
-        <InputSkeleton />
-      </>
-    )
-  }
+const ExtendDirectionFormSeparated = lazy(() =>
+  import('./ExtendDirectionFormSeparated').then(mod => ({
+    default: mod.ExtendDirectionFormSeparated
+  }))
 )
 
 const variants = {
-  [DIRECTION_MODEL.NUMBER]: ExtendDirectionFormNumber,
-  [DIRECTION_MODEL.AXIS]: ExtendDirectionFormAxis,
-  [DIRECTION_MODEL.SEPARATED]: ExtendDirectionFormSeparated
+  [DIRECTION_MODEL.NUMBER]: {
+    component: ExtendDirectionFormNumber,
+    fallback: <InputSkeleton />
+  },
+  [DIRECTION_MODEL.AXIS]: {
+    component: ExtendDirectionFormAxis,
+    fallback: <AxisSkeleton />
+  },
+  [DIRECTION_MODEL.SEPARATED]: {
+    component: ExtendDirectionFormSeparated,
+    fallback: <SeparatedSkeleton />
+  }
 }
 
 export const ExtendDirectionForm = () => {
   const directionModel = useExtendStore(state => state.directionModel)
-  const Component = variants[directionModel]
+  const { component: Component, fallback } = variants[directionModel]
 
   return (
     <Grid
@@ -58,7 +59,9 @@ export const ExtendDirectionForm = () => {
       width='100%'
     >
       <form>
-        <Component />
+        <Suspense fallback={fallback}>
+          <Component />
+        </Suspense>
       </form>
     </Grid>
   )

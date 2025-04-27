@@ -1,5 +1,3 @@
-'use client'
-
 import { useCallback } from 'react'
 
 import { TOOLBAR_TAB, type ToolbarTab } from '@stores/tabs'

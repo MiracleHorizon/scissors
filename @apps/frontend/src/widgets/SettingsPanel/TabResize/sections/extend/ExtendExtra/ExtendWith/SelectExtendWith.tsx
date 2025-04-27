@@ -7,7 +7,7 @@ import {
   IMAGE_FILE_FORMAT
 } from '@scissors/sharp'
 
-import { Select, type SelectData } from '@design-system/Select'
+import { Select, type SelectData } from '@lib/ui/Select'
 import { useExtendStore } from '@stores/extend'
 import { useOutputStore } from '@stores/output'
 

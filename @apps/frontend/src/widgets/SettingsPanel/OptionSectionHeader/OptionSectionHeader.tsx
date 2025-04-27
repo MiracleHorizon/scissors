@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
+import { Link } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import { Flex, Heading, Link as RadixLink, Separator } from '@radix-ui/themes'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
@@ -7,12 +7,10 @@ import { Link2Icon } from '@scissors/react-icons/Link2Icon'
 import type { Props } from './types'
 import styles from './OptionSectionHeader.module.css'
 
-const BadgeNew = dynamic(() => import('@ui/badges/BadgeNew').then(mod => mod.BadgeNew), {
-  ssr: false
-})
-const BadgeBeta = dynamic(() => import('@ui/badges/BadgeBeta').then(mod => mod.BadgeBeta), {
-  ssr: false
-})
+const BadgeNew = lazy(() => import('@ui/badges/BadgeNew').then(mod => ({ default: mod.BadgeNew })))
+const BadgeBeta = lazy(() =>
+  import('@ui/badges/BadgeBeta').then(mod => ({ default: mod.BadgeBeta }))
+)
 
 export const OptionSectionHeader = ({
   children,
@@ -38,7 +36,7 @@ export const OptionSectionHeader = ({
 
           {href ? (
             <RadixLink asChild weight='medium' className={styles.link}>
-              <Link href={href}>
+              <Link to={href}>
                 {title}
                 <Link2Icon width='17px' height='17px' className={styles.linkIcon} />
               </Link>
@@ -49,8 +47,16 @@ export const OptionSectionHeader = ({
             </Heading>
           )}
 
-          {isBeta && <BadgeBeta ml='2' />}
-          {isNew && <BadgeNew ml='2' />}
+          {isBeta && (
+            <Suspense fallback={null}>
+              <BadgeBeta ml='2' />
+            </Suspense>
+          )}
+          {isNew && (
+            <Suspense fallback={null}>
+              <BadgeNew ml='2' />
+            </Suspense>
+          )}
         </article>
       </Flex>
 

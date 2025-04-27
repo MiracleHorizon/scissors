@@ -1,18 +1,19 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense } from 'react'
 import { Box } from '@radix-ui/themes'
 
 import { ProcessingFooterContentSkeleton } from './ProcessingFooterContentSkeleton'
 import styles from './ProcessingFooter.module.css'
 
-const ProcessingFooterContent = dynamic(() => import('./ProcessingFooterContent'), {
-  ssr: false,
-  loading: () => <ProcessingFooterContentSkeleton />
-})
+const ProcessingFooterContent = lazy(() =>
+  import('./ProcessingFooterContent').then(mod => ({ default: mod.default }))
+)
 
 export const ProcessingFooter = () => (
   <Box asChild width='100%' px='4' className={styles.root}>
     <footer>
-      <ProcessingFooterContent />
+      <Suspense fallback={<ProcessingFooterContentSkeleton />}>
+        <ProcessingFooterContent />
+      </Suspense>
     </footer>
   </Box>
 )

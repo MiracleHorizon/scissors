@@ -1,5 +1,3 @@
-'use client'
-
 // https://github.com/radix-ui/website/blob/67f9736819e5a03f863e8e56f366fa51637845f7/components/ColorField.tsx
 
 import {
@@ -13,12 +11,10 @@ import {
   useState
 } from 'react'
 import { Flex, Text, TextField } from '@radix-ui/themes'
-import { clsx } from 'clsx'
 import Color from 'colorjs.io'
 
 import { useIsomorphicLayoutEffect } from '@hooks/useIsomorphicLayoutEffect'
 import { hasSelection, toCssFormat, toShortFormat } from './utils'
-import { geistMono } from '@app/fonts'
 import styles from './ColorField.module.css'
 
 const DEFAULT_COLOR = '000000'
@@ -163,7 +159,7 @@ export const ColorField = ({
         readOnly={readOnly}
         value={inputValue}
         variant='surface'
-        className={clsx(styles.field, geistMono.className)}
+        className={styles.field}
         onBlur={onBlurField}
         onChange={onChangeField}
         onKeyDownCapture={handleKeyDownCapture}

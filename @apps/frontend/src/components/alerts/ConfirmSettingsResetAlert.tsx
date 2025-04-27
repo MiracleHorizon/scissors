@@ -1,9 +1,7 @@
-'use client'
-
 import { type ComponentPropsWithoutRef, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 
-import { Checkbox } from '@design-system/Checkbox'
+import { Checkbox } from '@lib/ui/Checkbox'
 
 const contentActionsProps = {
   gap: {

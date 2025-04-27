@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import { IconButton, Popover, Tooltip } from '@radix-ui/themes'
 

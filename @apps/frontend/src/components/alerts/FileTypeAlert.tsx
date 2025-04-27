@@ -1,5 +1,3 @@
-'use client'
-
 import { FileValidationAlert, type FileValidationAlertExternalProps } from './FileValidationAlert'
 
 export const FileTypeAlert = (props: FileValidationAlertExternalProps) => (

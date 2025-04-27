@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { Checkbox } from '@design-system/Checkbox'
+import { Checkbox } from '@lib/ui/Checkbox'
 import { useResizeStore } from '@stores/resize'
 
 export const CheckboxEnlargement = () => {

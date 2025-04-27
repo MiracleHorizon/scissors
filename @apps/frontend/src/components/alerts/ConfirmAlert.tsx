@@ -1,5 +1,3 @@
-'use client'
-
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'
 import type { PropsWithChildren } from 'react'
 

@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 import { DEFAULT_TRIM_BACKGROUND } from '@scissors/sharp'
 
-import { Checkbox } from '@design-system/Checkbox'
+import { Checkbox } from '@lib/ui/Checkbox'
 import { TrimBackgroundPicker } from './TrimBackgroundPicker'
 import { TrimBackgroundInfoPopover } from './TrimBackgroundInfoPopover'
 import { useTrimStore } from '@stores/trim'

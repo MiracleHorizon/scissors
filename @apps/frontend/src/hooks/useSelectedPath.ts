@@ -1,11 +1,9 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
+import { useLocation } from 'react-router'
 
 import { isPathSelected } from '@helpers/isPathSelected'
 
 export const useSelectedPath = (href: string) => {
-  const pathname = usePathname()
+  const { pathname } = useLocation()
 
   return isPathSelected(pathname, href)
 }

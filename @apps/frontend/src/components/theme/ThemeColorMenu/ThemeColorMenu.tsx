@@ -1,19 +1,9 @@
-'use client'
-
-import dynamic from 'next/dynamic'
 import { useState } from 'react'
-import { DropdownMenu, Skeleton } from '@radix-ui/themes'
+import { DropdownMenu } from '@radix-ui/themes'
 
 import { ThemeColorMenuTrigger } from './ThemeColorMenuTrigger'
+import { ThemeColorMenuContent } from './ThemeColorMenuContent'
 import styles from './ThemeColorMenu.module.css'
-
-const ThemeColorMenuContent = dynamic(
-  () => import('./ThemeColorMenuContent').then(mod => mod.ThemeColorMenuContent),
-  {
-    ssr: false,
-    loading: () => <Skeleton width='124px' height='60dvh' />
-  }
-)
 
 interface Props {
   triggerClassName?: string

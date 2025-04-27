@@ -1,6 +1,6 @@
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useRotateStore } from '@stores/rotate'
 
 export const SliderRotateAngle = () => {

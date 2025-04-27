@@ -1,5 +1,5 @@
 .root {
-  width: var(--settings-panel-width);
+  width: var(--settings-panel-width) !important;
   box-shadow: -1px 0 var(--gray-a5);
 }
 
@@ -14,19 +14,19 @@
 
 @media screen and (min-width: 2400px) {
   .root {
-    width: var(--settings-panel-width-2400);
+    width: var(--settings-panel-width-2400) !important;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .root {
-    width: var(--settings-panel-width-1200);
+    width: var(--settings-panel-width-1200) !important;
   }
 }
 
 @media screen and (max-width: 1023px) {
   .root {
-    width: var(--settings-panel-width-md);
+    width: var(--settings-panel-width-md) !important;
     box-shadow: none;
   }
 }

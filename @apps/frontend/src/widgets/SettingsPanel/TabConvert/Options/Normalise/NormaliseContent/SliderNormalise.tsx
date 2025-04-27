@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useNormaliseStore } from '@stores/normalise'
 
 export const SliderNormalise = () => {

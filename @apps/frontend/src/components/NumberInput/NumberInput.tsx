@@ -1,5 +1,3 @@
-'use client'
-
 import { type ChangeEvent, type KeyboardEvent, useCallback, useId, useRef } from 'react'
 import { TextField } from '@radix-ui/themes'
 import { clsx } from 'clsx'

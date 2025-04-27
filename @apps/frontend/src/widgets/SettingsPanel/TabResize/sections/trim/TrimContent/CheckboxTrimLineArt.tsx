@@ -1,4 +1,4 @@
-import { Checkbox } from '@design-system/Checkbox'
+import { Checkbox } from '@lib/ui/Checkbox'
 import { useTrimStore } from '@stores/trim'
 
 export const CheckboxTrimLineArt = () => {

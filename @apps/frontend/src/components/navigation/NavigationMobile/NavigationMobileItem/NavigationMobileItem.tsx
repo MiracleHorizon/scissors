@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
+import { Link } from 'react-router-dom'
 
 import { useSelectedPath } from '@hooks/useSelectedPath'
 import type { NavigationItemModel } from '@components/navigation/types'
@@ -19,7 +19,7 @@ export const NavigationMobileItem = ({
   return (
     <Link
       {...attributes}
-      href={href}
+      to={href}
       className={clsx(styles.root, {
         [styles.selected]: isSelected
       })}

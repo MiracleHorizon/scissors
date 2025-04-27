@@ -1,5 +1,3 @@
-'use client'
-
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
 type OpenResult = Promise<EyeDropperSelectionResult | null>

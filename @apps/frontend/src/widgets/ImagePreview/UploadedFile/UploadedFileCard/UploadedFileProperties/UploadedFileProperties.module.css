@@ -12,7 +12,7 @@
 
 .propertyItem,
 .separator {
-  height: 32px;
+  height: 32px !important;
 }
 
 .propertyItem span {
