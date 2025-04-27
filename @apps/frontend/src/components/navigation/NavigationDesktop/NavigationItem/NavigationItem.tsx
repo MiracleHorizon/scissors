@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 import { Flex, IconButton, Link as RadixLink, Text, Tooltip } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -24,7 +24,7 @@ export const NavigationItem = ({
       })}
     >
       <RadixLink asChild color='gray' underline='hover' size='2' className={styles.link}>
-        <Link {...attributes} href={href}>
+        <Link {...attributes} to={href}>
           <Text className={styles.text}>{label}</Text>
           <IconButton
             color='gray'

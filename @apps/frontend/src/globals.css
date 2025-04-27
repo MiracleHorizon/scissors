@@ -1,0 +1,68 @@
+@import '@radix-ui/themes/styles.css';
+@import './lib/theme/radix/theme-config.css';
+
+
+:root {
+  --settings-panel-width: 520px;
+  --settings-panel-width-1200: 440px;
+  --settings-panel-width-2400: 680px;
+  --settings-panel-width-md: 100%;
+  --settings-panel-toobar-height: 48px; /* var(--space-8) */
+
+  --layout-header-height: 49px; /* var(--space-8) + 1px */
+  --layout-content-height: calc(100dvh - var(--layout-header-height) + 1px);
+  --processing-footer-height: 64px; /* var(--space-9) */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Remove arrows for input type="number" */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.eye-dropper-active {
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}

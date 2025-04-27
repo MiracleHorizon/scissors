@@ -1,4 +1,6 @@
 import { readCookieValue } from '@helpers/browser/readCookieValue'
+import { writeCookieValue } from '@helpers/browser/writeCookieValue'
+
 import { themeColorSchema, themeSchema } from './schemas'
 import { DEFAULT_THEME_COLOR, THEME_COLOR_STORAGE_KEY } from './constants'
 import type { ThemeColor } from './types'
@@ -18,4 +20,11 @@ export const getThemeColorCookie = (): ThemeColor => {
   }
 
   return themeColor as ThemeColor
+}
+
+export const setThemeColorServerCookie = (themeColor: ThemeColor): void => {
+  writeCookieValue({
+    key: THEME_COLOR_STORAGE_KEY,
+    value: themeColor
+  })
 }

@@ -1,18 +1,17 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense, type PropsWithChildren } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
-import type { PropsWithChildren } from 'react'
 
 import { Layout } from '@components/Layout'
 import { DEFAULT_THEME, getThemeColorServerCookie, THEME_STORAGE_KEY } from '@lib/theme'
 import { geistSans } from './fonts'
 import './globals.css'
 
-const CookieConsentBanner = dynamic(() => import('@components/CookieConsentBanner'), {
-  ssr: false
-})
+const CookieConsentBanner = lazy(() =>
+  import('@components/CookieConsentBanner').then(mod => ({ default: mod.default }))
+)
 
 export { metadata } from '@site/seo'
 
@@ -29,7 +28,9 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
           disableTransitionOnChange
         >
           <Theme accentColor={themeColor}>
-            <CookieConsentBanner />
+            <Suspense fallback={null}>
+              <CookieConsentBanner />
+            </Suspense>
 
             <Layout>{children}</Layout>
           </Theme>

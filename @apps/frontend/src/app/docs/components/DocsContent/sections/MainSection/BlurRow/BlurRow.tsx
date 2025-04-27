@@ -1,12 +1,11 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense } from 'react'
 import { Code, Strong, Text } from '@radix-ui/themes'
 
 import { DocsTableRow } from '@app/docs/components/DocsTable/DocsTableRow'
 
-const GaussianBlurPopover = dynamic(() => import('./GaussianBlurPopover'), {
-  ssr: false,
-  loading: () => <Strong>Gaussian</Strong>
-})
+const GaussianBlurPopover = lazy(() =>
+  import('./GaussianBlurPopover').then(mod => ({ default: mod.default }))
+)
 
 export const BlurRow = () => (
   <DocsTableRow
@@ -17,7 +16,11 @@ export const BlurRow = () => (
           When used without <Code variant='ghost'>sigma</Code>, performs a fast 3x3 box blur.
         </Text>
         <Text as='div'>
-          When a sigma is provided, performs a slower, more accurate <GaussianBlurPopover /> blur.
+          When a sigma is provided, performs a slower, more accurate
+          <Suspense fallback={<Strong>Gaussian</Strong>}>
+            <GaussianBlurPopover />
+          </Suspense>
+          blur.
         </Text>
       </Text>
     }

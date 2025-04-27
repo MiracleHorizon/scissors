@@ -1,7 +1,6 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense, type ComponentPropsWithoutRef } from 'react'
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
-import type { ComponentPropsWithoutRef } from 'react'
 
 import { CompareSlider } from './CompareSlider'
 import { AsideSkeleton } from './GallerySlideSkeleton'
@@ -9,18 +8,11 @@ import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@lib/theme/constan
 import type { GallerySlideInfo } from './GallerySlideInfo'
 import styles from './GallerySlide.module.css'
 
-const GallerySlideAside = dynamic(
-  () => import('./GallerySlideAside').then(mod => mod.GallerySlideAside),
-  {
-    ssr: false,
-    loading: () => <AsideSkeleton />
-  }
+const GallerySlideAside = lazy(() =>
+  import('./GallerySlideAside').then(mod => ({ default: mod.GallerySlideAside }))
 )
-const GallerySlidePopover = dynamic(
-  () => import('./GallerySlidePopover').then(mod => mod.GallerySlidePopover),
-  {
-    ssr: false
-  }
+const GallerySlidePopover = lazy(() =>
+  import('./GallerySlidePopover').then(mod => ({ default: mod.GallerySlidePopover }))
 )
 
 type Props = ComponentPropsWithoutRef<typeof CompareSlider> &
@@ -51,17 +43,23 @@ const GallerySlide = ({
         />
 
         {isPortrait ? (
-          <GallerySlidePopover index={index} {...info} />
+          <Suspense fallback={null}>
+            <GallerySlidePopover index={index} {...info} />
+          </Suspense>
         ) : (
           <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.md}>
-            <GallerySlidePopover index={index} {...info} />
+            <Suspense fallback={null}>
+              <GallerySlidePopover index={index} {...info} />
+            </Suspense>
           </MediaQuery>
         )}
       </Flex>
 
       {isLandscape && (
         <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.md}>
-          <GallerySlideAside index={index} {...info} />
+          <Suspense fallback={<AsideSkeleton />}>
+            <GallerySlideAside index={index} {...info} />
+          </Suspense>
         </MediaQuery>
       )}
     </Flex>

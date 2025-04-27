@@ -1,7 +1,6 @@
-import NextLink from 'next/link'
-import { Box, Link } from '@radix-ui/themes'
+import { Link, useParams } from 'react-router-dom'
+import { Box } from '@radix-ui/themes'
 import { useLayoutEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
 import { clsx } from 'clsx'
 
 import styles from './DocsNavigationItem.module.css'
@@ -12,25 +11,21 @@ interface Props {
 }
 
 export const DocsNavigationItem = ({ title, hash }: Props) => {
-  const [isSelected, setSelected] = useState(false)
   const params = useParams()
+  const [isSelected, setIsSelected] = useState(false)
 
   useLayoutEffect(() => {
-    setSelected(hash === location.hash)
-  }, [params, hash])
+    setIsSelected(hash === location.hash)
+  }, [hash, location.hash, params])
 
   return (
-    <Box asChild width='100%'>
+    <Box asChild height='7'>
       <li>
         <Link
-          asChild
-          weight='medium'
-          underline='none'
+          to={hash}
           className={clsx(styles.link, isSelected ? styles.selectedLink : styles.unselectedLink)}
         >
-          <NextLink href={hash} scroll={false} data-cy={`docs-navigation-link-${hash}`}>
-            {title}
-          </NextLink>
+          {title}
         </Link>
       </li>
     </Box>

@@ -1,0 +1,22 @@
+.root {
+  --content-height: calc(var(--layout-content-height) - var(--processing-footer-height));
+
+  height: var(--layout-content-height);
+}
+
+.scrollArea,
+.main {
+  height: var(--content-height);
+}
+
+@media screen and (max-width: 1023px) {
+  .main {
+    height: auto;
+  }
+}
+
+.root :global(.rt-ScrollAreaScrollbar) {
+  z-index: 1000;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}

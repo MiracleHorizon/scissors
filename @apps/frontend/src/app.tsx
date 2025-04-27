@@ -4,6 +4,9 @@ import { Theme } from '@radix-ui/themes'
 
 import { DEFAULT_THEME, getThemeColorCookie, THEME_STORAGE_KEY } from '@lib/theme'
 import { createRouter } from './router'
+import './globals.css'
+
+const router = createRouter()
 
 export const App = () => {
   const themeColor = getThemeColorCookie()
@@ -16,7 +19,7 @@ export const App = () => {
       disableTransitionOnChange
     >
       <Theme accentColor={themeColor}>
-        <RouterProvider router={createRouter()} />
+        <RouterProvider router={router} />
       </Theme>
     </ThemeProvider>
   )

@@ -1,9 +1,9 @@
-import Link from 'next/link'
+import { Link, useParams } from 'react-router-dom'
 import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
-import { useParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
+import { useEscapeAction } from '@hooks/useEscapeAction'
 
 import styles from './DocsSectionHeader.module.css'
 
@@ -12,39 +12,41 @@ interface Props {
   hash: string
 }
 
-export const DocsSectionHeader = ({ title, hash }: Props) => {
-  const rootRef = useRef<HTMLDivElement>(null)
-  const params = useParams()
+export const DocsSectionHeader = ({ hash, title }: Props) => {
+  const { id } = useParams()
+  const linkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
-    const locationHash = location.hash
-    const rootNode = rootRef.current
+    if (hash.includes(id as string)) {
+      linkRef.current?.focus()
+    }
+  }, [hash, id])
 
-    if (locationHash.length === 0 || locationHash !== hash || !rootNode) return
-
-    rootNode.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  }, [params, hash])
+  useEscapeAction(() => {
+    if (linkRef.current) {
+      linkRef.current.blur()
+    }
+  })
 
   return (
-    <Box asChild pt='5' pl='1' ref={rootRef} className={styles.root}>
-      <header data-cy={`docs-section-header-${title.toLowerCase()}`}>
+    <div id={hash.slice(1)} className={styles.root}>
+      <header data-cy={`${hash.slice(1)}-header`}>
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5' weight='bold'>
-            <Link href={hash} scroll={false}>
+            <Link to={hash}>
               <Link2Icon
                 width='18px'
                 height='18px'
-                label={`go to "${title.toLowerCase()}" section`}
+                className={styles.icon}
+                data-cy={`${hash.slice(1)}-hash-link`}
               />
-
-              {title}
+              <Box as='span' className={styles.title}>
+                {title}
+              </Box>
             </Link>
           </RadixLink>
         </Flex>
       </header>
-    </Box>
+    </div>
   )
 }

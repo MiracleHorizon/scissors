@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import {
   closestCenter,
   DndContext,
@@ -16,25 +15,29 @@ import { RESIZE_OPERATION } from '@scissors/sharp'
 
 import { SortableSection } from './SortableSection'
 import { TabResizeEmpty } from './TabResizeEmpty'
-import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
+// import { TabResizeSectionSkeleton } from './TabResizeSectionSkeleton'
 import { useTabResizeStore } from './store'
+import { ResizeSection } from './sections/resize'
+import { ExtendSection } from './sections/extend'
+import { ExtractSection } from './sections/extract'
+import { TrimSection } from './sections/trim'
 
-const ResizeSection = dynamic(() => import('./sections/resize').then(mod => mod.ResizeSection), {
-  ssr: false,
-  loading: () => <TabResizeSectionSkeleton height='168px' />
-})
-const ExtendSection = dynamic(() => import('./sections/extend').then(mod => mod.ExtendSection), {
-  ssr: false,
-  loading: () => <TabResizeSectionSkeleton height='228px' />
-})
-const ExtractSection = dynamic(() => import('./sections/extract').then(mod => mod.ExtractSection), {
-  ssr: false,
-  loading: () => <TabResizeSectionSkeleton height='120px' />
-})
-const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.TrimSection), {
-  ssr: false,
-  loading: () => <TabResizeSectionSkeleton height='120px' />
-})
+// const ResizeSection = dynamic(() => import('./sections/resize').then(mod => mod.ResizeSection), {
+//   ssr: false,
+//   loading: () => <TabResizeSectionSkeleton height='168px' />
+// })
+// const ExtendSection = dynamic(() => import('./sections/extend').then(mod => mod.ExtendSection), {
+//   ssr: false,
+//   loading: () => <TabResizeSectionSkeleton height='228px' />
+// })
+// const ExtractSection = dynamic(() => import('./sections/extract').then(mod => mod.ExtractSection), {
+//   ssr: false,
+//   loading: () => <TabResizeSectionSkeleton height='120px' />
+// })
+// const TrimSection = dynamic(() => import('./sections/trim').then(mod => mod.TrimSection), {
+//   ssr: false,
+//   loading: () => <TabResizeSectionSkeleton height='120px' />
+// })
 
 export const TabResizeContent = () => {
   const operations = useTabResizeStore(state => state.operations)

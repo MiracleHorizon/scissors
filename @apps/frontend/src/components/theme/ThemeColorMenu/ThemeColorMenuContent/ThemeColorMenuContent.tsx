@@ -5,8 +5,6 @@ import { useTheme } from '@hooks/useTheme'
 import { setThemeColorServerCookie, type ThemeColor, themeColorItems } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
-// eslint-disable-next-line no-unused-vars
-type ChangeValueFunction = (value: string) => void
 export const ThemeColorMenuContent = ({ className }: ClassNameProps) => {
   const { themeColor } = useTheme()
 
@@ -17,7 +15,8 @@ export const ThemeColorMenuContent = ({ className }: ClassNameProps) => {
       <DropdownMenu.Label>Theme Color</DropdownMenu.Label>
       <DropdownMenu.RadioGroup
         value={themeColor}
-        onValueChange={onValueChange as ChangeValueFunction}
+        // eslint-disable-next-line no-unused-vars
+        onValueChange={onValueChange as (value: string) => void}
       >
         {themeColorItems.map(({ key, color }) => (
           <ThemeColorMenuItem key={key} color={color} />

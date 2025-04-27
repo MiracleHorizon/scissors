@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import { type ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Button, Flex, TextField } from '@radix-ui/themes'
 
@@ -12,25 +11,9 @@ import {
   INVALID_FILE_TYPE_MESSAGE,
   DEFAULT_MESSAGE
 } from '@lib/error-messages'
-
-const FileSizeAlert = dynamic(
-  () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
-  {
-    ssr: false
-  }
-)
-const FileTypeAlert = dynamic(
-  () => import('@components/alerts/FileTypeAlert').then(mod => mod.FileTypeAlert),
-  {
-    ssr: false
-  }
-)
-const DefaultErrorAlert = dynamic(
-  () => import('@components/alerts/DefaultErrorAlert').then(mod => mod.DefaultErrorAlert),
-  {
-    ssr: false
-  }
-)
+import { FileSizeAlert } from './alerts/FileSizeAlert'
+import { FileTypeAlert } from './alerts/FileTypeAlert'
+import { DefaultErrorAlert } from './alerts/DefaultErrorAlert'
 
 /* eslint no-unused-vars: 0 */
 interface Props {

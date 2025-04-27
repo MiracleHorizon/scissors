@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic'
+import { lazy, Suspense } from 'react'
 import { Flex, Heading, Separator } from '@radix-ui/themes'
 
 import type { Props as SliderProps } from '../types'
 import styles from './SliderHeader.module.css'
 
-const SliderPopover = dynamic(() => import('./SliderPopover').then(mod => mod.SliderPopover), {
-  ssr: false
-})
+const SliderPopover = lazy(() =>
+  import('./SliderPopover').then(mod => ({ default: mod.SliderPopover }))
+)
 
 type Props = Pick<SliderProps, 'title' | 'titleIcon' | 'infoContent' | 'disabled'>
 
@@ -26,7 +26,11 @@ export const SliderHeader = ({ title, titleIcon, disabled, infoContent }: Props)
         {title}
       </Heading>
 
-      {infoContent && <SliderPopover content={infoContent} disabled={disabled} />}
+      {infoContent && (
+        <Suspense fallback={null}>
+          <SliderPopover content={infoContent} disabled={disabled} />
+        </Suspense>
+      )}
     </article>
   </Flex>
 )

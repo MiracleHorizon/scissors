@@ -1,13 +1,8 @@
 import { type ChangeEvent, type ComponentType, type DragEvent, useRef, useState } from 'react'
-import dynamic from 'next/dynamic'
 
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import type { ComponentProps, Props } from './withFileUploader.types'
-
-const FileSizeAlert = dynamic(
-  () => import('@components/alerts/FileSizeAlert').then(mod => mod.FileSizeAlert),
-  { ssr: false }
-)
+import { FileSizeAlert } from '@components/alerts/FileSizeAlert'
 
 export const withFileUploader = (Component: ComponentType<ComponentProps>) =>
   function FileUploaderHOC<T extends Props>({

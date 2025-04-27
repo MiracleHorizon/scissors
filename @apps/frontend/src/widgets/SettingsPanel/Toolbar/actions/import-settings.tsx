@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic'
-
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'
 
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
@@ -7,13 +5,7 @@ import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useTabsStore } from '@stores/tabs'
 import { useImportSettings } from '@stores/hooks/useImportSettings'
-
-const ConfirmAlert = dynamic(
-  () => import('@components/alerts/ConfirmAlert').then(mod => mod.ConfirmAlert),
-  {
-    ssr: false
-  }
-)
+import { ConfirmAlert } from '@components/alerts/ConfirmAlert'
 
 const ConfirmImportAlert = (props: {
   open: boolean

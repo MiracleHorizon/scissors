@@ -1,24 +1,11 @@
-import dynamic from 'next/dynamic'
 import { clsx } from 'clsx'
 import { Flex } from '@radix-ui/themes'
 
-import { UploadedFileLoading } from './UploadedFile/UploadedFileLoading'
-import { ImageUploaderLoading } from '@components/ImageUploader/ImageUploaderLoading'
 import { BackgroundGrid } from '@ui/BackgroundGrid'
 import { useOutputStore } from '@stores/output'
+import { ImageUploader } from '@components/ImageUploader'
+import { UploadedFile } from './UploadedFile'
 import styles from './ImagePreview.module.css'
-
-const ImageUploader = dynamic(
-  () => import('@components/ImageUploader').then(mod => mod.ImageUploader),
-  {
-    ssr: false,
-    loading: () => <ImageUploaderLoading />
-  }
-)
-const UploadedFile = dynamic(() => import('./UploadedFile').then(mod => mod.UploadedFile), {
-  ssr: false,
-  loading: () => <UploadedFileLoading />
-})
 
 export const ImagePreview = () => {
   const file = useOutputStore(state => state.file)

@@ -7,7 +7,7 @@ import { LayoutHeader } from './LayoutHeader'
 const CookieConsentBanner = lazy(() => import('@components/CookieConsentBanner'))
 
 export const Layout = () => (
-  <Flex align='center' direction='column'>
+  <Flex align='center' direction='column' className='geist-font'>
     <Box width='100%' pt='8'>
       <Suspense>
         <CookieConsentBanner />

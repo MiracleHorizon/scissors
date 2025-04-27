@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic'
-import { type HTMLAttributes, memo } from 'react'
+import { lazy, Suspense, type HTMLAttributes, memo } from 'react'
 import { Button, Flex } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
@@ -8,11 +7,8 @@ import { useOutputStore } from '@stores/output'
 import { TOUR_STEP } from '@lib/tour'
 import styles from './ButtonRequest.module.css'
 
-const RequestErrorAlert = dynamic(
-  () => import('@components/alerts/RequestErrorAlert').then(mod => mod.RequestErrorAlert),
-  {
-    ssr: false
-  }
+const RequestErrorAlert = lazy(() =>
+  import('@components/alerts/RequestErrorAlert').then(mod => ({ default: mod.RequestErrorAlert }))
 )
 
 interface Props extends Omit<HTMLAttributes<HTMLButtonElement>, 'color' | 'onClick' | 'className'> {
@@ -54,7 +50,9 @@ export const ButtonRequest = memo(
         </Flex>
 
         {error && error instanceof Error && (
-          <RequestErrorAlert open={!!error} error={error} reset={reset} retry={retry} />
+          <Suspense fallback={null}>
+            <RequestErrorAlert open={!!error} error={error} reset={reset} retry={retry} />
+          </Suspense>
         )}
       </>
     )

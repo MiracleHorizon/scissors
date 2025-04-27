@@ -1,5 +1,9 @@
 .field {
   width: 120px;
+  font-family: "Geist Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .swatchWrapper {

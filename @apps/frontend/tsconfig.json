@@ -97,6 +97,9 @@
       ],
       "@testing/*": [
         "./src/__setup__/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
       ]
     }
   }
