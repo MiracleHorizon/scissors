@@ -1,7 +1,6 @@
 @import '@radix-ui/themes/styles.css';
 @import './lib/theme/radix/theme-config.css';
 
-
 :root {
   --settings-panel-width: 520px;
   --settings-panel-width-1200: 440px;

@@ -26,6 +26,7 @@ export const NavigationItem = ({
       <RadixLink asChild color='gray' underline='hover' size='2' className={styles.link}>
         <Link {...attributes} to={href}>
           <Text className={styles.text}>{label}</Text>
+
           <IconButton
             color='gray'
             variant='ghost'

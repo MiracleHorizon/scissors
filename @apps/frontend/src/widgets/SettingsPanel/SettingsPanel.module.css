@@ -1,5 +1,5 @@
 .root {
-  width: var(--settings-panel-width);
+  width: var(--settings-panel-width) !important;
   box-shadow: -1px 0 var(--gray-a5);
 }
 

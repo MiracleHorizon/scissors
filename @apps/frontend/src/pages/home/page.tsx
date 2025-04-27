@@ -2,7 +2,7 @@ import { Flex, ScrollArea } from '@radix-ui/themes'
 
 import { ImagePreview } from '@widgets/ImagePreview'
 import { SettingsPanel } from '@widgets/SettingsPanel'
-// import { ProcessingFooter } from '@widgets/ProcessingFooter'
+import { ProcessingFooter } from '@widgets/ProcessingFooter'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 
@@ -22,7 +22,7 @@ const HomePage = () => (
       </Flex>
     </ScrollArea>
 
-    {/* <ProcessingFooter /> */}
+    <ProcessingFooter />
   </Flex>
 )
 
