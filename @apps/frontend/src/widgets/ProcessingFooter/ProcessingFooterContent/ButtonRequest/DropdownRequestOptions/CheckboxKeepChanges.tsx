@@ -1,4 +1,4 @@
-import { Checkbox } from '@design-system/Checkbox'
+import { Checkbox } from '@lib/ui/Checkbox'
 import { useOutputStore } from '@stores/output'
 
 export const CheckboxKeepChanges = () => {

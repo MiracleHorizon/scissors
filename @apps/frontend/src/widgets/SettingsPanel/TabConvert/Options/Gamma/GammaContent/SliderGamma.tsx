@@ -1,6 +1,6 @@
 import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useGammaStore } from '@stores/gamma'
 
 export const SliderGamma = () => {

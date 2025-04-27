@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { DEFAULT_RESIZE_KERNEL, RESIZE_KERNEL, type ResizeKernel } from '@scissors/sharp'
 
-import { Select, type SelectData } from '@design-system/Select'
+import { Select, type SelectData } from '@lib/ui/Select'
 import { useResizeStore } from '@stores/resize'
 
 const data: SelectData = [

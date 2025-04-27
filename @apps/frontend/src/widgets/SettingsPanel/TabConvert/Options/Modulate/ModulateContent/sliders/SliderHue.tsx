@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 
 import { MAX_HUE, MIN_HUE } from '@scissors/sharp'
 
-import { Slider } from '@design-system/Slider'
+import { Slider } from '@lib/ui/Slider'
 import { useModulateStore } from '@stores/modulate'
 import { useConvertStore } from '@stores/convert'
 import styles from './SliderHue.module.css'

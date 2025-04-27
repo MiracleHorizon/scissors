@@ -1,6 +1,6 @@
 import { IMAGE_FILE_FORMAT, type ImageFileFormat } from '@scissors/sharp'
 
-import { Select, type SelectData } from '@design-system/Select'
+import { Select, type SelectData } from '@lib/ui/Select'
 import { useOutputStore } from '@stores/output'
 
 const data: SelectData = [

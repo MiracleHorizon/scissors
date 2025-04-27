@@ -1,8 +1,8 @@
 import { Flex } from '@radix-ui/themes'
 
 import { OptionSectionHeaderSkeleton } from '@widgets/SettingsPanel/OptionSectionHeader/OptionSectionHeaderSkeleton'
-import { SliderSkeleton } from '@design-system/Slider/SliderSkeleton'
-import { CheckboxSkeleton } from '@design-system/Checkbox/CheckboxSkeleton'
+import { SliderSkeleton } from '@lib/ui/Slider/SliderSkeleton'
+import { CheckboxSkeleton } from '@lib/ui/Checkbox/CheckboxSkeleton'
 import { ColorFieldSkeleton } from '@ui/ColorField/ColorFieldSkeleton'
 
 export const RotateContentSkeleton = () => (

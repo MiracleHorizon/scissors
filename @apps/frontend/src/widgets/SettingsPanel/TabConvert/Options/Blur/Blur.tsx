@@ -1,7 +1,7 @@
 import { useMemo, lazy, Suspense } from 'react'
 import { Flex } from '@radix-ui/themes'
 
-import { Switch } from '@design-system/Switch'
+import { Switch } from '@lib/ui/Switch'
 import { BlurSigmaSkeleton } from './BlurSigma/BlurSigmaSkeleton'
 import { ButtonAddBlurSigma } from './BlurSigma/ButtonAddBlurSigma'
 import { useBlurStore } from '@stores/blur'

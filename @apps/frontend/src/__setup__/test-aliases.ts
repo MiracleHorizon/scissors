@@ -32,10 +32,6 @@ const aliases: Alias[] = [
     replacementPath: './src/components'
   },
   {
-    find: '@design-system',
-    replacementPath: './src/design-system'
-  },
-  {
     find: '@hoc',
     replacementPath: './src/hoc'
   },
