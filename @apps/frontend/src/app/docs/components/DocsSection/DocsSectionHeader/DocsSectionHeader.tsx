@@ -1,4 +1,4 @@
-'use client'
+
 
 import Link from 'next/link'
 import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'

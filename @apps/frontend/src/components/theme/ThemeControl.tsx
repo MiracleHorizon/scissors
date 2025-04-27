@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Flex, SegmentedControl } from '@radix-ui/themes'
 

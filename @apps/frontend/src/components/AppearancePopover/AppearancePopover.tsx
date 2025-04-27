@@ -1,17 +1,10 @@
-'use client'
-
-import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { Popover, Skeleton } from '@radix-ui/themes'
 
 import { AppearancePopoverTrigger } from './AppearancePopoverTrigger'
 
-const AppearancePopoverContent = dynamic(
-  () => import('./AppearancePopoverContent').then(mod => mod.AppearancePopoverContent),
-  {
-    ssr: false,
-    loading: () => <Skeleton width='170px' height='217px' />
-  }
+const AppearancePopoverContent = lazy(() =>
+  import('./AppearancePopoverContent').then(mod => ({ default: mod.AppearancePopoverContent }))
 )
 
 const AppearancePopover = () => {
@@ -22,13 +15,12 @@ const AppearancePopover = () => {
       <AppearancePopoverTrigger />
 
       <Popover.Content data-cy='appearance-popover-content' sideOffset={3}>
-        {isOpen && <AppearancePopoverContent />}
+        <Suspense fallback={<Skeleton width='170px' height='217px' />}>
+          {isOpen && <AppearancePopoverContent />}
+        </Suspense>
       </Popover.Content>
     </Popover.Root>
   )
 }
 
-/*
- * Default export is required to import a client component inside a server component using next/dynamic.
- */
 export default AppearancePopover

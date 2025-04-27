@@ -1,8 +1,6 @@
-'use client'
-
-import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Flex, Heading, IconButton, Separator } from '@radix-ui/themes'
+import { useLocation, useParams } from 'react-router'
 
 import { GithubLogoIcon } from '@scissors/react-icons/GithubLogoIcon'
 import { HamburgerMenuIcon } from '@scissors/react-icons/HamburgerMenuIcon'
@@ -15,7 +13,7 @@ import styles from './LayoutDrawer.module.css'
 
 const LayoutDrawer = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const { pathname } = useLocation()
   const params = useParams()
 
   const handleClose = () => setIsOpen(false)
@@ -63,7 +61,4 @@ const LayoutDrawer = () => {
   )
 }
 
-/*
- * Default export is required to import a client component inside a server component using next/dynamic.
- */
 export default LayoutDrawer

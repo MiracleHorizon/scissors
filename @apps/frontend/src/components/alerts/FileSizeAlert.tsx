@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Text } from '@radix-ui/themes'
 import type { CSSProperties } from 'react'

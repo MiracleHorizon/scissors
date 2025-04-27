@@ -1,11 +1,9 @@
-'use client'
-
 import { Button, Flex, Heading, Text, Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
 import type { Metadata } from 'next'
 
 import { SITE_TITLE } from '@site/config'
-import { getThemeColorClientCookie } from '@lib/theme/helpers'
+import { getThemeColorCookie } from '@lib/theme/helpers'
 import { THEME_STORAGE_KEY } from '@lib/theme/constants'
 import { geistSans } from './fonts'
 import type { ErrorPageProps } from '@app-types/next'
@@ -15,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const GlobalError = ({ error, reset }: ErrorPageProps) => {
-  const themeColor = getThemeColorClientCookie()
+  const themeColor = getThemeColorCookie()
 
   console.log(error)
 

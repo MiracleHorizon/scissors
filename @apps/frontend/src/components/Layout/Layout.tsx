@@ -1,13 +1,16 @@
 import { Box, Flex } from '@radix-ui/themes'
-import type { PropsWithChildren } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 
 import { LayoutHeader } from './LayoutHeader'
 
-export const Layout = ({ children }: PropsWithChildren) => (
+export const Layout = () => (
   <Flex align='center' direction='column'>
     <Box width='100%' pt='8'>
-      <LayoutHeader />
-      {children}
+      <Suspense>
+        <LayoutHeader />
+        <Outlet />
+      </Suspense>
     </Box>
   </Flex>
 )

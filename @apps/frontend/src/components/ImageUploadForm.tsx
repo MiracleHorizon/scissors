@@ -1,4 +1,4 @@
-'use client'
+
 
 import dynamic from 'next/dynamic'
 import { type ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'

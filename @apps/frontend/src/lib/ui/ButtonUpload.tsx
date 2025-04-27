@@ -1,4 +1,4 @@
-'use client'
+
 
 import { IconButton, Tooltip } from '@radix-ui/themes'
 

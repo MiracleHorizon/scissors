@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Code, Text } from '@radix-ui/themes'
 import { MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'

@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Drawer } from 'vaul'
 import { clsx } from 'clsx'

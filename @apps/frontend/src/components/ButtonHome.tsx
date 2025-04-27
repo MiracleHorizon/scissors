@@ -1,4 +1,4 @@
-'use client'
+
 
 import { useRouter } from 'next/navigation'
 import { Button } from '@radix-ui/themes'

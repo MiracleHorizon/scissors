@@ -1,4 +1,4 @@
-'use client'
+
 
 import { type ComponentPropsWithoutRef, type PropsWithChildren, useState } from 'react'
 import { AlertDialog, Button, Flex } from '@radix-ui/themes'

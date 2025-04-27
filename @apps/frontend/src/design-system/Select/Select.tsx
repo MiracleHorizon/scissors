@@ -1,4 +1,4 @@
-'use client'
+
 
 import { useId } from 'react'
 import { Flex, Select as RadixSelect, Text } from '@radix-ui/themes'

@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Flex, Link, Popover, Strong } from '@radix-ui/themes'
 import type { PropsWithChildren } from 'react'

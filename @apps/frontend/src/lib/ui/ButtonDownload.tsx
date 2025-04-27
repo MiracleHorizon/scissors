@@ -1,4 +1,4 @@
-'use client'
+
 
 import { memo } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'

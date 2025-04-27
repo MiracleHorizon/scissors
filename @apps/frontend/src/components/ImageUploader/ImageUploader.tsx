@@ -1,4 +1,4 @@
-'use client'
+
 
 import { useEffect } from 'react'
 import { Flex } from '@radix-ui/themes'

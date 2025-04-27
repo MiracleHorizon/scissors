@@ -1,9 +1,6 @@
-'use client'
-
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { clsx } from 'clsx'
 import { Flex } from '@radix-ui/themes'
+import { useNavigate } from 'react-router'
 import type { MarginProps } from '@radix-ui/themes/props'
 
 import { PATH_ROOT } from '@site/paths'
@@ -16,9 +13,9 @@ export const testId = 'app-logo'
 type Props = ClassNameProps & StyleProps & MarginProps
 
 export const AppLogo = ({ style, className, ...props }: Props) => {
-  const router = useRouter()
+  const navigate = useNavigate()
 
-  const navigateToHome = () => router.push(PATH_ROOT)
+  const navigateToHome = () => navigate(PATH_ROOT)
 
   return (
     <Flex
@@ -30,14 +27,7 @@ export const AppLogo = ({ style, className, ...props }: Props) => {
       className={clsx(styles.root, className)}
       onClick={navigateToHome}
     >
-      <Image
-        src='/favicons/dark.png'
-        alt='Scissors'
-        width={34}
-        height={34}
-        priority
-        className={styles.icon}
-      />
+      <img src='/favicons/dark.png' alt='Scissors' width={34} height={34} className={styles.icon} />
     </Flex>
   )
 }

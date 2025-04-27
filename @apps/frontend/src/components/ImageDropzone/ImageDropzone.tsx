@@ -1,4 +1,4 @@
-'use client'
+
 
 import { Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'

@@ -1,4 +1,4 @@
-'use client'
+
 
 import { useEffect, useState } from 'react'
 import { IconButton, Tooltip } from '@radix-ui/themes'

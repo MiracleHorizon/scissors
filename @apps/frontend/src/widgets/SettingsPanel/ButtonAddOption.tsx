@@ -1,4 +1,4 @@
-'use client'
+
 
 import { type HTMLAttributes, memo, type ReactNode } from 'react'
 import { Button } from '@radix-ui/themes'

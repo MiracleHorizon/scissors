@@ -1,4 +1,4 @@
-'use client'
+
 
 import { useCallback } from 'react'
 import { Flex, Slider as RadixSlider, Text } from '@radix-ui/themes'

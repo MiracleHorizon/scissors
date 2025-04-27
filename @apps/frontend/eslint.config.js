@@ -9,7 +9,7 @@ import defaultConfig from '../../eslint.config.js'
 export default [
   ...defaultConfig,
   {
-    ignores: ['.next', 'cypress']
+    ignores: ['cypress']
   },
   {
     languageOptions: {

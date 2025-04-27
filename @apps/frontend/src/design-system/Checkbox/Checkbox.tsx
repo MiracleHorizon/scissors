@@ -1,4 +1,4 @@
-'use client'
+
 
 import { type HTMLAttributes, memo, useId } from 'react'
 import { Checkbox as RadixCheckbox, Flex, Text } from '@radix-ui/themes'

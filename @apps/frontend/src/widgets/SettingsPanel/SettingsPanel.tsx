@@ -1,4 +1,4 @@
-'use client'
+
 
 import dynamic from 'next/dynamic'
 import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'

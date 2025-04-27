@@ -1,4 +1,4 @@
-'use client'
+
 
 import { FileValidationAlert, type FileValidationAlertExternalProps } from './FileValidationAlert'
 

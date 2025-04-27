@@ -9,8 +9,8 @@ export default defineConfig({
 
   component: {
     devServer: {
-      framework: 'next',
-      bundler: 'webpack'
+      framework: 'react',
+      bundler: 'vite'
     }
   }
 })

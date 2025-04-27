@@ -1,8 +1,7 @@
 import { useCallback } from 'react'
-import { useTheme as useNextTheme } from 'next-themes'
-import type { UseThemeProps } from 'next-themes/dist/types'
+import { useTheme as useNextTheme, type UseThemeProps } from 'next-themes'
 
-import { getThemeColorClientCookie, type ThemeColor } from '@lib/theme'
+import { getThemeColorCookie, type ThemeColor } from '@lib/theme'
 
 interface Returns extends UseThemeProps {
   themeColor: ThemeColor
@@ -11,7 +10,7 @@ interface Returns extends UseThemeProps {
 
 export const useTheme = (): Returns => {
   const { theme, setTheme, ...themeRest } = useNextTheme()
-  const themeColor = getThemeColorClientCookie()
+  const themeColor = getThemeColorCookie()
 
   const toggleTheme = useCallback(() => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
