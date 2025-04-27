@@ -1,1 +1,0 @@
-export { GallerySlidePopoverTrigger } from './GallerySlidePopoverTrigger'
