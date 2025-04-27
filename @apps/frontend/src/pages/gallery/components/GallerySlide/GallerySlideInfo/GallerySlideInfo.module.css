@@ -1,0 +1,12 @@
+.root {
+  font-family: "Geist Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media screen and (max-width: 1023px) {
+  .export {
+    align-self: flex-end;
+  }
+}

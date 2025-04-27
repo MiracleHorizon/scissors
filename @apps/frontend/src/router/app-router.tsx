@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { Layout as BaseLayout } from '@components/Layout'
 import HomePage from '@pages/home'
+import GalleryPage from '@pages/gallery'
+import DocsPage from '@pages/docs'
 
 export const createRouter = () =>
   createBrowserRouter([
@@ -11,6 +13,14 @@ export const createRouter = () =>
         {
           path: '/',
           element: <HomePage />
+        },
+        {
+          path: '/gallery',
+          element: <GalleryPage />
+        },
+        {
+          path: '/docs',
+          element: <DocsPage />
         }
       ]
     }

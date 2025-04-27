@@ -61,7 +61,7 @@ const REPO_OWNER = 'MiracleHorizon'
 const REPO_NAME = 'scissors'
 const REPO_BRANCH = 'main'
 const REPO_PATH = `${REPO_OWNER}/${REPO_NAME}`
-const FRONTEND_PATH = 'apps/frontend'
+const FRONTEND_PATH = '@apps/frontend'
 
 const GITHUB_USER_CONTENT_PATH = 'raw.githubusercontent.com'
 const GITHUB_USER_CONTENT_REPO_PATH = `https://${GITHUB_USER_CONTENT_PATH}/${REPO_PATH}/${REPO_BRANCH}`

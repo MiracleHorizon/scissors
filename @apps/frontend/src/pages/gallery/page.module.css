@@ -1,0 +1,18 @@
+.root {
+  --page-padding: var(--space-4);
+  --content-gap: var(--space-1);
+  --slide-aside-w: 200px;
+}
+
+.root :global(.rt-ScrollAreaScrollbar) {
+  margin-top: var(--page-padding);
+  margin-bottom: var(--page-padding);
+}
+
+.root :global(.rt-ScrollAreaViewport) {
+  height: var(--layout-content-height);
+}
+
+.content {
+  gap: var(--content-gap);
+}
