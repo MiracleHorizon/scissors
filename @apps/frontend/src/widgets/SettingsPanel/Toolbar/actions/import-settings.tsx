@@ -1,7 +1,7 @@
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'
 
 import { ToolbarMobileMenuItem } from '../ToolbarMobileMenu'
-import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
+import { FileUploader } from '@components/FileUploader'
 import { ButtonUpload } from '@ui/ButtonUpload'
 import { useTabsStore } from '@stores/tabs'
 import { useImportSettings } from '@stores/hooks/useImportSettings'
@@ -56,24 +56,6 @@ export const ButtonImportSettings = () => {
   )
 }
 
-const ItemWithImport = ({
-  children,
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  isDragOver: _isDragOver,
-  ...props
-}: ComponentProps) => (
-  <ToolbarMobileMenuItem
-    label='Import'
-    icon={<UploadIcon width='20px' height='20px' label='import settings' />}
-    {...props}
-  >
-    {children}
-  </ToolbarMobileMenuItem>
-)
-
-ItemWithImport.displayName = 'ItemWithImport'
-const MobileItem = withFileUploader(ItemWithImport)
-
 interface ItemProps {
   onClick?: VoidFunction
 }
@@ -107,7 +89,12 @@ export const ItemImportSettings = ({ onClick }: ItemProps) => {
 
   return (
     <>
-      <MobileItem accept='.json' setFile={handleImport} />
+      <FileUploader accept='.json' setFile={handleImport}>
+        <ToolbarMobileMenuItem
+          label='Import'
+          icon={<UploadIcon width='20px' height='20px' label='import settings' />}
+        />
+      </FileUploader>
 
       {isConfirmAlertOpen && (
         <ConfirmImportAlert open onConfirm={handleConfirm} onCancel={handleCancel} />

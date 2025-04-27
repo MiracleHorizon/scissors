@@ -4,7 +4,7 @@ import type { PaddingProps } from '@radix-ui/themes/props'
 
 import { ImagePlusIcon } from '@scissors/react-icons/ImagePlusIcon'
 
-import { type ComponentProps, withFileUploader } from '@hoc/withFileUploader'
+import { FileUploader, type FileUploaderProps } from '@components/FileUploader'
 import styles from './ImageDropzone.module.css'
 
 const padding: PaddingProps = {
@@ -15,69 +15,68 @@ const padding: PaddingProps = {
   }
 } as const
 
-const ImageDropzone = ({
-  children: fileInput,
-  isDragOver,
+export const ImageDropzone = ({
+  accept,
+  setFile,
+  onUpload,
+  tooltipContent,
   className,
-  ...props
-}: ComponentProps) => (
-  <Flex
-    {...padding}
-    {...props}
-    data-id='image-dropzone'
-    data-cy='image-dropzone'
-    title='File is not uploaded'
-    align='center'
-    justify='center'
-    height='130px'
-    gap='3'
-    className={clsx(
-      styles.root,
-      {
-        [styles.dragOver]: isDragOver
-      },
-      className
-    )}
+  wrapperHtmlAttributes,
+  inputHtmlAttributes
+}: FileUploaderProps) => (
+  <FileUploader
+    accept={accept}
+    setFile={setFile}
+    onUpload={onUpload}
+    tooltipContent={tooltipContent}
+    className={clsx(styles.root, className)}
+    wrapperHtmlAttributes={wrapperHtmlAttributes}
+    inputHtmlAttributes={inputHtmlAttributes}
   >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      fill='none'
-      stroke='var(--gray-a9)'
-      className={styles.borderSvg}
+    <Flex
+      {...padding}
+      data-id='image-dropzone'
+      data-cy='image-dropzone'
+      align='center'
+      justify='center'
+      height='130px'
+      gap='3'
+      className={styles.innerWrapper}
     >
-      <rect
-        height='100%'
-        width='100%'
-        strokeWidth='3'
-        strokeDasharray='4 8'
-        rx='12'
-        ry='12'
-        strokeLinecap='square'
-      />
-    </svg>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        stroke='var(--gray-a9)'
+        className={styles.borderSvg}
+      >
+        <rect
+          height='100%'
+          width='100%'
+          strokeWidth='3'
+          strokeDasharray='4 8'
+          rx='12'
+          ry='12'
+          strokeLinecap='square'
+        />
+      </svg>
 
-    <Flex asChild align='center' justify='center' direction='column' className={styles.article}>
-      <article>
-        <ImagePlusIcon width='30px' height='30px' className={styles.icon} />
+      <Flex asChild align='center' justify='center' direction='column' className={styles.article}>
+        <article>
+          <ImagePlusIcon width='30px' height='30px' className={styles.icon} />
 
-        <Text as='p' weight='medium' className={styles.title}>
-          Drag image here or click to upload
-        </Text>
+          <Text as='p' weight='medium' className={styles.title}>
+            Drag image here or click to upload
+          </Text>
 
-        <Text as='p' weight='medium' className={styles.titleTouch}>
-          Tap here for upload file
-        </Text>
+          <Text as='p' weight='medium' className={styles.titleTouch}>
+            Tap here for upload file
+          </Text>
 
-        <Text as='p' size='2' className={styles.extensions}>
-          Format - JPG, PNG or WebP
-        </Text>
-      </article>
+          <Text as='p' size='2' className={styles.extensions}>
+            Format - JPG, PNG or WebP
+          </Text>
+        </article>
+      </Flex>
     </Flex>
-
-    {fileInput}
-  </Flex>
+  </FileUploader>
 )
-
-const Dropzone = withFileUploader(ImageDropzone)
-
-export { Dropzone as ImageDropzone }

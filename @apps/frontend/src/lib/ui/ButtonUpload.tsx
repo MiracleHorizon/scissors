@@ -1,20 +1,34 @@
-import { IconButton, Tooltip } from '@radix-ui/themes'
-
+import { IconButton } from '@radix-ui/themes'
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'
 
-import { withFileUploader } from '@hoc/withFileUploader'
+import { FileUploader, type FileUploaderProps } from '@components/FileUploader'
 
-export const ButtonUpload = withFileUploader(({ children, tooltipcontent, onClick }) => {
-  const buttonJSX = (
-    <IconButton size='2' color='gray' variant='outline' onClick={onClick}>
+export const ButtonUpload = ({
+  accept,
+  setFile,
+  onUpload,
+  tooltipContent,
+  className,
+  wrapperHtmlAttributes,
+  inputHtmlAttributes
+}: Omit<FileUploaderProps, 'children'>) => {
+  const buttonContent = (
+    <IconButton size='2' color='gray' variant='outline' type='button' tabIndex={-1}>
       <UploadIcon width='20px' height='20px' />
-      {children}
     </IconButton>
   )
 
-  if (tooltipcontent) {
-    return <Tooltip content={tooltipcontent}>{buttonJSX}</Tooltip>
-  }
-
-  return buttonJSX
-})
+  return (
+    <FileUploader
+      accept={accept}
+      setFile={setFile}
+      onUpload={onUpload}
+      tooltipContent={tooltipContent}
+      className={className}
+      wrapperHtmlAttributes={wrapperHtmlAttributes}
+      inputHtmlAttributes={inputHtmlAttributes}
+    >
+      {buttonContent}
+    </FileUploader>
+  )
+}
