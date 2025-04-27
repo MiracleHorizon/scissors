@@ -1,0 +1,22 @@
+.radix-themes {
+  /*noinspection CssUnresolvedCustomProperty*/
+  --default-font-family: var(--font-geist-sans);
+
+  --cursor-button: pointer;
+  --cursor-checkbox: pointer;
+  --cursor-link: pointer;
+  --cursor-menu-item: pointer;
+  --cursor-radio: pointer;
+  --cursor-switch: pointer;
+}
+
+.rt-Code:where(.rt-variant-ghost) {
+  color: var(--accent-a11);
+}
+
+.rt-AlertDialogContent:where(
+    [style='--max-width: 600px; pointer-events: auto;'],
+    [style='pointer-events: auto; --max-width: 600px;']
+  ) {
+  --max-width: 370px !important;
+}

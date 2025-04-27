@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 60px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--gray-12);
+  transition: background-color 50ms linear;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-decoration: none;
+}
+
+.root:focus-visible {
+  box-shadow:
+    inset 0 0 0 1px var(--accent-8),
+    0 0 0 1px var(--accent-8);
+}
+
+.selected {
+  background-color: var(--accent-a5);
+}
+
+@media (hover: hover) {
+  .root:hover {
+    background-color: var(--accent-a4);
+  }
+
+  .selected:hover {
+    background-color: var(--accent-a5);
+  }
+}

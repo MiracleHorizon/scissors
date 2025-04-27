@@ -1,0 +1,54 @@
+{
+  "extends": [
+    "stylelint-config-recommended"
+  ],
+  "rules": {
+    "alpha-value-notation": "number",
+    "no-descending-specificity": null,
+    "function-no-unknown": null,
+    "at-rule-no-unknown": null,
+    "at-rule-empty-line-before": null,
+    "property-no-unknown": true,
+    "color-function-notation": "modern",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global"
+        ]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "v-deep"
+        ]
+      }
+    ],
+    "no-empty-source": null,
+    "block-no-empty": null,
+    "comment-empty-line-before": null,
+    "max-nesting-depth": [
+      3,
+      {}
+    ],
+    "color-no-invalid-hex": true,
+    "selector-max-compound-selectors": [
+      3,
+      {}
+    ],
+    "selector-max-id": 0,
+    "selector-max-type": [
+      2,
+      {
+        "ignore": [
+          "child"
+        ]
+      }
+    ],
+    "selector-max-universal": 1,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true
+  }
+}
