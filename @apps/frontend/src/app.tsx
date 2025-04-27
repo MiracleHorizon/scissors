@@ -4,7 +4,6 @@ import { Theme } from '@radix-ui/themes'
 
 import { DEFAULT_THEME, getThemeColorCookie, THEME_STORAGE_KEY } from '@lib/theme'
 import { createRouter } from './router'
-import './globals.css'
 
 const router = createRouter()
 
