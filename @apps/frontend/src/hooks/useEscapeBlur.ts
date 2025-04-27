@@ -1,5 +1,3 @@
-
-
 import type { RefObject } from 'react'
 
 import { useEscapeAction } from './useEscapeAction'

@@ -1,5 +1,3 @@
-
-
 import NextLink from 'next/link'
 import { Box, Link } from '@radix-ui/themes'
 import { useLayoutEffect, useState } from 'react'

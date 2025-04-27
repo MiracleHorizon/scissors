@@ -1,5 +1,3 @@
-
-
 import dynamic from 'next/dynamic'
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'

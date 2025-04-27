@@ -1,5 +1,3 @@
-
-
 import { Flex, SegmentedControl } from '@radix-ui/themes'
 
 import { SunIcon } from '@scissors/react-icons/SunIcon'

@@ -1,5 +1,3 @@
-
-
 import { IconButton, Tooltip } from '@radix-ui/themes'
 
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'

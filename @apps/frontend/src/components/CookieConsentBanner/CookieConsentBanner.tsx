@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'

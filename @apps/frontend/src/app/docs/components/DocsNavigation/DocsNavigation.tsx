@@ -1,5 +1,3 @@
-
-
 import { Flex } from '@radix-ui/themes'
 import MediaQuery from 'react-responsive'
 

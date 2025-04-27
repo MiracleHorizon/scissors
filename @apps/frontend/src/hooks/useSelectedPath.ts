@@ -1,5 +1,3 @@
-
-
 import { usePathname } from 'next/navigation'
 
 import { isPathSelected } from '@helpers/isPathSelected'

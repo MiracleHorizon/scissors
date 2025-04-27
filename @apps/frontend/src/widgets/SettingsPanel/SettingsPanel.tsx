@@ -1,5 +1,3 @@
-
-
 import dynamic from 'next/dynamic'
 import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
 import type { PaddingProps } from '@radix-ui/themes/props'

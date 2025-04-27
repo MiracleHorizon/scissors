@@ -1,5 +1,3 @@
-
-
 import { Text } from '@radix-ui/themes'
 
 import { DocsDetailsPopover } from '../../../../DocsDetailsPopover'
