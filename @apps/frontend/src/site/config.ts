@@ -49,11 +49,11 @@ export const SITE_KEYWORDS = [
 
 // DOMAINS
 const SITE_DOMAIN_FALLBACK = 'http://localhost:3000'
-export const SITE_DOMAIN = process.env.SITE_DOMAIN ?? SITE_DOMAIN_FALLBACK
+export const SITE_DOMAIN = import.meta.env.SITE_DOMAIN ?? SITE_DOMAIN_FALLBACK
 
 // API
 const SERVER_API_FALLBACK = 'http://localhost:4200'
-const SERVER_API = process.env.SERVER_API ?? SERVER_API_FALLBACK
+const SERVER_API = import.meta.env.SERVER_API ?? SERVER_API_FALLBACK
 export const createApiURL = (path: string) => `${SERVER_API}/${path}`
 
 // REPOSITORY

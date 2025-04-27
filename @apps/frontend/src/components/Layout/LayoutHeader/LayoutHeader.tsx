@@ -35,7 +35,9 @@ export const LayoutHeader = () => (
         </Flex>
       </div>
 
-      <LayoutDrawer />
+      <Suspense>
+        <LayoutDrawer />
+      </Suspense>
     </header>
   </Flex>
 )
