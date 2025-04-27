@@ -2,13 +2,13 @@ import { DropdownMenu, Flex } from '@radix-ui/themes'
 
 import { ThemeColorMenuItem } from './ThemeColorMenuItem'
 import { useTheme } from '@hooks/useTheme'
-import { setThemeColorServerCookie, type ThemeColor, themeColorItems } from '@lib/theme'
+import { setThemeColorCookie, type ThemeColor, themeColorItems } from '@lib/theme'
 import type { ClassNameProps } from '@app-types/ClassNameProps'
 
 export const ThemeColorMenuContent = ({ className }: ClassNameProps) => {
   const { themeColor } = useTheme()
 
-  const onValueChange = (value: ThemeColor) => setThemeColorServerCookie(value)
+  const onValueChange = (value: ThemeColor) => setThemeColorCookie(value)
 
   return (
     <Flex direction='column' align='start' className={className}>

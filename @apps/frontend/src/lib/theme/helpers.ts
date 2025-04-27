@@ -22,9 +22,15 @@ export const getThemeColorCookie = (): ThemeColor => {
   return themeColor as ThemeColor
 }
 
-export const setThemeColorServerCookie = (themeColor: ThemeColor): void => {
+export const setThemeColorCookie = (themeColor: ThemeColor): void => {
   writeCookieValue({
     key: THEME_COLOR_STORAGE_KEY,
     value: themeColor
   })
+
+  const event = new StorageEvent('storage', {
+    key: THEME_COLOR_STORAGE_KEY,
+    newValue: themeColor
+  })
+  window.dispatchEvent(event)
 }
