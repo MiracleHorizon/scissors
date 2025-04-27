@@ -1,7 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
 import { NavigationMobileItem } from './NavigationMobileItem'
-import { PATH_ROOT } from '@site/paths'
 import { navigationItems } from '../items'
 import type { NavigationItemModel } from '../types'
 import styles from './NavigationMobile.module.css'
@@ -9,7 +8,7 @@ import styles from './NavigationMobile.module.css'
 const items: NavigationItemModel[] = [
   {
     label: 'Homepage',
-    href: PATH_ROOT
+    href: '/'
   },
   ...navigationItems.map(item => ({
     ...item,
