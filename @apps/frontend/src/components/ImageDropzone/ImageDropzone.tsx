@@ -40,15 +40,10 @@ export const ImageDropzone = ({
       align='center'
       justify='center'
       height='130px'
+      width='100%'
       gap='3'
-      className={styles.innerWrapper}
     >
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        stroke='var(--gray-a9)'
-        className={styles.borderSvg}
-      >
+      <svg fill='none' stroke='var(--gray-a9)' className={styles.borderSvg}>
         <rect
           height='100%'
           width='100%'
