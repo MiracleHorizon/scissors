@@ -1,5 +1,5 @@
 import {
-  type ChangeEvent, // Ensure ChangeEvent is explicitly typed
+  type ChangeEvent,
   type DragEvent,
   useRef,
   useState,
@@ -10,25 +10,23 @@ import {
 import { isValidFileSize } from '@helpers/file/isValidFileSize'
 import { FileSizeAlert } from '@components/alerts/FileSizeAlert'
 
-// Define Props for the new FileUploader component
 export interface FileUploaderProps extends PropsWithChildren {
   accept: string
   // eslint-disable-next-line no-unused-vars
-  setFile: (file: File | null) => void // Reference the File type
+  setFile: (file: File | null) => void
   tooltipContent?: string
-  className?: string // Allow passing className to the wrapper
+  className?: string
   wrapperHtmlAttributes?: Omit<
     HTMLAttributes<HTMLDivElement>,
     'onClick' | 'onDrop' | 'onDragOver' | 'onDragLeave'
-  > // Attributes for the wrapper div
+  >
   inputHtmlAttributes?: Omit<
     HTMLAttributes<HTMLInputElement>,
     'type' | 'className' | 'onChange' | 'ref' | 'accept'
-  > // Attributes for the hidden input
+  >
   onUpload?: VoidFunction
 }
 
-// Rename HOC to a regular functional component
 export const FileUploader = ({
   children,
   setFile,
@@ -39,12 +37,10 @@ export const FileUploader = ({
   inputHtmlAttributes,
   onUpload
 }: FileUploaderProps) => {
-  // State and refs remain largely the same
   const [isDragOver, setIsDragOver] = useState(false)
   const [isAlertOpen, setIsAlertOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  // Handlers remain the same
   const handleOpenAlert = () => setIsAlertOpen(true)
   const handleCloseAlert = () => setIsAlertOpen(false)
   const handleStartDrag = () => setIsDragOver(true)
@@ -95,30 +91,26 @@ export const FileUploader = ({
     handleStartDrag()
   }
 
-  // Render a wrapper div instead of the passed Component
   return (
     <>
       <div
         {...wrapperHtmlAttributes}
-        className={className} // Apply passed className
-        // Apply internal state and handlers
-        data-drag-over={isDragOver} // Use data-attribute for styling drag-over state
+        className={className}
+        data-drag-over={isDragOver}
         onClick={triggerInputClick}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleStopDrag}
-        // Consider how to handle tooltip - maybe a title attribute or leave it to consumer
-        title={tooltipContent} // Simple example using title attribute
+        title={tooltipContent}
       >
-        {/* Render children passed to the component */}
         {children}
-        {/* Hidden input remains the same */}
+
         <input
-          {...inputHtmlAttributes} // Spread additional input attributes
+          {...inputHtmlAttributes}
           ref={inputRef}
           type='file'
           className='hidden'
-          accept={accept} // Pass accept prop to input
+          accept={accept}
           data-cy='file-upload-input'
           onChange={handleChange}
         />
