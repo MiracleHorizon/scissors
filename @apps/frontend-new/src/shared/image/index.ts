@@ -1,0 +1,1 @@
+export { createImageFromFile } from './createImageFromFile'
