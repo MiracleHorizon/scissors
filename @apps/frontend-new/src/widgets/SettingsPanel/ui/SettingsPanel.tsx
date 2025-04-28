@@ -15,6 +15,7 @@ const tabs = [
   }
 ] as const
 
+// TODO: TabNav
 export const SettingsPanel = () => {
   const location = useLocation()
   const navigate = useNavigate()
