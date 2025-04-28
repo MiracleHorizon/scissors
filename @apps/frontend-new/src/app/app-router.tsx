@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { DefaultLayout } from './layout'
 
@@ -14,7 +14,6 @@ export const createRouter = () =>
       element: <DefaultLayout />,
       children: [
         {
-          path: '/',
           element: <HomePage />,
           children: [
             {
@@ -24,6 +23,10 @@ export const createRouter = () =>
             {
               path: '/resize',
               element: <SettingsResizePage />
+            },
+            {
+              path: '*',
+              element: <Navigate to='/convert' />
             }
           ]
         },
