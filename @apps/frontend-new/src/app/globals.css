@@ -6,11 +6,11 @@
   --settings-panel-width-1200: 440px;
   --settings-panel-width-2400: 680px;
   --settings-panel-width-md: 100%;
-  --settings-panel-toobar-height: 48px; /* var(--space-8) */
+  --settings-panel-toobar-height: 40px;
 
   --layout-header-height: 49px; /* var(--space-8) + 1px */
   --layout-content-height: calc(100dvh - var(--layout-header-height) + 1px);
-  --processing-footer-height: 64px; /* var(--space-9) */
+  --processing-footer-height: 48px; /* var(--space-8) */
 }
 
 * {

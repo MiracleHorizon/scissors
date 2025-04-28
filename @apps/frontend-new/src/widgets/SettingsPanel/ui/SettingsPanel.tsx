@@ -1,6 +1,7 @@
 import { Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 
+import { DownloadButton } from '@/shared/ui'
 import { TOUR_STEP } from '@/entities/tour'
 import styles from './SettingsPanel.module.css'
 
@@ -24,27 +25,37 @@ export const SettingsPanel = () => {
   const handleTabChange = (value: string) => navigate(`/${value}`)
 
   return (
-    <ScrollArea
-      type='scroll'
-      scrollbars='vertical'
-      className={styles.root}
-      data-tourstep={TOUR_STEP.SETTINGS_PANEL}
-    >
-      <Flex direction='column' height='100%'>
-        <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
-          <Tabs.List>
-            {tabs.map(props => (
-              <Tabs.Trigger key={props.value} value={props.value}>
-                {props.label}
-              </Tabs.Trigger>
-            ))}
-          </Tabs.List>
+    <Flex direction='column' height='100%' className={styles.root}>
+      <ScrollArea
+        type='scroll'
+        scrollbars='vertical'
+        className={styles.scrollArea}
+        data-tourstep={TOUR_STEP.SETTINGS_PANEL}
+      >
+        <Flex direction='column' height='100%'>
+          <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
+            <div className={styles.tabs}>
+              <Tabs.List>
+                {tabs.map(props => (
+                  <Tabs.Trigger key={props.value} value={props.value}>
+                    {props.label}
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+            </div>
 
-          <Grid p='2'>
-            <Outlet />
-          </Grid>
-        </Tabs.Root>
+            <Grid p='3'>
+              <Outlet />
+            </Grid>
+          </Tabs.Root>
+        </Flex>
+      </ScrollArea>
+
+      <Flex mt='auto' asChild align='center' justify='end' p='3' className={styles.footer}>
+        <footer>
+          <DownloadButton text='Download' />
+        </footer>
       </Flex>
-    </ScrollArea>
+    </Flex>
   )
 }

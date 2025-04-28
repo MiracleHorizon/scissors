@@ -1,32 +1,52 @@
 .root {
-  width: var(--settings-panel-width) !important;
   box-shadow: -1px 0 var(--gray-a5);
+  width: var(--settings-panel-width) !important;
 }
 
-.root :global(.rt-TabsContent:focus) {
+.scrollArea {
+  width: 100%;
+}
+
+.scrollArea :global(.rt-TabsContent:focus) {
   outline: none;
 }
 
-.root :global(.rt-ScrollAreaScrollbar) {
+.scrollArea :global(.rt-ScrollAreaScrollbar) {
   margin-top: calc(var(--settings-panel-toobar-height) + var(--space-3));
   margin-bottom: var(--space-2);
 }
 
 @media screen and (min-width: 2400px) {
-  .root {
+  .scrollArea {
     width: var(--settings-panel-width-2400) !important;
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .root {
+  .scrollArea {
     width: var(--settings-panel-width-1200) !important;
   }
 }
 
 @media screen and (max-width: 1023px) {
-  .root {
+  .scrollArea {
     width: var(--settings-panel-width-md) !important;
     box-shadow: none;
   }
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  height: var(--processing-footer-height);
+  box-shadow: 0 -1px var(--gray-a5);
+  background-color: var(--color-background);
+  z-index: 1;
+}
+
+.tabs {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+  z-index: 1;
 }
