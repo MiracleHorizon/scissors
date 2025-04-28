@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
+import { createImageFromFile } from '@/shared/image'
 import { ImageLightbox, UploadedImage } from '@/features/image/preview'
-
-// import { createImageFromFile } from '@helpers/image/createImageFromFile'
 
 export const ImagePreview = ({
   file,
@@ -12,14 +11,16 @@ export const ImagePreview = ({
   file: File
   setImage: (image: HTMLImageElement) => void
 }) => {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
-  const openLightbox = () => setIsLightboxOpen(true)
-  const closeLightbox = () => setIsLightboxOpen(false)
+  const [showLightbox, setShowLightbox] = useState(false)
+  const openLightbox = () => setShowLightbox(true)
+  const closeLightbox = () => setShowLightbox(false)
 
-  // useEffect(() => {
-  //   createImageFromFile(file).then(setImage).catch(setImage)
-  // }, [file, setImage])
+  // TODO: Чё это такое?
+  useEffect(() => {
+    createImageFromFile(file).then(setImage).catch(setImage)
+  }, [file, setImage])
 
+  // TODO: Прокинуть
   const downloadableFile = {
     file,
     fileName: file.name,
@@ -34,10 +35,11 @@ export const ImagePreview = ({
         <ImageLightbox
           file={file}
           downloadableFile={downloadableFile}
-          isOpen={isLightboxOpen}
+          isOpen={showLightbox}
           onClose={closeLightbox}
         />
       )}
+
       <UploadedImage file={file} downloadableFile={downloadableFile} onClick={openLightbox} />
     </Flex>
   )

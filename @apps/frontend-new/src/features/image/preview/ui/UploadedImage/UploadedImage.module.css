@@ -1,7 +1,8 @@
 .root {
+  cursor: pointer;
   position: relative;
   /* height: calc(var(--layout-content-height) - var(--processing-footer-height) - 200px); */
-  height: var(--layout-content-height);
+  height: calc(var(--layout-content-height) - 32px);
 }
 
 .image {
@@ -22,7 +23,7 @@
     visibility: visible;
   }
 
-  .image:hover {
+  .root:hover {
     filter: brightness(70%);
     transition: filter 0.1s ease-in-out;
   }
