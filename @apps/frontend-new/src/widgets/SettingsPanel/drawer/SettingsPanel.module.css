@@ -1,0 +1,61 @@
+.trigger {
+  position: fixed;
+  width: 40px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80dvh;
+  background-color: var(--gray-4);
+  cursor: pointer;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  z-index: 1000;
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--gray-5);
+  }
+}
+
+.trigger:active {
+  background-color: var(--gray-3);
+}
+
+.triggerIndicator {
+  width: 4px;
+  height: 32px;
+  background-color: #9ca3af;
+  border-radius: 9999px;
+}
+
+.content {
+  background-color: var(--gray-3);
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  height: 100%;
+  width: 520px;
+  position: fixed;
+  top: var(--layout-header-height);
+  right: 0;
+  margin: 15px 0;
+  max-height: calc(var(--layout-content-height) - 32px);
+}
+
+.contentInner {
+  padding: 16px;
+  flex: 1;
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}

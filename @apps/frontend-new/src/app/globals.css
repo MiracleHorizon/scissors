@@ -1,5 +1,5 @@
 @import '@radix-ui/themes/styles.css';
-@import './src/shared/radix/theme-config.css';
+@import '@/shared/radix/theme-config.css';
 
 :root {
   --settings-panel-width: 520px;
@@ -16,7 +16,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Geist", sans-serif;
+  font-family: 'Geist', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

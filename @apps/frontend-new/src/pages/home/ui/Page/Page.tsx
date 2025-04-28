@@ -6,6 +6,7 @@ import { ImagePreview } from '@/widgets/ImagePreview'
 import { ImageUploaderSkeleton } from '@/widgets/ImageUploader'
 import { BackgroundGrid } from '@/shared/ui'
 import styles from './Page.module.css'
+import { SettingsPanel } from '@/widgets/SettingsPanel/ui/SettingsPanel'
 
 const ImageUploader = lazy(() =>
   import('@/widgets/ImageUploader').then(module => ({
@@ -47,7 +48,7 @@ export const HomePage = () => {
               </Flex>
             </Flex>
 
-            {/* <SettingsPanel /> */}
+            <SettingsPanel />
           </main>
         </Flex>
       </ScrollArea>

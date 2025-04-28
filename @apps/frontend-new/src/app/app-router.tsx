@@ -5,6 +5,8 @@ import { DefaultLayout } from './layout'
 import { HomePage } from '@/pages/home'
 import { GalleryPage } from '@/pages/gallery'
 import { DocumentationPage } from '@/pages/docs'
+import { SettingsConvertPage } from '@/pages/settings-convert'
+import { SettingsResizePage } from '@/pages/settings-resize'
 
 export const createRouter = () =>
   createBrowserRouter([
@@ -13,7 +15,17 @@ export const createRouter = () =>
       children: [
         {
           path: '/',
-          element: <HomePage />
+          element: <HomePage />,
+          children: [
+            {
+              path: '/convert',
+              element: <SettingsConvertPage />
+            },
+            {
+              path: '/resize',
+              element: <SettingsResizePage />
+            }
+          ]
         },
         {
           path: '/gallery',
