@@ -1,4 +1,4 @@
-import { Flex, ScrollArea, Tabs } from '@radix-ui/themes'
+import { Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 
 import { TOUR_STEP } from '@/entities/tour'
@@ -39,19 +39,11 @@ export const SettingsPanel = () => {
             ))}
           </Tabs.List>
 
-          <Outlet />
+          <Grid p='2'>
+            <Outlet />
+          </Grid>
         </Tabs.Root>
       </Flex>
     </ScrollArea>
   )
 }
-
-// <Tabs.Root defaultValue={selectedTab} onValueChange={selectTab as (value: string) => void}>
-//   {/* <Toolbar /> */}
-
-//   <Flex {...contentPadding} direction='column'>
-//     {selectedTab === TOOLBAR_TAB.CONVERT && <TabConvert />}
-//     {selectedTab === TOOLBAR_TAB.RESIZE && <TabResize />}
-//     {/* {selectedTab === TOOLBAR_TAB.METADATA && <TabMetadata />} */}
-//   </Flex>
-// </Tabs.Root>

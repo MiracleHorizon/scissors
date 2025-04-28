@@ -2,11 +2,11 @@ import type { CSSProperties, ReactNode } from 'react'
 import { Flex, Heading, Slider as RadixSlider, Separator, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
-// import { NumberInput } from '@components/NumberInput'
-import { formatValue, getValue } from './utils'
+import { NumberInput } from '@/shared/ui/'
 import type { NonEmptyArray } from '@/shared/model'
+
+import { formatValue, getValue } from './utils'
 import styles from './Slider.module.css'
-import { NumberInput } from '../NumberInput/NumberInput'
 
 interface WithHeader {
   title: string
@@ -111,13 +111,13 @@ export const Slider = ({
             className={sliderClassName}
           />
 
-          <Flex mt='3' justify='between'>
-            <Text color='gray' weight='medium'>
+          <Flex mt='2' justify='between'>
+            <Text color='gray' size='2' weight='medium'>
               {min}
               {valueSign}
             </Text>
 
-            <Text color='gray' weight='medium'>
+            <Text color='gray' size='2' weight='medium'>
               {max}
               {valueSign}
             </Text>
