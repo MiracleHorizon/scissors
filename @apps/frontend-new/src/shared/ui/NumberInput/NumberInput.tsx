@@ -27,6 +27,7 @@ type InputAttributes = Omit<
   | 'defaultValue'
 >
 
+// TODO: Add value normalization on blur
 export const NumberInput = ({
   icon,
   min,

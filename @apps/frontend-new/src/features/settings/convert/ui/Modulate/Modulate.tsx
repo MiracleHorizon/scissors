@@ -37,7 +37,12 @@ export const Modulate = () => {
         defaultValue={[MIN_LIGHTNESS]}
         min={MIN_LIGHTNESS}
         max={MAX_LIGHTNESS}
-        onValueChange={values => setState({ ...state, lightness: values[0] })}
+        onValueChange={values =>
+          setState({
+            ...state,
+            lightness: values[0] ?? MIN_LIGHTNESS
+          })
+        }
       />
       <Divider />
 
@@ -49,7 +54,12 @@ export const Modulate = () => {
         min={MIN_BRIGHTNESS}
         max={MAX_BRIGHTNESS}
         step={BRIGHTNESS_STEP}
-        onValueChange={values => setState({ ...state, brightness: values[0] })}
+        onValueChange={values =>
+          setState({
+            ...state,
+            brightness: values[0] ?? MIN_BRIGHTNESS
+          })
+        }
       />
       <Divider />
 
@@ -60,7 +70,12 @@ export const Modulate = () => {
         min={MIN_SATURATION}
         max={MAX_SATURATION}
         step={SATURATION_STEP}
-        onValueChange={values => setState({ ...state, saturation: values[0] })}
+        onValueChange={values =>
+          setState({
+            ...state,
+            saturation: values[0] ?? MIN_SATURATION
+          })
+        }
       />
       <Divider />
 
@@ -79,7 +94,12 @@ export const Modulate = () => {
           } as CSSProperties
         }
         sliderClassName={styles.hueAngleSlider}
-        onValueChange={values => setState({ ...state, hueAngle: values[0] })}
+        onValueChange={values =>
+          setState({
+            ...state,
+            hueAngle: values[0] ?? MIN_HUE
+          })
+        }
       />
     </Flex>
   )
