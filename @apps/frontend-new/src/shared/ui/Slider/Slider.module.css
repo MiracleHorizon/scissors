@@ -1,0 +1,27 @@
+.content {
+  --action-button-width: var(--space-6);
+  --actions-buttons-gap: var(--space-1);
+  --action-buttons-count: 2;
+}
+
+.content :global(.rt-TextFieldRoot) {
+  width: calc(
+    var(--action-button-width) * var(--action-buttons-count) + var(--actions-buttons-gap)
+  );
+}
+
+.content :global(.rt-TextFieldInput::placeholder) {
+  font-size: 14px;
+}
+
+.sliderContainer {
+  flex: 1;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.heading {
+  font-size: 15px !important;
+}
