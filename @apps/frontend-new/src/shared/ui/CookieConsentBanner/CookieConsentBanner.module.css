@@ -5,6 +5,7 @@
   max-width: 440px;
   position: fixed !important;
   left: 20px;
+  bottom: 20px;
   z-index: 1000;
   margin: 0 var(--margin-x);
   background-color: var(--gray-2) !important;
@@ -13,14 +14,6 @@
 
 .icon {
   flex-shrink: 0;
-}
-
-.homePagePosition {
-  bottom: calc(var(--processing-footer-height) + 20px);
-}
-
-.defaultPosition {
-  bottom: 20px;
 }
 
 @media screen and (max-width: 519px) {

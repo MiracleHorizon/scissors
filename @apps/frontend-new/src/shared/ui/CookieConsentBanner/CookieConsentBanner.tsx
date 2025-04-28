@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Button, Card, Flex, Text } from '@radix-ui/themes'
-import { clsx } from 'clsx'
 
 import { CookieIcon } from '@scissors/react-icons/CookieIcon'
 
 // TODO: НЕЛЬЗЯ ИЗ ENTITIES ИЗВЛЕКАТЬ В SHARED
 import { TOUR_LOCALSTORAGE_KEY } from '@/entities/tour'
-import { useSelectedPath } from '@/shared/router'
 import { acceptCookies, isCookiesAccepted, isCookiesBannerVisible } from './utils'
 import styles from './CookieConsentBanner.module.css'
 
 export const CookieConsentBanner = () => {
-  const isHomePage = useSelectedPath('/')
   const [isVisible, setVisible] = useState(isCookiesBannerVisible())
 
   const handleAcceptCookies = () => {
@@ -50,7 +47,7 @@ export const CookieConsentBanner = () => {
   return (
     <Card
       size='2'
-      className={clsx(styles.root, isHomePage ? styles.homePagePosition : styles.defaultPosition)}
+      className={styles.root}
     >
       <Flex
         align='center'
