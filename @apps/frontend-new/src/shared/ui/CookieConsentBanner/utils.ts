@@ -1,4 +1,4 @@
-import { isTourCompleted } from '@/features/tour'
+import { isTourCompleted } from '@/entities/tour'
 
 export const COOKIE_CONSENT_LOCALSTORAGE_KEY = 'scissors-cookie-consent'
 

@@ -4,7 +4,8 @@ import { clsx } from 'clsx'
 
 import { CookieIcon } from '@scissors/react-icons/CookieIcon'
 
-import { TOUR_LOCALSTORAGE_KEY } from '@/features/tour'
+// TODO: НЕЛЬЗЯ ИЗ ENTITIES ИЗВЛЕКАТЬ В SHARED
+import { TOUR_LOCALSTORAGE_KEY } from '@/entities/tour'
 import { useSelectedPath } from '@/shared/router'
 import { acceptCookies, isCookiesAccepted, isCookiesBannerVisible } from './utils'
 import styles from './CookieConsentBanner.module.css'
