@@ -1,9 +1,12 @@
-import { Flex, Separator } from '@radix-ui/themes'
+import { Flex, ScrollArea, Separator } from '@radix-ui/themes'
 import { useState } from 'react'
 
 import { DEFAULT_TINT_COLOR, GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
-import { ColorField, Slider } from '@/shared/ui'
+import { ColorField, ColorSwatch, Slider } from '@/shared/ui'
+import { themeColors } from '@/shared/radix'
+
+import styles from './Colorize.module.css'
 
 export const Colorize = () => {
   const [tint, setTint] = useState<string>(DEFAULT_TINT_COLOR)
@@ -26,7 +29,17 @@ export const Colorize = () => {
 
       <Separator size='4' />
 
-      <ColorField label='Tint' value={tint} onValueChange={setTint} />
+      <Flex align='end' gapX='2'>
+        <ColorField label='Tint' value={tint} onValueChange={setTint} />
+
+        <ScrollArea type='hover' className={styles.tintPresetsScrollArea}>
+          <Flex height='32px' gapX='1'>
+            {themeColors.map(({ color, hex }) => (
+              <ColorSwatch key={color} size='32px' color={hex} onClick={() => setTint(hex)} />
+            ))}
+          </Flex>
+        </ScrollArea>
+      </Flex>
     </Flex>
   )
 }

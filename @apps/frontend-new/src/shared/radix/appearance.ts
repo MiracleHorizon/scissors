@@ -1,33 +1,111 @@
 import type { RadixThemeColor } from './types'
 
-export const themeColorItems: {
-  key: string
+export const themeColors: {
+  hex: string
   color: RadixThemeColor
 }[] = [
-  { key: 'tomato', color: 'tomato' },
-  { key: 'red', color: 'red' },
-  { key: 'ruby', color: 'ruby' },
-  { key: 'crimson', color: 'crimson' },
-  { key: 'pink', color: 'pink' },
-  { key: 'plum', color: 'plum' },
-  { key: 'purple', color: 'purple' },
-  { key: 'violet', color: 'violet' },
-  { key: 'iris', color: 'iris' },
-  { key: 'indigo', color: 'indigo' },
-  { key: 'blue', color: 'blue' },
-  { key: 'cyan', color: 'cyan' },
-  { key: 'teal', color: 'teal' },
-  { key: 'jade', color: 'jade' },
-  { key: 'green', color: 'green' },
-  { key: 'grass', color: 'grass' },
-  { key: 'brown', color: 'brown' },
-  { key: 'orange', color: 'orange' },
-  { key: 'sky', color: 'sky' },
-  { key: 'mint', color: 'mint' },
-  { key: 'lime', color: 'lime' },
-  { key: 'yellow', color: 'yellow' },
-  { key: 'amber', color: 'amber' },
-  { key: 'gold', color: 'gold' },
-  { key: 'bronze', color: 'bronze' },
-  { key: 'gray', color: 'gray' }
+  {
+    color: 'tomato',
+    hex: '#E54D2E'
+  },
+  {
+    color: 'red',
+    hex: '#E5484D'
+  },
+  {
+    color: 'ruby',
+    hex: '#E54666'
+  },
+  {
+    color: 'crimson',
+    hex: '#E93D82'
+  },
+  {
+    color: 'pink',
+    hex: '#D6409F'
+  },
+  {
+    color: 'plum',
+    hex: '#AB4ABA'
+  },
+  {
+    color: 'purple',
+    hex: '#8E4EC6'
+  },
+  {
+    color: 'violet',
+    hex: '#6E56CF'
+  },
+  {
+    color: 'iris',
+    hex: '#5B5BD6'
+  },
+  {
+    color: 'indigo',
+    hex: '#3E63DD'
+  },
+  {
+    color: 'blue',
+    hex: '#0091FF'
+  },
+  {
+    color: 'cyan',
+    hex: '#00B8F9'
+  },
+  {
+    color: 'teal',
+    hex: '#12B5BD'
+  },
+  {
+    color: 'jade',
+    hex: '#29A383'
+  },
+  {
+    color: 'green',
+    hex: '#30A46C'
+  },
+  {
+    color: 'grass',
+    hex: '#46A758'
+  },
+  {
+    color: 'brown',
+    hex: '#AD5700'
+  },
+  {
+    color: 'orange',
+    hex: '#F76808'
+  },
+  {
+    color: 'sky',
+    hex: '#00A2C7'
+  },
+  {
+    color: 'mint',
+    hex: '#15C2B8'
+  },
+  {
+    color: 'lime',
+    hex: '#8FC93A'
+  },
+  {
+    color: 'yellow',
+    hex: '#FFD500'
+  },
+  {
+    color: 'amber',
+    hex: '#FFC53D'
+  },
+  {
+    color: 'gold',
+    hex: '#F4B740'
+  },
+  {
+    color: 'bronze',
+    hex: '#A18072'
+  },
+  {
+    color: 'gray',
+    hex: '#8D8D8D'
+  }
 ] as const
