@@ -12,7 +12,7 @@
 }
 
 .scrollArea :global(.rt-ScrollAreaScrollbar) {
-  margin-top: calc(var(--settings-panel-toobar-height) + var(--space-3));
+  margin-top: calc(var(--settings-panel-toobar-height) + var(--space-3)) !important;
   margin-bottom: var(--space-2);
 }
 
