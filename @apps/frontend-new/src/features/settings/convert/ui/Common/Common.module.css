@@ -1,4 +1,4 @@
 .separator {
-  height: 56px;
+  height: 56px !important;
   flex-shrink: 0;
 }
