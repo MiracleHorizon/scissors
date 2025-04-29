@@ -9,7 +9,7 @@ import {
   MIN_NORMALISE
 } from '@scissors/sharp'
 
-import { Slider, Switch } from '@/shared/ui'
+import { Slider } from '@/shared/ui'
 
 const initialBlurState: {
   value: boolean
@@ -36,29 +36,18 @@ export const Advanced = () => {
   return (
     <Flex direction='column' gap='2'>
       <Flex direction='column' gap='2'>
-        <Switch
-          label='Blur'
-          checked={blur.value}
-          onClick={() =>
-            setBlur(prevState => ({
-              ...prevState,
-              value: !prevState.value
-            }))
-          }
-        />
         <Slider
-          label='Sigma'
+          label='Blur'
           value={[blur.sigma]}
-          disabled={!blur.value}
           defaultValue={[MIN_BLUR_SIGMA]}
           min={MIN_BLUR_SIGMA}
           max={MAX_BLUR_SIGMA}
           step={BLUR_SIGMA_STEP}
           onValueChange={values =>
-            setBlur(prevState => ({
-              ...prevState,
+            setBlur({
+              value: Boolean(values[0]),
               sigma: values[0] ?? null
-            }))
+            })
           }
         />
       </Flex>

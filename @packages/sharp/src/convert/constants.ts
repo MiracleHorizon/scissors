@@ -16,7 +16,7 @@ export const DEFAULT_NORMALISE: NormaliseOptions = {
 } as const
 
 // Blur
-export const MIN_BLUR_SIGMA = 0.3
+export const MIN_BLUR_SIGMA = 0
 export const MAX_BLUR_SIGMA = 10
 export const BLUR_SIGMA_STEP = 0.1
 export const DEFAULT_BLUR: BlurOptions = {
