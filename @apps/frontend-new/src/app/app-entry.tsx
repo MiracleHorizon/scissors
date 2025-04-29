@@ -22,8 +22,6 @@ export const App = () => {
         <meta name='description' content={SITE_DESCRIPTION} />
         <meta name='keywords' content={SITE_KEYWORDS.join(', ')} />
         <link rel='canonical' href={SITE_DOMAIN} />
-        <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
-        <link rel='icon' href='/favicon.png' type='image/png' />
         <link
           rel='icon'
           href='/favicons/dark.png'
