@@ -15,7 +15,7 @@ export const Colorize = () => {
         disabled={isGrayscaleEnabled}
       */}
       <Slider
-        title='Gamma'
+        label='Gamma'
         value={[gamma]}
         defaultValue={[MIN_GAMMA]}
         step={GAMMA_STEP}

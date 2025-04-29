@@ -36,7 +36,7 @@ export const Rotate = () => {
           onValueChange={setRotateBackground}
         />
         <Checkbox
-          label='Use Dominant Background'
+          label='Use dominant background'
           checked={withDominantBackground}
           onClick={() => setWithDominantBackground(prevState => !prevState)}
         />

@@ -9,20 +9,19 @@ import { formatValue, getValue } from './utils'
 import styles from './Slider.module.css'
 
 interface WithHeader {
-  // TODO: Title -> Label
-  title: string
+  label: string
   icon?: ReactNode
 }
 
 interface WithoutHeader {
-  title?: never
+  label?: never
   icon?: never
 }
 
 export const Slider = ({
   value,
   valueSign = '',
-  title,
+  label,
   icon,
   float = false,
   maxFractionDigits = 2,
@@ -47,6 +46,10 @@ export const Slider = ({
   onValueChange: (value: number[]) => void
 } & (WithHeader | WithoutHeader)) => {
   const { defaultValue, min, max, step, onValueChange } = sliderProps
+  const formattedValue = formatValue({
+    value,
+    valueSign
+  })
 
   const handleChangeInputValue = (inputValue: number | null) => {
     /*
@@ -69,7 +72,7 @@ export const Slider = ({
         [styles.disabled]: disabled
       })}
     >
-      {title && (
+      {label && (
         <Flex as='div' mb='2' px='0' align='center'>
           {icon && (
             <>
@@ -84,15 +87,15 @@ export const Slider = ({
           <Flex asChild gapX='1' align='center'>
             <article>
               <Heading as='h4' weight='medium' className={styles.heading}>
-                {title}:
+                {label}
+                {formattedValue && ':'}
               </Heading>
 
-              <Text size='2' weight='medium' color='gray'>
-                {formatValue({
-                  value,
-                  valueSign
-                })}
-              </Text>
+              {formattedValue && (
+                <Text size='2' weight='medium' color='gray'>
+                  {formattedValue}
+                </Text>
+              )}
             </article>
           </Flex>
         </Flex>

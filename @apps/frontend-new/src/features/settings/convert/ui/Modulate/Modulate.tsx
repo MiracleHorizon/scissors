@@ -31,7 +31,7 @@ export const Modulate = () => {
     <Flex direction='column' gapY='1'>
       <Slider
         float
-        title='Lightness'
+        label='Lightness'
         valueSign='%'
         value={[state.lightness]}
         defaultValue={[MIN_LIGHTNESS]}
@@ -48,7 +48,7 @@ export const Modulate = () => {
 
       <Slider
         float
-        title='Brightness'
+        label='Brightness'
         value={[state.brightness]}
         defaultValue={[MIN_BRIGHTNESS]}
         min={MIN_BRIGHTNESS}
@@ -64,7 +64,7 @@ export const Modulate = () => {
       <Divider />
 
       <Slider
-        title='Saturation'
+        label='Saturation'
         value={[state.saturation]}
         defaultValue={[MIN_SATURATION]}
         min={MIN_SATURATION}
@@ -80,7 +80,7 @@ export const Modulate = () => {
       <Divider />
 
       <Slider
-        title='Hue angle'
+        label='Hue angle'
         valueSign='°'
         value={[state.hueAngle]}
         defaultValue={[MIN_HUE]}

@@ -23,6 +23,10 @@ export const getValue = ({
 export const formatValue = ({ value, valueSign }: { value: Value; valueSign: string }): string => {
   const filteredValue = value.filter(v => v !== null)
 
+  if (filteredValue.length === 0) {
+    return ''
+  }
+
   if (filteredValue.length === 2) {
     return `${filteredValue[0]} - ${filteredValue[1]}${valueSign}`
   }
