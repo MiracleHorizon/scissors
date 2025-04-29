@@ -9,7 +9,6 @@ import {
 } from '@scissors/sharp'
 
 import { Checkbox, ColorField, Slider } from '@/shared/ui'
-import styles from './Rotate.module.css'
 
 export const Rotate = () => {
   const [angle, setAngle] = useState<number | null>(DEFAULT_ROTATE_ANGLE)
@@ -17,7 +16,7 @@ export const Rotate = () => {
   const [withDominantBackground, setWithDominantBackground] = useState(false)
 
   return (
-    <Flex direction='column' mt='4' align='start' gap='4' width='100%' className={styles.root}>
+    <Flex direction='column' mt='4' align='start' gap='4' width='100%'>
       <Slider
         float
         valueSign='°'
