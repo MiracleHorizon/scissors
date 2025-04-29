@@ -4,7 +4,7 @@ import { TokensIcon } from '@scissors/react-icons/TokensIcon'
 import { RotateCounterClockwiseIcon } from '@scissors/react-icons/RotateCounterClockwiseIcon'
 import { PaintbrushIcon } from '@scissors/react-icons/PaintbrushIcon'
 
-import { Colorize, Common, Modulate, Rotate } from '@/features/settings/convert'
+import { Advanced, Colorize, Common, Modulate, Rotate } from '@/features/settings/convert'
 
 import { OptionSection } from './OptionSection/OptionSection'
 
@@ -32,6 +32,11 @@ export const SettingsConvert = () => {
           docsLink='/docs#rotate'
           icon={<RotateCounterClockwiseIcon width='20' height='20' label='rotation' />}
           content={<Rotate />}
+        />
+        <OptionSection
+          title='Advanced'
+          // icon={<AdvancedIcon width='20' height='20' label='advanced' />}
+          content={<Advanced />}
         />
       </Flex>
     </Tabs.Content>
