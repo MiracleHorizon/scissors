@@ -2,11 +2,11 @@ import { lazy, Suspense, useState } from 'react'
 import { Flex, ScrollArea } from '@radix-ui/themes'
 import clsx from 'clsx'
 
+import { SettingsPanel } from '@/widgets/SettingsPanel'
 import { ImagePreview } from '@/widgets/ImagePreview'
 import { ImageUploaderSkeleton } from '@/widgets/ImageUploader'
 import { BackgroundGrid } from '@/shared/ui'
 import styles from './Page.module.css'
-import { SettingsPanel } from '@/widgets/SettingsPanel/ui/SettingsPanel'
 
 const ImageUploader = lazy(() =>
   import('@/widgets/ImageUploader').then(module => ({
