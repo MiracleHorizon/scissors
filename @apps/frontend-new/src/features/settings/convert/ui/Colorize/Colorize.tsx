@@ -1,4 +1,4 @@
-import { Flex } from '@radix-ui/themes'
+import { Flex, Separator } from '@radix-ui/themes'
 import { useState } from 'react'
 
 import { DEFAULT_TINT_COLOR, GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
@@ -7,7 +7,7 @@ import { ColorField, Slider } from '@/shared/ui'
 
 export const Colorize = () => {
   const [tint, setTint] = useState<string>(DEFAULT_TINT_COLOR)
-  const [gamma, setGamma] = useState<number>(MIN_GAMMA)
+  const [gamma, setGamma] = useState<number | null>(MIN_GAMMA)
 
   return (
     <Flex direction='column' gapY='2'>
@@ -21,8 +21,11 @@ export const Colorize = () => {
         step={GAMMA_STEP}
         min={MIN_GAMMA}
         max={MAX_GAMMA}
-        onValueChange={values => setGamma(values[0] ?? MIN_GAMMA)}
+        onValueChange={values => setGamma(values[0] ?? null)}
       />
+
+      <Separator size='4' />
+
       <ColorField label='Tint' value={tint} onValueChange={setTint} />
     </Flex>
   )

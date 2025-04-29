@@ -40,7 +40,7 @@ export const Modulate = () => {
         onValueChange={values =>
           setState({
             ...state,
-            lightness: values[0] ?? MIN_LIGHTNESS
+            lightness: values[0] ?? null
           })
         }
       />
@@ -57,7 +57,7 @@ export const Modulate = () => {
         onValueChange={values =>
           setState({
             ...state,
-            brightness: values[0] ?? MIN_BRIGHTNESS
+            brightness: values[0] ?? null
           })
         }
       />
@@ -73,7 +73,7 @@ export const Modulate = () => {
         onValueChange={values =>
           setState({
             ...state,
-            saturation: values[0] ?? MIN_SATURATION
+            saturation: values[0] ?? null
           })
         }
       />
@@ -97,7 +97,7 @@ export const Modulate = () => {
         onValueChange={values =>
           setState({
             ...state,
-            hueAngle: values[0] ?? MIN_HUE
+            hueAngle: values[0] ?? null
           })
         }
       />
