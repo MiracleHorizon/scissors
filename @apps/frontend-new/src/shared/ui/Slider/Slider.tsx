@@ -9,6 +9,7 @@ import { formatValue, getValue } from './utils'
 import styles from './Slider.module.css'
 
 interface WithHeader {
+  // TODO: Title -> Label
   title: string
   icon?: ReactNode
 }
