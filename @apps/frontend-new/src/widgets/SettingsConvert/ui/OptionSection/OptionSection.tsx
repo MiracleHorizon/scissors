@@ -27,54 +27,56 @@ export const OptionSection = ({
   isBeta,
   isNew,
   onReset,
-  ...props
+  ...headerProps
 }: MarginProps &
   (WithBeta | WithNew) & {
-    title: string
+    title?: string
     docsLink?: string
     icon?: ReactNode
     content: ReactNode
     onReset?: () => void
   }) => (
   <Card className={styles.root}>
-    <Flex asChild mb='2' align='center' justify='between' width='100%' {...props}>
-      <header>
-        <Flex asChild width='100%' align='center'>
-          <article>
-            {icon && (
-              <>
-                <Flex asChild align='center' justify='center'>
-                  <span>{icon}</span>
-                </Flex>
-                <Separator orientation='vertical' mx='6px' my='0' />
-              </>
-            )}
+    {title && (
+      <Flex asChild mb='2' align='center' justify='between' width='100%' {...headerProps}>
+        <header>
+          <Flex asChild width='100%' align='center'>
+            <article>
+              {icon && (
+                <>
+                  <Flex asChild align='center' justify='center'>
+                    <span>{icon}</span>
+                  </Flex>
+                  <Separator orientation='vertical' mx='6px' my='0' />
+                </>
+              )}
 
-            {docsLink ? (
-              <RadixLink asChild weight='medium' className={styles.link}>
-                <Link to={docsLink}>
+              {docsLink ? (
+                <RadixLink asChild weight='medium' className={styles.link}>
+                  <Link to={docsLink}>
+                    {title}
+                    <Link2Icon width='17px' height='17px' className={styles.linkIcon} />
+                  </Link>
+                </RadixLink>
+              ) : (
+                <Heading size='3' weight='medium'>
                   {title}
-                  <Link2Icon width='17px' height='17px' className={styles.linkIcon} />
-                </Link>
-              </RadixLink>
-            ) : (
-              <Heading size='3' weight='medium'>
-                {title}
-              </Heading>
-            )}
+                </Heading>
+              )}
 
-            {isBeta && <BadgeBeta ml='auto' />}
-            {isNew && <BadgeNew ml='auto' />}
-          </article>
-        </Flex>
+              {isBeta && <BadgeBeta ml='auto' />}
+              {isNew && <BadgeNew ml='auto' />}
+            </article>
+          </Flex>
 
-        {onReset && (
-          <IconButton variant='outline' color='red' radius='large' onClick={onReset}>
-            <ResetIcon width='18px' height='18px' />
-          </IconButton>
-        )}
-      </header>
-    </Flex>
+          {onReset && (
+            <IconButton variant='outline' color='red' radius='large' onClick={onReset}>
+              <ResetIcon width='18px' height='18px' />
+            </IconButton>
+          )}
+        </header>
+      </Flex>
+    )}
 
     {content}
   </Card>

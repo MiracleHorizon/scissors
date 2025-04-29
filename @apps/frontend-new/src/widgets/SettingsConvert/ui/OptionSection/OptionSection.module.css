@@ -1,5 +1,6 @@
 .root {
   --card-background-color: var(--color-background);
+  --card-border-radius: var(--radius-5) !important;
 }
 
 .separator {

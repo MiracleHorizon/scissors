@@ -30,7 +30,7 @@ export const Rotate = () => {
 
       <Flex width='100%' direction='column' justify='between' gap='3'>
         <ColorField
-          label='Background'
+          label='Fallback background'
           value={rotateBackground ?? ''}
           defaultValue={DEFAULT_ROTATE_BACKGROUND}
           disabled={withDominantBackground}
