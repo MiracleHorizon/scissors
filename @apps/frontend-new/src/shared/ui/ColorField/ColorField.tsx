@@ -139,7 +139,7 @@ export const ColorField = ({
   return (
     <Flex direction='column' gap='6px' width='max-content' onMouseUp={onMouseUp}>
       {label && (
-        <Text as='label' size='2' color='gray' htmlFor={id ?? inputId}>
+        <Text as='label' size='2' color='gray' htmlFor={inputId}>
           {label}
         </Text>
       )}

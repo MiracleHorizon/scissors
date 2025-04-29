@@ -37,7 +37,7 @@ export const OptionSection = ({
     onReset?: () => void
   }) => (
   <Card className={styles.root}>
-    <Flex asChild align='center' justify='between' width='100%' {...props}>
+    <Flex asChild mb='2' align='center' justify='between' width='100%' {...props}>
       <header>
         <Flex asChild width='100%' align='center'>
           <article>
