@@ -39,6 +39,7 @@ export const HomePage = () => {
 
               <Flex px='4' width='100%' height='100%' className={styles.previewContent}>
                 {file ? (
+                  // TODO: setImage
                   <ImagePreview file={file} setImage={() => {}} />
                 ) : (
                   <Suspense fallback={<ImageUploaderSkeleton />}>
