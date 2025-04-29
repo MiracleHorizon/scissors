@@ -20,20 +20,19 @@ import styles from './ColorField.module.css'
 const DEFAULT_COLOR = '000'
 
 export const ColorField = ({
-  id,
+  size,
   label,
+  value,
   defaultValue = DEFAULT_COLOR,
   disabled,
+  readOnly,
+  placeholder = '#000000',
   onBlur,
   onChange,
   onKeyDownCapture,
   onValueChange,
-  placeholder = '#000000',
-  readOnly,
-  size,
-  value,
   ...props
-}: ComponentPropsWithoutRef<typeof TextField.Root> & {
+}: Omit<ComponentPropsWithoutRef<typeof TextField.Root>, 'id'> & {
   label?: string
   value?: string
   defaultValue?: string
@@ -44,7 +43,7 @@ export const ColorField = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [inputValue, setInputValue] = useState(
-    toShortFormat(value ?? defaultValue) ?? DEFAULT_COLOR
+    toShortFormat(value || defaultValue) ?? DEFAULT_COLOR
   )
 
   const committedColorRef = useRef(inputValue)
@@ -147,9 +146,10 @@ export const ColorField = ({
 
       <TextField.Root
         ref={inputRef}
-        id={id ?? inputId}
+        id={inputId}
         size={size}
         type='text'
+        radius='large'
         autoCapitalize='none'
         autoComplete='off'
         autoCorrect='off'
