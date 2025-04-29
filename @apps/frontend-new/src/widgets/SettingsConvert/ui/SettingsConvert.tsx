@@ -3,6 +3,7 @@ import { Flex, Tabs } from '@radix-ui/themes'
 import { TokensIcon } from '@scissors/react-icons/TokensIcon'
 import { RotateCounterClockwiseIcon } from '@scissors/react-icons/RotateCounterClockwiseIcon'
 import { PaintbrushIcon } from '@scissors/react-icons/PaintbrushIcon'
+import { SettingsIcon } from '@scissors/react-icons/SettingsIcon'
 
 import { Advanced, Colorize, Common, Modulate, Rotate } from '@/features/settings/convert'
 
@@ -24,7 +25,7 @@ export const SettingsConvert = () => {
         />
         <OptionSection
           title='Colorize'
-          icon={<PaintbrushIcon width='20' height='20' label='tint' />}
+          icon={<PaintbrushIcon width='20' height='20' label='colorize' />}
           content={<Colorize />}
         />
         <OptionSection
@@ -35,7 +36,7 @@ export const SettingsConvert = () => {
         />
         <OptionSection
           title='Advanced'
-          // icon={<AdvancedIcon width='20' height='20' label='advanced' />}
+          icon={<SettingsIcon width='18' height='18' label='advanced settings' />}
           content={<Advanced />}
         />
       </Flex>
