@@ -65,13 +65,7 @@ export const Slider = ({
   }
 
   return (
-    <Flex
-      width='100%'
-      direction='column'
-      className={clsx({
-        [styles.disabled]: disabled
-      })}
-    >
+    <Flex width='100%' direction='column'>
       {label && (
         <Flex as='div' mb='2' px='0' align='center'>
           {icon && (
@@ -101,7 +95,14 @@ export const Slider = ({
         </Flex>
       )}
 
-      <Flex align='start' gap='3' width='100%' className={styles.content}>
+      <Flex
+        align='start'
+        gap='3'
+        width='100%'
+        className={clsx(styles.content, {
+          [styles.disabled]: disabled
+        })}
+      >
         <Flex direction='column' className={styles.sliderContainer}>
           <RadixSlider
             {...sliderProps}
