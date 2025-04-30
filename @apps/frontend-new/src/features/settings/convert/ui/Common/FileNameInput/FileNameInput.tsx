@@ -20,13 +20,8 @@ const errorProps: TextFieldProps = {
   variant: 'soft'
 } as const
 
-export const FileNameInput = ({
-  fileName,
-  setFileName
-}: {
-  fileName: string
-  setFileName: (fileName: string) => void
-}) => {
+export const FileNameInput = () => {
+  const [fileName, setFileName] = useState('')
   const [isError, setIsError] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 

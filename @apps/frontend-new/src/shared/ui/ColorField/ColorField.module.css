@@ -1,6 +1,6 @@
 .field {
   width: 120px;
-  font-family: "Geist Mono", monospace;
+  font-family: 'Geist Mono', monospace !important;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

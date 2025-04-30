@@ -1,4 +1,4 @@
-.hueAngleSlider {
+.root {
   background-image: linear-gradient(
     to right,
     hsl(0 100% 50%),
@@ -11,11 +11,11 @@
   );
 }
 
-.hueAngleSlider :global(.rt-SliderRange) {
+.root :global(.rt-SliderRange) {
   right: initial !important;
 }
 
-.hueAngleSlider :global(.rt-SliderThumb::after) {
+.root :global(.rt-SliderThumb::after) {
   border: 0.12rem solid white;
   /* Custom CSS-variable; Taken from JavaScript */
   background-color: hsl(var(--hue-angle) 100% 50%);

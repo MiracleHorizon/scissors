@@ -1,7 +1,0 @@
-.tintPresetsScrollArea {
-  height: 32px;
-}
-
-.tintPresetsScrollArea :global(.rt-ScrollAreaScrollbar) {
-  margin: 0;
-}
