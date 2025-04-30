@@ -52,10 +52,10 @@ jobs:
         run: pnpm build
 
       - name: Check Frontend
-        run: pnpm fe:check
+        run: pnpm --filter frontend check
 
       - name: Test Backend
-        run: pnpm be:test
+        run: pnpm --filter backend test
 
       - name: Lint
         run: pnpm lint
