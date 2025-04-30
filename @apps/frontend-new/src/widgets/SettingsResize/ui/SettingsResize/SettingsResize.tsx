@@ -88,26 +88,24 @@ const ResizeSection = () => (
   />
 )
 
-export const SettingsResize = () => {
-  return (
-    <Tabs.Content value='resize'>
-      <Flex direction='column' gap='2'>
-        <Callout.Root size='1' variant='surface' color='gray' className={styles.callout}>
-          <Callout.Icon>
-            <InfoCircledIcon width='16px' height='16px' />
-          </Callout.Icon>
+export const SettingsResize = () => (
+  <Tabs.Content value='resize'>
+    <Flex direction='column' gap='2'>
+      <Callout.Root size='1' variant='surface' color='gray' className={styles.callout}>
+        <Callout.Icon>
+          <InfoCircledIcon width='16px' height='16px' />
+        </Callout.Icon>
 
-          <Callout.Text size='2'>
-            You can move sections below to change the sequence in which they are executed by
-            dragging them
-          </Callout.Text>
-        </Callout.Root>
+        <Callout.Text size='2'>
+          You can move sections below to change the sequence in which they are executed by dragging
+          them
+        </Callout.Text>
+      </Callout.Root>
 
-        <ResizeOperationsProvider>
-          <ResizeOperationsSelector />
-          <Content />
-        </ResizeOperationsProvider>
-      </Flex>
-    </Tabs.Content>
-  )
-}
+      <ResizeOperationsProvider>
+        <ResizeOperationsSelector />
+        <Content />
+      </ResizeOperationsProvider>
+    </Flex>
+  </Tabs.Content>
+)

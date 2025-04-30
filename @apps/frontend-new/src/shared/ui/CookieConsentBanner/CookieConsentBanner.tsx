@@ -45,10 +45,7 @@ export const CookieConsentBanner = () => {
   }
 
   return (
-    <Card
-      size='2'
-      className={styles.root}
-    >
+    <Card size='2' className={styles.root}>
       <Flex
         align='center'
         direction={{

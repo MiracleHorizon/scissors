@@ -1,3 +1,1 @@
-export const GalleryPage = () => {
-  return <div>GalleryPage</div>
-}
+export const GalleryPage = () => <div>GalleryPage</div>

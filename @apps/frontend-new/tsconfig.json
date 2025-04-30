@@ -17,9 +17,6 @@
       "DOM.Iterable",
       "ESNext"
     ],
-    "types": [
-      "vitest/globals"
-    ],
     "jsx": "preserve",
     "useDefineForClassFields": true,
     "esModuleInterop": true,

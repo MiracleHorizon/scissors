@@ -23,16 +23,14 @@ export const UploadedImage = ({
       }
     | undefined
   onClick: VoidFunction
-}) => {
-  return (
-    <Box width='100%' style={rootStyle} className={styles.root} onClick={onClick}>
-      <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
+}) => (
+  <Box width='100%' style={rootStyle} className={styles.root} onClick={onClick}>
+    <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
-      <img
-        src={downloadableFile?.link ?? URL.createObjectURL(file)}
-        alt={file.name}
-        className={styles.image}
-      />
-    </Box>
-  )
-}
+    <img
+      src={downloadableFile?.link ?? URL.createObjectURL(file)}
+      alt={file.name}
+      className={styles.image}
+    />
+  </Box>
+)

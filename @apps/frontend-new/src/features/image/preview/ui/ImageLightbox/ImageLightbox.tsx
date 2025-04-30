@@ -24,18 +24,16 @@ export const ImageLightbox = ({
   }
   isOpen: boolean
   onClose: VoidFunction
-}) => {
-  return (
-    <Lightbox
-      open={isOpen}
-      close={onClose}
-      {...getLightboxProps({
-        file,
-        downloadablePayloadWithoutFile: downloadableFile
-      })}
-    />
-  )
-}
+}) => (
+  <Lightbox
+    open={isOpen}
+    close={onClose}
+    {...getLightboxProps({
+      file,
+      downloadablePayloadWithoutFile: downloadableFile
+    })}
+  />
+)
 
 const getLightboxProps = ({
   file,
