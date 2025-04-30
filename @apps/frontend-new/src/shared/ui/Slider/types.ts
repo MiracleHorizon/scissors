@@ -1,13 +1,20 @@
 import type { NonEmptyArray } from '@/shared/model'
 import type { CSSProperties, ReactNode } from 'react'
 
-export type Props = SliderProps & {
+export type Props = {
+  value: NonEmptyArray<number | null>
+  defaultValue: NonEmptyArray<number>
+  min: number
+  max: number
+  step?: number
   valueSign?: string
   disabled?: boolean
   allowFloat?: boolean
   maxFractionDigits?: number
   sliderStyle?: CSSProperties
   sliderClassName?: string
+  minStepsBetweenThumbs?: number
+  onValueChange: (value: number[]) => void
 } & (WithHeader | WithoutHeader)
 
 interface WithHeader {
@@ -20,16 +27,4 @@ interface WithoutHeader {
   title?: never
   titleIcon?: never
   infoContent?: never
-}
-
-/* eslint no-unused-vars: 0 */
-interface SliderProps {
-  value: NonEmptyArray<number | null>
-  defaultValue: NonEmptyArray<number>
-  min: number
-  max: number
-  onValueChange: (value: number[]) => void
-  step?: number
-  minStepsBetweenThumbs?: number
-  cySelector?: string
 }
