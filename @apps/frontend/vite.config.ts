@@ -17,12 +17,17 @@ import { getAliases } from './src/__setup__/test-aliases'
 //   openAnalyzer: false
 // })
 
+const PORT = 3000
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: getAliases(__dirname)
   },
   server: {
-    port: 3000
+    port: PORT
+  },
+  preview: {
+    port: PORT
   }
 })

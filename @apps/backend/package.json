@@ -4,9 +4,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "start": "NODE_ENV=production nest start",
-    "dev": "NODE_ENV=development nest start --watch",
-    "prod": "node dist/main",
+    "dev": "nest start --watch",
+    "start": "node dist/main",
     "docker:build": "docker build -t scissors-backend .",
     "docker:start": "docker run -p 4200:4200 scissors-backend",
     "lint": "npx eslint .",
