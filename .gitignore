@@ -1,5 +1,5 @@
-# JetBrains IDEs
 /.idea
+.vscode
 /scissors.iml
 
 **/node_modules
@@ -9,6 +9,5 @@
 .turbo
 
 # Environment
-.env
 .env.development
 .env.production

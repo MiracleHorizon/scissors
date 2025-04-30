@@ -25,7 +25,7 @@ class EnvironmentVariables {
   @Min(0)
   @Max(65535)
   @IsOptional()
-  readonly PORT: number
+  readonly SERVER_PORT: number
 
   @IsUrl({
     // eslint-disable-next-line camelcase

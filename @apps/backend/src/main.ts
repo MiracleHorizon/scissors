@@ -6,7 +6,7 @@ import { corsOptions } from './cors/options'
 import { DEFAULT_PORT } from '@config/constants'
 
 const bootstrap = async () => {
-  const PORT = process.env.PORT ?? DEFAULT_PORT
+  const PORT = process.env.SERVER_PORT ?? DEFAULT_PORT
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
   app.enableCors(corsOptions)

@@ -1,1 +1,1 @@
-pnpm fe:lint && pnpm be:lint
+pnpm --filter frontend lint && pnpm --filter backend lint
