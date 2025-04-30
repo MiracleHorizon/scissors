@@ -34,8 +34,8 @@ export const Colorize = () => {
 
         <ScrollArea type='hover' className={styles.tintPresetsScrollArea}>
           <Flex height='32px' gapX='1'>
-            {themeColors.map(({ color, hex }) => (
-              <ColorSwatch key={color} size='32px' color={hex} onClick={() => setTint(hex)} />
+            {themeColors.slice(0, 9).map(({ color, hex }) => (
+              <ColorSwatch key={color} size='30px' color={hex} onClick={() => setTint(hex)} />
             ))}
           </Flex>
         </ScrollArea>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
-import { createImageFromFile } from '@/shared/image'
+import { ImageProperties } from '@/entities/image'
 import { ImageLightbox, UploadedImage } from '@/features/image/preview'
+import { createImageFromFile } from '@/shared/image'
 
 export const ImagePreview = ({
   file,
@@ -29,8 +30,6 @@ export const ImagePreview = ({
 
   return (
     <Flex direction='column' align='center' width='100%' height='100%' gap='3'>
-      {/* <UploadedImageToolbar file={file} /> */}
-
       {downloadableFile && (
         <ImageLightbox
           file={file}
@@ -41,6 +40,18 @@ export const ImagePreview = ({
       )}
 
       <UploadedImage file={file} downloadableFile={downloadableFile} onClick={openLightbox} />
+
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '24px',
+          right: '24px',
+          zIndex: 1
+        }}
+      >
+        {/* TODO: Пропсы */}
+        <ImageProperties file={file} setFile={() => {}} removeFile={() => {}} loading={false} />
+      </div>
     </Flex>
   )
 }

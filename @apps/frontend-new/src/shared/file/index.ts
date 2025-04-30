@@ -1,4 +1,5 @@
+export * from './constants'
 export { isValidFileName } from './isValidFileName'
 export { isValidFileSize } from './isValidFileSize'
 export { isValidFileType } from './isValidFileType'
-export * from './constants'
+export { bytesToMegabytes } from './bytesToMegabytes'
