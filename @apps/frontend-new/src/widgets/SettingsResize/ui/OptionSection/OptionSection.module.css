@@ -1,0 +1,21 @@
+.separator {
+  background-color: var(--gray-a11);
+}
+
+.link {
+  display: flex !important;
+  gap: var(--space-1) !important;
+  color: inherit !important;
+  text-decoration-color: inherit !important;
+}
+
+.linkIcon {
+  align-self: center;
+  visibility: hidden;
+}
+
+@media (hover: hover) {
+  .link:hover .linkIcon {
+    visibility: visible;
+  }
+}

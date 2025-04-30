@@ -13,11 +13,14 @@ import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifi
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 import { InfoCircledIcon } from '@scissors/react-icons/InfoCircledIcon'
-import type { ResizeOperation } from '@scissors/sharp'
+import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
+import { RESIZE_OPERATION, type ResizeOperation } from '@scissors/sharp'
 
+import { Resize } from '@/features/settings/resize'
 import { ResizeOperationsProvider, useResizeOperations } from '../model'
 import { ResizeOperationsSelector } from './ResizeOperationsSelector/ResizeOperationsSelector'
 import { SortableSection } from './SortableSection/SortableSection'
+import { OptionSection } from './OptionSection/OptionSection'
 import styles from './SettingsResize.module.css'
 
 export const Content = () => {
@@ -51,7 +54,12 @@ export const Content = () => {
                 onMoveUp={() => moveUpOperation(operation)}
                 onMoveDown={() => moveDownOperation(operation)}
                 onRemove={() => removeOperation(operation)}
-                content={<Text>{operation}</Text>}
+                content={
+                  <>
+                    {operation === RESIZE_OPERATION.RESIZE && <ResizeSection />}
+                    {/* {operation === RESIZE_OPERATION.RESIZE && <ResizeSection />} */}
+                  </>
+                }
               />
             ))}
           </SortableContext>
@@ -69,6 +77,15 @@ const Placeholder = () => (
       Please, select the operations you wish to perform
     </Text>
   </Flex>
+)
+
+const ResizeSection = () => (
+  <OptionSection
+    title='Resize'
+    docsLink='/docs#resize'
+    icon={<DimensionsIcon width='18px' height='18px' label='resize' />}
+    content={<Resize />}
+  />
 )
 
 export const SettingsResize = () => {

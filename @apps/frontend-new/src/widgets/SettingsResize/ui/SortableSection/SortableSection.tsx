@@ -2,7 +2,6 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS, type Transform } from '@dnd-kit/utilities'
 import { clsx } from 'clsx'
 import { Flex, IconButton, Separator, Tooltip, type IconButtonProps } from '@radix-ui/themes'
-import type { PaddingProps } from '@radix-ui/themes/props'
 import type { UniqueIdentifier } from '@dnd-kit/core'
 import type { ReactNode } from 'react'
 
@@ -17,15 +16,6 @@ import styles from './SortableSection.module.css'
 const direction: FlexDirection = {
   initial: 'row-reverse',
   sm: 'row'
-} as const
-const padding: PaddingProps = {
-  pl: '3',
-  pr: {
-    initial: '3',
-    sm: '0'
-  },
-  pt: '3',
-  pb: '3'
 } as const
 const actionButtonProps: IconButtonProps = {
   size: '1',
@@ -77,13 +67,13 @@ export const SortableSection = ({
 
   return (
     <Flex
-      {...padding}
       {...attributes}
       asChild
       ref={setNodeRef}
       direction={direction}
       align='start'
       gap='2'
+      p='3'
       width='100%'
       style={{
         transition,

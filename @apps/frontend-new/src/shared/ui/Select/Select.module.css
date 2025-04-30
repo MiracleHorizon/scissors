@@ -1,3 +1,7 @@
+.trigger {
+  width: 100% !important;
+}
+
 .content[data-state='open'] {
   --radix-select-trigger-width: max-content !important;
 }

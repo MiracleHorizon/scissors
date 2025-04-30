@@ -36,7 +36,7 @@ export const Select = ({
           {DetailsComponent}
         </Flex>
 
-        <RadixSelect.Trigger id={triggerId} />
+        <RadixSelect.Trigger id={triggerId} radius='large' className={styles.trigger} />
       </Flex>
 
       <RadixSelect.Content
