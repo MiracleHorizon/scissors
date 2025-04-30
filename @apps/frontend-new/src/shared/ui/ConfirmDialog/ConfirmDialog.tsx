@@ -3,27 +3,6 @@ import type { ReactNode } from 'react'
 
 import styles from './ConfirmDialog.module.css'
 
-interface WithConfirm {
-  onConfirm: VoidFunction
-  confirmLabel?: string
-  canselLabel?: never
-  onCancel?: never
-}
-
-interface WithCansel {
-  onCancel: VoidFunction
-  canselLabel?: string
-  confirmLabel?: never
-  onConfirm?: never
-}
-
-interface WithBothActions {
-  onConfirm?: VoidFunction
-  onCancel?: VoidFunction
-  confirmLabel?: string
-  canselLabel?: string
-}
-
 export const ConfirmDialog = ({
   open,
   title,
@@ -43,7 +22,11 @@ export const ConfirmDialog = ({
    */
   triggerTooltip?: string
   open?: boolean
-} & (WithConfirm | WithCansel | WithBothActions)) => (
+  confirmLabel?: string
+  canselLabel?: string
+  onConfirm?: VoidFunction
+  onCancel?: VoidFunction
+}) => (
   <AlertDialog.Root open={open}>
     {typeof open !== 'boolean' &&
       (triggerTooltip ? (

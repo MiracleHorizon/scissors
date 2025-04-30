@@ -8,6 +8,7 @@ import { EyeIcon } from '@scissors/react-icons/EyeIcon'
 import { EyeOffIcon } from '@scissors/react-icons/EyeOffIcon'
 
 import { ImagePropertiesList } from './ImagePropertiesList'
+import { ConfirmDialog } from '@/shared/ui'
 import styles from './ImageProperties.module.css'
 
 export const ImageProperties = ({
@@ -36,7 +37,7 @@ export const ImageProperties = ({
             </IconButton>
           </Tooltip>
 
-          <Actions loading={loading} />
+          <Actions loading={loading} removeFile={removeFile} />
         </Flex>
       </Card>
     )
@@ -47,7 +48,7 @@ export const ImageProperties = ({
       <Flex gapX='1'>
         <Card size='1' className={clsx(styles.card, styles.actions)}>
           <Flex direction='column' gapY='6px'>
-            <Actions loading={loading} />
+            <Actions loading={loading} removeFile={removeFile} />
           </Flex>
         </Card>
 
@@ -83,7 +84,7 @@ export const ImageProperties = ({
   )
 }
 
-const Actions = ({ loading }: { loading: boolean }) => (
+const Actions = ({ loading, removeFile }: { loading: boolean; removeFile: () => void }) => (
   <>
     <Tooltip hidden={loading} content='Upload new image'>
       <IconButton loading={loading} radius='large' color='gray'>
@@ -91,10 +92,17 @@ const Actions = ({ loading }: { loading: boolean }) => (
       </IconButton>
     </Tooltip>
 
-    <Tooltip hidden={loading} content='Delete image'>
-      <IconButton loading={loading} radius='large' color='red'>
-        <TrashIcon width='24px' height='24px' label='delete image' />
-      </IconButton>
-    </Tooltip>
+    <ConfirmDialog
+      title='Confirm deletion'
+      description='Are you sure you want to delete this image?'
+      confirmLabel='Delete'
+      onConfirm={removeFile}
+      trigger={
+        <IconButton loading={loading} radius='large' color='red'>
+          <TrashIcon width='24px' height='24px' label='delete image' />
+        </IconButton>
+      }
+      triggerTooltip='Delete image'
+    />
   </>
 )
