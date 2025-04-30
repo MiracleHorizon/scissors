@@ -44,7 +44,7 @@ export const ImageProperties = ({
 
   return (
     <>
-      <Flex align='end' gapX='1'>
+      <Flex gapX='1'>
         <Card size='1' className={clsx(styles.card, styles.actions)}>
           <Flex direction='column' gapY='6px'>
             <Actions loading={loading} />

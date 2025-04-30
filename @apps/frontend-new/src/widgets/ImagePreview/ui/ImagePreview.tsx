@@ -44,7 +44,7 @@ export const ImagePreview = ({
       <div
         style={{
           position: 'absolute',
-          bottom: '24px',
+          top: '24px',
           right: '24px',
           zIndex: 1
         }}
