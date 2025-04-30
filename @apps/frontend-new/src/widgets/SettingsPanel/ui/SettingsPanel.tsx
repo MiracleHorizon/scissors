@@ -1,7 +1,8 @@
-import { Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
+import { Button, Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 
-import { DownloadButton } from '@/shared/ui'
+import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
+
 import { TOUR_STEP } from '@/entities/tour'
 import styles from './SettingsPanel.module.css'
 
@@ -53,7 +54,10 @@ export const SettingsPanel = () => {
 
       <Flex mt='auto' asChild align='center' justify='end' p='3' className={styles.footer}>
         <footer>
-          <DownloadButton text='Download' />
+          <Button variant='solid' radius='large'>
+            <DownloadIcon width='18px' height='18px' />
+            Download
+          </Button>
         </footer>
       </Flex>
     </Flex>

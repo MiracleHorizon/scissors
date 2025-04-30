@@ -5,6 +5,7 @@
 .properties {
   width: 260px;
   min-height: 100px;
+  box-shadow: var(--shadow-3);
 }
 
 .actions {
