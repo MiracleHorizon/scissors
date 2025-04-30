@@ -1,1 +1,1 @@
-export { SettingsResize } from './ui/SettingsResize'
+export { SettingsResize } from './ui/SettingsResize/SettingsResize'

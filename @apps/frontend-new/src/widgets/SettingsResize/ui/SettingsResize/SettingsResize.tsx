@@ -17,10 +17,10 @@ import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
 import { RESIZE_OPERATION, type ResizeOperation } from '@scissors/sharp'
 
 import { Resize } from '@/features/settings/resize'
-import { ResizeOperationsProvider, useResizeOperations } from '../model'
-import { ResizeOperationsSelector } from './ResizeOperationsSelector/ResizeOperationsSelector'
-import { SortableSection } from './SortableSection/SortableSection'
-import { OptionSection } from './OptionSection/OptionSection'
+import { ResizeOperationsProvider, useResizeOperations } from '../../model'
+import { ResizeOperationsSelector } from '../ResizeOperationsSelector/ResizeOperationsSelector'
+import { SortableSection } from '../SortableSection/SortableSection'
+import { OptionSection } from '../OptionSection/OptionSection'
 import styles from './SettingsResize.module.css'
 
 export const Content = () => {
