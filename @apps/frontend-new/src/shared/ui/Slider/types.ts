@@ -14,6 +14,7 @@ export type Props = {
   sliderStyle?: CSSProperties
   sliderClassName?: string
   minStepsBetweenThumbs?: number
+  /* eslint no-unused-vars: 0 */
   onValueChange: (value: number[]) => void
 } & (WithHeader | WithoutHeader)
 

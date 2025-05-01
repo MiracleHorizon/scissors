@@ -6,7 +6,12 @@ import { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
 import { TOUR_STEP, useStartTour } from '@/entities/tour'
 import { ImageDropzone } from '@/features/image/upload'
 
-export const ImageUploader = ({ setFile }: { setFile: (file: File | null) => void }) => {
+export const ImageUploader = ({
+  setFile
+}: {
+  /* eslint no-unused-vars: 0 */
+  setFile: (file: File | null) => void
+}) => {
   useStartTour()
 
   return (

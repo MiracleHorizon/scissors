@@ -4,11 +4,13 @@ import { RESIZE_OPERATION, type ResizeOperation } from '@scissors/sharp'
 
 const ResizeOperationsContext = createContext<{
   operations: ResizeOperation[]
+  /* eslint no-unused-vars: 0 */
   addOperation: (operation: ResizeOperation) => void
   removeOperation: (operation: ResizeOperation) => void
   sortOperations: (activeId: ResizeOperation, overId: ResizeOperation) => void
   moveUpOperation: (operationId: ResizeOperation) => void
   moveDownOperation: (operationId: ResizeOperation) => void
+  /* eslint indent: 0 */
 } | null>(null)
 
 const initialOperations: ResizeOperation[] = [RESIZE_OPERATION.RESIZE]

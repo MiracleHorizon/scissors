@@ -6,7 +6,7 @@ export const useEscapeBlur = <Element extends HTMLElement>({
   ref,
   options
 }: {
-  ref: RefObject<Element>
+  ref: RefObject<Element | null>
   options?: boolean | AddEventListenerOptions
 }) => {
   useEscapeAction(() => {

@@ -5,6 +5,7 @@ export const useMutation = <Data = unknown, Payload = unknown>({
   onSuccess,
   onError
 }: {
+  /* eslint no-unused-vars: 0 */
   fetcher: (payload: Payload) => Promise<Data>
   onSuccess?: (response: Data) => void
   onError?: (error: unknown) => void

@@ -10,6 +10,7 @@ export const ImagePreview = ({
   setImage
 }: {
   file: File
+  /* eslint no-unused-vars: 0 */
   setImage: (image: HTMLImageElement) => void
 }) => {
   const [showLightbox, setShowLightbox] = useState(false)

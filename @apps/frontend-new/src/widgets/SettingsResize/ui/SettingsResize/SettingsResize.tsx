@@ -1,5 +1,4 @@
-import { Flex, Tabs, Text } from '@radix-ui/themes'
-import { Callout } from '@radix-ui/themes'
+import { Flex, Tabs, Text, Callout } from '@radix-ui/themes'
 import {
   closestCenter,
   DndContext,

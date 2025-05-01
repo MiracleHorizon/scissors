@@ -13,11 +13,12 @@ import styles from './ImageProperties.module.css'
 
 export const ImageProperties = ({
   file,
-  setFile,
+  // TODO: setFile
   removeFile,
   loading
 }: {
   file: File
+  /* eslint no-unused-vars: 0 */
   setFile: (file: File) => void
   removeFile: () => void
   loading: boolean

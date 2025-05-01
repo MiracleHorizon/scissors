@@ -1,11 +1,9 @@
-import { Helmet } from 'react-helmet-async'
-
 import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_TITLE } from '@/shared/seo'
 import { SITE_DOMAIN } from '@/shared/config'
 import { pathForSocial } from '@/shared/github'
 
 export const SEO = () => (
-  <Helmet>
+  <>
     <title>{SITE_TITLE}</title>
     <meta name='description' content={SITE_DESCRIPTION} />
     <meta name='keywords' content={SITE_KEYWORDS.join(', ')} />
@@ -46,5 +44,5 @@ export const SEO = () => (
     <meta property='twitter:image:width' content='1958' />
     <meta property='twitter:image:height' content='1044' />
     <meta property='twitter:image:type' content='image/png' />
-  </Helmet>
+  </>
 )

@@ -41,6 +41,7 @@ export const NumberInput = ({
   ...inputAttributes
 }: InputAttributes & {
   value: number | null
+  /* eslint no-unused-vars: 0 */
   setValue: (value: number | null) => void
   min: number
   max: number
