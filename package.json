@@ -39,9 +39,6 @@
     "typescript-eslint": "8.31.1",
     "vite": "6.3.4"
   },
-  "overrides": {
-    "eslint": "9.8.0"
-  },
   "keywords": [
     "image",
     "converter",

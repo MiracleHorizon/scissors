@@ -7,10 +7,10 @@
     "build": "tsc && vite build",
     "start": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "lint:styles": "npx stylelint \"**/*.css\"",
+    "format": "eslint . --fix",
     "format:styles": "npx stylelint --fix \"**/*.css\"",
-    "check": "pnpm lint"
+    "check": "pnpm lint && pnpm lint:styles"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
