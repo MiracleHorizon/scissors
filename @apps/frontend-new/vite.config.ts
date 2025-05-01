@@ -1,16 +1,14 @@
 import { defineConfig } from 'vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 import react from '@vitejs/plugin-react'
 import * as path from 'node:path'
-import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
   plugins: [
     react(),
     visualizer({
-      open: true,
       gzipSize: true,
-      brotliSize: true,
-      filename: 'dist/stats.html'
+      filename: 'dist/bundle-analysis.html'
     })
   ],
   resolve: {
