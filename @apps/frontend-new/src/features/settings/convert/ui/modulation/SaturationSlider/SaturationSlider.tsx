@@ -1,11 +1,11 @@
-import { useState } from 'react'
-
 import { MAX_SATURATION, MIN_SATURATION, SATURATION_STEP } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
+import { useModulationStore } from '../../../model/modulation/modulation.store'
 
 export const SaturationSlider = () => {
-  const [saturation, setSaturation] = useState(MIN_SATURATION)
+  const saturation = useModulationStore(state => state.saturation)
+  const setSaturation = useModulationStore(state => state.setSaturation)
 
   return (
     <Slider

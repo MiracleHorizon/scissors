@@ -1,11 +1,11 @@
-import { useState } from 'react'
-
 import { MAX_LIGHTNESS, MIN_LIGHTNESS } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
+import { useModulationStore } from '../../../model/modulation/modulation.store'
 
 export const LightnessSlider = () => {
-  const [lightness, setLightness] = useState(MIN_LIGHTNESS)
+  const lightness = useModulationStore(state => state.lightness)
+  const setLightness = useModulationStore(state => state.setLightness)
 
   return (
     <Slider

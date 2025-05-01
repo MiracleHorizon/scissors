@@ -1,12 +1,14 @@
-import { useState, type CSSProperties } from 'react'
+import type { CSSProperties } from 'react'
 
 import { MIN_HUE, MAX_HUE } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
+import { useModulationStore } from '../../../model/modulation/modulation.store'
 import styles from './HueAngleSlider.module.css'
 
 export const HueAngleSlider = () => {
-  const [hueAngle, setHueAngle] = useState(MIN_HUE)
+  const hueAngle = useModulationStore(state => state.hue)
+  const setHueAngle = useModulationStore(state => state.setHue)
 
   return (
     <Slider
