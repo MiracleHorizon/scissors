@@ -6,7 +6,7 @@ export interface ConvertSettings {
   grayscale: boolean
   tint: string | null
   negate: NegateOptions | null
-  normalise: NormaliseOptions | null
+  normalize: NormalizeOptions | null
   blur: BlurOptions | null
   rotate: RotateOptions | null
   gamma: GammaValue
@@ -40,7 +40,7 @@ export interface NegateOptions {
   alpha: boolean
 }
 
-export interface NormaliseOptions {
+export interface NormalizeOptions {
   lower: number
   upper: number
 }

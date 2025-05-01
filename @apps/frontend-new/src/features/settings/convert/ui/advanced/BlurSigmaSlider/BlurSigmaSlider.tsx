@@ -1,11 +1,11 @@
-import { useState } from 'react'
-
 import { BLUR_SIGMA_STEP, MAX_BLUR_SIGMA, MIN_BLUR_SIGMA } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
+import { useAdvancedStore } from '../../../model/advanced/advanced.store'
 
 export const BlurSigmaSlider = () => {
-  const [sigma, setSigma] = useState(MIN_BLUR_SIGMA)
+  const sigma = useAdvancedStore(state => state.blurSigma)
+  const setSigma = useAdvancedStore(state => state.setBlurSigma)
 
   return (
     <Slider
@@ -15,7 +15,7 @@ export const BlurSigmaSlider = () => {
       min={MIN_BLUR_SIGMA}
       max={MAX_BLUR_SIGMA}
       step={BLUR_SIGMA_STEP}
-      onValueChange={values => setSigma(values[0] ?? MIN_BLUR_SIGMA)}
+      onValueChange={values => setSigma(values[0] ?? null)}
     />
   )
 }
