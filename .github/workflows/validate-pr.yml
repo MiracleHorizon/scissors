@@ -51,9 +51,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      # TODO: Frontend test
-      - name: Check Frontend
+      - name: Test Frontend
         run: pnpm --filter frontend test
+
+      - name: Check New rontend
+        run: pnpm --filter frontend-new test
 
       - name: Test Backend
         run: pnpm --filter backend test
