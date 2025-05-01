@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router/dom'
 import { ThemeProvider } from 'next-themes'
 import { Theme } from '@radix-ui/themes'
+import { HelmetProvider } from 'react-helmet-async'
 
 import { DEFAULT_THEME, THEME_STORAGE_KEY, getThemeColorCookie } from '@/entities/theme'
 
@@ -13,7 +14,7 @@ export const App = () => {
   const themeColor = getThemeColorCookie()
 
   return (
-    <>
+    <HelmetProvider>
       <SEO />
 
       <ThemeProvider
@@ -26,6 +27,6 @@ export const App = () => {
           <RouterProvider router={router} />
         </Theme>
       </ThemeProvider>
-    </>
+    </HelmetProvider>
   )
 }
