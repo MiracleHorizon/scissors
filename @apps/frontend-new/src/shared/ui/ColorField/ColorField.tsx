@@ -11,14 +11,17 @@ import {
   useRef,
   useState
 } from 'react'
-import { Flex, Text, TextField } from '@radix-ui/themes'
+import { Flex, ScrollArea, Text, TextField } from '@radix-ui/themes'
 import Color from 'colorjs.io'
 
 import { hasSelection, toCssFormat, toShortFormat } from './utils'
+import { ColorSwatch } from '@/shared/ui'
+import { themeColors } from '@/shared/radix'
 import styles from './ColorField.module.css'
 
-const DEFAULT_COLOR = '000'
+const DEFAULT_COLOR = '000000'
 
+/* eslint no-unused-vars: 0 */
 export const ColorField = ({
   size,
   label,
@@ -26,7 +29,8 @@ export const ColorField = ({
   defaultValue = DEFAULT_COLOR,
   disabled,
   readOnly,
-  placeholder = '#000000',
+  withPalette,
+  placeholder = `#${DEFAULT_COLOR}`,
   onBlur,
   onChange,
   onKeyDownCapture,
@@ -36,7 +40,7 @@ export const ColorField = ({
   label?: string
   value?: string
   defaultValue?: string
-  /* eslint no-unused-vars: 0 */
+  withPalette?: boolean
   onValueChange?: (value: string) => void
 }) => {
   const inputId = useId()
@@ -136,7 +140,7 @@ export const ColorField = ({
     onChange?.(ev)
   }
 
-  return (
+  const JSX = (
     <Flex direction='column' gap='6px' width='max-content' onMouseUp={onMouseUp}>
       {label && (
         <Text as='label' size='2' color='gray' htmlFor={inputId}>
@@ -187,4 +191,29 @@ export const ColorField = ({
       </TextField.Root>
     </Flex>
   )
+
+  if (withPalette) {
+    return (
+      <Flex align='end' gapX='2'>
+        {JSX}
+
+        <ScrollArea type='hover' className={styles.scrollArea}>
+          <Flex height='32px' gapX='1'>
+            {themeColors.slice(0, 9).map(({ color, hex }) => (
+              <ColorSwatch
+                key={color}
+                size='30px'
+                color={hex}
+                onClick={() => {
+                  onValueChange?.(hex)
+                }}
+              />
+            ))}
+          </Flex>
+        </ScrollArea>
+      </Flex>
+    )
+  }
+
+  return JSX
 }

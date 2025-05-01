@@ -9,7 +9,8 @@ export const RotationBackgroundField = () => {
 
   return (
     <ColorField
-      label='Fallback background'
+      withPalette
+      label='Fallback color'
       value={background ?? ''}
       defaultValue={DEFAULT_ROTATE_BACKGROUND}
       onValueChange={setBackground}
