@@ -1,0 +1,47 @@
+import { create, type StateCreator } from 'zustand'
+
+import type { RotateOptions } from '@scissors/sharp'
+
+interface State {
+  angle: number | null
+  background: string | null
+}
+
+/* eslint no-unused-vars: 0 */
+interface Store extends State {
+  getRotation: () => RotateOptions | null
+  reset: VoidFunction
+  setAngle: (angle: number | null) => void
+  setBackground: (background: string) => void
+}
+
+const defaultState: State = {
+  angle: null,
+  background: null
+} as const
+
+const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
+  ...defaultState,
+
+  getRotation: () => {
+    const { angle, background } = get()
+
+    /*
+     * Falsy angle value (null or 0) is not available.
+     */
+    if (!angle) {
+      return null
+    }
+
+    return {
+      angle,
+      background
+    }
+  },
+  reset: () => set(defaultState),
+  setAngle: angle => set({ angle }),
+  setBackground: background => set({ background })
+})
+
+export const createRotateStore = () => create<Store>()(rotateStoreCreator)
+export const useRotateStore = createRotateStore()

@@ -26,10 +26,11 @@ export interface BlurOptions {
   sigma: number | null
 }
 
+// TODO: Rotation
 export interface RotateOptions {
   angle: number
   background: string | null
-  withDominantBackground: boolean
+  // withDominantBackground: boolean
 }
 
 export type GammaValue = number | null
