@@ -15,7 +15,7 @@ export const useConvertSettings = (): ConvertSettings => {
   const common = useCommonStore(state => state.getCommon())
   const advanced = useAdvancedStore(state => state.getAdvanced())
   const rotation = useRotationStore(state => state.getRotation())
-  const gamma = useGammaStore(state => state.get())
+  const gamma = useGammaStore(state => state.value)
 
   const modulate = useModulationStore(state => {
     const options = state.getModulation()

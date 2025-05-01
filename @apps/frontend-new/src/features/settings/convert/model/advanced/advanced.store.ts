@@ -1,6 +1,6 @@
 import { create, type StateCreator } from 'zustand'
 
-import { DEFAULT_NORMALIZE, DEFAULT_BLUR_SIGMA, type NormalizeOptions } from '@scissors/sharp'
+import { MAX_NORMALIZE, MIN_NORMALIZE, type NormalizeOptions } from '@scissors/sharp'
 
 interface State {
   blurSigma: number | null
@@ -19,8 +19,11 @@ interface Store extends State {
 }
 
 const defaultState: State = {
-  blurSigma: DEFAULT_BLUR_SIGMA,
-  normalize: DEFAULT_NORMALIZE
+  blurSigma: null,
+  normalize: {
+    lower: MIN_NORMALIZE,
+    upper: MAX_NORMALIZE
+  }
 } as const
 
 const advancedStoreCreator: StateCreator<Store> = (set, get) => ({

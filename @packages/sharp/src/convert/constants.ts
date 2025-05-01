@@ -5,11 +5,11 @@ export const DEFAULT_FLOP = false
 export const DEFAULT_GRAYSCALE = false
 export const DEFAULT_TINT_COLOR = '#000000'
 
-// Normalize
+// Normalization
 export const MIN_NORMALIZE = 0
 export const MAX_NORMALIZE = 100
-export const DEFAULT_LOWER_NORMALIZE = 1
-export const DEFAULT_UPPER_NORMALIZE = 99
+export const DEFAULT_LOWER_NORMALIZE = 0
+export const DEFAULT_UPPER_NORMALIZE = 100
 export const DEFAULT_NORMALIZE: NormalizeOptions = {
   lower: DEFAULT_LOWER_NORMALIZE,
   upper: DEFAULT_UPPER_NORMALIZE
@@ -39,13 +39,13 @@ export const MAX_GAMMA = 3
 export const DEFAULT_GAMMA = 2.2
 export const GAMMA_STEP = 0.01
 
-// Rotate
+// Rotation
 export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
 export const DEFAULT_ROTATE_BACKGROUND = '#000000'
 
-// Modulate
+// Modulation
 export const MIN_LIGHTNESS = 0
 export const MAX_LIGHTNESS = 100
 

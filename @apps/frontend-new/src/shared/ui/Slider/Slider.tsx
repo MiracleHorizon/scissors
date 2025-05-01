@@ -31,7 +31,7 @@ export const Slider = ({
   ...sliderProps
 }: {
   value: NonEmptyArray<number | null>
-  defaultValue: NonEmptyArray<number>
+  defaultValue?: NonEmptyArray<number>
   min: number
   max: number
   step?: number
@@ -139,7 +139,7 @@ export const Slider = ({
             disabled={disabled}
             float={float}
             maxFractionDigits={maxFractionDigits}
-            placeholder={`${defaultValue[0]}${valueSign}`}
+            placeholder={defaultValue ? `${defaultValue[0]}${valueSign}` : undefined}
             setValue={handleChangeInputValue}
           />
         )}

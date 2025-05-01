@@ -1,10 +1,10 @@
-import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
+import { DEFAULT_GAMMA, GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
 import { useGammaStore } from '../../../model/colorization/gamma.store'
 
 export const GammaSlider = () => {
-  const gamma = useGammaStore(state => state.get())
+  const gamma = useGammaStore(state => state.value)
   const setGamma = useGammaStore(state => state.set)
 
   /* TODO: Add grayscale 
@@ -15,7 +15,7 @@ export const GammaSlider = () => {
     <Slider
       label='Gamma'
       value={[gamma]}
-      defaultValue={[MIN_GAMMA]}
+      defaultValue={[DEFAULT_GAMMA]}
       step={GAMMA_STEP}
       min={MIN_GAMMA}
       max={MAX_GAMMA}
