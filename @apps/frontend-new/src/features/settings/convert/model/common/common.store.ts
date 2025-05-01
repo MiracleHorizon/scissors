@@ -18,12 +18,12 @@ interface State {
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
   getCommon: () => State
-  reset: VoidFunction
+  reset: () => void
   setFileName: (fileName: string) => void
-  toggleFlip: VoidFunction
-  toggleFlop: VoidFunction
-  toggleGrayscale: VoidFunction
-  toggleNegate: VoidFunction
+  toggleFlip: () => void
+  toggleFlop: () => void
+  toggleGrayscale: () => void
+  toggleNegate: () => void
 }
 
 const defaultState: State = {
