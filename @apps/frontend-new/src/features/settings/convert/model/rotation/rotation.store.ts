@@ -10,7 +10,7 @@ interface State {
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
   getRotation: () => RotateOptions | null
-  reset: VoidFunction
+  reset: () => void
   setAngle: (angle: number | null) => void
   setBackground: (background: string) => void
 }
@@ -20,7 +20,7 @@ const defaultState: State = {
   background: null
 } as const
 
-const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
+const rotationStoreCreator: StateCreator<Store> = (set, get) => ({
   ...defaultState,
 
   getRotation: () => {
@@ -43,5 +43,5 @@ const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
   setBackground: background => set({ background })
 })
 
-export const createRotateStore = () => create<Store>()(rotateStoreCreator)
-export const useRotateStore = createRotateStore()
+export const createRotationStore = () => create<Store>()(rotationStoreCreator)
+export const useRotationStore = createRotationStore()

@@ -1,11 +1,11 @@
 import { DEFAULT_ROTATE_BACKGROUND } from '@scissors/sharp'
 
 import { ColorField } from '@/shared/ui'
-import { useRotateStore } from '../../../model/rotation/rotation.store'
+import { useRotationStore } from '../../../model/rotation/rotation.store'
 
 export const RotationBackgroundField = () => {
-  const background = useRotateStore(state => state.background)
-  const setBackground = useRotateStore(state => state.setBackground)
+  const background = useRotationStore(state => state.background)
+  const setBackground = useRotationStore(state => state.setBackground)
 
   return (
     <ColorField

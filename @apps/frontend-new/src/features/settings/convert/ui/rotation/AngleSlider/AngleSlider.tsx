@@ -1,11 +1,11 @@
 import { DEFAULT_ROTATE_ANGLE, MAX_ROTATE_ANGLE, MIN_ROTATE_ANGLE } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
-import { useRotateStore } from '../../../model/rotation/rotation.store'
+import { useRotationStore } from '../../../model/rotation/rotation.store'
 
 export const AngleSlider = () => {
-  const angle = useRotateStore(state => state.angle)
-  const setAngle = useRotateStore(state => state.setAngle)
+  const angle = useRotationStore(state => state.angle)
+  const setAngle = useRotationStore(state => state.setAngle)
 
   return (
     <Slider
