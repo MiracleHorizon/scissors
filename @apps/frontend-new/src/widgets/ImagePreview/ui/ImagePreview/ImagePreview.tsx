@@ -1,42 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
 import { ImageProperties } from '@/entities/image'
 import { ImageLightbox, UploadedImage } from '@/features/image/preview'
-import { createImageFromFile } from '@/shared/image'
 
+/* eslint no-unused-vars: 0 */
 export const ImagePreview = ({
   file,
-  setImage
+  setFile
 }: {
   file: File
-  /* eslint no-unused-vars: 0 */
-  setImage: (image: HTMLImageElement) => void
+  setFile: (file: File | null) => void
 }) => {
   const [showLightbox, setShowLightbox] = useState(false)
   const openLightbox = () => setShowLightbox(true)
   const closeLightbox = () => setShowLightbox(false)
 
-  // TODO: Чё это такое?
-  useEffect(() => {
-    createImageFromFile(file).then(setImage).catch(setImage)
-  }, [file, setImage])
-
-  // TODO: Прокинуть
-  const downloadableFile = {
-    file,
-    fileName: file.name,
-    link: URL.createObjectURL(file)
-  }
+  // TODO: Наверное, лучше в сторе держать?
+  const downloadableFile = useMemo(
+    () => ({ file, name: file.name, link: URL.createObjectURL(file) }),
+    [file]
+  )
 
   return (
     <Flex direction='column' align='center' width='100%' height='100%' gap='3'>
       {downloadableFile && (
         <ImageLightbox
           file={file}
-          downloadableFile={downloadableFile}
-          isOpen={showLightbox}
+          open={showLightbox}
           onClose={closeLightbox}
+          downloadableFile={downloadableFile}
         />
       )}
 
@@ -50,8 +43,8 @@ export const ImagePreview = ({
           zIndex: 1
         }}
       >
-        {/* TODO: Пропсы */}
-        <ImageProperties file={file} setFile={() => {}} removeFile={() => {}} loading={false} />
+        {/* TODO: Loading */}
+        <ImageProperties file={file} setFile={setFile} loading={false} />
       </div>
     </Flex>
   )

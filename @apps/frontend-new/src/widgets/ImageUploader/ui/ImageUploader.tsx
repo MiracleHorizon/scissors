@@ -3,7 +3,7 @@ import 'driver.js/dist/driver.css'
 
 import { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
 
-import { TOUR_STEP, useStartTour } from '@/entities/tour'
+import { useStartTour } from '@/entities/tour'
 import { ImageDropzone } from '@/features/image/upload'
 
 export const ImageUploader = ({
@@ -26,7 +26,6 @@ export const ImageUploader = ({
         sm: '470px'
       }}
       m='auto'
-      data-tourstep={TOUR_STEP.FILE_UPLOAD}
     >
       <ImageDropzone accept={ALLOWED_IMAGE_FORMATS} setFile={setFile} />
     </Flex>

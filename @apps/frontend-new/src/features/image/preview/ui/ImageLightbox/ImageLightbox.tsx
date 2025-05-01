@@ -13,20 +13,16 @@ import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
 export const ImageLightbox = ({
   file,
   downloadableFile,
-  isOpen,
+  open,
   onClose
 }: {
   file: File
-  downloadableFile: {
-    file: File
-    fileName: string
-    link: string
-  }
-  isOpen: boolean
+  downloadableFile: DownloadableFile
+  open: boolean
   onClose: VoidFunction
 }) => (
   <Lightbox
-    open={isOpen}
+    open={open}
     close={onClose}
     {...getLightboxProps({
       file,
@@ -41,7 +37,7 @@ const getLightboxProps = ({
 }: {
   file: File
   downloadablePayloadWithoutFile: {
-    fileName: string
+    name: string
     link: string
   } | null
 }): LightboxExternalProps => {
@@ -49,7 +45,7 @@ const getLightboxProps = ({
   const slides: Slide[] = []
 
   if (downloadablePayloadWithoutFile) {
-    const { link: url, fileName: filename } = downloadablePayloadWithoutFile
+    const { link: url, name: filename } = downloadablePayloadWithoutFile
 
     plugins.push(Download)
     slides.push({

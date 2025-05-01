@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Flex, Text } from '@radix-ui/themes'
 
 import { FileIcon } from '@scissors/react-icons/FileIcon'
@@ -7,7 +7,8 @@ import { DimensionsIcon } from '@scissors/react-icons/DimensionsIcon'
 
 import { isValidAspectRatio } from '../../lib/isValidAspectRatio'
 import { BYTES_IN_KB, BYTES_IN_MB, bytesToMegabytes } from '@/shared/file'
-import type { AspectRatio, ImageDimension } from '@/entities/image'
+import { createImageFromFile, simplifyAspectRatio } from '@/shared/image'
+import type { AspectRatio, ImageDimension } from '../../model/types'
 
 export const formatFileSize = (fileSize: number): string => {
   const format = (size: number) => size.toFixed(1).replace('.0', '')
@@ -23,15 +24,31 @@ export const formatFileSize = (fileSize: number): string => {
   return format(megabytes) + ' MB'
 }
 
-export const ImagePropertiesList = ({
-  file,
-  dimension,
-  aspectRatio
-}: {
-  file: File
-  dimension: ImageDimension
-  aspectRatio: AspectRatio
-}) => {
+export const ImagePropertiesList = ({ file }: { file: File }) => {
+  const [dimension, setDimension] = useState<ImageDimension | null>(null)
+  const [aspectRatio, setAspectRatio] = useState<AspectRatio | null>(null)
+
+  useEffect(() => {
+    createImageFromFile(file)
+      .then(image => {
+        const { width, height } = image
+
+        setDimension([width, height])
+        setAspectRatio(
+          simplifyAspectRatio({
+            width,
+            height
+          })
+        )
+      })
+      .catch(error => {
+        console.error(`[ImagePropertiesList] Failed to load image properties: ${error}`)
+
+        setDimension(null)
+        setAspectRatio(null)
+      })
+  }, [file])
+
   const properties = useMemo(() => {
     const items = []
 
@@ -53,6 +70,7 @@ export const ImagePropertiesList = ({
     })
 
     if (
+      aspectRatio &&
       isValidAspectRatio({
         width: dimension[0],
         height: dimension[1],

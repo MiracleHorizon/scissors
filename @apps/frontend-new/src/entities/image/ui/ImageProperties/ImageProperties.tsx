@@ -1,5 +1,5 @@
 import { IconButton, Card, Flex, Text, Separator, Tooltip } from '@radix-ui/themes'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { clsx } from 'clsx'
 
 import { TrashIcon } from '@scissors/react-icons/TrashIcon'
@@ -11,16 +11,14 @@ import { ImagePropertiesList } from './ImagePropertiesList'
 import { ConfirmDialog } from '@/shared/ui'
 import styles from './ImageProperties.module.css'
 
+/* eslint no-unused-vars: 0 */
 export const ImageProperties = ({
   file,
-  // TODO: setFile
-  removeFile,
+  setFile,
   loading
 }: {
   file: File
-  /* eslint no-unused-vars: 0 */
-  setFile: (file: File) => void
-  removeFile: () => void
+  setFile: (file: File | null) => void
   loading: boolean
 }) => {
   const [isPropertiesShown, setIsPropertiesShown] = useState(true)
@@ -38,7 +36,7 @@ export const ImageProperties = ({
             </IconButton>
           </Tooltip>
 
-          <Actions loading={loading} removeFile={removeFile} />
+          <Actions loading={loading} setFile={setFile} />
         </Flex>
       </Card>
     )
@@ -49,7 +47,7 @@ export const ImageProperties = ({
       <Flex gapX='1'>
         <Card size='1' className={clsx(styles.card, styles.actions)}>
           <Flex direction='column' gapY='6px'>
-            <Actions loading={loading} removeFile={removeFile} />
+            <Actions loading={loading} setFile={setFile} />
           </Flex>
         </Card>
 
@@ -77,7 +75,9 @@ export const ImageProperties = ({
 
             <Separator orientation='horizontal' size='4' mt='2px' mb='2' />
 
-            <ImagePropertiesList file={file} dimension={[100, 100]} aspectRatio={[16, 9]} />
+            <Suspense>
+              <ImagePropertiesList file={file} />
+            </Suspense>
           </Flex>
         </Card>
       </Flex>
@@ -85,9 +85,16 @@ export const ImageProperties = ({
   )
 }
 
-const Actions = ({ loading, removeFile }: { loading: boolean; removeFile: () => void }) => (
+const Actions = ({
+  loading,
+  setFile
+}: {
+  loading: boolean
+  setFile: (file: File | null) => void
+}) => (
   <>
     <Tooltip hidden={loading} content='Upload new image'>
+      {/* TODO: add upload new image */}
       <IconButton loading={loading} radius='large' color='gray'>
         <UploadIcon width='20px' height='20px' label='upload new image' />
       </IconButton>
@@ -97,7 +104,7 @@ const Actions = ({ loading, removeFile }: { loading: boolean; removeFile: () => 
       title='Confirm deletion'
       description='Are you sure you want to delete this image?'
       confirmLabel='Delete'
-      onConfirm={removeFile}
+      onConfirm={() => setFile(null)}
       trigger={
         <IconButton loading={loading} radius='large' color='red'>
           <TrashIcon width='24px' height='24px' label='delete image' />

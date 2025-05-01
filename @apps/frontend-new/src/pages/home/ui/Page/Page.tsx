@@ -1,21 +1,16 @@
-import { lazy, Suspense, useState } from 'react'
 import { Flex, ScrollArea } from '@radix-ui/themes'
 import clsx from 'clsx'
 
 import { SettingsPanel } from '@/widgets/SettingsPanel'
+import { ImageUploader } from '@/widgets/ImageUploader'
 import { ImagePreview } from '@/widgets/ImagePreview'
-import { ImageUploaderSkeleton } from '@/widgets/ImageUploader'
 import { BackgroundGrid } from '@/shared/ui'
+import { useImageStore } from '@/shared/image'
 import styles from './Page.module.css'
 
-const ImageUploader = lazy(() =>
-  import('@/widgets/ImageUploader').then(module => ({
-    default: module.ImageUploader
-  }))
-)
-
 export const HomePage = () => {
-  const [file, setFile] = useState<File | null>(null)
+  const file = useImageStore(state => state.getFileForProcessing())
+  const setOriginalImage = useImageStore(state => state.setOriginalImage)
 
   return (
     <Flex width='100%' align='center' direction='column' className={styles.root}>
@@ -39,12 +34,9 @@ export const HomePage = () => {
 
               <Flex px='4' width='100%' height='100%' className={styles.previewContent}>
                 {file ? (
-                  // TODO: setImage
-                  <ImagePreview file={file} setImage={() => {}} />
+                  <ImagePreview file={file} setFile={setOriginalImage} />
                 ) : (
-                  <Suspense fallback={<ImageUploaderSkeleton />}>
-                    <ImageUploader setFile={setFile} />
-                  </Suspense>
+                  <ImageUploader setFile={setOriginalImage} />
                 )}
               </Flex>
             </Flex>
