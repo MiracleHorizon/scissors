@@ -3,12 +3,12 @@ import {
   DEFAULT_GAMMA,
   EXTEND_WITH,
   IMAGE_FILE_FORMAT,
-  MAX_NORMALISE,
+  MAX_NORMALIZE,
   MIN_BRIGHTNESS,
   MIN_EXTEND_DIRECTION_SIZE,
   MIN_HUE,
   MIN_LIGHTNESS,
-  MIN_NORMALISE,
+  MIN_NORMALIZE,
   MIN_RESIZE_SIZE,
   MIN_SATURATION,
   MIN_TRIM_THRESHOLD,
@@ -26,9 +26,9 @@ const VALID_CONVERT_SETTINGS: ConvertSettings = {
     value: true,
     alpha: false
   },
-  normalise: {
-    lower: MIN_NORMALISE,
-    upper: MAX_NORMALISE
+  normalize: {
+    lower: MIN_NORMALIZE,
+    upper: MAX_NORMALIZE
   },
   blur: {
     value: true,
@@ -36,8 +36,7 @@ const VALID_CONVERT_SETTINGS: ConvertSettings = {
   },
   rotate: {
     angle: 90,
-    background: '#FFFFFF',
-    withDominantBackground: false
+    background: '#FFFFFF'
   },
   gamma: DEFAULT_GAMMA,
   tint: '#FF0004',

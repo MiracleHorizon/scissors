@@ -14,8 +14,4 @@ export class RotateDto {
   @IsHexColor()
   @IsNullable()
   readonly background: string | null
-
-  @IsBoolean()
-  @IsDefined()
-  readonly withDominantBackground: boolean
 }
