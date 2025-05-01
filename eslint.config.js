@@ -8,7 +8,7 @@ export default tsEslint.config(
   js.configs.recommended,
   ...tsEslint.configs.recommended,
   {
-    ignores: ['**/dist', '**/node_modules', '**/coverage', '*.config.*', '*.json']
+    ignores: ['**/dist', '**/node_modules', '**/coverage', '*.config.*', '*.json', './@apps/ai']
   },
   {
     plugins: {
@@ -41,6 +41,12 @@ export default tsEslint.config(
       quotes: ['error', 'single'],
       semi: ['error', 'never'],
       eqeqeq: 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto'
+        }
+      ],
       'no-console': 'off',
       'no-debugger': 'error',
       'no-unused-vars': 'error',
