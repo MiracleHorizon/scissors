@@ -9,6 +9,7 @@ import { isValidFileName, MAX_FILE_NAME_LENGTH, MIN_FILE_NAME_LENGTH } from '@/s
 import type { TextFieldProps } from '@/shared/radix'
 
 import { FileNameHint } from './FileNameHint/FileNameHint'
+import { useCommonStore } from '../../../model/common/common.store'
 
 const rootMaxWidth = {
   initial: '500px',
@@ -21,7 +22,9 @@ const errorProps: TextFieldProps = {
 } as const
 
 export const FileNameInput = () => {
-  const [fileName, setFileName] = useState('')
+  const fileName = useCommonStore(state => state.fileName)
+  const setFileName = useCommonStore(state => state.setFileName)
+
   const [isError, setIsError] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 

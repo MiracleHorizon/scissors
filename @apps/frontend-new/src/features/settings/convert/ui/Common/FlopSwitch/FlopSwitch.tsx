@@ -1,9 +1,9 @@
-import { useState } from 'react'
-
 import { Switch } from '@/shared/ui'
+import { useCommonStore } from '../../../model/common/common.store'
 
 export const FlopSwitch = () => {
-  const [flop, setFlop] = useState(false)
+  const flop = useCommonStore(state => state.flop)
+  const toggleFlop = useCommonStore(state => state.toggleFlop)
 
-  return <Switch label='Flop' checked={flop} onClick={() => setFlop(prev => !prev)} />
+  return <Switch label='Flop' checked={flop} onClick={toggleFlop} />
 }
