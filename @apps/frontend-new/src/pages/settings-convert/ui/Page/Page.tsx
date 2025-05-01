@@ -7,7 +7,7 @@ import { SettingsIcon } from '@scissors/react-icons/SettingsIcon'
 
 import { CommonOptions } from '@/widgets/convert/CommonOptions'
 import { ModulationOptions } from '@/widgets/convert/ModulationOptions'
-import { ColorizeOptions } from '@/widgets/convert/ColorizeOptions'
+import { ColorizationOptions } from '@/widgets/convert/ColorizationOptions'
 import { RotationOptions } from '@/widgets/convert/RotationOptions'
 import { AdvancedOptions } from '@/widgets/convert/AdvancedOptions'
 
@@ -26,7 +26,7 @@ export const SettingsConvertPage = () => (
       <OptionSection
         title='Colorization'
         icon={<PaintbrushIcon width='20' height='20' label='colorize' />}
-        content={<ColorizeOptions />}
+        content={<ColorizationOptions />}
       />
       <OptionSection
         title='Rotation'

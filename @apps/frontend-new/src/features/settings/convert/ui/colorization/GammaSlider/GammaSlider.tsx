@@ -1,11 +1,11 @@
-import { useState } from 'react'
-
 import { GAMMA_STEP, MAX_GAMMA, MIN_GAMMA } from '@scissors/sharp'
 
 import { Slider } from '@/shared/ui'
+import { useGammaStore } from '../../../model/colorization/gamma.store'
 
 export const GammaSlider = () => {
-  const [gamma, setGamma] = useState(MIN_GAMMA)
+  const gamma = useGammaStore(state => state.get())
+  const setGamma = useGammaStore(state => state.set)
 
   /* TODO: Add grayscale 
     disabled={isGrayscaleEnabled}

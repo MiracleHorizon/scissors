@@ -2,8 +2,7 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { GammaSlider, TintField } from '@/features/settings/convert'
 
-// TODO: Colorization
-export const ColorizeOptions = () => (
+export const ColorizationOptions = () => (
   <Flex direction='column' gapY='2'>
     <GammaSlider />
     <Separator size='4' />

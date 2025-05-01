@@ -1,13 +1,13 @@
-import { useState } from 'react'
 import { Flex, ScrollArea } from '@radix-ui/themes'
 
-import { DEFAULT_TINT_COLOR } from '@scissors/sharp'
+import { useTintStore } from '../../../model/colorization/tint.store'
 import { ColorField, ColorSwatch } from '@/shared/ui'
 import { themeColors } from '@/shared/radix'
 import styles from './TintField.module.css'
 
 export const TintField = () => {
-  const [tint, setTint] = useState(DEFAULT_TINT_COLOR)
+  const tint = useTintStore(state => state.get())
+  const setTint = useTintStore(state => state.set)
 
   return (
     <Flex align='end' gapX='2'>
