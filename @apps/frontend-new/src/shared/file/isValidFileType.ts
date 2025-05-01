@@ -1,4 +1,4 @@
-export { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
+import { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
 
 /**
  * @param type - image file type (example: 'image/png' or 'png')
