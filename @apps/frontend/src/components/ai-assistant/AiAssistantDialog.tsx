@@ -13,7 +13,10 @@ import {
   Spinner
 } from '@radix-ui/themes'
 
+import { XIcon } from '@scissors/react-icons/XIcon'
 import { BotIcon } from '@scissors/react-icons/BotIcon'
+import { SendIcon } from '@scissors/react-icons/SendIcon'
+import { ClockIcon } from '@scissors/react-icons/ClockIcon'
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
 
 import { BadgeBeta } from '@lib/ui/badges/BadgeBeta'
@@ -50,23 +53,11 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         <Flex width='100%' align='center' gapX='3'>
           <Dialog.Title mb='0'>AI Assistant</Dialog.Title>
 
-          <BadgeBeta mb='2px'>Beta</BadgeBeta>
+          <BadgeBeta mb='2px' />
         </Flex>
 
         <IconButton variant='ghost' radius='full' color='gray' onClick={onClose}>
-          <svg
-            width='20'
-            height='20'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='1.5'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          >
-            <path d='M18 6 6 18' />
-            <path d='m6 6 12 12' />
-          </svg>
+          <XIcon width='20' height='20' />
         </IconButton>
       </Flex>
 
@@ -133,19 +124,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
               <Button radius='large' variant='outline' color='gray'>
-                <svg
-                  width='18'
-                  height='18'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  strokeWidth='1.5'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                >
-                  <circle cx='12' cy='12' r='10' />
-                  <polyline points='12 6 12 12 16 14' />
-                </svg>
+                <ClockIcon width='18' height='18' />
                 Previous
                 <ChevronDownIcon />
               </Button>
@@ -180,19 +159,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
             disabled={prompt.length < MIN_PROMPT_LENGTH}
             onClick={handleSend}
           >
-            <svg
-              width='18'
-              height='18'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <path d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z' />
-              <path d='m21.854 2.147-10.94 10.939' />
-            </svg>
+            <SendIcon width='18' height='18' />
             Send
           </Button>
         </Flex>
