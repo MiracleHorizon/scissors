@@ -19,6 +19,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.11
+
       - uses: pnpm/action-setup@v4
         with:
           version: 9.6.0
