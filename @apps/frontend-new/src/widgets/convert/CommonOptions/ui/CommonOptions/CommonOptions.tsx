@@ -13,15 +13,38 @@ export const CommonOptions = () => (
   <Flex direction='column' gapY='4'>
     <FileNameInput />
 
-    <Flex gapX='4' height='100%' gapY='2' width='100%'>
-      <Flex width='50%' direction='column' gap='2'>
+    <Flex
+      gapX='4'
+      direction={{
+        xs: 'row',
+        initial: 'column'
+      }}
+      height='100%'
+      gapY='2'
+      width='100%'
+    >
+      <Flex
+        width={{
+          xs: '50%',
+          initial: '100%'
+        }}
+        direction='column'
+        gap='2'
+      >
         <FlipSwitch />
         <FlopSwitch />
       </Flex>
 
       <Separator orientation='vertical' className={styles.separator} />
 
-      <Flex width='50%' direction='column' gap='2'>
+      <Flex
+        width={{
+          xs: '50%',
+          initial: '100%'
+        }}
+        direction='column'
+        gap='2'
+      >
         <GrayscaleSwitch />
         <NegateSwitch />
       </Flex>

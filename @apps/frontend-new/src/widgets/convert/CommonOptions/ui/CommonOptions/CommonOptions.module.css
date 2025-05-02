@@ -2,3 +2,9 @@
   height: 56px !important;
   flex-shrink: 0;
 }
+
+@media screen and (max-width: 519px) {
+  .separator {
+    display: none !important;
+  }
+}
