@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "dotenv": "16.5.0",
+    "@scissors/sharp": "workspace:*",
+    "@scissors/utility": "workspace:*",
     "sharp": "0.34.1"
   },
   "devDependencies": {
