@@ -21,7 +21,7 @@
   margin-bottom: var(--space-4);
 }
 
-.aiAssistant {
+.aiAssistantDialog {
   position: fixed;
   bottom: 12px;
   left: 12px;

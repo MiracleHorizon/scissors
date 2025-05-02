@@ -1,1 +1,1 @@
-export { AiAssistant } from './AiAssistant'
+export { AiAssistantDialog } from './AiAssistantDialog'

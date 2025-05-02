@@ -64,8 +64,8 @@ serve({
         }
 
         const { result } = await response.json()
-        const alternatives: YaGptMessage[] = result.alternatives
-        const messages = alternatives.map(({ text }) => text)
+        const alternatives: { message: YaGptMessage }[] = result.alternatives
+        const messages = alternatives.map(({ message }) => message.text)
 
         return withCors(Response.json(messages))
       } catch (error) {

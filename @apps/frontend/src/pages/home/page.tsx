@@ -3,7 +3,7 @@ import { Flex, ScrollArea } from '@radix-ui/themes'
 import { ImagePreview } from '@widgets/ImagePreview'
 import { SettingsPanel } from '@widgets/SettingsPanel'
 import { ProcessingFooter } from '@widgets/ProcessingFooter'
-import { AiAssistant } from '@components/ai-assistant'
+import { AiAssistantDialog } from '@components/ai-assistant'
 import type { FlexDirection } from '@lib/theme'
 import styles from './page.module.css'
 
@@ -15,8 +15,8 @@ const mainDirection: FlexDirection = {
 const HomePage = () => (
   <Flex width='100%' align='center' direction='column' className={styles.root}>
     {process.env.NODE_ENV === 'development' && (
-      <div className={styles.aiAssistant}>
-        <AiAssistant />
+      <div className={styles.aiAssistantDialog}>
+        <AiAssistantDialog />
       </div>
     )}
 

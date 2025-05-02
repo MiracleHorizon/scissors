@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 const AI_ASSISTANT_API = 'http://localhost:4201/api'
 
-export const useAiAssistantMutation = <T>() => {
-  const [data, setData] = useState<T | null>(null)
+export const useAiAssistantMutation = <Data>() => {
+  const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<unknown>(null)
   const [loading, setLoading] = useState(false)
 
@@ -13,13 +13,11 @@ export const useAiAssistantMutation = <T>() => {
   }
 
   const mutate = async (prompt: string) => {
-    console.log(321)
-
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(`${AI_ASSISTANT_API}/ai/completion`, {
+      const response = await fetch(`${AI_ASSISTANT_API}/v1/completion`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
