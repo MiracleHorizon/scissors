@@ -14,9 +14,11 @@ const mainDirection: FlexDirection = {
 
 const HomePage = () => (
   <Flex width='100%' align='center' direction='column' className={styles.root}>
-    <div className={styles.aiAssistant}>
-      <AiAssistant />
-    </div>
+    {process.env.NODE_ENV === 'development' && (
+      <div className={styles.aiAssistant}>
+        <AiAssistant />
+      </div>
+    )}
 
     <ScrollArea scrollbars='vertical' size='1' className={styles.scrollArea}>
       <Flex asChild justify='end' direction={mainDirection} width='100%' className={styles.main}>
