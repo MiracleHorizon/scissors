@@ -24,27 +24,40 @@ import { useAiAssistantMutation } from './ai-assistant-mutation'
 import { useLocalStorage } from '@hooks/useLocaleStorage'
 import { SITE_TITLE } from '@site/config'
 
+import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
+
 const MIN_PROMPT_LENGTH = 10
 const MAX_PROMPT_LENGTH = 300
+const STORAGE_KEY = `${SITE_TITLE.toLowerCase()}-ai-prompts`
 
 // TODO: Error handling
 const Content = ({ onClose }: { onClose: () => void }) => {
-  const [previousPrompts, setPreviousPrompts] = useLocalStorage<string[]>(
-    `${SITE_TITLE}-ai-prompts`,
-    []
-  )
   const [prompt, setPrompt] = useState('')
+  const [previousPrompts, setPreviousPrompts] = useLocalStorage<string[]>(STORAGE_KEY, [])
+  const { setters: settingsSetters } = useSettingsSetters()
 
   const { data: assistantResponse, mutate, loading } = useAiAssistantMutation<string[]>()
 
-  const handleSend = async () => {
+  const handleSend = () => {
     if (prompt.length < MIN_PROMPT_LENGTH) return
 
     void mutate(prompt)
-
+    setPreviousPrompts(prevState => [prompt, ...prevState.filter(p => p !== prompt)])
     setPrompt('')
-    // TODO: Не сохранять значение, если оно уже есть в массиве (или удалять старое и класть по-новой)
-    setPreviousPrompts(prevState => [prompt, ...prevState])
+  }
+
+  const handleApply = () => {
+    if (!assistantResponse) return
+
+    for (const message of assistantResponse) {
+      const [key, value] = message.split(': ')
+
+      if (!(key in settingsSetters)) continue
+
+      // eslint-disable-next-line
+      // @ts-expect-error
+      settingsSetters[key](value)
+    }
   }
 
   return (
@@ -78,6 +91,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
                     style={{
                       alignSelf: 'flex-end'
                     }}
+                    onClick={handleApply}
                   >
                     Apply
                   </Button>

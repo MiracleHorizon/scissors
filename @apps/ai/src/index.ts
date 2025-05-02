@@ -1,6 +1,7 @@
 import { serve } from 'bun'
 
 import { handleCors, withCors } from './cors'
+import { getContextForPrompt } from './mcp/context'
 
 const PORT = Bun.env.AI_SERVER_PORT || 4201
 const YA_GPT_API_KEY = Bun.env.YANDEX_CLOUD_API_KEY
@@ -23,7 +24,9 @@ const MAX_REQUESTS_PER_HOUR = 25
 const RESET_TIME_INTERVAL = 60 * 60 * 1000
 
 let totalRequests = 0
-let lastResetTime = Date.now()
+setInterval(() => {
+  totalRequests = 0
+}, RESET_TIME_INTERVAL)
 
 // TODO: Logger
 serve({
@@ -65,7 +68,7 @@ serve({
             messages: [
               {
                 role: 'user',
-                text: prompt
+                text: getContextForPrompt(prompt)
               }
             ]
           })
@@ -89,11 +92,6 @@ serve({
         const alternatives: { message: YaGptMessage }[] = result.alternatives
         const messages = alternatives.map(({ message }) => message.text)
         totalRequests++
-
-        if (Date.now() - lastResetTime >= RESET_TIME_INTERVAL) {
-          totalRequests = 0
-          lastResetTime = Date.now()
-        }
 
         return withCors(Response.json(messages))
       } catch (error) {
