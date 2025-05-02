@@ -8,13 +8,35 @@ const YA_GPT_FOLDER_ID = Bun.env.YANDEX_CLOUD_FOLDER
 const YA_GPT_MODEL = 'yandexgpt-lite'
 
 if (!YA_GPT_API_KEY || !YA_GPT_FOLDER_ID) {
-  throw new Error('[AI Environment] YaGPT API key and folder ID are required')
+  throw new Error('[AI] YaGPT API key and folder ID are required')
 }
 
+/**
+ * The limit on the number of requests per hour is made to prevent abuse of the YaGPT API
+ * and the consumption of tokens (money).
+ *
+ * Because there is no authorization in the application, I made a limit on the entire backend.
+ * For a request, a successful response from the YaGPT API is considered.
+ */
+// TODO: Redis?
+const MAX_REQUESTS_PER_HOUR = 25
+const RESET_TIME_INTERVAL = 60 * 60 * 1000
+
+let totalRequests = 0
+let lastResetTime = Date.now()
+
+// TODO: Logger
 serve({
   port: PORT,
   routes: {
     '/api/v1/completion': async req => {
+      // TODO: Нужен какой-то алерт в ТГ (etc), что кто-то пытается абузить
+      if (totalRequests >= MAX_REQUESTS_PER_HOUR) {
+        return new Response('Rate limit exceeded', {
+          status: 429
+        })
+      }
+
       const cors = handleCors(req)
       if (cors) return cors
 
@@ -66,10 +88,16 @@ serve({
         const { result } = await response.json()
         const alternatives: { message: YaGptMessage }[] = result.alternatives
         const messages = alternatives.map(({ message }) => message.text)
+        totalRequests++
+
+        if (Date.now() - lastResetTime >= RESET_TIME_INTERVAL) {
+          totalRequests = 0
+          lastResetTime = Date.now()
+        }
 
         return withCors(Response.json(messages))
       } catch (error) {
-        console.error('Error: ', error)
+        console.error('[AI] Error: ', error)
 
         if (error instanceof Error) {
           return Response.json(
