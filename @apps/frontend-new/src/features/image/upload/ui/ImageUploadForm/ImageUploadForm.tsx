@@ -1,13 +1,13 @@
 import { type ChangeEvent, useCallback, useEffect, useState } from 'react'
-import { Button, Grid, TextField } from '@radix-ui/themes'
+import { Button, Flex, Grid, Text, TextField } from '@radix-ui/themes'
 
-import {
-  showSomethingWentWrongToast,
-  showInvalidFileTypeToast,
-  showInvalidFileSizeToast
-} from '@/entities/toast'
 import { isURL } from '@/shared/lib'
-import { isValidFileSize, isValidFileType, removeMimeTypePrefix } from '@/shared/file'
+import {
+  isValidFileSize,
+  isValidFileType,
+  MAX_FILE_SIZE_MB,
+  removeMimeTypePrefix
+} from '@/shared/file'
 
 /* eslint no-unused-vars: 0 */
 export const ImageUploadForm = ({
@@ -22,7 +22,7 @@ export const ImageUploadForm = ({
   onUpload: (file: File) => void
 }) => {
   const [isValidURL, setIsValidURL] = useState(true)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleValueChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const v = ev.target.value
@@ -33,6 +33,7 @@ export const ImageUploadForm = ({
       setIsValidURL(isURL(v))
     }
 
+    setError(null)
     setValue?.(v)
   }
 
@@ -42,19 +43,17 @@ export const ImageUploadForm = ({
     try {
       const response = await fetch(value)
       if (!response.ok) {
-        return showSomethingWentWrongToast()
+        return setError('Something went wrong')
       }
 
       const blob = await response.blob()
 
       if (!isValidFileType(blob.type)) {
-        setIsError(true)
-        return showInvalidFileTypeToast()
+        return setError('Invalid file type. Only images are allowed.')
       }
 
       if (!isValidFileSize(blob.size)) {
-        setIsError(true)
-        return showInvalidFileSizeToast()
+        return setError(`Invalid file size. Maximum file size is ${MAX_FILE_SIZE_MB}MB.`)
       }
 
       const fileType = removeMimeTypePrefix(blob.type)
@@ -67,8 +66,7 @@ export const ImageUploadForm = ({
     } catch (error) {
       console.error(`[ImageUploadForm] Error uploading image: ${error}`)
 
-      setIsError(true)
-      showSomethingWentWrongToast()
+      setError('Something went wrong')
     }
   }
 
@@ -77,6 +75,7 @@ export const ImageUploadForm = ({
     setIsValidURL(true)
   }, [setValue])
 
+  // TODO: Проверить, нужно ли это
   useEffect(() => {
     if (typeof value !== 'undefined' && value.length === 0) {
       handleResetState()
@@ -84,20 +83,28 @@ export const ImageUploadForm = ({
   }, [value, handleResetState])
 
   return (
-    <Grid asChild align='center' columns='1fr 100px' gap='2' width='100%'>
+    <Grid asChild columns='1fr 80px' gap='2' width='100%'>
       <form onSubmit={ev => ev.preventDefault()}>
-        <TextField.Root
-          value={value}
-          radius='large'
-          tabIndex={shouldFocusOnRender ? 0 : -1}
-          color={!isValidURL || isError ? 'red' : undefined}
-          placeholder='Paste link to an image'
-          onChange={handleValueChange}
-        />
+        <Flex direction='column' gap='1'>
+          <TextField.Root
+            value={value}
+            radius='large'
+            tabIndex={shouldFocusOnRender ? 0 : -1}
+            color={error ? 'red' : undefined}
+            placeholder='Paste link to an image'
+            onChange={handleValueChange}
+          />
+
+          {error && (
+            <Text size='2' color='red'>
+              {error}
+            </Text>
+          )}
+        </Flex>
 
         <Button
           radius='large'
-          disabled={value?.length === 0 || !isValidURL || isError}
+          disabled={value?.length === 0 || !isValidURL || !!error}
           onClick={handleUpload}
         >
           Upload
