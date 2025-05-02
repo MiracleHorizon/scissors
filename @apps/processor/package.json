@@ -1,0 +1,21 @@
+{
+  "name": "processor",
+  "module": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --env-file=../../.env.development run --watch ./src/index.ts",
+    "start": "bun --env-file=../../.env.production --bun ./src/index.ts",
+    "prebuild": "tsc --noEmit",
+    "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/converter"
+  },
+  "dependencies": {
+    "dotenv": "16.5.0",
+    "sharp": "0.34.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "5.8.3"
+  }
+}
