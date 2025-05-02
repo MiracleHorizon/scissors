@@ -67,12 +67,12 @@ export const FileNameInput = () => {
         ref={inputRef}
         type='text'
         placeholder='Output file name'
-        className='w-full'
         radius='large'
         value={fileName}
         minLength={MIN_FILE_NAME_LENGTH}
         maxLength={MAX_FILE_NAME_LENGTH}
         onChange={handleChange}
+        style={{ width: '100%' }}
       >
         <TextField.Slot>
           <FileTextIcon label='output file name' />

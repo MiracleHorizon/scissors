@@ -16,11 +16,12 @@ const getThemeValue = (theme: Theme): Theme => {
   return theme
 }
 
+// TODO: Удалить?
 export const ThemeControl = () => {
   const { theme, setTheme } = useTheme()
 
   return (
-    <SegmentedControl.Root className='w-full' value={getThemeValue(theme)} onValueChange={setTheme}>
+    <SegmentedControl.Root value={getThemeValue(theme)} onValueChange={setTheme}>
       <SegmentedControl.Item value='light' data-cy='theme-control-light'>
         <Flex align='center' gap='2'>
           <SunIcon width='16px' height='16px' />

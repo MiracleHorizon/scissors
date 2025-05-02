@@ -8,8 +8,9 @@ import {
 } from 'react'
 
 import { isValidFileSize } from '@/shared/file'
-import { showFileSizeToast } from '@/entities/toast'
+import { showInvalidFileSizeToast } from '@/entities/toast'
 
+// TODO: Shared? Ui?
 export const FileUploader = ({
   children,
   setFile,
@@ -57,7 +58,7 @@ export const FileUploader = ({
       setFile(file)
       onUpload?.()
     } else {
-      showFileSizeToast()
+      showInvalidFileSizeToast()
     }
 
     ev.target.value = ''

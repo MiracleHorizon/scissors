@@ -21,6 +21,7 @@ export const AppearancePopover = () => {
   )
 }
 
+// TODO: Удалить?
 const AppearancePopoverContent = () => (
   <Flex direction='column' align='start' gap='3' width='170px'>
     <ThemeControl />

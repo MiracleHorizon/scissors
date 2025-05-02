@@ -10,7 +10,7 @@ export const ConfirmDialog = ({
   triggerTooltip,
   description,
   confirmLabel,
-  canselLabel,
+  cancelLabel,
   onConfirm,
   onCancel
 }: {
@@ -23,7 +23,7 @@ export const ConfirmDialog = ({
   triggerTooltip?: string
   open?: boolean
   confirmLabel?: string
-  canselLabel?: string
+  cancelLabel?: string
   onConfirm?: VoidFunction
   onCancel?: VoidFunction
 }) => (
@@ -45,7 +45,7 @@ export const ConfirmDialog = ({
         <Flex gap='3' justify='end' mt='5'>
           <AlertDialog.Cancel>
             <Button color='gray' variant='soft' radius='large' onClick={onCancel}>
-              {canselLabel || 'Cancel'}
+              {cancelLabel || 'Cancel'}
             </Button>
           </AlertDialog.Cancel>
 

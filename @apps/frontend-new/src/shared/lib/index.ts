@@ -1,0 +1,1 @@
+export { isURL } from './isURL'

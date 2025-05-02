@@ -6,11 +6,14 @@ import { TrashIcon } from '@scissors/react-icons/TrashIcon'
 import { UploadIcon } from '@scissors/react-icons/UploadIcon'
 import { EyeIcon } from '@scissors/react-icons/EyeIcon'
 import { EyeOffIcon } from '@scissors/react-icons/EyeOffIcon'
+import { ALLOWED_IMAGE_FORMATS } from '@scissors/sharp'
 
 import { ImagePropertiesList } from './ImagePropertiesList'
+import { ImageUploadDialog } from '@/widgets/ImageUploadDialog'
 import { ConfirmDialog } from '@/shared/ui'
 import styles from './ImageProperties.module.css'
 
+// TODO: Это не entity. Widget?
 /* eslint no-unused-vars: 0 */
 export const ImageProperties = ({
   file,
@@ -93,12 +96,16 @@ const Actions = ({
   setFile: (file: File | null) => void
 }) => (
   <>
-    <Tooltip hidden={loading} content='Upload new image'>
-      {/* TODO: add upload new image */}
-      <IconButton loading={loading} radius='large' color='gray'>
-        <UploadIcon width='20px' height='20px' label='upload new image' />
-      </IconButton>
-    </Tooltip>
+    <ImageUploadDialog
+      accept={ALLOWED_IMAGE_FORMATS}
+      setFile={setFile}
+      trigger={
+        <IconButton loading={loading} radius='large' color='gray'>
+          <UploadIcon width='20px' height='20px' label='upload new image' />
+        </IconButton>
+      }
+      triggerTooltip={!loading ? 'Upload new image' : undefined}
+    />
 
     <ConfirmDialog
       title='Confirm deletion'
@@ -110,7 +117,7 @@ const Actions = ({
           <TrashIcon width='24px' height='24px' label='delete image' />
         </IconButton>
       }
-      triggerTooltip='Delete image'
+      triggerTooltip={!loading ? 'Delete image' : undefined}
     />
   </>
 )

@@ -33,10 +33,6 @@ a {
   text-decoration: none;
 }
 
-.w-full {
-  width: 100%;
-}
-
 /* Remove arrows for input type="number" */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

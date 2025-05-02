@@ -34,16 +34,7 @@ export const ImageDropzone = ({
     wrapperHtmlAttributes={wrapperHtmlAttributes}
     inputHtmlAttributes={inputHtmlAttributes}
   >
-    <Flex
-      {...padding}
-      data-id='image-dropzone'
-      data-cy='image-dropzone'
-      align='center'
-      justify='center'
-      height='130px'
-      width='100%'
-      gap='3'
-    >
+    <Flex {...padding} align='center' justify='center' height='130px' width='100%' gap='3'>
       <svg fill='none' stroke='var(--gray-a9)' className={styles.borderSvg}>
         <rect
           height='100%'
