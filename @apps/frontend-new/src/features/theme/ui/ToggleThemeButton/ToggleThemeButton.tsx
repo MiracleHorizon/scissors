@@ -8,13 +8,7 @@ const basicStyles: CSSProperties = {
   height: '20px'
 } as const
 
-export const ToggleThemeButton = ({
-  className,
-  style
-}: {
-  className?: string
-  style?: CSSProperties
-}) => {
+export const ToggleThemeButton = () => {
   const { theme, toggleTheme } = useTheme()
   const { Component: Icon, props: iconProps } = getThemeIcon(theme)
 
@@ -23,12 +17,7 @@ export const ToggleThemeButton = ({
       variant='ghost'
       radius='large'
       color='gray'
-      style={{
-        ...basicStyles,
-        ...style
-      }}
-      data-cy='button-toggle-theme'
-      className={className}
+      style={basicStyles}
       onClick={toggleTheme}
     >
       <Icon {...iconProps} />

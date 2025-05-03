@@ -12,7 +12,7 @@ export const AppearancePopover = () => {
     <Popover.Root open={isOpen} defaultOpen={false} onOpenChange={setIsOpen}>
       <AppearancePopoverTrigger />
 
-      <Popover.Content data-cy='appearance-popover-content' sideOffset={3}>
+      <Popover.Content sideOffset={3}>
         <Suspense fallback={<Skeleton width='170px' height='217px' />}>
           {isOpen && <AppearancePopoverContent />}
         </Suspense>
@@ -56,7 +56,6 @@ const AppearancePopoverTrigger = () => (
         width: '20px',
         height: '20px'
       }}
-      data-cy='appearance-popover-trigger'
     >
       <MixerHorizontalIcon color='gray' width='16px' height='16px' label='appearance settings' />
     </IconButton>

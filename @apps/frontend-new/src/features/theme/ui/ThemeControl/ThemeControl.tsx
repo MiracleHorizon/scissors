@@ -22,14 +22,14 @@ export const ThemeControl = () => {
 
   return (
     <SegmentedControl.Root value={getThemeValue(theme)} onValueChange={setTheme}>
-      <SegmentedControl.Item value='light' data-cy='theme-control-light'>
+      <SegmentedControl.Item value='light'>
         <Flex align='center' gap='2'>
           <SunIcon width='16px' height='16px' />
           Light
         </Flex>
       </SegmentedControl.Item>
 
-      <SegmentedControl.Item value='dark' data-cy='theme-control-dark'>
+      <SegmentedControl.Item value='dark'>
         <Flex align='center' gap='2'>
           <MoonIcon width='16px' height='16px' />
           Dark

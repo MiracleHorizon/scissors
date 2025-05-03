@@ -50,7 +50,7 @@ export const Select = ({
             {groupLabel && <RadixSelect.Label>{groupLabel}</RadixSelect.Label>}
 
             {value.map(value => (
-              <RadixSelect.Item data-cy='select-item' key={value} value={value}>
+              <RadixSelect.Item key={value} value={value}>
                 {valueCapitalize ? capitalize(value) : value}
               </RadixSelect.Item>
             ))}

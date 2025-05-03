@@ -104,7 +104,6 @@ export const FileUploader = ({
         type='file'
         className='hidden'
         accept={accept}
-        data-cy='file-upload-input'
         onChange={handleChange}
       />
     </div>
