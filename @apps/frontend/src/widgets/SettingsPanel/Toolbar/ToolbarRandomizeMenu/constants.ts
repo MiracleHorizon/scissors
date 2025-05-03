@@ -40,7 +40,7 @@ export const defaultSettings: Setting[] = [
     checked: false
   },
   {
-    label: 'normalise',
+    label: 'normalize',
     checked: false
   }
 ] as const

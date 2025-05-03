@@ -112,7 +112,7 @@ export const slides: SlideProps[] = [
         alpha: false
       },
       tint: '#2e2e2e',
-      normalise: {
+      normalize: {
         lower: 13,
         upper: 99
       }

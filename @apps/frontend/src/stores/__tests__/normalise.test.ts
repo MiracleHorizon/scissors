@@ -1,6 +1,6 @@
 // vitest-environment jsdom
 
-import { DEFAULT_NORMALISE, type NormaliseOptions } from '@scissors/sharp'
+import { DEFAULT_NORMALIZE, type NormalizeOptions } from '@scissors/sharp'
 
 import { createNormaliseStore, defaultState } from '@stores/normalise'
 
@@ -30,7 +30,7 @@ describe('@stores/normalise', () => {
   })
 
   it('should correctly set / reset state', () => {
-    const testState: NormaliseOptions = {
+    const testState: NormalizeOptions = {
       lower: 0,
       upper: 255
     }
@@ -41,7 +41,7 @@ describe('@stores/normalise', () => {
     expect(store.getState().getNormaliseOptions()).toStrictEqual(testState)
 
     store.getState().reset()
-    expect(store.getState().getNormaliseOptions()).toStrictEqual(DEFAULT_NORMALISE)
+    expect(store.getState().getNormaliseOptions()).toStrictEqual(DEFAULT_NORMALIZE)
 
     store.getState().set(null)
     expect(store.getState().isAdded).toBe(false)

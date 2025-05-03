@@ -12,18 +12,15 @@ describe('utility - SettingsValidator.isRotateValid', () => {
   it.each([
     {
       angle: 90,
-      background: '#000000',
-      withDominantBackground: true
+      background: '#000000'
     },
     {
       angle: -90,
-      background: '#000000',
-      withDominantBackground: false
+      background: '#000000'
     },
     {
       angle: 0,
-      background: null,
-      withDominantBackground: true
+      background: null
     }
   ])('should return true for valid rotate options object (%s)', payload => {
     expect(isRotateValid(payload)).toBe(true)
@@ -35,13 +32,11 @@ describe('utility - SettingsValidator.isRotateValid', () => {
     [],
     {
       angle: MIN_ROTATE_ANGLE - 1, // Invalid angle
-      background: '#000000',
-      withDominantBackground: true
+      background: '#000000'
     },
     {
       angle: MAX_ROTATE_ANGLE + 1, // Invalid angle
-      background: '#000000',
-      withDominantBackground: true
+      background: '#000000'
     },
     {
       angle: -90,
@@ -53,8 +48,7 @@ describe('utility - SettingsValidator.isRotateValid', () => {
     },
     {
       angle: -90,
-      background: 'foo', // Invalid background
-      withDominantBackground: false
+      background: 'foo' // Invalid background
     }
   ])('should return false for invalid rotate options object (%s)', payload => {
     expect(isRotateValid(payload)).toBe(false)

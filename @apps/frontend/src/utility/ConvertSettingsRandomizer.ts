@@ -9,7 +9,7 @@ import {
   MAX_GAMMA,
   MAX_HUE,
   MAX_LIGHTNESS,
-  MAX_NORMALISE,
+  MAX_NORMALIZE,
   MAX_ROTATE_ANGLE,
   MAX_SATURATION,
   MIN_BLUR_SIGMA,
@@ -17,12 +17,12 @@ import {
   MIN_GAMMA,
   MIN_HUE,
   MIN_LIGHTNESS,
-  MIN_NORMALISE,
+  MIN_NORMALIZE,
   MIN_ROTATE_ANGLE,
   MIN_SATURATION,
   type ModulateOptions,
   type NegateOptions,
-  type NormaliseOptions,
+  type NormalizeOptions,
   type RotateOptions
 } from '@scissors/sharp'
 
@@ -43,7 +43,7 @@ interface Randomizer {
   getRandomModulate: () => ModulateOptions
   getRandomGamma: () => GammaValue
   getRandomTint: () => string
-  getRandomNormalise: () => NormaliseOptions
+  getRandomNormalise: () => NormalizeOptions
 }
 
 export type Operation = keyof ConvertSettings
@@ -127,12 +127,10 @@ export class ConvertSettingsRandomizer implements Randomizer {
   getRandomRotate(): RotateOptions {
     const angle = this.getRandomNumber(MIN_ROTATE_ANGLE, MAX_ROTATE_ANGLE)
     const background = this.getRandomHexColor()
-    const withDominantBackground = this.getRandomBoolean()
 
     return {
       angle,
-      background,
-      withDominantBackground
+      background
     }
   }
 
@@ -158,9 +156,9 @@ export class ConvertSettingsRandomizer implements Randomizer {
     return this.getRandomHexColor()
   }
 
-  getRandomNormalise(): NormaliseOptions {
-    let lower = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)
-    let upper = this.getRandomNumber(MIN_NORMALISE, MAX_NORMALISE)
+  getRandomNormalise(): NormalizeOptions {
+    let lower = this.getRandomNumber(MIN_NORMALIZE, MAX_NORMALIZE)
+    let upper = this.getRandomNumber(MIN_NORMALIZE, MAX_NORMALIZE)
 
     const isUpperGreater = upper > lower
     if (!isUpperGreater) [lower, upper] = [upper, lower]
@@ -169,8 +167,8 @@ export class ConvertSettingsRandomizer implements Randomizer {
     if (isValuesEqual) {
       lower -= 1
 
-      if (lower < MIN_NORMALISE) {
-        lower = MIN_NORMALISE
+      if (lower < MIN_NORMALIZE) {
+        lower = MIN_NORMALIZE
       }
     }
 

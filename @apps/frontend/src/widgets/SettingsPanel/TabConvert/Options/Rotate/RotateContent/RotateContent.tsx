@@ -3,7 +3,6 @@ import { Flex } from '@radix-ui/themes'
 import { RotateHeader } from './RotateHeader'
 import { SliderRotateAngle } from './SliderRotateAngle'
 import { RotateBackgroundPopover } from './RotateBackgroundPopover'
-import { RotateDominantBackground } from './RotateDominantBackground'
 import styles from './RotateContent.module.css'
 
 export const RotateContent = () => (
@@ -11,10 +10,7 @@ export const RotateContent = () => (
     <RotateHeader />
     <Flex direction='column' align='start' gap='4' width='100%'>
       <SliderRotateAngle />
-      <Flex direction='column' justify='between' gap='3' width='100%'>
-        <RotateDominantBackground />
-        <RotateBackgroundPopover />
-      </Flex>
+      <RotateBackgroundPopover />
     </Flex>
   </Flex>
 )
