@@ -3,6 +3,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import react from '@vitejs/plugin-react'
 import * as path from 'node:path'
 
+const PORT = 3000
+
 export default defineConfig({
   plugins: [
     react(),
@@ -17,9 +19,9 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000
+    port: PORT
   },
   preview: {
-    port: 3000
+    port: PORT
   }
 })
