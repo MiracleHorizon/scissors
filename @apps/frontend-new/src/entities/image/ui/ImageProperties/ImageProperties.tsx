@@ -18,10 +18,12 @@ import styles from './ImageProperties.module.css'
 export const ImageProperties = ({
   file,
   setFile,
+  removeFile,
   loading
 }: {
   file: File
   setFile: (file: File | null) => void
+  removeFile: () => void
   loading: boolean
 }) => {
   const [isPropertiesShown, setIsPropertiesShown] = useState(true)
@@ -39,7 +41,7 @@ export const ImageProperties = ({
             </IconButton>
           </Tooltip>
 
-          <Actions loading={loading} setFile={setFile} />
+          <Actions loading={loading} setFile={setFile} removeFile={removeFile} />
         </Flex>
       </Card>
     )
@@ -50,7 +52,7 @@ export const ImageProperties = ({
       <Flex gapX='1'>
         <Card size='1' className={clsx(styles.card, styles.actions)}>
           <Flex direction='column' gapY='6px'>
-            <Actions loading={loading} setFile={setFile} />
+            <Actions loading={loading} setFile={setFile} removeFile={removeFile} />
           </Flex>
         </Card>
 
@@ -90,10 +92,12 @@ export const ImageProperties = ({
 
 const Actions = ({
   loading,
-  setFile
+  setFile,
+  removeFile
 }: {
   loading: boolean
   setFile: (file: File | null) => void
+  removeFile: () => void
 }) => (
   <>
     <ImageUploadDialog
@@ -111,7 +115,7 @@ const Actions = ({
       title='Confirm deletion'
       description='Are you sure you want to delete this image?'
       confirmLabel='Delete'
-      onConfirm={() => setFile(null)}
+      onConfirm={removeFile}
       trigger={
         <IconButton loading={loading} radius='large' color='red'>
           <TrashIcon width='24px' height='24px' label='delete image' />

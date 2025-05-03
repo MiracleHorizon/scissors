@@ -4,7 +4,7 @@ import { Slider } from '@/shared/ui'
 import { useAdvancedStore } from '../../../model/advanced/advanced.store'
 
 export const NormalizeSlider = () => {
-  const normalize = useAdvancedStore(state => state.getNormalize())
+  const normalize = useAdvancedStore(state => state.normalize)
   const setLowerNormalize = useAdvancedStore(state => state.setLowerNormalize)
   const setUpperNormalize = useAdvancedStore(state => state.setUpperNormalize)
 

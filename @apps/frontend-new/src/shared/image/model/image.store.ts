@@ -7,21 +7,24 @@ import { SITE_TITLE } from '@/shared/seo'
 type ImageFile = File | null
 
 interface State {
-  originalImage: ImageFile
-  processedImage: ImageFile
+  originalFile: ImageFile
+  previewFile: ImageFile
+  downloadableFile: DownloadableFile | null
   keepChanges: boolean
 }
 
 interface Store extends State {
   getFileForProcessing: () => ImageFile
-  setOriginalImage: (originalImage: ImageFile) => void
-  setProcessedImage: (processedImage: ImageFile) => void
-  toggleKeepChanges: VoidFunction
+  setOriginalFile: (originalFile: ImageFile) => void
+  removeOriginalFile: () => void
+  toggleKeepChanges: () => void
+  setDownloadableFile: (downloadableFile: DownloadableFile) => void
 }
 
 const defaultState: State = {
-  originalImage: null,
-  processedImage: null,
+  originalFile: null,
+  previewFile: null,
+  downloadableFile: null,
   keepChanges: false
 } as const
 
@@ -29,13 +32,42 @@ const imageStoreCreator: StateCreator<Store> = (set, get) => ({
   ...defaultState,
 
   getFileForProcessing: () => {
-    const { originalImage, processedImage, keepChanges } = get()
+    const { originalFile, previewFile, keepChanges } = get()
 
-    return keepChanges ? processedImage : originalImage
+    return keepChanges ? previewFile : originalFile
   },
-  setOriginalImage: originalImage => set({ originalImage }),
-  setProcessedImage: processedImage => set({ processedImage }),
-  toggleKeepChanges: () => set({ keepChanges: !get().keepChanges })
+  // eslint-disable-next-line arrow-body-style
+  setOriginalFile: originalFile => {
+    // TODO: Доделать
+    // if (!originalFile) {
+    //   outputFormat = null
+    // } else {
+    //   const fileType = cropImageFileType(file.type)
+
+    //   if (fileType !== outputFormat) {
+    //     outputFormat = fileType as ImageFileFormat
+    //   }
+    // }
+
+    return set({
+      originalFile,
+      previewFile: originalFile,
+      downloadableFile: null
+    })
+  },
+  removeOriginalFile: () =>
+    set({
+      previewFile: null,
+      originalFile: null,
+      downloadableFile: null
+      // outputFormat: null,
+    }),
+  toggleKeepChanges: () => set({ keepChanges: !get().keepChanges }),
+  setDownloadableFile: downloadableFile =>
+    set({
+      previewFile: downloadableFile.file,
+      downloadableFile
+    })
 })
 
 const PERSIST_NAME = `${SITE_TITLE.toLowerCase()}-image-store`

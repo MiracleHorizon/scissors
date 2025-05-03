@@ -1,9 +1,7 @@
-import { Button, Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
+import { Flex, Grid, ScrollArea, Tabs } from '@radix-ui/themes'
 import { Outlet, useLocation, useNavigate } from 'react-router'
 
-import { DownloadIcon } from '@scissors/react-icons/DownloadIcon'
-
-import { TOUR_STEP } from '@/entities/tour'
+import { SettingsPanelFooter } from './SettingsPanelFooter/SettingsPanelFooter'
 import styles from './SettingsPanel.module.css'
 
 const tabs = [
@@ -27,12 +25,7 @@ export const SettingsPanel = () => {
 
   return (
     <Flex direction='column' height='100%' className={styles.root}>
-      <ScrollArea
-        type='scroll'
-        scrollbars='vertical'
-        className={styles.scrollArea}
-        data-tourstep={TOUR_STEP.SETTINGS_PANEL}
-      >
+      <ScrollArea type='scroll' scrollbars='vertical' className={styles.scrollArea}>
         <Flex direction='column' height='100%'>
           <Tabs.Root value={currentTab} onValueChange={handleTabChange}>
             <div className={styles.tabs}>
@@ -52,14 +45,7 @@ export const SettingsPanel = () => {
         </Flex>
       </ScrollArea>
 
-      <Flex mt='auto' asChild align='center' justify='end' p='3' className={styles.footer}>
-        <footer>
-          <Button variant='solid' radius='large'>
-            <DownloadIcon width='18px' height='18px' />
-            Download
-          </Button>
-        </footer>
-      </Flex>
+      <SettingsPanelFooter />
     </Flex>
   )
 }

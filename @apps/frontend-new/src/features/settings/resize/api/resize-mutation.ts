@@ -5,7 +5,7 @@ import { useMutation } from '@/shared/model'
 
 const resizeImage = async (formData: FormData): Promise<Blob> => {
   try {
-    const response = await fetch(`${SERVER_API}/resize`, {
+    const response = await fetch(`${SERVER_API}/api/resize`, {
       body: formData,
       method: 'POST',
       signal: AbortSignal.timeout(15_000)
@@ -34,11 +34,7 @@ export const useResizeMutation = () =>
       file: File
       fileName: string
       settings: ResizeSettings
-    }): Promise<{
-      file: File
-      fileName: string
-      link: string
-    }> => {
+    }): Promise<DownloadableFile> => {
       const formData = new FormData()
       formData.append('file', file)
       formData.append('settings', JSON.stringify(settings))
@@ -46,11 +42,11 @@ export const useResizeMutation = () =>
       const imageBlob = await resizeImage(formData)
 
       return {
-        fileName,
-        link: URL.createObjectURL(imageBlob),
         file: new File([imageBlob], fileName, {
           type: settings.outputFormat ? `image/${settings.outputFormat}` : file.type
-        })
+        }),
+        name: fileName,
+        link: URL.createObjectURL(imageBlob)
       }
     }
   })

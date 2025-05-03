@@ -10,8 +10,6 @@ interface State {
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
   getAdvanced: () => State | null
-  getBlurSigma: () => number | null
-  getNormalize: () => NormalizeOptions
   reset: () => void
   setBlurSigma: (blurSigma: number | null) => void
   setLowerNormalize: (lower: number) => void
@@ -29,15 +27,14 @@ const defaultState: State = {
 const advancedStoreCreator: StateCreator<Store> = (set, get) => ({
   ...defaultState,
 
-  getAdvanced: () => ({
-    blurSigma: get().blurSigma,
-    normalize: {
-      lower: get().normalize.lower,
-      upper: get().normalize.upper
+  getAdvanced: () => {
+    const { blurSigma, normalize } = get()
+
+    return {
+      blurSigma,
+      normalize
     }
-  }),
-  getBlurSigma: () => get().blurSigma,
-  getNormalize: () => get().normalize,
+  },
   reset: () => set(defaultState),
   setBlurSigma: blurSigma => set({ blurSigma }),
   setLowerNormalize: lower => set({ normalize: { ...get().normalize, lower } }),

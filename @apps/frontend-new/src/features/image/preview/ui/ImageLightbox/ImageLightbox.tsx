@@ -11,14 +11,14 @@ import 'yet-another-react-lightbox/styles.css'
 import { Cross1Icon } from '@scissors/react-icons/Cross1Icon'
 
 export const ImageLightbox = ({
+  open,
   file,
   downloadableFile,
-  open,
   onClose
 }: {
-  file: File
-  downloadableFile: DownloadableFile
   open: boolean
+  file: File
+  downloadableFile: DownloadableFile | null
   onClose: VoidFunction
 }) => (
   <Lightbox
@@ -26,26 +26,23 @@ export const ImageLightbox = ({
     close={onClose}
     {...getLightboxProps({
       file,
-      downloadablePayloadWithoutFile: downloadableFile
+      downloadableFile
     })}
   />
 )
 
 const getLightboxProps = ({
   file,
-  downloadablePayloadWithoutFile
+  downloadableFile
 }: {
   file: File
-  downloadablePayloadWithoutFile: {
-    name: string
-    link: string
-  } | null
+  downloadableFile: DownloadableFile | null
 }): LightboxExternalProps => {
   const plugins: Plugin[] = [Zoom, Fullscreen]
   const slides: Slide[] = []
 
-  if (downloadablePayloadWithoutFile) {
-    const { link: url, name: filename } = downloadablePayloadWithoutFile
+  if (downloadableFile) {
+    const { link: url, name: filename } = downloadableFile
 
     plugins.push(Download)
     slides.push({
@@ -63,15 +60,13 @@ const getLightboxProps = ({
     })
   }
 
-  const emptyComponent = () => null
-
   return {
     carousel: {
       finite: true
     },
     render: {
-      buttonPrev: emptyComponent,
-      buttonNext: emptyComponent,
+      buttonPrev: () => null,
+      buttonNext: () => null,
       iconClose: () => <Cross1Icon width='22px' height='22px' label='close lightbox' />
     },
     controller: {

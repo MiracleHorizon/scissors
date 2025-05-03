@@ -17,11 +17,7 @@ export const UploadedImage = ({
   onClick
 }: {
   file: File
-  downloadableFile:
-    | {
-        link: string
-      }
-    | undefined
+  downloadableFile: DownloadableFile | null
   onClick: VoidFunction
 }) => (
   <Box width='100%' style={rootStyle} className={styles.root} onClick={onClick}>

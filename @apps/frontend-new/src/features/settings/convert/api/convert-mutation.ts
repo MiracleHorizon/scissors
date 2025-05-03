@@ -5,7 +5,7 @@ import { useMutation } from '@/shared/model'
 
 const convertImage = async (formData: FormData): Promise<Blob> => {
   try {
-    const response = await fetch(`${SERVER_API}/convert`, {
+    const response = await fetch(`${SERVER_API}/api/v1/convert`, {
       body: formData,
       method: 'POST',
       signal: AbortSignal.timeout(15_000)
@@ -23,7 +23,14 @@ const convertImage = async (formData: FormData): Promise<Blob> => {
   }
 }
 
-export const useConvertMutation = () =>
+/* eslint-disable no-unused-vars */
+export const useConvertMutation = ({
+  onSuccess,
+  onError
+}: {
+  onSuccess: (data: DownloadableFile) => void
+  onError?: (error: unknown) => void
+}) =>
   useMutation({
     fetcher: async ({
       file,
@@ -33,11 +40,7 @@ export const useConvertMutation = () =>
       file: File
       fileName: string
       settings: ConvertSettings
-    }): Promise<{
-      file: File
-      fileName: string
-      link: string
-    }> => {
+    }): Promise<DownloadableFile> => {
       const formData = new FormData()
       formData.append('file', file)
       formData.append('settings', JSON.stringify(settings))
@@ -45,11 +48,13 @@ export const useConvertMutation = () =>
       const imageBlob = await convertImage(formData)
 
       return {
-        fileName,
         file: new File([imageBlob], fileName, {
           type: settings.outputFormat ? `image/${settings.outputFormat}` : file.type
         }),
+        name: fileName,
         link: URL.createObjectURL(imageBlob)
       }
-    }
+    },
+    onSuccess,
+    onError
   })

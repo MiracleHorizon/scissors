@@ -9,8 +9,10 @@ import { useImageStore } from '@/shared/image'
 import styles from './Page.module.css'
 
 export const HomePage = () => {
-  const file = useImageStore(state => state.getFileForProcessing())
-  const setOriginalImage = useImageStore(state => state.setOriginalImage)
+  const previewFile = useImageStore(state => state.previewFile)
+  const downloadableFile = useImageStore(state => state.downloadableFile)
+  const setOriginalFile = useImageStore(state => state.setOriginalFile)
+  const removeOriginalFile = useImageStore(state => state.removeOriginalFile)
 
   return (
     <Flex width='100%' align='center' direction='column' className={styles.root}>
@@ -28,15 +30,20 @@ export const HomePage = () => {
           <main>
             <Flex
               direction='column'
-              className={clsx(styles.preview, file && styles.previewWithFile)}
+              className={clsx(styles.preview, previewFile && styles.previewWithFile)}
             >
               <BackgroundGrid className={styles.backgroundGrid} />
 
               <Flex px='4' width='100%' height='100%' className={styles.previewContent}>
-                {file ? (
-                  <ImagePreview file={file} setFile={setOriginalImage} />
+                {previewFile ? (
+                  <ImagePreview
+                    fileForPreview={previewFile}
+                    downloadableFile={downloadableFile}
+                    setFile={setOriginalFile}
+                    removeFile={removeOriginalFile}
+                  />
                 ) : (
-                  <ImageUploader setFile={setOriginalImage} />
+                  <ImageUploader setFile={setOriginalFile} />
                 )}
               </Flex>
             </Flex>
