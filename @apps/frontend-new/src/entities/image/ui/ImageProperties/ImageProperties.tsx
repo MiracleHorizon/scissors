@@ -36,7 +36,7 @@ export const ImageProperties = ({
       <Card className={clsx(styles.card, styles.actions)}>
         <Flex gapX='6px'>
           <Tooltip content='Show properties'>
-            <IconButton radius='large' color='gray' onClick={showProperties}>
+            <IconButton radius='large' variant='outline' color='gray' onClick={showProperties}>
               <EyeIcon width='24px' height='24px' label='show properties' />
             </IconButton>
           </Tooltip>
@@ -104,7 +104,13 @@ const Actions = ({
       accept={ALLOWED_IMAGE_FORMATS}
       setFile={setFile}
       trigger={
-        <IconButton loading={loading} radius='large' color='gray'>
+        <IconButton
+          loading={loading}
+          disabled={loading}
+          radius='large'
+          variant='outline'
+          color='gray'
+        >
           <UploadIcon width='20px' height='20px' label='upload new image' />
         </IconButton>
       }
@@ -117,7 +123,7 @@ const Actions = ({
       confirmLabel='Delete'
       onConfirm={removeFile}
       trigger={
-        <IconButton loading={loading} radius='large' color='red'>
+        <IconButton loading={loading} disabled={loading} radius='large' variant='soft' color='red'>
           <TrashIcon width='24px' height='24px' label='delete image' />
         </IconButton>
       }

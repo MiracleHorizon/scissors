@@ -8,6 +8,7 @@ import { BackgroundGrid } from '@/shared/ui'
 import { useImageStore } from '@/shared/image'
 import styles from './Page.module.css'
 
+// TODO: Мб унести глубже стейт?
 export const HomePage = () => {
   const previewFile = useImageStore(state => state.previewFile)
   const downloadableFile = useImageStore(state => state.downloadableFile)
