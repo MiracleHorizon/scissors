@@ -4,15 +4,18 @@ import { Outlet, useLocation, useNavigate } from 'react-router'
 import { SettingsPanelFooter } from './SettingsPanelFooter/SettingsPanelFooter'
 import styles from './SettingsPanel.module.css'
 
-const tabs = [
-  {
-    label: 'Convert',
-    value: 'convert'
-  },
-  {
-    label: 'Resize',
-    value: 'resize'
-  }
+const tabs: {
+  label: string
+  value: string
+}[] = [
+  // {
+  //   label: 'Convert',
+  //   value: 'convert'
+  // },
+  // {
+  //   label: 'Resize',
+  //   value: 'resize'
+  // }
 ] as const
 
 // TODO: TabNav
