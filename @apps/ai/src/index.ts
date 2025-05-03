@@ -75,7 +75,9 @@ serve({
         })
 
         if (!response.ok) {
-          console.error(`[AI] Bad request: ${response.status}: "${response.statusText}"`)
+          console.error(
+            `[AI] [api/v1/completion] Bad request: ${response.status}: "${response.statusText}"`
+          )
 
           return Response.json(
             {
@@ -93,9 +95,13 @@ serve({
         const messages = alternatives.map(({ message }) => message.text)
         totalRequests++
 
+        if (messages.some(message => message.startsWith('WRONG_DATA'))) {
+          return withCors(Response.json({ status: 400, message: 'WRONG_DATA' }))
+        }
+
         return withCors(Response.json(messages))
       } catch (error) {
-        console.error('[AI] Error: ', error)
+        console.error('[AI] [api/v1/completion] Error: ', error)
 
         if (error instanceof Error) {
           return Response.json(
