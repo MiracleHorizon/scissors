@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react'
-import { Flex, Heading, Slider as RadixSlider, Separator, Text } from '@radix-ui/themes'
+import { Flex, Slider as RadixSlider, Text } from '@radix-ui/themes'
 import { clsx } from 'clsx'
 
 import { NumberInput } from '@/shared/ui/'
@@ -22,7 +22,6 @@ export const Slider = ({
   value,
   valueSign = '',
   label,
-  icon,
   float = false,
   maxFractionDigits = 2,
   disabled,
@@ -65,85 +64,49 @@ export const Slider = ({
   }
 
   return (
-    <Flex width='100%' direction='column'>
-      {label && (
-        <Flex as='div' mb='2' px='0' align='center'>
-          {icon && (
-            <>
-              <Flex as='span' align='center' justify='center'>
-                {icon}
-              </Flex>
-
-              <Separator orientation='vertical' mx='6px' my='0' />
-            </>
-          )}
-
-          <Flex asChild gapX='1' align='center'>
-            <article>
-              <Heading as='h4' weight='medium' className={styles.heading}>
-                {label}
-                {formattedValue && ':'}
-              </Heading>
-
-              {formattedValue && (
-                <Text size='2' weight='medium' color='gray'>
-                  {formattedValue}
-                </Text>
-              )}
-            </article>
+    <Flex
+      gapX='3'
+      width='100%'
+      align='end'
+      className={clsx(styles.root, {
+        [styles.disabled]: disabled
+      })}
+    >
+      <Flex direction='column' flexGrow='1'>
+        {label && (
+          <Flex mb='3' gapX='2' align='center' justify='between'>
+            <Text size='2'>{label}</Text>
+            <Text size='2'>{formattedValue}</Text>
           </Flex>
-        </Flex>
-      )}
-
-      <Flex
-        align='start'
-        gap='3'
-        width='100%'
-        className={clsx(styles.content, {
-          [styles.disabled]: disabled
-        })}
-      >
-        <Flex direction='column' className={styles.sliderContainer}>
-          <RadixSlider
-            {...sliderProps}
-            size='3'
-            value={getValue({
-              value,
-              defaultValue
-            })}
-            disabled={disabled}
-            style={sliderStyle}
-            className={sliderClassName}
-          />
-
-          <Flex mt='2' justify='between'>
-            <Text color='gray' size='2' weight='medium'>
-              {min}
-              {valueSign}
-            </Text>
-
-            <Text color='gray' size='2' weight='medium'>
-              {max}
-              {valueSign}
-            </Text>
-          </Flex>
-        </Flex>
-
-        {/* Value input allows only for single value slider. */}
-        {value.length === 1 && (
-          <NumberInput
-            value={value[0]}
-            min={min}
-            max={max}
-            step={step}
-            disabled={disabled}
-            float={float}
-            maxFractionDigits={maxFractionDigits}
-            placeholder={defaultValue ? `${defaultValue[0]}${valueSign}` : undefined}
-            setValue={handleChangeInputValue}
-          />
         )}
+
+        <RadixSlider
+          {...sliderProps}
+          size='3'
+          value={getValue({
+            value,
+            defaultValue
+          })}
+          disabled={disabled}
+          style={sliderStyle}
+          className={clsx(styles.radixSlider, sliderClassName)}
+        />
       </Flex>
+
+      {/* Value input allows only for single value slider. */}
+      {value.length === 1 && (
+        <NumberInput
+          value={value[0]}
+          min={min}
+          max={max}
+          step={step}
+          float={float}
+          disabled={disabled}
+          maxFractionDigits={maxFractionDigits}
+          placeholder={defaultValue ? `${defaultValue[0]}${valueSign}` : undefined}
+          onChange={handleChangeInputValue}
+        />
+      )}
     </Flex>
   )
 }

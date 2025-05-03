@@ -8,7 +8,7 @@ import {
 } from '@/features/settings/convert'
 
 export const ModulationOptions = () => (
-  <Flex direction='column' gapY='1'>
+  <Flex direction='column' gapY='1' pb='2'>
     <LightnessSlider />
     <Separator />
 
@@ -22,4 +22,4 @@ export const ModulationOptions = () => (
   </Flex>
 )
 
-const Separator = () => <RadixSeparator my='1' size='4' />
+const Separator = () => <RadixSeparator mt='3' mb='1' size='4' />

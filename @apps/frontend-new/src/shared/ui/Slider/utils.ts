@@ -28,7 +28,7 @@ export const formatValue = ({ value, valueSign }: { value: Value; valueSign: str
   }
 
   if (filteredValue.length === 2) {
-    return `${filteredValue[0]} - ${filteredValue[1]}${valueSign}`
+    return `${filteredValue[0]}${valueSign} – ${filteredValue[1]}${valueSign}`
   }
 
   return `${filteredValue[0]}${valueSign}`

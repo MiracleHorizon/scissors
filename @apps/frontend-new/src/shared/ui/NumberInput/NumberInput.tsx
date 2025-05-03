@@ -33,7 +33,7 @@ export const NumberInput = ({
   min,
   max,
   value,
-  setValue,
+  onChange,
   label,
   float,
   maxFractionDigits,
@@ -42,7 +42,7 @@ export const NumberInput = ({
 }: InputAttributes & {
   value: number | null
   /* eslint no-unused-vars: 0 */
-  setValue: (value: number | null) => void
+  onChange: (value: number | null) => void
   min: number
   max: number
   label?: string
@@ -56,7 +56,7 @@ export const NumberInput = ({
   const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
     const value = ev.target.value
     if (value.length === 0) {
-      return setValue(null)
+      return onChange(null)
     }
 
     const parsedValue = parseValue({
@@ -68,14 +68,14 @@ export const NumberInput = ({
     if (parsedValue === null) return
 
     if (parsedValue < min) {
-      return setValue(min)
+      return onChange(min)
     }
 
     if (parsedValue > max) {
-      return setValue(max)
+      return onChange(max)
     }
 
-    setValue(parsedValue)
+    onChange(parsedValue)
   }
 
   const handleKeyDown = (ev: KeyboardEvent<HTMLInputElement>) => {

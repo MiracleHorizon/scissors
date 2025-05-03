@@ -38,7 +38,7 @@ export const Resize = () => {
           <NumberInput
             label='Width'
             value={width}
-            setValue={setWidth}
+            onChange={setWidth}
             max={MAX_RESIZE_WIDTH}
             min={MIN_RESIZE_SIZE}
             placeholder='1920'
@@ -47,7 +47,7 @@ export const Resize = () => {
           <NumberInput
             label='Height'
             value={height}
-            setValue={setHeight}
+            onChange={setHeight}
             max={MAX_RESIZE_HEIGHT}
             min={MIN_RESIZE_SIZE}
             placeholder='1080'
