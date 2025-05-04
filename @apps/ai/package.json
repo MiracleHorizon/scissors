@@ -8,6 +8,9 @@
     "prebuild": "tsc --noEmit",
     "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/ai"
   },
+  "dependencies": {
+    "@scissors/sharp": "workspace:*"
+  },
   "devDependencies": {
     "@types/bun": "1.2.11"
   },

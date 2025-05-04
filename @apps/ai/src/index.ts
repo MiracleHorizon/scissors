@@ -95,7 +95,7 @@ serve({
         const messages = alternatives.map(({ message }) => message.text)
         totalRequests++
 
-        if (messages.some(message => message.startsWith('WRONG_DATA'))) {
+        if (messages.some(message => message.startsWith('INVALID'))) {
           return withCors(Response.json({ status: 400, message: 'WRONG_DATA' }))
         }
 

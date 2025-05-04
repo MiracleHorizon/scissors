@@ -77,7 +77,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
       {!loading &&
         assistantResponse &&
         assistantResponse.map(message => (
-          <Card mb='4' size='2'>
+          <Card mb='4' size='2' key={message}>
             <Flex direction='column'>
               <Flex justify='between' mb='2'>
                 <Heading as='h4' size='3'>
@@ -187,15 +187,13 @@ export const AiAssistantDialog = () => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      {!open && (
-        <Tooltip content='Ask the AI Assistant'>
-          <Dialog.Trigger>
-            <IconButton size='3' radius='full'>
-              <BotIcon />
-            </IconButton>
-          </Dialog.Trigger>
-        </Tooltip>
-      )}
+      <Tooltip content='Ask the AI Assistant'>
+        <Dialog.Trigger>
+          <IconButton variant='ghost' radius='large' color='gray'>
+            <BotIcon width='22' height='22' />
+          </IconButton>
+        </Dialog.Trigger>
+      </Tooltip>
 
       {open && <Content onClose={() => setOpen(false)} />}
     </Dialog.Root>
