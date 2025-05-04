@@ -3,7 +3,7 @@ import { Flex, IconButton, Link as RadixLink, Text, Tooltip } from '@radix-ui/th
 import { clsx } from 'clsx'
 
 import { useSelectedPath } from '@/shared/router'
-import type { NavigationItemModel } from '../types'
+import type { NavigationItemModel } from '../../types'
 import styles from './NavigationItem.module.css'
 
 export const NavigationItem = ({

@@ -1,7 +1,7 @@
 import { Flex } from '@radix-ui/themes'
 import type { MarginProps } from '@radix-ui/themes/props'
 
-import { NavigationItem } from './NavigationItem'
+import { NavigationItem } from './NavigationItem/NavigationItem'
 import { navigationItems } from '../items'
 import styles from './NavigationDesktop.module.css'
 

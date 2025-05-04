@@ -1,6 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 
-import { NavigationMobileItem } from './NavigationMobileItem'
+import { NavigationMobileItem } from './NavigationMobileItem/NavigationMobileItem'
 import { navigationItems } from '../items'
 import type { NavigationItemModel } from '../types'
 import styles from './NavigationMobile.module.css'
