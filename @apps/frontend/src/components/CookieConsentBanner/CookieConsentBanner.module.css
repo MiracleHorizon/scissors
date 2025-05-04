@@ -16,11 +16,11 @@
 }
 
 .basicPosition {
-  bottom: calc(var(--processing-footer-height) + 20px);
+  bottom: 20px;
 }
 
 .homePosition {
-  bottom: 20px;
+  bottom: calc(var(--processing-footer-height) + 20px);
 }
 
 @media screen and (max-width: 519px) {
