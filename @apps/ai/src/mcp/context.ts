@@ -14,10 +14,11 @@ const lightness = `lightness:${MIN_LIGHTNESS}-${MAX_LIGHTNESS}`
 const hueAngle = 'hue:deg'
 const saturation = `saturation:${MIN_SATURATION}-${MAX_SATURATION}`
 const rotate = 'rotate:deg'
-const flip = 'flip(y mirror):bool'
-const flop = 'flop(x mirror):bool'
+const flip = 'flip(ymirror):bool'
+const flop = 'flop(xmirror):bool'
 const grayscale = 'grayscale:bool'
 const blur = `blur:${MIN_BLUR_SIGMA}-${MAX_BLUR_SIGMA}`
+const negate = 'negate:bool'
 
 const options: string[] = [
   brightness,
@@ -28,12 +29,13 @@ const options: string[] = [
   flip,
   flop,
   grayscale,
-  blur
+  blur,
+  negate
 ] as const
 
-const context = `You are a helpful assistant for image editing. Options:${options.join(',')}`
-const validation = 'Invalid/non-image/non-options input → reply: "INVALID"'
+const context = `You are a helpful assistant for image editing. Your options:${options.join(',')}`
+const validation = 'PROMPT VALIDATION:If the input is not an option, reply: "INVALID"'
 
 // TODO: Language
 export const getContextForPrompt = (prompt: string): string =>
-  `${context}.Description of the changes you need to make:"${prompt}".${validation}`
+  `${context}. ${validation}. Description of the changes you need to make:"${prompt}".List the values separated by ;`

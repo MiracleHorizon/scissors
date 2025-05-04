@@ -2,6 +2,7 @@ import { serve } from 'bun'
 
 import { handleCors, withCors } from './cors'
 import { getContextForPrompt } from './mcp/context'
+import { parseSettingsFromGpt } from './utils/parseSettingsFromGpt'
 
 const PORT = Bun.env.AI_SERVER_PORT || 4201
 const YA_GPT_API_KEY = Bun.env.YANDEX_CLOUD_API_KEY
@@ -125,7 +126,9 @@ serve({
           )
         }
 
-        return withCors(Response.json(messages))
+        const settings = parseSettingsFromGpt(messages[0])
+
+        return withCors(Response.json(settings))
       } catch (error) {
         console.error('[AI] [api/v1/completion] Error: ', error)
 

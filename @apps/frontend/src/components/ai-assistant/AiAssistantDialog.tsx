@@ -14,6 +14,7 @@ import {
   Callout
 } from '@radix-ui/themes'
 
+import type { ConvertSettings } from '@scissors/sharp'
 import { XIcon } from '@scissors/react-icons/XIcon'
 import { BotIcon } from '@scissors/react-icons/BotIcon'
 import { SendIcon } from '@scissors/react-icons/SendIcon'
@@ -39,7 +40,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
   const [previousPrompts, setPreviousPrompts] = useLocalStorage<string[]>(STORAGE_KEY, [])
   const { setters: settingsSetters } = useSettingsSetters()
 
-  const { data: assistantResponse, mutate, error, loading } = useAiAssistantMutation<string[]>()
+  const { data, mutate, error, loading } = useAiAssistantMutation<Partial<ConvertSettings>>()
 
   const handleSend = () => {
     if (prompt.length < MIN_PROMPT_LENGTH) return
@@ -56,11 +57,9 @@ const Content = ({ onClose }: { onClose: () => void }) => {
   }
 
   const handleApply = () => {
-    if (!assistantResponse) return
+    if (!data) return
 
-    for (const message of assistantResponse) {
-      const [key, value] = message.split(': ')
-
+    for (const [key, value] of Object.entries(data)) {
       if (!(key in settingsSetters)) continue
 
       // eslint-disable-next-line
@@ -95,34 +94,32 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         )}
       </>
 
-      {!loading &&
-        assistantResponse &&
-        assistantResponse.map(message => (
-          <Card mb='4' size='2' key={message}>
-            <Flex direction='column'>
-              <Flex justify='between' mb='2'>
-                <Heading as='h4' size='3'>
-                  Assistant response:
-                </Heading>
+      {!loading && data && (
+        <Card mb='4' size='2'>
+          <Flex direction='column'>
+            <Flex justify='between' mb='2'>
+              <Heading as='h4' size='3'>
+                Assistant response:
+              </Heading>
 
-                <Dialog.Close>
-                  <Button
-                    size='1'
-                    radius='large'
-                    style={{
-                      alignSelf: 'flex-end'
-                    }}
-                    onClick={handleApply}
-                  >
-                    Apply
-                  </Button>
-                </Dialog.Close>
-              </Flex>
-
-              <Text size='2'>{message}</Text>
+              <Dialog.Close>
+                <Button
+                  size='1'
+                  radius='large'
+                  style={{
+                    alignSelf: 'flex-end'
+                  }}
+                  onClick={handleApply}
+                >
+                  Apply
+                </Button>
+              </Dialog.Close>
             </Flex>
-          </Card>
-        ))}
+
+            <Text size='2'>{JSON.stringify(data, null, 2)}</Text>
+          </Flex>
+        </Card>
+      )}
 
       {loading && (
         <Card mb='4' size='2'>
