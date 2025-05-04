@@ -5,31 +5,22 @@ import { clsx } from 'clsx'
 
 import styles from './DocsNavigationItem.module.css'
 
-interface Props {
-  title: string
-  hash: string
-}
-
-export const DocsNavigationItem = ({ title, hash }: Props) => {
+export const DocsNavigationItem = ({ title, hash }: { title: string; hash: string }) => {
   const params = useParams()
   const [isSelected, setIsSelected] = useState(false)
 
-  // Function to check if current hash matches this item
   const checkIfSelected = () => {
     const currentHash = location.hash
     return hash === currentHash
   }
 
-  // Update selected state whenever location changes
   useEffect(() => {
     const handleHashChange = () => {
       setIsSelected(checkIfSelected())
     }
 
-    // Set initial state
     setIsSelected(checkIfSelected())
 
-    // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange)
 
     return () => {
@@ -37,10 +28,9 @@ export const DocsNavigationItem = ({ title, hash }: Props) => {
     }
   }, [hash, params])
 
-  // Handle scrolling when this item is selected
   useLayoutEffect(() => {
     if (isSelected && hash) {
-      const elementId = hash.slice(1) // Remove the # from the hash
+      const elementId = hash.slice(1)
       const element = document.getElementById(elementId)
       if (element) {
         setTimeout(() => {

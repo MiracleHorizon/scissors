@@ -1,0 +1,4 @@
+.emptyStateBubble {
+  background-color: var(--gray-4);
+  border-radius: 50%;
+}
