@@ -28,9 +28,9 @@ export const useConvertMutation = ({
   onSuccess,
   onError
 }: {
-  onSuccess: (data: DownloadableFile) => void
+  onSuccess?: (data: DownloadableFile) => void
   onError?: (error: unknown) => void
-}) =>
+} = {}) =>
   useMutation({
     fetcher: async ({
       file,

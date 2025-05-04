@@ -8,6 +8,7 @@ type State = ModulateOptions
 interface Store extends State {
   getModulation: () => ModulateOptions | null
   reset: () => void
+  set: (options: ModulateOptions) => void
   setLightness: (value: ModulateOptions['lightness']) => void
   setBrightness: (value: ModulateOptions['brightness']) => void
   setSaturation: (value: ModulateOptions['saturation']) => void
@@ -40,6 +41,7 @@ const modulationStoreCreator: StateCreator<Store> = (set, get) => ({
 
     return options
   },
+  set: options => set(options),
   reset: () => set(defaultState),
   setLightness: value => set({ lightness: value }),
   setBrightness: value => set({ brightness: value }),

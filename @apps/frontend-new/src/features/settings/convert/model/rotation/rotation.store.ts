@@ -11,6 +11,7 @@ interface State {
 interface Store extends State {
   getRotation: () => RotateOptions | null
   reset: () => void
+  set: (options: RotateOptions) => void
   setAngle: (angle: number | null) => void
   setBackground: (background: string) => void
 }
@@ -38,6 +39,7 @@ const rotationStoreCreator: StateCreator<Store> = (set, get) => ({
       background
     }
   },
+  set: options => set(options),
   reset: () => set(defaultState),
   setAngle: angle => set({ angle }),
   setBackground: background => set({ background })

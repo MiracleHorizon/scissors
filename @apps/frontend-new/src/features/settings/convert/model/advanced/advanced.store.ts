@@ -12,6 +12,7 @@ interface Store extends State {
   getAdvanced: () => State | null
   reset: () => void
   setBlurSigma: (blurSigma: number | null) => void
+  setNormalize: (normalize: NormalizeOptions) => void
   setLowerNormalize: (lower: number) => void
   setUpperNormalize: (upper: number) => void
 }
@@ -37,6 +38,7 @@ const advancedStoreCreator: StateCreator<Store> = (set, get) => ({
   },
   reset: () => set(defaultState),
   setBlurSigma: blurSigma => set({ blurSigma }),
+  setNormalize: normalize => set({ normalize }),
   setLowerNormalize: lower => set({ normalize: { ...get().normalize, lower } }),
   setUpperNormalize: upper => set({ normalize: { ...get().normalize, upper } })
 })

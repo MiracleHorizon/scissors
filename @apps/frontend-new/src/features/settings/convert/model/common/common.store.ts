@@ -20,6 +20,10 @@ interface Store extends State {
   getCommon: () => State
   reset: () => void
   setFileName: (fileName: string) => void
+  setFlip: (flip: boolean) => void
+  setFlop: (flop: boolean) => void
+  setGrayscale: (grayscale: boolean) => void
+  setNegate: (negate: boolean) => void
   toggleFlip: () => void
   toggleFlop: () => void
   toggleGrayscale: () => void
@@ -50,6 +54,10 @@ const commonStoreCreator: StateCreator<Store> = (set, get) => ({
   },
   reset: () => set(defaultState),
   setFileName: fileName => set({ fileName }),
+  setFlip: flip => set({ flip }),
+  setFlop: flop => set({ flop }),
+  setGrayscale: grayscale => set({ grayscale }),
+  setNegate: negate => set({ negate }),
   toggleFlip: () => set(state => ({ flip: !state.flip })),
   toggleFlop: () => set(state => ({ flop: !state.flop })),
   toggleGrayscale: () => set(state => ({ grayscale: !state.grayscale })),

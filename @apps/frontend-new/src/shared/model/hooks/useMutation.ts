@@ -10,6 +10,7 @@ export const useMutation = <Data = unknown, Payload = unknown>({
   onSuccess?: (response: Data) => void
   onError?: (error: unknown) => void
 }) => {
+  const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<unknown>(null)
   const [loading, setLoading] = useState(false)
   const [prevPayload, setPrevPayload] = useState<Payload | null>(null)
@@ -24,6 +25,7 @@ export const useMutation = <Data = unknown, Payload = unknown>({
       setLoading(true)
 
       const response = await fetcher(payload)
+      setData(response)
       onSuccess?.(response)
       setPrevPayload(payload)
     } catch (err) {
@@ -42,6 +44,7 @@ export const useMutation = <Data = unknown, Payload = unknown>({
   }
 
   return {
+    data,
     error,
     loading,
     mutate,
