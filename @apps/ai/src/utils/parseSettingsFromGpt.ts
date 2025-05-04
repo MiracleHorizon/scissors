@@ -66,7 +66,5 @@ export const parseSettingsFromGpt = (gptOutput: string): Partial<ConvertSettings
     }
   }
 
-  console.log(gptOutput, settingsObject)
-
   return settingsObject
 }
