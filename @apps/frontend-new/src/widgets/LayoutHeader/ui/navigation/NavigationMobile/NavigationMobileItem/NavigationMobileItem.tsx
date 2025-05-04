@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import { Link } from 'react-router-dom'
 
 import { useSelectedPath } from '@/shared/router'
-import type { NavigationItemModel } from '../types'
+import type { NavigationItemModel } from '../../types'
 import styles from './NavigationMobileItem.module.css'
 
 export const NavigationMobileItem = ({

@@ -28,8 +28,7 @@ export const parseSettingsFromGpt = (gptOutput: string): Partial<ConvertSettings
       const angle = Number(value)
       settingsObject.rotate = {
         angle,
-        background: '#000000',
-        withDominantBackground: false
+        background: '#000000'
       }
     } else if (key === 'brightness') {
       const brightness = Number(value)
