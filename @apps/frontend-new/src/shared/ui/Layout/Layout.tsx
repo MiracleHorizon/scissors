@@ -2,7 +2,7 @@ import { Box, Flex } from '@radix-ui/themes'
 import { Outlet } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 
-import { LayoutHeader } from './LayoutHeader/LayoutHeader'
+import { LayoutHeader } from '@/widgets/LayoutHeader'
 
 const CookieConsentBanner = lazy(() =>
   import('@/shared/ui').then(module => ({

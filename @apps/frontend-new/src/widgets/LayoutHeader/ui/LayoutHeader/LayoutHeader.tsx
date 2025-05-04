@@ -2,9 +2,9 @@ import { Flex } from '@radix-ui/themes'
 
 import { ToggleThemeButton } from '@/features/theme'
 import { GithubButton } from '@/features/github'
-import { AppLogo } from './AppLogo/AppLogo'
-import { NavigationDesktop } from './navigation/NavigationDesktop/NavigationDesktop'
-// import { AppearancePopover } from './AppearancePopover/AppearancePopover'
+import { BadgeBeta } from '@/shared/ui'
+import { AppLogo } from '../AppLogo/AppLogo'
+import { NavigationDesktop } from '../navigation/NavigationDesktop/NavigationDesktop'
 import styles from './LayoutHeader.module.css'
 
 export const LayoutHeader = () => (
@@ -14,7 +14,10 @@ export const LayoutHeader = () => (
         <ToggleThemeButton />
       </div>
 
-      <AppLogo className={styles.logo} />
+      <Flex align='center' gap='3'>
+        <AppLogo className={styles.logo} />
+        <BadgeBeta />
+      </Flex>
 
       <div className={styles.desktop}>
         <NavigationDesktop mr='4' />
@@ -22,11 +25,8 @@ export const LayoutHeader = () => (
         <Flex align='center' gap='4'>
           <GithubButton />
           <ToggleThemeButton />
-          {/* <AppearancePopover /> */}
         </Flex>
       </div>
-
-      {/* <LayoutDrawer /> */}
     </header>
   </Flex>
 )
