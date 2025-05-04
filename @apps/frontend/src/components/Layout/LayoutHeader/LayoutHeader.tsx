@@ -21,6 +21,7 @@ export const LayoutHeader = () => (
           <ButtonToggleTheme />
         </Suspense>
         <ThemeColorMenu />
+        {process.env.NODE_ENV === 'development' && <AiAssistantDialog />}
       </div>
 
       <AppLogo className={styles.logo} />

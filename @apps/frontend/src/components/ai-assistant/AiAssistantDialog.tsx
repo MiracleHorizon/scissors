@@ -10,7 +10,8 @@ import {
   Tooltip,
   Heading,
   Card,
-  Spinner
+  Spinner,
+  Callout
 } from '@radix-ui/themes'
 
 import { XIcon } from '@scissors/react-icons/XIcon'
@@ -18,6 +19,7 @@ import { BotIcon } from '@scissors/react-icons/BotIcon'
 import { SendIcon } from '@scissors/react-icons/SendIcon'
 import { ClockIcon } from '@scissors/react-icons/ClockIcon'
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
+import { ExclamationTriangleIcon } from '@scissors/react-icons/ExclamationTriangleIcon'
 
 import { BadgeBeta } from '@lib/ui/badges/BadgeBeta'
 import { useAiAssistantMutation } from './ai-assistant-mutation'
@@ -37,7 +39,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
   const [previousPrompts, setPreviousPrompts] = useLocalStorage<string[]>(STORAGE_KEY, [])
   const { setters: settingsSetters } = useSettingsSetters()
 
-  const { data: assistantResponse, mutate, loading } = useAiAssistantMutation<string[]>()
+  const { data: assistantResponse, mutate, error, loading } = useAiAssistantMutation<string[]>()
 
   const handleSend = () => {
     if (prompt.length < MIN_PROMPT_LENGTH) return
@@ -80,6 +82,18 @@ const Content = ({ onClose }: { onClose: () => void }) => {
           <XIcon width='20' height='20' />
         </IconButton>
       </Flex>
+
+      <>
+        {error && error instanceof Error && error.message === 'WRONG_DATA' && (
+          <Callout.Root variant='surface' color='orange' mb='4'>
+            <Callout.Icon>
+              <ExclamationTriangleIcon />
+            </Callout.Icon>
+            <Callout.Text size='2'>Please, provide a valid prompt.</Callout.Text>
+            <Callout.Text size='2'>Describe how you want to process the image</Callout.Text>
+          </Callout.Root>
+        )}
+      </>
 
       {!loading &&
         assistantResponse &&

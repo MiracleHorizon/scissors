@@ -46,7 +46,9 @@ serve({
       const { prompt } = await req.json()
 
       if (!prompt) {
-        return new Response('Prompt is required', { status: 400 })
+        return new Response('Prompt is required', {
+          status: 400
+        })
       }
 
       try {
@@ -95,8 +97,17 @@ serve({
         const messages = alternatives.map(({ message }) => message.text)
         totalRequests++
 
-        if (messages.some(message => message.startsWith('INVALID'))) {
-          return withCors(Response.json({ status: 400, message: 'WRONG_DATA' }))
+        if (messages.some(message => message.toLowerCase().startsWith('invalid'))) {
+          return withCors(
+            Response.json(
+              {
+                message: 'WRONG_DATA'
+              },
+              {
+                status: 400
+              }
+            )
+          )
         }
 
         return withCors(Response.json(messages))

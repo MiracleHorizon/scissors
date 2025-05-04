@@ -38,8 +38,13 @@ export const useAiAssistantMutation = <Data>() => {
       })
 
       if (!response.ok) {
-        setError(response.statusText)
-        return
+        const err = await response.json()
+
+        return setError(
+          new Error(err.message, {
+            cause: err.status
+          })
+        )
       }
 
       const data = await response.json()
