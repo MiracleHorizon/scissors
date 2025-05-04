@@ -1,5 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 import { lazy, Suspense } from 'react'
+import { useLocation } from 'react-router'
 
 import { AppLogo } from '@components/AppLogo'
 import { ButtonGithub } from '@components/ButtonGithub'
@@ -13,34 +14,50 @@ const LayoutDrawer = lazy(() => import('../LayoutDrawer'))
 const AppearancePopover = lazy(() => import('@components/AppearancePopover'))
 const ButtonToggleTheme = lazy(() => import('@components/theme/ButtonToggleTheme'))
 
-export const LayoutHeader = () => (
-  <Flex asChild align='center' justify='between' width='100%' px='4' py='2' className={styles.root}>
-    <header>
-      <div className={styles.themeMobileActions}>
-        <Suspense fallback={<IconButtonGhostSkeleton />}>
-          <ButtonToggleTheme />
-        </Suspense>
-        <ThemeColorMenu />
-        {process.env.NODE_ENV === 'development' && <AiAssistantDialog />}
-      </div>
+export const LayoutHeader = () => {
+  const location = useLocation()
 
-      <AppLogo className={styles.logo} />
-
-      <div className={styles.desktopContent}>
-        <NavigationDesktop mr='4' />
-
-        <Flex align='center' gap='4'>
-          {process.env.NODE_ENV === 'development' && <AiAssistantDialog />}
-          <ButtonGithub />
+  return (
+    <Flex
+      asChild
+      align='center'
+      justify='between'
+      width='100%'
+      px='4'
+      py='2'
+      className={styles.root}
+    >
+      <header>
+        <div className={styles.themeMobileActions}>
           <Suspense fallback={<IconButtonGhostSkeleton />}>
-            <AppearancePopover />
+            <ButtonToggleTheme />
           </Suspense>
-        </Flex>
-      </div>
+          <ThemeColorMenu />
+          {location.pathname === '/' && process.env.NODE_ENV === 'development' && (
+            <AiAssistantDialog />
+          )}
+        </div>
 
-      <Suspense>
-        <LayoutDrawer />
-      </Suspense>
-    </header>
-  </Flex>
-)
+        <AppLogo className={styles.logo} />
+
+        <div className={styles.desktopContent}>
+          <NavigationDesktop mr='4' />
+
+          <Flex align='center' gap='4'>
+            {location.pathname === '/' && process.env.NODE_ENV === 'development' && (
+              <AiAssistantDialog />
+            )}
+            <ButtonGithub />
+            <Suspense fallback={<IconButtonGhostSkeleton />}>
+              <AppearancePopover />
+            </Suspense>
+          </Flex>
+        </div>
+
+        <Suspense>
+          <LayoutDrawer />
+        </Suspense>
+      </header>
+    </Flex>
+  )
+}
