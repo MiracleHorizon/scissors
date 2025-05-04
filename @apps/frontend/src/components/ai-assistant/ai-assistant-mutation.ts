@@ -12,7 +12,17 @@ export const useAiAssistantMutation = <Data>() => {
     setError(null)
   }
 
-  const mutate = async (prompt: string) => {
+  const mutate = async (
+    prompt: string,
+    {
+      onSuccess,
+      onError
+    }: {
+      /* eslint no-unused-vars: 0 */
+      onSuccess?: (data: Data) => void
+      onError?: (error: unknown) => void
+    } = {}
+  ) => {
     try {
       setLoading(true)
       setError(null)
@@ -35,8 +45,10 @@ export const useAiAssistantMutation = <Data>() => {
       const data = await response.json()
 
       setData(data)
+      onSuccess?.(data)
     } catch (error) {
       setError(error)
+      onError?.(error)
     } finally {
       setLoading(false)
     }

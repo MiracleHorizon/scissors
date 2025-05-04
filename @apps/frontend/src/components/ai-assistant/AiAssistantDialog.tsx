@@ -28,6 +28,7 @@ import { useSettingsSetters } from '@stores/hooks/useSettingsSetters'
 
 const MIN_PROMPT_LENGTH = 10
 const MAX_PROMPT_LENGTH = 300
+const MAX_PREVIOUS_PROMPTS = 15
 const STORAGE_KEY = `${SITE_TITLE.toLowerCase()}-ai-prompts`
 
 // TODO: Error handling
@@ -41,9 +42,15 @@ const Content = ({ onClose }: { onClose: () => void }) => {
   const handleSend = () => {
     if (prompt.length < MIN_PROMPT_LENGTH) return
 
-    void mutate(prompt)
-    setPreviousPrompts(prevState => [prompt, ...prevState.filter(p => p !== prompt)])
-    setPrompt('')
+    void mutate(prompt, {
+      onSuccess: () => {
+        setPreviousPrompts(prevState => [
+          prompt,
+          ...prevState.filter(p => p !== prompt).slice(0, MAX_PREVIOUS_PROMPTS - 1)
+        ])
+        setPrompt('')
+      }
+    })
   }
 
   const handleApply = () => {
@@ -187,7 +194,7 @@ export const AiAssistantDialog = () => {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Tooltip content='Ask the AI Assistant'>
+      <Tooltip content='Ask the AI'>
         <Dialog.Trigger>
           <IconButton variant='ghost' radius='large' color='gray'>
             <BotIcon width='22' height='22' />
