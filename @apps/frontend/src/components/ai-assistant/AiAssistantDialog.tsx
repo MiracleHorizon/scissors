@@ -82,6 +82,11 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         </IconButton>
       </Flex>
 
+      <Dialog.Description size='2' mb='4' color='gray'>
+        You can ask AI to help you find the right settings. Describe what you want to do with the
+        image
+      </Dialog.Description>
+
       <>
         {error && error instanceof Error && error.message === 'WRONG_DATA' && (
           <Callout.Root variant='surface' color='orange' mb='4'>
