@@ -8,8 +8,11 @@ const YA_GPT_API_KEY = Bun.env.YANDEX_CLOUD_API_KEY
 const YA_GPT_FOLDER_ID = Bun.env.YANDEX_CLOUD_FOLDER
 const YA_GPT_MODEL = 'yandexgpt-lite'
 
-if (!YA_GPT_API_KEY || !YA_GPT_FOLDER_ID) {
-  throw new Error('[AI] YaGPT API key and folder ID are required')
+if (!YA_GPT_API_KEY) {
+  throw new Error('[AI] YaGPT API key is required')
+}
+if (!YA_GPT_FOLDER_ID) {
+  throw new Error('[AI] YaGPT folder ID is required')
 }
 
 /**
@@ -28,6 +31,7 @@ setInterval(() => {
   totalRequests = 0
 }, RESET_TIME_INTERVAL)
 
+// TODO: CORS
 // TODO: Logger
 serve({
   port: PORT,
@@ -35,20 +39,31 @@ serve({
     '/api/v1/completion': async req => {
       // TODO: Нужен какой-то алерт в ТГ (etc), что кто-то пытается абузить
       if (totalRequests >= MAX_REQUESTS_PER_HOUR) {
-        return new Response('Rate limit exceeded', {
-          status: 429
-        })
+        return withCors(
+          Response.json(
+            {
+              message: 'Rate limit exceeded'
+            },
+            { status: 429 }
+          )
+        )
       }
-
       const cors = handleCors(req)
       if (cors) return cors
 
       const { prompt } = await req.json()
 
       if (!prompt) {
-        return new Response('Prompt is required', {
-          status: 400
-        })
+        return withCors(
+          Response.json(
+            {
+              message: 'Prompt is required'
+            },
+            {
+              status: 400
+            }
+          )
+        )
       }
 
       try {
@@ -115,22 +130,23 @@ serve({
         console.error('[AI] [api/v1/completion] Error: ', error)
 
         if (error instanceof Error) {
-          return Response.json(
-            {
-              message: 'Something went wrong',
-              error: error.message
-            },
+          return withCors(
+            Response.json(
+              {
+                message: 'Something went wrong'
+              },
+              { status: 500 }
+            )
+          )
+        }
+
+        return withCors(
+          Response.json(
+            {},
             {
               status: 500
             }
           )
-        }
-
-        return Response.json(
-          {},
-          {
-            status: 500
-          }
         )
       }
     }
