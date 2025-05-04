@@ -10,7 +10,7 @@ export const DocSidebar = () => {
   const handleSearchChange = (ev: ChangeEvent<HTMLInputElement>) => setSearch(ev.target.value)
 
   return (
-    <Flex asChild direction='column' width='260px' className={styles.root}>
+    <Flex asChild flexShrink='0' direction='column' width='260px' className={styles.root}>
       <aside>
         <Grid width='100%' p='3' className={styles.searchBox}>
           <TextField.Root

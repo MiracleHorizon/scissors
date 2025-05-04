@@ -8,9 +8,9 @@ import styles from './Navigation.module.css'
 
 const categories: { title: string; value: string }[] = [
   { title: 'Common', value: 'common' },
-  { title: 'Rotation', value: 'rotation' },
   { title: 'Modulation', value: 'modulation' },
   { title: 'Colorization', value: 'colorization' },
+  { title: 'Rotation', value: 'rotation' },
   { title: 'Advanced', value: 'advanced' }
 ] as const
 

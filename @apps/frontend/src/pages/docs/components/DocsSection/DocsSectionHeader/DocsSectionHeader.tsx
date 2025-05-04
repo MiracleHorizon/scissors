@@ -14,7 +14,7 @@ export const DocsSectionHeader = ({ hash, title }: { title: string; hash: string
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5'>
             <Link to={hash}>
-              <Link2Icon width='18px' height='18px' className={styles.icon} />
+              <Link2Icon width='18px' height='18px' />
               <Text as='span' weight='bold'>
                 {title}
               </Text>
