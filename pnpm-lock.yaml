@@ -48,6 +48,19 @@ importers:
         specifier: 5.2.8
         version: 5.2.8(@types/node@20.12.12)(terser@5.39.0)
 
+  '@apps/ai':
+    dependencies:
+      '@scissors/sharp':
+        specifier: workspace:*
+        version: link:../../@packages/sharp
+      typescript:
+        specifier: 5.8.3
+        version: 5.8.3
+    devDependencies:
+      '@types/bun':
+        specifier: 1.2.11
+        version: 1.2.11
+
   '@apps/backend':
     dependencies:
       '@nestjs/common':
