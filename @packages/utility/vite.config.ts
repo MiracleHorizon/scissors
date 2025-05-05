@@ -9,7 +9,7 @@ export default defineConfig({
     minify: false,
     emptyOutDir: false,
     lib: {
-      entry: './src/utility.ts',
+      entry: './src/index.ts',
       name: 'utility',
       fileName: 'utility'
     },
