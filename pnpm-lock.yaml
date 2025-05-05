@@ -364,6 +364,25 @@ importers:
         specifier: 1.2.11
         version: 1.2.11
 
+  '@apps/s3':
+    dependencies:
+      '@scissors/sharp':
+        specifier: workspace:*
+        version: link:../../@packages/sharp
+      '@scissors/utility':
+        specifier: workspace:*
+        version: link:../../@packages/utility
+      sharp:
+        specifier: 0.34.1
+        version: 0.34.1
+      typescript:
+        specifier: 5.8.3
+        version: 5.8.3
+    devDependencies:
+      '@types/bun':
+        specifier: 1.2.11
+        version: 1.2.11
+
   '@packages/react-icons':
     dependencies:
       '@radix-ui/react-accessible-icon':
