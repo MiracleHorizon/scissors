@@ -14,7 +14,7 @@ export const ConvertButton = () => {
   const fileName = useCommonStore(state => state.fileName)
   const settings = useConvertSettings()
 
-  const { mutate: convert, loading } = useConvertMutation({
+  const { mutate: convert, isPending } = useConvertMutation({
     onSuccess: setDownloadableFile
   })
 
@@ -31,7 +31,12 @@ export const ConvertButton = () => {
 
   return (
     <>
-      <Button radius='large' disabled={loading || !file} loading={loading} onClick={handleConvert}>
+      <Button
+        radius='large'
+        disabled={isPending || !file}
+        loading={isPending}
+        onClick={handleConvert}
+      >
         Apply
       </Button>
 
