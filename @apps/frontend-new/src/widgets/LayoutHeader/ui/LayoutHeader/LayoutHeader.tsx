@@ -2,7 +2,7 @@ import { Flex } from '@radix-ui/themes'
 import { useLocation } from 'react-router'
 
 import { ToggleThemeButton } from '@/features/theme'
-import { AiAssistantDialog } from '@/features/ai'
+import { AiAssistantDialog } from '@/features/ask-ai'
 import { GithubButton } from '@/features/github'
 import { BadgeBeta } from '@/shared/ui'
 import { AppLogo } from '../AppLogo/AppLogo'

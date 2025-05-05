@@ -18,7 +18,7 @@
 .root :global(.rt-ScrollAreaScrollbar) {
   z-index: 1000;
   margin-top: var(--space-4);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-9);
 }
 
 .preview {

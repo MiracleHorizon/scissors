@@ -12,8 +12,10 @@
 }
 
 .scrollArea :global(.rt-ScrollAreaScrollbar) {
-  margin-top: calc(var(--settings-panel-toolbar-height) + var(--space-3)) !important;
-  margin-bottom: var(--space-2);
+  /* TODO: remove this */
+  /* margin-top: calc(var(--settings-panel-toolbar-height) + var(--space-3)) !important; */
+  margin-top: var(--space-4) !important;
+  height: calc(100% - var(--space-6)) !important;
 }
 
 @media screen and (min-width: 2400px) {
