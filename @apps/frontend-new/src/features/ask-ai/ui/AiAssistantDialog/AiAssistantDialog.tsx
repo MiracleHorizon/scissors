@@ -21,7 +21,7 @@ import { ClockIcon } from '@scissors/react-icons/ClockIcon'
 import { ChevronDownIcon } from '@scissors/react-icons/ChevronDownIcon'
 import { ExclamationTriangleIcon } from '@scissors/react-icons/ExclamationTriangleIcon'
 
-import { useAiAssistantMutation } from '../../api/ai-assistant-mutation'
+import { useAskAiMutation } from '../../api/ask-ai-mutation'
 import { useLocalStorage } from '@/shared/model'
 import { SITE_TITLE } from '@/shared/seo'
 import { BadgeBeta } from '@/shared/ui'
@@ -40,7 +40,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
   const [previousPrompts, setPreviousPrompts] = useLocalStorage<string[]>(STORAGE_KEY, [])
   const settingsSetters = useSettingsSetters()
 
-  const { data, mutate, error, loading } = useAiAssistantMutation({
+  const { data, mutate, error, isPending } = useAskAiMutation({
     onSuccess: () => {
       setPreviousPrompts(prevState => [
         prompt,
@@ -99,7 +99,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         ) : null}
       </>
 
-      {!loading && data && (
+      {!isPending && data && (
         <Card mb='4' size='2'>
           <Flex direction='column'>
             <Flex justify='between' mb='2'>
@@ -126,7 +126,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         </Card>
       )}
 
-      {loading && (
+      {isPending && (
         <Card mb='4' size='2'>
           <Flex align='center' direction='row' gapX='3'>
             <Spinner size='3' />
@@ -192,7 +192,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
 
           <Button
             radius='large'
-            loading={loading}
+            loading={isPending}
             disabled={prompt.length < MIN_PROMPT_LENGTH}
             onClick={handleSend}
           >

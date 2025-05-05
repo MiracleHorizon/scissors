@@ -1,4 +1,9 @@
-import { createBrowserRouter, Navigate, useLocation } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider as BaseRouterProvider,
+  useLocation
+} from 'react-router-dom'
 
 import { DefaultLayout } from './layout'
 
@@ -9,40 +14,6 @@ import { SettingsConvertPage } from '@/pages/settings-convert'
 import { SettingsResizePage } from '@/pages/settings-resize'
 import { NotFoundPage } from '@/pages/not-found'
 
-export const createRouter = () =>
-  createBrowserRouter([
-    {
-      element: <DefaultLayout />,
-      children: [
-        {
-          element: <HomePage />,
-          children: [
-            {
-              path: '/convert',
-              element: <SettingsConvertPage />
-            },
-            {
-              path: '/resize',
-              element: <SettingsResizePage />
-            }
-          ]
-        },
-        {
-          path: '/gallery',
-          element: <GalleryPage />
-        },
-        {
-          path: '/docs',
-          element: <DocumentationPage />
-        },
-        {
-          path: '*',
-          element: <Fallback />
-        }
-      ]
-    }
-  ])
-
 const Fallback = () => {
   const { pathname } = useLocation()
 
@@ -52,3 +23,40 @@ const Fallback = () => {
 
   return <NotFoundPage />
 }
+
+export const AppRouter = () => (
+  <BaseRouterProvider
+    router={createBrowserRouter([
+      {
+        element: <DefaultLayout />,
+        children: [
+          {
+            element: <HomePage />,
+            children: [
+              {
+                path: '/convert',
+                element: <SettingsConvertPage />
+              },
+              {
+                path: '/resize',
+                element: <SettingsResizePage />
+              }
+            ]
+          },
+          {
+            path: '/gallery',
+            element: <GalleryPage />
+          },
+          {
+            path: '/docs',
+            element: <DocumentationPage />
+          },
+          {
+            path: '*',
+            element: <Fallback />
+          }
+        ]
+      }
+    ])}
+  />
+)

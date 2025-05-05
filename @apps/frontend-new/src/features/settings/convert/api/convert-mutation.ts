@@ -1,7 +1,8 @@
+import { useMutation } from '@tanstack/react-query'
+
 import type { ConvertSettings } from '@scissors/sharp'
 
 import { SERVER_API } from '@/shared/config'
-import { useMutation } from '@/shared/model'
 
 const convertImage = async (formData: FormData): Promise<Blob> => {
   try {
@@ -32,7 +33,8 @@ export const useConvertMutation = ({
   onError?: (error: unknown) => void
 } = {}) =>
   useMutation({
-    fetcher: async ({
+    mutationKey: ['convert-image'],
+    mutationFn: async ({
       file,
       fileName,
       settings

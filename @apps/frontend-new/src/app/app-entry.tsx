@@ -1,14 +1,12 @@
-import { RouterProvider } from 'react-router/dom'
 import { ThemeProvider } from 'next-themes'
 import { Theme } from '@radix-ui/themes'
 import { HelmetProvider } from 'react-helmet-async'
 
 import { DEFAULT_THEME, THEME_STORAGE_KEY, getThemeColorCookie } from '@/entities/theme'
 
-import { createRouter } from './app-router'
+import { AppRouter } from './app-router'
+import { AppQuery } from './app-query'
 import { SEO } from './seo'
-
-const router = createRouter()
 
 export const App = () => {
   const themeColor = getThemeColorCookie()
@@ -24,7 +22,9 @@ export const App = () => {
         disableTransitionOnChange
       >
         <Theme accentColor={themeColor}>
-          <RouterProvider router={router} />
+          <AppQuery>
+            <AppRouter />
+          </AppQuery>
         </Theme>
       </ThemeProvider>
     </HelmetProvider>

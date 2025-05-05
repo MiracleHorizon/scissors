@@ -1,7 +1,8 @@
+import { useMutation } from '@tanstack/react-query'
+
 import type { ResizeSettings } from '@scissors/sharp'
 
 import { SERVER_API } from '@/shared/config'
-import { useMutation } from '@/shared/model'
 
 const resizeImage = async (formData: FormData): Promise<Blob> => {
   try {
@@ -26,7 +27,8 @@ const resizeImage = async (formData: FormData): Promise<Blob> => {
 // TODO: Image sizes for file name
 export const useResizeMutation = () =>
   useMutation({
-    fetcher: async ({
+    mutationKey: ['resize-image'],
+    mutationFn: async ({
       file,
       fileName,
       settings

@@ -1,9 +1,10 @@
+import { useMutation } from '@tanstack/react-query'
+
 import type { ConvertSettings } from '@scissors/sharp'
 
 import { AI_SERVER_API } from '@/shared/config'
-import { useMutation } from '@/shared/model'
 
-export const useAiAssistantMutation = ({
+export const useAskAiMutation = ({
   onSuccess,
   onError
 }: {
@@ -12,7 +13,8 @@ export const useAiAssistantMutation = ({
   onError?: (error: unknown) => void
 } = {}) =>
   useMutation({
-    fetcher: async (prompt: string): Promise<Partial<ConvertSettings>> => {
+    mutationKey: ['ai-assistant'],
+    mutationFn: async (prompt: string): Promise<Partial<ConvertSettings>> => {
       const response = await fetch(`${AI_SERVER_API}/v1/completion`, {
         method: 'POST',
         headers: {
@@ -25,7 +27,6 @@ export const useAiAssistantMutation = ({
 
       if (!response.ok) {
         const err = await response.json()
-
         return Promise.reject(err)
       }
 
