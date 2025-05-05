@@ -364,7 +364,7 @@ importers:
         specifier: 1.2.11
         version: 1.2.11
 
-  '@apps/s3':
+  '@apps/s3-bridge':
     dependencies:
       '@scissors/sharp':
         specifier: workspace:*
