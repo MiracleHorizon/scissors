@@ -52,6 +52,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install Bun dependencies
+        run: bun install
+
       - name: Build
         run: pnpm build
 
