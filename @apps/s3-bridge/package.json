@@ -1,12 +1,12 @@
 {
-  "name": "processor",
+  "name": "s3-bridge",
   "module": "./src/index.ts",
   "type": "module",
   "scripts": {
     "dev": "bun --env-file=../../.env.development run --watch ./src/index.ts",
     "start": "bun --env-file=../../.env.production --bun ./src/index.ts",
     "prebuild": "tsc --noEmit",
-    "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/processor"
+    "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/s3-bridge"
   },
   "dependencies": {
     "@scissors/sharp": "workspace:*",
