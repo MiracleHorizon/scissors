@@ -14,6 +14,7 @@ export const BlurSigmaSlider = () => {
 
   return (
     <Slider
+      float
       label='Blur'
       value={[sigma]}
       defaultValue={[DEFAULT_BLUR_SIGMA]}

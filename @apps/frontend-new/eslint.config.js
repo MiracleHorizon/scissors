@@ -1,5 +1,6 @@
-import defaultConfig from '../../eslint.config.js'
 import pluginQuery from '@tanstack/eslint-plugin-query'
+
+import defaultConfig from '../../eslint.config.js'
 
 export default [
   ...defaultConfig,

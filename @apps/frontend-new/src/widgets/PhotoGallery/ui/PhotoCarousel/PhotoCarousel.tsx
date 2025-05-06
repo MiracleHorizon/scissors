@@ -13,7 +13,7 @@ export const PhotoCarousel = ({
   // eslint-disable-next-line
   onSelectPhoto: (label: string, index: number) => void
 }) => (
-  <ScrollArea mt='4' type='auto' scrollbars='horizontal' className={styles.root}>
+  <ScrollArea mt='4' type='always' scrollbars='horizontal' className={styles.root}>
     <Flex gapX='2' height='100px' px='1' pt='1'>
       {slides.map((slide, index) => (
         <PhotoCarouselItem

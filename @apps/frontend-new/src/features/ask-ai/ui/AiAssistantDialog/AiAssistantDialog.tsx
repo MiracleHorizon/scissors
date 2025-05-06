@@ -83,8 +83,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
       </Flex>
 
       <Dialog.Description size='2' mb='4' color='gray'>
-        You can ask AI to help you find the right settings. Describe what you want to do with the
-        image
+        You can ask AI to help you find the right settings
       </Dialog.Description>
 
       <>
@@ -145,7 +144,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         <TextArea
           size='3'
           radius='large'
-          placeholder='Type your prompt here...'
+          placeholder='Describe how you want to process the image'
           maxLength={MAX_PROMPT_LENGTH}
           value={prompt}
           onChange={ev => setPrompt(ev.target.value)}
@@ -156,7 +155,7 @@ const Content = ({ onClose }: { onClose: () => void }) => {
         </Text>
       </form>
 
-      <Flex mt='4' width='100%' justify='between'>
+      <Flex mt='3' width='100%' justify='between'>
         {previousPrompts.length > 0 && (
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>

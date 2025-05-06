@@ -7,17 +7,18 @@ import type { ConvertSettings } from '@scissors/sharp'
 
 import { PhotoInfoPanel } from './PhotoInfoPanel/PhotoInfoPanel'
 import { PhotoSettingsPanel } from './PhotoSettingsPanel/PhotoSettingsPanel'
-import { useSlidesQuery } from '../../api/useSlidesQuery'
+import { useSlidesQuery } from '../../api/slides-query'
 import { PhotoSplit } from '../PhotoSplit/PhotoSplit'
 import { PhotoToggle } from '../PhotoToggle/PhotoToggle'
 import { PhotoCarousel } from '../PhotoCarousel/PhotoCarousel'
+
 // TODO: Кэширование картинок
 // TODO: Раскидать по FSD
 export const PhotoGallery = () => {
   const { data: slides, isSuccess, isFetching } = useSlidesQuery()
   const [selectedSlide, setSelectedSlide] = useState<{
     label: string
-    order: number
+    index: number
     settings: Partial<ConvertSettings>
     beforeSrc: string
     afterSrc: string
@@ -26,29 +27,29 @@ export const PhotoGallery = () => {
 
   const selectNextSlide = () => {
     if (!slides || !selectedSlide) return
-    const nextSlide = slides.find((_, index) => index + 1 === selectedSlide.order)
+    const nextSlide = slides.find((_, index) => index === selectedSlide.index + 1)
     if (!nextSlide) return
 
-    const newOrder = selectedSlide.order + 1
-    if (newOrder > slides.length) return
+    const newIndex = selectedSlide.index + 1
+    if (newIndex > slides.length) return
 
     setSelectedSlide({
       ...nextSlide,
-      order: newOrder
+      index: newIndex
     })
   }
 
   const selectPreviousSlide = () => {
     if (!slides || !selectedSlide) return
-    const previousSlide = slides.find((_, index) => index === selectedSlide.order - 1)
+    const previousSlide = slides.find((_, index) => index === selectedSlide.index - 1)
     if (!previousSlide) return
 
-    const newOrder = selectedSlide.order - 1
-    if (newOrder < 1) return
+    const newIndex = selectedSlide.index - 1
+    if (newIndex < 0) return
 
     setSelectedSlide({
       ...previousSlide,
-      order: newOrder
+      index: newIndex
     })
   }
 
@@ -59,7 +60,7 @@ export const PhotoGallery = () => {
 
     setSelectedSlide({
       ...slide,
-      order: index + 1
+      index
     })
   }
 
@@ -68,7 +69,7 @@ export const PhotoGallery = () => {
       const firstSlide = slides[0]
       setSelectedSlide({
         ...firstSlide,
-        order: 1
+        index: 0
       })
     }
   }, [isSuccess, slides])
@@ -100,46 +101,53 @@ export const PhotoGallery = () => {
         mb='4'
       >
         <Flex width='100%' height='100%'>
-          <Tooltip content='Previous slide' hidden={!selectedSlide || selectedSlide.order === 1}>
-            <IconButton
-              color='gray'
-              size='2'
-              radius='large'
-              disabled={!selectedSlide || selectedSlide.order === 1}
-              style={{
-                position: 'absolute',
-                left: '8px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 1
-              }}
-              onClick={selectPreviousSlide}
-            >
-              <ChevronLeftIcon />
-            </IconButton>
-          </Tooltip>
+          {slides && slides.length > 1 && (
+            <>
+              <Tooltip
+                content='Previous slide'
+                hidden={!selectedSlide || selectedSlide.index === 0}
+              >
+                <IconButton
+                  color='gray'
+                  size='2'
+                  radius='large'
+                  disabled={!selectedSlide || selectedSlide.index === 0}
+                  style={{
+                    position: 'absolute',
+                    left: '8px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 1
+                  }}
+                  onClick={selectPreviousSlide}
+                >
+                  <ChevronLeftIcon />
+                </IconButton>
+              </Tooltip>
 
-          <Tooltip
-            content='Next slide'
-            hidden={!selectedSlide || selectedSlide.order === slides?.length}
-          >
-            <IconButton
-              color='gray'
-              size='2'
-              radius='large'
-              disabled={!selectedSlide || selectedSlide.order === slides?.length}
-              style={{
-                position: 'absolute',
-                right: '8px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 1
-              }}
-              onClick={selectNextSlide}
-            >
-              <ChevronRightIcon />
-            </IconButton>
-          </Tooltip>
+              <Tooltip
+                content='Next slide'
+                hidden={!selectedSlide || selectedSlide.index === slides.length - 1}
+              >
+                <IconButton
+                  color='gray'
+                  size='2'
+                  radius='large'
+                  disabled={!selectedSlide || selectedSlide.index === slides.length - 1}
+                  style={{
+                    position: 'absolute',
+                    right: '8px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    zIndex: 1
+                  }}
+                  onClick={selectNextSlide}
+                >
+                  <ChevronRightIcon />
+                </IconButton>
+              </Tooltip>
+            </>
+          )}
 
           {selectedSlide && (
             <>
@@ -180,7 +188,7 @@ export const PhotoGallery = () => {
             view={view}
             onViewChange={setView}
             slideLabel={selectedSlide.label}
-            slideOrder={selectedSlide.order}
+            slideOrder={selectedSlide.index + 1}
             totalSlides={slides.length}
             settings={selectedSlide.settings}
             renderFooter={

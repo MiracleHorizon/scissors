@@ -1,32 +1,14 @@
-import { ThemeProvider } from 'next-themes'
-import { Theme } from '@radix-ui/themes'
-import { HelmetProvider } from 'react-helmet-async'
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
 
-import { DEFAULT_THEME, THEME_STORAGE_KEY, getThemeColorCookie } from '@/entities/theme'
+import { App } from './app'
+import './globals.css'
 
-import { AppRouter } from './app-router'
-import { AppQuery } from './app-query'
-import { SEO } from './seo'
+const rootEl = document.querySelector('#app-root')!
+const appRoot = ReactDOM.createRoot(rootEl)
 
-export const App = () => {
-  const themeColor = getThemeColorCookie()
-
-  return (
-    <HelmetProvider>
-      <SEO />
-
-      <ThemeProvider
-        attribute='class'
-        defaultTheme={DEFAULT_THEME}
-        storageKey={THEME_STORAGE_KEY}
-        disableTransitionOnChange
-      >
-        <Theme accentColor={themeColor}>
-          <AppQuery>
-            <AppRouter />
-          </AppQuery>
-        </Theme>
-      </ThemeProvider>
-    </HelmetProvider>
-  )
-}
+appRoot.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)

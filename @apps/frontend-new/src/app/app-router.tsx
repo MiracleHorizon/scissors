@@ -2,7 +2,8 @@ import {
   createBrowserRouter,
   Navigate,
   RouterProvider as BaseRouterProvider,
-  useLocation
+  useLocation,
+  type RouteObject
 } from 'react-router-dom'
 
 import { DefaultLayout } from './layout'
@@ -43,10 +44,14 @@ export const AppRouter = () => (
               }
             ]
           },
-          {
-            path: '/gallery',
-            element: <GalleryPage />
-          },
+          ...(process.env.NODE_ENV === 'development'
+            ? ([
+                {
+                  path: '/gallery',
+                  element: <GalleryPage />
+                }
+              ] as RouteObject[])
+            : []),
           {
             path: '/docs',
             element: <DocumentationPage />

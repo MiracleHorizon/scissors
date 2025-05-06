@@ -6,6 +6,7 @@
 **/coverage/
 **/dist
 **/.out
+**/tsconfig.tsbuildinfo
 
 .turbo
 

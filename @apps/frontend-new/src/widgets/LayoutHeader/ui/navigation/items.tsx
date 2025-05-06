@@ -10,10 +10,14 @@ export const navigationItems: NavigationItemModel[] = [
     tooltipContent: 'Watch the documentation',
     icon: <ReaderIcon width='18px' height='18px' label='go to documentation' />
   },
-  {
-    label: 'Gallery',
-    href: '/gallery',
-    tooltipContent: 'Watch the gallery',
-    icon: <ImageIcon width='18px' height='18px' label='go to gallery' />
-  }
+  ...(process.env.NODE_ENV === 'development'
+    ? ([
+        {
+          label: 'Gallery',
+          href: '/gallery',
+          tooltipContent: 'Watch the gallery',
+          icon: <ImageIcon width='18px' height='18px' label='go to gallery' />
+        }
+      ] as NavigationItemModel[])
+    : [])
 ]

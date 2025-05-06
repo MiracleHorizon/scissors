@@ -1,5 +1,5 @@
 .root {
-  height: 114px;
+  height: 114px !important;
 }
 
 .item {
