@@ -6,7 +6,8 @@ const RETRY_COUNT = 3
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: RETRY_COUNT
+      retry: RETRY_COUNT,
+      refetchOnWindowFocus: false
     }
   }
 })
