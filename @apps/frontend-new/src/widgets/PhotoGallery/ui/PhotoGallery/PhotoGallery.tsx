@@ -1,4 +1,4 @@
-import { Card, Flex, Grid } from '@radix-ui/themes'
+import { Card, Flex, Grid, IconButton, Tooltip } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
 import type { ConvertSettings } from '@scissors/sharp'
@@ -10,6 +10,7 @@ import { PhotoSplit } from '../PhotoSplit/PhotoSplit'
 import { PhotoToggle } from '../PhotoToggle/PhotoToggle'
 import { PhotoCarousel } from '../PhotoCarousel/PhotoCarousel'
 
+// TODO: Кэширование картинок
 export const PhotoGallery = () => {
   const { data: slides, isSuccess, isFetching } = useSlidesQuery()
   const [selectedSlide, setSelectedSlide] = useState<{
@@ -20,6 +21,34 @@ export const PhotoGallery = () => {
     afterSrc: string
   } | null>(null)
   const [view, setView] = useState<'split' | 'slider' | 'toggle'>('split')
+
+  const selectNextSlide = () => {
+    if (!slides || !selectedSlide) return
+    const nextSlide = slides.find((_, index) => index + 1 === selectedSlide.order)
+    if (!nextSlide) return
+
+    const newOrder = selectedSlide.order + 1
+    if (newOrder > slides.length) return
+
+    setSelectedSlide({
+      ...nextSlide,
+      order: newOrder
+    })
+  }
+
+  const selectPreviousSlide = () => {
+    if (!slides || !selectedSlide) return
+    const previousSlide = slides.find((_, index) => index === selectedSlide.order - 1)
+    if (!previousSlide) return
+
+    const newOrder = selectedSlide.order - 1
+    if (newOrder < 1) return
+
+    setSelectedSlide({
+      ...previousSlide,
+      order: newOrder
+    })
+  }
 
   const handleSelectPhoto = (label: string, index: number) => {
     if (!slides) return
@@ -69,6 +98,69 @@ export const PhotoGallery = () => {
         mb='4'
       >
         <Flex width='100%' height='100%'>
+          <Tooltip content='Previous slide' hidden={!selectedSlide || selectedSlide.order === 1}>
+            <IconButton
+              color='gray'
+              size='2'
+              radius='large'
+              disabled={!selectedSlide || selectedSlide.order === 1}
+              style={{
+                position: 'absolute',
+                left: '8px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 1
+              }}
+              onClick={selectPreviousSlide}
+            >
+              <svg
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                <path d='m15 18-6-6 6-6' />
+              </svg>
+            </IconButton>
+          </Tooltip>
+
+          <Tooltip
+            content='Next slide'
+            hidden={!selectedSlide || selectedSlide.order === slides?.length}
+          >
+            <IconButton
+              color='gray'
+              size='2'
+              radius='large'
+              disabled={!selectedSlide || selectedSlide.order === slides?.length}
+              style={{
+                position: 'absolute',
+                right: '8px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 1
+              }}
+              onClick={selectNextSlide}
+            >
+              <svg
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                <path d='m9 18 6-6-6-6' />
+              </svg>
+            </IconButton>
+          </Tooltip>
+
           {selectedSlide && (
             <>
               {view === 'split' && (
