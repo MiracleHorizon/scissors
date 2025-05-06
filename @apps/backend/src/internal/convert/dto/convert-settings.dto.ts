@@ -60,7 +60,7 @@ export class ConvertSettingsDto {
   @ValidateNested()
   @Type(() => NormaliseDto)
   @IsDefined()
-  readonly normalise: NormaliseDto | null
+  readonly normalize: NormaliseDto | null
 
   @IsNullable()
   @ValidateNested()

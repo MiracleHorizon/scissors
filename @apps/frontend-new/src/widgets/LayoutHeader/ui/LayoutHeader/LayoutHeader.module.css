@@ -1,0 +1,47 @@
+.root {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: var(--layout-header-height);
+  z-index: 1003;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--gray-a5);
+}
+
+.desktop {
+  display: flex;
+  height: 100%;
+}
+
+.mobile {
+  display: none;
+}
+
+.root :global(.EZDrawer) {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .root :global(.EZDrawer) {
+    display: block !important;
+  }
+
+  .mobile {
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-4);
+    margin-right: auto;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+  }
+
+  .desktop {
+    display: none;
+  }
+}

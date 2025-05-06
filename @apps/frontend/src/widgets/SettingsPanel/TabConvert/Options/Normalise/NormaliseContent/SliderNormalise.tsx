@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
+import { MAX_NORMALIZE, MIN_NORMALIZE } from '@scissors/sharp'
 
 import { Slider } from '@lib/ui/Slider'
 import { useNormaliseStore } from '@stores/normalise'
@@ -24,9 +24,9 @@ export const SliderNormalise = () => {
     <Slider
       value={[lower, upper]}
       valueSign='%'
-      defaultValue={[MIN_NORMALISE, MAX_NORMALISE]}
-      min={MIN_NORMALISE}
-      max={MAX_NORMALISE}
+      defaultValue={[MIN_NORMALIZE, MAX_NORMALIZE]}
+      min={MIN_NORMALIZE}
+      max={MAX_NORMALIZE}
       minStepsBetweenThumbs={1}
       cySelector='slider-normalise'
       onValueChange={onValueChange}

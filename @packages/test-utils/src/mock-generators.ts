@@ -1,8 +1,8 @@
 import {
   type ConvertSettings,
-  MAX_NORMALISE,
+  MAX_NORMALIZE,
   MAX_ROTATE_ANGLE,
-  MIN_NORMALISE,
+  MIN_NORMALIZE,
   type ResizeSettings
 } from '@scissors/sharp'
 
@@ -13,9 +13,9 @@ export const generateInvalidConvertSettings = (): ConvertSettings =>
   ({
     ...validConvertSettings,
     outputFormat: '.foo',
-    normalise: {
-      lower: MIN_NORMALISE - 1,
-      upper: MAX_NORMALISE + 1
+    normalize: {
+      lower: MIN_NORMALIZE - 1,
+      upper: MAX_NORMALIZE + 1
     },
     rotate: {
       ...validConvertSettings.rotate,

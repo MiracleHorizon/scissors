@@ -20,7 +20,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "tsc && vite build",
     "type-check": "tsc"
   },
   "devDependencies": {

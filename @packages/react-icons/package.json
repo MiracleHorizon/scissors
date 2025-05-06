@@ -11,6 +11,6 @@
     "@types/react": "18.2.0"
   },
   "dependencies": {
-    "@radix-ui/react-accessible-icon": "1.0.3"
+    "@radix-ui/react-accessible-icon": "1.1.4"
   }
 }

@@ -1,0 +1,31 @@
+.root {
+  --margin-x: var(--space-2);
+
+  width: 100%;
+  max-width: 440px;
+  position: fixed !important;
+  left: 20px;
+  bottom: 30px;
+  z-index: 1000;
+  margin: 0 var(--margin-x);
+  background-color: var(--gray-2) !important;
+  box-shadow: 0 14px 42px 0 rgba(8 15 52 / 0.15);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 519px) {
+  .root {
+    max-width: 300px;
+    left: 50%;
+    right: 50%;
+    transform: translate3d(calc(-50% - var(--margin-x)), 0, 0);
+  }
+
+  .icon {
+    width: 50px;
+    height: 48px;
+  }
+}

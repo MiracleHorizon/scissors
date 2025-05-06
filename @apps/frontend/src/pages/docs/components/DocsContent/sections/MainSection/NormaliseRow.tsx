@@ -1,12 +1,12 @@
 import { Code, Text } from '@radix-ui/themes'
 
-import { DEFAULT_NORMALISE, MAX_NORMALISE, MIN_NORMALISE } from '@scissors/sharp'
+import { DEFAULT_NORMALIZE, MAX_NORMALIZE, MIN_NORMALIZE } from '@scissors/sharp'
 
 import { DocsTableRow } from '@pages/docs/components/DocsTable/DocsTableRow'
 
 export const NormaliseRow = () => (
   <DocsTableRow
-    label='normalise'
+    label='normalize'
     description={
       <Text as='div'>
         <Text as='p'>
@@ -14,8 +14,8 @@ export const NormaliseRow = () => (
         </Text>
         <Text as='p'>
           Uses a histogram-based approach, taking a range from{' '}
-          <Code variant='ghost'>{MIN_NORMALISE}%</Code> to{' '}
-          <Code variant='ghost'>{MAX_NORMALISE}%</Code> to reduce sensitivity to noise at the
+          <Code variant='ghost'>{MIN_NORMALIZE}%</Code> to{' '}
+          <Code variant='ghost'>{MAX_NORMALIZE}%</Code> to reduce sensitivity to noise at the
           extremes.
         </Text>
         <br />
@@ -28,6 +28,6 @@ export const NormaliseRow = () => (
         </Text>
       </Text>
     }
-    defaultValue={`${DEFAULT_NORMALISE.lower} - ${DEFAULT_NORMALISE.upper}%`}
+    defaultValue={`${DEFAULT_NORMALIZE.lower} - ${DEFAULT_NORMALIZE.upper}%`}
   />
 )

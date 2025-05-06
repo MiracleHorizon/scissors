@@ -56,7 +56,7 @@ export const useConvertSettings = (): ConvertSettings => {
     blur,
     negate,
     gamma,
-    normalise,
+    normalize: normalise,
     tint,
     outputFormat
   }

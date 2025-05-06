@@ -25,7 +25,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.6.0
+          version: 10.10.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -55,8 +55,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Check Frontend
-        run: pnpm --filter frontend check
+      - name: Test Frontend
+        run: pnpm --filter frontend test
+
+      - name: Check New rontend
+        run: pnpm --filter frontend-new test
 
       - name: Test Backend
         run: pnpm --filter backend test

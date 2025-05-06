@@ -68,7 +68,7 @@
     "@vitest/coverage-v8": "2.0.3",
     "@vitest/ui": "2.0.3",
     "cypress": "13.10.0",
-    "eslint": "9.8.0",
+    "eslint": "9.26.0",
     "jsdom": "24.0.0",
     "start-server-and-test": "2.0.3",
     "stylelint": "16.5.0",
@@ -76,8 +76,5 @@
     "typescript": "5.4.5",
     "vite": "6.0.7",
     "vitest": "2.0.3"
-  },
-  "overrides": {
-    "eslint": "9.8.0"
   }
 }

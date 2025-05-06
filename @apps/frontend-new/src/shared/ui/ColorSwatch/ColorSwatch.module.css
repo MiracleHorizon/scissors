@@ -1,0 +1,5 @@
+.root {
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: var(--radius-3);
+}

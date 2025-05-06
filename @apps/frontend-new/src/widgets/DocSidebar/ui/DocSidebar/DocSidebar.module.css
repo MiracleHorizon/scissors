@@ -1,0 +1,10 @@
+.root {
+  position: sticky;
+  top: var(--layout-header-height);
+  height: calc(100dvh - var(--layout-header-height));
+  box-shadow: 0 -1px 0 1px var(--gray-a5);
+}
+
+.searchBox {
+  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
+}

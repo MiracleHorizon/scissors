@@ -1,12 +1,12 @@
 import { create, type StateCreator } from 'zustand'
 
-import { DEFAULT_NORMALISE, type NormaliseOptions } from '@scissors/sharp'
+import { DEFAULT_NORMALIZE, type NormalizeOptions } from '@scissors/sharp'
 
 /* eslint no-unused-vars: 0 */
 interface Store extends State {
-  getNormaliseOptions: () => NormaliseOptions | null
+  getNormaliseOptions: () => NormalizeOptions | null
 
-  set: (options: NormaliseOptions | null) => void
+  set: (options: NormalizeOptions | null) => void
   reset: VoidFunction
   add: VoidFunction
   remove: VoidFunction
@@ -14,13 +14,13 @@ interface Store extends State {
   setUpper: (upper: number) => void
 }
 
-interface State extends NormaliseOptions {
+interface State extends NormalizeOptions {
   isAdded: boolean
 }
 
 export const defaultState: State = {
   isAdded: false,
-  ...DEFAULT_NORMALISE
+  ...DEFAULT_NORMALIZE
 } as const
 
 const normaliseStoreCreator: StateCreator<Store> = (set, get) => ({
@@ -56,7 +56,7 @@ const normaliseStoreCreator: StateCreator<Store> = (set, get) => ({
         return state
       }
 
-      return DEFAULT_NORMALISE
+      return DEFAULT_NORMALIZE
     }),
 
   add: () => set({ isAdded: true }),

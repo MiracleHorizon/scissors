@@ -1,0 +1,50 @@
+.field {
+  width: 120px;
+  font-family: 'Geist Mono', monospace !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.swatchWrapper {
+  position: relative;
+  cursor: pointer;
+  height: var(--space-4);
+  width: var(--space-4);
+  border-radius: 1.5px;
+  z-index: 10;
+}
+
+.swatch {
+  display: block;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swatch::-webkit-color-swatch-wrapper,
+.swatch::-webkit-color-swatch {
+  border: 0;
+  padding: 0;
+}
+
+.swatch:disabled {
+  opacity: 0.75;
+}
+
+.swatch:focus-visible {
+  outline-offset: 2px;
+  outline: 2px solid var(--focus-8);
+}
+
+.swatchBorder {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gray-a6);
+  border-radius: inherit;
+  pointer-events: none;
+}

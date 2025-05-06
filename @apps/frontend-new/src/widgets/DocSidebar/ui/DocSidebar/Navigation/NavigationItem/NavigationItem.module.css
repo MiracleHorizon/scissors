@@ -1,0 +1,8 @@
+.root {
+  border-radius: var(--radius-3);
+}
+
+.selected {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}

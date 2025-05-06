@@ -1,48 +1,23 @@
-import { Link, useParams } from 'react-router-dom'
-import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
-import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { Flex, Link as RadixLink, Text } from '@radix-ui/themes'
 
 import { Link2Icon } from '@scissors/react-icons/Link2Icon'
-import { useEscapeAction } from '@hooks/useEscapeAction'
 
 import styles from './DocsSectionHeader.module.css'
 
-interface Props {
-  title: string
-  hash: string
-}
-
-export const DocsSectionHeader = ({ hash, title }: Props) => {
-  const { id } = useParams()
-  const linkRef = useRef<HTMLAnchorElement>(null)
-
-  useEffect(() => {
-    if (hash.includes(id as string)) {
-      linkRef.current?.focus()
-    }
-  }, [hash, id])
-
-  useEscapeAction(() => {
-    if (linkRef.current) {
-      linkRef.current.blur()
-    }
-  })
+export const DocsSectionHeader = ({ hash, title }: { title: string; hash: string }) => {
+  const elementId = hash.startsWith('#') ? hash.slice(1) : hash.split('#')[1]
 
   return (
-    <div id={hash.slice(1)} className={styles.root}>
-      <header data-cy={`${hash.slice(1)}-header`}>
+    <div id={elementId} className={styles.root}>
+      <header>
         <Flex asChild align='center' gap='1'>
-          <RadixLink asChild size='5' weight='bold'>
+          <RadixLink asChild size='5'>
             <Link to={hash}>
-              <Link2Icon
-                width='18px'
-                height='18px'
-                className={styles.icon}
-                data-cy={`${hash.slice(1)}-hash-link`}
-              />
-              <Box as='span' className={styles.title}>
+              <Link2Icon width='18px' height='18px' />
+              <Text as='span' weight='bold'>
                 {title}
-              </Box>
+              </Text>
             </Link>
           </RadixLink>
         </Flex>

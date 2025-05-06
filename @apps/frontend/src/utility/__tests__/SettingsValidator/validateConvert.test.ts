@@ -2,11 +2,11 @@ import {
   type ConvertSettings,
   DEFAULT_GAMMA,
   IMAGE_FILE_FORMAT,
-  MAX_NORMALISE,
+  MAX_NORMALIZE,
   MIN_BRIGHTNESS,
   MIN_HUE,
   MIN_LIGHTNESS,
-  MIN_NORMALISE,
+  MIN_NORMALIZE,
   MIN_SATURATION
 } from '@scissors/sharp'
 
@@ -24,9 +24,9 @@ describe('utility - SettingsValidator.validateConvert', () => {
         value: true,
         alpha: false
       },
-      normalise: {
-        lower: MIN_NORMALISE,
-        upper: MAX_NORMALISE
+      normalize: {
+        lower: MIN_NORMALIZE,
+        upper: MAX_NORMALIZE
       },
       blur: {
         value: true,
@@ -34,8 +34,7 @@ describe('utility - SettingsValidator.validateConvert', () => {
       },
       rotate: {
         angle: 90,
-        background: '#FFFFFF',
-        withDominantBackground: false
+        background: '#FFFFFF'
       },
       gamma: DEFAULT_GAMMA,
       tint: '#FF0004',

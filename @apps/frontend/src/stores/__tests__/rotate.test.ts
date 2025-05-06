@@ -29,8 +29,7 @@ describe('@stores/rotate', () => {
   it('should correctly set / reset state', () => {
     const testState: RotateOptions = {
       angle: 90,
-      background: '#8f8913',
-      withDominantBackground: true
+      background: '#8f8913'
     }
 
     expect(store.getState().isAdded).toBe(false)
@@ -90,18 +89,5 @@ describe('@stores/rotate', () => {
     expect(store.getState().isAdded).toBe(true)
     store.getState().setBackground('#9f72ff')
     expect(store.getState().background).toBe('#9f72ff')
-  })
-
-  it('should correctly toggle dominant background value', () => {
-    expect(store.getState().isAdded).toBe(false)
-    expect(store.getState().withDominantBackground).toBe(defaultRotation.withDominantBackground)
-
-    store.getState().toggleDominantBackground()
-    expect(store.getState().withDominantBackground).toBe(defaultRotation.withDominantBackground)
-
-    store.setState({ isAdded: true })
-
-    store.getState().toggleDominantBackground()
-    expect(store.getState().withDominantBackground).toBe(!defaultRotation.withDominantBackground)
   })
 })

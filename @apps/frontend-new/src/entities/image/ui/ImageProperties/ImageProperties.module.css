@@ -1,0 +1,20 @@
+.card {
+  background-color: var(--color-background);
+}
+
+.properties {
+  width: 260px;
+  min-height: 100px;
+  box-shadow: var(--shadow-3);
+}
+
+.actions {
+  padding: 6px !important;
+  height: max-content;
+}
+
+.fileName {
+  display: inline-block;
+  height: 24px;
+  width: 100%;
+}

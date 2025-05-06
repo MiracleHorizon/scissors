@@ -22,7 +22,7 @@ export class ImageConverter extends ImageSharp {
     grayscale,
     tint,
     negate,
-    normalise,
+    normalize,
     blur,
     rotate,
     gamma,
@@ -37,7 +37,7 @@ export class ImageConverter extends ImageSharp {
     if (grayscale) this.grayscale()
     if (tint) this.tint(tint)
     if (negate) this.negate(negate)
-    if (normalise) this.normalise(normalise)
+    if (normalize) this.normalise(normalize)
     if (blur) this.blur(blur)
     if (rotate) this.rotate(rotate)
     if (gamma) this.gammaize(gamma)
@@ -142,7 +142,7 @@ export class ImageConverter extends ImageSharp {
 
     const background = this.getBackground({
       background: options.background ?? '#000000',
-      withDominantBackground: options.withDominantBackground
+      withDominantBackground: false
     })
 
     try {

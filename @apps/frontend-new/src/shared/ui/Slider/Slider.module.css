@@ -1,0 +1,34 @@
+.root {
+  --action-button-width: var(--space-6);
+  --actions-buttons-gap: var(--space-1);
+  --action-buttons-count: 2;
+}
+
+.root :global(.rt-TextFieldRoot) {
+  width: calc(
+    var(--action-button-width) * var(--action-buttons-count) + var(--actions-buttons-gap)
+  );
+}
+
+.root :global(.rt-TextFieldInput::placeholder) {
+  font-size: 14px;
+}
+
+.radixSlider :global(.rt-SliderTrack) {
+  --slider-track-size: 12px !important;
+  margin-bottom: 1px;
+} 
+
+.radixSlider :global(.rt-SliderThumb) {
+  --slider-thumb-size: 16px !important;
+}
+
+.radixSlider :global(.rt-SliderThumb::after) {
+  border-width: 2px !important;
+}
+
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+

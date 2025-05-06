@@ -12,20 +12,17 @@ interface Store extends State {
   remove: VoidFunction
   setAngle: (angle: number | null) => void
   setBackground: (background: string) => void
-  toggleDominantBackground: VoidFunction
 }
 
 interface State {
   isAdded: boolean
   angle: number | null
   background: string | null
-  withDominantBackground: boolean
 }
 
 export const defaultRotation: Omit<State, 'isAdded'> = {
   angle: null,
-  background: null,
-  withDominantBackground: false
+  background: null
 } as const
 export const defaultState: State = {
   isAdded: false,
@@ -38,7 +35,7 @@ const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
 
   // Computed
   getRotateOptions: () => {
-    const { isAdded, angle, background, withDominantBackground } = get()
+    const { isAdded, angle, background } = get()
 
     /*
      * Falsy angle value (null or 0) is not available.
@@ -49,8 +46,7 @@ const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
 
     return {
       angle,
-      background,
-      withDominantBackground
+      background
     }
   },
 
@@ -107,16 +103,6 @@ const rotateStoreCreator: StateCreator<Store> = (set, get) => ({
 
       return {
         background
-      }
-    }),
-  toggleDominantBackground: () =>
-    set(state => {
-      if (!state.isAdded) {
-        return state
-      }
-
-      return {
-        withDominantBackground: !state.withDominantBackground
       }
     })
 })

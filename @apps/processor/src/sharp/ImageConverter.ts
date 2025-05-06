@@ -14,7 +14,7 @@ export class ImageConverter extends Sharp {
     grayscale,
     tint,
     negate,
-    normalise,
+    normalize,
     blur,
     rotate,
     gamma,
@@ -29,7 +29,7 @@ export class ImageConverter extends Sharp {
     if (grayscale) this.grayscale()
     if (tint) this.tint(tint)
     if (negate) this.negate(negate)
-    if (normalise) this.normalise(normalise)
+    if (normalize) this.normalize(normalize)
     if (blur) this.blur(blur)
     if (rotate) this.rotate(rotate)
     if (gamma) this.gammaize(gamma)
@@ -89,16 +89,16 @@ export class ImageConverter extends Sharp {
     })
   }
 
-  private normalise({ lower, upper }: any): void {
+  private normalize({ lower, upper }: any): void {
     try {
-      this.sharp.normalise({
+      this.sharp.normalize({
         lower,
         upper
       })
     } catch (err) {
       console.error(err)
 
-      throw new Error('Failed to normalise the image')
+      throw new Error('Failed to normalize the image')
     }
   }
 

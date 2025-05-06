@@ -1,0 +1,70 @@
+.root {
+  --border-radius: var(--radius-5);
+
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--border-radius);
+  background-color: var(--gray-2);
+  transition: background-color 50ms ease-in;
+  text-align: center;
+}
+
+.root svg {
+  flex-shrink: 0;
+}
+
+@media (hover: hover) {
+  .root:hover {
+    background-color: var(--gray-3);
+  }
+}
+
+.dragOver {
+  background-color: var(--gray-4);
+}
+
+.uploadText {
+  font-size: var(--font-size-5);
+}
+
+.article {
+  gap: 2px;
+}
+
+.titleTouch {
+  display: none;
+}
+
+.icon {
+  margin-bottom: 6px;
+}
+
+.borderSvg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+}
+
+@media (pointer: coarse) {
+  .title {
+    display: none;
+  }
+
+  .titleTouch {
+    display: block;
+  }
+}
+
+.extensions {
+  color: var(--gray-11);
+}
+
+@media screen and (max-width: 519px) {
+  .uploadText {
+    font-size: 19px;
+  }
+}

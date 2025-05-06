@@ -1,0 +1,11 @@
+.heading404 {
+  font-size: 80px !important;
+}
+
+.information {
+  color: var(--gray-a11);
+}
+
+.separator {
+  width: 80% !important;
+}

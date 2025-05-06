@@ -9,7 +9,7 @@ import {
   MAX_GAMMA,
   MAX_HUE,
   MAX_LIGHTNESS,
-  MAX_NORMALISE,
+  MAX_NORMALIZE,
   MAX_RESIZE_HEIGHT,
   MAX_RESIZE_WIDTH,
   MAX_ROTATE_ANGLE,
@@ -21,7 +21,7 @@ import {
   MIN_GAMMA,
   MIN_HUE,
   MIN_LIGHTNESS,
-  MIN_NORMALISE,
+  MIN_NORMALIZE,
   MIN_RESIZE_SIZE,
   MIN_ROTATE_ANGLE,
   MIN_SATURATION,
@@ -56,8 +56,8 @@ export const negateSchema = object({
   .defined()
 
 export const normaliseSchema = object({
-  lower: number().min(MIN_NORMALISE).max(MAX_NORMALISE).required(),
-  upper: number().min(MIN_NORMALISE).max(MAX_NORMALISE).required()
+  lower: number().min(MIN_NORMALIZE).max(MAX_NORMALIZE).required(),
+  upper: number().min(MIN_NORMALIZE).max(MAX_NORMALIZE).required()
 })
   .nullable()
   .defined()

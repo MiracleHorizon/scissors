@@ -1,0 +1,7 @@
+.scrollArea {
+  height: 32px;
+}
+
+.scrollArea :global(.rt-ScrollAreaScrollbar) {
+  margin: 0;
+}

@@ -1,24 +1,25 @@
-import type { BlurOptions, ConvertSettings, NegateOptions, NormaliseOptions } from './types'
+import type { BlurOptions, ConvertSettings, NegateOptions, NormalizeOptions } from './types'
 
 export const DEFAULT_FLIP = false
 export const DEFAULT_FLOP = false
 export const DEFAULT_GRAYSCALE = false
 export const DEFAULT_TINT_COLOR = '#000000'
 
-// Normalise
-export const MIN_NORMALISE = 0
-export const MAX_NORMALISE = 100
-export const DEFAULT_LOWER_NORMALISE = 1
-export const DEFAULT_UPPER_NORMALISE = 99
-export const DEFAULT_NORMALISE: NormaliseOptions = {
-  lower: DEFAULT_LOWER_NORMALISE,
-  upper: DEFAULT_UPPER_NORMALISE
+// Normalization
+export const MIN_NORMALIZE = 0
+export const MAX_NORMALIZE = 100
+export const DEFAULT_LOWER_NORMALIZE = 0
+export const DEFAULT_UPPER_NORMALIZE = 100
+export const DEFAULT_NORMALIZE: NormalizeOptions = {
+  lower: DEFAULT_LOWER_NORMALIZE,
+  upper: DEFAULT_UPPER_NORMALIZE
 } as const
 
 // Blur
-export const MIN_BLUR_SIGMA = 0.3
+export const MIN_BLUR_SIGMA = 0
 export const MAX_BLUR_SIGMA = 10
 export const BLUR_SIGMA_STEP = 0.1
+export const DEFAULT_BLUR_SIGMA = 0
 export const DEFAULT_BLUR: BlurOptions = {
   value: false,
   sigma: null
@@ -38,13 +39,13 @@ export const MAX_GAMMA = 3
 export const DEFAULT_GAMMA = 2.2
 export const GAMMA_STEP = 0.01
 
-// Rotate
+// Rotation
 export const MIN_ROTATE_ANGLE = -360
 export const MAX_ROTATE_ANGLE = 360
 export const DEFAULT_ROTATE_ANGLE = 0
 export const DEFAULT_ROTATE_BACKGROUND = '#000000'
 
-// Modulate
+// Modulation
 export const MIN_LIGHTNESS = 0
 export const MAX_LIGHTNESS = 100
 
@@ -65,7 +66,7 @@ export const NULL_CONVERT_SETTINGS: ConvertSettings = {
   grayscale: false,
   tint: null,
   negate: null,
-  normalise: null,
+  normalize: null,
   blur: null,
   rotate: null,
   gamma: null,

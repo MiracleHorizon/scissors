@@ -1,0 +1,40 @@
+.root {
+  transition:
+    color 50ms ease-in-out,
+    text-decoration-color 50ms ease-in-out;
+}
+
+@media (hover: hover) {
+  .root:hover {
+    color: var(--accent-12);
+    text-decoration-color: var(--accent-8);
+  }
+}
+
+.selected {
+  color: var(--accent-12) !important;
+}
+
+.link {
+  text-underline-offset: 4px;
+}
+
+.iconButton {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .text {
+    display: none;
+  }
+
+  .iconButton {
+    display: inline-flex;
+  }
+
+  .iconButton svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}

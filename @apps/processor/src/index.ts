@@ -3,12 +3,12 @@ import { serve } from 'bun'
 import { handleCors, withCors } from './cors'
 import { ImageConverter, ImageResizer } from './sharp'
 
-const PORT = Bun.env.SERVER_PORT ?? 4201
+const PORT = Bun.env.SERVER_PORT ?? 4200
 
 serve({
   port: PORT,
   routes: {
-    '/convert': async req => {
+    '/api/v1/convert': async req => {
       const cors = handleCors(req)
       if (cors) return cors
 
@@ -26,7 +26,7 @@ serve({
 
       return new Response('Error', { status: 500 })
     },
-    '/resize': async req => {
+    '/api/v1/resize': async req => {
       const cors = handleCors(req)
       if (cors) return cors
 

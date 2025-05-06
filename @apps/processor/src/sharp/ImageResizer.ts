@@ -1,10 +1,9 @@
 import sharp from 'sharp'
 
-import { isAllObjectValuesEmptyOrFalse } from '@scissors/utility'
+import { isAllObjectValuesEmptyOrFalse, nullToUndefined } from '@scissors/utility'
 import { RESIZE_OPERATION, type ResizeQueue } from '@scissors/sharp'
 
 import { Sharp } from './Sharp'
-import { nullToUndefined } from '../utils/nullToUndefined'
 
 export class ImageResizer extends Sharp {
   constructor(buffer: ArrayBuffer) {
