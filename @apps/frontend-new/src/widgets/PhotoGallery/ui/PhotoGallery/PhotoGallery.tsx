@@ -1,6 +1,8 @@
 import { Card, Flex, Grid, IconButton, Tooltip } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
+import { ChevronLeftIcon } from '@scissors/react-icons/ChevronLeftIcon'
+import { ChevronRightIcon } from '@scissors/react-icons/ChevronRightIcon'
 import type { ConvertSettings } from '@scissors/sharp'
 
 import { PhotoInfoPanel } from './PhotoInfoPanel/PhotoInfoPanel'
@@ -9,8 +11,8 @@ import { useSlidesQuery } from '../../api/useSlidesQuery'
 import { PhotoSplit } from '../PhotoSplit/PhotoSplit'
 import { PhotoToggle } from '../PhotoToggle/PhotoToggle'
 import { PhotoCarousel } from '../PhotoCarousel/PhotoCarousel'
-
 // TODO: Кэширование картинок
+// TODO: Раскидать по FSD
 export const PhotoGallery = () => {
   const { data: slides, isSuccess, isFetching } = useSlidesQuery()
   const [selectedSlide, setSelectedSlide] = useState<{
@@ -113,18 +115,7 @@ export const PhotoGallery = () => {
               }}
               onClick={selectPreviousSlide}
             >
-              <svg
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              >
-                <path d='m15 18-6-6 6-6' />
-              </svg>
+              <ChevronLeftIcon />
             </IconButton>
           </Tooltip>
 
@@ -146,18 +137,7 @@ export const PhotoGallery = () => {
               }}
               onClick={selectNextSlide}
             >
-              <svg
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              >
-                <path d='m9 18 6-6-6-6' />
-              </svg>
+              <ChevronRightIcon />
             </IconButton>
           </Tooltip>
 
@@ -202,7 +182,7 @@ export const PhotoGallery = () => {
             slideLabel={selectedSlide.label}
             slideOrder={selectedSlide.order}
             totalSlides={slides.length}
-            downloadPayloadJSON={JSON.stringify(selectedSlide.settings)}
+            settings={selectedSlide.settings}
             renderFooter={
               <PhotoCarousel
                 slides={slides}
