@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Grid, ScrollArea } from '@radix-ui/themes'
+import { Card, Flex, Grid } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
 import type { ConvertSettings } from '@scissors/sharp'
@@ -8,6 +8,8 @@ import { PhotoSettingsPanel } from './PhotoSettingsPanel/PhotoSettingsPanel'
 import { useSlidesQuery } from '../../api/useSlidesQuery'
 import { PhotoSplit } from '../PhotoSplit/PhotoSplit'
 import { PhotoToggle } from '../PhotoToggle/PhotoToggle'
+import { PhotoCarousel } from '../PhotoCarousel/PhotoCarousel'
+
 export const PhotoGallery = () => {
   const { data: slides, isSuccess, isFetching } = useSlidesQuery()
   const [selectedSlide, setSelectedSlide] = useState<{
@@ -18,6 +20,17 @@ export const PhotoGallery = () => {
     afterSrc: string
   } | null>(null)
   const [view, setView] = useState<'split' | 'slider' | 'toggle'>('split')
+
+  const handleSelectPhoto = (label: string, index: number) => {
+    if (!slides) return
+    const slide = slides.find(slide => slide.label === label)
+    if (!slide) return
+
+    setSelectedSlide({
+      ...slide,
+      order: index + 1
+    })
+  }
 
   useEffect(() => {
     if (isSuccess && slides?.length > 0) {
@@ -90,40 +103,20 @@ export const PhotoGallery = () => {
         }}
         gap='4'
       >
-        {selectedSlide && (
+        {selectedSlide && slides && (
           <PhotoInfoPanel
             view={view}
             onViewChange={setView}
             slideLabel={selectedSlide.label}
             slideOrder={selectedSlide.order}
-            totalSlides={slides?.length ?? 0}
+            totalSlides={slides.length}
             downloadPayloadJSON={JSON.stringify(selectedSlide.settings)}
-            renderSlot={
-              <ScrollArea mt='4' type='auto' scrollbars='horizontal' style={{ height: '114px' }}>
-                <Flex gapX='2' height='100px'>
-                  {slides?.map((slide, index) => (
-                    <Box
-                      key={slide.label}
-                      width='160px'
-                      height='90x'
-                      style={{
-                        cursor: 'pointer',
-                        flexShrink: 0,
-                        backgroundColor: 'var(--gray-3)',
-                        borderRadius: 'var(--radius-3)',
-                        border:
-                          selectedSlide.label === slide.label ? '2px solid var(--gray-12)' : 'none'
-                      }}
-                      onClick={() =>
-                        setSelectedSlide({
-                          ...slide,
-                          order: index + 1
-                        })
-                      }
-                    />
-                  ))}
-                </Flex>
-              </ScrollArea>
+            renderFooter={
+              <PhotoCarousel
+                slides={slides}
+                selectedPhoto={selectedSlide}
+                onSelectPhoto={handleSelectPhoto}
+              />
             }
           />
         )}

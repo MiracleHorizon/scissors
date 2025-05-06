@@ -7,7 +7,7 @@ export const PhotoInfoPanel = ({
   slideLabel,
   slideOrder,
   totalSlides,
-  renderSlot,
+  renderFooter,
   view,
   onViewChange
 }: {
@@ -18,7 +18,7 @@ export const PhotoInfoPanel = ({
   view: 'split' | 'slider' | 'toggle'
   // eslint-disable-next-line
   onViewChange: (view: 'split' | 'slider' | 'toggle') => void
-  renderSlot?: NonNullable<ReactNode>
+  renderFooter?: NonNullable<ReactNode>
 }) => (
   <Card size='2'>
     <Flex width='100%' justify='between'>
@@ -52,6 +52,6 @@ export const PhotoInfoPanel = ({
       </SegmentedControl.Root>
     </Flex>
 
-    {renderSlot}
+    {renderFooter}
   </Card>
 )
