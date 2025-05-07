@@ -9,6 +9,7 @@
     "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/processor"
   },
   "dependencies": {
+    "@scissors/bun-cors": "workspace:*",
     "@scissors/sharp": "workspace:*",
     "@scissors/utility": "workspace:*",
     "sharp": "0.34.1"

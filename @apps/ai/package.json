@@ -9,6 +9,7 @@
     "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/ai"
   },
   "dependencies": {
+    "@scissors/bun-cors": "workspace:*",
     "@scissors/sharp": "workspace:*"
   },
   "devDependencies": {
