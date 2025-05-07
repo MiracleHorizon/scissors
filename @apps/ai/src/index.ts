@@ -1,3 +1,5 @@
+import { serve } from 'bun'
+
 import { injectCORS } from '@scissors/bun-cors'
 
 import { getContextForPrompt } from './mcp/context'
@@ -33,7 +35,7 @@ setInterval(() => {
 }, RESET_TIME_INTERVAL)
 
 // TODO: Logger
-Bun.serve({
+serve({
   port: PORT,
   routes: injectCORS(
     {
