@@ -1,10 +1,4 @@
-const REPO_OWNER = 'MiracleHorizon'
-const REPO_NAME = 'scissors'
-const REPO_BRANCH = 'main'
-const REPO_PATH = `${REPO_OWNER}/${REPO_NAME}`
-const GITHUB_USER_CONTENT_PATH = 'raw.githubusercontent.com'
-const GITHUB_USER_CONTENT_REPO_PATH = `https://${GITHUB_USER_CONTENT_PATH}/${REPO_PATH}/${REPO_BRANCH}`
-const APP_PATH = '@apps/s3-bridge'
+import { APP_PATH, GITHUB_USER_CONTENT_REPO_PATH } from './config/constants'
 
 const pathForObjectStorage = (path: string): string => {
   const ASSETS_PATH = 'object-storage'
@@ -21,8 +15,8 @@ const pathForSlide = (name: string): string => {
 export const slides = [
   {
     label: 'Volkswagen Käfer',
-    beforeSrc: pathForSlide('slide-1-before.jpeg'),
-    afterSrc: pathForSlide('slide-1-after.jpeg'),
+    beforeSrc: 'slide-1-before.jpeg',
+    afterSrc: 'slide-1-after.jpeg',
     details: [
       {
         label: 'Blur',
@@ -48,8 +42,8 @@ export const slides = [
   },
   {
     label: 'Monstera Deliciosa',
-    beforeSrc: pathForSlide('slide-2-before.jpeg'),
-    afterSrc: pathForSlide('slide-2-after.jpeg'),
+    beforeSrc: 'slide-2-before.jpeg',
+    afterSrc: 'slide-2-after.jpeg',
     details: [
       {
         label: 'Blur',
@@ -65,8 +59,8 @@ export const slides = [
   },
   {
     label: 'Giza, Egypt',
-    beforeSrc: pathForSlide('slide-6-before.jpeg'),
-    afterSrc: pathForSlide('slide-6-after.jpeg'),
+    beforeSrc: 'slide-6-before.jpeg',
+    afterSrc: 'slide-6-after.jpeg',
     details: [
       {
         label: 'Grayscale',
@@ -79,8 +73,8 @@ export const slides = [
   },
   {
     label: 'Abstraction 1',
-    beforeSrc: pathForSlide('slide-4-before.jpeg'),
-    afterSrc: pathForSlide('slide-4-after.jpeg'),
+    beforeSrc: 'slide-4-before.jpeg',
+    afterSrc: 'slide-4-after.jpeg',
     details: [
       {
         label: 'Negate',
@@ -97,8 +91,8 @@ export const slides = [
   },
   {
     label: 'Blueberry',
-    beforeSrc: pathForSlide('slide-5-before.jpeg'),
-    afterSrc: pathForSlide('slide-5-after.jpeg'),
+    beforeSrc: 'slide-5-before.jpeg',
+    afterSrc: 'slide-5-after.jpeg',
     details: [
       {
         label: 'Negate',
@@ -128,8 +122,8 @@ export const slides = [
   },
   {
     label: 'Sahara',
-    beforeSrc: pathForSlide('slide-3-before.jpeg'),
-    afterSrc: pathForSlide('slide-3-after.jpeg'),
+    beforeSrc: 'slide-3-before.jpeg',
+    afterSrc: 'slide-3-after.jpeg',
     details: [
       {
         label: 'Hue',
@@ -148,8 +142,8 @@ export const slides = [
   {
     // eslint-disable-next-line quotes
     label: "The lion's leader",
-    beforeSrc: pathForSlide('slide-7-before.jpeg'),
-    afterSrc: pathForSlide('slide-7-after.jpeg'),
+    beforeSrc: 'slide-7-before.jpeg',
+    afterSrc: 'slide-7-after.jpeg',
     details: [
       {
         label: 'Grayscale',
@@ -163,8 +157,8 @@ export const slides = [
   },
   {
     label: 'Jellyfish',
-    beforeSrc: pathForSlide('slide-9-before.jpeg'),
-    afterSrc: pathForSlide('slide-9-after.jpeg'),
+    beforeSrc: 'slide-9-before.jpeg',
+    afterSrc: 'slide-9-after.jpeg',
     details: [
       {
         label: 'Negate',
@@ -179,4 +173,8 @@ export const slides = [
     },
     orientation: 'portrait'
   }
-]
+].map(slide => ({
+  ...slide,
+  beforeSrc: pathForSlide(slide.beforeSrc),
+  afterSrc: pathForSlide(slide.afterSrc)
+}))
