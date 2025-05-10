@@ -12,12 +12,20 @@ serve({
   port: PORT,
   routes: injectCORS(
     {
-      '/api/v1/photos/compare-slides': async () => new Response(JSON.stringify(slides))
+      '/api/v1/photos/compare-slides': {
+        GET: async () => Response.json(slides)
+      }
     },
     {
       origin: CLIENT_API,
-      methods: ['POST'],
+      methods: ['GET'],
       credentials: false
     }
-  )
+  ),
+  fetch: () =>
+    new Response('Not Found', {
+      status: 404
+    })
 })
+
+console.log(`[S3 Bridge] Server is running on port ${PORT}`)

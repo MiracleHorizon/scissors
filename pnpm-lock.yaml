@@ -518,6 +518,9 @@ importers:
 
   '@packages/bun-cors':
     devDependencies:
+      '@types/bun':
+        specifier: 1.2.11
+        version: 1.2.11
       vite-plugin-dts:
         specifier: 3.8.1
         version: 3.8.1(@types/node@22.15.3)(rollup@4.40.1)(typescript@5.8.3)(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(terser@5.39.0))
