@@ -7,8 +7,12 @@ import { pathForSocial } from '@/shared/github'
 export const SEO = () => (
   <Helmet>
     <title>{SITE_TITLE}</title>
+
     <meta name='description' content={SITE_DESCRIPTION} />
     <meta name='keywords' content={SITE_KEYWORDS.join(', ')} />
+    <meta name='robots' content='index, follow' />
+    <meta name='darkreader-lock' content='true' />
+
     <link rel='canonical' href={SITE_DOMAIN} />
     <link
       rel='icon'
@@ -28,7 +32,7 @@ export const SEO = () => (
     <link rel='icon' href='/android-chrome-192x192.png' type='image/png' sizes='192x192' />
     <link rel='icon' href='/android-chrome-512x512.png' type='image/png' sizes='512x512' />
     <link rel='manifest' href='/manifest.json' />
-    <meta name='robots' content='index, follow' />
+
     <meta property='og:title' content={SITE_TITLE} />
     <meta property='og:description' content={SITE_DESCRIPTION} />
     <meta property='og:image' content={pathForSocial('og-image-share.png')} />
