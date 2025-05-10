@@ -23,6 +23,7 @@
     "type-check": "tsc"
   },
   "devDependencies": {
-    "vite-plugin-dts": "3.8.1"
+    "vite-plugin-dts": "3.8.1",
+    "@types/bun": "1.2.11"
   }
 }
