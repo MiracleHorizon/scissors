@@ -2,6 +2,7 @@ import type { Theme, ThemeColor } from '../model/types'
 
 // Defaults
 export const DEFAULT_THEME: Theme = 'system'
+// TODO: Remove theme color
 export const DEFAULT_THEME_COLOR: ThemeColor = 'indigo'
 
 // Storages

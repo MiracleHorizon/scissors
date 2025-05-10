@@ -1,6 +1,0 @@
-declare module 'bun' {
-  interface Env {
-    CLIENT_API: string
-    SERVER_API: string
-  }
-}

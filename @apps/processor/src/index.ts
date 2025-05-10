@@ -1,14 +1,12 @@
 import { serve } from 'bun'
 
+import { config } from '@scissors/config'
 import { injectCORS } from '@scissors/bun-cors'
 
 import { ImageConverter, ImageResizer } from './sharp'
 
-const PORT = Bun.env.SERVER_PORT ?? 4200
-const CLIENT_API = Bun.env.CLIENT_API ?? 'http://localhost:3000'
-
 serve({
-  port: PORT,
+  port: config.SERVER_PORT,
   routes: injectCORS(
     {
       '/api/v1/convert': {
@@ -47,7 +45,7 @@ serve({
       }
     },
     {
-      origin: CLIENT_API,
+      origin: config.CLIENT_API,
       methods: ['POST'],
       credentials: false
     }

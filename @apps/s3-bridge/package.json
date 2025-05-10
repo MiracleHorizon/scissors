@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@scissors/bun-cors": "workspace:*",
+    "@scissors/config": "workspace:*",
     "@scissors/sharp": "workspace:*",
     "@scissors/utility": "workspace:*",
     "sharp": "0.34.1"

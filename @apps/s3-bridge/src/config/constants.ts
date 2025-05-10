@@ -1,4 +1,4 @@
-// Github as S3 storage
+// Github as S3
 const REPO_OWNER = 'MiracleHorizon'
 const REPO_NAME = 'scissors'
 const REPO_BRANCH = 'main'

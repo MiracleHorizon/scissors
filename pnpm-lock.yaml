@@ -499,6 +499,9 @@ importers:
       '@scissors/bun-cors':
         specifier: workspace:*
         version: link:../../@packages/bun-cors
+      '@scissors/config':
+        specifier: workspace:*
+        version: link:../../@packages/config
       '@scissors/sharp':
         specifier: workspace:*
         version: link:../../@packages/sharp
@@ -524,6 +527,12 @@ importers:
       vite-plugin-dts:
         specifier: 3.8.1
         version: 3.8.1(@types/node@22.15.3)(rollup@4.40.1)(typescript@5.8.3)(vite@6.3.4(@types/node@22.15.3)(jiti@2.4.2)(terser@5.39.0))
+
+  '@packages/config':
+    dependencies:
+      zod:
+        specifier: 3.24.4
+        version: 3.24.4
 
   '@packages/react-icons':
     dependencies:
@@ -8457,6 +8466,9 @@ packages:
   zod@3.24.3:
     resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
 
+  zod@3.24.4:
+    resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
+
   zustand@4.5.2:
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
     engines: {node: '>=12.7.0'}
@@ -9730,8 +9742,8 @@ snapshots:
       express-rate-limit: 7.5.0(express@5.1.0)
       pkce-challenge: 5.0.0
       raw-body: 3.0.0
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
+      zod: 3.24.4
+      zod-to-json-schema: 3.24.5(zod@3.24.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -17151,11 +17163,13 @@ snapshots:
     optionalDependencies:
       commander: 9.5.0
 
-  zod-to-json-schema@3.24.5(zod@3.24.3):
+  zod-to-json-schema@3.24.5(zod@3.24.4):
     dependencies:
-      zod: 3.24.3
+      zod: 3.24.4
 
   zod@3.24.3: {}
+
+  zod@3.24.4: {}
 
   zustand@4.5.2(@types/react@18.2.0)(react@18.2.0):
     dependencies:
