@@ -10,8 +10,6 @@ const YA_GPT_API_KEY = config.YANDEX_CLOUD_API_KEY
 const YA_GPT_FOLDER_ID = config.YANDEX_CLOUD_FOLDER
 const YA_GPT_MODEL = 'yandexgpt-lite'
 
-console.log(config)
-
 if (!YA_GPT_API_KEY) {
   throw new Error('[AI] YaGPT API key is required')
 }
