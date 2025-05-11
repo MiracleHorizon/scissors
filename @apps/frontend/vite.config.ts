@@ -24,6 +24,7 @@ export default defineConfig({
   preview: {
     port: PORT
   },
+  // TODO: Почему-то очень сильно растет размер бандла, если указать envDir
   envDir: resolve(__dirname, '..', '..'),
   define: {
     'import.meta.env.SITE_DOMAIN': process.env.SITE_DOMAIN,

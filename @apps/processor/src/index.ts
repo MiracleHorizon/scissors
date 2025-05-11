@@ -20,7 +20,11 @@ serve({
             const converter = new ImageConverter(arrayBuffer)
             const buffer = await converter.convert(JSON.parse(settings))
 
-            return new Response(buffer)
+            return new Response(new Uint8Array(buffer), {
+              headers: {
+                'Content-Type': file.type
+              }
+            })
           }
 
           return new Response('Error', { status: 500 })
@@ -37,7 +41,9 @@ serve({
             const resizer = new ImageResizer(arrayBuffer)
             const buffer = await resizer.resizeImage(JSON.parse(settings))
 
-            return new Response(buffer)
+            return new Response(new Uint8Array(buffer), {
+              headers: { 'Content-Type': 'image/png' }
+            })
           }
 
           return new Response('Error', { status: 500 })
@@ -56,4 +62,4 @@ serve({
     })
 })
 
-console.log(`[Processor] Server is running on port ${PORT}`)
+console.log(`[Processor] Server is running on port ${config.SERVER_PORT}`)
