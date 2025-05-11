@@ -1,15 +1,16 @@
 import { serve } from 'bun'
 
+import { config } from '@scissors/config'
 import { injectCORS } from '@scissors/bun-cors'
 
 import { getContextForPrompt } from './mcp/context'
 import { parseSettingsFromGpt } from './utils/parseSettingsFromGpt'
 
-const PORT = Bun.env.AI_SERVER_PORT || 4201
-const YA_GPT_API_KEY = Bun.env.YANDEX_CLOUD_API_KEY
-const YA_GPT_FOLDER_ID = Bun.env.YANDEX_CLOUD_FOLDER
-const CLIENT_API = Bun.env.CLIENT_API ?? 'http://localhost:3000'
+const YA_GPT_API_KEY = config.YANDEX_CLOUD_API_KEY
+const YA_GPT_FOLDER_ID = config.YANDEX_CLOUD_FOLDER
 const YA_GPT_MODEL = 'yandexgpt-lite'
+
+console.log(config)
 
 if (!YA_GPT_API_KEY) {
   throw new Error('[AI] YaGPT API key is required')
@@ -37,7 +38,7 @@ setInterval(() => {
 // TODO: Logger
 // TODO: server.requestIP
 serve({
-  port: PORT,
+  port: config.AI_SERVER_PORT,
   routes: injectCORS(
     {
       '/api/v1/completion': {
@@ -152,7 +153,7 @@ serve({
       }
     },
     {
-      origin: CLIENT_API,
+      origin: config.CLIENT_API,
       methods: ['POST'],
       credentials: false
     }
@@ -163,4 +164,4 @@ serve({
     })
 })
 
-console.log(`[AI] Server is running on port ${PORT}`)
+console.log(`[AI] Server is running on port ${config.AI_SERVER_PORT}`)

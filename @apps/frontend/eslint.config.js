@@ -1,16 +1,10 @@
-import defaultConfig from '../../eslint.config.js'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
-/**
- TODO: Await issues updates:
- - react-hooks: https://github.com/facebook/react/issues/28313,
- - next: https://github.com/vercel/next.js/issues/64409
- */
+import defaultConfig from '../../eslint.config.js'
 
 export default [
   ...defaultConfig,
-  {
-    ignores: ['cypress']
-  },
+  ...pluginQuery.configs['flat/recommended'],
   {
     languageOptions: {
       globals: {

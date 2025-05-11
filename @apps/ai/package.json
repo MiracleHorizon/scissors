@@ -3,13 +3,14 @@
   "main": "./src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun --env-file=../../.env.development run --watch ./src/index.ts",
-    "start": "bun --env-file=../../.env.production --bun ./src/index.ts",
+    "dev": "bun run --watch ./src/index.ts",
+    "start": "bun run ./src/index.ts",
     "prebuild": "tsc --noEmit",
     "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile=./.out/ai"
   },
   "dependencies": {
     "@scissors/bun-cors": "workspace:*",
+    "@scissors/config": "workspace:*",
     "@scissors/sharp": "workspace:*"
   },
   "devDependencies": {

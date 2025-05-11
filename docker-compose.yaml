@@ -1,24 +1,24 @@
-version: "3"
+# version: "3"
 
-services:
-  frontend:
-    container_name: frontend
-    build:
-      context: .
-      dockerfile: ./@apps/frontend/Dockerfile
-    restart: unless-stopped
-    env_file:
-      - .env.production
-    ports:
-      - '3000:3000'
+# services:
+#   frontend:
+#     container_name: frontend
+#     build:
+#       context: .
+#       dockerfile: ./@apps/frontend/Dockerfile
+#     restart: unless-stopped
+#     env_file:
+#       - .env
+#     ports:
+#       - '3000:3000'
 
-  backend:
-    container_name: backend
-    build:
-      context: .
-      dockerfile: ./@apps/backend/Dockerfile
-    restart: unless-stopped
-    env_file:
-      - .env.production
-    ports:
-      - '4200:4200'
+#   backend:
+#     container_name: processor
+#     build:
+#       context: .
+#       dockerfile: ./@apps/processor/Dockerfile
+#     restart: unless-stopped
+#     env_file:
+#       - .env
+#     ports:
+#       - '4200:4200'

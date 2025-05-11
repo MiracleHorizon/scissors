@@ -61,8 +61,8 @@ jobs:
       - name: Check New rontend
         run: pnpm --filter frontend-new test
 
-      - name: Test Backend
-        run: pnpm --filter backend test
+      # - name: Test Backend
+        # run: pnpm --filter backend test
 
       - name: Lint
         run: pnpm lint

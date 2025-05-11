@@ -3,6 +3,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.d.ts",
+    "types/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"
@@ -16,9 +17,6 @@
       "DOM",
       "DOM.Iterable",
       "ESNext"
-    ],
-    "types": [
-      "vitest/globals"
     ],
     "jsx": "preserve",
     "useDefineForClassFields": true,
@@ -45,52 +43,9 @@
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    /* Aliases */
     "paths": {
-      "@public/*": [
-        "./public/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@site/*": [
-        "./src/site/*"
-      ],
-      "@api/*": [
-        "./src/api/*"
-      ],
-      "@widgets/*": [
-        "./src/widgets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@stores/*": [
-        "./src/stores/*"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@ui/*": [
-        "./src/lib/ui/*"
-      ],
-      "@helpers/*": [
-        "./src/lib/helpers/*"
-      ],
-      "@utility/*": [
-        "./src/utility/*"
-      ],
-      "@app-types/*": [
-        "./src/types/*"
-      ],
-      "@testing/*": [
-        "./src/__setup__/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
+      "@/*": [
+        "./src/*"
       ]
     }
   }

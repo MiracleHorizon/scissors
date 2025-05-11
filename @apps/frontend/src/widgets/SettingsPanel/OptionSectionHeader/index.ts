@@ -1,1 +1,0 @@
-export { OptionSectionHeader } from './OptionSectionHeader'

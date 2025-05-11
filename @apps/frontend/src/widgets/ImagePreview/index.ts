@@ -1,1 +1,1 @@
-export { ImagePreview } from './ImagePreview'
+export { ImagePreview } from './ui/ImagePreview/ImagePreview'

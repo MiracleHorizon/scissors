@@ -11,5 +11,4 @@
 .turbo
 
 # Environment
-.env.development
-.env.production
+.env

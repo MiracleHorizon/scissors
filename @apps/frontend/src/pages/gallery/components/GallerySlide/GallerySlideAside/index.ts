@@ -1,1 +1,0 @@
-export { GallerySlideAside } from './GallerySlideAside'

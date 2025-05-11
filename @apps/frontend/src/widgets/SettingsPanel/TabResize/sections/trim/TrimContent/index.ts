@@ -1,1 +1,0 @@
-export { TrimContent } from './TrimContent'

@@ -1,1 +1,0 @@
-export { ExtendToolbarButton } from './ExtendToolbarButton'

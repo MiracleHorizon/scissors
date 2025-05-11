@@ -1,1 +1,0 @@
-export { UploadedFileCard } from './UploadedFileCard'

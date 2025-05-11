@@ -8,7 +8,7 @@ export default tsEslint.config(
   js.configs.recommended,
   ...tsEslint.configs.recommended,
   {
-    ignores: ['**/dist', '**/node_modules', '**/coverage', '*.config.*', '*.json', './@apps/ai']
+    ignores: ['**/dist', '**/node_modules', '**/coverage', '*.config.*', '*.json']
   },
   {
     plugins: {

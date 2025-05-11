@@ -61,7 +61,7 @@ Currently, the following image formats are supported:
 - Node.js v20+
 - pnpm
 
-### 💻 Run locally
+### 💻 Run locally [DEPRECATED]
 
 - Clone repository
   ```sh
@@ -86,7 +86,7 @@ Currently, the following image formats are supported:
 
 ### 🐳 Run with Docker
 
-- Fill out the `.env` files for production mode
+- Fill out the `.env` file for production mode
 
 - Build
 
@@ -107,7 +107,5 @@ present [MiracleHorizon](https://github.com/MiracleHorizon).
 See [LICENSE](https://github.com/MiracleHorizon/scissors/blob/main/LICENSE) for more information.
 
 [project-github]: https://github.com/MiracleHorizon/scissors
-
 [preview-screenshot-1]: social/og-image-share-light.png
-
 [preview-screenshot-2]: social/og-image-share-dark.png

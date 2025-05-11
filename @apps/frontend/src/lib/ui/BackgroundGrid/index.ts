@@ -1,1 +1,0 @@
-export { BackgroundGrid } from './BackgroundGrid'

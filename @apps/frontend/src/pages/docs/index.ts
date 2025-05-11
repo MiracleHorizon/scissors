@@ -1,1 +1,1 @@
-export { default } from './page'
+export { DocumentationPage } from './ui/Page/Page'
