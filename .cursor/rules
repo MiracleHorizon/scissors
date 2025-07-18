@@ -1,0 +1,107 @@
+# Scissors Project Rules
+
+## Product Overview
+
+Scissors is an application for versatile image formatting and processing with the following capabilities:
+
+- Convert images between formats (PNG, JPEG/JPG, WEBP, AVIF, GIF)
+- Manipulate images with features like rotation, resizing, extending, and trimming
+- Apply visual effects such as grayscale, gamma adjustment, and tint
+- Control output quality
+- Dark/light mode and customizable theme color
+- Save and restore settings (export/import)
+- Built-in gallery and documentation
+
+The product consists of multiple services:
+
+- Frontend application (@apps/frontend) - Next.js based UI
+- Processor service (@apps/processor) - Backend service for image processing
+- AI service (@apps/ai) - AI-related functionality
+- S3-Bridge service (@apps/s3-bridge) - Integration with S3 storage
+
+## Project Structure
+
+- This is a monorepo managed by Turborepo
+- Applications are located in `@apps/*` directory
+- Shared packages are located in `@packages/*` directory
+- Each application/package should have its own package.json and tsconfig.json
+
+## Common Rules
+
+### General
+
+- Node.js version: >=20 (see .nvmrc)
+- Package manager: pnpm (v10.10.0)
+- TypeScript is used across all packages and applications
+- Follow the commitlint conventions for commit messages
+
+### Code Style
+
+- Use single quotes for strings
+- No semicolons
+- Tab width: 2 spaces
+- Maximum line length: 100 characters
+- Arrow function parentheses: avoid when possible
+- Trailing commas: none
+- Use camelCase for variables and properties
+
+### TypeScript
+
+- Explicit types for function parameters and return types are recommended
+- Avoid using `any` when possible, but not strictly forbidden
+- Use TypeScript's strict mode
+
+## Frontend Applications (e.g., @apps/frontend)
+
+### Framework & Libraries
+
+- React-based applications
+- Vite for bundling
+- Follow component-based architecture
+
+### Styling
+
+- CSS Modules or styled components should be used
+- Follow BEM (Block Element Modifier) methodology for class naming
+- Stylelint is used for CSS linting
+
+### Folder Structure
+
+- `/src/components/` - Reusable UI components
+- `/src/pages/` - Page components
+- `/public/` - Static assets
+- `/types/` - TypeScript type definitions
+
+## Backend Applications (e.g., @apps/processor, @apps/ai, @apps/s3-bridge)
+
+### Framework & Libraries
+
+- Bun runtime
+- Follow RESTful API design principles
+- Utilize shared packages from `@packages/`
+
+### Error Handling
+
+- Use proper error handling and status codes
+- Log errors appropriately
+
+### API Responses
+
+- Consistent format for API responses
+- Include appropriate status codes
+
+## Development Workflow
+
+- Use `pnpm dev` to start development environment
+- Use `pnpm build` to build all packages and applications
+- Use `pnpm lint` to lint all packages and applications
+
+## Deployment
+
+- Frontend apps may use Vercel for deployment
+- Backend services are containerized with Docker
+
+## Testing
+
+- Use `@packages/test-utils` for common testing utilities
+- Write unit tests for critical functionality

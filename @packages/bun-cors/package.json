@@ -1,6 +1,7 @@
 {
   "name": "@scissors/bun-cors",
   "private": true,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

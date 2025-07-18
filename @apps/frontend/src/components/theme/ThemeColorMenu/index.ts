@@ -1,1 +1,0 @@
-export { ThemeColorMenu } from './ThemeColorMenu'

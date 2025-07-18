@@ -1,15 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": [
-    "**/.env.*"
-  ],
+  "globalEnv": [".env"],
   "tasks": {
     "build": {
       "dependsOn": [
         "^build"
       ],
       "outputs": [
-        "dist/**"
+        "dist/**",
+        ".out/**"
       ],
       "inputs": [
         "$TURBO_DEFAULT$"
@@ -38,7 +37,8 @@
         "^build"
       ],
       "outputs": [
-        "dist/**"
+        "dist/**",
+        ".out/**"
       ]
     }
   }

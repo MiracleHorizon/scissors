@@ -1,7 +1,0 @@
-.root {
-  position: sticky;
-  top: calc(var(--space-8) + var(--space-5));
-  width: 80px;
-  flex-shrink: 0;
-  margin-right: var(--space-6);
-}

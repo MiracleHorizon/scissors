@@ -1,1 +1,0 @@
-export { ExtractRatioControl } from './ExtractRatioControl'

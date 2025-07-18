@@ -1,8 +1,0 @@
-.root {
-  width: var(--slide-aside-w);
-}
-
-.info {
-  position: sticky;
-  top: var(--space-2);
-}

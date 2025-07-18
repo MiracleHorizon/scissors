@@ -1,1 +1,0 @@
-export { GallerySlideInfo } from './GallerySlideInfo'
