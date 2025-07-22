@@ -1,1 +1,1 @@
-export { default } from './page'
+export { GalleryPage } from './ui/Page/Page'

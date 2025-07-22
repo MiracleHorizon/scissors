@@ -1,1 +1,0 @@
-export { ThemeColorGrid } from './ThemeColorGrid'

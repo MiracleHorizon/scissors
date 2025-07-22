@@ -1,6 +1,0 @@
-.spinner {
-  --size: var(--space-8);
-
-  width: var(--size);
-  height: var(--size);
-}

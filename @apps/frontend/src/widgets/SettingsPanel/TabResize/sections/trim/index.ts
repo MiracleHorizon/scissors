@@ -1,1 +1,0 @@
-export { TrimSection } from './TrimSection'

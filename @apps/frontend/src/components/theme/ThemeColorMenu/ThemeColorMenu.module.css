@@ -1,7 +1,0 @@
-.content :global(.rt-ScrollAreaRoot) {
-  max-height: 60dvh !important;
-}
-
-.content :global(.rt-DropdownMenuViewport) {
-  width: 140px;
-}

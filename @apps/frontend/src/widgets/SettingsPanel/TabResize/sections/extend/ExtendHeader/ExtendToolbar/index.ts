@@ -1,1 +1,0 @@
-export { ExtendToolbar } from './ExtendToolbar'

@@ -1,1 +1,0 @@
-export { SliderHeader } from './SliderHeader'

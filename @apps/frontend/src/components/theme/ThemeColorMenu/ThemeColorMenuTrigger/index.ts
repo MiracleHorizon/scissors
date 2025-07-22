@@ -1,1 +1,0 @@
-export { ThemeColorMenuTrigger } from './ThemeColorMenuTrigger'

@@ -1,5 +1,0 @@
-.root {
-  height: var(--processing-footer-height);
-  box-shadow: 0 -1px var(--gray-a5);
-  z-index: 10;
-}
