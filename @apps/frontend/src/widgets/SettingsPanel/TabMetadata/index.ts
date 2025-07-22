@@ -1,1 +1,0 @@
-export { TabMetadata } from './TabMetadata'

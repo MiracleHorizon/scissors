@@ -70,7 +70,7 @@ Currently, the following image formats are supported:
 - Install NPM packages
 
   ```sh
-  pnpm install --frozen-lockfile
+  pnpm ci
   ```
 
 - Build packages

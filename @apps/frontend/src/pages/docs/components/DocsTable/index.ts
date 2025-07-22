@@ -1,1 +1,0 @@
-export { DocsTable } from './DocsTable'

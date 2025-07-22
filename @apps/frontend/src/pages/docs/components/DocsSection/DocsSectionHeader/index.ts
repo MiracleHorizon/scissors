@@ -1,1 +1,0 @@
-export { DocsSectionHeader } from './DocsSectionHeader'

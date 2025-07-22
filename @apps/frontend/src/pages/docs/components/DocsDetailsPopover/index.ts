@@ -1,1 +1,0 @@
-export { DocsDetailsPopover } from './DocsDetailsPopover'

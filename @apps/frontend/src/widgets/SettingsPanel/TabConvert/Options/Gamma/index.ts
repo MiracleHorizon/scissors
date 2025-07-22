@@ -1,1 +1,0 @@
-export { Gamma } from './Gamma'

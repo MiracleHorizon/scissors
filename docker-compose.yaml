@@ -13,10 +13,10 @@ services:
       - '3000:3000'
 
   backend:
-    container_name: backend
+    container_name: processor
     build:
       context: .
-      dockerfile: ./@apps/backend/Dockerfile
+      dockerfile: ./@apps/processor/Dockerfile
     restart: unless-stopped
     env_file:
       - .env.production
