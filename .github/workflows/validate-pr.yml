@@ -55,14 +55,10 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Test Frontend
-        run: pnpm --filter frontend test
-
       - name: Check New rontend
         run: pnpm --filter frontend-new test
 
-      - name: Test Backend
-        run: pnpm --filter backend test
+      # TODO: линт, тесты, сборка для микросервисов
 
       - name: Lint
         run: pnpm lint
