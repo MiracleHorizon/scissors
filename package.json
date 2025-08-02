@@ -20,6 +20,7 @@
     "build:packages": "turbo build --filter='./@packages/*'",
     "start": "turbo start",
     "dev": "turbo dev",
+    "dev:backend": "turbo dev --filter='./@apps/*' --filter='!./@apps/frontend'",
     "lint": "turbo lint",
     "prepare": "husky"
   },

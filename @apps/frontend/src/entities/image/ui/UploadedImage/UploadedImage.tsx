@@ -21,6 +21,8 @@ export const UploadedImage = ({
   onClick: VoidFunction
 }) => (
   <Box width='100%' style={rootStyle} className={styles.root} onClick={onClick}>
+    <Box width='100%' height='100%' position='absolute' className={styles.overlay} />
+
     <EnterFullScreenIcon className={clsx(styles.icon, styles.fullscreenIcon)} />
 
     <img

@@ -17,28 +17,28 @@
   transform: translate3d(-50%, -50%, 0);
 }
 
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
 @media (hover: hover) {
   .root:hover .icon {
     opacity: 1;
     visibility: visible;
   }
 
-  .root:hover {
-    filter: brightness(70%);
-    transition: filter 0.1s ease-in-out;
+  .root:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 }
 
 .icon {
-  opacity: 0;
   pointer-events: none;
   visibility: hidden;
   position: absolute;
   color: white;
-  transition:
-    opacity 0.1s ease-in-out,
-    visibility 0.1s ease-in-out;
-  z-index: 1;
 }
 
 .fullscreenIcon {
@@ -49,6 +49,7 @@
   top: 50%;
   bottom: 50%;
   transform: translate3d(-50%, -50%, 0);
+  z-index: 2;
 }
 
 @media screen and (max-width: 767px) {
