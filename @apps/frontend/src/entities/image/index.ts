@@ -1,3 +1,5 @@
 export { ImageProperties } from './ui/ImageProperties/ImageProperties'
+export { ImageLightbox } from './ui/ImageLightbox/ImageLightbox'
+export { UploadedImage } from './ui/UploadedImage/UploadedImage'
 export { isValidAspectRatio } from './lib/isValidAspectRatio'
 export * from './model/types'

@@ -1,9 +1,8 @@
 import {
   createBrowserRouter,
-  Navigate,
   RouterProvider as BaseRouterProvider,
-  useLocation,
-  type RouteObject
+  type RouteObject,
+  Navigate
 } from 'react-router-dom'
 
 import { DefaultLayout } from './layout'
@@ -15,22 +14,16 @@ import { SettingsConvertPage } from '@/pages/settings-convert'
 import { SettingsResizePage } from '@/pages/settings-resize'
 import { NotFoundPage } from '@/pages/not-found'
 
-const Fallback = () => {
-  const { pathname } = useLocation()
-
-  if (pathname === '/') {
-    return <Navigate to='/convert' />
-  }
-
-  return <NotFoundPage />
-}
-
 export const AppRouter = () => (
   <BaseRouterProvider
     router={createBrowserRouter([
       {
         element: <DefaultLayout />,
         children: [
+          {
+            path: '/',
+            element: <Navigate to='/convert' replace />
+          },
           {
             element: <HomePage />,
             children: [
@@ -58,7 +51,7 @@ export const AppRouter = () => (
           },
           {
             path: '*',
-            element: <Fallback />
+            element: <NotFoundPage />
           }
         ]
       }

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Flex } from '@radix-ui/themes'
 
-import { ImageProperties } from '@/entities/image'
-import { ImageLightbox, UploadedImage } from '@/features/image/preview'
+import { ImageLightbox, ImageProperties, UploadedImage } from '@/entities/image'
 
 /* eslint no-unused-vars: 0 */
 export const ImagePreview = ({
