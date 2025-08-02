@@ -7,10 +7,7 @@ import styles from './AppLogo.module.css'
 export const AppLogo = ({ className }: { className?: string }) => {
   const navigate = useNavigate()
 
-  /**
-   * Currently /convert route is basic route for application.
-   */
-  const navigateToHome = () => navigate('/convert')
+  const navigateToHome = () => navigate('/')
 
   return (
     <Flex
