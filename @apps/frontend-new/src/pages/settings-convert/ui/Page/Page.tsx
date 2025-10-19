@@ -25,6 +25,7 @@ export const SettingsConvertPage = () => (
       />
       <OptionSection
         title='Colorization'
+        docsLink='/docs#colorization'
         icon={<PaintbrushIcon width='20' height='20' label='colorize' />}
         content={<ColorizationOptions />}
       />
@@ -36,6 +37,7 @@ export const SettingsConvertPage = () => (
       />
       <OptionSection
         title='Advanced'
+        docsLink='/docs#advanced'
         icon={<SettingsIcon width='18' height='18' label='advanced settings' />}
         content={<AdvancedOptions />}
       />

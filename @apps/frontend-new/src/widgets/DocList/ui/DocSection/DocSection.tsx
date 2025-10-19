@@ -24,8 +24,8 @@ export const DocSection = ({
         <Flex asChild align='center' gap='1'>
           <RadixLink asChild size='5' underline='none' className={styles.link}>
             <Link to={hash}>
-              <Link2Icon width='18px' height='18px' />
               <Text weight='medium'>{title}</Text>
+              <Link2Icon width='18px' height='18px' className={styles.linkIcon} />
             </Link>
           </RadixLink>
         </Flex>

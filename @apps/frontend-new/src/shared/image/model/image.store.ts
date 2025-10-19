@@ -28,6 +28,7 @@ const defaultState: State = {
   keepChanges: false
 } as const
 
+// TODO: FSD. Shared store?
 const imageStoreCreator: StateCreator<Store> = (set, get) => ({
   ...defaultState,
 

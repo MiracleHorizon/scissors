@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
 import type { ConvertSettings } from '@scissors/sharp'
 
 export const useSlidesQuery = () =>
-  useQuery<
+  useSuspenseQuery<
     {
       label: string
       beforeSrc: string

@@ -24,3 +24,8 @@
     visibility: visible;
   }
 }
+
+.link,
+.title {
+  line-height: 24px !important;
+}

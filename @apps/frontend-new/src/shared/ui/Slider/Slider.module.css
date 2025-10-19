@@ -17,10 +17,10 @@
 .radixSlider :global(.rt-SliderTrack) {
   --slider-track-size: 12px !important;
   margin-bottom: 1px;
-} 
+}
 
 .radixSlider :global(.rt-SliderThumb) {
-  --slider-thumb-size: 16px !important;
+  --slider-thumb-size: 14px !important;
 }
 
 .radixSlider :global(.rt-SliderThumb::after) {
@@ -31,4 +31,3 @@
   opacity: 0.7;
   pointer-events: none;
 }
-

@@ -33,11 +33,12 @@ export const ConvertButton = () => {
     <>
       <Button
         radius='large'
+        size='3'
         disabled={isPending || !file}
         loading={isPending}
         onClick={handleConvert}
       >
-        Apply
+        Apply changes
       </Button>
 
       {/* TODO: Вынести выше */}

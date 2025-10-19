@@ -85,9 +85,11 @@ export const FileNameInput = () => {
             </IconButton>
           </TextField.Slot>
         )}
-      </TextField.Root>
 
-      <FileNameHint />
+        <TextField.Slot>
+          <FileNameHint />
+        </TextField.Slot>
+      </TextField.Root>
     </Flex>
   )
 }

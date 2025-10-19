@@ -52,14 +52,14 @@ export const OptionSection = ({
               )}
 
               {docsLink ? (
-                <RadixLink asChild weight='medium' className={styles.link}>
+                <RadixLink asChild size='3' weight='medium' className={styles.link}>
                   <Link to={docsLink}>
                     {title}
                     <Link2Icon width='17px' height='17px' className={styles.linkIcon} />
                   </Link>
                 </RadixLink>
               ) : (
-                <Heading size='3' weight='medium'>
+                <Heading size='3' weight='medium' className={styles.title}>
                   {title}
                 </Heading>
               )}

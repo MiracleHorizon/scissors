@@ -7,11 +7,16 @@ import {
   GrayscaleSwitch,
   NegateSwitch
 } from '@/features/settings/convert'
+import { DownloadButton } from '@/features/image/download'
 import styles from './CommonOptions.module.css'
 
+// TODO: FSD
 export const CommonOptions = () => (
   <Flex direction='column' gapY='4'>
-    <FileNameInput />
+    <Flex align='center' gapX='1'>
+      <FileNameInput />
+      <DownloadButton />
+    </Flex>
 
     <Flex
       gapX='4'

@@ -76,7 +76,7 @@ export const Slider = ({
         {label && (
           <Flex mb='3' gapX='2' align='center' justify='between'>
             <Text size='2'>{label}</Text>
-            <Text size='2'>{formattedValue}</Text>
+            {value.length > 1 && <Text size='2'>{formattedValue}</Text>}
           </Flex>
         )}
 

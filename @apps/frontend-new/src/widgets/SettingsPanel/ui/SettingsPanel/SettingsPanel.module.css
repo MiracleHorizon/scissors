@@ -18,12 +18,6 @@
   height: calc(100% - var(--space-6)) !important;
 }
 
-@media screen and (min-width: 2400px) {
-  .root {
-    width: var(--settings-panel-width-2400) !important;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .root {
     width: var(--settings-panel-width-1200) !important;
