@@ -71,6 +71,8 @@ const imageStoreCreator: StateCreator<Store> = (set, get) => ({
 })
 
 const PERSIST_NAME = `${SITE_TITLE.toLowerCase()}-image-store`
+
+// TODO: В сущности
 export const createImageStore = ({
   persist
 }: {

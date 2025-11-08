@@ -1,5 +1,5 @@
-import { type HTMLAttributes, useId } from 'react'
-import { Flex, Switch as RadixSwitch, Text } from '@radix-ui/themes'
+import { useId } from 'react'
+import { Flex, Switch as RadixSwitch, Text, type SwitchProps } from '@radix-ui/themes'
 
 import type { Size } from '@/shared/radix'
 
@@ -9,14 +9,7 @@ const width: Size = {
   md: '100%'
 } as const
 
-export const Switch = ({
-  label,
-  ...switchProps
-}: Omit<HTMLAttributes<HTMLButtonElement>, 'color'> & {
-  label: string
-  checked?: boolean
-  disabled?: boolean
-}) => {
+export const Switch = ({ label, ...switchProps }: SwitchProps & { label: string }) => {
   const id = useId()
 
   return (
