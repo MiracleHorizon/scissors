@@ -20,19 +20,10 @@ export const NormalizeSlider = () => {
       max={MAX_NORMALIZE}
       minStepsBetweenThumbs={1}
       onValueChange={values => {
-        if (value.lower !== values[0]) {
-          onChange((state: any) => ({
-            ...state,
-            lower: values[0]
-          }))
-        }
-
-        if (value.upper !== values[1]) {
-          onChange((state: any) => ({
-            ...state,
-            upper: values[1]
-          }))
-        }
+        onChange({
+          lower: values[0] ?? value.lower,
+          upper: values[1] ?? value.upper
+        })
       }}
     />
   )

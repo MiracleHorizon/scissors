@@ -45,7 +45,8 @@ export const useConvertSettingsList = (): ConvertSettingsList => {
     }
 
     return options
-  }, [])
+  }, [values.lightness, values.brightness, values.saturation, values.hue, values.grayscale])
+
   const tint = useMemo(() => {
     /*
      * The enabled grayscale option overrides the other options for working
@@ -56,7 +57,7 @@ export const useConvertSettingsList = (): ConvertSettingsList => {
     }
 
     return values.tint
-  }, [])
+  }, [values.grayscale, values.tint])
 
   return {
     ...values,
