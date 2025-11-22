@@ -1,30 +1,36 @@
 import { Button } from '@radix-ui/themes'
 
-import { useConvertMutation } from '../../api/convert-mutation'
-import { useCommonStore } from '../../model/common/common.store'
-import { useConvertSettings } from '../../model/useConvertSettings'
+import { useConvertMutation } from '../../model/useConvertMutation'
+import { useConvertSettingsList } from '../../model/useConvertSettingsList'
 import { useImageStore } from '@/shared/image'
 import { removeFileExtension, removeMimeTypePrefix } from '@/shared/file'
 
-// TODO: Check FSD
 export const ConvertButton = () => {
   const file = useImageStore(state => state.getFileForProcessing())
   const setDownloadableFile = useImageStore(state => state.setDownloadableFile)
 
-  const fileName = useCommonStore(state => state.fileName)
-  const settings = useConvertSettings()
+  const settings = useConvertSettingsList()
 
   const { mutate: convert, isPending } = useConvertMutation({
-    onSuccess: setDownloadableFile
+    onSuccess: data => {
+      console.log(file)
+      console.log(data)
+
+      setDownloadableFile(data)
+    }
   })
 
   const handleConvert = async () => {
     if (!file) return
 
+    // TODO: Улучшить код
+    const fileName =
+      settings.fileName.length > 0 ? settings.fileName : removeFileExtension(file.name)
+    const fileType = removeMimeTypePrefix(file.type)
+
     void convert({
       file,
-      // TODO: Улучшить код
-      fileName: `${fileName.length > 0 ? fileName : removeFileExtension(file.name)}.${removeMimeTypePrefix(file.type)}`,
+      fileName: `${fileName}.${fileType}`,
       settings
     })
   }

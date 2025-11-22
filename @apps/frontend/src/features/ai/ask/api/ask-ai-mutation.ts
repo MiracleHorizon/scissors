@@ -13,7 +13,7 @@ export const useAskAiMutation = ({
   onError?: (error: unknown) => void
 } = {}) =>
   useMutation({
-    mutationKey: ['ai-assistant'],
+    mutationKey: ['ai-assistant-completion'],
     mutationFn: async (prompt: string): Promise<Partial<ConvertSettings>> => {
       const response = await fetch(`${AI_SERVER_API}/v1/completion`, {
         method: 'POST',

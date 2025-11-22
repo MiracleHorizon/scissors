@@ -15,34 +15,48 @@ serve({
         POST: async req => {
           const formData = await req.formData()
           const file = formData.get('file')
-          const settings = formData.get('settings')
+          const settingsJSON = formData.get('settings')
 
-          if (file && file instanceof File && settings && typeof settings === 'string') {
+          if (file && file instanceof File && settingsJSON && typeof settingsJSON === 'string') {
+            const settings = JSON.parse(settingsJSON)
             const arrayBuffer = await file.arrayBuffer()
             const converter = new ImageConverter(arrayBuffer)
-            const buffer = await converter.convert(JSON.parse(settings))
+            const buffer = await converter.convert(settings)
 
-            return new Response(buffer)
+            return new Response(buffer as BodyInit, {
+              headers: {
+                'Content-Type': `image/${settings.outputFormat ?? 'png'}`
+              }
+            })
           }
 
-          return new Response('Error', { status: 500 })
+          return new Response('[Processor] Internal server error', {
+            status: 500
+          })
         }
       },
       '/api/v1/resize': {
         POST: async req => {
           const formData = await req.formData()
           const file = formData.get('file')
-          const settings = formData.get('settings')
+          const settingsJSON = formData.get('settings')
 
-          if (file && file instanceof File && settings && typeof settings === 'string') {
+          if (file && file instanceof File && settingsJSON && typeof settingsJSON === 'string') {
+            const settings = JSON.parse(settingsJSON)
             const arrayBuffer = await file.arrayBuffer()
             const resizer = new ImageResizer(arrayBuffer)
             const buffer = await resizer.resizeImage(JSON.parse(settings))
 
-            return new Response(buffer)
+            return new Response(buffer as BodyInit, {
+              headers: {
+                'Content-Type': `image/${settings.outputFormat}`
+              }
+            })
           }
 
-          return new Response('Error', { status: 500 })
+          return new Response('[Processor] Internal server error', {
+            status: 500
+          })
         }
       }
     },
